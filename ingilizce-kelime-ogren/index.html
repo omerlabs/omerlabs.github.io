@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada'nın İngilizce Oyunu 🔊</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #e8f4ff;
+  --card: #ffffff;
+  --blue: #3b82f6;
+  --sky: #0ea5e9;
+  --green: #22c55e;
+  --red: #f43f5e;
+  --yellow: #fbbf24;
+  --purple: #a855f7;
+  --orange: #f97316;
+  --pink: #ec4899;
+  --text: #1e3a5f;
+  --muted: #6b8fb5;
+  --border: #bfdbfe;
+  --soft: #f0f7ff;
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family:'Nunito',sans-serif;
+  background: var(--bg);
+  min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  padding:16px 12px 50px;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 5% 10%,  #dbeafe 0%, transparent 45%),
+    radial-gradient(ellipse at 95% 90%, #ede9fe 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, #f0fdf4 0%, transparent 60%);
+}
+
+/* ── CLOUDS ── */
+.cloud { position:fixed; opacity:.18; pointer-events:none; font-size:4rem; animation:cloudDrift var(--d,20s) linear infinite var(--dl,0s); }
+@keyframes cloudDrift { from{transform:translateX(-120px)} to{transform:translateX(110vw)} }
+
+/* ── HEADER ── */
+.header { position:relative; z-index:1; text-align:center; margin-bottom:10px; }
+.title {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(2rem,7vw,3rem);
+  color:var(--blue);
+  text-shadow:3px 3px 0 rgba(59,130,246,.15), 0 0 30px rgba(59,130,246,.2);
+  letter-spacing:.5px;
+}
+.title span { color:var(--orange); }
+.subtitle { font-size:.88rem; color:var(--muted); font-weight:700; margin-top:2px; }
+
+/* ── STARS & SCORE ── */
+.top-bar {
+  position:relative; z-index:1;
+  display:flex; gap:10px; align-items:center; justify-content:center;
+  margin-bottom:12px; flex-wrap:wrap;
+}
+.stars-display {
+  display:flex; gap:5px; align-items:center;
+  background:var(--card); border-radius:20px; padding:8px 16px;
+  border:2px solid var(--border);
+  box-shadow:0 3px 12px rgba(59,130,246,.1);
+}
+.star-icon { font-size:1.5rem; transition:transform .3s; }
+.star-icon.lit { animation:starPop .4s cubic-bezier(.3,1.6,.5,1); }
+@keyframes starPop { 0%{transform:scale(1)} 50%{transform:scale(1.5) rotate(20deg)} 100%{transform:scale(1)} }
+.score-pill {
+  background:var(--card); border-radius:20px; padding:8px 16px;
+  border:2px solid var(--border);
+  box-shadow:0 3px 12px rgba(59,130,246,.1);
+  font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--blue);
+  display:flex; align-items:center; gap:6px;
+}
+.cat-pill {
+  border-radius:20px; padding:8px 16px;
+  font-size:.82rem; font-weight:900; color:white; letter-spacing:.3px;
+}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap {
+  position:relative; z-index:1;
+  width:100%; max-width:480px;
+  background:rgba(255,255,255,.6); border-radius:20px; height:12px;
+  margin-bottom:14px; overflow:hidden;
+  border:2px solid var(--border);
+}
+.prog-fill {
+  height:100%; border-radius:18px;
+  background:linear-gradient(90deg,#3b82f6,#a855f7);
+  transition:width .6s cubic-bezier(.4,0,.2,1);
+  position:relative; overflow:hidden;
+}
+.prog-fill::after {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:shimmer 2s infinite;
+}
+@keyframes shimmer { to{left:200%} }
+
+/* ── MAIN CARD ── */
+.main-card {
+  position:relative; z-index:1;
+  background:var(--card); border-radius:32px;
+  padding:28px 20px 24px;
+  max-width:480px; width:100%;
+  border:2.5px solid var(--border);
+  box-shadow:0 8px 40px rgba(59,130,246,.12), 0 2px 8px rgba(0,0,0,.04);
+}
+
+/* ── SOUND BUTTON ── */
+.sound-section {
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  margin-bottom:28px;
+}
+
+.sound-btn {
+  width:110px; height:110px; border-radius:50%;
+  background:linear-gradient(135deg, #3b82f6, #0ea5e9);
+  border:none; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  box-shadow:0 6px 24px rgba(59,130,246,.4), 0 0 0 0 rgba(59,130,246,.3);
+  transition:transform .15s, box-shadow .15s;
+  animation:pulseIdle 2.5s ease-in-out infinite;
+  position:relative; overflow:hidden;
+}
+.sound-btn::before {
+  content:''; position:absolute; inset:0; border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.3), transparent 60%);
+}
+.sound-btn:hover  { transform:scale(1.07); box-shadow:0 10px 32px rgba(59,130,246,.5); }
+.sound-btn:active { transform:scale(.95); }
+.sound-btn.speaking { animation:speakingPulse .6s ease-in-out infinite; }
+@keyframes pulseIdle {
+  0%,100%{ box-shadow:0 6px 24px rgba(59,130,246,.4), 0 0 0 0 rgba(59,130,246,.3); }
+  50%    { box-shadow:0 6px 24px rgba(59,130,246,.4), 0 0 0 14px rgba(59,130,246,0); }
+}
+@keyframes speakingPulse {
+  0%,100%{ transform:scale(1); box-shadow:0 6px 24px rgba(59,130,246,.5), 0 0 0 0 rgba(59,130,246,.4); }
+  50%    { transform:scale(1.06); box-shadow:0 8px 32px rgba(59,130,246,.6), 0 0 0 18px rgba(59,130,246,0); }
+}
+
+.sound-icon  { font-size:3rem; line-height:1; }
+.sound-label { font-size:.72rem; font-weight:900; color:white; opacity:.85; letter-spacing:.5px; text-transform:uppercase; }
+
+.listen-again {
+  font-size:.82rem; font-weight:800; color:var(--muted);
+  cursor:pointer; display:flex; align-items:center; gap:5px;
+  background:var(--soft); border-radius:20px; padding:6px 16px;
+  border:1.5px solid var(--border); transition:all .15s;
+  font-family:'Nunito',sans-serif;
+}
+.listen-again:hover { background:var(--border); color:var(--blue); }
+
+/* ── CHOICES ── */
+.choices-label { font-size:.8rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:1px; text-align:center; margin-bottom:14px; }
+
+.choices-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+}
+
+.choice-btn {
+  aspect-ratio:1;
+  background:var(--soft); border-radius:24px;
+  border:3px solid var(--border);
+  cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; transition:transform .15s, border-color .15s, box-shadow .15s;
+  padding:10px 6px;
+  position:relative; overflow:hidden;
+}
+.choice-btn::before {
+  content:''; position:absolute; inset:0; border-radius:22px;
+  background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), transparent 60%);
+  pointer-events:none;
+}
+.choice-btn:hover {
+  transform:translateY(-5px) scale(1.04);
+  border-color:var(--blue);
+  box-shadow:0 10px 28px rgba(59,130,246,.2);
+}
+.choice-btn:active { transform:scale(.96); }
+
+.choice-emoji { font-size:clamp(2.8rem,10vw,4rem); line-height:1; filter:drop-shadow(0 3px 8px rgba(0,0,0,.12)); transition:transform .3s; }
+.choice-btn:hover .choice-emoji { transform:scale(1.1) rotate(-5deg); }
+.choice-tr { font-size:.75rem; font-weight:900; color:var(--muted); text-align:center; line-height:1.2; }
+
+/* Result states */
+.choice-btn.correct {
+  border-color:var(--green)!important;
+  background:linear-gradient(135deg,#dcfce7,#bbf7d0)!important;
+  box-shadow:0 0 0 4px rgba(34,197,94,.25)!important;
+  animation:correctBounce .5s cubic-bezier(.3,1.6,.5,1);
+}
+.choice-btn.wrong {
+  border-color:var(--red)!important;
+  background:linear-gradient(135deg,#ffe4e6,#fecdd3)!important;
+  animation:wrongWiggle .4s ease;
+}
+.choice-btn.dimmed { opacity:.35; pointer-events:none; }
+
+@keyframes correctBounce { 0%{transform:scale(1)} 45%{transform:scale(1.15) rotate(3deg)} 100%{transform:scale(1)} }
+@keyframes wrongWiggle   { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+
+/* ── FEEDBACK OVERLAY ── */
+.fb-overlay {
+  position:fixed; inset:0; z-index:100;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.35); backdrop-filter:blur(8px);
+}
+.fb-overlay.show { display:flex; animation:fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.fb-box {
+  background:var(--card); border-radius:32px; padding:32px 36px;
+  text-align:center; max-width:360px; width:92%;
+  border:3px solid var(--border);
+  box-shadow:0 16px 50px rgba(59,130,246,.2);
+  animation:popIn .42s cubic-bezier(.3,1.5,.5,1);
+}
+@keyframes popIn { from{transform:scale(.6)} to{transform:scale(1)} }
+
+.fb-big-emoji { font-size:5rem; display:block; margin-bottom:8px; animation:bigPop .5s cubic-bezier(.3,1.6,.5,1); }
+@keyframes bigPop { from{transform:scale(.3) rotate(-20deg)} to{transform:scale(1) rotate(0)} }
+
+.fb-word-en {
+  font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--blue); margin-bottom:4px;
+}
+.fb-word-tr { font-size:1.1rem; font-weight:800; color:var(--muted); margin-bottom:16px; }
+.fb-title   { font-family:'Fredoka One',cursive; font-size:1.6rem; margin-bottom:6px; }
+.fb-title.ok  { color:var(--green); }
+.fb-title.bad { color:var(--red); }
+.fb-pts { font-size:.9rem; font-weight:800; color:var(--muted); margin-bottom:16px; }
+
+.fb-next-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1.05rem;
+  padding:14px 36px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#3b82f6,#a855f7); color:white;
+  box-shadow:0 4px 18px rgba(59,130,246,.35); transition:transform .15s;
+  width:100%;
+}
+.fb-next-btn:hover { transform:scale(1.04); }
+
+/* ── CATEGORY SCREEN ── */
+.cat-screen {
+  position:relative; z-index:1;
+  background:var(--card); border-radius:32px; padding:28px 20px;
+  max-width:480px; width:100%;
+  border:2.5px solid var(--border);
+  box-shadow:0 8px 40px rgba(59,130,246,.12);
+  text-align:center;
+}
+.cat-title { font-family:'Fredoka One',cursive; font-size:1.8rem; color:var(--blue); margin-bottom:6px; }
+.cat-sub   { font-size:.88rem; font-weight:700; color:var(--muted); margin-bottom:22px; }
+.cat-grid  { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px; }
+.cat-item  {
+  background:var(--soft); border:2.5px solid var(--border);
+  border-radius:22px; padding:16px 10px; cursor:pointer;
+  transition:transform .15s, border-color .2s, box-shadow .15s;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.cat-item:hover { transform:translateY(-4px); border-color:var(--blue); box-shadow:0 8px 20px rgba(59,130,246,.18); }
+.cat-item-emoji { font-size:2.6rem; }
+.cat-item-name  { font-size:.9rem; font-weight:900; color:var(--text); }
+.cat-item-count { font-size:.72rem; font-weight:700; color:var(--muted); }
+.random-btn {
+  width:100%; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem;
+  padding:14px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#f97316,#fbbf24); color:white;
+  box-shadow:0 4px 16px rgba(249,115,22,.35); transition:transform .15s;
+}
+.random-btn:hover { transform:scale(1.04); }
+
+/* ── WIN SCREEN ── */
+.win-screen {
+  position:fixed; inset:0; z-index:200;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(232,244,255,.9); backdrop-filter:blur(16px);
+}
+.win-screen.show { display:flex; animation:fadeIn .5s ease; }
+.win-box {
+  background:var(--card); border-radius:32px; padding:40px 44px;
+  text-align:center; max-width:400px; width:92%;
+  border:3px solid var(--yellow);
+  box-shadow:0 0 0 10px rgba(251,191,36,.1), 0 20px 60px rgba(59,130,246,.15);
+  animation:popIn .5s cubic-bezier(.3,1.5,.5,1);
+}
+.win-ada {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(3rem,11vw,5.5rem);
+  background:linear-gradient(135deg,#3b82f6,#a855f7,#f43f5e,#f97316);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:adaPulse 1.4s ease infinite alternate; line-height:1; margin-bottom:6px;
+}
+@keyframes adaPulse { from{letter-spacing:0} to{letter-spacing:7px} }
+.win-sub  { font-size:1rem; font-weight:800; color:var(--muted); margin-bottom:14px; }
+.win-learned { font-size:.9rem; font-weight:800; color:var(--blue); margin-bottom:18px; }
+.win-stats { display:flex; gap:18px; justify-content:center; margin-bottom:20px; }
+.wstat   { display:flex; flex-direction:column; align-items:center; }
+.wstat-v { font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--blue); line-height:1; }
+.wstat-l { font-size:.65rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+.win-btns { display:flex; flex-direction:column; gap:10px; }
+.again-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem;
+  padding:13px 28px; border:none; border-radius:18px; cursor:pointer;
+  background:linear-gradient(135deg,#3b82f6,#a855f7); color:white;
+  box-shadow:0 4px 16px rgba(59,130,246,.35); transition:transform .15s;
+}
+.again-btn:hover { transform:scale(1.06); }
+.menu-btn {
+  background:var(--soft); border:2px solid var(--border); color:var(--blue);
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:.95rem;
+  padding:11px; border-radius:18px; cursor:pointer; transition:all .15s;
+}
+.menu-btn:hover { background:var(--border); }
+
+#fw { position:fixed; inset:0; pointer-events:none; z-index:199; }
+
+@media(max-width:380px){
+  .choice-emoji{font-size:2.4rem;}
+  .choices-grid{gap:8px;}
+  .main-card{padding:20px 14px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- clouds -->
+<div class="cloud" style="top:8%;--d:22s;--dl:0s">☁️</div>
+<div class="cloud" style="top:20%;--d:28s;--dl:8s">🌤️</div>
+<div class="cloud" style="top:5%;--d:35s;--dl:15s">☁️</div>
+
+<!-- CATEGORY SELECTION SCREEN -->
+<div id="catScreen">
+  <div class="header">
+    <div class="title">🔊 <span>Ada'nın</span> İngilizce Oyunu</div>
+    <div class="subtitle">Dinle → Doğru resmi seç → Öğren! 🎉</div>
+  </div>
+  <div class="cat-screen">
+    <div class="cat-title">📚 Konu Seç</div>
+    <div class="cat-sub">Hangi konuyu öğrenmek istiyorsun?</div>
+    <div class="cat-grid" id="catGrid"></div>
+    <button class="random-btn" onclick="startRandom()">🎲 Hepsini Karıştır!</button>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div id="gameScreen" style="display:none;flex-direction:column;align-items:center;width:100%">
+  <div class="header">
+    <div class="title">🔊 <span>Ada'nın</span> İngilizce Oyunu</div>
+    <div class="subtitle" id="gameSubtitle">Dinle → Doğru resmi seç!</div>
+  </div>
+
+  <div class="top-bar">
+    <div class="stars-display" id="starsDisplay">
+      <span class="star-icon" id="s0">⭐</span>
+      <span class="star-icon" id="s1">⭐</span>
+      <span class="star-icon" id="s2">⭐</span>
+      <span class="star-icon" id="s3">⭐</span>
+      <span class="star-icon" id="s4">⭐</span>
+    </div>
+    <div class="score-pill">🏆 <span id="scoreVal">0</span></div>
+    <div class="cat-pill" id="catPill" style="background:linear-gradient(135deg,#3b82f6,#a855f7)">🐾 Hayvanlar</div>
+  </div>
+
+  <div class="prog-wrap"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+
+  <div class="main-card">
+    <div class="sound-section">
+      <button class="sound-btn" id="soundBtn" onclick="speakWord()">
+        <span class="sound-icon">🔊</span>
+        <span class="sound-label">Dinle!</span>
+      </button>
+      <button class="listen-again" onclick="speakWord()">🔁 Tekrar dinle</button>
+    </div>
+
+    <div class="choices-label">👇 Hangi resim?</div>
+    <div class="choices-grid" id="choicesGrid"></div>
+  </div>
+</div>
+
+<!-- Feedback -->
+<div class="fb-overlay" id="fbOverlay">
+  <div class="fb-box">
+    <span class="fb-big-emoji" id="fbBigEmoji">🌟</span>
+    <div class="fb-word-en" id="fbWordEn"></div>
+    <div class="fb-word-tr" id="fbWordTr"></div>
+    <div class="fb-title" id="fbTitle">Harika!</div>
+    <div class="fb-pts"   id="fbPts"></div>
+    <button class="fb-next-btn" id="fbNextBtn" onclick="nextWord()">Sıradaki kelime →</button>
+  </div>
+</div>
+
+<!-- Win -->
+<div class="win-screen" id="winScreen">
+  <canvas id="fw"></canvas>
+  <div class="win-box">
+    <div class="win-ada">Tebrikler Ada!</div>
+    <div class="win-sub" id="winSub">Tüm kelimeleri öğrendin! 🎉</div>
+    <div class="win-learned" id="winLearned"></div>
+    <div class="win-stats">
+      <div class="wstat"><div class="wstat-v" id="wSc">0</div><div class="wstat-l">Puan</div></div>
+      <div class="wstat"><div class="wstat-v" id="wCo">0</div><div class="wstat-l">Doğru</div></div>
+      <div class="wstat"><div class="wstat-v" id="wSr">0</div><div class="wstat-l">Yıldız ⭐</div></div>
+    </div>
+    <div class="win-btns">
+      <button class="again-btn" onclick="replayCurrent()">🔄 Tekrar Oyna</button>
+      <button class="menu-btn"  onclick="goMenu()">📚 Konu Seç</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   WORD BANK — { en, tr, emoji }
+══════════════════════════════════════════════ */
+const CATEGORIES = {
+  animals: {
+    name:'Hayvanlar', emoji:'🐾', color:'linear-gradient(135deg,#f97316,#fb923c)',
+    words:[
+      {en:'cat',     tr:'Kedi',      emoji:'🐱'},
+      {en:'dog',     tr:'Köpek',     emoji:'🐶'},
+      {en:'snake',   tr:'Yılan',     emoji:'🐍'},
+      {en:'cow',     tr:'İnek',      emoji:'🐄'},
+      {en:'monkey',  tr:'Maymun',    emoji:'🐒'},
+      {en:'lion',    tr:'Aslan',     emoji:'🦁'},
+      {en:'elephant',tr:'Fil',       emoji:'🐘'},
+      {en:'rabbit',  tr:'Tavşan',    emoji:'🐰'},
+      {en:'bird',    tr:'Kuş',       emoji:'🐦'},
+      {en:'fish',    tr:'Balık',     emoji:'🐟'},
+      {en:'frog',    tr:'Kurbağa',   emoji:'🐸'},
+      {en:'horse',   tr:'At',        emoji:'🐴'},
+      {en:'bear',    tr:'Ayı',       emoji:'🐻'},
+      {en:'duck',    tr:'Ördek',     emoji:'🦆'},
+      {en:'penguin', tr:'Penguen',   emoji:'🐧'},
+      {en:'tiger',   tr:'Kaplan',    emoji:'🐯'},
+      {en:'giraffe', tr:'Zürafa',    emoji:'🦒'},
+      {en:'sheep',   tr:'Koyun',     emoji:'🐑'},
+      {en:'pig',     tr:'Domuz',     emoji:'🐷'},
+      {en:'butterfly',tr:'Kelebek',  emoji:'🦋'},
+    ]
+  },
+  fruits: {
+    name:'Meyveler', emoji:'🍎', color:'linear-gradient(135deg,#22c55e,#16a34a)',
+    words:[
+      {en:'apple',      tr:'Elma',        emoji:'🍎'},
+      {en:'banana',     tr:'Muz',         emoji:'🍌'},
+      {en:'orange',     tr:'Portakal',    emoji:'🍊'},
+      {en:'strawberry', tr:'Çilek',       emoji:'🍓'},
+      {en:'watermelon', tr:'Karpuz',      emoji:'🍉'},
+      {en:'grape',      tr:'Üzüm',        emoji:'🍇'},
+      {en:'cherry',     tr:'Kiraz',       emoji:'🍒'},
+      {en:'peach',      tr:'Şeftali',     emoji:'🍑'},
+      {en:'lemon',      tr:'Limon',       emoji:'🍋'},
+      {en:'pineapple',  tr:'Ananas',      emoji:'🍍'},
+      {en:'mango',      tr:'Mango',       emoji:'🥭'},
+      {en:'coconut',    tr:'Hindistan Cevizi', emoji:'🥥'},
+      {en:'melon',      tr:'Kavun',       emoji:'🍈'},
+      {en:'blueberry',  tr:'Yaban Mersini',emoji:'🫐'},
+      {en:'kiwi',       tr:'Kivi',        emoji:'🥝'},
+    ]
+  },
+  food: {
+    name:'Yiyecekler', emoji:'🍕', color:'linear-gradient(135deg,#f43f5e,#e11d48)',
+    words:[
+      {en:'pizza',    tr:'Pizza',       emoji:'🍕'},
+      {en:'cake',     tr:'Pasta',       emoji:'🎂'},
+      {en:'ice cream',tr:'Dondurma',    emoji:'🍦'},
+      {en:'cookie',   tr:'Kurabiye',    emoji:'🍪'},
+      {en:'bread',    tr:'Ekmek',       emoji:'🍞'},
+      {en:'egg',      tr:'Yumurta',     emoji:'🥚'},
+      {en:'cheese',   tr:'Peynir',      emoji:'🧀'},
+      {en:'rice',     tr:'Pilav',       emoji:'🍚'},
+      {en:'soup',     tr:'Çorba',       emoji:'🍜'},
+      {en:'sandwich', tr:'Sandviç',     emoji:'🥪'},
+      {en:'popcorn',  tr:'Patlamış Mısır',emoji:'🍿'},
+      {en:'donut',    tr:'Donut',       emoji:'🍩'},
+      {en:'taco',     tr:'Taco',        emoji:'🌮'},
+      {en:'sushi',    tr:'Suşi',        emoji:'🍱'},
+      {en:'chocolate',tr:'Çikolata',    emoji:'🍫'},
+    ]
+  },
+  nature: {
+    name:'Doğa', emoji:'🌿', color:'linear-gradient(135deg,#14b8a6,#0891b2)',
+    words:[
+      {en:'sun',       tr:'Güneş',      emoji:'☀️'},
+      {en:'moon',      tr:'Ay',         emoji:'🌙'},
+      {en:'star',      tr:'Yıldız',     emoji:'⭐'},
+      {en:'cloud',     tr:'Bulut',      emoji:'☁️'},
+      {en:'rain',      tr:'Yağmur',     emoji:'🌧️'},
+      {en:'snow',      tr:'Kar',        emoji:'❄️'},
+      {en:'rainbow',   tr:'Gökkuşağı',  emoji:'🌈'},
+      {en:'flower',    tr:'Çiçek',      emoji:'🌸'},
+      {en:'tree',      tr:'Ağaç',       emoji:'🌳'},
+      {en:'mountain',  tr:'Dağ',        emoji:'⛰️'},
+      {en:'ocean',     tr:'Okyanus',    emoji:'🌊'},
+      {en:'fire',      tr:'Ateş',       emoji:'🔥'},
+      {en:'lightning', tr:'Şimşek',     emoji:'⚡'},
+      {en:'leaf',      tr:'Yaprak',     emoji:'🍃'},
+      {en:'mushroom',  tr:'Mantar',     emoji:'🍄'},
+    ]
+  },
+  objects: {
+    name:'Nesneler', emoji:'🎒', color:'linear-gradient(135deg,#a855f7,#7c3aed)',
+    words:[
+      {en:'ball',      tr:'Top',         emoji:'⚽'},
+      {en:'book',      tr:'Kitap',       emoji:'📚'},
+      {en:'pencil',    tr:'Kalem',       emoji:'✏️'},
+      {en:'car',       tr:'Araba',       emoji:'🚗'},
+      {en:'bus',       tr:'Otobüs',      emoji:'🚌'},
+      {en:'bicycle',   tr:'Bisiklet',    emoji:'🚲'},
+      {en:'airplane',  tr:'Uçak',        emoji:'✈️'},
+      {en:'house',     tr:'Ev',          emoji:'🏠'},
+      {en:'clock',     tr:'Saat',        emoji:'🕐'},
+      {en:'phone',     tr:'Telefon',     emoji:'📱'},
+      {en:'camera',    tr:'Fotoğraf Makinesi',emoji:'📷'},
+      {en:'key',       tr:'Anahtar',     emoji:'🔑'},
+      {en:'umbrella',  tr:'Şemsiye',     emoji:'☂️'},
+      {en:'hat',       tr:'Şapka',       emoji:'🎩'},
+      {en:'balloon',   tr:'Balon',       emoji:'🎈'},
+    ]
+  },
+  colors: {
+    name:'Renkler', emoji:'🎨', color:'linear-gradient(135deg,#ec4899,#f43f5e)',
+    words:[
+      {en:'red',    tr:'Kırmızı',  emoji:'🟥'},
+      {en:'blue',   tr:'Mavi',     emoji:'🟦'},
+      {en:'green',  tr:'Yeşil',    emoji:'🟩'},
+      {en:'yellow', tr:'Sarı',     emoji:'🟨'},
+      {en:'orange', tr:'Turuncu',  emoji:'🟧'},
+      {en:'purple', tr:'Mor',      emoji:'🟪'},
+      {en:'white',  tr:'Beyaz',    emoji:'⬜'},
+      {en:'black',  tr:'Siyah',    emoji:'⬛'},
+      {en:'pink',   tr:'Pembe',    emoji:'🩷'},
+      {en:'brown',  tr:'Kahverengi',emoji:'🟫'},
+    ]
+  },
+  numbers: {
+    name:'Sayılar', emoji:'🔢', color:'linear-gradient(135deg,#fbbf24,#f97316)',
+    words:[
+      {en:'one',   tr:'Bir',    emoji:'1️⃣'},
+      {en:'two',   tr:'İki',    emoji:'2️⃣'},
+      {en:'three', tr:'Üç',     emoji:'3️⃣'},
+      {en:'four',  tr:'Dört',   emoji:'4️⃣'},
+      {en:'five',  tr:'Beş',    emoji:'5️⃣'},
+      {en:'six',   tr:'Altı',   emoji:'6️⃣'},
+      {en:'seven', tr:'Yedi',   emoji:'7️⃣'},
+      {en:'eight', tr:'Sekiz',  emoji:'8️⃣'},
+      {en:'nine',  tr:'Dokuz',  emoji:'9️⃣'},
+      {en:'ten',   tr:'On',     emoji:'🔟'},
+    ]
+  },
+  body: {
+    name:'Vücut', emoji:'🫀', color:'linear-gradient(135deg,#06b6d4,#0ea5e9)',
+    words:[
+      {en:'eye',    tr:'Göz',    emoji:'👁️'},
+      {en:'nose',   tr:'Burun',  emoji:'👃'},
+      {en:'mouth',  tr:'Ağız',   emoji:'👄'},
+      {en:'ear',    tr:'Kulak',  emoji:'👂'},
+      {en:'hand',   tr:'El',     emoji:'✋'},
+      {en:'foot',   tr:'Ayak',   emoji:'🦶'},
+      {en:'heart',  tr:'Kalp',   emoji:'❤️'},
+      {en:'tooth',  tr:'Diş',    emoji:'🦷'},
+      {en:'brain',  tr:'Beyin',  emoji:'🧠'},
+      {en:'bone',   tr:'Kemik',  emoji:'🦴'},
+    ]
+  },
+};
+
+/* ══ SPEECH ══ */
+let synth = window.speechSynthesis;
+let currentWord = null;
+let voices = [];
+
+function loadVoices() {
+  voices = synth.getVoices();
+}
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function getBestEnglishVoice() {
+  // prefer en-US female voices, then any en voice
+  const enUS = voices.filter(v => v.lang.startsWith('en-US'));
+  const enAny = voices.filter(v => v.lang.startsWith('en'));
+  const female = [...enUS, ...enAny].find(v => /female|zira|samantha|karen|moira|kate|victoria|fiona/i.test(v.name));
+  return female || enUS[0] || enAny[0] || null;
+}
+
+function speakWord(word) {
+  if (!word) word = currentWord?.en;
+  if (!word) return;
+
+  synth.cancel();
+  const utt = new SpeechSynthesisUtterance(word);
+  utt.lang = 'en-US';
+  utt.rate = 0.78;   // slower = clearer for kids
+  utt.pitch = 1.1;   // slightly higher = friendlier
+  utt.volume = 1;
+
+  const voice = getBestEnglishVoice();
+  if (voice) utt.voice = voice;
+
+  const btn = document.getElementById('soundBtn');
+  if (btn) {
+    btn.classList.add('speaking');
+    utt.onend = () => btn.classList.remove('speaking');
+    utt.onerror = () => btn.classList.remove('speaking');
+  }
+
+  synth.speak(utt);
+}
+
+/* ══ GAME STATE ══ */
+let gameWords = [], gameIdx = 0, score = 0, stars = 0, correctCount = 0;
+let currentCatKey = null, answered = false;
+
+function shuffle(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){const j=0|Math.random()*(i+1);[b[i],b[j]]=[b[j],b[i]];} return b; }
+
+/* ══ BUILD CATEGORY SCREEN ══ */
+function buildCatScreen() {
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = '';
+  Object.entries(CATEGORIES).forEach(([key, cat]) => {
+    const d = document.createElement('div');
+    d.className = 'cat-item';
+    d.innerHTML = `
+      <span class="cat-item-emoji">${cat.emoji}</span>
+      <span class="cat-item-name">${cat.name}</span>
+      <span class="cat-item-count">${cat.words.length} kelime</span>`;
+    d.onclick = () => startCategory(key);
+    grid.appendChild(d);
+  });
+}
+
+function startCategory(key) {
+  currentCatKey = key;
+  const cat = CATEGORIES[key];
+  gameWords = shuffle([...cat.words]).slice(0, Math.min(10, cat.words.length));
+  launchGame(cat);
+}
+
+function startRandom() {
+  currentCatKey = 'random';
+  const all = Object.values(CATEGORIES).flatMap(c => c.words);
+  gameWords = shuffle(all).slice(0, 12);
+  launchGame({ name:'Karışık', emoji:'🎲', color:'linear-gradient(135deg,#f97316,#fbbf24)' });
+}
+
+function launchGame(catInfo) {
+  gameIdx = 0; score = 0; stars = 0; correctCount = 0;
+  updateStars(0);
+  document.getElementById('scoreVal').textContent = 0;
+
+  const pill = document.getElementById('catPill');
+  pill.textContent = catInfo.emoji + ' ' + catInfo.name;
+  pill.style.background = catInfo.color;
+
+  document.getElementById('catScreen').style.display = 'none';
+  const gs = document.getElementById('gameScreen');
+  gs.style.display = 'flex';
+
+  loadWord();
+}
+
+function loadWord() {
+  answered = false;
+  const w = gameWords[gameIdx];
+  currentWord = w;
+
+  // progress
+  const pct = (gameIdx / gameWords.length) * 100;
+  document.getElementById('progFill').style.width = pct + '%';
+
+  // choices: correct + 2 random distractors from all words pool
+  const allWords = Object.values(CATEGORIES).flatMap(c => c.words);
+  const pool = shuffle(allWords.filter(x => x.emoji !== w.emoji));
+  const choices = shuffle([w, pool[0], pool[1]]);
+
+  const grid = document.getElementById('choicesGrid');
+  grid.innerHTML = '';
+
+  choices.forEach(ch => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    const isCorrect = ch.en === w.en;
+    btn.innerHTML = `
+      <span class="choice-emoji">${ch.emoji}</span>
+      <span class="choice-tr">${ch.tr}</span>`;
+    btn.dataset.correct = isCorrect ? '1' : '0';
+    btn.addEventListener('click', () => handlePick(btn, isCorrect, w));
+    grid.appendChild(btn);
+  });
+
+  // auto-speak after short delay
+  setTimeout(() => speakWord(w.en), 500);
+}
+
+function handlePick(btn, isCorrect, word) {
+  if (answered) return;
+  answered = true;
+
+  // disable all
+  document.querySelectorAll('.choice-btn').forEach(b => {
+    if (b !== btn) b.classList.add('dimmed');
+  });
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    correctCount++;
+    stars = Math.min(5, stars + 1);
+    score += 10 + (stars > 3 ? 5 : 0);
+    updateStars(stars);
+    document.getElementById('scoreVal').textContent = score;
+    playCorrect();
+    // speak again triumphantly
+    setTimeout(() => speakWord(word.en), 300);
+    setTimeout(() => showFB(true, word), 900);
+  } else {
+    btn.classList.add('wrong');
+    // reveal correct
+    document.querySelectorAll('.choice-btn').forEach(b => {
+      if (b.dataset.correct === '1') {
+        b.classList.remove('dimmed');
+        b.classList.add('correct');
+      }
+    });
+    stars = Math.max(0, stars - 1);
+    updateStars(stars);
+    playWrong();
+    setTimeout(() => speakWord(word.en), 400);
+    setTimeout(() => showFB(false, word), 1000);
+  }
+}
+
+function updateStars(count) {
+  for (let i = 0; i < 5; i++) {
+    const s = document.getElementById('s' + i);
+    s.textContent = i < count ? '⭐' : '☆';
+    if (i < count) s.classList.add('lit');
+    else s.classList.remove('lit');
+  }
+}
+
+function showFB(ok, word) {
+  document.getElementById('fbBigEmoji').textContent = word.emoji;
+  document.getElementById('fbWordEn').textContent = word.en.toUpperCase();
+  document.getElementById('fbWordTr').textContent = '🇹🇷 ' + word.tr;
+
+  const titles = {
+    ok: ['Harika! 🎉','Doğru! ⭐','Süpersin! 🌟','Bravo Ada! 🏆','Aferin! 💫'],
+    bad:['Neredeyse! 💪','Tekrar dene! 🔄','Şaşırtıcı değil mi? 🤔','Tamam, öğrendik! 📚']
+  };
+  document.getElementById('fbTitle').textContent = ok
+    ? titles.ok[0|Math.random()*titles.ok.length]
+    : titles.bad[0|Math.random()*titles.bad.length];
+  document.getElementById('fbTitle').className = 'fb-title ' + (ok ? 'ok' : 'bad');
+  document.getElementById('fbPts').textContent = ok ? `+10 puan 🎯 Toplam: ${score}` : `Bu kelime: ${word.en} = ${word.tr}`;
+
+  const nextBtn = document.getElementById('fbNextBtn');
+  nextBtn.textContent = gameIdx >= gameWords.length - 1 ? '🏆 Sonuçları Gör!' : 'Sıradaki kelime →';
+
+  document.getElementById('fbOverlay').classList.add('show');
+}
+
+function nextWord() {
+  document.getElementById('fbOverlay').classList.remove('show');
+  gameIdx++;
+  if (gameIdx >= gameWords.length) showWin();
+  else loadWord();
+}
+
+function showWin() {
+  document.getElementById('progFill').style.width = '100%';
+  document.getElementById('wSc').textContent = score;
+  document.getElementById('wCo').textContent = correctCount + '/' + gameWords.length;
+  document.getElementById('wSr').textContent = stars;
+
+  // show learned words
+  const learnedEmojis = gameWords.map(w => w.emoji).join(' ');
+  document.getElementById('winLearned').textContent = 'Öğrendiklerin: ' + learnedEmojis;
+
+  document.getElementById('winScreen').classList.add('show');
+  fireworksRunning = true; startFireworks(); playWinJingle();
+}
+
+function replayCurrent() {
+  document.getElementById('winScreen').classList.remove('show');
+  fireworksRunning = false; fwParts = [];
+  gameIdx = 0; score = 0; stars = 0; correctCount = 0;
+  updateStars(0);
+  document.getElementById('scoreVal').textContent = 0;
+  gameWords = shuffle(gameWords);
+  loadWord();
+}
+
+function goMenu() {
+  document.getElementById('winScreen').classList.remove('show');
+  fireworksRunning = false; fwParts = [];
+  synth.cancel();
+  document.getElementById('gameScreen').style.display = 'none';
+  document.getElementById('catScreen').style.display = 'block';
+}
+
+/* ══ AUDIO ══ */
+let audioCtx = null;
+function getAC(){ if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)(); return audioCtx; }
+function tone(f,t,dur,vol=0.2,t0=0){
+  const c=getAC(),o=c.createOscillator(),g=c.createGain();
+  o.connect(g);g.connect(c.destination);o.type=t;o.frequency.value=f;
+  g.gain.setValueAtTime(vol,c.currentTime+t0);
+  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+t0+dur);
+  o.start(c.currentTime+t0);o.stop(c.currentTime+t0+dur+.05);
+}
+function playCorrect(){ tone(523,'sine',.1,.2,0);tone(659,'sine',.1,.2,.1);tone(784,'sine',.22,.22,.2); }
+function playWrong()  { tone(300,'sawtooth',.1,.14,0);tone(220,'sawtooth',.18,.14,.1); }
+function playWinJingle(){
+  [[523,0],[659,.15],[784,.3],[880,.48],[1047,.66],[784,.85],[1047,1.05],[1175,1.25],[1397,1.5]]
+    .forEach(([f,s])=>tone(f,'sine',.3,.2,s));
+}
+
+/* ══ FIREWORKS ══ */
+const fwCanvas=document.getElementById('fw');
+const fwCtx=fwCanvas.getContext('2d');
+let fwParts=[],fireworksRunning=false,fwTimer;
+function resizeFW(){fwCanvas.width=window.innerWidth;fwCanvas.height=window.innerHeight;}
+resizeFW();window.addEventListener('resize',resizeFW);
+function spawnFW(){
+  const x=Math.random()*fwCanvas.width,y=20+Math.random()*fwCanvas.height*.5;
+  const cols=['#3b82f6','#a855f7','#22c55e','#f97316','#f43f5e','#fbbf24','#06b6d4'];
+  const col=cols[0|Math.random()*cols.length];
+  for(let i=0;i<55;i++){
+    const a=Math.PI*2/55*i+Math.random()*.2,s=2+Math.random()*5;
+    fwParts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,alpha:1,color:col,size:1.5+Math.random()*2.5,decay:.013+Math.random()*.01,gravity:.065});
+  }
+}
+function animateFW(){
+  if(!fireworksRunning){fwCtx.clearRect(0,0,fwCanvas.width,fwCanvas.height);return;}
+  fwCtx.fillStyle='rgba(232,244,255,.12)';fwCtx.fillRect(0,0,fwCanvas.width,fwCanvas.height);
+  fwParts=fwParts.filter(p=>p.alpha>.01);
+  fwParts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=.985;p.alpha-=p.decay;
+    fwCtx.save();fwCtx.globalAlpha=p.alpha;fwCtx.fillStyle=p.color;
+    fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);fwCtx.fill();fwCtx.restore();
+  });
+  requestAnimationFrame(animateFW);
+}
+function startFireworks(){
+  fwParts=[];animateFW();
+  fwTimer=setInterval(()=>{if(!fireworksRunning){clearInterval(fwTimer);return;}spawnFW();if(Math.random()<.4)spawnFW();},400);
+}
+
+buildCatScreen();
+</script>
+</body>
+</html>
