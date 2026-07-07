@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim Yalan Söylüyor? 🔍</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1a0a2e;
+  --card: #251540;
+  --card2: #2e1a50;
+  --gold: #ffd166;
+  --pink: #ff6b9d;
+  --mint: #06d6a0;
+  --purple: #c084fc;
+  --coral: #ff6b6b;
+  --sky: #74c0fc;
+  --text: #f0eaff;
+  --muted: #9980c4;
+  --border: rgba(255,255,255,.08);
+  --glow: rgba(192,132,252,.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 18px 14px 60px;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 0%,  #3d1060 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, #0a2050 0%, transparent 50%);
+}
+
+/* ── STARS ── */
+.star { position:fixed; border-radius:50%; background:white; pointer-events:none; animation:twinkle var(--d,3s) ease-in-out infinite var(--dl,0s); }
+@keyframes twinkle { 0%,100%{opacity:.1} 50%{opacity:.6} }
+
+/* ── HEADER ── */
+.title {
+  font-family:'Fredoka One',cursive;
+  font-size: clamp(1.9rem,6vw,3.2rem);
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(255,209,102,.5), 3px 3px 0 rgba(0,0,0,.4);
+  text-align:center; margin-bottom:4px; position:relative; z-index:1;
+}
+.subtitle { font-size:.88rem; color:var(--muted); font-weight:700; text-align:center; margin-bottom:16px; position:relative; z-index:1; }
+
+/* ── SCORE BAR ── */
+.score-bar {
+  position:relative; z-index:1;
+  display:flex; gap:14px; align-items:center;
+  background:var(--card); border-radius:22px;
+  padding:10px 22px; margin-bottom:14px;
+  border:1.5px solid var(--border);
+  box-shadow:0 4px 20px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
+}
+.sc-v { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--gold); line-height:1; text-align:center; }
+.sc-l { font-size:.64rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; text-align:center; }
+.sc-d { width:2px; height:34px; background:var(--border); border-radius:2px; }
+.lvl-badge {
+  font-size:.8rem; font-weight:900; padding:5px 14px; border-radius:14px;
+  color:white; letter-spacing:.3px;
+  background:linear-gradient(135deg,#c084fc,#ff6b9d);
+}
+
+/* ── PROGRESS ── */
+.prog-wrap { position:relative; z-index:1; display:flex; gap:7px; margin-bottom:14px; }
+.pdot { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.12); transition:all .3s; }
+.pdot.done    { background:var(--mint); }
+.pdot.current { background:var(--gold); transform:scale(1.35); box-shadow:0 0 8px var(--gold); }
+
+/* ── PUZZLE CARD ── */
+.puzzle-card {
+  position:relative; z-index:1;
+  background:var(--card); border-radius:28px;
+  padding:24px 20px 22px;
+  max-width:600px; width:100%;
+  border:1.5px solid var(--border);
+  box-shadow:0 8px 40px rgba(0,0,0,.5), 0 0 60px var(--glow);
+  margin-bottom:16px;
+}
+
+.scene-label {
+  font-size:.72rem; font-weight:900; text-transform:uppercase;
+  letter-spacing:1.5px; color:var(--purple); margin-bottom:8px;
+}
+.scene-text {
+  font-size:clamp(.95rem,3vw,1.1rem); font-weight:800; color:var(--text);
+  background:rgba(255,255,255,.05); border-radius:14px; padding:12px 16px;
+  margin-bottom:20px; line-height:1.5;
+  border-left:4px solid var(--gold);
+}
+
+/* ── ANIMAL CARDS ── */
+.animals-row {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+  margin-bottom:18px;
+}
+@media(max-width:380px){ .animals-row { grid-template-columns:1fr; } }
+
+.animal-card {
+  background:var(--card2); border-radius:20px;
+  border:2px solid var(--border);
+  padding:14px 10px 12px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  cursor:pointer;
+  transition:transform .15s, border-color .2s, box-shadow .2s;
+  position:relative; overflow:hidden;
+}
+.animal-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.04) 0%, transparent 100%);
+  border-radius:20px; pointer-events:none;
+}
+.animal-card:hover {
+  transform:translateY(-4px) scale(1.02);
+  border-color:var(--purple);
+  box-shadow:0 8px 24px rgba(192,132,252,.25);
+}
+.animal-card.selected-correct {
+  border-color:var(--mint)!important;
+  background:rgba(6,214,160,.12)!important;
+  animation:correctPop .4s ease;
+  box-shadow:0 0 0 3px rgba(6,214,160,.3)!important;
+}
+.animal-card.selected-wrong {
+  border-color:var(--coral)!important;
+  background:rgba(255,107,107,.1)!important;
+  animation:wrongShake .4s ease;
+}
+.animal-card.reveal-true {
+  border-color:var(--mint)!important;
+  background:rgba(6,214,160,.1)!important;
+}
+.animal-card.reveal-lie {
+  border-color:rgba(255,107,107,.3)!important;
+  opacity:.6;
+}
+@keyframes correctPop  { 0%{transform:scale(1)} 45%{transform:scale(1.07)} 100%{transform:scale(1)} }
+@keyframes wrongShake  { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+.animal-emoji { font-size:2.8rem; line-height:1; filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+.animal-name  { font-size:.72rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+
+.speech-bubble {
+  background:rgba(255,255,255,.07);
+  border-radius:12px; border:1.5px solid rgba(255,255,255,.1);
+  padding:8px 10px; font-size:.82rem; font-weight:700; color:var(--text);
+  text-align:center; line-height:1.4; position:relative;
+  min-height:56px; display:flex; align-items:center; justify-content:center;
+}
+.speech-bubble::before {
+  content:''; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+  border-left:7px solid transparent; border-right:7px solid transparent;
+  border-bottom:9px solid rgba(255,255,255,.1);
+}
+
+.truth-badge {
+  font-size:.7rem; font-weight:900; padding:3px 10px; border-radius:10px;
+  letter-spacing:.3px; opacity:0; transition:opacity .3s;
+}
+.truth-badge.show { opacity:1; }
+.truth-badge.true  { background:rgba(6,214,160,.2);  color:var(--mint); }
+.truth-badge.false { background:rgba(255,107,107,.15); color:var(--coral); }
+
+/* ── HINT ── */
+.hint-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.hint-btn {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(192,132,252,.12); border:1.5px solid rgba(192,132,252,.25);
+  border-radius:18px; padding:5px 14px;
+  font-size:.8rem; font-weight:800; color:var(--purple);
+  cursor:pointer; font-family:'Nunito',sans-serif; transition:background .2s;
+}
+.hint-btn:hover { background:rgba(192,132,252,.22); }
+.hint-text { font-size:.82rem; font-weight:700; color:var(--gold); line-height:1.4; }
+
+/* ── CHOOSE PROMPT ── */
+.choose-prompt {
+  text-align:center; font-size:.88rem; font-weight:800;
+  color:var(--muted); padding:8px; letter-spacing:.3px;
+}
+.choose-prompt span { color:var(--gold); }
+
+/* ── FEEDBACK MODAL ── */
+.fb-overlay {
+  position:fixed; inset:0; z-index:100;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.65); backdrop-filter:blur(10px);
+}
+.fb-overlay.show { display:flex; animation:fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.fb-box {
+  background:var(--card); border-radius:28px; padding:34px 38px;
+  text-align:center; max-width:380px; width:90%;
+  border:1.5px solid var(--border);
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  animation:popIn .4s cubic-bezier(.3,1.5,.5,1);
+}
+@keyframes popIn { from{transform:scale(.65)} to{transform:scale(1)} }
+.fb-emoji { font-size:4rem; display:block; margin-bottom:10px; }
+.fb-title { font-family:'Fredoka One',cursive; font-size:2rem; margin-bottom:5px; }
+.fb-title.ok  { color:var(--mint); }
+.fb-title.bad { color:var(--coral); }
+.fb-sub   { font-size:.88rem; font-weight:700; color:var(--muted); margin-bottom:12px; line-height:1.5; }
+.fb-truth {
+  background:rgba(6,214,160,.1); border-radius:14px; padding:12px 16px;
+  margin-bottom:8px; text-align:left;
+}
+.fb-truth-lbl { font-size:.68rem; font-weight:900; color:var(--mint); text-transform:uppercase; letter-spacing:.8px; margin-bottom:5px; }
+.fb-truth-text { font-size:.88rem; font-weight:700; color:var(--text); line-height:1.5; }
+.fb-lies {
+  background:rgba(255,107,107,.08); border-radius:14px; padding:12px 16px;
+  margin-bottom:16px; text-align:left;
+}
+.fb-lies-lbl  { font-size:.68rem; font-weight:900; color:var(--coral); text-transform:uppercase; letter-spacing:.8px; margin-bottom:5px; }
+.fb-lies-text { font-size:.82rem; font-weight:700; color:rgba(255,255,255,.6); line-height:1.6; }
+.next-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem;
+  padding:12px 32px; border:none; border-radius:18px; cursor:pointer;
+  background:linear-gradient(135deg,#c084fc,#ff6b9d); color:white;
+  box-shadow:0 4px 16px rgba(192,132,252,.4); transition:transform .15s;
+}
+.next-btn:hover { transform:scale(1.07); }
+
+/* ── WIN ── */
+.win-screen {
+  position:fixed; inset:0; z-index:200;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(20,8,40,.88); backdrop-filter:blur(14px);
+}
+.win-screen.show { display:flex; animation:fadeIn .5s ease; }
+.win-box {
+  background:var(--card); border-radius:32px; padding:42px 50px;
+  text-align:center; max-width:400px; width:90%;
+  border:2px solid rgba(255,209,102,.3);
+  box-shadow:0 0 0 8px rgba(255,209,102,.07), 0 20px 60px rgba(0,0,0,.6);
+  animation:popIn .5s cubic-bezier(.3,1.5,.5,1);
+}
+.win-ada {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(3rem,11vw,5.5rem);
+  background:linear-gradient(135deg,#ffd166,#ff6b9d,#c084fc,#06d6a0);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:adaPulse 1.4s ease infinite alternate; line-height:1; margin-bottom:6px;
+}
+@keyframes adaPulse { from{letter-spacing:0} to{letter-spacing:8px} }
+.win-sub  { font-size:1.05rem; font-weight:800; color:var(--muted); margin-bottom:20px; }
+.win-stats { display:flex; gap:20px; justify-content:center; margin-bottom:22px; }
+.wstat   { display:flex; flex-direction:column; align-items:center; }
+.wstat-v { font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--gold); line-height:1; }
+.wstat-l { font-size:.68rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+.again-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1.05rem;
+  padding:13px 36px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#ffd166,#ff9f1c); color:#1a0a00;
+  box-shadow:0 4px 18px rgba(255,209,102,.4); transition:transform .15s;
+}
+.again-btn:hover { transform:scale(1.07); }
+
+#fw { position:fixed; inset:0; pointer-events:none; z-index:199; }
+</style>
+</head>
+<body>
+
+<!-- stars -->
+<div id="starField"></div>
+
+<div class="title">🔍 Kim Yalan Söylüyor?</div>
+<div class="subtitle">Sadece bir hayvan doğruyu söylüyor — onu bul!</div>
+
+<div class="score-bar">
+  <div>
+    <div class="sc-v" id="scoreVal">0</div>
+    <div class="sc-l">Puan</div>
+  </div>
+  <div class="sc-d"></div>
+  <div>
+    <div class="sc-v" id="streakVal">0</div>
+    <div class="sc-l">Seri 🔥</div>
+  </div>
+  <div class="sc-d"></div>
+  <div class="lvl-badge" id="lvlBadge">Bölüm 1</div>
+</div>
+
+<div class="prog-wrap" id="progWrap"></div>
+
+<div class="puzzle-card" id="puzzleCard">
+  <div class="scene-label" id="sceneLabel">🌍 Sahne</div>
+  <div class="scene-text"  id="sceneText">Yükleniyor...</div>
+  <div class="animals-row" id="animalsRow"></div>
+  <div class="hint-row">
+    <button class="hint-btn" id="hintBtn" onclick="showHint()">🔦 İpucu</button>
+    <div class="hint-text" id="hintText"></div>
+  </div>
+  <div class="choose-prompt">👆 <span>Doğruyu söyleyen hayvanı seç!</span></div>
+</div>
+
+<!-- Feedback -->
+<div class="fb-overlay" id="fbOverlay">
+  <div class="fb-box">
+    <span class="fb-emoji" id="fbEmoji">⭐</span>
+    <div class="fb-title" id="fbTitle">Harika!</div>
+    <div class="fb-sub"   id="fbSub"></div>
+    <div class="fb-truth">
+      <div class="fb-truth-lbl">✅ Doğru olan:</div>
+      <div class="fb-truth-text" id="fbTruth"></div>
+    </div>
+    <div class="fb-lies">
+      <div class="fb-lies-lbl">❌ Yalan olanlar:</div>
+      <div class="fb-lies-text" id="fbLies"></div>
+    </div>
+    <button class="next-btn" id="nextBtn" onclick="nextPuzzle()">Sıradaki →</button>
+  </div>
+</div>
+
+<!-- Win -->
+<div class="win-screen" id="winScreen">
+  <canvas id="fw"></canvas>
+  <div class="win-box">
+    <div class="win-ada">Tebrikler Ada!</div>
+    <div class="win-sub">Tüm yalanları buldun! 🕵️‍♀️🎉</div>
+    <div class="win-stats">
+      <div class="wstat"><div class="wstat-v" id="wScore">0</div><div class="wstat-l">Puan</div></div>
+      <div class="wstat"><div class="wstat-v" id="wCorrect">0</div><div class="wstat-l">Doğru</div></div>
+      <div class="wstat"><div class="wstat-v" id="wStreak">0</div><div class="wstat-l">En İyi Seri</div></div>
+    </div>
+    <button class="again-btn" onclick="startGame()">Tekrar Oyna 🔄</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   PUZZLE BANK  — 40 bulmaca, 4 zorluk seviyesi
+   Her bulmaca:
+     scene      — ortam/bağlam metni (gökyüzü, orman, mutfak...)
+     animals    — [{emoji, name, says, isTruth}]  (sadece 1 tane isTruth:true)
+     hint       — ipucu
+     explain    — doğru cevabın açıklaması
+     level      — 1-4
+══════════════════════════════════════════════════════ */
+const PUZZLES = [
+
+  /* ══ SEVİYE 1 — Basit gerçekler ══ */
+  {
+    level:1,
+    scene:'🍎 Masanın üstünde bir sepet meyve var. Üç hayvan sepete bakıyor.',
+    animals:[
+      { emoji:'🐻', name:'Ayı',    says:'Sepette hiç meyve yok!',            isTruth:false },
+      { emoji:'🐰', name:'Tavşan', says:'Sepette elmalar var.',               isTruth:true  },
+      { emoji:'🦊', name:'Tilki',  says:'Sepet balonlarla dolu!',             isTruth:false },
+    ],
+    hint:'Sepet meyve dolu — hangisi meyve diyor?',
+    explain:'Tavşan doğruyu söylüyor: sepette elmalar var. Ayı "hiç meyve yok" dedi ama yanlış, Tilki "balon" dedi — saçma!'
+  },
+  {
+    level:1,
+    scene:'☀️ Dışarısı güneşli, gökyüzü pırıl pırıl mavi.',
+    animals:[
+      { emoji:'🐸', name:'Kurbağa', says:'Gökyüzü yeşil renk!',             isTruth:false },
+      { emoji:'🐦', name:'Kuş',     says:'Güneş parlıyor ve hava açık.',     isTruth:true  },
+      { emoji:'🐮', name:'İnek',    says:'Şu an gece, karanlık!',            isTruth:false },
+    ],
+    hint:'Güneşli ve mavi gökyüzü var — hangisi bunu söylüyor?',
+    explain:'Kuş doğruyu söylüyor. Gökyüzü mavi, güneş parlıyor. Kurbağa yanlış renk dedi, İnek gündüzü gece sandı!'
+  },
+  {
+    level:1,
+    scene:'🌊 Deniz kenarındalar. Dalgalar kıyıya vuruyor.',
+    animals:[
+      { emoji:'🐠', name:'Balık',  says:'Bu bir orman, ağaçlar var!',        isTruth:false },
+      { emoji:'🦀', name:'Yengeç', says:'Denizin suyu tuzludur.',            isTruth:true  },
+      { emoji:'🐧', name:'Penguen',says:'Burada kar var, çok soğuk!',        isTruth:false },
+    ],
+    hint:'Deniz suyu tuzlu mudur? Evet! Kim bunu söylüyor?',
+    explain:'Yengeç doğruyu söylüyor: deniz suyu gerçekten tuzludur. Balık orman gördü, Penguen kar aradı — ikisi de yanlış!'
+  },
+  {
+    level:1,
+    scene:'🌙 Gece olmuş, ay ve yıldızlar görünüyor.',
+    animals:[
+      { emoji:'🦉', name:'Baykuş', says:'Gökyüzünde ay ve yıldızlar var.',   isTruth:true  },
+      { emoji:'🐔', name:'Tavuk',  says:'Şu an öğle vakti, güneş tepede!',   isTruth:false },
+      { emoji:'🐝', name:'Arı',    says:'Gökyüzü portakal rengi!',           isTruth:false },
+    ],
+    hint:'Gece sahnesi — ay mı var, güneş mi?',
+    explain:'Baykuş doğruyu söylüyor! Gece vakti ay ve yıldızlar çıkar. Tavuk gündüz sandı, Arı rengi karıştırdı.'
+  },
+  {
+    level:1,
+    scene:'❄️ Kış gelmiş, her yer kar beyazı.',
+    animals:[
+      { emoji:'🐺', name:'Kurt',     says:'Mevsim yaz, sıcaklık çok yüksek!', isTruth:false },
+      { emoji:'🐻‍❄️',name:'Kutup Ayısı',says:'Kar yağıyor, hava soğuk.',      isTruth:true  },
+      { emoji:'🦁', name:'Aslan',    says:'Çiçekler açmış, ilkbahar!',        isTruth:false },
+    ],
+    hint:'Kar var ve soğuk — hangisi bunu söylüyor?',
+    explain:'Kutup Ayısı doğruyu söylüyor: kar yağıyor, hava soğuk. Kış mevsimindeyiz!'
+  },
+  {
+    level:1,
+    scene:'🌈 Yağmur durdu, gökyüzünde büyük bir gökkuşağı var.',
+    animals:[
+      { emoji:'🦋', name:'Kelebek', says:'Gökyüzünde gökkuşağı var!',        isTruth:true  },
+      { emoji:'🐛', name:'Tırtıl',  says:'Gökyüzü gri ve çok bulutlu.',      isTruth:false },
+      { emoji:'🐌', name:'Salyangoz',says:'Gökyüzünde uçaklar uçuyor!',      isTruth:false },
+    ],
+    hint:'Yağmur sonrası ne çıkar gökyüzünde?',
+    explain:'Kelebek doğruyu söylüyor: yağmur durdu ve gökkuşağı çıktı! Gökkuşağı 7 renklidir.'
+  },
+
+  /* ══ SEVİYE 1-2 — Sayı ve renk ══ */
+  {
+    level:1,
+    scene:'🔢 Masada 3 tane kırmızı elma ve 2 tane sarı muz var.',
+    animals:[
+      { emoji:'🐒', name:'Maymun',  says:'Masada 3 elma ve 2 muz var.',       isTruth:true  },
+      { emoji:'🐘', name:'Fil',     says:'Masada 10 tane portakal var.',       isTruth:false },
+      { emoji:'🦒', name:'Zürafa',  says:'Masada sadece 1 tane meyve var.',    isTruth:false },
+    ],
+    hint:'3 elma + 2 muz — hangisi tam sayıyı biliyor?',
+    explain:'Maymun doğruyu söylüyor: 3 elma ve 2 muz var. Fil portakal saydı, Zürafa sadece 1 dedi — ikisi yanlış!'
+  },
+  {
+    level:2,
+    scene:'🎨 Tabloda kırmızı ve sarı renk karıştırılıyor.',
+    animals:[
+      { emoji:'🦜', name:'Papağan', says:'Kırmızı + sarı = turuncu renk olur!', isTruth:true  },
+      { emoji:'🐊', name:'Timsah',  says:'Kırmızı + sarı = mavi renk olur!',    isTruth:false },
+      { emoji:'🦛', name:'Hipopo',  says:'Kırmızı + sarı = siyah renk olur!',   isTruth:false },
+    ],
+    hint:'Boya karıştırma: kırmızı + sarı = ?',
+    explain:'Papağan doğruyu söylüyor! Kırmızı ve sarı karıştırılınca turuncu çıkar. 🎨'
+  },
+  {
+    level:2,
+    scene:'🔺 Üçgenin kaç köşesi olduğunu tartışıyorlar.',
+    animals:[
+      { emoji:'🦊', name:'Tilki',  says:'Üçgenin 4 köşesi var.',              isTruth:false },
+      { emoji:'🐺', name:'Kurt',   says:'Üçgenin 3 köşesi var.',              isTruth:true  },
+      { emoji:'🐗', name:'Yaban Domuzu',says:'Üçgenin 6 köşesi var.',         isTruth:false },
+    ],
+    hint:'Üç-gen kelimesi bile cevabı veriyor!',
+    explain:'Kurt doğruyu söylüyor: üçgenin 3 köşesi var. "Üç" kelimesi zaten 3 demek!'
+  },
+  {
+    level:2,
+    scene:'🐟 Bir balık tankı var. İçinde 5 balık yüzüyor.',
+    animals:[
+      { emoji:'🐈', name:'Kedi',    says:'Tankta 5 balık var.',                isTruth:true  },
+      { emoji:'🐕', name:'Köpek',   says:'Tankta 8 balık var.',                isTruth:false },
+      { emoji:'🐇', name:'Tavşan',  says:'Tankta hiç balık yok, boş!',         isTruth:false },
+    ],
+    hint:'Beş balık var — hangisi 5 diyor?',
+    explain:'Kedi doğruyu söylüyor: tankta tam 5 balık var. Köpek 8 dedi, Tavşan boş dedi — ikisi yanlış!'
+  },
+
+  /* ══ SEVİYE 2 — Doğa bilgisi ══ */
+  {
+    level:2,
+    scene:'🌱 Bir bitki büyüyor. Güneş ve su alıyor.',
+    animals:[
+      { emoji:'🐛', name:'Tırtıl',  says:'Bitkiler güneş ve su ile büyür.',    isTruth:true  },
+      { emoji:'🐛', name:'Uğur Böceği',says:'Bitkiler sadece çikolata yer!',  isTruth:false },
+      { emoji:'🦗', name:'Çekirge', says:'Bitkiler büyümek için taşa ihtiyaç duyar!', isTruth:false },
+    ],
+    hint:'Bitkiler ne ile büyür? Güneş + su!',
+    explain:'Tırtıl doğruyu söylüyor: bitkiler güneş ve su ile büyür. Buna fotosentez denir! 🌿☀️💧'
+  },
+  {
+    level:2,
+    scene:'🦋 Bir kelebek çiçeğin üstünde duruyor.',
+    animals:[
+      { emoji:'🐝', name:'Arı',     says:'Kelebek önce tırtıl olur, sonra kelebek!', isTruth:true  },
+      { emoji:'🐞', name:'Uğur Böceği',says:'Kelebek yumurtadan direkt çıkar!', isTruth:false },
+      { emoji:'🪲', name:'Böcek',   says:'Kelebek aslında bir kuş türüdür!',    isTruth:false },
+    ],
+    hint:'Kelebeğin yaşam döngüsünü düşün: yumurta → tırtıl → ...',
+    explain:'Arı doğruyu söylüyor: yumurta → tırtıl → koza → kelebek! Bu dönüşüme metamorfoz denir. 🦋'
+  },
+  {
+    level:2,
+    scene:'🌊 Okyanus hakkında konuşuyorlar.',
+    animals:[
+      { emoji:'🐬', name:'Yunus',   says:'Okyanuslar dünyanın büyük kısmını kaplar.', isTruth:true  },
+      { emoji:'🦈', name:'Köpek Balığı',says:'Okyanuslar aslında tatlı su içerir.', isTruth:false },
+      { emoji:'🐙', name:'Ahtapot', says:'Okyanus aslında bir göl!',            isTruth:false },
+    ],
+    hint:'Dünya haritasına bak — mavi mi daha çok, yeşil mi?',
+    explain:'Yunus doğruyu söylüyor: Dünya\'nın yaklaşık %71\'i su ile kaplı! Ve deniz suyu tuzludur. 🌍'
+  },
+  {
+    level:2,
+    scene:'🌙 Ay hakkında konuşuyorlar.',
+    animals:[
+      { emoji:'🦅', name:'Kartal',  says:'Ay Dünya\'nın etrafında döner.',      isTruth:true  },
+      { emoji:'🦆', name:'Ördek',   says:'Ay Güneş\'ten daha büyük!',           isTruth:false },
+      { emoji:'🦩', name:'Flamingo',says:'Ay aslında bir yıldızdır.',            isTruth:false },
+    ],
+    hint:'Ay ne etrafında döner?',
+    explain:'Kartal doğruyu söylüyor: Ay, Dünya\'nın etrafında döner! Ay bir uydu, yıldız değil. 🌙'
+  },
+  {
+    level:2,
+    scene:'🍦 Dondurma neden erir? Tartışıyorlar.',
+    animals:[
+      { emoji:'🐻', name:'Ayı',    says:'Dondurma sıcakta erir.',              isTruth:true  },
+      { emoji:'🐼', name:'Panda',  says:'Dondurma sıcakta daha çok donar!',    isTruth:false },
+      { emoji:'🦘', name:'Kanguru',says:'Dondurma sadece yağmurda erir.',       isTruth:false },
+    ],
+    hint:'Dondurma buzdolabında durur, dışarıda erir — neden?',
+    explain:'Ayı doğruyu söylüyor: ısı arttıkça donmuş şeyler erir. Sıcak = erime! 🌡️'
+  },
+
+  /* ══ SEVİYE 2-3 — Matematik ══ */
+  {
+    level:2,
+    scene:'➕ Matematik sınıfındalar. Öğretmen bir soru sordu: 4 + 3 = ?',
+    animals:[
+      { emoji:'🦊', name:'Tilki',  says:'4 + 3 = 8!',                         isTruth:false },
+      { emoji:'🦝', name:'Rakun',  says:'4 + 3 = 7!',                         isTruth:true  },
+      { emoji:'🦫', name:'Kunduz', says:'4 + 3 = 5!',                         isTruth:false },
+    ],
+    hint:'Parmaklarını say: 4... 5, 6, 7!',
+    explain:'Rakun doğruyu söylüyor: 4 + 3 = 7! 🔢'
+  },
+  {
+    level:2,
+    scene:'➖ Öğretmen sordu: 10 - 4 = ?',
+    animals:[
+      { emoji:'🐨', name:'Koala',  says:'10 - 4 = 7!',                        isTruth:false },
+      { emoji:'🦥', name:'Tembel Hayvan',says:'10 - 4 = 6!',                  isTruth:true  },
+      { emoji:'🦦', name:'Su Samuru',says:'10 - 4 = 4!',                      isTruth:false },
+    ],
+    hint:'10\'dan 4 tane çıkar: 10, 9, 8, 7, 6',
+    explain:'Tembel Hayvan doğruyu söylüyor: 10 - 4 = 6! Yavaş ama doğru hesapladı! 😄'
+  },
+  {
+    level:3,
+    scene:'✖️ Matematik yarışması! Soru: 3 × 3 = ?',
+    animals:[
+      { emoji:'🦁', name:'Aslan',  says:'3 × 3 = 6!',                         isTruth:false },
+      { emoji:'🐯', name:'Kaplan', says:'3 × 3 = 9!',                         isTruth:true  },
+      { emoji:'🐆', name:'Leopar', says:'3 × 3 = 12!',                        isTruth:false },
+    ],
+    hint:'3 tane 3 var: 3+3+3 = ?',
+    explain:'Kaplan doğruyu söylüyor: 3 × 3 = 9! Üç tane üç: 3+3+3 = 9. 🐯'
+  },
+  {
+    level:3,
+    scene:'🔢 Hangi sayı çifttir? Tartışıyorlar.',
+    animals:[
+      { emoji:'🐘', name:'Fil',    says:'7 çift bir sayıdır!',                 isTruth:false },
+      { emoji:'🦏', name:'Gergedan',says:'8 çift bir sayıdır!',                isTruth:true  },
+      { emoji:'🦛', name:'Hipopo', says:'5 çift bir sayıdır!',                 isTruth:false },
+    ],
+    hint:'Çift sayılar 2\'ye tam bölünür: 2, 4, 6, 8...',
+    explain:'Gergedan doğruyu söylüyor: 8 çift bir sayıdır! 8 ÷ 2 = 4, tam bölünür. 7 ve 5 tek sayılardır.'
+  },
+
+  /* ══ SEVİYE 3 — Dünya bilgisi ══ */
+  {
+    level:3,
+    scene:'🌍 Coğrafya dersindeler. Hangi kıta en büyük?',
+    animals:[
+      { emoji:'🦒', name:'Zürafa',  says:'Avrupa en büyük kıtadır!',           isTruth:false },
+      { emoji:'🦓', name:'Zebra',   says:'Asya en büyük kıtadır!',             isTruth:true  },
+      { emoji:'🐆', name:'Çita',    says:'Avustralya en büyük kıtadır!',        isTruth:false },
+    ],
+    hint:'Asya\'da Çin, Hindistan, Rusya var — çok büyük!',
+    explain:'Zebra doğruyu söylüyor: Asya dünyanın en büyük kıtasıdır! Yüzey alanı yaklaşık 44 milyon km².'
+  },
+  {
+    level:3,
+    scene:'🏔️ Dünyanın en yüksek dağı hangisi? Tartışıyorlar.',
+    animals:[
+      { emoji:'🦅', name:'Kartal',  says:'En yüksek dağ Everest\'tir!',        isTruth:true  },
+      { emoji:'🦬', name:'Bizon',   says:'En yüksek dağ Ağrı\'dır!',           isTruth:false },
+      { emoji:'🦌', name:'Geyik',   says:'En yüksek dağ Kilimanjaro\'dur!',    isTruth:false },
+    ],
+    hint:'Dünyanın çatısı denir, Himalayalardadır...',
+    explain:'Kartal doğruyu söylüyor: Everest Dağı 8.849 metre ile dünyanın en yüksek noktasıdır! 🏔️'
+  },
+  {
+    level:3,
+    scene:'💧 Su kaç derecede kaynar? Tartışıyorlar.',
+    animals:[
+      { emoji:'🐸', name:'Kurbağa',  says:'Su 100 derecede kaynar!',            isTruth:true  },
+      { emoji:'🐢', name:'Kaplumbağa',says:'Su 50 derecede kaynar!',            isTruth:false },
+      { emoji:'🦎', name:'Kertenkele',says:'Su 200 derecede kaynar!',           isTruth:false },
+    ],
+    hint:'Anneler çay yaparken ocağı 100 dereceye kadar açar!',
+    explain:'Kurbağa doğruyu söylüyor: su deniz seviyesinde 100°C\'de kaynar! Bunu hatırla. 💧🔥'
+  },
+  {
+    level:3,
+    scene:'🌡️ En soğuk kıta hangisi? Bilim gezisindeler.',
+    animals:[
+      { emoji:'🐧', name:'Penguen',  says:'Antarktika en soğuk kıtadır!',      isTruth:true  },
+      { emoji:'🦭', name:'Fok',     says:'Afrika en soğuk kıtadır!',           isTruth:false },
+      { emoji:'🐟', name:'Balık',   says:'Avrupa en soğuk kıtadır!',           isTruth:false },
+    ],
+    hint:'Penguenler nerede yaşar? Kutup soğuğunda!',
+    explain:'Penguen doğruyu söylüyor: Antarktika -89°C\'e kadar düşen sıcaklıklarla dünyanın en soğuk kıtasıdır! 🧊'
+  },
+  {
+    level:3,
+    scene:'🕐 Bir günde kaç saat var? Saat öğreniyorlar.',
+    animals:[
+      { emoji:'🐓', name:'Horoz',   says:'Bir günde 24 saat var!',             isTruth:true  },
+      { emoji:'🦆', name:'Ördek',   says:'Bir günde 12 saat var!',             isTruth:false },
+      { emoji:'🦚', name:'Tavus',   says:'Bir günde 100 saat var!',            isTruth:false },
+    ],
+    hint:'Gece 12 + gündüz 12 = ?',
+    explain:'Horoz doğruyu söylüyor: bir günde 24 saat var! Gece 12 + gündüz 12 = 24. ⏰'
+  },
+
+  /* ══ SEVİYE 3-4 — Mantık ══ */
+  {
+    level:3,
+    scene:'🚦 Trafik ışığında kırmızı ne anlama gelir?',
+    animals:[
+      { emoji:'🐎', name:'At',      says:'Kırmızı ışıkta dur!',                isTruth:true  },
+      { emoji:'🐄', name:'İnek',    says:'Kırmızı ışıkta hızlan!',             isTruth:false },
+      { emoji:'🐖', name:'Domuz',   says:'Kırmızı ışıkta bip sesine bas!',     isTruth:false },
+    ],
+    hint:'Kırmızı = dur, yeşil = geç!',
+    explain:'At doğruyu söylüyor: kırmızı ışıkta durmak zorundasın! Trafik kuralı budur. 🚦'
+  },
+  {
+    level:3,
+    scene:'🧲 Mıknatısla deney yapıyorlar. Mıknatıs demiri çeker mi?',
+    animals:[
+      { emoji:'🤖', name:'Robot Fare', says:'Mıknatıs demiri çeker!',           isTruth:true  },
+      { emoji:'🐭', name:'Fare',       says:'Mıknatıs elmayı çeker!',           isTruth:false },
+      { emoji:'🐿️', name:'Sincap',    says:'Mıknatıs suyu çeker!',             isTruth:false },
+    ],
+    hint:'Mıknatısla demir iğne deneyi yaptın mı hiç?',
+    explain:'Robot Fare doğruyu söylüyor: mıknatıslar demir, nikel ve kobaltı çeker! Elma ve suyu çekmez. 🧲'
+  },
+  {
+    level:4,
+    scene:'🌀 Mantık bulmacası! "Bütün kediler miyavlar. Pamuk bir kedidir." — Pamuk miyavlar mı?',
+    animals:[
+      { emoji:'🦊', name:'Tilki',  says:'Pamuk miyavlar, çünkü bütün kediler miyavlar!',  isTruth:true  },
+      { emoji:'🐺', name:'Kurt',   says:'Pamuk miyavlamaz, o farklı!',          isTruth:false },
+      { emoji:'🦝', name:'Rakun',  says:'Pamuk havlar, o aslında köpektir!',     isTruth:false },
+    ],
+    hint:'Kural: "Bütün kediler miyavlar" — Pamuk kedi, o zaman...',
+    explain:'Tilki doğruyu söylüyor: mantık zinciri budur → Bütün kediler miyavlar + Pamuk bir kedidir = Pamuk miyavlar! 🧠'
+  },
+  {
+    level:4,
+    scene:'🌀 Zor mantık! "Bugün yağmur yağarsa piknik iptal. Bugün yağmur yağdı." — Piknik ne oldu?',
+    animals:[
+      { emoji:'🐻', name:'Ayı',     says:'Piknik iptal oldu!',                  isTruth:true  },
+      { emoji:'🦌', name:'Geyik',   says:'Piknik devam etti!',                  isTruth:false },
+      { emoji:'🦦', name:'Su Samuru',says:'Yağmur yağmadı, hava güzeldi!',      isTruth:false },
+    ],
+    hint:'Kural: yağmur → iptal. Yağmur yağdı. O zaman...?',
+    explain:'Ayı doğruyu söylüyor: kural "yağmur = iptal" ve yağmur yağdı, bu yüzden piknik iptal! 🌧️'
+  },
+  {
+    level:4,
+    scene:'🎭 Ali, Veli ve Deli koşu yarışındalar. Ali, Veli\'den hızlı. Veli, Deli\'den hızlı.',
+    animals:[
+      { emoji:'🐆', name:'Çita',    says:'Ali en hızlısıdır!',                  isTruth:true  },
+      { emoji:'🦁', name:'Aslan',   says:'Deli en hızlısıdır!',                 isTruth:false },
+      { emoji:'🐯', name:'Kaplan',  says:'Veli en yavaşıdır!',                  isTruth:false },
+    ],
+    hint:'Ali > Veli > Deli — en büyük kim?',
+    explain:'Çita doğruyu söylüyor: Ali > Veli > Deli sırasına göre Ali en hızlı, Deli en yavaş!'
+  },
+  {
+    level:4,
+    scene:'🔒 Kutunun şifresi var. Şifre 3 haneli, tüm rakamlar farklı, toplamı 6.',
+    animals:[
+      { emoji:'🦉', name:'Baykuş',  says:'Şifre 1-2-3 olabilir!',              isTruth:true  },
+      { emoji:'🦜', name:'Papağan', says:'Şifre 9-9-9 olabilir!',              isTruth:false },
+      { emoji:'🐦', name:'Serçe',   says:'Şifre 5-5-5 olabilir!',              isTruth:false },
+    ],
+    hint:'Toplamı 6 olan 3 farklı rakam: 1+2+3 = ?',
+    explain:'Baykuş doğruyu söylüyor: 1+2+3 = 6, üçü de farklı! Papağan (9+9+9=27) ve Serçe (5+5+5=15) yanlış. 🔢'
+  },
+  {
+    level:4,
+    scene:'🌀 Süper zor! Bir sayı var: çifttir, 10\'dan büyük, 20\'den küçük, 3\'e bölünür.',
+    animals:[
+      { emoji:'🦋', name:'Kelebek', says:'O sayı 18\'dir!',                    isTruth:true  },
+      { emoji:'🐛', name:'Tırtıl',  says:'O sayı 15\'tir!',                    isTruth:false },
+      { emoji:'🐝', name:'Arı',     says:'O sayı 14\'tür!',                    isTruth:false },
+    ],
+    hint:'Çift + 10-20 arası + 3\'e bölünür: 12, 18... hangisi 3\'e bölünür?',
+    explain:'Kelebek doğruyu söylüyor: 18 çifttir ✓, 10\'dan büyük ✓, 20\'den küçük ✓, 18÷3=6 ✓. 15 tek, 14, 3\'e bölünmez!'
+  },
+  {
+    level:4,
+    scene:'🧩 Birisi yalan söylüyor ama hangisi? Üçü de kendi hakkında konuşuyor.',
+    animals:[
+      { emoji:'🐸', name:'Yeşil Kurbağa', says:'Ben yeşilim!',                  isTruth:true  },
+      { emoji:'🐻', name:'Kahverengi Ayı',says:'Ben maviyim!',                  isTruth:false },
+      { emoji:'🦊', name:'Turuncu Tilki', says:'Ben mor renkteyim!',            isTruth:false },
+    ],
+    hint:'Her hayvanın rengine bak — kendi rengini kim doğru söylüyor?',
+    explain:'Yeşil Kurbağa doğruyu söylüyor: gerçekten yeşil! Ayı kahverengi ama mavi dedi, Tilki turuncu ama mor dedi!'
+  },
+
+  /* ══ SEVİYE 2-3 — Ek bulmacalar ══ */
+  {
+    level:2,
+    scene:'🍕 Pizza dilimliyorlar. Bir pizza 8 dilime bölündü.',
+    animals:[
+      { emoji:'🐭', name:'Fare',    says:'Pizzanın 8 dilimi var.',              isTruth:true  },
+      { emoji:'🐱', name:'Kedi',    says:'Pizzanın 3 dilimi var.',              isTruth:false },
+      { emoji:'🐶', name:'Köpek',   says:'Pizza dilimlenmedi, bütün!',          isTruth:false },
+    ],
+    hint:'8 dilime bölündü — hangisi 8 diyor?',
+    explain:'Fare doğruyu söylüyor: pizza 8 dilime bölündü! 🍕'
+  },
+  {
+    level:2,
+    scene:'🌿 Hangi hayvan ot yer? Tartışıyorlar.',
+    animals:[
+      { emoji:'🦁', name:'Aslan',   says:'Ben ot yerim!',                      isTruth:false },
+      { emoji:'🐄', name:'İnek',    says:'Ben ot yerim!',                      isTruth:true  },
+      { emoji:'🦈', name:'Köpek Balığı',says:'Ben ot yerim!',                  isTruth:false },
+    ],
+    hint:'Otçul hayvanlar kimler? İnek, koyun, at...',
+    explain:'İnek doğruyu söylüyor: inekler otçuldur, çayırda ot yerler. Aslan et yer, köpek balığı balık yer!'
+  },
+  {
+    level:3,
+    scene:'🦴 Kaç tane parmak var soruyorlar — bir elde kaç parmak?',
+    animals:[
+      { emoji:'🐼', name:'Panda',   says:'Bir elde 5 parmak var!',             isTruth:true  },
+      { emoji:'🦊', name:'Tilki',   says:'Bir elde 7 parmak var!',             isTruth:false },
+      { emoji:'🐨', name:'Koala',   says:'Bir elde 3 parmak var!',             isTruth:false },
+    ],
+    hint:'Kendi eline bak!',
+    explain:'Panda doğruyu söylüyor: insanların bir elinde 5 parmak var — başparmak, işaret, orta, yüzük, serçe! ✋'
+  },
+  {
+    level:3,
+    scene:'🌈 Gökkuşağında kaç renk var? Tartışıyorlar.',
+    animals:[
+      { emoji:'🦋', name:'Kelebek', says:'Gökkuşağında 7 renk var!',           isTruth:true  },
+      { emoji:'🐛', name:'Tırtıl',  says:'Gökkuşağında 3 renk var!',           isTruth:false },
+      { emoji:'🪲', name:'Böcek',   says:'Gökkuşağında 12 renk var!',          isTruth:false },
+    ],
+    hint:'Kırmızı, turuncu, sarı, yeşil, mavi, lacivert, mor — say!',
+    explain:'Kelebek doğruyu söylüyor: gökkuşağında 7 renk var! KIVBSLT ile hatırlayabilirsin. 🌈'
+  },
+  {
+    level:3,
+    scene:'🌍 İstanbul hangi ülkededir? Coğrafya dersindeler.',
+    animals:[
+      { emoji:'🦅', name:'Kartal',  says:'İstanbul Fransa\'dadır!',            isTruth:false },
+      { emoji:'🦁', name:'Aslan',   says:'İstanbul Türkiye\'dedir!',           isTruth:true  },
+      { emoji:'🐬', name:'Yunus',   says:'İstanbul İtalya\'dadır!',            isTruth:false },
+    ],
+    hint:'Sen de İstanbul\'da yaşıyorsun!',
+    explain:'Aslan doğruyu söylüyor: İstanbul Türkiye\'nin en kalabalık şehridir! Hem Avrupa\'da hem Asya\'da toprağı var. 🇹🇷'
+  },
+  {
+    level:4,
+    scene:'🔢 Örüntü bulmacası! Sıradaki sayı 2, 4, 6, 8, __ ?',
+    animals:[
+      { emoji:'🦉', name:'Baykuş',  says:'Sıradaki sayı 10!',                  isTruth:true  },
+      { emoji:'🦝', name:'Rakun',   says:'Sıradaki sayı 9!',                   isTruth:false },
+      { emoji:'🦫', name:'Kunduz',  says:'Sıradaki sayı 12!',                  isTruth:false },
+    ],
+    hint:'2\'şer 2\'şer artıyor: 2, 4, 6, 8 ...',
+    explain:'Baykuş doğruyu söylüyor: 2\'şer 2\'şer gidiyor, 8+2=10! Çift sayılar serisi.'
+  },
+];
+
+/* ════ GAME STATE ════ */
+const GAME_SIZE = 10;
+let gamePuzzles = [], idx = 0, score = 0, streak = 0, maxStreak = 0, correctCount = 0;
+let hintUsed = false, answered = false;
+
+function shuffle(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){const j=0|Math.random()*(i+1);[b[i],b[j]]=[b[j],b[i]];} return b; }
+
+function startGame() {
+  document.getElementById('winScreen').classList.remove('show');
+  fireworksRunning=false; fwParts=[];
+  score=0; streak=0; maxStreak=0; correctCount=0; idx=0;
+  updateScoreBar();
+
+  // Balanced pick by level
+  const byLv = {1:[],2:[],3:[],4:[]};
+  PUZZLES.forEach(p => byLv[p.level]?.push(p));
+  gamePuzzles = shuffle([
+    ...shuffle(byLv[1]).slice(0,3),
+    ...shuffle(byLv[2]).slice(0,3),
+    ...shuffle(byLv[3]).slice(0,3),
+    ...shuffle(byLv[4]).slice(0,2),
+  ]).slice(0, GAME_SIZE);
+
+  buildProgress();
+  loadPuzzle();
+}
+
+function buildProgress() {
+  const w = document.getElementById('progWrap');
+  w.innerHTML = '';
+  gamePuzzles.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className = 'pdot'+(i===idx?' current':'')+(i<idx?' done':'');
+    w.appendChild(d);
+  });
+}
+
+function updateScoreBar() {
+  document.getElementById('scoreVal').textContent  = score;
+  document.getElementById('streakVal').textContent = streak;
+  document.getElementById('lvlBadge').textContent  = `Bölüm ${idx+1}`;
+}
+
+function loadPuzzle() {
+  hintUsed=false; answered=false;
+  document.getElementById('hintText').textContent='';
+  document.getElementById('hintBtn').style.display='inline-flex';
+  buildProgress(); updateScoreBar();
+
+  const p = gamePuzzles[idx];
+  document.getElementById('sceneLabel').textContent = `🌍 Sahne ${idx+1} / Seviye ${p.level}`;
+  document.getElementById('sceneText').textContent  = p.scene;
+
+  // Render animals (shuffled)
+  const row = document.getElementById('animalsRow');
+  row.innerHTML = '';
+  const shuffledAnimals = shuffle(p.animals.map((a,i)=>({...a, origIdx:i})));
+
+  shuffledAnimals.forEach(animal => {
+    const card = document.createElement('div');
+    card.className = 'animal-card';
+    card.dataset.truth = animal.isTruth ? '1':'0';
+
+    card.innerHTML = `
+      <div class="animal-emoji">${animal.emoji}</div>
+      <div class="animal-name">${animal.name}</div>
+      <div class="speech-bubble">"${animal.says}"</div>
+      <div class="truth-badge" id="badge-${animal.name.replace(/\s/g,'')}"></div>
+    `;
+    card.addEventListener('click', () => handlePick(card, animal, p));
+    row.appendChild(card);
+  });
+}
+
+function handlePick(card, animal, p) {
+  if (answered) return;
+  answered = true;
+  try{ if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)(); audioCtx.resume(); }catch(e){}
+
+  // Reveal all truth badges
+  document.querySelectorAll('#animalsRow .animal-card').forEach(c => {
+    const isTrue = c.dataset.truth === '1';
+    c.classList.add(isTrue ? 'reveal-true' : 'reveal-lie');
+    const animalName = c.querySelector('.animal-name').textContent.replace(/\s/g,'');
+    const badge = document.getElementById('badge-'+animalName);
+    if (badge) {
+      badge.textContent = isTrue ? '✅ Doğru!' : '❌ Yalan!';
+      badge.className = 'truth-badge show ' + (isTrue ? 'true':'false');
+    }
+  });
+
+  const isCorrect = animal.isTruth;
+  card.classList.add(isCorrect ? 'selected-correct' : 'selected-wrong');
+
+  if (isCorrect) {
+    streak++; if(streak>maxStreak) maxStreak=streak; correctCount++;
+    const pts = (hintUsed ? 5 : p.level * 10) + (streak>2 ? 5:0);
+    score += pts;
+    playCorrect();
+    showFB(true, p, pts);
+  } else {
+    streak = 0;
+    playWrong();
+    showFB(false, p, 0);
+  }
+}
+
+function showFB(ok, p, pts) {
+  const truthAnimal = p.animals.find(a => a.isTruth);
+  const lieAnimals  = p.animals.filter(a => !a.isTruth);
+
+  const okEmojis  = ['🕵️','🌟','⭐','🔥','🧠','🏆','💫'];
+  const badEmojis = ['🤔','😅','💪','🙈'];
+  document.getElementById('fbEmoji').textContent = ok
+    ? okEmojis[Math.min(streak-1,6)]||'⭐' : badEmojis[0|Math.random()*4];
+
+  document.getElementById('fbTitle').textContent = ok
+    ? ['Aferin!','Zeki Ada!','Süpersin!','Harika!','Doğruyu buldun!'][0|Math.random()*5]
+    : ['Neredeyse!','Bir daha!','Aldatıldın!','Dikkat et!'][0|Math.random()*4];
+  document.getElementById('fbTitle').className = 'fb-title '+(ok?'ok':'bad');
+
+  document.getElementById('fbSub').textContent = ok
+    ? (pts>10 ? `+${pts} puan! 🔥 ${streak} seri!` : `+${pts} puan kazandın!`)
+    : `${truthAnimal.name} doğruyu söylüyordu!`;
+
+  document.getElementById('fbTruth').textContent =
+    `${truthAnimal.emoji} ${truthAnimal.name}: "${truthAnimal.says}"`;
+
+  document.getElementById('fbLies').innerHTML = lieAnimals
+    .map(a=>`${a.emoji} ${a.name}: "${a.says}"`)
+    .join('<br>');
+
+  // explain
+  const truthDiv = document.querySelector('.fb-truth');
+  const existingExplain = document.getElementById('fbExplainBox');
+  if (existingExplain) existingExplain.remove();
+  const expDiv = document.createElement('div');
+  expDiv.id = 'fbExplainBox';
+  expDiv.style.cssText = 'font-size:.82rem;font-weight:700;color:rgba(255,255,255,.55);margin-top:8px;margin-bottom:0;line-height:1.5;text-align:left';
+  expDiv.textContent = '📚 ' + p.explain;
+  document.querySelector('.fb-lies').after(expDiv);
+
+  document.getElementById('nextBtn').textContent = idx>=gamePuzzles.length-1 ? '🏆 Sonuçları Gör!' : 'Sıradaki →';
+  document.getElementById('fbOverlay').classList.add('show');
+  updateScoreBar();
+}
+
+function nextPuzzle() {
+  document.getElementById('fbOverlay').classList.remove('show');
+  idx++;
+  if (idx >= gamePuzzles.length) showWin();
+  else loadPuzzle();
+}
+
+function showHint() {
+  hintUsed = true;
+  document.getElementById('hintText').textContent = '🔦 ' + gamePuzzles[idx].hint;
+  document.getElementById('hintBtn').style.display = 'none';
+}
+
+function showWin() {
+  document.getElementById('wScore').textContent   = score;
+  document.getElementById('wCorrect').textContent = correctCount+'/'+gamePuzzles.length;
+  document.getElementById('wStreak').textContent  = maxStreak;
+  document.getElementById('winScreen').classList.add('show');
+  fireworksRunning=true; startFireworks(); playWinJingle();
+}
+
+/* ════ AUDIO ════ */
+let audioCtx=null;
+function getAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function tone(f,type,dur,vol=0.2,t0=0){
+  const c=getAC(),o=c.createOscillator(),g=c.createGain();
+  o.connect(g);g.connect(c.destination);o.type=type;o.frequency.value=f;
+  g.gain.setValueAtTime(vol,c.currentTime+t0);
+  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+t0+dur);
+  o.start(c.currentTime+t0);o.stop(c.currentTime+t0+dur+.05);
+}
+function playCorrect(){ tone(523,'sine',.1,.2,0);tone(659,'sine',.1,.2,.1);tone(784,'sine',.22,.22,.2); }
+function playWrong()  { tone(300,'sawtooth',.1,.14,0);tone(220,'sawtooth',.18,.14,.1); }
+function playWinJingle(){
+  [[523,0],[659,.15],[784,.3],[880,.48],[1047,.66],[784,.85],[1047,1.05],[1175,1.25],[1397,1.5]]
+    .forEach(([f,s])=>tone(f,'sine',.3,.2,s));
+}
+
+/* ════ FIREWORKS ════ */
+const fwCanvas=document.getElementById('fw');
+const fwCtx=fwCanvas.getContext('2d');
+let fwParts=[],fireworksRunning=false,fwTimer;
+function resizeFW(){fwCanvas.width=window.innerWidth;fwCanvas.height=window.innerHeight;}
+resizeFW();window.addEventListener('resize',resizeFW);
+function spawnFW(){
+  const x=Math.random()*fwCanvas.width,y=20+Math.random()*fwCanvas.height*.5;
+  const cols=['#ffd166','#ff6b9d','#c084fc','#06d6a0','#ff6b6b','#74c0fc'];
+  const col=cols[0|Math.random()*cols.length];
+  for(let i=0;i<55;i++){
+    const a=Math.PI*2/55*i+Math.random()*.2,s=2+Math.random()*5;
+    fwParts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,alpha:1,color:col,size:1.5+Math.random()*2.5,decay:.013+Math.random()*.01,gravity:.065});
+  }
+}
+function animateFW(){
+  if(!fireworksRunning){fwCtx.clearRect(0,0,fwCanvas.width,fwCanvas.height);return;}
+  fwCtx.fillStyle='rgba(20,8,40,.12)';fwCtx.fillRect(0,0,fwCanvas.width,fwCanvas.height);
+  fwParts=fwParts.filter(p=>p.alpha>.01);
+  fwParts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=.985;p.alpha-=p.decay;
+    fwCtx.save();fwCtx.globalAlpha=p.alpha;fwCtx.fillStyle=p.color;
+    fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);fwCtx.fill();fwCtx.restore();
+  });
+  requestAnimationFrame(animateFW);
+}
+function startFireworks(){
+  fwParts=[];animateFW();
+  fwTimer=setInterval(()=>{if(!fireworksRunning){clearInterval(fwTimer);return;}spawnFW();if(Math.random()<.4)spawnFW();},400);
+}
+
+/* ════ STARS ════ */
+(function(){
+  const sf=document.getElementById('starField');
+  for(let i=0;i<60;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=.8+Math.random()*2;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;position:fixed;--d:${2+Math.random()*4}s;--dl:${Math.random()*6}s`;
+    sf.appendChild(s);
+  }
+})();
+
+startGame();
+</script>
+</body>
+</html>
