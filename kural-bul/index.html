@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada'nın Kural Bulma Oyunu ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0e2e;
+  --card: #1a1840;
+  --card2: #221f50;
+  --gold: #ffd166;
+  --pink: #ff6b9d;
+  --mint: #06d6a0;
+  --blue: #118ab2;
+  --purple: #9b5de5;
+  --coral: #ff6b6b;
+  --text: #f0eeff;
+  --muted: #8880bb;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 16px 40px;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, #2d1b6e 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 90%, #0d3b5e 0%, transparent 45%);
+}
+
+/* STARS BG */
+.stars-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.star-dot {
+  position: absolute; border-radius: 50%; background: white;
+  animation: twinkle var(--d, 3s) infinite ease-in-out var(--delay, 0s);
+}
+@keyframes twinkle { 0%,100%{opacity:.15} 50%{opacity:.7} }
+
+/* HEADER */
+.header {
+  position: relative; z-index: 1;
+  text-align: center; margin-bottom: 6px;
+}
+.title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,209,102,.4), 3px 3px 0 rgba(0,0,0,.4);
+  letter-spacing: 1px;
+}
+.subtitle {
+  font-size: .9rem; color: var(--muted); font-weight: 700; margin-top: 2px;
+}
+
+/* SCORE BAR */
+.score-bar {
+  position: relative; z-index: 1;
+  display: flex; gap: 16px; align-items: center;
+  background: var(--card); border-radius: 20px;
+  padding: 10px 22px; margin-bottom: 20px;
+  border: 2px solid rgba(255,255,255,.07);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.score-item { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.score-val { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--gold); line-height: 1; }
+.score-lbl { font-size: .68rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+.divider { width: 2px; height: 36px; background: rgba(255,255,255,.08); border-radius: 2px; }
+.level-badge {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: white; border-radius: 12px; padding: 4px 14px;
+  font-weight: 900; font-size: .85rem; letter-spacing: .5px;
+}
+
+/* PUZZLE CARD */
+.puzzle-card {
+  position: relative; z-index: 1;
+  background: var(--card);
+  border-radius: 28px;
+  padding: 28px 24px 24px;
+  max-width: 580px; width: 100%;
+  border: 2px solid rgba(255,255,255,.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
+  margin-bottom: 18px;
+}
+
+.question-label {
+  font-size: .78rem; font-weight: 900; color: var(--mint);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+.question-text {
+  font-size: clamp(1rem, 3vw, 1.15rem); font-weight: 800; color: var(--text);
+  margin-bottom: 22px; line-height: 1.4;
+}
+
+/* SEQUENCE ROW */
+.sequence {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.seq-item {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 16px;
+  background: var(--card2);
+  border: 2px solid rgba(255,255,255,.1);
+  transition: transform .3s, box-shadow .3s;
+  animation: itemReveal .4s cubic-bezier(.3,1.5,.5,1) both;
+  position: relative;
+}
+@keyframes itemReveal {
+  from { opacity:0; transform:scale(.5) rotate(-10deg); }
+  to   { opacity:1; transform:scale(1) rotate(0deg); }
+}
+.seq-item.question-slot {
+  background: rgba(255,255,255,.04);
+  border: 2.5px dashed rgba(255,255,255,.25);
+  color: rgba(255,255,255,.3);
+  font-size: 2rem;
+}
+.seq-arrow {
+  color: var(--muted); font-size: 1.2rem; font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* HINT CHIP */
+.hint-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(155,93,229,.15); border: 1.5px solid rgba(155,93,229,.3);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: .82rem; font-weight: 700; color: #c9a8ff;
+  margin-bottom: 20px; cursor: pointer;
+  transition: background .2s;
+}
+.hint-chip:hover { background: rgba(155,93,229,.28); }
+.hint-text { font-size: .82rem; font-weight: 700; color: var(--gold); margin-bottom: 16px; line-height: 1.4; min-height: 20px; }
+
+/* CHOICES */
+.choices {
+  display: grid;
+  gap: 10px;
+}
+.choices.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.choices.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.choices.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.choice-btn {
+  background: var(--card2);
+  border: 2.5px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 14px 10px;
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+  color: var(--text); font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: .82rem;
+  min-height: 80px;
+}
+.choice-btn:hover { transform: scale(1.05); border-color: var(--purple); box-shadow: 0 4px 20px rgba(155,93,229,.3); }
+.choice-btn.correct { border-color: var(--mint)!important; background: rgba(6,214,160,.15)!important; animation: correctPop .4s ease; }
+.choice-btn.wrong   { border-color: var(--coral)!important; background: rgba(255,107,107,.12)!important; animation: wrongShake .4s ease; }
+@keyframes correctPop  { 0%{transform:scale(1)} 45%{transform:scale(1.12)} 100%{transform:scale(1)} }
+@keyframes wrongShake  { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+/* FEEDBACK OVERLAY */
+.feedback {
+  position: fixed; inset: 0; z-index: 100;
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(10px);
+}
+.feedback.show { display: flex; animation: fadeIn .35s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.fb-box {
+  background: var(--card);
+  border-radius: 32px; padding: 40px 50px;
+  text-align: center; max-width: 380px; width: 90%;
+  border: 3px solid rgba(255,255,255,.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  animation: popIn .45s cubic-bezier(.3,1.5,.5,1);
+}
+@keyframes popIn { from{transform:scale(.7)} to{transform:scale(1)} }
+
+.fb-emoji { font-size: 4.5rem; margin-bottom: 10px; display: block; animation: spin1 .6s ease; }
+@keyframes spin1 { from{transform:rotate(-20deg) scale(.5)} to{transform:rotate(0) scale(1)} }
+.fb-title { font-family:'Fredoka One',cursive; font-size:2.2rem; margin-bottom:6px; }
+.fb-title.good { color: var(--mint); }
+.fb-title.bad  { color: var(--coral); }
+.fb-sub { font-size:.95rem; font-weight:700; color:var(--muted); margin-bottom:22px; line-height:1.5; }
+.fb-rule { font-size:.88rem; font-weight:800; color: var(--gold); background: rgba(255,209,102,.1); border-radius:12px; padding:10px 16px; margin-bottom:20px; line-height:1.5; }
+.next-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1.05rem;
+  padding:13px 36px; border:none; border-radius:20px; cursor:pointer;
+  background: linear-gradient(135deg, #9b5de5, #ff6b9d);
+  color:white; box-shadow:0 4px 20px rgba(155,93,229,.4);
+  transition:transform .15s;
+}
+.next-btn:hover { transform:scale(1.07); }
+
+/* PROGRESS DOTS */
+.progress-dots {
+  position: relative; z-index:1;
+  display:flex; gap:8px; margin-bottom:14px;
+}
+.dot {
+  width:10px; height:10px; border-radius:50%;
+  background: rgba(255,255,255,.15);
+  transition: background .3s, transform .3s;
+}
+.dot.done { background: var(--mint); transform:scale(1.2); }
+.dot.current { background: var(--gold); transform:scale(1.3); box-shadow:0 0 8px var(--gold); }
+
+/* WIN SCREEN */
+.win-screen {
+  position:fixed; inset:0; z-index:200;
+  display:none; flex-direction:column; align-items:center; justify-content:center;
+  background:rgba(5,4,20,.85); backdrop-filter:blur(14px);
+}
+.win-screen.show { display:flex; animation:fadeIn .5s ease; }
+.win-box {
+  background: linear-gradient(135deg, #1a1840, #221f50);
+  border-radius:32px; padding:44px 52px; text-align:center;
+  max-width:420px; width:90%;
+  border:3px solid rgba(255,209,102,.3);
+  box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 20px 60px rgba(0,0,0,.6);
+  animation:popIn .5s cubic-bezier(.3,1.5,.5,1);
+}
+.win-ada {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(3rem,10vw,5rem);
+  background:linear-gradient(135deg,#ffd166,#ff6b9d,#9b5de5);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:adaPulse 1.5s ease infinite alternate;
+  margin-bottom:4px;
+}
+@keyframes adaPulse { from{letter-spacing:1px} to{letter-spacing:8px} }
+.win-sub { font-size:1.1rem; font-weight:800; color:var(--muted); margin-bottom:20px; }
+.win-stats { display:flex; gap:24px; justify-content:center; margin-bottom:24px; }
+.win-stat { display:flex; flex-direction:column; align-items:center; }
+.win-stat-val { font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--gold); line-height:1; }
+.win-stat-lbl { font-size:.7rem; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+.play-again-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1.1rem;
+  padding:14px 38px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#ffd166,#ff9f1c);
+  color:#1a1200; box-shadow:0 4px 20px rgba(255,209,102,.4);
+  transition:transform .15s;
+}
+.play-again-btn:hover { transform:scale(1.07); }
+
+/* FIREWORKS */
+#fw { position:fixed;inset:0;pointer-events:none;z-index:199; }
+
+@media(max-width:440px){
+  .puzzle-card{padding:20px 14px 18px;}
+  .fb-box,.win-box{padding:28px 22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="stars-bg" id="starsBg"></div>
+
+<div class="header">
+  <div class="title">🔍 Kural Bul!</div>
+  <div class="subtitle">Diziyi incele → kuralı bul → sıradakini seç</div>
+</div>
+
+<div class="score-bar">
+  <div class="score-item">
+    <div class="score-val" id="scoreVal">0</div>
+    <div class="score-lbl">Puan</div>
+  </div>
+  <div class="divider"></div>
+  <div class="score-item">
+    <div class="score-val" id="streakVal">0</div>
+    <div class="score-lbl">Seri 🔥</div>
+  </div>
+  <div class="divider"></div>
+  <div class="score-item">
+    <div class="level-badge" id="levelBadge">Seviye 1</div>
+  </div>
+</div>
+
+<div class="progress-dots" id="progressDots"></div>
+
+<div class="puzzle-card" id="puzzleCard">
+  <div class="question-label">🧩 Bu dizide hangi kural var?</div>
+  <div class="question-text" id="questionText"></div>
+  <div class="sequence" id="sequence"></div>
+  <div class="hint-chip" id="hintChip" onclick="showHint()">
+    💡 İpucu göster
+  </div>
+  <div class="hint-text" id="hintText"></div>
+  <div class="choices" id="choices"></div>
+</div>
+
+<!-- FEEDBACK -->
+<div class="feedback" id="feedback">
+  <div class="fb-box">
+    <span class="fb-emoji" id="fbEmoji">⭐</span>
+    <div class="fb-title" id="fbTitle">Harika!</div>
+    <div class="fb-sub" id="fbSub"></div>
+    <div class="fb-rule" id="fbRule"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextPuzzle()">Sıradaki Bulmaca →</button>
+  </div>
+</div>
+
+<!-- WIN -->
+<div class="win-screen" id="winScreen">
+  <canvas id="fw"></canvas>
+  <div class="win-box">
+    <div class="win-ada">Tebrikler Ada!</div>
+    <div class="win-sub">Tüm bulmacaları çözdün! 🎉</div>
+    <div class="win-stats">
+      <div class="win-stat">
+        <div class="win-stat-val" id="finalScore">0</div>
+        <div class="win-stat-lbl">Toplam Puan</div>
+      </div>
+      <div class="win-stat">
+        <div class="win-stat-val" id="finalCorrect">0</div>
+        <div class="win-stat-lbl">Doğru</div>
+      </div>
+      <div class="win-stat">
+        <div class="win-stat-val" id="finalStreak">0</div>
+        <div class="win-stat-lbl">En Uzun Seri</div>
+      </div>
+    </div>
+    <button class="play-again-btn" onclick="startGame()">Tekrar Oyna 🔄</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   PUZZLE DEFINITIONS
+   Each puzzle has: items (display), choices, answer index, hint, rule explanation
+══════════════════════════════════════════════ */
+
+// Item renderer types
+// shape: {type:'shape', shape:'circle|square|triangle|star|heart|diamond', color, size}
+// emoji: {type:'emoji', emoji:'🌟', size}
+// number: {type:'number', val, color, bg}
+// dots:   {type:'dots', count, color}
+
+const C = {
+  red:'#ff6b6b', orange:'#ff9f1c', yellow:'#ffd166', green:'#06d6a0',
+  blue:'#118ab2', purple:'#9b5de5', pink:'#ff6b9d', white:'#f0eeff',
+  cyan:'#4ecdc4', lime:'#b5e48c', gold:'#ffd166', coral:'#ff6b6b',
+  mint:'#06d6a0', sky:'#74c0fc', lavender:'#d0a9f5', peach:'#ffb347'
+};
+
+function shapeHTML(shape, color, size=54) {
+  const s = size; const half = s/2;
+  const svgs = {
+    circle:   `<circle cx="${half}" cy="${half}" r="${half*0.82}" fill="${color}"/>`,
+    square:   `<rect x="${half*0.18}" y="${half*0.18}" width="${s*0.64}" height="${s*0.64}" rx="${s*0.1}" fill="${color}"/>`,
+    triangle: `<polygon points="${half},${s*0.1} ${s*0.9},${s*0.9} ${s*0.1},${s*0.9}" fill="${color}"/>`,
+    star:     starPath(half, s, color),
+    heart:    heartPath(half, s, color),
+    diamond:  `<polygon points="${half},${s*0.08} ${s*0.92},${half} ${half},${s*0.92} ${s*0.08},${half}" fill="${color}"/>`,
+    pentagon: pentPath(half, s, color),
+    hexagon:  hexPath(half, s, color),
+  };
+  return `<svg viewBox="0 0 ${s} ${s}" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">${svgs[shape]||svgs.circle}</svg>`;
+}
+function starPath(h, s, c) {
+  const pts=[];
+  for(let i=0;i<10;i++){const a=Math.PI/5*i-Math.PI/2;const r=i%2===0?h*0.85:h*0.38;pts.push(`${h+r*Math.cos(a)},${h+r*Math.sin(a)}`);}
+  return `<polygon points="${pts.join(' ')}" fill="${c}"/>`;
+}
+function heartPath(h, s, c) {
+  const x=h, y=h;
+  return `<path d="M${x},${y*1.3} C${x},${y*0.2} ${s*0.1},${y*0.05} ${s*0.28},${y*0.05} C${s*0.45},${y*0.05} ${x},${y*0.4} ${x},${y*0.4} C${x},${y*0.4} ${s*0.55},${y*0.05} ${s*0.72},${y*0.05} C${s*0.9},${y*0.05} ${s*0.9},${y*0.2} ${s*0.9},${y*0.4} C${s*0.9},${y*0.75} ${x},${s*0.88} ${x},${s*0.88} Z" fill="${c}"/>`;
+}
+function pentPath(h, s, c) {
+  const pts=[];
+  for(let i=0;i<5;i++){const a=Math.PI*2/5*i-Math.PI/2;pts.push(`${h+h*0.85*Math.cos(a)},${h+h*0.85*Math.sin(a)}`);}
+  return `<polygon points="${pts.join(' ')}" fill="${c}"/>`;
+}
+function hexPath(h, s, c) {
+  const pts=[];
+  for(let i=0;i<6;i++){const a=Math.PI/3*i;pts.push(`${h+h*0.85*Math.cos(a)},${h+h*0.85*Math.sin(a)}`);}
+  return `<polygon points="${pts.join(' ')}" fill="${c}"/>`;
+}
+
+function renderItem(item, size=54) {
+  if (item.type === 'shape') return shapeHTML(item.shape, item.color, size);
+  if (item.type === 'emoji') return `<span style="font-size:${size*0.62}px;line-height:1">${item.emoji}</span>`;
+  if (item.type === 'number') return `<span style="font-family:'Fredoka One',cursive;font-size:${size*0.55}px;color:${item.color||C.gold};line-height:1">${item.val}</span>`;
+  if (item.type === 'dots') return renderDots(item.count, item.color, size);
+  return '';
+}
+
+function renderDots(count, color, size) {
+  const positions = [[1,1],[1,3],[3,1],[3,3],[2,2],[2,0],[2,4],[0,2],[4,2]];
+  let svg = `<svg viewBox="0 0 5 5" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">`;
+  for (let i=0;i<Math.min(count,9);i++) {
+    const [cx,cy]=positions[i];
+    svg += `<circle cx="${cx+0.5}" cy="${cy+0.5}" r="0.38" fill="${color}"/>`;
+  }
+  return svg + '</svg>';
+}
+
+function itemToEl(item, sizeOverride) {
+  const sz = sizeOverride || item.size || 54;
+  const box = document.createElement('div');
+  box.className = 'seq-item';
+  box.style.width = (sz+16)+'px';
+  box.style.height = (sz+16)+'px';
+  if (item.bg) box.style.background = item.bg;
+  box.innerHTML = renderItem(item, sz);
+  return box;
+}
+
+/* ══════════════════════════════════════════════
+   ALL PUZZLES POOL (40+ puzzles across levels)
+══════════════════════════════════════════════ */
+const ALL_PUZZLES = [
+
+  /* ── LEVEL 1: COLOUR SEQUENCES ── */
+  {
+    level:1, category:'Renk Dizisi',
+    question:'Renkler nasıl sıralanıyor? Sıradaki hangi renk?',
+    items:[
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'circle',color:C.blue},
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'circle',color:C.blue},
+    ],
+    answer:{type:'shape',shape:'circle',color:C.red},
+    choices:[
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'circle',color:C.blue},
+      {type:'shape',shape:'circle',color:C.green},
+      {type:'shape',shape:'circle',color:C.yellow},
+    ],
+    correctIdx:0,
+    hint:'Kırmızı ile mavi birbiri ardına tekrar ediyor.',
+    rule:'Kural: Kırmızı → Mavi → Kırmızı → Mavi... tekrar ediyor!'
+  },
+  {
+    level:1, category:'Renk Dizisi',
+    question:'Gökkuşağı sırasını takip et! Sıradaki hangi renk?',
+    items:[
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'circle',color:C.orange},
+      {type:'shape',shape:'circle',color:C.yellow},
+      {type:'shape',shape:'circle',color:C.green},
+    ],
+    answer:{type:'shape',shape:'circle',color:C.blue},
+    choices:[
+      {type:'shape',shape:'circle',color:C.purple},
+      {type:'shape',shape:'circle',color:C.blue},
+      {type:'shape',shape:'circle',color:C.pink},
+      {type:'shape',shape:'circle',color:C.red},
+    ],
+    correctIdx:1,
+    hint:'Gökkuşağının renkleri: kırmızı, turuncu, sarı, yeşil, mavi...',
+    rule:'Kural: Gökkuşağı sırası! Kırmızı→Turuncu→Sarı→Yeşil→Mavi→Mor 🌈'
+  },
+  {
+    level:1, category:'Renk Dizisi',
+    question:'Üç renk tekrar ediyor. Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'square',color:C.pink},
+      {type:'shape',shape:'square',color:C.mint},
+      {type:'shape',shape:'square',color:C.yellow},
+      {type:'shape',shape:'square',color:C.pink},
+      {type:'shape',shape:'square',color:C.mint},
+    ],
+    answer:{type:'shape',shape:'square',color:C.yellow},
+    choices:[
+      {type:'shape',shape:'square',color:C.pink},
+      {type:'shape',shape:'square',color:C.mint},
+      {type:'shape',shape:'square',color:C.yellow},
+      {type:'shape',shape:'square',color:C.blue},
+    ],
+    correctIdx:2,
+    hint:'Pembeden başlayan 3\'lü bir grup tekrar ediyor.',
+    rule:'Kural: Pembe → Yeşil → Sarı → Pembe → Yeşil → Sarı... 3\'lü tekrar!'
+  },
+
+  /* ── LEVEL 1: SHAPE SEQUENCES ── */
+  {
+    level:1, category:'Şekil Dizisi',
+    question:'Şekiller nasıl değişiyor? Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.purple},
+      {type:'shape',shape:'square',color:C.purple},
+      {type:'shape',shape:'triangle',color:C.purple},
+      {type:'shape',shape:'circle',color:C.purple},
+      {type:'shape',shape:'square',color:C.purple},
+    ],
+    answer:{type:'shape',shape:'triangle',color:C.purple},
+    choices:[
+      {type:'shape',shape:'circle',color:C.purple},
+      {type:'shape',shape:'square',color:C.purple},
+      {type:'shape',shape:'triangle',color:C.purple},
+      {type:'shape',shape:'star',color:C.purple},
+    ],
+    correctIdx:2,
+    hint:'Yuvarlak, kare, üçgen... sonra tekrar başlıyor.',
+    rule:'Kural: Daire → Kare → Üçgen → tekrar! 3 şekil dönüyor 🔄'
+  },
+  {
+    level:1, category:'Şekil Dizisi',
+    question:'Yıldız mı, kalp mi? Sıradaki şekil ne?',
+    items:[
+      {type:'shape',shape:'star',color:C.gold},
+      {type:'shape',shape:'heart',color:C.pink},
+      {type:'shape',shape:'star',color:C.gold},
+      {type:'shape',shape:'heart',color:C.pink},
+    ],
+    answer:{type:'shape',shape:'star',color:C.gold},
+    choices:[
+      {type:'shape',shape:'heart',color:C.pink},
+      {type:'shape',shape:'star',color:C.gold},
+      {type:'shape',shape:'diamond',color:C.cyan},
+      {type:'shape',shape:'circle',color:C.purple},
+    ],
+    correctIdx:1,
+    hint:'Yıldız-kalp-yıldız-kalp...',
+    rule:'Kural: Yıldız ⭐ ve Kalp ❤️ birbiri ardına tekrar ediyor!'
+  },
+
+  /* ── LEVEL 2: SIZE SEQUENCES ── */
+  {
+    level:2, category:'Boyut Dizisi',
+    question:'Şekiller büyüyor mu, küçülüyor mu? Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.mint,size:24},
+      {type:'shape',shape:'circle',color:C.mint,size:36},
+      {type:'shape',shape:'circle',color:C.mint,size:48},
+      {type:'shape',shape:'circle',color:C.mint,size:60},
+    ],
+    answer:{type:'shape',shape:'circle',color:C.mint,size:72},
+    choices:[
+      {type:'shape',shape:'circle',color:C.mint,size:48},
+      {type:'shape',shape:'circle',color:C.mint,size:36},
+      {type:'shape',shape:'circle',color:C.mint,size:72},
+      {type:'shape',shape:'circle',color:C.mint,size:24},
+    ],
+    correctIdx:2,
+    hint:'Her adımda daire biraz daha büyüyor!',
+    rule:'Kural: Her seferinde daha BÜYÜK! Küçükten büyüğe gidiyor 📈'
+  },
+  {
+    level:2, category:'Boyut Dizisi',
+    question:'Büyükten küçüğe! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'star',color:C.gold,size:68},
+      {type:'shape',shape:'star',color:C.gold,size:52},
+      {type:'shape',shape:'star',color:C.gold,size:36},
+    ],
+    answer:{type:'shape',shape:'star',color:C.gold,size:20},
+    choices:[
+      {type:'shape',shape:'star',color:C.gold,size:52},
+      {type:'shape',shape:'star',color:C.gold,size:68},
+      {type:'shape',shape:'star',color:C.gold,size:20},
+      {type:'shape',shape:'star',color:C.gold,size:36},
+    ],
+    correctIdx:2,
+    hint:'Her adımda yıldız küçülüyor.',
+    rule:'Kural: Her seferinde daha KÜÇÜK! Büyükten küçüğe gidiyor 📉'
+  },
+  {
+    level:2, category:'Boyut Dizisi',
+    question:'Küçük-büyük-küçük! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'diamond',color:C.sky,size:28},
+      {type:'shape',shape:'diamond',color:C.sky,size:58},
+      {type:'shape',shape:'diamond',color:C.sky,size:28},
+      {type:'shape',shape:'diamond',color:C.sky,size:58},
+    ],
+    answer:{type:'shape',shape:'diamond',color:C.sky,size:28},
+    choices:[
+      {type:'shape',shape:'diamond',color:C.sky,size:58},
+      {type:'shape',shape:'diamond',color:C.sky,size:28},
+      {type:'shape',shape:'diamond',color:C.sky,size:42},
+      {type:'shape',shape:'diamond',color:C.sky,size:20},
+    ],
+    correctIdx:1,
+    hint:'Küçük ve büyük birbirini takip ediyor.',
+    rule:'Kural: Küçük → Büyük → Küçük → Büyük... Sıradaki küçük!'
+  },
+
+  /* ── LEVEL 2: NUMBER SEQUENCES ── */
+  {
+    level:2, category:'Sayı Dizisi',
+    question:'Sayılar nasıl artıyor? Sıradaki ne?',
+    items:[
+      {type:'number',val:1,color:C.yellow},
+      {type:'number',val:2,color:C.yellow},
+      {type:'number',val:3,color:C.yellow},
+      {type:'number',val:4,color:C.yellow},
+    ],
+    answer:{type:'number',val:5,color:C.yellow},
+    choices:[
+      {type:'number',val:6,color:C.yellow},
+      {type:'number',val:5,color:C.yellow},
+      {type:'number',val:7,color:C.yellow},
+      {type:'number',val:4,color:C.yellow},
+    ],
+    correctIdx:1,
+    hint:'Her seferinde 1 artıyor.',
+    rule:'Kural: Her seferinde +1! 1→2→3→4→5→... Sayıyoruz! 🔢'
+  },
+  {
+    level:2, category:'Sayı Dizisi',
+    question:'2\'şer 2\'şer atlıyor! Sıradaki ne?',
+    items:[
+      {type:'number',val:2,color:C.pink},
+      {type:'number',val:4,color:C.pink},
+      {type:'number',val:6,color:C.pink},
+      {type:'number',val:8,color:C.pink},
+    ],
+    answer:{type:'number',val:10,color:C.pink},
+    choices:[
+      {type:'number',val:9,color:C.pink},
+      {type:'number',val:11,color:C.pink},
+      {type:'number',val:10,color:C.pink},
+      {type:'number',val:12,color:C.pink},
+    ],
+    correctIdx:2,
+    hint:'2, 4, 6, 8... her seferinde kaç artıyor?',
+    rule:'Kural: Her seferinde +2! Çift sayılar: 2→4→6→8→10 ✌️'
+  },
+  {
+    level:2, category:'Sayı Dizisi',
+    question:'Sayılar azalıyor! Sıradaki ne?',
+    items:[
+      {type:'number',val:10,color:C.coral},
+      {type:'number',val:8,color:C.coral},
+      {type:'number',val:6,color:C.coral},
+      {type:'number',val:4,color:C.coral},
+    ],
+    answer:{type:'number',val:2,color:C.coral},
+    choices:[
+      {type:'number',val:3,color:C.coral},
+      {type:'number',val:1,color:C.coral},
+      {type:'number',val:2,color:C.coral},
+      {type:'number',val:0,color:C.coral},
+    ],
+    correctIdx:2,
+    hint:'Her seferinde 2 azalıyor.',
+    rule:'Kural: Her seferinde -2! 10→8→6→4→2 Geri sayıyoruz! 🚀'
+  },
+
+  /* ── LEVEL 2: DOT SEQUENCES ── */
+  {
+    level:2, category:'Nokta Dizisi',
+    question:'Noktalar artıyor! Sıradaki kaç nokta?',
+    items:[
+      {type:'dots',count:1,color:C.gold},
+      {type:'dots',count:2,color:C.gold},
+      {type:'dots',count:3,color:C.gold},
+      {type:'dots',count:4,color:C.gold},
+    ],
+    answer:{type:'dots',count:5,color:C.gold},
+    choices:[
+      {type:'dots',count:6,color:C.gold},
+      {type:'dots',count:4,color:C.gold},
+      {type:'dots',count:5,color:C.gold},
+      {type:'dots',count:3,color:C.gold},
+    ],
+    correctIdx:2,
+    hint:'Her adımda 1 nokta daha ekleniyor.',
+    rule:'Kural: Her adımda +1 nokta! 1→2→3→4→5 🎯'
+  },
+  {
+    level:2, category:'Nokta Dizisi',
+    question:'2\'şer 2\'şer nokta ekleniyor! Sıradaki ne?',
+    items:[
+      {type:'dots',count:2,color:C.mint},
+      {type:'dots',count:4,color:C.mint},
+      {type:'dots',count:6,color:C.mint},
+    ],
+    answer:{type:'dots',count:8,color:C.mint},
+    choices:[
+      {type:'dots',count:7,color:C.mint},
+      {type:'dots',count:8,color:C.mint},
+      {type:'dots',count:9,color:C.mint},
+      {type:'dots',count:6,color:C.mint},
+    ],
+    correctIdx:1,
+    hint:'2, 4, 6... her seferinde 2 artıyor.',
+    rule:'Kural: Her adımda +2 nokta! 2→4→6→8 ✨'
+  },
+
+  /* ── LEVEL 3: COMBINED COLOUR+SHAPE ── */
+  {
+    level:3, category:'Renk + Şekil',
+    question:'Hem renk hem şekil değişiyor! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'square',color:C.blue},
+      {type:'shape',shape:'triangle',color:C.green},
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'square',color:C.blue},
+    ],
+    answer:{type:'shape',shape:'triangle',color:C.green},
+    choices:[
+      {type:'shape',shape:'circle',color:C.red},
+      {type:'shape',shape:'square',color:C.blue},
+      {type:'shape',shape:'triangle',color:C.green},
+      {type:'shape',shape:'triangle',color:C.red},
+    ],
+    correctIdx:2,
+    hint:'Her üçlü grupta hem şekil hem renk aynı şekilde tekrar ediyor.',
+    rule:'Kural: Kırmızı Daire → Mavi Kare → Yeşil Üçgen → tekrar! Hem şekil hem renk birlikte değişiyor 🎨'
+  },
+  {
+    level:3, category:'Renk + Şekil',
+    question:'Sarı küçük, mavi büyük! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.yellow,size:28},
+      {type:'shape',shape:'circle',color:C.blue,size:56},
+      {type:'shape',shape:'circle',color:C.yellow,size:28},
+      {type:'shape',shape:'circle',color:C.blue,size:56},
+    ],
+    answer:{type:'shape',shape:'circle',color:C.yellow,size:28},
+    choices:[
+      {type:'shape',shape:'circle',color:C.blue,size:56},
+      {type:'shape',shape:'circle',color:C.yellow,size:56},
+      {type:'shape',shape:'circle',color:C.yellow,size:28},
+      {type:'shape',shape:'circle',color:C.blue,size:28},
+    ],
+    correctIdx:2,
+    hint:'Sarı küçük ile mavi büyük yer değiştiriyor.',
+    rule:'Kural: Sarı+Küçük ile Mavi+Büyük birbirini izliyor — 2 kural aynı anda! 🤯'
+  },
+
+  /* ── LEVEL 3: EMOJI SEQUENCES ── */
+  {
+    level:3, category:'Emoji Dizisi',
+    question:'Hayvanlar sıraya girmiş! Sıradaki kim?',
+    items:[
+      {type:'emoji',emoji:'🐱'},
+      {type:'emoji',emoji:'🐶'},
+      {type:'emoji',emoji:'🐰'},
+      {type:'emoji',emoji:'🐱'},
+      {type:'emoji',emoji:'🐶'},
+    ],
+    answer:{type:'emoji',emoji:'🐰'},
+    choices:[
+      {type:'emoji',emoji:'🐱'},
+      {type:'emoji',emoji:'🐶'},
+      {type:'emoji',emoji:'🦊'},
+      {type:'emoji',emoji:'🐰'},
+    ],
+    correctIdx:3,
+    hint:'Kedi-köpek-tavşan üçlüsü tekrar ediyor.',
+    rule:'Kural: 🐱→🐶→🐰→🐱→🐶→🐰... Üç hayvan dönüp duruyor!'
+  },
+  {
+    level:3, category:'Emoji Dizisi',
+    question:'Mevsimler sıraya girmiş! Sıradaki ne?',
+    items:[
+      {type:'emoji',emoji:'🌸'},
+      {type:'emoji',emoji:'☀️'},
+      {type:'emoji',emoji:'🍂'},
+      {type:'emoji',emoji:'❄️'},
+      {type:'emoji',emoji:'🌸'},
+    ],
+    answer:{type:'emoji',emoji:'☀️'},
+    choices:[
+      {type:'emoji',emoji:'🌸'},
+      {type:'emoji',emoji:'☀️'},
+      {type:'emoji',emoji:'🍂'},
+      {type:'emoji',emoji:'❄️'},
+    ],
+    correctIdx:1,
+    hint:'İlkbahar, yaz, sonbahar, kış... sonra tekrar başlıyor.',
+    rule:'Kural: 4 mevsim sırayla! 🌸İlkbahar→☀️Yaz→🍂Sonbahar→❄️Kış→tekrar!'
+  },
+  {
+    level:3, category:'Emoji Dizisi',
+    question:'Meyve-sebze sırası! Sıradaki ne?',
+    items:[
+      {type:'emoji',emoji:'🍎'},
+      {type:'emoji',emoji:'🥕'},
+      {type:'emoji',emoji:'🍎'},
+      {type:'emoji',emoji:'🥕'},
+      {type:'emoji',emoji:'🍎'},
+    ],
+    answer:{type:'emoji',emoji:'🥕'},
+    choices:[
+      {type:'emoji',emoji:'🍎'},
+      {type:'emoji',emoji:'🍌'},
+      {type:'emoji',emoji:'🥕'},
+      {type:'emoji',emoji:'🍊'},
+    ],
+    correctIdx:2,
+    hint:'Elma ve havuç birbiriyle yer değiştiriyor.',
+    rule:'Kural: 🍎Elma → 🥕Havuç → 🍎Elma → 🥕Havuç... hep ikisi!'
+  },
+
+  /* ── LEVEL 3: NUMBER + PATTERN ── */
+  {
+    level:3, category:'Sayı Dizisi',
+    question:'3\'er 3\'er atlıyor! Sıradaki ne?',
+    items:[
+      {type:'number',val:3,color:C.mint},
+      {type:'number',val:6,color:C.mint},
+      {type:'number',val:9,color:C.mint},
+      {type:'number',val:12,color:C.mint},
+    ],
+    answer:{type:'number',val:15,color:C.mint},
+    choices:[
+      {type:'number',val:13,color:C.mint},
+      {type:'number',val:14,color:C.mint},
+      {type:'number',val:15,color:C.mint},
+      {type:'number',val:16,color:C.mint},
+    ],
+    correctIdx:2,
+    hint:'3, 6, 9, 12... her seferinde kaç artıyor?',
+    rule:'Kural: 3\'er 3\'er! 3→6→9→12→15 — 3\'ün katları! 🔢'
+  },
+  {
+    level:3, category:'Sayı Dizisi',
+    question:'Sayılar ikiye katlanıyor! Sıradaki ne?',
+    items:[
+      {type:'number',val:1,color:C.purple},
+      {type:'number',val:2,color:C.purple},
+      {type:'number',val:4,color:C.purple},
+      {type:'number',val:8,color:C.purple},
+    ],
+    answer:{type:'number',val:16,color:C.purple},
+    choices:[
+      {type:'number',val:12,color:C.purple},
+      {type:'number',val:16,color:C.purple},
+      {type:'number',val:10,color:C.purple},
+      {type:'number',val:14,color:C.purple},
+    ],
+    correctIdx:1,
+    hint:'Her sayı bir öncekinin 2 katı!',
+    rule:'Kural: Her seferinde 2 ile çarp! 1→2→4→8→16 Çılgın artış! 🚀'
+  },
+
+  /* ── LEVEL 4: COMPLEX MULTI-RULE ── */
+  {
+    level:4, category:'Çift Kural',
+    question:'Hem şekil hem sayı değişiyor! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.sky,size:30},
+      {type:'shape',shape:'square',color:C.sky,size:40},
+      {type:'shape',shape:'triangle',color:C.sky,size:50},
+      {type:'shape',shape:'circle',color:C.sky,size:60},
+    ],
+    answer:{type:'shape',shape:'square',color:C.sky,size:70},
+    choices:[
+      {type:'shape',shape:'triangle',color:C.sky,size:70},
+      {type:'shape',shape:'square',color:C.sky,size:60},
+      {type:'shape',shape:'square',color:C.sky,size:70},
+      {type:'shape',shape:'circle',color:C.sky,size:70},
+    ],
+    correctIdx:2,
+    hint:'Şekil daire-kare-üçgen döngüsünde, boyut her adımda büyüyor.',
+    rule:'Kural: Şekil 3\'lü döngü + her adımda büyüyor! İki kural aynı anda çalışıyor 💪'
+  },
+  {
+    level:4, category:'Çift Kural',
+    question:'Renk ve sayı birlikte değişiyor! Sıradaki ne?',
+    items:[
+      {type:'number',val:1,color:C.red},
+      {type:'number',val:2,color:C.orange},
+      {type:'number',val:3,color:C.yellow},
+      {type:'number',val:4,color:C.green},
+    ],
+    answer:{type:'number',val:5,color:C.blue},
+    choices:[
+      {type:'number',val:5,color:C.green},
+      {type:'number',val:5,color:C.blue},
+      {type:'number',val:4,color:C.blue},
+      {type:'number',val:6,color:C.blue},
+    ],
+    correctIdx:1,
+    hint:'Sayılar 1\'er artıyor, renkler gökkuşağı sırasında.',
+    rule:'Kural: Sayı +1 VE renk gökkuşağı sırası! İki kural birden! 🌈🔢'
+  },
+  {
+    level:4, category:'Çift Kural',
+    question:'Büyük-küçük ve şekil birlikte değişiyor! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'circle',color:C.pink,size:54},
+      {type:'shape',shape:'star',color:C.gold,size:28},
+      {type:'shape',shape:'circle',color:C.pink,size:54},
+      {type:'shape',shape:'star',color:C.gold,size:28},
+    ],
+    answer:{type:'shape',shape:'circle',color:C.pink,size:54},
+    choices:[
+      {type:'shape',shape:'star',color:C.gold,size:54},
+      {type:'shape',shape:'circle',color:C.gold,size:54},
+      {type:'shape',shape:'circle',color:C.pink,size:28},
+      {type:'shape',shape:'circle',color:C.pink,size:54},
+    ],
+    correctIdx:3,
+    hint:'Büyük pembe daire ve küçük sarı yıldız birbiriyle yer değiştiriyor.',
+    rule:'Kural: Hem şekil hem boyut hem renk ikişerli değişiyor — 3 kural! 🤯'
+  },
+
+  /* ── LEVEL 4: SPATIAL PATTERNS ── */
+  {
+    level:4, category:'Uzamsal Dizi',
+    question:'Dönen kalıp! Sıradaki ne?',
+    items:[
+      {type:'emoji',emoji:'⬆️'},
+      {type:'emoji',emoji:'➡️'},
+      {type:'emoji',emoji:'⬇️'},
+      {type:'emoji',emoji:'⬅️'},
+    ],
+    answer:{type:'emoji',emoji:'⬆️'},
+    choices:[
+      {type:'emoji',emoji:'⬇️'},
+      {type:'emoji',emoji:'⬆️'},
+      {type:'emoji',emoji:'➡️'},
+      {type:'emoji',emoji:'⬅️'},
+    ],
+    correctIdx:1,
+    hint:'Yukarı-sağ-aşağı-sol... saat yönünde dönüyor!',
+    rule:'Kural: Saat yönünde dönüyor! ⬆️→➡️→⬇️→⬅️→⬆️ Başa döndük!'
+  },
+  {
+    level:4, category:'Uzamsal Dizi',
+    question:'Zıt renkler! Sıradaki ne?',
+    items:[
+      {type:'shape',shape:'square',color:C.red},
+      {type:'shape',shape:'square',color:C.mint},
+      {type:'shape',shape:'square',color:C.blue},
+      {type:'shape',shape:'square',color:C.orange},
+      {type:'shape',shape:'square',color:C.purple},
+    ],
+    answer:{type:'shape',shape:'square',color:C.yellow},
+    choices:[
+      {type:'shape',shape:'square',color:C.pink},
+      {type:'shape',shape:'square',color:C.yellow},
+      {type:'shape',shape:'square',color:C.red},
+      {type:'shape',shape:'square',color:C.blue},
+    ],
+    correctIdx:1,
+    hint:'Mavi ile karşısında turuncu var, mor ile karşısında sarı...',
+    rule:'Kural: Her rengin karşı rengi geliyor! Mor\'un karşısı Sarı 🎨'
+  },
+
+  /* ── LEVEL 5: SUPER HARD ── */
+  {
+    level:5, category:'Süper Zor',
+    question:'Fibonacci! Her sayı önceki ikisinin toplamı. Sıradaki ne?',
+    items:[
+      {type:'number',val:1,color:C.lavender},
+      {type:'number',val:1,color:C.lavender},
+      {type:'number',val:2,color:C.lavender},
+      {type:'number',val:3,color:C.lavender},
+      {type:'number',val:5,color:C.lavender},
+    ],
+    answer:{type:'number',val:8,color:C.lavender},
+    choices:[
+      {type:'number',val:6,color:C.lavender},
+      {type:'number',val:7,color:C.lavender},
+      {type:'number',val:8,color:C.lavender},
+      {type:'number',val:9,color:C.lavender},
+    ],
+    correctIdx:2,
+    hint:'5+3=? Her sayı kendinden önceki iki sayının toplamı!',
+    rule:'Kural: Fibonacci! Her sayı = önceki iki sayının toplamı. 1+1=2, 1+2=3, 2+3=5, 3+5=8 🧠'
+  },
+  {
+    level:5, category:'Süper Zor',
+    question:'Hem boyut hem renk hem şekil üçlü döngü! Sıradaki?',
+    items:[
+      {type:'shape',shape:'circle',color:C.red,size:30},
+      {type:'shape',shape:'square',color:C.blue,size:46},
+      {type:'shape',shape:'triangle',color:C.green,size:62},
+      {type:'shape',shape:'circle',color:C.red,size:30},
+    ],
+    answer:{type:'shape',shape:'square',color:C.blue,size:46},
+    choices:[
+      {type:'shape',shape:'circle',color:C.red,size:62},
+      {type:'shape',shape:'triangle',color:C.green,size:46},
+      {type:'shape',shape:'square',color:C.blue,size:46},
+      {type:'shape',shape:'square',color:C.red,size:46},
+    ],
+    correctIdx:2,
+    hint:'Tam olarak 1. ve 2. elemanları tekrar düşün.',
+    rule:'Kural: Şekil+Renk+Boyut hepsi birlikte 3\'lü döngü yapıyor! 3 kural = süper zorluk 🏆'
+  },
+
+];
+
+/* ══════════════════════════════════════════════
+   GAME STATE
+══════════════════════════════════════════════ */
+const PUZZLES_PER_GAME = 10;
+let gamePuzzles = [];
+let currentIdx = 0;
+let score = 0;
+let streak = 0;
+let maxStreak = 0;
+let correctCount = 0;
+let hintUsed = false;
+let answered = false;
+
+function startGame() {
+  document.getElementById('winScreen').classList.remove('show');
+  fireworksRunning = false;
+  particles = [];
+
+  score = 0; streak = 0; maxStreak = 0; correctCount = 0;
+  currentIdx = 0;
+  updateScoreBar();
+
+  // Pick puzzles: 3 level1, 2 level2, 2 level3, 2 level4, 1 level5
+  const byLevel = {};
+  ALL_PUZZLES.forEach(p => { (byLevel[p.level] = byLevel[p.level]||[]).push(p); });
+  function pick(level, n) {
+    const pool = shuffle([...byLevel[level]||[]]);
+    return pool.slice(0, Math.min(n, pool.length));
+  }
+  gamePuzzles = shuffle([
+    ...pick(1,3), ...pick(2,3), ...pick(3,2), ...pick(4,2), ...pick(5,1)
+  ]).slice(0, PUZZLES_PER_GAME);
+
+  renderProgressDots();
+  loadPuzzle();
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function updateScoreBar() {
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('streakVal').textContent = streak;
+  const p = gamePuzzles[currentIdx];
+  const lv = p ? p.level : 1;
+  const labels = {1:'Seviye 1 ⭐',2:'Seviye 2 ⭐⭐',3:'Seviye 3 ⭐⭐⭐',4:'Seviye 4 🔥',5:'Seviye 5 🧠'};
+  document.getElementById('levelBadge').textContent = labels[lv] || 'Seviye 1';
+}
+
+function renderProgressDots() {
+  const el = document.getElementById('progressDots');
+  el.innerHTML = '';
+  gamePuzzles.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===currentIdx?' current':'') + (i<currentIdx?' done':'');
+    el.appendChild(d);
+  });
+}
+
+function loadPuzzle() {
+  hintUsed = false; answered = false;
+  document.getElementById('hintText').textContent = '';
+  document.getElementById('hintChip').style.display = 'inline-flex';
+  renderProgressDots();
+  updateScoreBar();
+
+  const p = gamePuzzles[currentIdx];
+  document.getElementById('questionText').textContent = p.question;
+
+  // Sequence
+  const seq = document.getElementById('sequence');
+  seq.innerHTML = '';
+  p.items.forEach((item, i) => {
+    if (i > 0) {
+      const arrow = document.createElement('div');
+      arrow.className = 'seq-arrow'; arrow.textContent = '→';
+      seq.appendChild(arrow);
+    }
+    const el = itemToEl(item);
+    el.style.animationDelay = (i*0.07)+'s';
+    seq.appendChild(el);
+  });
+  // question mark slot
+  const arrow2 = document.createElement('div');
+  arrow2.className = 'seq-arrow'; arrow2.textContent = '→';
+  seq.appendChild(arrow2);
+  const slot = document.createElement('div');
+  slot.className = 'seq-item question-slot';
+  slot.style.width = slot.style.height = '70px';
+  slot.textContent = '?';
+  seq.appendChild(slot);
+
+  // Choices — shuffle but track correct
+  const choices = p.choices.map((c,i)=>({item:c, isCorrect:i===p.correctIdx}));
+  const shuffled = shuffle(choices);
+
+  const choicesEl = document.getElementById('choices');
+  const cols = shuffled.length <= 2 ? 'grid-2' : shuffled.length === 3 ? 'grid-3' : 'grid-4';
+  choicesEl.className = 'choices ' + cols;
+  choicesEl.innerHTML = '';
+
+  shuffled.forEach(({item, isCorrect}) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = renderItem(item, item.size||48);
+    btn.addEventListener('click', () => handleChoice(btn, isCorrect, p));
+    choicesEl.appendChild(btn);
+  });
+}
+
+function handleChoice(btn, isCorrect, p) {
+  if (answered) return;
+  answered = true;
+
+  // unlock audio
+  try { if (!audioCtx) audioCtx = new(window.AudioContext||window.webkitAudioContext)(); audioCtx.resume(); } catch(e){}
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    streak++;
+    if (streak > maxStreak) maxStreak = streak;
+    correctCount++;
+    const pts = hintUsed ? 5 : (gamePuzzles[currentIdx].level * 10);
+    score += pts + (streak > 2 ? 5 : 0);
+    playCorrect();
+    showFeedback(true, p, pts);
+    // fill in the ? slot
+    fillSlot(p.answer);
+  } else {
+    btn.classList.add('wrong');
+    streak = 0;
+    playWrong();
+    showFeedback(false, p, 0);
+  }
+}
+
+function fillSlot(answer) {
+  const slots = document.querySelectorAll('.question-slot');
+  if (slots.length) {
+    const sz = answer.size || 54;
+    slots[0].classList.remove('question-slot');
+    slots[0].style.width = (sz+16)+'px';
+    slots[0].style.height = (sz+16)+'px';
+    slots[0].textContent = '';
+    slots[0].innerHTML = renderItem(answer, sz);
+    slots[0].style.border = '2.5px solid '+C.mint;
+    slots[0].style.background = 'rgba(6,214,160,.1)';
+    slots[0].style.animation = 'itemReveal .4s cubic-bezier(.3,1.5,.5,1)';
+  }
+}
+
+function showFeedback(correct, p, pts) {
+  const fb = document.getElementById('feedback');
+  document.getElementById('fbEmoji').textContent = correct
+    ? ['⭐','🌟','🎉','🔥','💫','🏆'][Math.min(streak-1,5)] || '⭐'
+    : ['😢','🙈','💪'][Math.floor(Math.random()*3)];
+  document.getElementById('fbTitle').textContent = correct
+    ? ['Harika!','Süpersin!','Bravo!','Mükemmel!','Aferin Ada!'][Math.floor(Math.random()*5)]
+    : ['Neredeyse!','Bir daha dene!','Çok yakındın!'][Math.floor(Math.random()*3)];
+  document.getElementById('fbTitle').className = 'fb-title ' + (correct?'good':'bad');
+  document.getElementById('fbSub').textContent = correct
+    ? (pts > 10 ? `+${pts} puan kazandın! 🔥 ${streak} doğru seri!` : `+${pts} puan kazandın!`)
+    : 'Sorun değil, kuralı öğrendik!';
+  document.getElementById('fbRule').textContent = p.rule;
+
+  const nextBtn = document.getElementById('nextBtn');
+  if (currentIdx >= gamePuzzles.length - 1) {
+    nextBtn.textContent = '🏆 Sonuçları Gör!';
+  } else {
+    nextBtn.textContent = 'Sıradaki Bulmaca →';
+  }
+
+  fb.classList.add('show');
+  updateScoreBar();
+}
+
+function nextPuzzle() {
+  document.getElementById('feedback').classList.remove('show');
+  currentIdx++;
+  if (currentIdx >= gamePuzzles.length) {
+    showWin();
+  } else {
+    loadPuzzle();
+  }
+}
+
+function showHint() {
+  hintUsed = true;
+  const p = gamePuzzles[currentIdx];
+  document.getElementById('hintText').textContent = '💡 ' + p.hint;
+  document.getElementById('hintChip').style.display = 'none';
+}
+
+function showWin() {
+  document.getElementById('finalScore').textContent = score;
+  document.getElementById('finalCorrect').textContent = correctCount + '/' + gamePuzzles.length;
+  document.getElementById('finalStreak').textContent = maxStreak;
+  document.getElementById('winScreen').classList.add('show');
+  fireworksRunning = true;
+  startFireworks();
+  playWinJingle();
+}
+
+/* ══════ AUDIO ══════ */
+let audioCtx = null;
+function getAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function tone(f,type,dur,vol=0.2,start=0){
+  const c=getAC(),o=c.createOscillator(),g=c.createGain();
+  o.connect(g);g.connect(c.destination);o.type=type;o.frequency.value=f;
+  g.gain.setValueAtTime(vol,c.currentTime+start);
+  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+start+dur);
+  o.start(c.currentTime+start);o.stop(c.currentTime+start+dur+.05);
+}
+function playCorrect(){
+  tone(523,'sine',.12,.2,0);tone(659,'sine',.12,.2,.1);tone(784,'sine',.25,.22,.2);
+}
+function playWrong(){
+  tone(300,'sawtooth',.12,.15,0);tone(220,'sawtooth',.2,.15,.1);
+}
+function playWinJingle(){
+  [[523,0],[659,.15],[784,.3],[880,.45],[1047,.65],[784,.85],[1047,1.05],[1175,1.25],[1397,1.5]]
+    .forEach(([f,s])=>tone(f,'sine',.3,.2,s));
+}
+
+/* ══════ FIREWORKS ══════ */
+const fwCanvas = document.getElementById('fw');
+const fwCtx = fwCanvas.getContext('2d');
+let particles = [], fireworksRunning = false, fwTimer;
+function resizeFW(){fwCanvas.width=window.innerWidth;fwCanvas.height=window.innerHeight;}
+resizeFW();window.addEventListener('resize',resizeFW);
+function spawnFW(){
+  const x=Math.random()*fwCanvas.width, y=20+Math.random()*fwCanvas.height*.5;
+  const cols=['#ffd166','#ff6b9d','#06d6a0','#9b5de5','#ff6b6b','#74c0fc'];
+  const col=cols[Math.floor(Math.random()*cols.length)];
+  for(let i=0;i<55;i++){
+    const a=Math.PI*2/55*i+Math.random()*.2, s=2+Math.random()*5;
+    particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,alpha:1,color:col,size:1.5+Math.random()*2.5,decay:.013+Math.random()*.01,gravity:.065});
+  }
+}
+function animateFW(){
+  if(!fireworksRunning){fwCtx.clearRect(0,0,fwCanvas.width,fwCanvas.height);return;}
+  fwCtx.fillStyle='rgba(0,0,0,0.1)';fwCtx.fillRect(0,0,fwCanvas.width,fwCanvas.height);
+  particles=particles.filter(p=>p.alpha>.01);
+  particles.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=.985;p.alpha-=p.decay;
+    fwCtx.save();fwCtx.globalAlpha=p.alpha;fwCtx.fillStyle=p.color;
+    fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);fwCtx.fill();fwCtx.restore();
+  });
+  requestAnimationFrame(animateFW);
+}
+function startFireworks(){
+  particles=[];animateFW();
+  fwTimer=setInterval(()=>{
+    if(!fireworksRunning){clearInterval(fwTimer);return;}
+    spawnFW();if(Math.random()<.4)spawnFW();
+  },400);
+}
+
+/* ══════ STARS BG ══════ */
+function buildStars(){
+  const c=document.getElementById('starsBg');
+  for(let i=0;i<55;i++){
+    const s=document.createElement('div');
+    s.className='star-dot';
+    const sz=1+Math.random()*2.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*6}s`;
+    c.appendChild(s);
+  }
+}
+buildStars();
+
+startGame();
+</script>
+</body>
+</html>
