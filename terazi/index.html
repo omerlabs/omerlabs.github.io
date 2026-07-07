@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada'nın Terazi Oyunu ⚖️</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg1: #fef3e2; --bg2: #fde8c8;
+  --wood: #c8860a; --wood2: #a06800;
+  --plate: #e8d5a0; --plate2: #d4b870;
+  --gold: #f5a623; --green: #2db87a;
+  --red: #e84040; --blue: #3b82f6;
+  --purple: #9b5de5; --pink: #f472b6;
+  --teal: #14b8a6; --orange: #f97316;
+  --text: #3d2200; --muted: #9a7040;
+  --card: #fff8ee; --border: #e8d0a0;
+}
+* { margin:0; padding:0; box-sizing:border-box; user-select:none; }
+
+body {
+  font-family:'Nunito',sans-serif;
+  background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+  min-height:100vh;
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px 12px 60px;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* BG pattern */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image: radial-gradient(circle at 15% 20%, rgba(245,166,35,.12) 0%, transparent 40%),
+                    radial-gradient(circle at 85% 80%, rgba(45,184,122,.1) 0%, transparent 40%);
+}
+
+/* HEADER */
+.title {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(2rem,6vw,3rem);
+  color:var(--wood); text-align:center;
+  text-shadow:3px 3px 0 rgba(0,0,0,.08);
+  position:relative; z-index:1; margin-bottom:3px;
+}
+.subtitle { font-size:.88rem; color:var(--muted); font-weight:700; text-align:center; margin-bottom:14px; position:relative; z-index:1; }
+
+/* SCORE BAR */
+.score-bar {
+  position:relative; z-index:1;
+  display:flex; gap:12px; align-items:center;
+  background:var(--card); border-radius:22px;
+  padding:9px 20px; margin-bottom:12px;
+  border:2px solid var(--border);
+  box-shadow:0 4px 16px rgba(200,134,10,.12);
+}
+.sc-v { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--gold); line-height:1; text-align:center; }
+.sc-l { font-size:.64rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; text-align:center; }
+.sc-d { width:2px; height:32px; background:var(--border); border-radius:2px; }
+.lv-badge { font-size:.8rem; font-weight:900; padding:5px 14px; border-radius:14px; color:white; background:linear-gradient(135deg,#f97316,#f5a623); }
+
+/* PROGRESS */
+.prog { position:relative; z-index:1; display:flex; gap:7px; margin-bottom:12px; }
+.pdot { width:11px; height:11px; border-radius:50%; background:rgba(0,0,0,.1); transition:all .3s; }
+.pdot.done    { background:var(--green); }
+.pdot.current { background:var(--gold); transform:scale(1.35); box-shadow:0 0 8px var(--gold); }
+
+/* PUZZLE CARD */
+.puzzle-card {
+  position:relative; z-index:1;
+  background:var(--card);
+  border-radius:28px; padding:22px 18px 20px;
+  max-width:580px; width:100%;
+  border:2px solid var(--border);
+  box-shadow:0 6px 30px rgba(200,134,10,.15);
+  margin-bottom:14px;
+}
+
+.qlabel { font-size:.72rem; font-weight:900; text-transform:uppercase; letter-spacing:1.5px; color:var(--gold); margin-bottom:6px; }
+.qtext  { font-size:clamp(.92rem,2.8vw,1.06rem); font-weight:800; color:var(--text); margin-bottom:18px; line-height:1.45; }
+
+/* ══ SCALE SVG AREA ══ */
+.scale-wrap {
+  display:flex; justify-content:center; align-items:flex-end;
+  margin-bottom:18px; position:relative;
+  height:240px;
+}
+
+/* The scale is drawn on a canvas */
+#scaleCanvas {
+  border-radius:16px;
+  max-width:100%;
+}
+
+/* ══ WEIGHT CHOICES ══ */
+.weights-label { font-size:.75rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; text-align:center; }
+
+.choices-grid {
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+  margin-bottom:14px;
+}
+
+.weight-choice {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  cursor:pointer; transition:transform .15s;
+  padding:8px 10px; border-radius:16px;
+  border:2.5px solid transparent;
+  background:rgba(255,255,255,.7);
+  min-width:64px;
+}
+.weight-choice:hover { transform:scale(1.1); border-color:var(--gold); box-shadow:0 4px 14px rgba(245,166,35,.25); }
+.weight-choice.selected { border-color:var(--blue); background:rgba(59,130,246,.08); box-shadow:0 0 0 3px rgba(59,130,246,.2); transform:scale(1.08); }
+.weight-choice.correct  { border-color:var(--green)!important; background:rgba(45,184,122,.12)!important; animation:cpop .4s ease; }
+.weight-choice.wrong    { border-color:var(--red)!important; background:rgba(232,64,64,.08)!important; animation:cshake .4s ease; }
+@keyframes cpop   { 0%{transform:scale(1)} 45%{transform:scale(1.12)} 100%{transform:scale(1)} }
+@keyframes cshake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+.wc-label { font-size:.78rem; font-weight:900; color:var(--text); }
+
+/* HINT */
+.hint-row { display:flex; align-items:center; gap:10px; }
+.hint-btn {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(155,93,229,.1); border:1.5px solid rgba(155,93,229,.25);
+  border-radius:18px; padding:5px 14px;
+  font-size:.8rem; font-weight:800; color:var(--purple);
+  cursor:pointer; font-family:'Nunito',sans-serif; transition:background .2s;
+}
+.hint-btn:hover { background:rgba(155,93,229,.2); }
+.hint-text { font-size:.82rem; font-weight:700; color:var(--gold); line-height:1.4; }
+
+/* FEEDBACK */
+.fb-overlay {
+  position:fixed; inset:0; z-index:100;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.4); backdrop-filter:blur(8px);
+}
+.fb-overlay.show { display:flex; animation:fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.fb-box {
+  background:var(--card); border-radius:28px; padding:32px 36px;
+  text-align:center; max-width:360px; width:90%;
+  border:2px solid var(--border);
+  box-shadow:0 16px 50px rgba(200,134,10,.2);
+  animation:popIn .4s cubic-bezier(.3,1.5,.5,1);
+}
+@keyframes popIn { from{transform:scale(.65)} to{transform:scale(1)} }
+.fb-emoji { font-size:3.8rem; display:block; margin-bottom:10px; }
+.fb-title { font-family:'Fredoka One',cursive; font-size:2rem; margin-bottom:5px; }
+.fb-title.ok  { color:var(--green); }
+.fb-title.bad { color:var(--red); }
+.fb-sub   { font-size:.88rem; font-weight:700; color:var(--muted); margin-bottom:12px; line-height:1.4; }
+.fb-explain {
+  background:rgba(45,184,122,.08); border-radius:14px; padding:11px 14px;
+  font-size:.84rem; font-weight:700; color:var(--text); line-height:1.5;
+  margin-bottom:16px; text-align:left;
+  border-left:4px solid var(--green);
+}
+.next-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem;
+  padding:12px 30px; border:none; border-radius:18px; cursor:pointer;
+  background:linear-gradient(135deg,#f97316,#f5a623); color:white;
+  box-shadow:0 4px 16px rgba(249,115,22,.35); transition:transform .15s;
+}
+.next-btn:hover { transform:scale(1.07); }
+
+/* WIN */
+.win-screen {
+  position:fixed; inset:0; z-index:200;
+  display:none; align-items:center; justify-content:center;
+  background:rgba(254,243,226,.9); backdrop-filter:blur(14px);
+}
+.win-screen.show { display:flex; animation:fadeIn .5s ease; }
+.win-box {
+  background:var(--card); border-radius:32px; padding:40px 48px;
+  text-align:center; max-width:400px; width:90%;
+  border:3px solid var(--gold);
+  box-shadow:0 0 0 8px rgba(245,166,35,.1), 0 20px 60px rgba(200,134,10,.2);
+  animation:popIn .5s cubic-bezier(.3,1.5,.5,1);
+}
+.win-ada {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(3rem,11vw,5.5rem);
+  background:linear-gradient(135deg,#f97316,#f5a623,#2db87a,#3b82f6);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:adaPulse 1.4s ease infinite alternate; line-height:1; margin-bottom:6px;
+}
+@keyframes adaPulse { from{letter-spacing:0} to{letter-spacing:8px} }
+.win-sub  { font-size:1rem; font-weight:800; color:var(--muted); margin-bottom:20px; }
+.win-stats { display:flex; gap:20px; justify-content:center; margin-bottom:22px; }
+.wstat   { display:flex; flex-direction:column; align-items:center; }
+.wstat-v { font-family:'Fredoka One',cursive; font-size:2.2rem; color:var(--gold); line-height:1; }
+.wstat-l { font-size:.68rem; font-weight:900; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+.again-btn {
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:1.05rem;
+  padding:13px 34px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#f97316,#f5a623); color:white;
+  box-shadow:0 4px 18px rgba(249,115,22,.4); transition:transform .15s;
+}
+.again-btn:hover { transform:scale(1.07); }
+#fw { position:fixed; inset:0; pointer-events:none; z-index:199; }
+
+@media(max-width:420px){
+  .puzzle-card{padding:16px 12px 16px;}
+  .weight-choice{min-width:56px; padding:6px 8px;}
+  .scale-wrap{height:200px;}
+}
+</style>
+</head>
+<body>
+
+<div class="title">⚖️ Terazi Dengesi</div>
+<div class="subtitle">Teraziyi dengele — doğru ağırlığı bul!</div>
+
+<div class="score-bar">
+  <div><div class="sc-v" id="scV">0</div><div class="sc-l">Puan</div></div>
+  <div class="sc-d"></div>
+  <div><div class="sc-v" id="stV">0</div><div class="sc-l">Seri 🔥</div></div>
+  <div class="sc-d"></div>
+  <div class="lv-badge" id="lvBadge">Bölüm 1</div>
+</div>
+
+<div class="prog" id="prog"></div>
+
+<div class="puzzle-card">
+  <div class="qlabel" id="qlabel">⚖️ Denge Sorusu</div>
+  <div class="qtext"  id="qtext">Yükleniyor...</div>
+
+  <div class="scale-wrap">
+    <canvas id="scaleCanvas" width="500" height="230"></canvas>
+  </div>
+
+  <div class="weights-label">👇 Hangi ağırlık sağ kefede eksik?</div>
+  <div class="choices-grid" id="choicesGrid"></div>
+
+  <div class="hint-row">
+    <button class="hint-btn" id="hintBtn" onclick="showHint()">💡 İpucu</button>
+    <div class="hint-text" id="hintText"></div>
+  </div>
+</div>
+
+<!-- Feedback -->
+<div class="fb-overlay" id="fbOverlay">
+  <div class="fb-box">
+    <span class="fb-emoji" id="fbEmoji">⭐</span>
+    <div class="fb-title" id="fbTitle">Harika!</div>
+    <div class="fb-sub"   id="fbSub"></div>
+    <div class="fb-explain" id="fbExplain"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextPuzzle()">Sıradaki →</button>
+  </div>
+</div>
+
+<!-- Win -->
+<div class="win-screen" id="winScreen">
+  <canvas id="fw"></canvas>
+  <div class="win-box">
+    <div class="win-ada">Tebrikler Ada!</div>
+    <div class="win-sub">Tüm terazileri dengeledin! ⚖️🎉</div>
+    <div class="win-stats">
+      <div class="wstat"><div class="wstat-v" id="wSc">0</div><div class="wstat-l">Puan</div></div>
+      <div class="wstat"><div class="wstat-v" id="wCo">0</div><div class="wstat-l">Doğru</div></div>
+      <div class="wstat"><div class="wstat-v" id="wSt">0</div><div class="wstat-l">En İyi Seri</div></div>
+    </div>
+    <button class="again-btn" onclick="startGame()">Tekrar Oyna 🔄</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   WEIGHT VISUALS — emoji + color + numeric value
+══════════════════════════════════════════════ */
+const W = {
+  1:  { label:'1 kg',  emoji:'🍎', color:'#ef4444', r:18 },
+  2:  { label:'2 kg',  emoji:'🍊', color:'#f97316', r:22 },
+  3:  { label:'3 kg',  emoji:'🍋', color:'#eab308', r:26 },
+  4:  { label:'4 kg',  emoji:'🍇', color:'#8b5cf6', r:28 },
+  5:  { label:'5 kg',  emoji:'🍉', color:'#22c55e', r:30 },
+  6:  { label:'6 kg',  emoji:'🫐', color:'#3b82f6', r:32 },
+  7:  { label:'7 kg',  emoji:'🍑', color:'#fb923c', r:34 },
+  8:  { label:'8 kg',  emoji:'🍓', color:'#f43f5e', r:36 },
+  9:  { label:'9 kg',  emoji:'🥝', color:'#84cc16', r:38 },
+  10: { label:'10 kg', emoji:'🎃', color:'#f59e0b', r:40 },
+};
+
+/* ══════════════════════════════════════════════
+   PUZZLE BANK — 40 puzzles, 4 difficulty levels
+   left: array of weight values on left pan
+   right: array on right pan (missing one weight)
+   missing: the weight value to add to right
+   choices: array of weight values to show
+   correctIdx: index in choices that equals missing
+══════════════════════════════════════════════ */
+const PUZZLES = [
+  // ── LEVEL 1: single weight each side ──
+  { level:1, q:'Sol kefede 3 kg var. Sağ kefe boş. Dengelemek için kaç kg gerekli?',
+    left:[3], right:[], missing:3, choices:[1,2,3,4], correctIdx:2,
+    hint:'İki kefe eşit olmalı — solda 3 kg varsa sağda da ... kg olmalı!',
+    explain:'Denge için iki kefe eşit ağırlıkta olmalı. 3 = 3 ✅' },
+
+  { level:1, q:'Sol kefede 5 kg var. Sağda hiç ağırlık yok. Hangisini koymalısın?',
+    left:[5], right:[], missing:5, choices:[3,4,5,6], correctIdx:2,
+    hint:'Solda 5 var — sağa da 5 koymalısın.',
+    explain:'5 = 5, terazi dengede! ⚖️' },
+
+  { level:1, q:'Sol kefede 2 kg var. Sağda da 2 kg var. Sağa 1 kg daha eklendi — şimdi dengelemek için sol kefeden ne çıkarmalısın?',
+    left:[2], right:[2,1], missing:3, choices:[1,2,3,4], correctIdx:2,
+    hint:'Sağda 2+1=3 kg var. Solda kaç olmalı?',
+    explain:'Sağ: 2+1=3 kg. Sol de 3 kg olmalı. 1 kg eklersek 2+1=3 ✅' },
+
+  { level:1, q:'Sol kefede 4 kg var. Sağ kefe boş. Dengeleme için kaç kg koymalısın?',
+    left:[4], right:[], missing:4, choices:[2,3,4,5], correctIdx:2,
+    hint:'Solda 4 — sağa da 4 lazım.',
+    explain:'4 = 4, denge kuruldu! ⚖️' },
+
+  { level:1, q:'Sol kefede 1 kg var. Sağda 1 kg var. Ama birisi sol kefeden 1 kg çıkardı! Sağdan kaç kg çıkarmalısın?',
+    left:[], right:[1], missing:0, choices:[1,2,3,4], correctIdx:0,
+    hint:'Sol boş oldu — sağdan da çıkarman gerekiyor.',
+    explain:'Soldan 1 çıkınca sol = 0. Sağdan da 1 çıkarınca 0 = 0, denge! ✅',
+    specialZero:true },
+
+  // ── LEVEL 1-2: simple addition ──
+  { level:1, q:'Sol kefede 2 kg ve 1 kg var. Sağ kefe boş. Dengelemek için kaç kg gerekli?',
+    left:[2,1], right:[], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'2 + 1 = ? Sağa o kadar koymalısın.',
+    explain:'Sol: 2+1=3 kg. Sağa 3 kg koyunca denge kurulur! ⚖️' },
+
+  { level:1, q:'Sol kefede 3 kg ve 2 kg var. Sağ kefede 4 kg var. Kaç kg daha lazım?',
+    left:[3,2], right:[4], missing:1, choices:[1,2,3,4], correctIdx:0,
+    hint:'Sol: 3+2=5. Sağda 4 var. 5-4=?',
+    explain:'Sol: 3+2=5. Sağ: 4+?=5 olmalı. 5-4=1 kg eksik! ✅' },
+
+  { level:2, q:'Sol kefede 4 kg ve 2 kg var. Sağda 3 kg var. Sağa kaç kg daha koymalısın?',
+    left:[4,2], right:[3], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 4+2=6. Sağ: 3+?=6. 6-3=?',
+    explain:'Sol: 4+2=6 kg. Sağ: 3+3=6 kg. 3 kg koyunca denge! ✅' },
+
+  { level:2, q:'Sol kefede 5 kg ve 3 kg var. Sağda 6 kg var. Kaç kg eksik?',
+    left:[5,3], right:[6], missing:2, choices:[1,2,3,4], correctIdx:1,
+    hint:'Sol: 5+3=8. Sağ: 6+?=8.',
+    explain:'Sol: 5+3=8 kg. Sağ: 6+2=8 kg. 2 kg koyunca denge! ✅' },
+
+  { level:2, q:'Sol kefede 6 kg var. Sağda 2 kg ve 3 kg var. Kaç kg daha lazım?',
+    left:[6], right:[2,3], missing:1, choices:[1,2,3,4], correctIdx:0,
+    hint:'Sol: 6. Sağ: 2+3=5. 6-5=?',
+    explain:'Sağ: 2+3=5, ama 6 lazım. 6-5=1 kg daha! ✅' },
+
+  // ── LEVEL 2: two weights each side ──
+  { level:2, q:'Sol kefede 3 kg ve 4 kg var. Sağda 5 kg ve kaç kg daha var?',
+    left:[3,4], right:[5], missing:2, choices:[1,2,3,4], correctIdx:1,
+    hint:'Sol: 3+4=7. Sağ: 5+?=7.',
+    explain:'Sol: 3+4=7. 7-5=2. Sağa 2 kg koyunca denge! ✅' },
+
+  { level:2, q:'Sol kefede 2 kg, 3 kg ve 1 kg var. Sağda 4 kg var. Kaç kg eksik?',
+    left:[2,3,1], right:[4], missing:2, choices:[1,2,3,4], correctIdx:1,
+    hint:'Sol: 2+3+1=6. Sağ: 4+?=6.',
+    explain:'Sol: 2+3+1=6 kg. 6-4=2. Sağa 2 kg koyunca denge! ✅' },
+
+  { level:2, q:'Her iki kefede de aynı toplam ağırlık olmalı. Sol: 5+2 kg. Sağ: 4+? kg.',
+    left:[5,2], right:[4], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 5+2=7. Sağ: 4+?=7.',
+    explain:'Sol: 5+2=7. Sağ: 4+3=7. Terazi dengede! ✅' },
+
+  { level:2, q:'Sol kefede 8 kg var. Sağda 3 kg ve kaç kg daha gerekli?',
+    left:[8], right:[3], missing:5, choices:[3,4,5,6], correctIdx:2,
+    hint:'8-3=? Sağa o kadar ekle.',
+    explain:'Sol: 8. Sağ: 3+5=8. 5 kg koyunca denge! ✅' },
+
+  { level:2, q:'Sol kefede 1+2+3 kg var. Sağda 4 kg var. Kaç kg eksik?',
+    left:[1,2,3], right:[4], missing:2, choices:[1,2,3,4], correctIdx:1,
+    hint:'Sol: 1+2+3=6. Sağ: 4+?=6.',
+    explain:'Sol: 1+2+3=6 kg. 6-4=2. Sağa 2 kg! ✅' },
+
+  // ── LEVEL 3: larger numbers ──
+  { level:3, q:'Sol kefede 7 kg ve 3 kg var. Sağda 4 kg var. Kaç kg daha lazım?',
+    left:[7,3], right:[4], missing:6, choices:[5,6,7,8], correctIdx:1,
+    hint:'Sol: 7+3=10. Sağ: 4+?=10.',
+    explain:'Sol: 7+3=10. 10-4=6. Sağa 6 kg! ✅' },
+
+  { level:3, q:'Sol kefede 9 kg var. Sağda 4 kg ve 4 kg var. Kaç kg daha ekle?',
+    left:[9], right:[4,4], missing:1, choices:[1,2,3,4], correctIdx:0,
+    hint:'Sol: 9. Sağ: 4+4=8. 9-8=?',
+    explain:'Sol: 9. Sağ: 4+4+1=9. 1 kg koyunca denge! ✅' },
+
+  { level:3, q:'Sol: 6+4 kg. Sağ: 3+3+? kg. Eksik ağırlık nedir?',
+    left:[6,4], right:[3,3], missing:4, choices:[3,4,5,6], correctIdx:1,
+    hint:'Sol: 10. Sağ: 3+3=6. 10-6=?',
+    explain:'Sol: 6+4=10. Sağ: 3+3+4=10. 4 kg koyunca denge! ✅' },
+
+  { level:3, q:'Sol kefede 5+5 kg var. Sağda 3+4+? kg. Eksik nedir?',
+    left:[5,5], right:[3,4], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 10. Sağ: 3+4=7. 10-7=?',
+    explain:'Sol: 5+5=10. Sağ: 3+4+3=10. 3 kg lazım! ✅' },
+
+  { level:3, q:'Sol: 8+2 kg. Sağ: 5+? kg. Kaç kg eksik?',
+    left:[8,2], right:[5], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 8+2=10. Sağ: 5+?=10.',
+    explain:'Sol: 10. Sağ: 5+5=10. 5 kg koyunca denge! ✅' },
+
+  { level:3, q:'Sol: 4+3+2 kg. Sağ: 6+? kg.',
+    left:[4,3,2], right:[6], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 4+3+2=9. 9-6=?',
+    explain:'Sol: 4+3+2=9. Sağ: 6+3=9. Denge! ✅' },
+
+  { level:3, q:'Sol: 7+2 kg. Sağ: 4+2+? kg.',
+    left:[7,2], right:[4,2], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 9. Sağ: 4+2=6. 9-6=?',
+    explain:'Sol: 7+2=9. Sağ: 4+2+3=9. 3 kg! ✅' },
+
+  // ── LEVEL 4: tricky / multi-step ──
+  { level:4, q:'Sol kefede 3 adet 3 kg var. Sağda 4 adet 2 kg var. Kaç kg ekle?',
+    left:[3,3,3], right:[2,2,2,2], missing:1, choices:[1,2,3,4], correctIdx:0,
+    hint:'Sol: 3×3=9. Sağ: 4×2=8. 9-8=?',
+    explain:'Sol: 3+3+3=9. Sağ: 2+2+2+2=8+1=9. 1 kg eksikti! ✅' },
+
+  { level:4, q:'Sol: 10 kg. Sağ: 2+3+? kg. Kaç kg lazım?',
+    left:[10], right:[2,3], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 10. Sağ: 2+3=5. 10-5=?',
+    explain:'Sol: 10. Sağ: 2+3+5=10. 5 kg koyunca denge! ✅' },
+
+  { level:4, q:'Sol: 6+6 kg. Sağ: 5+4+? kg.',
+    left:[6,6], right:[5,4], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 12. Sağ: 5+4=9. 12-9=?',
+    explain:'Sol: 6+6=12. Sağ: 5+4+3=12. 3 kg! ✅' },
+
+  { level:4, q:'Sol: 9+1 kg. Sağ: 3+3+? kg. Eksik ağırlık nedir?',
+    left:[9,1], right:[3,3], missing:4, choices:[3,4,5,6], correctIdx:1,
+    hint:'Sol: 10. Sağ: 6+?=10.',
+    explain:'Sol: 9+1=10. Sağ: 3+3+4=10. 4 kg! ✅' },
+
+  { level:4, q:'Sol: 5+4+3 kg. Sağ: 7+? kg.',
+    left:[5,4,3], right:[7], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 5+4+3=12. 12-7=?',
+    explain:'Sol: 5+4+3=12. Sağ: 7+5=12. 5 kg! ✅' },
+
+  { level:4, q:'Sol kefede 2, 4, 6 kg var. Sağda 3, 5 ve kaç kg?',
+    left:[2,4,6], right:[3,5], missing:4, choices:[3,4,5,6], correctIdx:1,
+    hint:'Sol: 2+4+6=12. Sağ: 3+5=8. 12-8=?',
+    explain:'Sol: 2+4+6=12. Sağ: 3+5+4=12. 4 kg! ✅' },
+
+  { level:4, q:'İki kefe eşit ağırlıkta. Sol: 8+? = Sağ: 6+5. Eksik nedir?',
+    left:[8], right:[6,5], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sağ: 6+5=11. Sol: 8+?=11. 11-8=?',
+    explain:'Sağ: 6+5=11. Sol: 8+3=11. 3 kg! ✅' },
+
+  { level:4, q:'Sol: 7+7 kg. Sağ: 6+? kg. Kaç kg koymalısın?',
+    left:[7,7], right:[6], missing:8, choices:[6,7,8,9], correctIdx:2,
+    hint:'Sol: 14. Sağ: 6+?=14. 14-6=?',
+    explain:'Sol: 7+7=14. Sağ: 6+8=14. 8 kg! ✅' },
+
+  { level:4, q:'Sol: 3+3+3+3 kg. Sağ: 6+? kg.',
+    left:[3,3,3,3], right:[6], missing:6, choices:[5,6,7,8], correctIdx:1,
+    hint:'Sol: 4×3=12. 12-6=?',
+    explain:'Sol: 3+3+3+3=12. Sağ: 6+6=12. 6 kg! ✅' },
+
+  { level:4, q:'Sol: 10+5 kg. Sağ: 8+4+? kg.',
+    left:[10,5], right:[8,4], missing:3, choices:[2,3,4,5], correctIdx:1,
+    hint:'Sol: 15. Sağ: 8+4=12. 15-12=?',
+    explain:'Sol: 10+5=15. Sağ: 8+4+3=15. 3 kg! ✅' },
+
+  // ── Bonus visual/intuitive ──
+  { level:2, q:'Sol kefede büyük bir elma (3 kg) ve küçük bir portakal (2 kg) var. Sağda sadece bir limon (? kg) var.',
+    left:[3,2], right:[], missing:5, choices:[3,4,5,6], correctIdx:2,
+    hint:'Sol: 3+2=5. Sağa ne kadar lazım?',
+    explain:'Sol: 3+2=5 kg. Sağa 5 kg koyunca denge kurulur! ✅' },
+
+  { level:3, q:'Fil (8 kg) sol kefede. Sağda tavşan (3 kg) ve kedi (? kg) var.',
+    left:[8], right:[3], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 8. Sağ: 3+?=8. 8-3=?',
+    explain:'Sol: 8. Sağ: 3+5=8. Kedi 5 kg! ✅' },
+
+  { level:3, q:'Karpuz (7 kg) + elma (2 kg) solda. Sağda çilek (4 kg) + ? var.',
+    left:[7,2], right:[4], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 7+2=9. Sağ: 4+?=9.',
+    explain:'Sol: 7+2=9. Sağ: 4+5=9. 5 kg muz gibi bir şey! ✅' },
+
+  { level:4, q:'Üç çikolata (3+3+3 kg) sol kefede. Sağda iki kutu (4+? kg) var.',
+    left:[3,3,3], right:[4], missing:5, choices:[4,5,6,7], correctIdx:1,
+    hint:'Sol: 9. Sağ: 4+?=9. 9-4=?',
+    explain:'Sol: 3+3+3=9. Sağ: 4+5=9. 5 kg! ✅' },
+];
+
+/* ══ CANVAS SCALE RENDERER ══ */
+const canvas = document.getElementById('scaleCanvas');
+const ctx = canvas.getContext('2d');
+let scaleAngle = 0;   // current tilt angle in radians
+let targetAngle = 0;
+let animFrame = null;
+let currentPuzzle = null;
+let pendingAngle = 0;
+
+// Colors for weights (by value)
+const WCOLS = ['','#ef4444','#f97316','#eab308','#8b5cf6','#22c55e','#3b82f6','#fb923c','#f43f5e','#84cc16','#f59e0b'];
+const WEMOJIS = ['','🍎','🍊','🍋','🍇','🍉','🫐','🍑','🍓','🥝','🎃'];
+
+function drawScale(angle, leftWeights, rightWeights, showQuestion, answered, correctAnswer) {
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  const cx = W/2, baseY = H-28;
+  const armLen = 175;
+
+  // Draw base / pedestal
+  // Base
+  ctx.fillStyle = '#c8860a';
+  ctx.beginPath();
+  ctx.moveTo(cx-50, baseY); ctx.lineTo(cx+50, baseY);
+  ctx.lineTo(cx+32, baseY-14); ctx.lineTo(cx-32, baseY-14);
+  ctx.closePath(); ctx.fill();
+
+  // Column
+  const colH = 120;
+  const grad = ctx.createLinearGradient(cx-10,0,cx+10,0);
+  grad.addColorStop(0,'#a06800'); grad.addColorStop(.4,'#f5c542'); grad.addColorStop(1,'#a06800');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.roundRect(cx-9, baseY-14-colH, 18, colH, 4);
+  ctx.fill();
+
+  // Pivot ball
+  const pivotY = baseY-14-colH;
+  ctx.fillStyle = '#f5a623';
+  ctx.beginPath(); ctx.arc(cx, pivotY, 11, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = '#a06800'; ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Arm
+  ctx.save(); ctx.translate(cx, pivotY);
+  ctx.rotate(angle);
+
+  // Arm beam
+  const armGrad = ctx.createLinearGradient(-armLen,0,armLen,0);
+  armGrad.addColorStop(0,'#c8860a'); armGrad.addColorStop(.5,'#f5c542'); armGrad.addColorStop(1,'#c8860a');
+  ctx.strokeStyle = armGrad;
+  ctx.lineWidth = 10; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-armLen, 0); ctx.lineTo(armLen, 0); ctx.stroke();
+
+  // Strings
+  ctx.strokeStyle = '#8b6914'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(-armLen,0); ctx.lineTo(-armLen, 52); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(armLen, 0); ctx.lineTo(armLen, 52); ctx.stroke();
+
+  // Left pan
+  drawPan(ctx, -armLen, 52, leftWeights, false);
+  // Right pan — show ? if not answered
+  drawPan(ctx, armLen, 52, rightWeights, showQuestion && !answered, answered, correctAnswer);
+
+  ctx.restore();
+
+  // Balance indicator glow
+  if (Math.abs(angle) < 0.015) {
+    ctx.save();
+    ctx.globalAlpha = 0.22;
+    ctx.fillStyle = '#2db87a';
+    ctx.beginPath(); ctx.arc(cx, pivotY, 18, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+}
+
+function drawPan(ctx, x, y, weights, showQ, answered, correctAnswer) {
+  // Pan shape
+  const panW = 70, panH = 10;
+  const panGrad = ctx.createLinearGradient(x-panW/2, y, x+panW/2, y+panH);
+  panGrad.addColorStop(0,'#d4b870'); panGrad.addColorStop(.5,'#f5e4a0'); panGrad.addColorStop(1,'#d4b870');
+  ctx.fillStyle = panGrad;
+  ctx.beginPath();
+  ctx.ellipse(x, y+panH/2, panW/2, panH/2, 0, 0, Math.PI*2);
+  ctx.fill();
+  ctx.strokeStyle = '#a06800'; ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Weights stacked on pan
+  let stackY = y - 5;
+  const maxPerRow = 3;
+  let rowItems = [];
+
+  weights.forEach((val, i) => {
+    rowItems.push(val);
+    if (rowItems.length === maxPerRow || i === weights.length-1) {
+      const total = rowItems.length;
+      rowItems.forEach((v, j) => {
+        const r = Math.max(14, Math.min(22, 10 + v*2));
+        const offsetX = (j - (total-1)/2) * (r*2+4);
+        drawWeightCircle(ctx, x + offsetX, stackY - r, r, v);
+      });
+      stackY -= Math.max(14, Math.min(22, 10 + rowItems[0]*2))*2 + 6;
+      rowItems = [];
+    }
+  });
+
+  // Question mark on right pan
+  if (showQ) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(245,166,35,.18)';
+    ctx.beginPath(); ctx.ellipse(x, y-26, 22, 22, 0, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#c8860a';
+    ctx.font = 'bold 26px Fredoka One, cursive';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('?', x, y-26);
+    ctx.restore();
+  }
+}
+
+function drawWeightCircle(ctx, x, y, r, val) {
+  const col = WCOLS[Math.min(val,10)] || '#999';
+  // Shadow
+  ctx.save();
+  ctx.globalAlpha = 0.18;
+  ctx.fillStyle = '#000';
+  ctx.beginPath(); ctx.ellipse(x+3, y+3, r, r*0.9, 0, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+  // Circle
+  const g = ctx.createRadialGradient(x-r*.3, y-r*.3, r*.1, x, y, r);
+  g.addColorStop(0, lighten(col)); g.addColorStop(1, col);
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = darken(col); ctx.lineWidth = 2;
+  ctx.stroke();
+  // Label
+  ctx.fillStyle = 'white';
+  ctx.font = `bold ${Math.max(9, r*.65)}px Nunito, sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 3;
+  ctx.fillText(val+'kg', x, y);
+  ctx.shadowBlur = 0;
+}
+
+function lighten(hex) {
+  const n = parseInt(hex.slice(1),16);
+  const r=Math.min(255,((n>>16)&0xff)+60), g=Math.min(255,((n>>8)&0xff)+60), b=Math.min(255,(n&0xff)+60);
+  return `rgb(${r},${g},${b})`;
+}
+function darken(hex) {
+  const n = parseInt(hex.slice(1),16);
+  const r=Math.max(0,((n>>16)&0xff)-40), g=Math.max(0,((n>>8)&0xff)-40), b=Math.max(0,(n&0xff)-40);
+  return `rgb(${r},${g},${b})`;
+}
+
+/* Animate scale tilt */
+function animateScale() {
+  const p = currentPuzzle;
+  if (!p) return;
+  const diff = targetAngle - scaleAngle;
+  scaleAngle += diff * 0.1;
+  if (Math.abs(diff) < 0.001) scaleAngle = targetAngle;
+
+  const leftSum  = p.left.reduce((a,b)=>a+b,0);
+  const rightSum = p._currentRight ? p._currentRight.reduce((a,b)=>a+b,0) : 0;
+  const totalDiff = leftSum - rightSum;
+  const maxTilt = 0.32;
+  targetAngle = Math.max(-maxTilt, Math.min(maxTilt, totalDiff * 0.025));
+
+  drawScale(scaleAngle, p.left, p._currentRight||[], !p._answered, p._answered, p.missing);
+  animFrame = requestAnimationFrame(animateScale);
+}
+
+/* ══ GAME STATE ══ */
+const GAME_SIZE = 10;
+let gamePuzzles=[], idx=0, score=0, streak=0, maxStreak=0, correctCount=0, hintUsed=false, answered=false;
+
+function shuffle(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){const j=0|Math.random()*(i+1);[b[i],b[j]]=[b[j],b[i]];} return b; }
+
+function startGame() {
+  document.getElementById('winScreen').classList.remove('show');
+  fireworksRunning=false; fwParts=[];
+  score=0; streak=0; maxStreak=0; correctCount=0; idx=0;
+  updateHUD();
+  const byLv={1:[],2:[],3:[],4:[]};
+  PUZZLES.forEach(p=>byLv[p.level]?.push(p));
+  gamePuzzles = shuffle([
+    ...shuffle(byLv[1]).slice(0,3),
+    ...shuffle(byLv[2]).slice(0,3),
+    ...shuffle(byLv[3]).slice(0,2),
+    ...shuffle(byLv[4]).slice(0,3),
+  ]).slice(0,GAME_SIZE);
+  buildProg();
+  loadPuzzle();
+}
+
+function buildProg() {
+  const w = document.getElementById('prog'); w.innerHTML='';
+  gamePuzzles.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='pdot'+(i===idx?' current':'')+(i<idx?' done':'');
+    w.appendChild(d);
+  });
+}
+
+function updateHUD() {
+  document.getElementById('scV').textContent  = score;
+  document.getElementById('stV').textContent  = streak;
+  document.getElementById('lvBadge').textContent = `Bölüm ${idx+1}`;
+}
+
+function loadPuzzle() {
+  hintUsed=false; answered=false;
+  document.getElementById('hintText').textContent='';
+  document.getElementById('hintBtn').style.display='inline-flex';
+  buildProg(); updateHUD();
+
+  const p = gamePuzzles[idx];
+  p._currentRight = [...p.right];
+  p._answered = false;
+  currentPuzzle = p;
+  scaleAngle = 0;
+
+  document.getElementById('qlabel').textContent = `⚖️ Denge Sorusu — Seviye ${p.level}`;
+  document.getElementById('qtext').textContent  = p.q;
+
+  // Build choices
+  const grid = document.getElementById('choicesGrid');
+  grid.innerHTML = '';
+  const shuffledChoices = shuffle(p.choices.map((v,i)=>({v,isCorrect:i===p.correctIdx})));
+
+  shuffledChoices.forEach(({v,isCorrect}) => {
+    if (p.specialZero && v === 0) {
+      // special: removing 1
+    }
+    const btn = document.createElement('div');
+    btn.className = 'weight-choice';
+    btn.innerHTML = `
+      <svg width="54" height="54" viewBox="0 0 54 54">
+        <circle cx="27" cy="27" r="24" fill="${WCOLS[Math.min(v,10)]||'#999'}" stroke="${darken(WCOLS[Math.min(v,10)]||'#999')}" stroke-width="2"/>
+        <text x="27" y="31" text-anchor="middle" font-size="13" font-weight="900" fill="white" font-family="Nunito,sans-serif">${v} kg</text>
+        <text x="27" y="18" text-anchor="middle" font-size="16">${WEMOJIS[Math.min(v,10)]}</text>
+      </svg>
+      <div class="wc-label">${v} kg</div>`;
+    btn.addEventListener('click', () => handleChoice(btn, isCorrect, v, p));
+    grid.appendChild(btn);
+  });
+
+  // start animation
+  if (animFrame) cancelAnimationFrame(animFrame);
+  animateScale();
+}
+
+function handleChoice(btn, isCorrect, val, p) {
+  if (answered) return;
+  answered = true;
+  p._answered = true;
+  try{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();audioCtx.resume();}catch(e){}
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    // Add weight to right pan and animate balance
+    p._currentRight = [...p.right, val];
+    streak++; if(streak>maxStreak) maxStreak=streak; correctCount++;
+    const pts = (hintUsed?5:p.level*10)+(streak>2?5:0);
+    score+=pts;
+    playCorrect();
+    // let scale animate to balance then show feedback
+    setTimeout(()=>showFB(true,p,pts), 900);
+  } else {
+    btn.classList.add('wrong');
+    // tilt dramatically
+    p._currentRight = [...p.right, val];
+    streak=0;
+    playWrong();
+    setTimeout(()=>{
+      p._currentRight = [...p.right]; // reset
+      p._answered = false;
+      showFB(false,p,0);
+    }, 800);
+  }
+  updateHUD();
+}
+
+function showFB(ok,p,pts) {
+  const okEmojis=['⚖️','🌟','⭐','🔥','💫','🏆'];
+  const badEmojis=['😅','💪','🤔','🙈'];
+  document.getElementById('fbEmoji').textContent = ok ? okEmojis[Math.min(streak-1,5)]||'⭐' : badEmojis[0|Math.random()*4];
+  document.getElementById('fbTitle').textContent = ok
+    ? ['Mükemmel!','Harika!','Bravo!','Aferin Ada!','Dengeli!'][0|Math.random()*5]
+    : ['Neredeyse!','Tekrar dene!','Yaklaştın!'][0|Math.random()*3];
+  document.getElementById('fbTitle').className = 'fb-title '+(ok?'ok':'bad');
+  document.getElementById('fbSub').textContent = ok
+    ? (pts>10?`+${pts} puan! 🔥 ${streak} seri!`:`+${pts} puan kazandın!`)
+    : `Doğru cevap: ${p.missing} kg`;
+  document.getElementById('fbExplain').textContent = '📚 '+p.explain;
+  document.getElementById('nextBtn').textContent = idx>=gamePuzzles.length-1 ? '🏆 Sonuçları Gör!':'Sıradaki →';
+  document.getElementById('fbOverlay').classList.add('show');
+}
+
+function nextPuzzle() {
+  document.getElementById('fbOverlay').classList.remove('show');
+  idx++;
+  if(idx>=gamePuzzles.length) showWin();
+  else loadPuzzle();
+}
+
+function showHint() {
+  hintUsed=true;
+  document.getElementById('hintText').textContent='💡 '+gamePuzzles[idx].hint;
+  document.getElementById('hintBtn').style.display='none';
+}
+
+function showWin() {
+  if(animFrame){cancelAnimationFrame(animFrame);animFrame=null;}
+  document.getElementById('wSc').textContent  = score;
+  document.getElementById('wCo').textContent  = correctCount+'/'+gamePuzzles.length;
+  document.getElementById('wSt').textContent  = maxStreak;
+  document.getElementById('winScreen').classList.add('show');
+  fireworksRunning=true; startFireworks(); playWinJingle();
+}
+
+/* ══ AUDIO ══ */
+let audioCtx=null;
+function getAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function tone(f,t,dur,vol=0.2,t0=0){
+  const c=getAC(),o=c.createOscillator(),g=c.createGain();
+  o.connect(g);g.connect(c.destination);o.type=t;o.frequency.value=f;
+  g.gain.setValueAtTime(vol,c.currentTime+t0);
+  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+t0+dur);
+  o.start(c.currentTime+t0);o.stop(c.currentTime+t0+dur+.05);
+}
+function playCorrect(){tone(523,'sine',.1,.2,0);tone(659,'sine',.1,.2,.12);tone(784,'sine',.25,.22,.24);}
+function playWrong()  {tone(300,'sawtooth',.1,.14,0);tone(220,'sawtooth',.18,.14,.12);}
+function playWinJingle(){
+  [[523,0],[659,.15],[784,.3],[880,.48],[1047,.66],[784,.85],[1047,1.05],[1175,1.25],[1397,1.5]]
+    .forEach(([f,s])=>tone(f,'sine',.3,.2,s));
+}
+
+/* ══ FIREWORKS ══ */
+const fwCanvas=document.getElementById('fw');
+const fwCtx=fwCanvas.getContext('2d');
+let fwParts=[],fireworksRunning=false,fwTimer;
+function resizeFW(){fwCanvas.width=window.innerWidth;fwCanvas.height=window.innerHeight;}
+resizeFW();window.addEventListener('resize',resizeFW);
+function spawnFW(){
+  const x=Math.random()*fwCanvas.width,y=20+Math.random()*fwCanvas.height*.5;
+  const cols=['#f5a623','#2db87a','#3b82f6','#9b5de5','#f472b6','#ef4444','#f97316'];
+  const col=cols[0|Math.random()*cols.length];
+  for(let i=0;i<55;i++){
+    const a=Math.PI*2/55*i+Math.random()*.2,s=2+Math.random()*5;
+    fwParts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,alpha:1,color:col,size:1.5+Math.random()*2.5,decay:.013+Math.random()*.01,gravity:.065});
+  }
+}
+function animateFW(){
+  if(!fireworksRunning){fwCtx.clearRect(0,0,fwCanvas.width,fwCanvas.height);return;}
+  fwCtx.fillStyle='rgba(254,243,226,.12)';fwCtx.fillRect(0,0,fwCanvas.width,fwCanvas.height);
+  fwParts=fwParts.filter(p=>p.alpha>.01);
+  fwParts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=.985;p.alpha-=p.decay;
+    fwCtx.save();fwCtx.globalAlpha=p.alpha;fwCtx.fillStyle=p.color;
+    fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.size,0,Math.PI*2);fwCtx.fill();fwCtx.restore();
+  });
+  requestAnimationFrame(animateFW);
+}
+function startFireworks(){
+  fwParts=[];animateFW();
+  fwTimer=setInterval(()=>{if(!fireworksRunning){clearInterval(fwTimer);return;}spawnFW();if(Math.random()<.4)spawnFW();},400);
+}
+
+startGame();
+</script>
+</body>
+</html>
