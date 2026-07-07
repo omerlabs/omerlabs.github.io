@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. Sınıf MEB Bursluluk Sınavı – Türkçe</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1b2d; --card: #162033; --card2: #1e2e47;
+    --accent: #f9c846; --accent2: #ff6b6b; --green: #4ecb71;
+    --blue: #5bc8f5; --text: #e8edf5; --muted: #8a9bbf;
+    --border: #2a3f60; --radius: 18px; --shadow: 0 8px 40px rgba(0,0,0,0.45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+  header { width: 100%; background: linear-gradient(135deg, #1a2f50 0%, #0d1a2e 100%); border-bottom: 2px solid var(--border); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo { width: 54px; height: 54px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; color: #0f1b2d; box-shadow: 0 4px 18px rgba(249,200,70,0.35); flex-shrink: 0; }
+  .header-title h1 { font-family: 'Baloo 2', cursive; font-size: 1.45rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  .header-title p { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .stat-pill { background: var(--card2); border: 1px solid var(--border); border-radius: 30px; padding: 6px 16px; font-size: 0.85rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 6px; }
+  .stat-pill span.dot { width: 9px; height: 9px; border-radius: 50%; }
+  .controls { width: 100%; max-width: 980px; padding: 20px 24px 0; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .btn { cursor: pointer; border: none; border-radius: 12px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem; padding: 11px 22px; transition: all .2s; display: flex; align-items: center; gap: 8px; }
+  .btn-accent { background: var(--accent); color: #0f1b2d; }
+  .btn-accent:hover { background: #ffd15a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,200,70,0.4); }
+  .btn-blue { background: var(--blue); color: #0f1b2d; }
+  .btn-blue:hover { background: #7fd8ff; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn-red { background: var(--accent2); color: #fff; }
+  .btn-red:hover { background: #ff8a8a; transform: translateY(-2px); }
+  .progress-wrap { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 4px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); font-weight: 700; }
+  .progress-bar { height: 8px; border-radius: 8px; background: var(--border); overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, var(--blue), var(--accent)); transition: width 0.5s ease; }
+  main { width: 100%; max-width: 980px; padding: 20px 24px 40px; }
+  .question-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 36px; position: relative; overflow: hidden; animation: fadeUp .4s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .question-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--accent), var(--accent2)); }
+  .q-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
+  .q-badge { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 14px; font-size: 0.8rem; font-weight: 800; color: var(--blue); }
+  .q-year { font-size: 0.75rem; font-weight: 800; color: var(--accent); background: rgba(249,200,70,0.12); border: 1px solid rgba(249,200,70,0.3); border-radius: 8px; padding: 5px 12px; }
+  .q-category { font-size: 0.78rem; font-weight: 700; color: var(--muted); background: var(--card2); border-radius: 8px; padding: 5px 12px; }
+  .passage-wrap { background: var(--card2); border-left: 4px solid var(--blue); border-radius: 10px; padding: 16px 20px; margin-bottom: 22px; }
+  .passage-label { font-size: 0.72rem; font-weight: 800; color: var(--blue); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
+  .passage-text { font-size: 0.97rem; line-height: 1.8; color: #c5d4ee; }
+  .question-text { font-family: 'Nunito', sans-serif; font-size: 1.15rem; font-weight: 600; line-height: 1.7; color: var(--text); margin-bottom: 26px; }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option { background: var(--card2); border: 2px solid var(--border); border-radius: 12px; padding: 14px 20px; cursor: pointer; transition: all .2s; display: flex; align-items: flex-start; gap: 14px; font-size: 1.0rem; font-weight: 600; line-height: 1.5; }
+  .option:hover:not(.disabled) { border-color: var(--blue); background: #1d304f; transform: translateX(4px); }
+  .option-letter { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: var(--border); color: var(--muted); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.88rem; transition: all .2s; margin-top: 1px; }
+  .option.correct { border-color: var(--green); background: rgba(78,203,113,0.12); }
+  .option.correct .option-letter { background: var(--green); color: #0f1b2d; }
+  .option.wrong { border-color: var(--accent2); background: rgba(255,107,107,0.1); }
+  .option.wrong .option-letter { background: var(--accent2); color: #fff; }
+  .option.disabled { cursor: default; }
+  .feedback { margin-top: 20px; border-radius: 12px; padding: 14px 20px; font-size: 0.95rem; font-weight: 700; display: none; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .feedback.show { display: flex; animation: fadeUp .3s ease; }
+  .feedback.correct-fb { background: rgba(78,203,113,0.15); border: 1.5px solid var(--green); color: var(--green); }
+  .feedback.wrong-fb { background: rgba(255,107,107,0.12); border: 1.5px solid var(--accent2); color: var(--accent2); }
+  .nav-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 24px; flex-wrap: wrap; gap: 12px; }
+  #scoreboard { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 40px; text-align: center; display: none; animation: fadeUp .5s ease; }
+  #scoreboard h2 { font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 10px; }
+  .score-ring { width: 150px; height: 150px; border-radius: 50%; border: 8px solid var(--border); margin: 24px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--card2); }
+  .score-number { font-size: 2.8rem; font-weight: 900; color: var(--accent); line-height: 1; }
+  .score-total { font-size: 0.9rem; color: var(--muted); font-weight: 700; }
+  .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+  .score-stat { background: var(--card2); border-radius: 12px; padding: 14px; border: 1px solid var(--border); }
+  .score-stat .val { font-size: 1.8rem; font-weight: 900; }
+  .score-stat .lbl { font-size: 0.75rem; color: var(--muted); font-weight: 700; margin-top: 2px; }
+  .val-green { color: var(--green); } .val-red { color: var(--accent2); } .val-blue { color: var(--blue); }
+  .q-dots { display: flex; flex-wrap: wrap; gap: 6px; max-height: 130px; overflow-y: auto; margin-top: 16px; }
+  .q-dot { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border); font-size: 0.7rem; font-weight: 800; cursor: pointer; background: var(--card2); color: var(--muted); transition: all .15s; }
+  .q-dot:hover { border-color: var(--blue); color: var(--blue); }
+  .q-dot.answered-correct { background: rgba(78,203,113,0.3); color: var(--green); border-color: var(--green); }
+  .q-dot.answered-wrong { background: rgba(255,107,107,0.2); color: var(--accent2); border-color: var(--accent2); }
+  .q-dot.current { background: var(--accent); color: #0f1b2d; border-color: var(--accent); }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px; max-width: 420px; width: 90%; text-align: center; animation: fadeUp .3s ease; }
+  .modal h3 { font-family: 'Baloo 2', cursive; font-size: 1.5rem; color: var(--accent); margin-bottom: 12px; }
+  .modal p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+  .modal-btns { display: flex; gap: 12px; justify-content: center; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+  @media (max-width: 600px) { header { padding: 14px 16px; } .question-card { padding: 20px 18px; } .score-grid { grid-template-columns: repeat(2,1fr); } .controls { padding: 14px 14px 0; } main { padding: 14px 14px 30px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo">T</div>
+    <div class="header-title">
+      <h1>Bursluluk Sınavı – Türkçe</h1>
+      <p>6. Sınıf · MEB İOKBS Çıkmış Sorular (2019–2025)</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="stat-pill"><span class="dot" style="background:var(--green)"></span><span id="hdr-correct">0 Doğru</span></div>
+    <div class="stat-pill"><span class="dot" style="background:var(--accent2)"></span><span id="hdr-wrong">0 Yanlış</span></div>
+    <div class="stat-pill"><span class="dot" style="background:var(--blue)"></span><span id="hdr-total">0 / 0</span></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="progress-wrap">
+    <div class="progress-label"><span id="prog-text">Soru 1 / ?</span><span id="prog-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+  <button class="btn btn-accent" onclick="shuffleQuestions()">🔀 Soruları Karıştır</button>
+  <button class="btn btn-blue" onclick="nextQuestion()">⏭ Sonraki</button>
+  <button class="btn btn-outline" onclick="openModal()">🔄 Yeniden Başla</button>
+</div>
+
+<main>
+  <div id="quiz-area">
+    <div class="question-card" id="q-card">
+      <div class="q-meta">
+        <div class="q-badge" id="q-num">Soru 1</div>
+        <div class="q-year" id="q-year">MEB 2025</div>
+        <div class="q-category" id="q-cat">Kategori</div>
+      </div>
+      <div id="passage-box" style="display:none" class="passage-wrap">
+        <div class="passage-label">📖 Metni okuyunuz</div>
+        <div class="passage-text" id="passage-text"></div>
+      </div>
+      <div class="question-text" id="q-text">Yükleniyor…</div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="prevQuestion()">◀ Önceki</button>
+        <button class="btn btn-blue" onclick="nextQuestion()">Sonraki ▶</button>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div style="font-size:0.78rem;color:var(--muted);font-weight:700;margin-bottom:6px;">SORU GEZGİNİ</div>
+      <div class="q-dots" id="q-dots"></div>
+    </div>
+  </div>
+
+  <div id="scoreboard">
+    <h2>🎉 Tebrikler!</h2>
+    <p style="color:var(--muted)">Tüm soruları tamamladınız.</p>
+    <div class="score-ring">
+      <div class="score-number" id="sc-score">0</div>
+      <div class="score-total" id="sc-total">/ 0</div>
+    </div>
+    <div class="score-grid">
+      <div class="score-stat"><div class="val val-green" id="sc-correct">0</div><div class="lbl">Doğru</div></div>
+      <div class="score-stat"><div class="val val-red" id="sc-wrong">0</div><div class="lbl">Yanlış</div></div>
+      <div class="score-stat"><div class="val val-blue" id="sc-pct">%0</div><div class="lbl">Başarı</div></div>
+    </div>
+    <button class="btn btn-accent" style="margin:0 auto;display:flex;" onclick="restartQuiz()">🔄 Tekrar Çöz</button>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>⚠️ Emin misin?</h3>
+    <p>Tüm cevaplar sıfırlanacak ve sınav baştan başlayacak.</p>
+    <div class="modal-btns">
+      <button class="btn btn-outline" onclick="closeModal()">İptal</button>
+      <button class="btn btn-red" onclick="confirmRestart()">Evet, Sıfırla</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const allQuestions = [
+  // ── 2025 İOKBS ──
+  {year:"MEB 2025",cat:"Sözcükte Anlam",q:"\"Görmek\" sözcüğü aşağıdaki cümlelerin hangisinde \"yüzü bir yöne doğru olmak, bakmak\" anlamında kullanılmıştır?",opts:["Yeni aldığımız evin bütün odaları deniz görüyor.","Bugün eski arkadaşlarımı görmeye gideceğim.","Yaz tatilinde Balkan ülkelerini görmeyi planlıyoruz.","Zaman geçtikçe tüm detayları sen de göreceksin."],ans:0},
+  {year:"MEB 2025",cat:"Cümlede Anlam – Öznel/Nesnel",passage:"(I) Girlevik Şelalesi, Erzincan'ın en çok ziyaret edilen yerlerindendir. (II) Özellikle bahar aylarında açan rengârenk küpe çiçekleri, şelalenin ziyaretçilerinde hayranlık uyandırıyor. (III) Kış aylarında hava sıcaklığı eksiye düştüğü için şelale donuyor. (IV) Şelalenin donmasıyla oluşan buz sarkıtları oldukça ilgi çekici görünüyor.",q:"Bu metindeki numaralanmış cümlelerin hangilerinde öznel bir ifade vardır?",opts:["I ve II","I ve III","II ve IV","III ve IV"],ans:2},
+  {year:"MEB 2025",cat:"Cümlede Anlam",q:"\"Hata yapmayı göze almak yeni keşifler için ilk adımdır.\" cümlesine anlamca en yakın olan hangisidir?",opts:["Başarının yolu, yaptığımız hataların nedenini düşünmekten geçer.","Bilinmeyeni ortaya çıkaranlar yanlış yapmaktan korkmayanlardır.","Başarılı olmak için hatalarımızı en aza indirmemiz gerekir.","Yeni şeyler denemek, insanın kendi hatalarını görmesini sağlar."],ans:1},
+  {year:"MEB 2025",cat:"Cümlede Anlam – Neden-Sonuç",passage:"(I) Işıklı Gölü, Denizli'nin Çivril ilçesinde yer almaktadır. (II) Bu göl doğal bir çöküntü alanı üzerinde oluşmuştur. (III) Kent merkezine 120 kilometre mesafede bulunan gölün alanı 3500 hektar civarındadır. (IV) Gölün kıyısına setler yapıldığından göldeki su seviyesi zamanla yükselmiştir.",q:"Bu metindeki numaralanmış cümlelerin hangisinde neden-sonuç ilişkisi vardır?",opts:["I","II","III","IV"],ans:3},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Bir kitap okuduğumuzda onun gerçek hayattan kesitler sunmasını bekleriz çünkü kendimizden bir şeyler bulmadığımız eserleri beğenmeyiz. İşte bu yüzden benim en sevdiğim yazarlar, gerçek yaşamdaki olayları eserlerinde ustaca yansıtanlardır.",q:"Bu sözleri söyleyen birinin yazarlarda aradığı özellik aşağıdakilerden hangisidir?",opts:["Yeni fikirlere ve önerilere açık olması","Daha önce işlenmemiş konuları ele alması","Eserlerinin hayatın içinden izler taşıması","Okurlarının düşüncelerine önem vermesi"],ans:2},
+  {year:"MEB 2025",cat:"Cümlede Anlam – Karşıtlık",passage:"(I) Dışarıdan gelen kuş çığlıklarını duyunca pencereye yöneldim. (II) Binlerce kuşun gökyüzünden kapkara bir bulut gibi geçtiklerini gördüm. (III) Dünyadaki bütün kuşlar gökyüzündeydi sanki. (IV) Tek bir gövdeymiş gibi birlikte yükselip birlikte alçalıyorlardı.",q:"Bu metindeki numaralanmış cümlelerin hangisinde karşıtlık (tezat) vardır?",opts:["I","II","III","IV"],ans:3},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Başlık",passage:"Hepimizin rahatlıkla yapabileceği doğa yürüyüşü, hem tabiatla iç içe olup stresten arınmamızı hem de bedenimizi hareket ettirerek dinç kalmamızı sağlayan sporlardan biridir. Bizi hareketsizlikten ve şehirlerin gürültüsünden kurtarır. Gezmemizi, temiz havaya ve yeşile doymamızı sağlar.",q:"Bu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",opts:["Doğa Yürüyüşünün Faydaları","Doğa Yürüyüşü Koşulları","Doğa Yürüyüşünün Özellikleri","Doğa Yürüyüşünün Aşamaları"],ans:0},
+  {year:"MEB 2025",cat:"Sözcükte Anlam – Deyim",q:"\"Köye tekrar yerleşmeyi çok istese de artık iş işten geçmişti.\" cümlesindeki deyimin anlamı hangisidir?",opts:["Bir işi uzun süre sonra yapmak","Bir işte çeşitli güçlüklerle karşılaşılması","Bir işi gerçekleştirme imkânı kalmamış olmak","Bir işin çözülemeyecek kadar karmaşık görünmesi"],ans:2},
+  {year:"MEB 2025",cat:"Cümlede Anlam – Benzetme",passage:"(I) Mavi yengeçler, genellikle Atlas Okyanusu'nun Amerika kıtası kıyılarında yaşayan bir deniz canlısıdır. (II) Kabuğu mavi yeşil tonlarda olan bu yengecin beş çift bacağı vardır. (III) Kıskaçlı ön iki bacağını beslenmek için kullanır. (IV) Küreği andıran arka iki bacağı yüzme konusunda ustalık kazanmasını sağlar.",q:"Bu metindeki numaralanmış cümlelerin hangisinde benzetme vardır?",opts:["I","II","III","IV"],ans:3},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Kışın yapılabilecek en heyecanlı sporlardan biri buz tırmanışıdır. Buz tutmuş şelaleler bu sporu yapmak için en elverişli yerlerdir. Bu sporu yapan kişiye buz kâşifi denir. Bu kişiler tırmanış esnasında buz çekici, buz kramponu, emniyet kemeri, buz vidası gibi malzemeler kullanır. Buz kâşifleri tırmanış yaparken kaygan yüzeyler, kırılgan buz kütleleri, soğuk ısırması gibi sorunlarla karşılaşabilirler. Bu sporla uğraşanlar zamanla dayanıklılık, bilgi ve tecrübe kazanır.",q:"Bu metinde \"buz tırmanışı\" ile ilgili aşağıdakilerden hangisine değinilmemiştir?",opts:["Yapılabileceği zamana","Kullanılması gereken malzemelere","Karşılaşılan sorunların çözümüne","Yapılması uygun yerlere"],ans:2},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Anlatıcı",q:"Aşağıdaki parçaların hangisinde anlatım üçüncü kişi ağzıyla yapılmıştır?",opts:["Adamın durduğu yere geldiğimizde önümüzde olağanüstü bir görüntü belirdi. Bulunduğumuz yerden iki yüz metre ötede sarmaşıklar içinde bir ev duruyordu.","Gözlerimi kâğıda çevirince yine aynı ses geldi. Hızla başımı kaldırdım. Hayır, bir şey yoktu.","Dükkâna vardığım zaman henüz kapı açılmamıştı. Hemen bitişiğimizdeki fotoğrafçı ve kasap bir şeyler konuşuyorlardı.","Köprüye gelmişlerdi. Koşar gibi yürüyen bir kalabalık vardı. Haliç tarafındaki kaldırıma geçtiler. Arada sırada mavi sulara, irili ufaklı kayıklara bakıyorlardı."],ans:3},
+  {year:"MEB 2025",cat:"Cümlede Anlam – Koşul",passage:"(I) Deri, vücudumuzu saran ve dış etkenlere karşı koruyan tabakadır. (II) Vücudumuzu bir yere şiddetli çarparsak derimizin altındaki kan damarları çatlar ya da yırtılır. (III) Bu durumda kanımız derimizin altında sıkıştığından derimizin rengi maviye döner. (IV) İyileşme sürecinde de bu renk yeşilin tonlarını alır.",q:"Bu metindeki numaralanmış cümlelerin hangisinde koşul anlamı vardır?",opts:["I","II","III","IV"],ans:1},
+  {year:"MEB 2025",cat:"Noktalama",q:"Aşağıdaki cümlelerin hangisinin sonuna diğerlerinden farklı bir noktalama işareti getirilmelidir?",opts:["Kendi kültürümüze ait bir esere ne zaman rastlayacağız","Birlikte yaptığınız planlara sıkı sıkıya bağlı kaldınız mı","Akşamki tiyatro oyunu için bana iki tane bilet verir misiniz","Son gelişmelerden sonra ne olacağını ben de bilmiyorum"],ans:3},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Giriş Cümlesi",q:"Aşağıdakilerden hangisi bir paragrafın giriş cümlesi olabilir?",opts:["Bu sayede sürtünme kuvvetini bilmenin halatı güçlü çekmekten daha önemli olduğu anlaşıldı.","Kırlangıçlar ve balinalar gibi milyarlarca hayvan, yılın belli dönemlerinde bulundukları yaşam alanlarından farklı bir yere göç eder.","Hatta bir bitkinin boyunun uzama miktarını ya da bir cismin sıcaklığının ne ölçüde değiştiğini belirlemek için de ölçüm yapabilirsiniz.","İnsanlık tarihinin şekillenmesinde ve tarihsel olayların günümüze kadar ulaşmasında da bu kalemler büyük bir rol üstlenmiştir."],ans:1},
+  {year:"MEB 2025",cat:"Dil Bilgisi – Sözcük Yapısı",passage:"Hayatım boyunca birçok (I) yaşlı insana ilgili (II) davrandım. Onlarla uzun süre birlikte (III) yaşadım.",q:"Metindeki (I) birçok, (II) ilgili, (III) birlikte sözcüklerinin yapı özellikleri aşağıdakilerin hangisinde doğru verilmiştir?",opts:["I: Türemiş – II: Türemiş – III: Basit","I: Türemiş – II: Basit – III: Türemiş","I: Birleşik – II: Türemiş – III: Türemiş","I: Birleşik – II: Basit – III: Basit"],ans:2},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Cevabı Olmayan Soru",passage:"İlhanlılar Dönemi'nden günümüze ulaşan en önemli eserlerden biri Amasya Bimarhanesi'dir. Anadolu Selçuklu Dönemi'nin mimari özelliklerini taşıyan yapı Anber Bin Abdullah tarafından yapılmıştır. Anadolu'da hastalıkların tedavisinde müzik kullanılan ilk hastane olarak bilinmektedir. 2011 yılında müzeye dönüştürülerek Sabuncuoğlu Şerafettin Tıp ve Cerrahi Tarih Müzesi adıyla ziyarete açılmıştır.",q:"Bu metinde \"Amasya Bimarhanesi\" ile ilgili aşağıdaki sorulardan hangisinin cevabı yoktur?",opts:["Müze olarak hizmet vermeye ne zaman başlamıştır?","Hangi hastalıklar müzikle tedavi edilmiştir?","Kim tarafından yapılmıştır?","Mimari özellikleri hangi döneme aittir?"],ans:1},
+  {year:"MEB 2025",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Bir alanda yol alabilmek için o işin ustalarını tanımak ve yapıldığı çevrede gezmek gerekir. Şiir yazmak istiyorsan edebiyat sohbetlerine katılmalısın. Lezzetli yemekler yapmak için şeflerin mutfağında bulunmalısın. Kalıcı bir bina dikmekse amacın şehrin mimarisini görmeli, mimarları dost edinmelisin.",q:"Bu metnin ana düşüncesi aşağıdakilerden hangisidir?",opts:["Etrafımızda olan biteni anlamak için çevremizi dikkatli gözlemlemeliyiz.","Mesleğimizi seçerken başkalarının görüşlerini dikkate almalıyız.","Bir işte ustalaşmak o işin yapıldığı çevreye yakın olmakla mümkündür.","Bir işte başarılı olmak için çeşitli fedakârlıklarda bulunmak gerekir."],ans:2},
+
+  // ── 2024 İOKBS ──
+  {year:"MEB 2024",cat:"Sözcükte Anlam",q:"\"Tutmak\" sözcüğü aşağıdaki cümlelerin hangisinde \"herhangi bir durumda kalmasını sağlamak\" anlamında kullanılmıştır?",opts:["Otelin denize bakan tarafından büyük bir oda tuttum.","Odasının kapısını her zaman kapalı tutardı.","Ziyaretine gelen tüm misafirlere nane şekeri tutardı.","Adam elinde bir buket kırmızı gül tutuyordu."],ans:1},
+  {year:"MEB 2024",cat:"Cümlede Anlam – Öznel/Nesnel",passage:"(1) Afyonkarahisar'ın Sinanpaşa ilçesine bağlı Düzağaç köyünde köylülerin ve yoldan gelip geçenlerin uğradığı bir pınar vardır. (2) Bu pınar Anadolu'nun Türkleşmesi sırasında Erenler Pınarı adını almıştır. (3) Yunan işgali boyunca suyunu düşman askerinden gizleyen pınar, Büyük Taarruz başlayınca coşmuş, ayna gibi olmuş ve yöreye gelen Türk askerlerine yeniden kucak açmıştır. (4) Savaş yılları geçtikten sonra köy halkı pınarın üzerine değirmenler kurmuş ve bu değirmenler uzun yıllar kullanılmıştır.",q:"Bu metindeki numaralanmış cümlelerin hangisinde kişisel bir görüşe yer verilmiştir?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2024",cat:"Cümlede Anlam",q:"\"En iyi öğretmenler zaferler değil, yenilgilerdir.\" cümlesine anlamca en yakın olan hangisidir?",opts:["Yenilgiler başarılara göre daha çok şey öğrenme fırsatı sunar.","Başarısızlıklar çok şey öğretse de zafere ulaştırmaz.","Küçük yenilgiler büyük başarıların habercisidir.","Başarısızlığı göze alamayanlar zafer kazanamaz."],ans:0},
+  {year:"MEB 2024",cat:"Cümlede Anlam – Neden-Sonuç",passage:"(1) Kutup ışıkları, Dünya'nın yalnızca Kuzey ve Güney Kutbu'nda rastlanan bir doğa olayıdır. (2) Bu ışıklar Dünya'yı saran atmosferde mavi, sarı, kırmızı ve yeşil renklerde görünür. (3) Gökyüzünün çok yukarılarında meydana gelen bu ışıklar bazen geniş bir alana yayılır. (4) Pek çok ülkeden izlenebilen bu ışıkları, Türkiye kutup bölgelerine uzak olduğu için bizim izleyebilmemiz mümkün değildir.",q:"Bu metindeki numaralanmış cümlelerin hangisinde neden-sonuç ilişkisi vardır?",opts:["1","2","3","4"],ans:3},
+  {year:"MEB 2024",cat:"Sözcükte Anlam",q:"Aşağıdaki cümlelerin hangisinde altı çizili sözcük, karşısında verilen anlama uygun kullanılmamıştır?",opts:["\"Rüzgâr daha da sertleşti.\" → Gücü artmak, zorlu durum almak","\"Örtü serdi.\" → Kurutmak için asmak","\"Oda biraz ferahladı.\" → Rahat, iç açıcı duruma gelmek","\"Yeni iş yerini benimsedi.\" → Bağlanmak, ısınmak"],ans:1},
+  {year:"MEB 2024",cat:"Paragrafta Anlam – Başlık",passage:"Dünya üzerindeki tüm denizler farklı yaşam alanları barındırır. Okyanuslarda ve açık denizlerde dev balinalar, göçebe foklar, yırtıcı köpek balıkları yaşarken kıyılarda daha küçük balıklar ve mercan resifleri yaşamaktadır. Kıyıların daha sıcak kesimlerinde ise küçük deniz canlılarına ev sahipliği yapan, devasa deniz yosunlarından oluşan ormanlar bulunur.",q:"Bu metne getirebilecek en uygun başlık hangisidir?",opts:["Çevre kirliliğinin deniz üzerindeki etkisi","Deniz canlılarının barınma yöntemleri","İklimin yaşam alanlarının değişmesindeki rolü","Deniz canlılarının yaşam alanları"],ans:3},
+  {year:"MEB 2024",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Rasim Bey, yeni aldığı tabloyu duvara asmak ister. Evde çivi bulur ama çekiç yoktur. Komşusuna gidip ondan çekiç istemeye karar verir. Ancak o anda şüpheye düşer: \"Ya vermek istemezse? Zaten dün de beni soğuk bir selamla geçiştirdi.\" Öfkeyle kalkıp komşunun kapısını çalar. Komşusu güler yüzle açar ama daha \"Merhaba.\" bile diyemeden Rasim Bey ona bağırır: \"Al çekicini, başına çal!\"",q:"Bu metnin ana düşüncesi hangisidir?",opts:["Kişiler hakkında yanlış düşüncelere kapılmak ilişkileri olumsuz etkiler.","Komşularıyla yardımlaşma içinde olanlar huzurlu yaşar.","Kendisinden başkasını düşünmeyenler kalıcı dostluklar kuramaz.","Başkasının iyiliğini istemeyenler hayatları boyunca mutlu olamaz."],ans:0},
+  {year:"MEB 2024",cat:"Sözcükte Anlam – Mecaz",q:"Aşağıdaki cümlelerin hangisinde altı çizili sözcük mecaz anlamıyla kullanılmamıştır?",opts:["Tartışma daha da alevlendi.","Söylediklerinin yapılmadığını fark edince herkesi paraladı.","Kanalda biriken pis sular sokaklara aktı.","Bu konunun üzerine uzun uzadıya eğildi."],ans:2},
+  {year:"MEB 2024",cat:"Cümlede Anlam – Benzetme",passage:"(1) Haftalar önce geldiğim bu sessiz sakin yerde uzun bir akşam gezisinden dönüyorum. (2) Biçilmiş tarlaların ortasında uzanan patikada yürürken karşı tepenin üstündeki taş bina dikkatimi çekiyor. (3) Yıkık duvarlı bir bahçenin ortasındaki bu yapının, harap bir kaleyi andıran görüntüsü beni etkiliyor. (4) Vaktin erken olduğunu düşünerek bu binayı daha yakından görme isteğiyle tepeye tırmanıyorum.",q:"Bu metindeki numaralanmış cümlelerin hangisinde benzetme vardır?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2024",cat:"Paragrafta Anlam – Kesin Bilgi",passage:"Avustralyalı araştırmacılar, Antarktika'nın çok soğuk ve su miktarı çok az olan bir bölgesinde yeni bir bakteri türü keşfetti. Bu bakterinin olumsuz yaşam koşulları karşısında şimdiye kadar bilinen tüm bakterilere göre daha dayanıklı olduğu söyleniyor. Hava dışında başka bir şeye ihtiyaç duymayan bakteri, bu özelliğiyle diğer tüm bakterilerden ayrılıyor.",q:"Bu metinden aşağıdakilerin hangisine kesinlikle ulaşılır?",opts:["Avustralyalı bilim insanlarının sadece bakteriler üzerine çalışma yaptığına","Bazı bakterilerin farklı gezegenlerde yaşadığına","Kötü yaşam koşullarının bakterilerin yaşam süresini kısalttığına","Keşfedilen bakterinin bazı yönleriyle ilk olma özelliği taşıdığına"],ans:3},
+  {year:"MEB 2024",cat:"Paragrafta Anlam – Hikâye Unsuru",passage:"Defne ve arkadaşları, ellerindeki haritadan daha önce geçmedikleri sokakları takip ederek meydana ulaştılar. Böylelikle yeni yerler de öğrenmiş oldular. Haritayla gezmeyi çok seven Defne, arkadaşlarına heyecanla \"Haritada gösterilen diğer sokakları kullanarak eve dönmeye ne dersiniz?\" diye sordu.",q:"Bu metinde aşağıdaki hikâye unsurlarından hangisi yoktur?",opts:["Kişi","Zaman","Olay","Mekân"],ans:1},
+  {year:"MEB 2024",cat:"Cümlede Anlam – Karşılaştırma",passage:"(1) Şiirin dili günlük konuşma diline göre daha coşkulu, kendine özgü nitelikleri olan, yaratıcı bir dildir. (2) Şiir hayallerle şekillendiği için onun okuyucusunu özgürleştiren bir tarafı var. (3) Her duyguyu kendi tarzında ifade etmek isteyen biri için şiir kusursuz bir tür. (4) Çünkü onunla bütün duyguları ustaca dile getirmek mümkün.",q:"Bu metindeki numaralanmış cümlelerin hangisinde karşılaştırma yapılmıştır?",opts:["1","2","3","4"],ans:0},
+  {year:"MEB 2024",cat:"Cümlede Anlam – Koşul",q:"Aşağıdaki cümlelerin hangisinde koşul anlamı vardır?",opts:["Perdeyi açınca gördüğü manzara karşısında şaşkınlığını gizleyemedi.","İklim değişikliklerinden dolayı bazı canlı türleri yok olmaktadır.","Küresel ısınma bu hızla devam ederse Buzul Çağı tekrar yaşanabilir.","Eşyalarını o kadar özensiz kullandı ki odasında sağlam bir eşya kalmadı."],ans:2},
+  {year:"MEB 2024",cat:"Yazım Kuralları",q:"Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",opts:["Yaşadığımız bölgedeki iklim koşulları fındık yetiştirmeye elverişlidir.","Dünya üzerindeki suyun çok azı içilebilir özelliğe sahiptir.","Olurda sizi bir daha göremezsek şimdiden vedalaşalım.","Teyzemin yaptığı yemeklerde başka bir lezzet oluyor."],ans:2},
+  {year:"MEB 2024",cat:"Dil Bilgisi – Sözcük Yapısı",passage:"İlkbaharın (1) habercisi olan açık (2) bir gecede sırtüstü (3) uzanarak gökyüzünü (4) izlemeye koyuldu.",q:"Bu cümledeki numaralanmış sözcüklerden hangisi yapısı bakımından diğerlerinden farklıdır?",opts:["1 – İlkbaharın","2 – açık","3 – sırtüstü","4 – gökyüzünü"],ans:1},
+  {year:"MEB 2024",cat:"Dil Bilgisi – Ek",passage:"Uzun ve bir o kadar da yorucu (1) bir yolculuğun ardından, evimize (2) varmak bizi (3) mutlu (4) etti.",q:"Bu cümledeki sözcüklerden hangisi hem yapım hem de çekim eki almıştır?",opts:["1 – yorucu","2 – evimize","3 – bizi","4 – mutlu"],ans:1},
+  {year:"MEB 2024",cat:"Paragrafta Anlam – Çıkarım",passage:"Doğup büyüdüğü coğrafya etkiler insanın kişiliğini. İnsanın macerası biraz da yaşadığı yerin macerasıdır. İki şehrin, şehir ile kasabanın, köy ile mezranın kültürleri arasındaki fark; doğrudan yansır insanın benliğine. Hatta bir şehrin iki ayrı semtinde yaşayan insanlar bile farklı kişilikler kazanır birbirinden.",q:"Bu metne göre hangi yargılar çıkarılabilir?\n1. Şehirlerin kendine has kültür özellikleri vardır.\n2. İnsanın davranışları ait olduğu kültüre göre şekillenir.\n3. Yerleşim yerlerinin sınırlarının belirlenmesinde kültür etkilidir.",opts:["Yalnız 1","Yalnız 2","1 ve 2","1 ve 3"],ans:2},
+
+  // ── 2023 İOKBS ──
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Öğrenmenin yolu soru sormaktan geçer. Bir konuyu yeterince anlayıp anlayamadığınızı sınamak için o konuyla ilgili sorular üretmeli ve bu soruları yanıtlamaya çalışmalısınız. Sorularınızın yanıtlarını araştırırken hem o konuyu daha iyi kavrar hem de yeni bilgilere ulaşırsınız.",q:"Bu paragrafın ana düşüncesi aşağıdakilerden hangisidir?",opts:["Öğrenmenin yolu soru sormaktan geçer.","Soru sormak bilgiye ulaşmayı güçleştirir.","Araştırma yapmak öğrencilere zaman kaybettirir.","Konuları kavramak için tekrar yapmak gerekir."],ans:0},
+  {year:"MEB 2023",cat:"Sözcükte Anlam – Atasözü",q:"\"Açgözlü olmak bize hiçbir fayda sağlamaz.\" anlamını en iyi karşılayan atasözü hangisidir?",opts:["Şimşek çakmadan gök gürlemez.","Abanın kadri yağmurda bilinir.","Zahmetsiz bal yenmez.","Ne ekersen onu biçersin."],ans:3},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Çıkarım",passage:"Bir kargo şirketi çalışanı müşteriye şu bilgileri vermiştir: Ürünler İzmir ve Trabzon'a kargolanacaktır. Pazartesi günü İzmir'e ürün kargolanmıştır. Çarşamba günü Trabzon'a kargo yapılacaktır.",q:"Bu bilgilere göre aşağıdakilerden hangisi kesinlikle doğrudur?",opts:["Pazartesi İzmir ve Trabzon'a kargo gönderilmiştir.","Çarşamba günü yalnızca Trabzon'a kargo gidecektir.","İzmir'e kargo gönderilmemiştir.","Trabzon'a daha önce kargo gönderilmiştir."],ans:1},
+
+  // ── 2022 İOKBS ──
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Spor yapmak yalnızca beden sağlığını değil, zihin sağlığını da destekler. Düzenli egzersiz yapan bireyler hem daha enerjik hisseder hem de stresle daha kolay başa çıkar. Araştırmalar, spor yapmanın depresyon ve kaygı bozukluklarını azaltmada etkili olduğunu ortaya koymaktadır.",q:"Bu metnin ana düşüncesi aşağıdakilerden hangisidir?",opts:["Spor, yalnızca beden sağlığı için faydalıdır.","Düzenli egzersiz hem beden hem zihin sağlığına katkı sağlar.","Kaygı bozukluğu olan kişiler spor yapmalıdır.","Araştırmacılar sporun faydalarını abartmaktadır."],ans:1},
+  {year:"MEB 2022",cat:"Cümlede Anlam – Öznel/Nesnel",q:"Aşağıdaki cümlelerden hangisi öznel bir yargı içermektedir?",opts:["Türkiye'nin yüzölçümü yaklaşık 814.578 km²'dir.","Atatürk 1881 yılında Selanik'te doğmuştur.","Bu romanın en güzel bölümü son kısımdır.","Karadeniz Bölgesi'nde yıllık yağış miktarı yüksektir."],ans:2},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Çıkarılamayan",passage:"Bilim insanları, dünyanın farklı bölgelerinde yaşayan insanların ses tonu ve konuşma hızının iklimle bağlantılı olduğunu ileri sürmektedir. Soğuk iklimlerde yaşayan toplulukların daha yüksek sesle ve hızlı konuştuğu, ılıman iklimlerde ise daha sakin bir konuşma temposunun benimsendiği gözlemlenmiştir.",q:"Bu metne göre aşağıdakilerden hangisi söylenemez?",opts:["İklim, insanların konuşma biçimini etkileyebilir.","Soğuk iklimlerde insanlar daha hızlı konuşma eğilimindedir.","Bu bulgular bilim insanları tarafından kesin gerçek olarak kabul edilmektedir.","Ilıman iklimlerde sakin bir konuşma temposu gözlemlenmiştir."],ans:2},
+
+  // ── 2021 İOKBS ──
+  {year:"MEB 2021",cat:"Sözcükte Anlam – Deyim",q:"\"Gözünü budaktan sakınmamak\" deyiminin anlamı aşağıdakilerden hangisidir?",opts:["Çevresine dikkatli bakmak","Hiçbir tehlikeden çekinmemek, gözü pek olmak","Temkinli ve dikkatli davranmak","Her şeyi görmezden gelmek"],ans:1},
+  {year:"MEB 2021",cat:"Cümlede Anlam – Neden-Sonuç",q:"\"Hava soğuduğundan dolayı dışarıya çıkmadım.\" cümlesinde neden-sonuç ilişkisi hangisinde doğru verilmiştir?",opts:["Neden: Dışarıya çıkmamak – Sonuç: Havanın soğuması","Neden: Havanın soğuması – Sonuç: Dışarıya çıkmamak","Neden ve sonuç yoktur.","Neden ve sonuç aynıdır."],ans:1},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Söylenemez",passage:"Müzeler, bir ulusun tarihsel belleğini ve kültürel mirasını koruyan kurumlardır. Ziyaretçilerine geçmişe açılan bir pencere sunarlar. Pek çok müzede sadece eserler sergilenmez; aynı zamanda o dönemin yaşam koşulları, sanat anlayışı ve toplumsal yapısı da aktarılır.",q:"Bu metne göre müzelerle ilgili aşağıdakilerden hangisi söylenemez?",opts:["Kültürel mirası korurlar.","Geçmişi ziyaretçilere aktarırlar.","Yalnızca sanat eserleri sergilerler.","Dönemin yaşam koşullarını da yansıtırlar."],ans:2},
+  {year:"MEB 2021",cat:"Cümlede Anlam – Karşıtlık",q:"\"Ne kadar çok çalışsa da başarıya ulaşamıyordu.\" cümlesinde hangi anlam ilişkisi vardır?",opts:["Neden-sonuç","Amaç-sonuç","Koşul","Karşıtlık (zıtlık)"],ans:3},
+
+  // ── 2020 İOKBS ──
+  {year:"MEB 2020",cat:"Paragrafta Anlam – Başlık",passage:"Kâğıt, tarihte pek çok farklı malzemeden üretilmiştir. İlk dönemlerde papirüs bitkisinden yapılan kâğıt, zamanla çeşitli tahıl bitkilerinden elde edilir olmuştur. Günümüzde ise büyük ölçüde ağaç odunundan üretilmektedir. Kâğıt üretiminin çevreye etkilerini azaltmak amacıyla geri dönüştürülmüş kâğıt kullanımı giderek yaygınlaşmaktadır.",q:"Bu metne en uygun başlık hangisidir?",opts:["Kâğıt Üretiminin Çevreye Etkileri","Kâğıdın Tarihsel Gelişimi","Geri Dönüşümün Önemi","Ağaçlardan Kâğıt Üretimi"],ans:1},
+  {year:"MEB 2020",cat:"Cümlede Anlam – Amaç-Sonuç",q:"Aşağıdaki cümlelerin hangisinde amaç-sonuç ilişkisi vardır?",opts:["Hava soğuduğu için evde kaldım.","Sağlıklı beslenmek için sebze ve meyve tüketmeliyiz.","Erken kalktığımda treni kaçırmadım.","Çok yağmur yağdığından sel oluştu."],ans:1},
+  {year:"MEB 2020",cat:"Sözcükte Anlam – Deyim",q:"\"Dirsek çevirmek\" deyiminin anlamı hangisidir?",opts:["Bir kimseyi ya da topluluğu dışlamak, ilgi göstermemek","Kötü bir alışkanlığı bırakmak","Bir kişiyle yakın olmak","Çok çalışmak"],ans:0},
+  {year:"MEB 2020",cat:"Paragrafta Anlam – Çıkarım",passage:"Teknoloji hayatımızın her alanına girmiş durumdadır. Akıllı telefonlar, tabletler ve bilgisayarlar artık birer zorunluluk hâline gelmiştir. Ancak bu araçların bilinçsiz kullanımı, özellikle çocuklar ve gençler üzerinde olumsuz etkiler bırakabilir. Bu nedenle dijital okuryazarlık becerilerinin kazandırılması büyük önem taşımaktadır.",q:"Bu metne göre teknoloji ile ilgili aşağıdakilerden hangisi çıkarılabilir?",opts:["Teknoloji kullanımı tamamen zararlıdır.","Teknoloji yalnızca çocukları olumsuz etkiler.","Teknolojinin bilinçli kullanımı önemlidir.","Dijital cihazlar zorunlu değildir."],ans:2},
+
+  // ── 2019 İOKBS ──
+  {year:"MEB 2019",cat:"Sözcükte Anlam – Çok Anlamlılık",q:"\"Kalem\" sözcüğü aşağıdaki cümlelerin hangisinde farklı bir anlamda kullanılmıştır?",opts:["Kalemini kırdı.","Ressam fırçasını kalem gibi tutuyor.","Bu satırlar güçlü bir kalemin ürünüdür.","Kalemini masaya bıraktı."],ans:2},
+  {year:"MEB 2019",cat:"Cümlede Anlam – Öznel/Nesnel",q:"Aşağıdaki cümlelerden hangisi nesnel bir cümledir?",opts:["Türkiye'nin en güzel sahili Antalya'dadır.","Bu kitap yılın en etkileyici romanıdır.","İstanbul, Türkiye'nin en kalabalık şehridir.","Ege yemekleri diğer bölge yemeklerinden daha lezzetlidir."],ans:2},
+  {year:"MEB 2019",cat:"Paragrafta Anlam – Söylenemez",passage:"Su sporları hem eğlenceli hem de sağlıklı aktiviteler arasında yer almaktadır. Yüzme, kürek çekme ve dalış gibi su sporları, kas gücünü artırmanın yanı sıra kardiyovasküler sağlığı da destekler. Bunun yanı sıra su sporları, stres azaltıcı etkileriyle de bilinmektedir.",q:"Bu metne göre su sporları ile ilgili aşağıdakilerden hangisi söylenemez?",opts:["Kas gücünü artırır.","Kardiyovasküler sağlığı destekler.","Stresi azaltır.","Yalnızca profesyonel sporcular için uygundur."],ans:3},
+  {year:"MEB 2019",cat:"Cümlede Anlam – Amaç",q:"\"Sınava çalışmak için erken kalktı.\" cümlesinde amaç bildiren öge hangisidir?",opts:["çalışmak için","kalktı","erken","sınava"],ans:0},
+
+  // ── MEB Tipi Sorular ──
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Boşluk Doldurma",passage:"Sağlıklı beslenme, uzun ve kaliteli bir yaşamın temel taşlarından biridir. Sebze ve meyveler bol miktarda tüketilmelidir. ___. Bunların yanı sıra yeterince su içmek de son derece önemlidir.",q:"Parçadaki boşluğa aşağıdaki cümlelerden hangisi getirilmelidir?",opts:["Fast food tüketimi son yıllarda artmıştır.","İşlenmiş gıdalar ise mümkün olduğunca az alınmalıdır.","Spor yapmak da sağlık açısından önemlidir.","Her öğünde et yemek gereklidir."],ans:1},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Cümle Sıralama",q:"Aşağıdaki cümleler sıralandığında anlamlı bir paragraf oluşturmaktadır. Doğru sıralama hangisidir?\nI. Bu çalışmalar sonucunda ülke ekonomisine büyük katkı sağlandı.\nII. Bilim insanları yıllarca bu konuyu araştırdı.\nIII. Yeni bir yöntem geliştirildi.\nIV. Araştırmalar ilk olarak küçük bir ekiple başladı.",opts:["II – IV – III – I","IV – II – III – I","II – III – IV – I","IV – III – II – I"],ans:0},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Konu",passage:"Bir toplumun dili, o toplumun dünya görüşünü, değer yargılarını ve tarihini yansıtır. Bu nedenle dil; bir iletişim aracı olmanın çok ötesinde, bir kimlik göstergesidir. Dilin korunması, aynı zamanda kültürün ve kimliğin yaşatılması anlamına gelir.",q:"Bu paragrafın konusu nedir?",opts:["İletişim araçlarının önemi","Dilin kültürel kimlikle ilişkisi","Tarihsel değerlerin korunması","Toplumsal dönüşümler"],ans:1},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Son Cümle",passage:"Dünya nüfusu hızla artmakta, buna karşın tarım arazileri giderek azalmaktadır. Verimli topraklar çeşitli nedenlerle işlevsiz hâle gelmektedir. Buna ek olarak iklim değişikliği de tarımsal üretimi olumsuz etkilemektedir.",q:"Bu parçadan sonra aşağıdaki cümlelerden hangisi getirilebilir?",opts:["Bu nedenle geleceğin tarımı için yeni teknolojiler geliştirilmesi zorunlu hâle gelmektedir.","Dünya genelinde nüfus artışı duraksama sürecine girmiştir.","İklim değişikliği yalnızca tarımı etkilemektedir.","Tarım arazileri son yıllarda artış göstermiştir."],ans:0},
+  {year:"MEB Tipi",cat:"Cümlede Anlam – Koşul/Sebep Farkı",q:"Aşağıdaki cümlelerin hangisinde sebep-sonuç değil koşul-sonuç ilişkisi vardır?",opts:["Yağmur yağdığı için maç iptal edildi.","Soğuk hava sebebiyle üşüdüm.","Çok çalışırsan başarıya ulaşırsın.","Yorulduğu için erken yattı."],ans:2},
+  {year:"MEB Tipi",cat:"Sözcükte Anlam – Çok Anlamlılık",q:"\"Göz\" sözcüğünün aşağıdaki cümlelerin hangisinde vücut organı anlamı dışında kullanıldığı görülmektedir?",opts:["Gözleri mavidir.","Göz bebeği çok küçüldü.","Duvarın gözünden bir çatlak geçiyordu.","Sol gözü ağrıyor."],ans:2},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Çıkarılamayan",passage:"Arı kolonileri son yıllarda dünya genelinde büyük kayıplar vermektedir. Bilim insanları bu durumun birden fazla nedeni olduğunu düşünmektedir: tarım ilaçları, parazitler, habitat kaybı ve iklim değişikliği. Arıların azalması yalnızca bal üretimini değil, tarımsal verimliliği de tehdit etmektedir; zira bitkiler büyük ölçüde arılar aracılığıyla döllenebilmektedir.",q:"Bu metne göre aşağıdakilerden hangisi çıkarılamaz?",opts:["Arı kayıplarının tek nedeni iklim değişikliğidir.","Arıların azalması tarımsal verimi olumsuz etkileyebilir.","Bitkiler arılar olmadan yeterince döllenilemeyebilir.","Habitat kaybı arı kayıplarının nedenlerinden biridir."],ans:0},
+  {year:"MEB Tipi",cat:"Dil Bilgisi – Sözcük Yapısı",q:"\"Doğal\", \"güzellik\", \"yazılı\" sözcüklerinin ortak yapısal özelliği nedir?",opts:["Hepsi birleşik sözcüktür.","Hepsi türemiş sözcüktür.","Hepsi isim soylu sözcüktür.","Hepsi yalnızca çekim eki almıştır."],ans:1},
+  {year:"MEB Tipi",cat:"Yazım Kuralları",q:"Aşağıdaki seçeneklerin hangisinde kesme işareti kullanımı doğrudur?",opts:["Ankara'da hava bugün güzel.","Kitab'ı aldım.","Öğretmen'e soru sorduk.","Masa'nın üstüne koydu."],ans:0},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Destekleyici Düşünce",passage:"Okumak, insanın en önemli kazanımlarından biridir. Bir kitap okurken sadece bilgi edinmeyiz; aynı zamanda farklı bakış açıları geliştiririz. ___. Bunun yanında düşünme ve sorgulama becerimiz de gelişir.",q:"Parçadaki boşluğa hangisi getirilmelidir?",opts:["Okumak için zaman ayırmak çok zordur.","Kelime dağarcığımız ve dil becerimiz de zenginleşir.","Kitaplar pahalı olduğu için herkes alamaz.","Roman okumak şiir okumaktan daha kolaydır."],ans:1},
+  {year:"MEB Tipi",cat:"Cümlede Anlam – Amaç",q:"Aşağıdaki cümlelerin hangisinde amaç anlamı yoktur?",opts:["Sağlıklı kalmak için her gün yürüyüş yapıyorum.","Treni kaçırmamak için erken çıktım.","Hava soğudu, dışarı çıkmadım.","Sınavda başarılı olmak için çok çalışıyorum."],ans:2},
+  {year:"MEB Tipi",cat:"Paragrafta Anlam – Çıkarım",passage:"Rüzgar enerjisi son yıllarda hızla gelişen yenilenebilir enerji kaynaklarından biridir. Yakıt gerektirmemesi ve çevreye zarar vermemesi bu enerji türünü cazip kılmaktadır. Türkiye, sahip olduğu coğrafi konum sayesinde rüzgâr enerjisi açısından büyük bir potansiyele sahiptir.",q:"Bu metne göre aşağıdakilerden hangisi çıkarılabilir?",opts:["Türkiye rüzgar enerjisini en verimli kullanan ülkedir.","Rüzgar enerjisi çevre dostu bir enerji kaynağıdır.","Rüzgar enerjisi petrolden daha pahalıdır.","Türkiye'de rüzgar santrali sayısı azalmaktadır."],ans:1},
+
+  // ── 2023 İOKBS – Gerçek Sorular ──
+  {year:"MEB 2023",cat:"Sözcükte Anlam – Deyim",q:"Aşağıdaki cümlelerin hangisinde altı çizili deyim 'çok sevinçten veya korkudan ne yapacağını şaşırmak' anlamında kullanılmıştır?",opts:["İş değişikliği yapması bütün düzenini allak bullak etti.","Mutfaktan gelen tıkırtıları duyunca aklı başından gitti.","Tatile onu da götürsün diye etrafında dört dönüyordu.","Kardeşinin odaya izinsiz girdiğini görünce küplere bindi."],ans:1},
+  {year:"MEB 2023",cat:"Sözcükte Anlam",q:"Aşağıdaki cümlelerin hangisinde 'atmak' sözcüğü 'bir cismi bir yöne doğru fırlatmak' anlamında kullanılmıştır?",opts:["Balkona çıkarken üşürüm diye omzuma bir şal attım.","Lezzetli olması için yemeklerine bolca baharat atar.","Çocuklar sahilden topladıkları taşları neşeyle denize attı.","İlk kez sahneye çıkmanın heyecanıyla kalbi çok hızlı atıyordu."],ans:2},
+  {year:"MEB 2023",cat:"Cümlede Anlam – Kişileştirme",passage:"(1) Apartmanın köhneleşmiş basamaklarını çifter çifter çıktı. (2) Eve girip kimseyi bulamayınca karısının komşuda, çocukların ise sokakta olabileceğini düşündü. (3) İçerisi avazı çıktığı kadar bağıran yoğurtçuların, şıracıların sesiyle doldu. (4) Sokağa bakmak için pencereyi açtığında güneşin ufukta nazlanarak batmaya başladığını gördü.",q:"Bu metindeki numaralanmış cümlelerin hangisinde kişileştirmeye yer verilmiştir?",opts:["1","2","3","4"],ans:3},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Konu",q:"'Konya'nın uçsuz bucaksız ovalarında gezerim / Bursa'nın buz gibi sularından kana kana içerim / Çukurova'nın topraklarını karış karış ekip biçerim / Dalgalanan bayrağımın gölgesinde nefeslenirim' Bu şiirin konusu hangisidir?",opts:["Doğa hayranlığı","Yaşama sevinci","Memleket sevgisi","Geçmiş özlemi"],ans:2},
+  {year:"MEB 2023",cat:"Cümlede Anlam",q:"'Mutluluk kapısının anahtarı peşinden koştuklarımızda değil, sahip olduklarımızda saklıdır.' cümlesine anlamca en yakın olan hangisidir?",opts:["Elindekinin kıymetini bilen insan mutlu olur.","Aklını kullanan insan, ulaşamayacağı hedefler için mücadele etmez.","Her şeyin en iyisine sahip olmak isteyen elindekini de kaybeder.","Ne aradığını bilmeyenler mutluluğu hiçbir yerde bulamaz."],ans:0},
+  {year:"MEB 2023",cat:"Sözcükte Anlam",q:"Aşağıdaki cümlelerin hangisinde sözcük karşısındaki anlama uygun kullanılmamıştır?",opts:["'İndirim yapılınca ürünler birkaç günde erimiş.' → Yok olmak, bitmek","'Ayakkabının fiyatı nihayet düştü.' → Yere devrilmek, yere serilmek","'Rakip takım maçı bir sayı farkla kazanmış.' → Yenmek, galip gelmek","'Arkadaşım beni çok az farkla geçti.' → Geride bırakmak, aşmak"],ans:1},
+  {year:"MEB 2023",cat:"Cümlede Anlam – Neden-Sonuç",passage:"(1) Çocukluk yıllarımda birçok arkadaşım kitaba ulaşmakta güçlük çekerdi. (2) Oysa o yaşlarda kitaba erişmek benim için kolaydı çünkü hem dedem hem de amcam kucak dolusu masalla bize gelirdi. (3) Amcam Fransız masallarını okumamı isterdi, dedemse Türk klasiklerini okumam için ısrar ederdi. (4) Ben Türk klasiklerini sevdiğimden en çok onları okumayı tercih ederdim.",q:"Bu metindeki numaralanmış cümlelerin hangilerinde neden-sonuç ilişkisi vardır?",opts:["1 ve 3","1 ve 4","2 ve 3","2 ve 4"],ans:3},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Kesin Bilgi",passage:"Uzun yıllardır robot geliştirme projeleri yürüten İtalya, İsviçre ve Almanya'dan bir grup bilim insanının 2014 yılında geliştirdikleri dokunma hissine sahip biyonik el, çok büyük bilgisayarlar yardımıyla çalışıyordu.",q:"Bu metinden aşağıdakilerin hangisine kesinlikle ulaşılır?",opts:["Robot geliştirme çalışmalarının uzun zamandır sürdürüldüğüne","Dokunma hissine sahip ilk biyonik elin 2014'te tasarlandığına","Bu üç ülkenin robot geliştirme çalışmalarına öncülük ettiğine","Robot geliştirmenin sadece büyük bilgisayarlarla olduğuna"],ans:0},
+  {year:"MEB 2023",cat:"Cümlede Anlam – Öznel/Nesnel",passage:"(1) Deniz gergedanları doğduklarında koyu mavi ve gri renkte olurlar. (2) Yetişkin olduklarındaysa renkleri beyaza döner ve benekleri ortaya çıkar. (3) Yetişkin bir gergedanın çenesinde üç metreye kadar ulaşan köpek dişi bulunur. (4) Boynuzu andıran bu diş onlara ilginç bir görünüm kazandırır.",q:"Bu metindeki numaralanmış cümlelerin hangisinde kişisel bir görüşe yer verilmiştir?",opts:["1","2","3","4"],ans:3},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Karıncalar birçok odadan oluşan yuvalarını yer altına tüneller şeklinde yapar. Karınca yuvasındaki her odanın farklı işlevi vardır. Bazı odalarda yavru karıncalar büyütülürken bazılarında besinler depolanır. Her yuvada işçi karıncalar ve bir de kraliçe karınca yaşar. Kraliçe karınca yavruların beslenmesi ve büyütülmesinden sorumludur. İşçi karıncalar ise yuvayı temizlemek, korumak ve yuvaya besin getirmek gibi görevler üstlenir.",q:"Bu metinde 'karıncalar' ile ilgili aşağıdakilerden hangisine değinilmemiştir?",opts:["Yuvadaki odaları çeşitli amaçlar için kullandıklarına","Kraliçe karıncanın yuvayı koruduğuna","Yuvalarını yerin altına yaptıklarına","İşçi karıncaların farklı işlerden sorumlu olduğuna"],ans:1},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Çıkarım",passage:"Kangurular Avustralya kıtasının ulusal sembolüdür. Figürlerine paralarda, posta pullarında, uçaklarda rastlamak mümkün. Memeliler familyasından olan kanguruların altmıştan fazla türü vardır. Dört ayaklı hayvanlar olsalar da genellikle arka ayakları üzerinde dururken görürüz. Çünkü ön ayakları kısa olan kangurular, uzun ve güçlü arka ayaklarını zıplamak ve koşmak için daha fazla kullanır.",q:"Bu metne göre hangi ifadeler söylenebilir? (1: figürü çeşitli alanlarda kullanılır, 2: farklı kıtalarda da bulunur, 3: arka ayakları önden farklı özelliktedir, 4: boyu zıplamada etkilidir)",opts:["1 ve 2","1 ve 4","2 ve 3","1 ve 3"],ans:3},
+  {year:"MEB 2023",cat:"Cümlede Anlam – Amaç-Sonuç",passage:"(1) Mevsiminde alınan sebze ve meyveler daha sonra yenmek için çeşitli yöntemlerle saklanabilir. (2) Bu yöntemlerin başlıcaları kurutma, dondurma, tuzlama ve vakumlamadır. (3) Bu saklama yöntemlerinden en uygun olanı tercih edilirse onların besin değerleri korunmuş olur. (4) Böylelikle üretildikleri mevsimin dışında da bu yiyecekler gönül rahatlığıyla tüketilebilir.",q:"Bu metindeki numaralanmış cümlelerin hangisinde amaç-sonuç ilişkisi vardır?",opts:["1","2","3","4"],ans:3},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Boşluk Doldurma",passage:"Kendinizi iyi hissetmek istiyorsanız bol bol temiz hava alıp yürüyüş yapın. Bakımlı olmaya ve sağlıklı beslenmeye özen gösterin. Ayrıca düşünme biçiminizin de iyi hissetmenizi etkilediğini unutmayın. Bu yüzden - - - -. Çünkü olumsuz düşünürseniz sadece olumsuzlukları görürsünüz.",q:"Boş bırakılan yere aşağıdakilerden hangisi getirilmelidir?",opts:["spor yapın ve uyku düzeninize dikkat edin","olumlu düşünmeyi hayat tarzı hâline getirin","olumsuzlukların hayatın gerçeği olduğunu bilin","yaşadığınız çevreyi değiştirmeye çalışın"],ans:1},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Tüm meyvelerde doğal olarak bulunan pektin maddesi reçelin kıvam almasını sağlar. Her meyveden reçel yapılabilir ama fazla pektin içeren elma, erik, üzüm ve ayva reçel yapımına daha uygundur. Bunun yanında reçeli yapılacak meyvenin fazla olgunlaşmamış olmasına dikkat edilmelidir. Çünkü meyve olgunlaştıkça pektin miktarı azalır.",q:"Bu metinde aşağıdakilerden hangisine değinilmemiştir?",opts:["Bazı meyvelerin reçel yapımına daha elverişli olduğuna","Pektin oranının her meyvede aynı olduğuna","Meyvelerde pektin maddesinin kendiliğinden bulunduğuna","Olgunlaşmanın reçelin kıvam almasındaki etkisine"],ans:1},
+  {year:"MEB 2023",cat:"Cümlede Anlam – Koşul",q:"Aşağıdaki cümlelerin hangisinde koşul anlamı vardır?",opts:["Tatiller, güzel anlarla süslenirse çocuklarımızın hafızasında yer eder.","İlk defa duyduğum bu kuş sesi bende büyük bir şaşkınlık yarattı.","Sahile gitmek üzere binanın duvarı boyunca konuşmadan yürüdüler.","Kavurucu yaz sıcağının etkisiyle ağzı kurumaya başladı."],ans:0},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Baykuşlar, tüylü koca kafaları ve devasa gözleriyle dikkat çeken kuşlardır. Serçe kadar küçük olanları da var, kanatları açıkken orta boylu bir insan uzunluğunda olanları da. Kıvrık gagaları, kancaya benzer pençeleri sayesinde iyi bir avcıdır. Çoğunlukla gece avlanır. Gözlerindeki kimyasal sıvı sayesinde karanlıkta her şeyi ayrıntılı görürler. Kulakları da oldukça iyi duyan baykuşlar, âdeta kafalarında çanak antenle dolaşır.",q:"Bu metinde 'baykuşlar' ile ilgili aşağıdakilerden hangisine değinilmemiştir?",opts:["Birbirlerinden farklı boyutta olduklarına","İyi bir avcı olmalarını sağlayan özelliklerine","Avladıkları hayvanların türlerine","Duyularının hassas olduğuna"],ans:2},
+  {year:"MEB 2023",cat:"Paragrafta Anlam – Söylenemez",passage:"Her ne olursa olsun, olumsuz tepkiler vermeden evvel 'Önce dur!' derim kendime. Yıllar önce geliştirdiğim bir davranış yöntemidir bu. Bunu uygulamadan vereceğim tepki ile uyguladıktan sonra vereceğim tepki arasındaki fark büyüktür. İlki problem yaratır, ikincisi ise problem çözer.",q:"Bu sözleri söyleyen biriyle ilgili aşağıdakilerden hangisi söylenemez?",opts:["Karşısındaki kişinin fikirlerine önem verir.","Sakin kalmanın problemleri önleyeceğine inanır.","Sorunla karşılaştığında tepkilerini kontrol etmeye çalışır.","İlişkilerinde düşünmeden hareket etmekten kaçınır."],ans:0},
+
+  // ── 2022 İOKBS – Gerçek Sorular ──
+  {year:"MEB 2022",cat:"Sözcükte Anlam – Deyim",q:"'Biraz yalnız kalsın, kafasını topladığında bizimle konuşacaktır.' cümlesindeki deyimin taşıdığı anlam hangisidir?",opts:["Bir düşünce aklına uygun gelmek","Sağlıklı düşünebilir olmak","Yeni fikirler bulmak","Sürekli aynı şeyi düşünmek"],ans:1},
+  {year:"MEB 2022",cat:"Sözcükte Anlam",q:"Aşağıdaki cümlelerin hangisinde 'ilerlemek' sözcüğü 'daha güçlü, daha etkili duruma gelmek' anlamında kullanılmıştır?",opts:["Aralarındaki dostluk gün geçtikçe ilerledi.","Durdurmaya çalıştığım taksi beni fark etmeyip ilerledi.","Birbirlerinin kıymetini anlayana kadar yıllar ilerledi.","Sistemdeki arıza giderilince bankadaki sıra hızla ilerledi."],ans:0},
+  {year:"MEB 2022",cat:"Cümlede Anlam – Öznel/Nesnel",passage:"(1) Vitrinleri süsleyen mankenler titreyen ışıkla tedirgin ve korkmuş görünüyordu. (2) Saat gece tam on ikiyi gösteriyordu ve hiçbir mağazanın ışığı yanmıyordu. (3) Caddedeki binalarda düğün konvoyunun çılgın kornaları yankılandı. (4) Eğlenceyi abartan bu grubun sevinç gösterisi gecenin huzur veren sessizliğini bozmuştu.",q:"Bu metindeki numaralanmış cümlelerin hangisinde kişisel görüşe yer verilmemiştir?",opts:["1","2","3","4"],ans:1},
+  {year:"MEB 2022",cat:"Cümlede Anlam",q:"'Hangi yolda olursan ol, çok mesafe katetmek ister misin? O hâlde yavaş da olsa durmaksızın yürü.' Bu cümledeki altı çizili sözle anlatılmak istenen hangisidir?",opts:["Sakinlik","Duyarlılık","Kararlılık","Kalıcılık"],ans:2},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Metin Türü",passage:"Eski Datça, Antik Çağ'dan beri yaşamın devam ettiği tek mahalledir. Burası badem ve zeytin ağaçlarıyla dolu, muhteşem manzaraları olan bir yer. Gözlemlediğim kadarıyla Eski Datça'nın dar sokaklarındaki huzur, burada yaşayan insanlara da yansımış. Duvarlarından çiçekler sarkan iki katlı evlerin süslediği sokaklar insanları büyülüyor.",q:"Bu parça aşağıdaki metin türlerinden hangisine örnektir?",opts:["Anı","Mektup","Gezi yazısı","Tiyatro"],ans:2},
+  {year:"MEB 2022",cat:"Cümlede Anlam – Öneri",passage:"(1) Müzeleri ziyaret etmek, geçmişe yapılan bir yolculuk gibidir. (2) Uzun zaman önce yaşamış insanların eşyalarını, yazdıklarını, değerli nesnelerini yalnızca müzelerde görebilirsiniz. (3) Gezi programlarınıza mutlaka müze ziyaretlerini dâhil etmelisiniz. (4) Çünkü müze ziyaretleri, düşündürücü, öğretici ve ufuk açıcıdır.",q:"Bu metindeki numaralanmış cümlelerin hangisinde bir öneride bulunulmuştur?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Kesin Bilgi",q:"'2020 Olimpiyatları'nda 13 madalya kazanan Türkiye, 1948 Olimpiyatları'ndaki 12 madalyalık rekorunu geçmeyi başardı.' Bu cümleden aşağıdaki yargıların hangisine kesinlikle ulaşılır?",opts:["Türkiye'nin olimpiyatlarda en fazla madalya kazandığı yıl 2020'dir.","Türkiye, 1948 Olimpiyatları'nda birden fazla dalda madalya kazanmıştır.","Türkiye, olimpiyatlara ilk kez 1948 yılında katılmıştır.","Türkiye, 2020'de 1948'e göre daha fazla altın madalya kazanmıştır."],ans:1},
+  {year:"MEB 2022",cat:"Cümlede Anlam – Neden-Sonuç",passage:"(1) Cam, doğada kolayca bulunan bazı maddelerin işlenmesiyle üretilir. (2) Bu maddelerden biri olan kum, cam yapılırken yüksek sıcaklıklarda işlenir. (3) Kumu yüksek sıcaklıklarda eritmek maliyetli olduğundan kuma soda ve kireç eklenir. (4) Cama renk vermek veya yumuşaklığını artırmak için de daha başka maddeler kullanılır.",q:"Bu metindeki numaralanmış cümlelerin hangisinde neden-sonuç ilişkisi vardır?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Hikâye Unsuru",passage:"Köşebaşında parlak vitrinli bir tuhafiye mağazası vardı. Büyük kristal avizelerin altında türlü türlü renklerde boyun bağlarının, şık tokalı kemerlerin, kurdelelerin, eldivenlerin vitrinin raflarını süslediği bir mağazaydı burası. Mağazanın vitrini sokağın güneşi gibiydi.",q:"Bu metindeki hikâye unsurlarıyla ilgili aşağıdakilerden hangisi söylenebilir?",opts:["Mekân, betimlenerek anlatılmıştır.","Olaylar oluş sırasına göre verilmiştir.","Zaman unsuru belirgindir.","Kahramanın duygularına yer verilmiştir."],ans:0},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Akış Bozma",passage:"(1) Koruma altına alınmış doğal alanlar olan millî parkların kendine özgü değerleri vardır. (2) Bazıları, ender bulunan veya soyu tükenme tehlikesi altında olan canlıların yaşam alanıdır. (3) Millî parkların yanı sıra ülkemizde pek çok tabiat parkı da vardır. (4) Bazı millî parklar ise eski çağlardan kalma arkeolojik yerlerdir.",q:"Bu metindeki numaralanmış cümlelerin hangisi anlatımın akışını bozmaktadır?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Ana Düşünce",passage:"Kelebekler, kanatları çıkmadan önce bir süre kozanın karanlığında kalır. Bu, en büyük, en hakiki sevinçlerin zorluklardan, karanlıklardan sonra geldiğini anlamamız için bir işarettir.",q:"Bu metnin ana düşüncesi hangisidir?",opts:["Sıkıntı ve güçlüklerin sonunda gerçek mutluluklar vardır.","Kelebeklerin uzun zaman kozada kalması gerekir.","Kelebeğin oluşumu belirli aşamalarda gerçekleşir.","Engeller, deneyim kazandıkça daha kolay aşılır."],ans:0},
+  {year:"MEB 2022",cat:"Cümlede Anlam – Koşul",q:"'- - - - kelime hazinem ve hayal gücüm gelişecek.' Bu cümlede koşul-sonuç ilişkisi kurmak için boş bırakılan yere hangisi getirilmelidir?",opts:["Farklı türdeki kitaplara yöneldiğimden","Her gün kitap okuduğumdan","Seviyemin üzerinde kitaplar okuduğum için","Kitap okumaya çok zaman ayırsam"],ans:3},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Amaç",passage:"Yeni bir ürün ortaya koymak veya var olanı daha iyi hâle getirmek için özgün düşüncelerin geliştirilmesi ve uygulanmasına inovasyon denir. İnovasyon, çoğunlukla yaşamımızı kolaylaştıran etkilere sahiptir. Bundan binlerce yıl önce tekerleğin bulunması ve kullanılması büyük bir inovasyondur.",q:"Bu metin aşağıdaki soruların hangisine cevap vermek amacıyla yazılmıştır?",opts:["İnovasyon hangi alanlarda etkilidir?","Kimler inovasyondan etkilenir?","İlk inovasyon örneği nedir?","İnovasyon nedir?"],ans:3},
+  {year:"MEB 2022",cat:"Dil Bilgisi – Sözcük Yapısı",q:"Aşağıdaki altı çizili sözcüklerden hangisi yapısı bakımından türemiş sözcüktür? (Yapım eki alarak anlamı değişen sözcüklere türemiş sözcük denir.)",opts:["Kar yağınca dolaptan kayak takımlarını çıkardım. (kayak)","Akşamlarımız sıcak sohbetlerle geçerdi. (Akşamlarımız)","Duvar rengârenk resimlerle süslenmişti. (resimlerle)","Sokaktaki arabaların altında yavru kediyi aradık. (Sokaktaki)"],ans:3},
+  {year:"MEB 2022",cat:"Yazım Kuralları",q:"'Doğu Hindistan'ın Visakhopatnam kenti (1) açıklarındaki gemilere yanaşan Hint'li (2) balıkçılar, balıklarını satmak için ip merdivenlerle (3) gemilere tırmanıyor (4).' Numaralanmış sözcüklerden hangisinin yazımı yanlıştır?",opts:["1 – kenti","2 – Hint'li","3 – merdivenlerle","4 – tırmanıyor"],ans:1},
+  {year:"MEB 2022",cat:"Paragrafta Anlam – Söylenemez",passage:"Her ne olursa olsun, olumsuz tepkiler vermeden evvel 'Önce dur!' derim kendime. Yıllar önce geliştirdiğim bir davranış yöntemidir bu. Bunu uygulamadan vereceğim tepki ile uyguladıktan sonra vereceğim tepki arasındaki fark büyüktür. İlki problem yaratır, ikincisi ise problem çözer.",q:"Bu sözleri söyleyen biriyle ilgili aşağıdakilerden hangisi söylenemez?",opts:["Karşısındaki kişinin fikirlerine önem verir.","Sakin kalmanın problemleri önleyebileceğine inanır.","Sorunla karşılaştığında tepkilerini kontrol etmeye çalışır.","İlişkilerinde düşünmeden hareket etmekten kaçınır."],ans:0},
+
+  // ── 2021 İOKBS – Gerçek Sorular ──
+  {year:"MEB 2021",cat:"Sözcükte Anlam",q:"'Ödül almak, henüz yolun başında olan bir yazar için gerçek bir motivasyon kaynağıdır.' cümlesinde altı çizili sözle anlatılmak istenen hangisidir?",opts:["Yeni başlayan","Yeteneği bulunan","Öncülük eden","Eleştirel bakan"],ans:0},
+  {year:"MEB 2021",cat:"Sözcükte Anlam",q:"Aşağıdakilerin hangisinde 'yetişmek' sözcüğünün cümlede kazandığı anlam yanlış verilmiştir?",opts:["'Araca son anda yetişti.' → Vaktinde varmak","'Bu ödevler yarına yetişmeli.' → Vaktinde tamam olmak, bitmek","'Bu alanda birçok bilim insanı yetişiyor.' → Eğitim görmüş olmak, gelişmek","'Para ancak yol parasına yetişir.' → Yardım etmek, yardımına koşmak"],ans:3},
+  {year:"MEB 2021",cat:"Sözcükte Anlam – Deyim",q:"'Ben sana kendimi anlatabilmek için yıllardır akıntıya kürek çekmişim.' Altı çizili deyimin cümleye kattığı anlam hangisidir?",opts:["Etki altında kalarak bir davranışa katılmak","Her türlü zorluğa rağmen güçlü kalmak","Bir işin veya düşüncenin yönünü değiştirmek","Olmayacak bir şey uğrunda boşuna çabalamak"],ans:3},
+  {year:"MEB 2021",cat:"Sözcükte Anlam – Atasözü",q:"Aşağıdaki atasözlerinden hangisi 'Susmak bazen konuşmaktan daha iyi sonuç verir.' anlamı taşımaktadır?",opts:["İki dinle, bir söyle.","Söz gümüşse sükût altındır.","Söz var, iş bitirir; söz var, baş yitirir.","Büyük lokma ye, büyük söz söyleme."],ans:1},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Metin Türü",passage:"Kezban — Yurt savunmasında kadın erkek ayrımı olmaz ana... Yılmam, korkmam hiçbir şeyden...\n(O sırada kapı çalınır.)\nAyşe Nine — Sus kızım sus... Bak kapı çalınıyor...\nKezban — (Çıkar, bir süre sonra tekrar girer.) Babam gelmiş ana, yanında konuklar da var.",q:"Bu parça aşağıdaki metin türlerinin hangisinden alınmıştır?",opts:["Anı","Tiyatro","Mektup","Gezi yazısı"],ans:1},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Ana Düşünce",passage:"İnsanlar her gün televizyon programları, filmler ve İnternet siteleri gibi farklı iletişim araçlarıyla medya mesajlarına ulaşmaktadır. Sorumlu bireyler olarak bizler, medyanın sunduğu bu mesajları değerlendirerek bunların arasından doğruları seçmeliyiz.",q:"Bu metinde vurgulanan düşünce hangisidir?",opts:["Medya mesajlarının yaşamımızı etkilediğini bilmeliyiz.","İletişim araçlarından bize uygun olanları seçmeliyiz.","Medya yoluyla iletilen mesajları sorgulamalıyız.","İletişim araçlarını kullanırken çeşitliliği sağlamalıyız."],ans:2},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Hikâye Unsuru",passage:"Bir baloncu, her sabah aynı saatlerde kocaman bir balon kümesiyle görünürdü. 'Balon! Renk renk balonlar...' diye bağırarak ağır adımlarla geçip giderdi. Küçük çocuk, onun gelişini her gün heyecanla beklerdi.",q:"Bu metinde aşağıdaki hikâye unsurlarından hangisi yoktur?",opts:["Şahıs kadrosu","Olay","Zaman","Mekân"],ans:3},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Dağ bisikleti sporu engebeli arazide, ormanda, patikada, taşlı hatta çamurlu yollarda yapılır. Bu sporu yapanlar serbest sürüş, engellerden atlama, rampalardan geçme gibi hareketleri öğrenir. Dağ bisikletçileri bu hareketlere elverişli ve özel olarak üretilen bisikletler kullanır. Bu bisikletler zorlu koşullara dayanıklıdır.",q:"Bu metinde 'dağ bisikleti sporu' ile ilgili aşağıdakilerin hangisine değinilmemiştir?",opts:["Yapıldığı yerlerin çeşitlerine","Sporcuların öğrendiği hareket türlerine","Sporcuların fiziksel yapısına","Kullanılan bisikletlerin özelliğine"],ans:2},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Giriş Cümlesi",q:"Aşağıdaki cümlelerle bir metin oluşturulduğunda giriş cümlesi hangisi olur?\n1: Daha önceleri de Ay'ın çeşitli bölgelerinde su olduğu tespit edilmişti.\n2: Ay'ın güney kutbu civarındaki Clavius Krateri'nde su molekülleri tespit edildi.\n3: Clavius Krateri gibi güneş ışığı alan bir bölgede su tespit edilmesi bilim insanlarını şaşırttı.\n4: Ancak tespit edilen bu bölgelerin tamamı güneş ışığı almayan yerlerdi.",opts:["1","2","3","4"],ans:1},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Çıkarım",passage:"Kırlangıçlar her yıl ilkbahar aylarında Avrupa ve Asya kıtalarına, sonbaharda da Afrika kıtasına doğru göç eder. Günde ortalama 140 kilometre uçan kırlangıçlar göç süresince yaklaşık 10 bin kilometrelik uçuşu tamamlamış olur. Kırlangıçlar ilkbaharda 5-6 haftalık sürede göç ederken bu süre sonbaharda artmaktadır.",q:"Bu metinden 'kırlangıçlar' ile ilgili aşağıdakilerin hangisine ulaşılabilir?",opts:["Her yıl izledikleri göç yolları değişir.","Göç sırasında en çok yol alan kuş türüdür.","Göç ederken konakladıkları yerler aynıdır.","Sonbahardaki göç süreleri ilkbahardakinden uzundur."],ans:3},
+  {year:"MEB 2021",cat:"Cümlede Anlam – Amaç-Sonuç",passage:"(1) Bangladeş'in bazı bölgelerinde yağışların yoğun olduğu aylarda su baskınları olur. (2) Bu baskınlardan korunmak için su seviyesinden yükseğe yapılan ayaklı evler bölgede yaygındır. (3) Evlerin üzerinde durduğu ayakların uzunluğu 6 ile 8 metre arasındadır. (4) Sular çekilince bu ayaklar ortaya çıkarken sular yükseldiğinde neredeyse tamamen kaybolur.",q:"Bu metinde numaralanmış cümlelerin hangisinde amaç-sonuç ilişkisi vardır?",opts:["1","2","3","4"],ans:1},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Değinilmeyen",passage:"Kardelen, bembeyaz karların arasından başını yukarı doğru uzatan hoş kokulu, güzel bir çiçektir. Karları delerek çıktığı için bu adı alır. Ülkemizin farklı yörelerinde yetişen bu çiçek 'cımbırt', 'boynubükük' ve 'değirmengülü' adlarıyla da anılır. Nergislere çok benzeyen bu soğanlı bitki çoğunlukla dağlarda yetişir.",q:"Bu metinde 'kardelenler' ile ilgili aşağıdakilerin hangisine değinilmemiştir?",opts:["Soğanlı bir bitki olduğuna","Beğenilen bir kokusu olduğuna","Farklı bölgelerde görüldüğüne","Çeşitli renklerinin bulunduğuna"],ans:3},
+  {year:"MEB 2021",cat:"Cümlede Anlam – Öznel/Nesnel",passage:"(1) Kaçkar Dağları'nda hava durumu gün içinde farklılık gösterir. (2) Yakıcı güneşin ardından insanı ürküten sağanak yağışlar başlar. (3) Yörede yaşanan sağanak yağışlar sellere yol açar. (4) Ayrıca bu yağışlar heyelanların oluşmasına sebep olur.",q:"Bu metinde numaralanmış cümlelerin hangisinde öznel bir ifade vardır?",opts:["1","2","3","4"],ans:1},
+  {year:"MEB 2021",cat:"Cümlede Anlam – Neden-Sonuç",passage:"(1) Ölen hayvanların kalıntıları doğaya karışır. (2) Doğaya karışan bu kalıntılar da zamanla fosilleşebilir. (3) Fosiller genellikle yerin çok derinlerindedir. (4) Ancak bazı fosiller, su ve rüzgârın kayaçları aşındırmasıyla kendiliğinden yüzeye çıkar.",q:"Bu metinde numaralanmış cümlelerin hangisinde neden-sonuç ilişkisi vardır?",opts:["1","2","3","4"],ans:3},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Akış Bozma",passage:"(1) Muz, aslında bir ağaç türü değildir. (2) Maydanoz, dereotu gibi otsu bitki türleri arasında yer alır. (3) Muzun ana vatanı Güney Asya'dır. (4) Ayrıca bu tür otsu bitkiler içinde boyu 8-9 metreye ulaşabilen tek örnektir.",q:"Numaralanmış cümlelerden hangisi metnin anlatım akışını bozmaktadır?",opts:["1","2","3","4"],ans:2},
+  {year:"MEB 2021",cat:"Paragrafta Anlam – Çıkarım",passage:"Mutluluk, çalışmak ve sevmektir. Hem çalışır hem de sevgi dolu olursanız sizi kimse yıkamaz. Çalışma, belirli saatlerde belirli bir işi para kazanmak için yapmak anlamında değildir. Kendine ve insanlığa bir şeyler katmak, kazandırmak anlamında bir çalışmadır. Severek yapıldığında ise insanı mutluluğa götürür.",q:"Aşağıdaki tavsiyelerden hangisi bu sözleri söyleyen birine ait olabilir?",opts:["İnsanlığa fayda sağlayan ve severek yapacağınız bir meslek seçin.","İleride çok para getiren meslekleri tercih edin.","Çalışma şartlarının hayatınızı kolaylaştırdığı bir mesleğe yönelin.","Size farklı yerleri görme imkânı tanıyan bir mesleği seçin."],ans:0},
+
+];
+
+let questions = [...allQuestions];
+let current = 0;
+let answered = {};
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function shuffleQuestions() {
+  shuffleArray(questions);
+  answered = {};
+  current = 0;
+  renderQuestion();
+  updateHeader();
+  buildDots();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  if (!q) return;
+  const card = document.getElementById('q-card');
+  card.style.animation = 'none';
+  void card.offsetWidth;
+  card.style.animation = 'fadeUp .4s ease both';
+
+  document.getElementById('q-num').textContent = `Soru ${current + 1}`;
+  document.getElementById('q-year').textContent = q.year;
+  document.getElementById('q-cat').textContent = q.cat;
+
+  const passageBox = document.getElementById('passage-box');
+  const passageText = document.getElementById('passage-text');
+  if (q.passage) {
+    passageBox.style.display = 'block';
+    passageText.textContent = q.passage;
+  } else {
+    passageBox.style.display = 'none';
+  }
+
+  document.getElementById('q-text').textContent = q.q;
+
+  const optsDiv = document.getElementById('options');
+  optsDiv.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    const span = document.createElement('span');
+    span.className = 'option-letter';
+    span.textContent = letters[i];
+    const txt = document.createElement('span');
+    txt.textContent = opt;
+    div.appendChild(span);
+    div.appendChild(txt);
+    const prev = answered[current];
+    if (prev !== undefined) {
+      div.classList.add('disabled');
+      if (i === q.ans) div.classList.add('correct');
+      else if (i === prev.selected) div.classList.add('wrong');
+    } else {
+      div.addEventListener('click', () => selectAnswer(i));
+    }
+    optsDiv.appendChild(div);
+  });
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.innerHTML = '';
+  const prev = answered[current];
+  if (prev !== undefined) {
+    if (prev.correct) {
+      fb.className = 'feedback show correct-fb';
+      fb.innerHTML = '✅ Doğru cevap!';
+    } else {
+      fb.className = 'feedback show wrong-fb';
+      fb.innerHTML = `❌ Yanlış! Doğru cevap: <strong>${letters[q.ans]}) ${q.opts[q.ans]}</strong>`;
+    }
+  }
+
+  const pct = Math.round((Object.keys(answered).length / questions.length) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = `Soru ${current + 1} / ${questions.length}`;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  updateDots();
+}
+
+function selectAnswer(i) {
+  const q = questions[current];
+  answered[current] = { selected: i, correct: i === q.ans };
+  renderQuestion();
+  updateHeader();
+}
+
+function nextQuestion() {
+  if (current < questions.length - 1) { current++; renderQuestion(); }
+  else showScoreboard();
+}
+
+function prevQuestion() {
+  if (current > 0) { current--; renderQuestion(); }
+}
+
+function updateHeader() {
+  let correct = 0, wrong = 0;
+  Object.values(answered).forEach(a => { if (a.correct) correct++; else wrong++; });
+  document.getElementById('hdr-correct').textContent = `${correct} Doğru`;
+  document.getElementById('hdr-wrong').textContent = `${wrong} Yanlış`;
+  document.getElementById('hdr-total').textContent = `${Object.keys(answered).length} / ${questions.length}`;
+}
+
+function buildDots() {
+  const c = document.getElementById('q-dots');
+  c.innerHTML = '';
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'q-dot';
+    btn.textContent = i + 1;
+    btn.addEventListener('click', () => { current = i; renderQuestion(); });
+    c.appendChild(btn);
+  });
+  updateDots();
+}
+
+function updateDots() {
+  document.querySelectorAll('.q-dot').forEach((d, i) => {
+    d.className = 'q-dot';
+    if (i === current) d.classList.add('current');
+    else if (answered[i] !== undefined) d.classList.add(answered[i].correct ? 'answered-correct' : 'answered-wrong');
+  });
+}
+
+function showScoreboard() {
+  document.getElementById('quiz-area').style.display = 'none';
+  const sb = document.getElementById('scoreboard');
+  sb.style.display = 'block';
+  let correct = 0, wrong = 0;
+  Object.values(answered).forEach(a => { if (a.correct) correct++; else wrong++; });
+  document.getElementById('sc-score').textContent = correct;
+  document.getElementById('sc-total').textContent = '/ ' + questions.length;
+  document.getElementById('sc-correct').textContent = correct;
+  document.getElementById('sc-wrong').textContent = wrong;
+  document.getElementById('sc-pct').textContent = '%' + Math.round((correct / questions.length) * 100);
+}
+
+function restartQuiz() {
+  answered = {}; current = 0;
+  document.getElementById('scoreboard').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  renderQuestion(); updateHeader(); buildDots();
+}
+
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function confirmRestart() { closeModal(); restartQuiz(); }
+
+buildDots();
+renderQuestion();
+updateHeader();
+</script>
+</body>
+</html>
