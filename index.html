@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ÖMER LAB</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f1117;
+    color:#f3f4f6;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+h1{
+    font-size:42px;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#9ca3af;
+    margin-bottom:35px;
+}
+
+#search{
+    width:100%;
+    padding:16px 18px;
+    font-size:17px;
+    background:#1b1f2a;
+    color:white;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    margin-bottom:30px;
+}
+
+#search::placeholder{
+    color:#8d93a1;
+}
+
+.app{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    background:#1b1f2a;
+    border:1px solid #2c3344;
+    border-radius:14px;
+    padding:18px 22px;
+    margin-bottom:14px;
+    transition:.2s;
+}
+
+.app:hover{
+    background:#252b38;
+    transform:translateY(-2px);
+}
+
+.title{
+    font-size:20px;
+    font-weight:600;
+}
+
+.arrow{
+    font-size:24px;
+    color:#7c8599;
+}
+
+footer{
+    text-align:center;
+    color:#777;
+    margin-top:45px;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+h1{
+    font-size:34px;
+}
+
+.title{
+    font-size:18px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>ÖMER LAB</h1>
+
+<div class="subtitle">
+AI ile geliştirilmiş web uygulamaları
+</div>
+
+<input
+id="search"
+type="text"
+placeholder="🔍 Uygulama ara...">
+
+<a class="app" href="adil-mi-degil-mi/">
+<div class="title">⚖️ Adil mi Değil mi?</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="ingilizce-kelime-ogren/">
+<div class="title">🇬🇧 İngilizce Kelime Öğren</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="kim-yalan-soyluyor/">
+<div class="title">🕵️ Kim Yalan Söylüyor?</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="kural-bul/">
+<div class="title">🧩 Kural Bul</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="gorsel-sudoku/">
+<div class="title">🧠 Görsel Sudoku</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="terazi/">
+<div class="title">⚖️ Terazi</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="uzamsal-zeka/">
+<div class="title">🧊 Uzamsal Zekâ</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="dunya-haritasi/">
+<div class="title">🌍 Dünya Haritası</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="turkiye-haritasi/">
+<div class="title">🇹🇷 Türkiye Haritası</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="de-da-ki/">
+<div class="title">✍️ De / Da / Ki</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="deyim-atasozu/">
+<div class="title">📖 Deyim / Atasözü</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="gercek-mi-mecaz-mi/">
+<div class="title">🎭 Gerçek mi Mecaz mı?</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="konusma-carki/">
+<div class="title">🎤 Konuşma Çarkı</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="ogrenci-takip/">
+<div class="title">👨‍🎓 Öğrenci Takip</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="turkce-bursluluk/">
+<div class="title">📚 Türkçe Bursluluk</div>
+<div class="arrow">→</div>
+</a>
+
+<a class="app" href="yazma-carki/">
+<div class="title">📝 Yazma Çarkı</div>
+<div class="arrow">→</div>
+</a>
+
+<footer>
+© 2026 ÖMER LAB
+</footer>
+
+</div>
+
+<script>
+
+const search=document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+const value=this.value.toLowerCase();
+
+document.querySelectorAll(".app").forEach(app=>{
+
+const text=app.innerText.toLowerCase();
+
+app.style.display=text.includes(value)?"flex":"none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
