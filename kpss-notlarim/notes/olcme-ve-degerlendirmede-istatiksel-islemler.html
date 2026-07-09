@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ölçme ve değerlendirmede istatiksel işlemler · Fiş Kutusu</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="drawer-bg">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-title">Fiş Kutusu</span>
+        <span class="brand-sub">KPSS Çalışma Notları Arşivi</span>
+      </span>
+    </a>
+    <div class="search-wrap">
+      <input id="search-input" type="text" placeholder="Not ara… (ör. defterdar, medrese, tepki kuramı)" autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+    <nav class="top-nav">
+      <a href="../index.html">Defterler</a>
+      <a href="../all-notes.html">Tüm Notlar</a>
+    </nav>
+  </div>
+</header>
+<main class="page">
+
+    <nav class="crumbs"><a href="../index.html">Defterler</a>
+      <span>/</span> <a href="../notebooks/ana-olcme-ve-degerlendirme.html">ölçme ve değerlendirme</a>
+    </nav>
+    <article class="note-card">
+      <div class="note-card-pin" aria-hidden="true"></div>
+      <h1 class="note-title">ölçme ve değerlendirmede istatiksel işlemler</h1>
+      <div class="note-chips"><a class="chip" href="../notebooks/ana-olcme-ve-degerlendirme.html">ölçme ve değerlendirme</a></div>
+      <div class="note-body"><mark>madde analizi</mark>: %27, %27 alt ve üst grup alınır.<br>
+doğru yanlış ve boş sayısı her bir madde için yazılır<br>
+<br>
+<mark>madde güçlük indeksi</mark>: tüm sınıf ya da yukarıda belirtilen %54 kısımda doğru cevap sayısının tüm sayıya bölünmesi. (0-1) P, genelde 0.50 olması istenir. ama seçilecek adam sayısı azsa zor olmalıdır. soruya zamandan dolayı erişemeyen öğrenci sayısı toplam kişi sayısından çıkarılmalı, bunlar hesaba katılmamalıdır. orta güçlükteki maddeler çok olmalıdır testte, bu da <mark>güvenirliği arttırır</mark>. <br>
+<br>
+<mark>madde ayırıcılık gücü</mark>: üst gruptan doğru yanıt ile alt gruptan doğru yanıtlar çıkarılır ve sadece %27 liğe bölünür. (-1,1) bire yaklaşırsa fazladır. <br>
+0,40 çok iyi ayırt eder<br>
+0.30-0.40 iyi<br>
+0,20-0,30 düzeltilirse alınır.<br>
+<br>
+<mark>madde varyansı</mark>: p.q yani güçlük çarpı güçlüğün tersi<br>
+<mark>standart sapma:</mark> madde varyansı'nın kare kökü. √p.r varyans daha büyük.<br>
+<br>
+yani anlaşılacağı üzere r=q r:güvenirlikti??** p:güçlük<br>
+yani güçlük arttıkça ki nicel olarak azalmayı işaret eder, <a class="tb-link" href="../notes/guvenirlik.html">güvenirlik</a> de aynı orantıda artmaktadır.<br>
+<br>
+-madde güçlüğü(p) 0.50ye yaklaştıkça varyans ve standart sapma en büyük değerleri alırlar.<br>
+-p'nin 0.50'ye yaklaşması demek aynı zamanda maddenin ayırt edicilik gücünü de arttıran bir şeydir. 0.50 deyince de varyansın ve standart sapmanın büyük olması demek olduğunu anlıyoruz o halde standart sapma(s) büyürse ayırt edicilik de artar. <br>
+<br>
+<mark>histogram grafiği</mark>: sütun sütun olan grafik<br>
+<mark>frekans poligonu</mark>: noktaların birleşimi<br>
+<br>
+<a class="tb-link" href="../notes/merkezi-yigilma-egilim-olculeri.html">merkezi yığılma-eğilim ölçüleri</a><br>
+<a class="tb-link" href="../notes/merkezi-dagilim-degisim-olculeri.html">merkezi dağılım-değişim ölçüleri</a><br>
+<br>
+<mark>Z puanı:</mark> X-Xort/Sx<br>
+<mark>T puanı:</mark> 10Z+50<br>
+<br>
+<mark>testin ortalama güçlüğü:</mark> madde güçlüklerinin toplanıp madde sayısına bölünmesi ya da: X/max.puan</div>
+      <p class="note-meta">Son güncelleme: 17 Nisan 2012</p>
+    </article>
+    
+    
+</main>
+<footer class="site-footer">
+  <p>Tomboy Notes'tan aktarılan kişisel KPSS çalışma arşivi · 985 not</p>
+</footer>
+</div>
+<script src="../assets/search.js"></script>
+<script>window.SEARCH_INDEX_URL = "../assets/search-index.json";</script>
+</body>
+</html>
