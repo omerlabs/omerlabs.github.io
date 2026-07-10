@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ne Yapmalı?</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    overflow: hidden;
+    background: #fdf6e9;
+  }
+  #app {
+    height: 100vh; width: 100vw;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+
+  /* ---------- HOME / CATEGORY SCREEN ---------- */
+  #home {
+    height: 100%; width: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    padding: 24px 16px 16px 16px;
+    background: linear-gradient(180deg, #fff6e5 0%, #fdf6e9 100%);
+    overflow-y: auto;
+  }
+  #home h1 {
+    font-size: 32px; margin: 6px 0 2px 0; color: #4a3b2a;
+  }
+  #home p.subtitle {
+    font-size: 15px; color: #8a7860; margin: 0 0 18px 0; text-align: center;
+  }
+  .cat-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    width: 100%; max-width: 480px; padding-bottom: 20px;
+  }
+  .cat-card {
+    border-radius: 20px; padding: 16px 10px; text-align: center;
+    color: white; cursor: pointer; box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+    transition: transform 0.08s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+  }
+  .cat-card:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.12); }
+  .cat-card .emoji { font-size: 38px; }
+  .cat-card .name { font-size: 15.5px; font-weight: 700; }
+  .cat-card .progress { font-size: 11.5px; opacity: 0.9; }
+
+  /* ---------- SCENARIO SCREEN ---------- */
+  #scene {
+    height: 100%; width: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 18px 18px 24px 18px;
+  }
+  #scene.active { display: flex; }
+  .scene-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px; gap: 6px;
+  }
+  .back-btn {
+    font-size: 14px; color: #7a6a55; padding: 8px 12px; border-radius: 14px;
+    background: rgba(0,0,0,0.06); cursor: pointer; white-space: nowrap;
+  }
+  .cat-label {
+    font-size: 14px; font-weight: 700; color: #6a5a45; text-align: center; flex: 1;
+  }
+  .dots { display: flex; gap: 4px; flex-wrap: wrap; max-width: 90px; justify-content: flex-end; }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.14);
+  }
+  .dot.done { background: #f4a940; }
+
+  .scenario-box {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; gap: 16px; padding: 0 4px;
+    overflow-y: auto;
+  }
+  .scenario-emoji { font-size: 52px; }
+  .scenario-text {
+    font-size: 20px; line-height: 1.42; color: #3d3226; font-weight: 600;
+    max-width: 480px;
+  }
+  .scenario-question {
+    font-size: 16px; color: #a3823f; font-weight: 700;
+  }
+
+  .options {
+    display: flex; flex-direction: column; gap: 11px; width: 100%; max-width: 480px;
+    margin: 0 auto;
+  }
+  .option-btn {
+    font-size: 16px; font-weight: 600; color: #4a3b2a;
+    background: white; border: 2px solid #eadfc8; border-radius: 18px;
+    padding: 13px 15px; text-align: left; cursor: pointer;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.06);
+  }
+  .option-btn:active { transform: translateY(2px); }
+  .option-btn.selected.tier1 { background: #eafaf0; border-color: #7ed49a; }
+  .option-btn.selected.tier2 { background: #eef6fb; border-color: #86c0e6; }
+  .option-btn.selected.tier3 { background: #fff8ec; border-color: #f0cf8a; }
+  .option-btn.dim { opacity: 0.45; pointer-events: none; }
+
+  .feedback-overlay {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: white; border-radius: 26px 26px 0 0;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.12);
+    padding: 20px 20px 28px 20px;
+    display: none; flex-direction: column; align-items: center; text-align: center; gap: 9px;
+    transform: translateY(100%);
+    transition: transform 0.28s ease;
+    max-height: 55%;
+    overflow-y: auto;
+  }
+  .feedback-overlay.show { display: flex; transform: translateY(0); }
+  .feedback-emoji { font-size: 40px; }
+  .feedback-title { font-size: 18px; font-weight: 700; color: #3d3226; }
+  .feedback-text { font-size: 15.5px; color: #6a5a45; line-height: 1.4; max-width: 460px; }
+  .tap-hint { font-size: 12.5px; color: #b5a688; margin-top: 4px; }
+
+  /* ---------- CATEGORY COMPLETE SCREEN ---------- */
+  #complete {
+    height: 100%; width: 100%; display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px; gap: 14px;
+  }
+  #complete.active { display: flex; }
+  #complete .big-emoji { font-size: 56px; }
+  #complete h2 { font-size: 22px; color: #4a3b2a; margin: 0; }
+  #complete p { font-size: 15.5px; color: #8a7860; max-width: 420px; }
+  .complete-btn {
+    margin-top: 10px; font-size: 16px; font-weight: 700; color: white;
+    background: #f4a940; border-radius: 18px; padding: 14px 26px; cursor: pointer;
+    box-shadow: 0 5px 0 rgba(0,0,0,0.12);
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div id="home">
+    <h1>Ne Yapmalı? 🤔</h1>
+    <p class="subtitle">Farklı durumlarda ne yapabileceğini birlikte düşünelim!</p>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+
+  <div id="scene">
+    <div class="scene-topbar">
+      <div class="back-btn" id="backBtn">← Geri</div>
+      <div class="cat-label" id="catLabel"></div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="scenario-box" id="scenarioBox">
+      <div class="scenario-emoji" id="scenarioEmoji"></div>
+      <div class="scenario-text" id="scenarioText"></div>
+      <div class="scenario-question">Ne yapmalısın?</div>
+      <div class="options" id="optionsBox"></div>
+    </div>
+    <div class="feedback-overlay" id="feedbackOverlay">
+      <div class="feedback-emoji" id="feedbackEmoji"></div>
+      <div class="feedback-title" id="feedbackTitle"></div>
+      <div class="feedback-text" id="feedbackText"></div>
+      <div class="tap-hint">Devam etmek için ekrana dokun →</div>
+    </div>
+  </div>
+
+  <div id="complete">
+    <div class="big-emoji">🌈</div>
+    <h2 id="completeTitle"></h2>
+    <p id="completeSummary"></p>
+    <div class="complete-btn" id="completeBtn">Bölümlere Dön</div>
+  </div>
+
+</div>
+
+<script>
+/* ================= DATA ================= */
+const categories = [
+  {
+    id: "okul", name: "Okul", emoji: "🏫", color: "#5b9bd5",
+    scenarios: [
+      { emoji:"👩‍🏫", text:"Öğretmen sınıfta konuşurken seni gördü ve kızdı.", options:[
+        {text:"Özür dile ve öğretmeni dikkatle dinle.", tier:1, feedback:"Özür dilemek ve dinlemek, hatanı düzeltmenin en güzel yoludur."},
+        {text:"Sessizce otur ve bir daha konuşma.", tier:2, feedback:"Bu da iyi bir davranış, ama küçük bir özür durumu daha da güzelleştirirdi."},
+        {text:"Ağla ve hiçbir şey söyleme.", tier:3, feedback:"Üzülmek çok normal. Sakinleşince özür dilemeyi denersen kendini daha rahat hissedersin."}
+      ]},
+      { emoji:"🚻", text:"Derste tuvaletin geldi.", options:[
+        {text:"Parmak kaldırıp öğretmenden izin iste.", tier:1, feedback:"Aynen böyle! Öğretmenine haber vermek en doğrusu."},
+        {text:"Hiçbir şey söylemeden dersin bitmesini bekle.", tier:2, feedback:"Çok acil değilse bu da olur, ama erken söylemek seni daha rahat ettirir."}
+      ]},
+      { emoji:"🧍", text:"Teneffüste herkes birbiriyle konuşuyor, sen tek başına kaldın.", options:[
+        {text:"Bir gruba gidip \"Ben de oynayabilir miyim?\" diye sor.", tier:1, feedback:"Harika! Cesaretini toplayıp sormak yeni arkadaşlıklar kurmanın en güzel yolu."},
+        {text:"Yalnız otur ve biri gelsin diye bekle.", tier:2, feedback:"Bekleyebilirsin, ama kendin gidip sormayı denersen daha çabuk arkadaş bulursun."},
+        {text:"Üzülüp ağlamaya başla.", tier:3, feedback:"Üzülmek normal. Derin bir nefes alıp yanlarına gitmeyi dener misin?"}
+      ]},
+      { emoji:"🧸", text:"Arkadaşın senin oyuncağını izinsiz aldı.", options:[
+        {text:"Nazikçe \"Bunu bana sormadan almışsın, geri verir misin?\" de.", tier:1, feedback:"Süper! Nazikçe konuşmak çoğu zaman en iyi çözümdür."},
+        {text:"Öğretmene söyle.", tier:2, feedback:"Bu da doğru bir davranış, büyüklerden yardım istemek her zaman iyidir."},
+        {text:"Oyuncağı elinden çekip al.", tier:3, feedback:"Çekiştirmek kavgaya yol açabilir. Önce sözle istemeyi dener misin?"}
+      ]},
+      { emoji:"❓", text:"Ödevde bir soruyu bir türlü çözemedin.", options:[
+        {text:"Öğretmenden yardım iste.", tier:1, feedback:"Aferin! Yardım istemek, öğrenmenin en akıllı yollarından biridir."},
+        {text:"Boş bırak ve diğer sorulara geç.", tier:2, feedback:"Bu da mantıklı, ama sonra yardım istemeyi de unutma."},
+        {text:"Yanındaki arkadaşından kopya çek.", tier:3, feedback:"Kopya çekmek yerine sorman, o soruyu gerçekten öğrenmeni sağlar."}
+      ]},
+      { emoji:"😏", text:"Bir arkadaşın seninle dalga geçti.", options:[
+        {text:"Sakin bir sesle \"Bu beni üzdü, lütfen yapma\" de.", tier:1, feedback:"Çok olgun bir tepki! Duygularını söylemek en doğrusu."},
+        {text:"Öğretmene anlat.", tier:2, feedback:"Bu da iyi bir seçenek, büyüklerden destek almak güzeldir."},
+        {text:"Sen de onunla dalga geç.", tier:3, feedback:"Karşılık vermek durumu kötüleştirebilir. Sakin kalman daha iyi sonuç verir."}
+      ]},
+      { emoji:"⏰", text:"Okula geç kaldın.", options:[
+        {text:"Sınıfa girip öğretmenden özür dile ve sessizce yerine otur.", tier:1, feedback:"Aynen böyle! İçeri girip özür dilemek en doğru davranış."},
+        {text:"Kapının önünde bekle, içeri girme.", tier:3, feedback:"İçeri girmemek durumu daha da zorlaştırır. Cesaretlenip içeri girmek daha iyi olur."}
+      ]},
+      { emoji:"🤕", text:"Bir arkadaşın düştü ve ağlıyor.", options:[
+        {text:"Yanına gidip yardım et ve öğretmeni çağır.", tier:1, feedback:"Harika bir davranış! İyi bir arkadaş böyle yapar."},
+        {text:"Bakıp geç, senin işin değil diye düşün.", tier:3, feedback:"Arkadaşına yardım etmek onu çok mutlu eder ve seni de iyi hissettirir."}
+      ]},
+      { emoji:"🎯", text:"Beden dersinde takımlar seçilirken en son sen kaldın.", options:[
+        {text:"Gülümseyip takıma katıl ve eğlenmeye odaklan.", tier:1, feedback:"Süper tavır! Önemli olan oyunun tadını çıkarmak."},
+        {text:"Üzülüp oynamak istemediğini söyle.", tier:2, feedback:"Üzülmek normal, ama yine de katılmayı denersen çok eğlenebilirsin."}
+      ]},
+      { emoji:"🖍️", text:"Resim yaparken boyaların bitti, arkadaşının boyalarını kullanmak istiyorsun.", options:[
+        {text:"Nazikçe \"Boyalarını benimle paylaşır mısın?\" diye sor.", tier:1, feedback:"Harika! Sormak, istediğini elde etmenin en güzel yolu."},
+        {text:"İzin almadan boyaları al.", tier:3, feedback:"Önce sormak, arkadaşlığınızı daha güzel tutar."}
+      ]},
+      { emoji:"🎨", text:"Ders sırasında yanlışlıkla masaya boya döktün.", options:[
+        {text:"Hemen öğretmene söyle ve temizlemeye yardım et.", tier:1, feedback:"Aferin! Dürüst olmak ve yardım etmek en doğrusu."},
+        {text:"Kimse görmesin diye sakla.", tier:3, feedback:"Saklamak yerine söylemek, işleri daha çabuk düzeltir."}
+      ]},
+      { emoji:"🙋", text:"Öğretmen sana bir soru sordu ama cevabını bilmiyorsun.", options:[
+        {text:"\"Bilmiyorum ama öğrenmek isterim\" de.", tier:1, feedback:"Çok cesur! Bilmediğini söylemek utanılacak bir şey değil."},
+        {text:"Rastgele bir cevap uydur.", tier:2, feedback:"Denemek güzel ama bilmediğini söylemek daha dürüst bir yol."},
+        {text:"Hiç cevap verme, sessiz kal.", tier:3, feedback:"Sessiz kalmak yerine bilmediğini söylemek daha rahatlatıcı olur."}
+      ]},
+      { emoji:"✏️", text:"En sevdiğin kalemini kaybettin.", options:[
+        {text:"Sınıfta ve çantanda sakince ara, bulamazsan öğretmene söyle.", tier:1, feedback:"Doğru yaklaşım! Sakin kalıp aramak ve yardım istemek en iyisi."},
+        {text:"Üzülüp ağlamaya başla.", tier:2, feedback:"Üzülmek normal, ama sakince aramayı denersen belki bulursun."}
+      ]},
+      { emoji:"📝", text:"Bir arkadaşın sınavda senden kopya çekmek istiyor.", options:[
+        {text:"Nazikçe \"Bunu yapamam, ikimiz de kendi çabamızla yapalım\" de.", tier:1, feedback:"Çok dürüst bir tavır! Kendi çabanla yapmak en değerlisi."},
+        {text:"Görmesine izin ver.", tier:3, feedback:"Kopya vermek yerine reddetmek, ikinizin de öğrenmesini sağlar."}
+      ]},
+      { emoji:"🪑", text:"Sınıfta yeni oturma düzeni oldu, hiç tanımadığın biri yanına oturdu.", options:[
+        {text:"Gülümseyip kendini tanıt.", tier:1, feedback:"Harika! Yeni biriyle tanışmak güzel bir fırsat olabilir."},
+        {text:"Hiç konuşmadan otur.", tier:2, feedback:"Bu da olur, ama birkaç kelime etmek yeni bir arkadaşlık başlatabilir."}
+      ]},
+      { emoji:"💡", text:"Grup ödevinde senin fikrini kimse beğenmedi.", options:[
+        {text:"Sakince neden bu fikri önerdiğini anlat.", tier:1, feedback:"Çok olgun bir davranış! Fikrini açıklamak seni dinlemelerini sağlayabilir."},
+        {text:"Küsüp gruptan ayrıl.", tier:3, feedback:"Ayrılmak yerine anlatmayı denemek daha iyi sonuç verir."}
+      ]},
+      { emoji:"🗳️", text:"Sınıf başkanlığı seçimi oldu, sen seçilmedin.", options:[
+        {text:"Seçileni tebrik et ve gelecek sefer tekrar denemeye karar ver.", tier:1, feedback:"Çok olgun bir tutum! Spor ruhuyla kabul etmek çok değerli."},
+        {text:"Küs ve kimseyle konuşma.", tier:3, feedback:"Küsmek yerine kabullenip tekrar denemek seni daha güçlü yapar."}
+      ]},
+      { emoji:"🏅", text:"Ödül gününde beklediğin ödülü alamadın.", options:[
+        {text:"Üzülsen de arkadaşlarını tebrik et.", tier:1, feedback:"Çok olgun bir davranış! Başkalarının başarısına sevinmek güzel bir özellik."},
+        {text:"Ağlayıp sınıftan çık.", tier:3, feedback:"Üzülmek normal, ama sakin kalıp tebrik etmeyi denemek daha iyi hissettirir."}
+      ]},
+      { emoji:"🖊️", text:"Bir arkadaşın senden kalem/silgi ödünç aldı ama geri vermiyor.", options:[
+        {text:"Nazikçe \"Kalemimi geri verir misin?\" diye hatırlat.", tier:1, feedback:"Doğru davranış! Nazikçe hatırlatmak en iyi yoldur."},
+        {text:"Hiçbir şey söylemeden bekle.", tier:2, feedback:"Bekleyebilirsin, ama hatırlatmak eşyanı geri almanı sağlar."}
+      ]},
+      { emoji:"😴", text:"Ders çalışırken çok sıkıldın.", options:[
+        {text:"Kısa bir mola iste ya da derin nefes alıp devam et.", tier:1, feedback:"Harika strateji! Küçük bir mola dikkatini toplamana yardımcı olur."},
+        {text:"Dikkatini dağıtıp başka şeylerle oyala.", tier:3, feedback:"Kısa bir mola vermek, dikkatini dağıtmaktan daha faydalı olur."}
+      ]},
+      { emoji:"🤯", text:"Yeni bir konu ilk kez anlatıldığında çok zorlandın.", options:[
+        {text:"Öğretmenden tekrar anlatmasını iste.", tier:1, feedback:"Çok akıllıca! Anlamadığın şeyi sormak öğrenmenin en iyi yolu."},
+        {text:"Anlamadığını söylemeden sessiz kal.", tier:3, feedback:"Sormak yerine sessiz kalmak, konuyu daha çok anlamamana yol açabilir."}
+      ]},
+      { emoji:"📚", text:"Öğretmen ödev vermeyi unuttu, sen hatırladın.", options:[
+        {text:"Öğretmene nazikçe hatırlat.", tier:1, feedback:"Çok dürüst bir davranış! Hatırlatmak sorumluluk sahibi olduğunu gösterir."},
+        {text:"Hiçbir şey söyleme, sevin.", tier:2, feedback:"Sevinmek normal, ama hatırlatmak da güzel bir davranış olurdu."}
+      ]},
+      { emoji:"😟", text:"Yapmadığın bir şey için haksız yere suçlandın.", options:[
+        {text:"Sakin bir sesle \"Bunu ben yapmadım\" de ve açıkla.", tier:1, feedback:"Çok doğru bir tepki! Sakince açıklamak en iyi çözümdür."},
+        {text:"Bağırarak kendini savun.", tier:2, feedback:"Kendini savunmak doğru, ama sakin bir ses tonu seni daha çok dinletir."},
+        {text:"Hiçbir şey söylemeden kabullen.", tier:3, feedback:"Yapmadığın bir şeyi kabullenmek yerine durumu açıklamak önemlidir."}
+      ]},
+      { emoji:"🌧️", text:"Teneffüste yağmur yağdı, dışarı çıkamadınız.", options:[
+        {text:"Sınıfta sessiz bir oyun bul ya da kitap oku.", tier:1, feedback:"Harika! Farklı bir eğlence bulmak çok yaratıcı bir çözüm."},
+        {text:"Sıkıntıdan yakın ve huzursuzlan.", tier:2, feedback:"Sıkılmak normal, ama sessiz bir aktivite bulmak zamanı güzelleştirir."}
+      ]},
+      { emoji:"🎁", text:"Bir arkadaşının doğum günü sınıfta kutlanıyor ama sen hediye getirmeyi unuttun.", options:[
+        {text:"Ona güzel dileklerini söyle, hediyeyi sonra vermeyi teklif et.", tier:1, feedback:"Çok tatlı bir yaklaşım! Güzel dileklerin de kıymetlidir."},
+        {text:"Utanıp hiçbir şey söyleme.", tier:2, feedback:"Utanmak normal, ama tebrik etmek arkadaşını mutlu eder."}
+      ]},
+      { emoji:"🖼️", text:"Yapman gereken bir proje ödevini evde unuttun.", options:[
+        {text:"Öğretmene durumu dürüstçe anlat.", tier:1, feedback:"Çok dürüst bir davranış! Anlatmak en doğru çözümdür."},
+        {text:"Sanki yapmışsın gibi davran.", tier:3, feedback:"Dürüst olmak, ödevi unutmaktan çok daha önemlidir."}
+      ]},
+      { emoji:"🏁", text:"Sınıfta bir yarışma oldu ve kaybettin.", options:[
+        {text:"Kazananı tebrik et, spor ruhunu göster.", tier:1, feedback:"Çok olgun bir tavır! Kaybetmeyi de güzelce karşılamak büyük bir erdem."},
+        {text:"Kırıl ve küs.", tier:3, feedback:"Küsmek yerine tebrik etmek, seni daha güçlü ve olgun gösterir."}
+      ]},
+      { emoji:"🚌", text:"Okul gezisinde otobüste kiminle oturacağını bilemedin.", options:[
+        {text:"Bir arkadaşına gidip \"Yanına oturabilir miyim?\" diye sor.", tier:1, feedback:"Harika! Sormak, kolayca yanında oturacak biri bulmanı sağlar."},
+        {text:"En arka boş koltuğa tek başına otur.", tier:2, feedback:"Bu da olur, ama sormak seni daha eğlenceli bir yolculuğa çıkarabilir."}
+      ]}
+    ]
+  },
+  {
+    id: "ev", name: "Ev", emoji: "🏠", color: "#e0955a",
+    scenarios: [
+      { emoji:"😠", text:"Annen/baban seni bir şey için uyardı ama sen kızdın.", options:[
+        {text:"Derin bir nefes al, sakinleş ve neden uyardığını anlamaya çalış.", tier:1, feedback:"Çok akıllıca! Sakinleşmek en güzel ilk adımdır."},
+        {text:"Ağla ama sonra konuşmaya çalış.", tier:2, feedback:"Ağlamak normal, sonra konuşmak istemen çok güzel."},
+        {text:"Kapıyı çarpıp odana git.", tier:3, feedback:"Kapı çarpmak yerine sakinleşip konuşmayı denersen daha iyi hissedersin."}
+      ]},
+      { emoji:"🍽️", text:"Akşam yemeğini pek beğenmedin.", options:[
+        {text:"Nazikçe \"Bunu çok sevmedim ama teşekkür ederim\" de ve biraz ye.", tier:1, feedback:"Çok nazik bir davranış! Emek verene teşekkür etmek önemlidir."},
+        {text:"Hiç dokunmadan sofradan kalk.", tier:3, feedback:"Yemeği hazırlayan emek harcadı, birkaç lokma denemek onu mutlu eder."}
+      ]},
+      { emoji:"📱", text:"Annen/baban telefonla meşgulken seninle oynamasını istiyorsun.", options:[
+        {text:"Nazikçe bekle ve \"Bittiğinde benimle oynar mısın?\" diye sor.", tier:1, feedback:"Çok olgun bir davranış! Sabırla beklemek ve nazikçe sormak en güzeli."},
+        {text:"Bağırıp ağlamaya başla.", tier:3, feedback:"Bağırmak yerine sabırla beklemek ve nazikçe sormak daha iyi sonuç verir."}
+      ]},
+      { emoji:"🧹", text:"Odanı toplaman gerekiyor ama hiç canın istemiyor.", options:[
+        {text:"Biraz oyun gibi yaparak toplamaya başla.", tier:1, feedback:"Harika fikir! Eğlenceli hale getirmek işi kolaylaştırır."},
+        {text:"\"Sonra toplarım\" deyip ertele.", tier:2, feedback:"Ertelemek bazen olur, ama hemen başlarsan daha rahat edersin."},
+        {text:"Hiç toplamamakta ısrar et.", tier:3, feedback:"Sorumluluk almak büyüdüğünü gösterir. Biraz olsun denemeye ne dersin?"}
+      ]},
+      { emoji:"🤨", text:"Annen/baban seni bir hata için uyardı ama haklı olduğunu düşünmüyorsun.", options:[
+        {text:"Sakin bir şekilde ne düşündüğünü anlat.", tier:1, feedback:"Çok güzel! Düşüncelerini sakince paylaşmak en doğrusu."},
+        {text:"Hiçbir şey söylemeden küs.", tier:3, feedback:"Küsmek yerine konuşmak, birbirinizi daha iyi anlamanızı sağlar."}
+      ]},
+      { emoji:"📺", text:"Ödevin var ama televizyon izlemek istiyorsun.", options:[
+        {text:"Önce ödevini bitir, sonra televizyon izle.", tier:1, feedback:"Süper planlama! Önce görevini bitirmek kafanı rahatlatır."},
+        {text:"Biraz televizyon izleyip sonra ödev yap.", tier:2, feedback:"Bu da olabilir, ama ödevi önce bitirmek daha rahat ettirir."},
+        {text:"Ödevi hiç yapma.", tier:3, feedback:"Ödevini yapmak, öğrendiklerini pekiştirmen için önemli."}
+      ]},
+      { emoji:"🧸", text:"Evde tek başına oynarken çok sıkıldın.", options:[
+        {text:"Yeni bir oyun ya da aktivite bulmaya çalış.", tier:1, feedback:"Harika! Kendi eğlenceni yaratabilmek çok değerli bir beceri."},
+        {text:"Sürekli anne/babana \"Sıkıldım\" diye söylenip dur.", tier:2, feedback:"Söylemek normal, ama önce kendin bir şeyler denemeyi de dener misin?"}
+      ]},
+      { emoji:"🛏️", text:"Uyku vakti geldi ama hiç uykun yok.", options:[
+        {text:"Yatağına gir, sakin bir kitaba bakarak gözlerini dinlendir.", tier:1, feedback:"Çok güzel bir alışkanlık! Sakin bir aktivite uykuya geçişi kolaylaştırır."},
+        {text:"Uyumamak için direnip ağla.", tier:3, feedback:"Uyku, vücudunun dinlenmesi için çok önemli. Sakinleşmeyi denemek daha iyi olur."}
+      ]},
+      { emoji:"🪥", text:"Diş fırçalamak istemiyorsun.", options:[
+        {text:"Eğlenceli bir şarkı eşliğinde dişlerini fırçala.", tier:1, feedback:"Harika fikir! Eğlenceli hale getirmek işi kolaylaştırır."},
+        {text:"Fırçalamadan yatmaya çalış.", tier:3, feedback:"Diş sağlığın için her gün fırçalamak çok önemli."}
+      ]},
+      { emoji:"👗", text:"Giymek istediğin kıyafeti anne/baban uygun bulmadı.", options:[
+        {text:"Nedenini sor ve birlikte başka bir kıyafet seçin.", tier:1, feedback:"Çok güzel bir yaklaşım! Konuşarak ortak bir karara varmak en iyisi."},
+        {text:"Ağlayıp ısrar et.", tier:3, feedback:"Israr etmek yerine konuşarak anlaşmak daha rahat bir çözüm sunar."}
+      ]},
+      { emoji:"🏠", text:"Evinize misafir geldi, oyuncaklarını onlarla paylaşman gerekiyor.", options:[
+        {text:"Oyuncaklarından bazılarını seve seve paylaş.", tier:1, feedback:"Çok cömert bir davranış! Paylaşmak arkadaşlığı güzelleştirir."},
+        {text:"Hiçbir oyuncağını göstermek istemiyorsun.", tier:2, feedback:"İstemediğin bir oyuncağı saklayabilirsin, ama biraz paylaşmak misafirlerini mutlu eder."}
+      ]},
+      { emoji:"🧹", text:"Anne/baban senden masayı toplamana yardım etmeni istedi ama canın istemiyor.", options:[
+        {text:"Gönüllü olarak yardım et.", tier:1, feedback:"Harika! Yardımlaşmak evde herkesi mutlu eder."},
+        {text:"\"İstemiyorum\" deyip reddet.", tier:3, feedback:"Yardım etmek, ailenin sana ne kadar değer verdiğini gösterme fırsatıdır."}
+      ]},
+      { emoji:"🤫", text:"Küçük bir sırrın var ve anlatmak istemiyorsun ama anne/baban çok merak ediyor.", options:[
+        {text:"İstemiyorsan anlatmak zorunda değilsin, kötü bir sır değilse paylaşmayı düşünebilirsin.", tier:1, feedback:"Kendi sırlarını paylaşıp paylaşmama hakkın var. Seni üzen bir şeyse güvendiğin birine anlatman iyi olur."},
+        {text:"Sinirlenip odana kapan.", tier:3, feedback:"Sinirlenmek yerine sakince \"Şimdi anlatmak istemiyorum\" demek daha iyi olur."}
+      ]},
+      { emoji:"🏺", text:"Evde bir eşyayı kazara kırdın.", options:[
+        {text:"Hemen anne/babana anlat, ne olduğunu söyle.", tier:1, feedback:"Çok dürüst bir davranış! Hemen söylemek her zaman en doğrusu."},
+        {text:"Kimse görmesin diye sakla.", tier:3, feedback:"Saklamak yerine söylemek güveni korur, herkes kaza yapabilir."}
+      ]},
+      { emoji:"🎲", text:"Anne/babanla oynadığın bir oyunu kaybettin ve kızdın.", options:[
+        {text:"Derin nefes al, \"İyi oynadın\" de.", tier:1, feedback:"Çok olgun bir tavır! Kaybetmeyi güzelce kabullenmek büyük bir beceridir."},
+        {text:"Oyun tahtasını dağıt.", tier:3, feedback:"Kızmak yerine sakin kalmayı denemek oyunun keyfini korur."}
+      ]},
+      { emoji:"⏳", text:"Ailenle vakit geçirmek istiyorsun ama onlar meşgul.", options:[
+        {text:"Nazikçe \"Ne zaman müsait olursunuz?\" diye sor ve o arada başka bir şey yap.", tier:1, feedback:"Çok akıllıca! Sabırlı olup başka bir aktivite bulmak güzel bir çözüm."},
+        {text:"Sürekli rahatsız et.", tier:2, feedback:"İsteklerini söylemek güzel, ama biraz beklemeyi denemek de faydalı olur."}
+      ]},
+      { emoji:"⏰", text:"Sabah okula hazırlanırken vakit yetmiyor, acele ediyorsun.", options:[
+        {text:"Sakin bir şekilde hızlıca hazırlan ve bir dahaki sefere erken kalkmayı planla.", tier:1, feedback:"Çok akıllıca! Sakin kalmak acelede bile işleri kolaylaştırır."},
+        {text:"Panikleyip ağlamaya başla.", tier:3, feedback:"Panik yerine sakince hazırlanmak zamanı daha iyi kullanmanı sağlar."}
+      ]},
+      { emoji:"🛁", text:"Duş/banyo yapmak istemiyorsun.", options:[
+        {text:"Sevdiğin bir oyuncakla banyoyu eğlenceli hale getir.", tier:1, feedback:"Harika fikir! Eğlenceli hale getirmek işi kolaylaştırır."},
+        {text:"Israrla reddet.", tier:3, feedback:"Temizlik sağlığın için önemli, biraz eğlenceli hale getirmeyi dener misin?"}
+      ]},
+      { emoji:"🌟", text:"Anne/baban seni bir konuda övdü ve gurur duydu.", options:[
+        {text:"Gülümseyip teşekkür et ve mutluluğunu paylaş.", tier:1, feedback:"Çok güzel! Övgüyü kabul edip teşekkür etmek güzel bir alışkanlıktır."},
+        {text:"Utanıp hiçbir şey söyleme.", tier:2, feedback:"Utanmak normal, ama küçük bir teşekkür güzel olur."}
+      ]},
+      { emoji:"🌱", text:"Sulaman gereken bir bitkiyi sulamayı unuttun.", options:[
+        {text:"Fark edince hemen sula ve bir dahaki sefere hatırlamaya çalış.", tier:1, feedback:"Çok sorumlu bir davranış! Hatırladığın an düzeltmek en iyisi."},
+        {text:"Unuttuğunu kimseye söylemeden geç.", tier:2, feedback:"Fark ettiğinde hemen düzeltmek bitkinin sağlığı için önemlidir."}
+      ]},
+      { emoji:"🌑", text:"Evde tek başına bir odada karanlıkta biraz korktun.", options:[
+        {text:"Işığı aç ya da güvendiğin birini çağır.", tier:1, feedback:"Çok akıllıca! Korktuğunda yardım istemek her zaman doğrudur."},
+        {text:"Korkuyu içinde tutup hiçbir şey yapma.", tier:2, feedback:"Korkmak normal, ışığı açmak ya da seslenmek seni rahatlatır."}
+      ]},
+      { emoji:"🎒", text:"Misafirliğe gitmeden önce hazırlanman gerekiyor ama oyun oynamak istiyorsun.", options:[
+        {text:"Önce çabucak hazırlan, sonra kalan vakitte oyna.", tier:1, feedback:"Çok iyi bir planlama! Önce görevini bitirmek zamanı daha iyi kullanmanı sağlar."},
+        {text:"Oynamaya devam edip hazırlanmayı geciktir.", tier:3, feedback:"Önce hazırlanmak, herkesin zamanında yola çıkmasını sağlar."}
+      ]},
+      { emoji:"🍽️", text:"Akşam yemeğinde herkes konuşuyor ve sen bir şey anlatmak istiyorsun ama söz alamıyorsun.", options:[
+        {text:"Nazikçe \"Ben de bir şey anlatmak istiyorum\" de.", tier:1, feedback:"Çok güzel! Sırayla konuşmayı istemek doğal ve doğru bir davranıştır."},
+        {text:"Sessizce bekle ve hiç konuşma.", tier:2, feedback:"Beklemek de olur, ama söz istemek seni de duyulur kılar."}
+      ]},
+      { emoji:"🙋‍♀️", text:"Anne/baban seni bir hata için haklı olarak uyardı.", options:[
+        {text:"Uyarıyı kabul et ve \"Haklısın, düzelteceğim\" de.", tier:1, feedback:"Çok olgun bir tavır! Hatasını kabul etmek büyük bir erdemdir."},
+        {text:"İnat edip kabul etme.", tier:3, feedback:"Haklı bir uyarıyı kabul etmek, büyümenin önemli bir parçasıdır."}
+      ]}
+    ]
+  },
+  {
+    id: "site", name: "Site / Mahalle", emoji: "🏘️", color: "#6fb37a",
+    scenarios: [
+      { emoji:"🎲", text:"Sitede oynarken bir arkadaşın sırasını beklemiyor.", options:[
+        {text:"Nazikçe \"Sırayla oynayalım\" de.", tier:1, feedback:"Aynen böyle! Kuralları hatırlatmak oyunu herkes için güzel yapar."},
+        {text:"Oyunu terk et.", tier:2, feedback:"Bu da bir seçenek, ama önce konuşmayı denemek daha iyi olabilir."},
+        {text:"Sen de kurallara uymamaya başla.", tier:3, feedback:"Kurallara uymamak oyunu herkes için zorlaştırır."}
+      ]},
+      { emoji:"🚪", text:"Sitenize yeni taşınan bir çocuk kimseyle konuşmadan yalnız duruyor.", options:[
+        {text:"Yanına gidip kendini tanıt ve oyuna davet et.", tier:1, feedback:"Çok güzel bir davranış! Yeni biriyle arkadaş olmak onu çok mutlu eder."},
+        {text:"Görmezden gel.", tier:3, feedback:"Yanına gidip merhaba demek, ona ve sana yeni bir arkadaşlık kazandırabilir."}
+      ]},
+      { emoji:"🚲", text:"Bir komşu çocuk senin bisikletini istiyor ama sen henüz binmeye doymadın.", options:[
+        {text:"\"Biraz daha bindikten sonra sana veririm\" de.", tier:1, feedback:"Çok adil bir yaklaşım! Sırayla kullanmak herkesi memnun eder."},
+        {text:"Hemen ver çünkü ısrar ediyor.", tier:2, feedback:"Cömertlik güzel, ama önce kendi sırana devam etmen de hakkın."},
+        {text:"Bağırarak \"Hayır\" de.", tier:3, feedback:"Bağırmak yerine sakince açıklamak daha iyi bir yöntemdir."}
+      ]},
+      { emoji:"🪟", text:"Top oynarken yanlışlıkla bir komşunun camını kırdın.", options:[
+        {text:"Hemen gidip özür dile ve anne/babana anlat.", tier:1, feedback:"Çok cesur ve dürüst bir davranış! Herkes hata yapabilir, önemli olan dürüst olmak."},
+        {text:"Kimse görmedi diye saklan.", tier:3, feedback:"Dürüst olmak her zaman en doğrusudur, saklanmak durumu daha da zorlaştırır."}
+      ]},
+      { emoji:"🛝", text:"Parkta salıncakta sıra beklerken biri araya girdi.", options:[
+        {text:"Nazikçe \"Aslında sıra bendeydi\" de.", tier:1, feedback:"Aynen böyle! Hakkını nazikçe söylemek en doğrusu."},
+        {text:"Hiçbir şey söylemeden bekle.", tier:2, feedback:"Sabretmek de fena değil, ama hakkını söylemek seni daha rahat ettirir."},
+        {text:"İterek öne geç.", tier:3, feedback:"İtmek yerine konuşarak hakkını istemek daha güzel bir yol."}
+      ]},
+      { emoji:"🕹️", text:"Sitedeki arkadaşların oynadığı bir oyunu anlamıyorsun.", options:[
+        {text:"\"Bu oyunu bana anlatır mısınız?\" diye sor.", tier:1, feedback:"Çok güzel! Anlamadığın şeyi sormak en akıllıca yol."},
+        {text:"Kenardan izle ama katılma.", tier:2, feedback:"İzlemek de olur, ama sormayı denersen sen de oyuna katılabilirsin."},
+        {text:"Oyunu bozmaya çalış çünkü anlamıyorsun.", tier:3, feedback:"Oyunu bozmak yerine anlatmalarını istemek herkesi mutlu eder."}
+      ]},
+      { emoji:"🙅", text:"Sitede oynayan arkadaşların seni oyuna almadı.", options:[
+        {text:"Nazikçe \"Ben de katılabilir miyim?\" diye sor.", tier:1, feedback:"Çok cesur bir davranış! Sormak seni oyuna dahil edebilir."},
+        {text:"Üzülüp eve gir.", tier:2, feedback:"Üzülmek normal, ama sormayı denemek belki de oyuna katılmanı sağlar."}
+      ]},
+      { emoji:"🎨", text:"Bir komşu çocuk senin çizdiğin tebeşir resmini yanlışlıkla sildi.", options:[
+        {text:"Sakince \"Farkında değildin herhalde, önemli değil\" de.", tier:1, feedback:"Çok olgun bir tepki! Kazaları anlayışla karşılamak güzeldir."},
+        {text:"Kızıp bağır.", tier:3, feedback:"Kızmak yerine anlayışla karşılamak arkadaşlığınızı korur."}
+      ]},
+      { emoji:"⚽", text:"Sitede top oynarken top kayboldu.", options:[
+        {text:"Arkadaşlarınla birlikte etrafı arayın.", tier:1, feedback:"Harika! Birlikte aramak hem eğlenceli hem etkili bir çözüm."},
+        {text:"Üzülüp oyunu bırak.", tier:2, feedback:"Üzülmek normal, ama önce aramayı denemek işe yarayabilir."}
+      ]},
+      { emoji:"😤", text:"Bir komşu çocuk seninle kaba konuştu.", options:[
+        {text:"Sakince \"Bu şekilde konuşman beni üzüyor\" de.", tier:1, feedback:"Çok olgun bir tepki! Duygularını söylemek en doğrusu."},
+        {text:"Sen de kaba bir şekilde karşılık ver.", tier:3, feedback:"Kaba karşılık vermek durumu kötüleştirebilir, sakin kalmak daha iyi."}
+      ]},
+      { emoji:"👋", text:"Sitede güvenlik görevlisi veya bahçıvanla karşılaştın.", options:[
+        {text:"Gülümseyip \"Merhaba\" de.", tier:1, feedback:"Çok güzel bir davranış! Selam vermek nazik bir alışkanlıktır."},
+        {text:"Görmezden gel, hiç bakma.", tier:2, feedback:"Selam vermek küçük ama çok değerli bir incelik olurdu."}
+      ]},
+      { emoji:"🛗", text:"Asansörde bir komşuyla yalnız kaldın ve utandın.", options:[
+        {text:"Gülümseyip kısa bir \"Merhaba\" de.", tier:1, feedback:"Çok tatlı! Küçük bir selam utangaçlığı azaltabilir."},
+        {text:"Yere bakıp hiç konuşma.", tier:2, feedback:"Utanmak normal, küçük bir gülümseme de yeterli olabilir."}
+      ]},
+      { emoji:"🎪", text:"Sitede bir etkinlik var ama kimseyi tanımıyorsun.", options:[
+        {text:"Yanına gidebileceğin bir çocuk bulup kendini tanıt.", tier:1, feedback:"Harika! Yeni insanlarla tanışmak için güzel bir fırsat."},
+        {text:"Kenarda tek başına dur.", tier:3, feedback:"Cesaretlenip yaklaşmayı denersen çok eğlenebilirsin."}
+      ]},
+      { emoji:"🚪", text:"Bir arkadaşın senin evine gelmek istiyor ama sen o an yalnız kalmak istiyorsun.", options:[
+        {text:"Nazikçe \"Bugün olmaz ama başka gün olur mu?\" de.", tier:1, feedback:"Çok doğru bir yaklaşım! Kendi isteğini nazikçe söylemek önemlidir."},
+        {text:"Hiç cevap verme, saklan.", tier:3, feedback:"Nazikçe açıklamak, saklanmaktan daha iyi bir çözümdür."}
+      ]},
+      { emoji:"🤕", text:"Sitede oynarken bir arkadaşın düştü.", options:[
+        {text:"Yanına gidip yardım et, büyüklere haber ver.", tier:1, feedback:"Çok güzel bir davranış! Yardım etmek iyi bir arkadaşlık gösterir."},
+        {text:"Bakıp geç.", tier:3, feedback:"Yardım etmek, arkadaşını hem rahatlatır hem de mutlu eder."}
+      ]},
+      { emoji:"🐕", text:"Komşunun köpeği/kedisi var ve sen biraz korkuyorsun.", options:[
+        {text:"Sahibinden \"Bana zarar verir mi?\" diye sor, uzaktan bak.", tier:1, feedback:"Çok akıllıca! Sormak ve mesafeli durmak güvenli bir yaklaşımdır."},
+        {text:"Korkudan bağırıp kaç.", tier:2, feedback:"Korkmak normal, ama sakin kalıp uzaklaşmak daha güvenlidir."}
+      ]},
+      { emoji:"🛝", text:"Oyun parkında tüm oyuncaklarda sıra var, bekleme uzun sürüyor.", options:[
+        {text:"Sırayla bekle, sırasını başka bir oyunla değerlendir.", tier:1, feedback:"Çok sabırlı bir davranış! Beklerken başka bir şeyle uğraşmak zamanı güzelleştirir."},
+        {text:"Sabırsızlanıp sırayı bozmaya çalış.", tier:3, feedback:"Sırayı bozmak yerine sabırla beklemek herkes için adil olur."}
+      ]},
+      { emoji:"🔄", text:"Bir arkadaşın bazen seninle çok iyi, bazen seni görmezden geliyor.", options:[
+        {text:"Ona nazikçe nasıl hissettiğini söyle.", tier:1, feedback:"Çok olgun bir davranış! Duygularını paylaşmak ilişkiyi netleştirir."},
+        {text:"Hiçbir şey söylemeden üzül.", tier:2, feedback:"Üzülmek yerine konuşmayı denemek durumu daha net hale getirir."}
+      ]},
+      { emoji:"👶", text:"Senden küçük bir çocuk seninle oynamak istiyor.", options:[
+        {text:"Onunla nazikçe ve sabırla oyna.", tier:1, feedback:"Çok tatlı bir davranış! Küçüklere iyi davranmak çok değerlidir."},
+        {text:"\"Sen küçüksün, oynayamayız\" de.", tier:3, feedback:"Küçük çocuklarla da nazikçe vakit geçirmek güzel bir erdemdir."}
+      ]},
+      { emoji:"🏊", text:"Site havuzunda kurallara uymayan bir çocuk gördün (koşuyor, itiyor).", options:[
+        {text:"Kendi güvenliğine dikkat et ve bir büyüğe haber ver.", tier:1, feedback:"Çok akıllıca! Güvenliğini düşünüp büyüklere haber vermek en doğrusu."},
+        {text:"Sen de aynı şekilde davran.", tier:3, feedback:"Kurallara uymamak yerine kendi güvenliğine odaklanmak daha iyi."}
+      ]},
+      { emoji:"🚲", text:"Sitede bisiklet sürerken kask takmak istemiyorsun.", options:[
+        {text:"Kaskını tak, güvenliğin için önemli olduğunu hatırla.", tier:1, feedback:"Çok akıllıca! Kask kafanı korur, her zaman takmak en doğrusu."},
+        {text:"Kasksız sürmeye devam et.", tier:3, feedback:"Kask takmak küçük bir alışkanlık ama seni büyük tehlikelerden korur."}
+      ]},
+      { emoji:"🌻", text:"Yanlışlıkla bir komşunun bahçesine top attın.", options:[
+        {text:"Gidip özür dile ve topunu nazikçe geri iste.", tier:1, feedback:"Çok dürüst bir davranış! Özür dilemek ve nazikçe istemek en doğrusu."},
+        {text:"İzinsiz bahçeye girip topu al.", tier:3, feedback:"Önce izin istemek, komşuluk ilişkilerini korumanın en iyi yolu."}
+      ]}
+    ]
+  },
+  {
+    id: "buyukler", name: "Büyükanne & Büyükbaba", emoji: "👵👴", color: "#a875c9",
+    scenarios: [
+      { emoji:"📖", text:"Büyükannen sana bir hikaye anlatıyor ama sen sıkıldın.", options:[
+        {text:"Nazikçe dinle, belki ilginç bir yer çıkar.", tier:1, feedback:"Çok güzel! Büyüklerin hikayelerini dinlemek onları çok mutlu eder."},
+        {text:"\"Biraz sonra devam edebilir misin?\" diye nazikçe sor.", tier:2, feedback:"Bu da nazik bir yaklaşım, doğrudan söylemek de bir çözüm."},
+        {text:"Kalkıp git, sözünü kes.", tier:3, feedback:"Sözünü kesmek yerine nazikçe konuşmak daha güzel olurdu."}
+      ]},
+      { emoji:"🎲", text:"Deden seni bir oyun oynamaya davet etti ama sen başka bir oyun oynamak istiyorsun.", options:[
+        {text:"\"Önce senin oyununu oynayalım, sonra benimkini oynar mıyız?\" de.", tier:1, feedback:"Harika bir uzlaşma! Herkesin isteğine yer açmak çok güzel."},
+        {text:"Oynamayı reddet.", tier:3, feedback:"Büyüklerle vakit geçirmek çok kıymetlidir, teklifini kabul etmek onu mutlu eder."}
+      ]},
+      { emoji:"🍲", text:"Büyükannen sana pek sevmediğin bir yemek yaptı.", options:[
+        {text:"Teşekkür et ve biraz tatmayı dene.", tier:1, feedback:"Çok nazik bir davranış! Emek verilen yemeğe teşekkür etmek güzeldir."},
+        {text:"\"Yemedim\" deyip kalk.", tier:3, feedback:"Birkaç lokma tatmak, onu hazırlayan büyükanneni çok mutlu eder."}
+      ]},
+      { emoji:"🏃", text:"Büyükbaban seni bir konuda uyardı (örneğin çok hızlı koşma) ama dinlemek istemiyorsun.", options:[
+        {text:"Onu dinle, çünkü seni düşünüyor.", tier:1, feedback:"Aferin! Büyükler bizi güvende tutmak ister, onları dinlemek önemlidir."},
+        {text:"Görmezden gel ve istediğini yap.", tier:3, feedback:"Büyüklerin uyarılarını dinlemek seni güvende tutar."}
+      ]},
+      { emoji:"🤗", text:"Bayramda büyüklerin elini öpmen gerekiyor ama utanıyorsun.", options:[
+        {text:"Utansan bile gülümseyerek elini öp.", tier:1, feedback:"Çok tatlı bir davranış! Utanmayı yenmek büyük bir başarı."},
+        {text:"Köşeye çekilip saklan.", tier:2, feedback:"Utanmak çok normal. Cesaretini toplamayı bir dahaki sefere deneyebilirsin."}
+      ]},
+      { emoji:"📞", text:"Büyükannenle telefon görüşmesi yapman gerekiyor ama konuşacak bir şey bulamıyorsun.", options:[
+        {text:"Ona gününü anlat ya da okulda ne öğrendiğini söyle.", tier:1, feedback:"Çok güzel! Küçük şeyleri paylaşmak bile büyükanneni çok mutlu eder."},
+        {text:"Kısa kes, \"Görüşürüz\" de kapat.", tier:2, feedback:"Biraz daha sohbet etmek büyükanneni daha mutlu edebilir."}
+      ]},
+      { emoji:"📷", text:"Büyükbaban eski bir fotoğraf albümü gösteriyor, sana sıkıcı geliyor.", options:[
+        {text:"Sabırla dinle ve fotoğraflar hakkında soru sor.", tier:1, feedback:"Çok güzel! Sorular sormak seni de ilgilendirebilir ve büyükbabanı mutlu eder."},
+        {text:"\"Başka bir şey yapalım\" deyip konuyu kapat.", tier:2, feedback:"Bu da olur, ama birkaç dakika dinlemek onu çok mutlu eder."}
+      ]},
+      { emoji:"🌙", text:"Büyükannende bir gece kalman gerekiyor, anne/babanı özlüyorsun.", options:[
+        {text:"Duygularını büyükannenle paylaş, o seni rahatlatabilir.", tier:1, feedback:"Çok güzel! Duygularını paylaşmak seni rahatlatır."},
+        {text:"İçine atıp hiçbir şey söyleme.", tier:2, feedback:"Özlemini paylaşmak, büyükannenin seni daha iyi anlamasını sağlar."}
+      ]},
+      { emoji:"🚶", text:"Büyükbaban seninle yürüyüşe çıkmak istiyor ama sen yorgunsun.", options:[
+        {text:"\"Biraz yorgunum ama kısa bir yürüyüş yapabiliriz\" de.", tier:1, feedback:"Çok güzel bir uzlaşma! İsteğini söylemek ve yine de vakit geçirmek harika."},
+        {text:"\"Hayır, yorgunum\" deyip reddet.", tier:2, feedback:"Yorgunluğunu söylemek doğru, ama küçük bir yürüyüş de yapabilirsin."}
+      ]},
+      { emoji:"🎁", text:"Büyükannen sana bir hediye aldı ama pek beğenmedin.", options:[
+        {text:"Gülümseyip \"Çok teşekkür ederim\" de.", tier:1, feedback:"Çok nazik bir davranış! Emeğe teşekkür etmek her zaman en doğrusu."},
+        {text:"\"Bunu istememiştim\" de.", tier:3, feedback:"Beğenmesen bile teşekkür etmek büyükanneni üzmemeni sağlar."}
+      ]},
+      { emoji:"😄", text:"Büyükbaban bir espri yaptı ama anlamadın.", options:[
+        {text:"Gülümseyip \"Anlamadım ama gülümsedin, o yeter\" de ya da açıklamasını iste.", tier:1, feedback:"Çok tatlı bir yaklaşım! Merakını göstermek güzel bir davranış."},
+        {text:"Hiç tepki vermeden dur.", tier:2, feedback:"Küçük bir gülümseme veya soru sormak büyükbabanı mutlu eder."}
+      ]},
+      { emoji:"🏡", text:"Büyükannenin evinde farklı kurallar var (örneğin daha erken yatmak).", options:[
+        {text:"Kurallara saygı göster ve uy.", tier:1, feedback:"Çok olgun bir davranış! Farklı evlerde farklı kurallara uymak saygılı bir tutumdur."},
+        {text:"Kurallara uymamakta ısrar et.", tier:3, feedback:"Farklı evlerin kurallarına saygı göstermek önemli bir alışkanlıktır."}
+      ]},
+      { emoji:"😳", text:"Büyükbaban seni herkesin önünde övdü ve utandın.", options:[
+        {text:"Gülümseyip \"Teşekkür ederim\" de.", tier:1, feedback:"Çok güzel! Övgüyü kabul etmek utanmana rağmen güzel bir davranıştır."},
+        {text:"Kızarıp saklanmaya çalış.", tier:2, feedback:"Utanmak normal, küçük bir teşekkür yeterli olur."}
+      ]},
+      { emoji:"🤲", text:"Büyükannen senden bir şey taşımana yardım istiyor.", options:[
+        {text:"Seve seve yardım et.", tier:1, feedback:"Harika! Büyüklere yardım etmek çok değerli bir davranıştır."},
+        {text:"\"Yorgunum\" deyip reddet.", tier:2, feedback:"Küçük bir yardım büyükanneni çok mutlu edebilir."}
+      ]},
+      { emoji:"☎️", text:"Bayramda büyüklere telefon açıp bayramlarını kutlaman gerekiyor ama pek istemiyorsun.", options:[
+        {text:"Kısa da olsa arayıp güzel dileklerini ilet.", tier:1, feedback:"Çok güzel bir davranış! Küçük bir arama büyükleri çok mutlu eder."},
+        {text:"Aramayı unutmuş gibi davran.", tier:3, feedback:"Kısa bir arama bile büyüklerin gününü güzelleştirir."}
+      ]},
+      { emoji:"♟️", text:"Büyükbaban seninle satranç ya da tavla oynamak istiyor ama nasıl oynandığını bilmiyorsun.", options:[
+        {text:"\"Bana öğretir misin?\" diye sor.", tier:1, feedback:"Harika! Yeni bir şey öğrenmek için sormak en güzel yoldur."},
+        {text:"\"Bilmiyorum, oynamayayım\" de.", tier:2, feedback:"Öğrenmeyi denemek, büyükbabanla güzel bir vakit geçirmeni sağlar."}
+      ]}
+    ]
+  },
+  {
+    id: "genel", name: "Misafirlik & Dışarıda", emoji: "🎉", color: "#d97a86",
+    scenarios: [
+      { emoji:"🎂", text:"Bir doğum günü partisine davetlisin ama kimseyi tanımıyorsun.", options:[
+        {text:"Gülümseyip kendini tanıt: \"Merhaba, ben...\"", tier:1, feedback:"Harika bir başlangıç! Kendini tanıtmak yeni arkadaşlıklar kurmanın en güzel yolu."},
+        {text:"Köşede tek başına otur.", tier:3, feedback:"Cesaretini toplayıp yanlarına gitmeyi denersen çok eğlenebilirsin."}
+      ]},
+      { emoji:"🧩", text:"Misafirliğe gittiniz, ev sahibi çocuk oyuncaklarını paylaşmak istemiyor.", options:[
+        {text:"Anlayışla karşıla: \"Tamam, başka bir şey oynayalım.\"", tier:1, feedback:"Çok olgun bir tavır! Herkesin eşyasını paylaşıp paylaşmama hakkı vardır."},
+        {text:"Israr et ve oyuncağı iste.", tier:3, feedback:"Israr etmek yerine anlayış göstermek arkadaşlığınızı korur."}
+      ]},
+      { emoji:"🍝", text:"Restoranda yemek beklerken çok sıkıldın.", options:[
+        {text:"Sessizce bir kitap oku ya da küçük bir oyun oyna.", tier:1, feedback:"Süper! Sabırla beklemeyi bilmek büyük bir beceridir."},
+        {text:"Masada bağırıp koşmaya başla.", tier:3, feedback:"Restoran herkesin rahat yemek yediği bir yer, sessizce beklemek daha iyi olur."}
+      ]},
+      { emoji:"🎁", text:"Bir arkadaşının doğum günü hediyesini pek beğenmedin.", options:[
+        {text:"Yine de \"Teşekkür ederim, çok naziksin\" de.", tier:1, feedback:"Çok nazik bir davranış! Hediye veren kişinin duygularını düşünmek önemlidir."},
+        {text:"\"Bunu sevmedim\" de.", tier:3, feedback:"Beğenmesen bile teşekkür etmek karşındakini üzmemeni sağlar."}
+      ]},
+      { emoji:"🚌", text:"Otobüste oturacak yer yok, yaşlı bir teyze ayakta duruyor.", options:[
+        {text:"Yerini teklif et.", tier:1, feedback:"Çok güzel bir davranış! Büyüklere yer vermek onları çok mutlu eder."},
+        {text:"Görmezden gel ve oturmaya devam et.", tier:3, feedback:"Yerini teklif etmek küçük ama çok değerli bir incelik olurdu."}
+      ]},
+      { emoji:"🛒", text:"Markette anne/baban istediğin oyuncağı almak istemedi.", options:[
+        {text:"Üzülsen de anlayışla karşıla.", tier:1, feedback:"Çok olgun bir tepki! \"Hayır\" cevabını kabul etmeyi öğrenmek büyümenin bir parçasıdır."},
+        {text:"Yerde ağlayıp bağır.", tier:3, feedback:"Üzülmek normal, ama sakin kalmayı denemek seni de rahatlatır."}
+      ]},
+      { emoji:"🙁", text:"Bir arkadaşın seni oyununa davet etmedi.", options:[
+        {text:"Üzülsen de nazikçe \"Ben de katılabilir miyim?\" diye sor.", tier:1, feedback:"Çok cesur bir davranış! Sormak, küsmekten çok daha iyi sonuç verir."},
+        {text:"Kızıp onunla bir daha konuşma.", tier:3, feedback:"Küsmek yerine sormayı denemek arkadaşlığınızı koruyabilir."}
+      ]},
+      { emoji:"🎬", text:"Sinemada film izlerken korktun.", options:[
+        {text:"Yanındaki büyüğe sokulup \"Biraz korktum\" de.", tier:1, feedback:"Çok doğru bir tepki! Korktuğunda yanındakine söylemek seni rahatlatır."},
+        {text:"Korkunu içine at, hiçbir şey söyleme.", tier:2, feedback:"Korktuğunu söylemek, yanındakinin seni rahatlatmasını sağlar."}
+      ]},
+      { emoji:"🗣️", text:"Sokakta tanımadığın bir yetişkin seninle konuşmaya çalışıyor.", options:[
+        {text:"Yanındaki büyüğe yaklaş ve durumu anlat.", tier:1, feedback:"Çok akıllıca! Tanımadığın biriyle konuşurken yanındaki büyüğe yakın durmak en güvenlisi."},
+        {text:"Tek başına uzun uzun konuş.", tier:3, feedback:"Tanımadığın biriyle konuşurken hemen yanındaki büyüğe gitmek en güvenli davranıştır."}
+      ]},
+      { emoji:"😨", text:"Markette ailenden ayrı düştün.", options:[
+        {text:"Olduğun yerde sakin kal ve bir mağaza görevlisine \"Ailemi kaybettim\" de.", tier:1, feedback:"Mükemmel! Sakin kalıp bir görevliden yardım istemek en doğru davranıştır."},
+        {text:"Panikleyip koşarak her yeri ara.", tier:3, feedback:"Koşmak yerine olduğun yerde kalıp bir görevliden yardım istemek seni daha çabuk ailene kavuşturur."}
+      ]},
+      { emoji:"🏡", text:"Bir arkadaşının evine ilk kez misafirliğe gittin, evin kurallarını bilmiyorsun.", options:[
+        {text:"Bir şey yapmadan önce nazikçe sor: \"Bunu yapabilir miyim?\"", tier:1, feedback:"Çok doğru bir davranış! Sormak, o evde saygılı davrandığını gösterir."},
+        {text:"Kendi evindeymiş gibi istediğini yap.", tier:2, feedback:"Sormak, misafirlikte her zaman daha nazik bir yaklaşımdır."}
+      ]},
+      { emoji:"🔊", text:"Kalabalık bir davette çok gürültü var ve rahatsız oldun.", options:[
+        {text:"Sakin bir köşe bul ya da yanındaki büyüğe \"Biraz gürültü beni rahatsız etti\" de.", tier:1, feedback:"Çok akıllıca! İhtiyacını söylemek seni rahatlatır."},
+        {text:"Kulaklarını kapatıp bağır.", tier:2, feedback:"Rahatsızlığını sakince söylemek, bağırmaktan daha etkili olur."}
+      ]},
+      { emoji:"🙅‍♀️", text:"Tanıdığın bir yetişkin seni öpmek ya da sarılmak istiyor ama sen istemiyorsun.", options:[
+        {text:"Nazikçe \"Şu an istemiyorum\" de. Bedenin senindir, hayır demek hakkındır.", tier:1, feedback:"Çok doğru bir davranış! İstemediğinde hayır demek her zaman senin hakkındır."},
+        {text:"İstemesen de kabul et çünkü söylemekten çekiniyorsun.", tier:3, feedback:"Rahatsız olduğunda hayır demek çok önemlidir, bunu güvendiğin bir büyüğe de anlatabilirsin."}
+      ]},
+      { emoji:"✈️", text:"Uzun bir yolculukta çok sıkıldın.", options:[
+        {text:"Yanına aldığın bir kitap, boyama ya da oyunla vakit geçir.", tier:1, feedback:"Harika! Kendine eğlence bulmak uzun yolculukları kısaltır."},
+        {text:"Sürekli \"Ne zaman varacağız?\" diye sor ve huzursuzlan.", tier:2, feedback:"Merak etmek normal, ama kendine bir aktivite bulmak zamanı daha keyifli geçirmeni sağlar."}
+      ]},
+      { emoji:"🤐", text:"Bir arkadaşın senin sana özel anlattığın bir şeyi başkasına söyledi.", options:[
+        {text:"Ona nasıl hissettiğini nazikçe söyle.", tier:1, feedback:"Çok olgun bir davranış! Duygularını söylemek anlaşmayı kolaylaştırır."},
+        {text:"Kızıp onunla bir daha hiç konuşma.", tier:3, feedback:"Konuşarak anlatmak, küsmekten daha iyi bir çözüm sunar."}
+      ]},
+      { emoji:"🎂", text:"Doğum günü partisinde pastayı kesme sırası sende değildi ve üzüldün.", options:[
+        {text:"Üzülsen de kutlamanın tadını çıkar.", tier:1, feedback:"Çok olgun bir tavır! Her şeyin sırayla olacağını bilmek güzel bir erdemdir."},
+        {text:"Küsüp kutlamadan ayrıl.", tier:3, feedback:"Sırasının gelmesini beklemek, kutlamanın keyfini kaçırmamana yardımcı olur."}
+      ]},
+      { emoji:"🚻", text:"Halka açık bir yerde tuvalete gitmen gerekiyor ama nerede olduğunu bilmiyorsun.", options:[
+        {text:"Yanındaki büyüğe \"Tuvalete gitmem gerekiyor\" de.", tier:1, feedback:"Çok doğru bir davranış! İhtiyacını söylemek her zaman en iyisi."},
+        {text:"Söylemeden sıkıntıyı içine at.", tier:3, feedback:"İhtiyacını söylemek, rahatsızlık yaşamamanı sağlar."}
+      ]},
+      { emoji:"🏆", text:"Katıldığın bir yarışmayı kazanamadın.", options:[
+        {text:"Kazananı tebrik et ve kendinle gurur duy çünkü denedin.", tier:1, feedback:"Çok olgun bir tavır! Denemiş olmak bile başlı başına bir başarıdır."},
+        {text:"Küsüp bir daha hiç yarışmaya katılma.", tier:3, feedback:"Kaybetmek bazen olur, tekrar denemek seni daha güçlü yapar."}
+      ]},
+      { emoji:"🍢", text:"Yeni bir yemek tatman isteniyor ama denemek istemiyorsun.", options:[
+        {text:"Küçük bir lokma dene, belki seversin.", tier:1, feedback:"Çok cesur bir davranış! Yeni tatlar denemek güzel bir alışkanlıktır."},
+        {text:"Hiç dokunmadan reddet.", tier:2, feedback:"Denemesen de olur, ama küçük bir lokma denemek yeni bir lezzet keşfetmeni sağlayabilir."}
+      ]},
+      { emoji:"🫱", text:"Kalabalık bir yerde elini tutman gereken kişiyi kaybetme korkusu yaşıyorsun.", options:[
+        {text:"Elini sıkıca tut ve yanından ayrılma.", tier:1, feedback:"Çok akıllıca! Kalabalıkta yanından ayrılmamak en güvenli davranıştır."},
+        {text:"Merak edip uzaklaş.", tier:3, feedback:"Kalabalıkta her zaman yanındaki büyüğe yakın durmak en güvenlisi."}
+      ]},
+      { emoji:"🧸", text:"Bir arkadaşın senin oyuncağını istemeden kırdı.", options:[
+        {text:"Üzülsen de \"Kaza oldu, önemli değil\" de.", tier:1, feedback:"Çok olgun bir davranış! Kazaları anlayışla karşılamak arkadaşlığı korur."},
+        {text:"Kızıp bağır.", tier:3, feedback:"Kızmak yerine anlayış göstermek, arkadaşlığınızı daha güzel tutar."}
+      ]},
+      { emoji:"📸", text:"Fotoğraf çekilme zamanı geldi ama gülmek istemiyorsun.", options:[
+        {text:"Küçük bir gülümseme dene, çabuk biter.", tier:1, feedback:"Harika! Küçük bir çaba anı güzelce hatırlamanı sağlar."},
+        {text:"Somurtarak dur.", tier:2, feedback:"Küçük bir gülümseme fotoğrafı daha güzel bir anı yapar."}
+      ]},
+      { emoji:"🤫", text:"Bir yetişkin senden ailenden saklaman gereken bir sır tutmanı istedi ve bu seni rahatsız etti.", options:[
+        {text:"Bu tür bir sırrı hemen güvendiğin bir büyüğe (anne, baba, öğretmen) anlat.", tier:1, feedback:"Çok doğru bir davranış! Seni rahatsız eden sırları güvendiğin bir büyüğe anlatmak her zaman en doğrusudur."},
+        {text:"Sırrı kimseye söylemeden sakla.", tier:3, feedback:"Seni rahatsız eden bir şeyi saklamak yerine güvendiğin bir büyüğe anlatmalısın, bu asla senin suçun olmaz."}
+      ]},
+      { emoji:"☀️", text:"Havuz kenarında güneş kremi sürülmek istemiyorsun.", options:[
+        {text:"Sabırla bekle, güneş kremi cildini korur.", tier:1, feedback:"Çok akıllıca! Güneş kremi cildini güneşten korur, önemli bir alışkanlıktır."},
+        {text:"Kaçıp saklan.", tier:3, feedback:"Güneş kremi sürmek biraz can sıksa da cildini korumak için gerekli."}
+      ]}
+    ]
+  },
+  {
+    id: "yuzme", name: "Yüzme", emoji: "🏊‍♀️", color: "#3fa7c9",
+    scenarios: [
+      { emoji:"🏊", text:"Havuza girmeden önce ısınma hareketleri yapmak istemiyorsun.", options:[
+        {text:"Isınma hareketlerini yap, vücudunu suya hazırlar.", tier:1, feedback:"Çok akıllıca! Isınmak kaslarını korur ve yüzmeyi kolaylaştırır."},
+        {text:"Isınmadan direkt suya atla.", tier:3, feedback:"Isınmadan girmek yerine kısa bir ısınma yapmak vücudun için daha iyi."}
+      ]},
+      { emoji:"💧", text:"Yüzme dersinde kafanı suya sokmak seni korkutuyor.", options:[
+        {text:"Önce yüzünü ıslatarak başla, adım adım ilerle.", tier:1, feedback:"Çok cesur bir yaklaşım! Küçük adımlarla ilerlemek korkuyu azaltır."},
+        {text:"Hiç denemeden reddet.", tier:2, feedback:"Korkman normal, küçük adımlarla denemek seni cesaretlendirebilir."}
+      ]},
+      { emoji:"🥽", text:"Havuzda gözlük takmak istemiyorsun ama gözlerin yanıyor.", options:[
+        {text:"Gözlüğünü tak, gözlerini korur.", tier:1, feedback:"Çok akıllıca! Yüzme gözlüğü gözlerini kimyasallardan korur."},
+        {text:"Gözlüksüz yüzmeye devam et.", tier:3, feedback:"Gözlük takmak, gözlerinin yanmasını önler."}
+      ]},
+      { emoji:"🤸", text:"Yüzme öğretmeni bir hareket öğretiyor ama beceremiyorsun.", options:[
+        {text:"Sabırla tekrar dene ve öğretmeninden yardım iste.", tier:1, feedback:"Çok güzel! Sabırla tekrar denemek yeni beceriler kazanmanın yoludur."},
+        {text:"Denemekten vazgeç.", tier:3, feedback:"Vazgeçmek yerine tekrar denemek seni daha iyi bir yüzücü yapar."}
+      ]},
+      { emoji:"💦", text:"Havuzda bir arkadaşın sürekli üzerine su sıçratıyor ve rahatsız oluyorsun.", options:[
+        {text:"Nazikçe \"Su sıçratmayı bırakır mısın, rahatsız oluyorum\" de.", tier:1, feedback:"Çok doğru bir tepki! Duygularını söylemek en iyi çözümdür."},
+        {text:"Sen de aynı şekilde karşılık ver.", tier:2, feedback:"Karşılık vermek yerine nazikçe söylemek durumu daha çabuk çözer."}
+      ]},
+      { emoji:"🌊", text:"Derin kısımda yüzmen isteniyor ama korkuyorsun.", options:[
+        {text:"Öğretmenine korktuğunu söyle ve yardımıyla adım adım dene.", tier:1, feedback:"Çok cesur bir davranış! Korkunu söylemek ve yardım almak en akıllıca yol."},
+        {text:"Hiç denemeden reddet.", tier:2, feedback:"Korkman normal, öğretmeninin yardımıyla küçük adımlarla denemek seni cesaretlendirir."}
+      ]},
+      { emoji:"🕐", text:"Havuzdan çıkma vakti geldi ama daha oynamak istiyorsun.", options:[
+        {text:"Kabul et, \"Bir dahaki sefere devam ederim\" de.", tier:1, feedback:"Çok olgun bir tavır! Kurallara uymak ve sabırlı olmak güzel bir erdemdir."},
+        {text:"Çıkmayı reddet ve ağla.", tier:3, feedback:"Vaktin bittiğini kabul etmek, bir dahaki derse daha keyifli gitmeni sağlar."}
+      ]},
+      { emoji:"👙", text:"Yüzme kıyafetini giyerken soyunma odasında yalnız hissettin.", options:[
+        {text:"Yanındaki büyüğe ya da öğretmene yaklaş.", tier:1, feedback:"Çok akıllıca! Yalnız hissettiğinde yanındaki büyüğe yaklaşmak seni rahatlatır."},
+        {text:"Hiçbir şey söylemeden köşede bekle.", tier:2, feedback:"Yalnız hissettiğinde yardım istemek her zaman iyi bir seçenektir."}
+      ]},
+      { emoji:"👂", text:"Yüzerken kulağına su kaçtı ve rahatsız oldu.", options:[
+        {text:"Başını yana eğip zıplayarak suyu çıkarmayı dene, gerekirse öğretmenine söyle.", tier:1, feedback:"Çok doğru bir tepki! Sakince çözüm aramak ve gerekirse yardım istemek en iyisi."},
+        {text:"Panikleyip ağlamaya başla.", tier:2, feedback:"Rahatsızlık normal, sakince çözmeyi denemek daha rahatlatıcı olur."}
+      ]},
+      { emoji:"🏁", text:"Bir yüzme yarışında son geldin.", options:[
+        {text:"Kazananları tebrik et, kendinle gurur duy çünkü yüzdün.", tier:1, feedback:"Çok olgun bir tavır! Katılmak ve denemek başlı başına bir başarıdır."},
+        {text:"Üzülüp havuzdan çık.", tier:3, feedback:"Sonuç ne olursa olsun, çabanla gurur duymalısın."}
+      ]},
+      { emoji:"🛟", text:"Can simidi olmadan yüzmen isteniyor ama cesaretin yok.", options:[
+        {text:"Öğretmeninden yanında olmasını iste ve adım adım dene.", tier:1, feedback:"Çok cesur bir davranış! Yardım isteyerek adım adım ilerlemek en iyi yoldur."},
+        {text:"Hiç denemeden reddet.", tier:2, feedback:"Korkman normal, küçük adımlarla denemek seni cesaretlendirir."}
+      ]},
+      { emoji:"🥶", text:"Havuzun suyu soğuk geldi ve rahatsız oldun.", options:[
+        {text:"Yavaşça suya alışmak için kollarını ve bacaklarını ıslat.", tier:1, feedback:"Çok akıllıca! Yavaş yavaş alışmak vücudunu suya hazırlar."},
+        {text:"Suya girmeyi tamamen reddet.", tier:2, feedback:"Soğuk gelmesi normal, yavaşça alışmayı denemek daha rahat ettirir."}
+      ]},
+      { emoji:"🚸", text:"Havuzda kurallara uymayan bir çocuk gördün (koşuyor, itiyor).", options:[
+        {text:"Kendi güvenliğine dikkat et ve öğretmenine haber ver.", tier:1, feedback:"Çok akıllıca! Güvenliğini düşünüp büyüklere haber vermek en doğrusu."},
+        {text:"Sen de aynı şekilde davran.", tier:3, feedback:"Kurallara uymak, herkesin güvenliği için önemlidir."}
+      ]},
+      { emoji:"😔", text:"Yüzme dersine gitmek istemiyorsun, o gün hiç canın yok.", options:[
+        {text:"Nedenini anne/babana anlat, belki birlikte bir çözüm bulursunuz.", tier:1, feedback:"Çok doğru bir davranış! Duygularını paylaşmak en iyi çözümdür."},
+        {text:"Hiçbir şey söylemeden somurt.", tier:2, feedback:"Nedenini söylemek, seni daha iyi anlamalarını sağlar."}
+      ]},
+      { emoji:"🥽", text:"Havuzda yüzme gözlüğün veya bonen kayboldu.", options:[
+        {text:"Sakince öğretmenine söyle ve birlikte arayın.", tier:1, feedback:"Çok akıllıca! Sakin kalıp yardım istemek en iyi çözümdür."},
+        {text:"Panikleyip ağla.", tier:2, feedback:"Panik yerine sakince aramak eşyanı bulmanı kolaylaştırır."}
+      ]},
+      { emoji:"🤿", text:"İlk defa zıplama tahtasından atlaman gerekiyor ama cesaretin yok.", options:[
+        {text:"Derin bir nefes al ve öğretmeninin yanında cesurca dene.", tier:1, feedback:"Çok cesur bir davranış! Küçük bir cesaret büyük bir başarı getirir."},
+        {text:"Hiç denemeden vazgeç.", tier:2, feedback:"Denemek istemesen de olur, ama küçük bir cesaret güzel bir deneyim yaşatabilir."}
+      ]},
+      { emoji:"😰", text:"Yüzerken burnuna su kaçtı ve paniklemeye başladın.", options:[
+        {text:"Sakince ayağa kalk ya da kenara yaklaş, öğretmenine söyle.", tier:1, feedback:"Çok doğru bir tepki! Sakin kalmak ve yardım istemek en güvenlisi."},
+        {text:"Panikleyip çırpınmaya devam et.", tier:3, feedback:"Panik yerine sakince kenara yaklaşmak veya yardım istemek çok daha güvenlidir."}
+      ]},
+      { emoji:"👏", text:"Antrenörün övgüsünü aldın ama arkadaşların kıskandı.", options:[
+        {text:"Mütevazı ol, arkadaşlarına da güzel sözler söyle.", tier:1, feedback:"Çok olgun bir davranış! Başarını paylaşırken arkadaşlarını da desteklemek güzel bir erdemdir."},
+        {text:"Övünüp arkadaşlarını küçümse.", tier:3, feedback:"Övünmek yerine mütevazı olmak arkadaşlıklarını korur."}
+      ]}
+    ]
+  },
+  {
+    id: "cimnastik", name: "Cimnastik", emoji: "🤸‍♀️", color: "#c97a9e",
+    scenarios: [
+      { emoji:"🤸‍♀️", text:"Cimnastik dersinde yeni bir hareket (takla) öğreniyorsun ve korkuyorsun.", options:[
+        {text:"Öğretmenine korktuğunu söyle ve yardımıyla adım adım dene.", tier:1, feedback:"Çok cesur bir davranış! Korkunu söylemek ve yardım almak en akıllıca yol."},
+        {text:"Hiç denemeden reddet.", tier:2, feedback:"Korkman normal, öğretmeninin yardımıyla denemek seni cesaretlendirir."}
+      ]},
+      { emoji:"⚖️", text:"Denge tahtasında düşme korkusu yaşıyorsun.", options:[
+        {text:"Yavaşça ve öğretmeninin gözetiminde dene.", tier:1, feedback:"Çok akıllıca! Yavaş adımlarla denemek dengeyi öğrenmenin en iyi yolu."},
+        {text:"Hiç çıkmadan izle.", tier:2, feedback:"İzlemek de olur, ama yavaşça denemek seni geliştirir."}
+      ]},
+      { emoji:"😞", text:"Bir hareketi arkadaşların senden önce başardı, sen henüz yapamadın.", options:[
+        {text:"Kendi hızında ilerlediğini hatırla ve pratik yapmaya devam et.", tier:1, feedback:"Çok olgun bir tavır! Herkes kendi hızında öğrenir, önemli olan denemeye devam etmek."},
+        {text:"Kıskanıp pes et.", tier:3, feedback:"Pes etmek yerine pratik yapmaya devam etmek seni geliştirir."}
+      ]},
+      { emoji:"🗣️", text:"Antrenör bir hareketini düzeltiyor ve bunu eleştiri gibi hissettin.", options:[
+        {text:"Düzeltmeyi dinle, bu seni geliştirmek için yapılıyor.", tier:1, feedback:"Çok akıllıca! Düzeltmeler seni daha iyi yapmak içindir, eleştiri değil."},
+        {text:"Küsüp dinlemeyi reddet.", tier:3, feedback:"Düzeltmeleri dinlemek, hareketini daha iyi yapmanı sağlar."}
+      ]},
+      { emoji:"⏳", text:"Cimnastik salonunda sırada beklerken sıkıldın.", options:[
+        {text:"Sırandaki arkadaşlarını izleyerek onlardan bir şeyler öğren.", tier:1, feedback:"Çok akıllıca! Beklerken izlemek de öğrenmenin bir yoludur."},
+        {text:"Sabırsızlanıp sırayı bozmaya çalış.", tier:3, feedback:"Sabırla beklemek, herkes için adil bir ders sağlar."}
+      ]},
+      { emoji:"👚", text:"Yeni bir cimnastik kıyafeti (tayt) giymek istemiyorsun.", options:[
+        {text:"Kıyafetin hareket etmeni kolaylaştırdığını düşün ve giy.", tier:1, feedback:"Çok akıllıca! Uygun kıyafet hareketlerini daha rahat yapmanı sağlar."},
+        {text:"Giymeyi reddet.", tier:2, feedback:"Kıyafetin amacını düşünürsen giymek daha kolay gelebilir."}
+      ]},
+      { emoji:"🤾", text:"Halkalarda ya da barfikste asılırken korkuyorsun.", options:[
+        {text:"Öğretmeninden destek iste ve yavaşça dene.", tier:1, feedback:"Çok cesur bir davranış! Yardım isteyerek denemek en güvenlisi."},
+        {text:"Hiç denemeden vazgeç.", tier:2, feedback:"Korkman normal, yardımla denemek seni cesaretlendirir."}
+      ]},
+      { emoji:"🤕", text:"Bir hareketi yaparken düştün ve canın acıdı.", options:[
+        {text:"Öğretmenine söyle ve biraz dinlen.", tier:1, feedback:"Çok doğru bir davranış! Canın acıdığında söylemek ve dinlenmek önemlidir."},
+        {text:"Hiçbir şey söylemeden devam et.", tier:3, feedback:"Acıdığında söylemek, kendini incitmekten korur."}
+      ]},
+      { emoji:"🎭", text:"Bir cimnastik gösterisinde sahneye çıkacaksın ve heyecanlandın.", options:[
+        {text:"Derin nefes al ve pratik yaptığını hatırla.", tier:1, feedback:"Çok akıllıca! Heyecanlanmak normal, hazırlığına güvenmek seni rahatlatır."},
+        {text:"Heyecandan sahneye çıkmayı reddet.", tier:2, feedback:"Heyecanlanmak normal, denemek güzel bir deneyim olabilir."}
+      ]},
+      { emoji:"🧘", text:"Esneme hareketleri biraz acıtıyor ve devam etmek istemiyorsun.", options:[
+        {text:"Öğretmenine söyle, canını fazla acıtmayacak şekilde devam et.", tier:1, feedback:"Çok akıllıca! Acı hissettiğinde söylemek ve dikkatli devam etmek önemlidir."},
+        {text:"Hiçbir şey söylemeden zorla devam et.", tier:3, feedback:"Acını söylemek, kendine zarar vermeni önler."}
+      ]},
+      { emoji:"😒", text:"Takım arkadaşın bir hareketi senden daha iyi yapıyor ve kıskandın.", options:[
+        {text:"Onu tebrik et ve kendi gelişimine odaklan.", tier:1, feedback:"Çok olgun bir davranış! Başkalarının başarısına sevinmek güzel bir erdemdir."},
+        {text:"Küsüp onunla konuşma.", tier:3, feedback:"Kıskançlık yerine kendi gelişimine odaklanmak seni daha mutlu eder."}
+      ]},
+      { emoji:"🥇", text:"Cimnastikte bir madalya kazandın ama arkadaşların kazanamadı.", options:[
+        {text:"Mütevazı ol ve arkadaşlarına destek ol.", tier:1, feedback:"Çok olgun bir davranış! Başarını mütevazılıkla kutlamak arkadaşlıklarını korur."},
+        {text:"Övünüp arkadaşlarını küçümse.", tier:3, feedback:"Mütevazı olmak, arkadaşlarınla ilişkini daha güzel tutar."}
+      ]},
+      { emoji:"⏰", text:"Cimnastik dersine geç kaldın.", options:[
+        {text:"Sessizce içeri gir ve öğretmenden özür dile.", tier:1, feedback:"Çok doğru bir davranış! Sessizce girip özür dilemek en iyisi."},
+        {text:"İçeri girmeyip dışarıda bekle.", tier:3, feedback:"İçeri girip özür dilemek, dışarıda beklemekten daha iyi bir çözümdür."}
+      ]},
+      { emoji:"😬", text:"Antrenör senden henüz hazır olmadığın zor bir hareket istedi.", options:[
+        {text:"\"Bunu yapmaya henüz hazır değilim, yardım eder misin?\" de.", tier:1, feedback:"Çok cesur bir davranış! İhtiyacını söylemek ve yardım istemek en akıllıca yol."},
+        {text:"Hiçbir şey söylemeden zorla dene.", tier:2, feedback:"İhtiyacını söylemek, kendini incitmekten korur."}
+      ]},
+      { emoji:"🧎", text:"Cimnastik minderinde sırada beklerken biri araya girdi.", options:[
+        {text:"Nazikçe \"Aslında sıra bendeydi\" de.", tier:1, feedback:"Çok doğru bir davranış! Hakkını nazikçe söylemek en iyisi."},
+        {text:"Hiçbir şey söylemeden bekle.", tier:2, feedback:"Sabretmek de olur, ama hakkını söylemek seni daha rahat ettirir."}
+      ]},
+      { emoji:"😓", text:"Çok yorgun hissediyorsun ama ders henüz bitmedi.", options:[
+        {text:"Öğretmenine yorgun olduğunu söyle, kısa bir mola iste.", tier:1, feedback:"Çok akıllıca! Yorgunluğunu söylemek ve mola istemek doğru bir davranıştır."},
+        {text:"Hiçbir şey söylemeden zorla devam et.", tier:3, feedback:"Yorgunluğunu söylemek, kendine iyi bakmanın bir parçasıdır."}
+      ]},
+      { emoji:"🆕", text:"Cimnastik grubuna yeni bir arkadaş katıldı.", options:[
+        {text:"Yanına gidip kendini tanıt ve ona yardımcı ol.", tier:1, feedback:"Çok güzel bir davranış! Yeni birine yardımcı olmak iyi bir arkadaşlık gösterir."},
+        {text:"Hiç ilgilenmeden kendi işine bak.", tier:2, feedback:"Yeni birine merhaba demek küçük ama değerli bir incelik olurdu."}
+      ]},
+      { emoji:"🎉", text:"Bir hareketi ilk denemende başardın ve çok mutlu oldun.", options:[
+        {text:"Sevincini paylaş ve kendinle gurur duy.", tier:1, feedback:"Harika! Başarılarınla gurur duymak seni motive eder."},
+        {text:"Mutluluğunu içine at, kimseye söyleme.", tier:2, feedback:"Sevincini paylaşmak, o anı daha da güzelleştirir."}
+      ]}
+    ]
+  }
+];
+
+/* ================= STATE ================= */
+let currentCatIndex = null;
+let currentSceneIndex = 0;
+let tierCounts = {1:0, 2:0, 3:0};
+let waitingForTap = false;
+
+const STORAGE_KEY = "ne_yapmali_progress_v2";
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function saveProgress(progress) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch(e) {}
+}
+
+/* ================= HOME SCREEN ================= */
+function renderHome() {
+  const grid = document.getElementById("catGrid");
+  grid.innerHTML = "";
+  const progress = loadProgress();
+  categories.forEach((cat, i) => {
+    const done = progress[cat.id] && progress[cat.id].completed;
+    const card = document.createElement("div");
+    card.className = "cat-card";
+    card.style.background = cat.color;
+    card.innerHTML =
+      '<div class="emoji">' + cat.emoji + '</div>' +
+      '<div class="name">' + cat.name + '</div>' +
+      '<div class="progress">' + (done ? "Tamamlandı ✓" : cat.scenarios.length + " durum") + '</div>';
+    card.addEventListener("click", () => openCategory(i));
+    grid.appendChild(card);
+  });
+}
+
+/* ================= SCENE SCREEN ================= */
+function openCategory(index) {
+  currentCatIndex = index;
+  currentSceneIndex = 0;
+  tierCounts = {1:0, 2:0, 3:0};
+  document.getElementById("home").style.display = "none";
+  document.getElementById("complete").classList.remove("active");
+  document.getElementById("scene").classList.add("active");
+  document.getElementById("catLabel").textContent = categories[index].name;
+  renderDots();
+  renderScenario();
+}
+
+function renderDots() {
+  const cat = categories[currentCatIndex];
+  const dotsEl = document.getElementById("dots");
+  dotsEl.innerHTML = "";
+  for (let i = 0; i < cat.scenarios.length; i++) {
+    const d = document.createElement("div");
+    d.className = "dot" + (i < currentSceneIndex ? " done" : "");
+    dotsEl.appendChild(d);
+  }
+}
+
+function renderScenario() {
+  const cat = categories[currentCatIndex];
+  const scenario = cat.scenarios[currentSceneIndex];
+  document.getElementById("scenarioEmoji").textContent = scenario.emoji;
+  document.getElementById("scenarioText").textContent = scenario.text;
+  const optionsBox = document.getElementById("optionsBox");
+  optionsBox.innerHTML = "";
+  waitingForTap = false;
+  document.getElementById("feedbackOverlay").classList.remove("show");
+
+  scenario.options.forEach((opt, idx) => {
+    const btn = document.createElement("div");
+    btn.className = "option-btn";
+    btn.textContent = opt.text;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      selectOption(opt, idx);
+    });
+    optionsBox.appendChild(btn);
+  });
+  renderDots();
+}
+
+function selectOption(opt, idx) {
+  if (waitingForTap) return;
+  waitingForTap = true;
+  tierCounts[opt.tier]++;
+
+  const allBtns = document.querySelectorAll(".option-btn");
+  allBtns.forEach((b, i) => {
+    if (i === idx) {
+      b.classList.add("selected", "tier" + opt.tier);
+    } else {
+      b.classList.add("dim");
+    }
+  });
+
+  const emojiMap = {1:"🌟", 2:"👍", 3:"💛"};
+  const titleMap = {1:"Harika seçim!", 2:"Güzel bir seçim!", 3:"Bunu birlikte düşünelim"};
+  document.getElementById("feedbackEmoji").textContent = emojiMap[opt.tier];
+  document.getElementById("feedbackTitle").textContent = titleMap[opt.tier];
+  document.getElementById("feedbackText").textContent = opt.feedback;
+  document.getElementById("feedbackOverlay").classList.add("show");
+}
+
+function goToNext() {
+  if (!waitingForTap) return;
+  waitingForTap = false;
+  const cat = categories[currentCatIndex];
+  currentSceneIndex++;
+  if (currentSceneIndex >= cat.scenarios.length) {
+    finishCategory();
+  } else {
+    renderScenario();
+  }
+}
+
+function finishCategory() {
+  const cat = categories[currentCatIndex];
+  const progress = loadProgress();
+  progress[cat.id] = { completed: true };
+  saveProgress(progress);
+
+  document.getElementById("scene").classList.remove("active");
+  document.getElementById("complete").classList.add("active");
+  document.getElementById("completeTitle").textContent = cat.name + " bölümünü tamamladın!";
+  document.getElementById("completeSummary").textContent =
+    "En iyi seçim: " + tierCounts[1] + " kere, iyi seçim: " + tierCounts[2] + " kere. Harika düşündün! 💛";
+}
+
+/* ================= NAVIGATION ================= */
+document.getElementById("backBtn").addEventListener("click", () => {
+  document.getElementById("scene").classList.remove("active");
+  document.getElementById("home").style.display = "flex";
+  renderHome();
+});
+
+document.getElementById("completeBtn").addEventListener("click", () => {
+  document.getElementById("complete").classList.remove("active");
+  document.getElementById("home").style.display = "flex";
+  renderHome();
+});
+
+// Tap anywhere on the scene (outside option buttons before selection) advances after feedback shown
+document.getElementById("scene").addEventListener("click", () => {
+  goToNext();
+});
+
+/* ================= INIT ================= */
+renderHome();
+</script>
+</body>
+</html>
