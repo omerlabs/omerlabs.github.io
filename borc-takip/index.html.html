@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borç Takip</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f13;
+    --surface: #16181f;
+    --surface2: #1e2029;
+    --border: #2a2c38;
+    --accent: #e8c547;
+    --accent2: #4ade80;
+    --danger: #f87171;
+    --text: #f0f0f0;
+    --muted: #6b7280;
+    --card-r: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .header-left h1 {
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .header-left h1 span { color: var(--accent); }
+  .header-left p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+  .btn-add {
+    background: var(--accent);
+    color: #0e0f13;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform .15s, opacity .15s;
+    white-space: nowrap;
+  }
+  .btn-add:hover { opacity: .88; transform: translateY(-1px); }
+
+  /* SUMMARY CARDS */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .sum-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-r);
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sum-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .sum-card.total::before { background: var(--danger); }
+  .sum-card.paid::before { background: var(--accent2); }
+  .sum-card.remain::before { background: var(--accent); }
+  .sum-card.count::before { background: #818cf8; }
+  .sum-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  .sum-value { font-family: 'DM Mono', monospace; font-size: clamp(16px, 3vw, 22px); font-weight: 500; }
+  .sum-card.total .sum-value { color: var(--danger); }
+  .sum-card.paid .sum-value { color: var(--accent2); }
+  .sum-card.remain .sum-value { color: var(--accent); }
+  .sum-card.count .sum-value { color: #818cf8; }
+
+  /* SECTION TITLE */
+  .sec-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* DEBT CARDS */
+  .debts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .debt-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-r);
+    padding: 18px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .debt-card:hover { border-color: #3a3c4a; }
+  .debt-card.completed {
+    opacity: .55;
+    border-style: dashed;
+  }
+
+  .debt-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+  .debt-name {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.2;
+  }
+  .debt-bank {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .debt-type-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-installment { background: #1e3a5f; color: #60a5fa; }
+  .badge-free { background: #1e3a2f; color: #4ade80; }
+  .badge-done { background: #2a2c38; color: var(--muted); }
+
+  /* PROGRESS BAR */
+  .progress-wrap { margin-bottom: 14px; }
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .progress-bar {
+    height: 5px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent2);
+    transition: width .4s ease;
+  }
+  .debt-card.completed .progress-fill { background: var(--muted); }
+
+  /* AMOUNTS */
+  .debt-amounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .amt-item { text-align: center; }
+  .amt-label { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
+  .amt-value { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
+  .amt-value.red { color: var(--danger); }
+  .amt-value.green { color: var(--accent2); }
+  .amt-value.yellow { color: var(--accent); }
+
+  /* INSTALLMENTS (for installment type) */
+  .installments-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .inst-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .15s;
+    font-weight: 500;
+  }
+  .inst-dot.paid {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: #0a1f14;
+    font-weight: 700;
+  }
+  .inst-dot:hover:not(.paid) {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+  .inst-dot.paid:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #1f0a0a;
+  }
+
+  /* CARD ACTIONS */
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .btn-small {
+    flex: 1;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    transition: all .15s;
+  }
+  .btn-small:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-small.danger:hover { border-color: var(--danger); color: var(--danger); }
+  .btn-small.pay-btn { border-color: #2d4a38; background: #1a2e22; color: var(--accent2); }
+  .btn-small.pay-btn:hover { background: #2d4a38; }
+
+  /* PAYMENT HISTORY (free debt) */
+  .payment-log {
+    margin-bottom: 14px;
+    max-height: 120px;
+    overflow-y: auto;
+  }
+  .payment-log::-webkit-scrollbar { width: 3px; }
+  .payment-log::-webkit-scrollbar-track { background: transparent; }
+  .payment-log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  .pay-entry {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .pay-entry:last-child { border-bottom: none; }
+  .pay-entry .pay-amt { color: var(--accent2); font-family: 'DM Mono', monospace; }
+
+  /* MODAL OVERLAY */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+  }
+  .overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 420px;
+    transform: translateY(20px);
+    transition: transform .2s;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .overlay.open .modal { transform: translateY(0); }
+
+  .modal h2 { font-size: 20px; font-weight: 800; margin-bottom: 20px; }
+  .modal h2 span { color: var(--accent); }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--accent); }
+  .form-group select option { background: var(--surface2); }
+
+  .type-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .type-btn {
+    padding: 10px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+    text-align: center;
+  }
+  .type-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232,197,71,.08);
+  }
+
+  .modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .btn-cancel {
+    padding: 11px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .btn-cancel:hover { border-color: var(--danger); color: var(--danger); }
+  .btn-save {
+    padding: 11px;
+    border-radius: 9px;
+    border: none;
+    background: var(--accent);
+    color: #0e0f13;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .btn-save:hover { opacity: .88; }
+
+  /* PAY MODAL */
+  .pay-modal-content { }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--muted);
+  }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; }
+
+  /* DELETE CONFIRM */
+  .confirm-bar {
+    display: none;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .confirm-bar.show { display: flex; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 13px;
+    z-index: 999;
+    transition: transform .3s;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { border-color: var(--accent2); color: var(--accent2); }
+  .toast.error { border-color: var(--danger); color: var(--danger); }
+
+  @media (max-width: 400px) {
+    .debt-amounts { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Borç <span>Takip</span></h1>
+    <p>Tüm borçlarını tek yerden yönet</p>
+  </div>
+  <button class="btn-add" onclick="openAddModal()">+ Borç Ekle</button>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-card total">
+    <div class="sum-label">Toplam Borç</div>
+    <div class="sum-value" id="sum-total">₺0</div>
+  </div>
+  <div class="sum-card paid">
+    <div class="sum-label">Ödenen</div>
+    <div class="sum-value" id="sum-paid">₺0</div>
+  </div>
+  <div class="sum-card remain">
+    <div class="sum-label">Kalan</div>
+    <div class="sum-value" id="sum-remain">₺0</div>
+  </div>
+  <div class="sum-card count">
+    <div class="sum-label">Aktif Borç</div>
+    <div class="sum-value" id="sum-count">0</div>
+  </div>
+</div>
+
+<!-- INSTALLMENT DEBTS -->
+<div id="section-installment">
+  <div class="sec-title">Taksitli Krediler</div>
+  <div class="debts-grid" id="grid-installment"></div>
+</div>
+
+<!-- FREE DEBTS -->
+<div id="section-free">
+  <div class="sec-title">Taksitsiz / Kişisel Borçlar</div>
+  <div class="debts-grid" id="grid-free"></div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="overlay" id="modal-overlay" onclick="overlayClick(event)">
+  <div class="modal" id="add-modal">
+    <h2 id="modal-title">Yeni <span>Borç</span></h2>
+    <input type="hidden" id="edit-id">
+
+    <div class="form-group">
+      <label>Tür</label>
+      <div class="type-toggle">
+        <button class="type-btn active" id="type-installment" onclick="setType('installment')">📋 Taksitli Kredi</button>
+        <button class="type-btn" id="type-free" onclick="setType('free')">🤝 Taksitsiz Borç</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Açıklama / İsim</label>
+      <input type="text" id="f-name" placeholder="örn. Garanti İhtiyaç Kredisi">
+    </div>
+
+    <div class="form-group" id="fg-bank">
+      <label>Banka / Kişi</label>
+      <input type="text" id="f-bank" placeholder="örn. Garanti Bankası">
+    </div>
+
+    <div class="form-group">
+      <label>Toplam Tutar (₺)</label>
+      <input type="number" id="f-total" placeholder="0.00" step="0.01" min="0">
+    </div>
+
+    <div class="form-group" id="fg-installments">
+      <label>Taksit Sayısı</label>
+      <input type="number" id="f-installments" placeholder="örn. 12" min="1" max="120">
+    </div>
+
+    <div class="form-group" id="fg-paid-inst" style="display:none">
+      <label>Kaç Taksit Ödendi? (düzenleme)</label>
+      <input type="number" id="f-paid-inst" placeholder="0" min="0">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">İptal</button>
+      <button class="btn-save" onclick="saveDebt()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAY MODAL (free debt) -->
+<div class="overlay" id="pay-overlay" onclick="payOverlayClick(event)">
+  <div class="modal">
+    <h2>Ödeme <span>Ekle</span></h2>
+    <input type="hidden" id="pay-debt-id">
+    <div class="form-group">
+      <label>Ödeme Tutarı (₺)</label>
+      <input type="number" id="pay-amount" placeholder="0.00" step="0.01" min="0">
+    </div>
+    <div class="form-group">
+      <label>Not (isteğe bağlı)</label>
+      <input type="text" id="pay-note" placeholder="örn. Ağustos ödemesi">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closePayModal()">İptal</button>
+      <button class="btn-save" onclick="submitPayment()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ───────────── STATE ─────────────
+const STORAGE_KEY = 'borc_takip_v1';
+let debts = [];
+let currentType = 'installment';
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    debts = raw ? JSON.parse(raw) : [];
+  } catch { debts = []; }
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(debts));
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+}
+
+// ───────────── RENDER ─────────────
+function fmt(n) {
+  return '₺' + Number(n).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function render() {
+  renderSummary();
+  renderGrid('installment');
+  renderGrid('free');
+}
+
+function renderSummary() {
+  let total = 0, paid = 0, active = 0;
+  for (const d of debts) {
+    total += d.total;
+    paid += getPaid(d);
+    if (!isCompleted(d)) active++;
+  }
+  document.getElementById('sum-total').textContent = fmt(total);
+  document.getElementById('sum-paid').textContent = fmt(paid);
+  document.getElementById('sum-remain').textContent = fmt(total - paid);
+  document.getElementById('sum-count').textContent = active;
+}
+
+function getPaid(d) {
+  if (d.type === 'installment') {
+    return d.paidCount * (d.total / d.installments);
+  } else {
+    return (d.payments || []).reduce((s, p) => s + p.amount, 0);
+  }
+}
+
+function getRemain(d) {
+  return Math.max(0, d.total - getPaid(d));
+}
+
+function isCompleted(d) {
+  if (d.type === 'installment') return d.paidCount >= d.installments;
+  return getRemain(d) <= 0;
+}
+
+function renderGrid(type) {
+  const grid = document.getElementById('grid-' + type);
+  const items = debts.filter(d => d.type === type);
+  if (items.length === 0) {
+    grid.innerHTML = `<div class="empty-state"><div class="icon">${type === 'installment' ? '🏦' : '🤝'}</div><p>Henüz kayıt yok.<br>Sağ üstten ekleyebilirsin.</p></div>`;
+    return;
+  }
+  grid.innerHTML = items.map(d => debtCard(d)).join('');
+}
+
+function debtCard(d) {
+  const paid = getPaid(d);
+  const remain = getRemain(d);
+  const pct = d.total > 0 ? Math.min(100, (paid / d.total) * 100) : 0;
+  const done = isCompleted(d);
+  const badgeClass = done ? 'badge-done' : (d.type === 'installment' ? 'badge-installment' : 'badge-free');
+  const badgeText = done ? '✓ Tamamlandı' : (d.type === 'installment' ? `${d.installments} Taksit` : 'Taksitsiz');
+
+  let body = '';
+
+  if (d.type === 'installment') {
+    const instAmt = d.total / d.installments;
+    let dots = '';
+    for (let i = 1; i <= d.installments; i++) {
+      const isPaid = i <= d.paidCount;
+      dots += `<div class="inst-dot ${isPaid ? 'paid' : ''}" title="${isPaid ? 'Ödendi - geri al' : 'Taksit ' + i}" onclick="toggleInstallment('${d.id}', ${i})">${i}</div>`;
+    }
+    body = `
+      <div class="installments-row">${dots}</div>
+      <div class="debt-amounts">
+        <div class="amt-item"><div class="amt-label">Taksit Tutarı</div><div class="amt-value yellow">${fmt(instAmt)}</div></div>
+        <div class="amt-item"><div class="amt-label">Ödenen</div><div class="amt-value green">${fmt(paid)}</div></div>
+        <div class="amt-item"><div class="amt-label">Kalan</div><div class="amt-value red">${fmt(remain)}</div></div>
+      </div>`;
+  } else {
+    const logs = (d.payments || []).slice().reverse().map(p => `
+      <div class="pay-entry">
+        <span>${p.note ? p.note + ' · ' : ''}${new Date(p.date).toLocaleDateString('tr-TR')}</span>
+        <span class="pay-amt">+${fmt(p.amount)}</span>
+      </div>`).join('');
+    body = `
+      ${logs ? `<div class="payment-log">${logs}</div>` : ''}
+      <div class="debt-amounts">
+        <div class="amt-item"><div class="amt-label">Toplam</div><div class="amt-value yellow">${fmt(d.total)}</div></div>
+        <div class="amt-item"><div class="amt-label">Ödenen</div><div class="amt-value green">${fmt(paid)}</div></div>
+        <div class="amt-item"><div class="amt-label">Kalan</div><div class="amt-value red">${fmt(remain)}</div></div>
+      </div>`;
+  }
+
+  const payBtn = !done && d.type === 'free' ? `<button class="btn-small pay-btn" onclick="openPayModal('${d.id}')">💰 Ödeme Ekle</button>` : '';
+  const instPayBtn = !done && d.type === 'installment' ? `<button class="btn-small pay-btn" onclick="payNextInstallment('${d.id}')">💰 Sonraki Taksitten Öde</button>` : '';
+
+  return `
+    <div class="debt-card ${done ? 'completed' : ''}" id="card-${d.id}">
+      <div class="debt-card-top">
+        <div>
+          <div class="debt-name">${escHtml(d.name)}</div>
+          ${d.bank ? `<div class="debt-bank">${escHtml(d.bank)}</div>` : ''}
+        </div>
+        <span class="debt-type-badge ${badgeClass}">${badgeText}</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-labels"><span>%${pct.toFixed(0)} ödendi</span>${d.type === 'installment' ? `<span>${d.paidCount}/${d.installments}</span>` : ''}</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+      ${body}
+      <div class="card-actions">
+        ${payBtn}${instPayBtn}
+        <button class="btn-small" onclick="openEditModal('${d.id}')">✏️ Düzenle</button>
+        <button class="btn-small danger" onclick="deleteDebt('${d.id}')">🗑️ Sil</button>
+      </div>
+    </div>`;
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ───────────── INTERACTIONS ─────────────
+function toggleInstallment(id, n) {
+  const d = debts.find(x => x.id === id);
+  if (!d) return;
+  if (n <= d.paidCount) {
+    // undo: only allow undoing last paid
+    if (n === d.paidCount) { d.paidCount--; toast('Taksit geri alındı', 'success'); }
+    else { toast('Sadece son ödemeyi geri alabilirsin', 'error'); return; }
+  } else {
+    if (n !== d.paidCount + 1) { toast('Sıralı taksit ödemesi gerekli', 'error'); return; }
+    d.paidCount = n;
+    toast(`${n}. taksit ödendi ✓`, 'success');
+  }
+  save(); render();
+}
+
+function payNextInstallment(id) {
+  const d = debts.find(x => x.id === id);
+  if (!d || d.paidCount >= d.installments) return;
+  d.paidCount++;
+  toast(`${d.paidCount}. taksit ödendi ✓`, 'success');
+  save(); render();
+}
+
+function deleteDebt(id) {
+  if (!confirm('Bu borcu silmek istediğine emin misin?')) return;
+  debts = debts.filter(d => d.id !== id);
+  save(); render();
+  toast('Borç silindi', 'error');
+}
+
+// ───────────── ADD MODAL ─────────────
+function setType(t) {
+  currentType = t;
+  document.getElementById('type-installment').classList.toggle('active', t === 'installment');
+  document.getElementById('type-free').classList.toggle('active', t === 'free');
+  document.getElementById('fg-installments').style.display = t === 'installment' ? '' : 'none';
+  document.getElementById('fg-bank').querySelector('label').textContent = t === 'installment' ? 'Banka' : 'Kişi / Kaynak';
+  document.getElementById('f-bank').placeholder = t === 'installment' ? 'örn. Garanti Bankası' : 'örn. Ahmet Bey';
+}
+
+function openAddModal() {
+  document.getElementById('edit-id').value = '';
+  document.getElementById('modal-title').innerHTML = 'Yeni <span>Borç</span>';
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-bank').value = '';
+  document.getElementById('f-total').value = '';
+  document.getElementById('f-installments').value = '';
+  document.getElementById('fg-paid-inst').style.display = 'none';
+  document.getElementById('f-paid-inst').value = '';
+  setType('installment');
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function openEditModal(id) {
+  const d = debts.find(x => x.id === id);
+  if (!d) return;
+  document.getElementById('edit-id').value = d.id;
+  document.getElementById('modal-title').innerHTML = 'Düzenle <span>Borç</span>';
+  document.getElementById('f-name').value = d.name;
+  document.getElementById('f-bank').value = d.bank || '';
+  document.getElementById('f-total').value = d.total;
+  setType(d.type);
+  if (d.type === 'installment') {
+    document.getElementById('f-installments').value = d.installments;
+    document.getElementById('fg-paid-inst').style.display = '';
+    document.getElementById('f-paid-inst').value = d.paidCount;
+  }
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function overlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function saveDebt() {
+  const name = document.getElementById('f-name').value.trim();
+  const bank = document.getElementById('f-bank').value.trim();
+  const total = parseFloat(document.getElementById('f-total').value);
+  const editId = document.getElementById('edit-id').value;
+
+  if (!name) { toast('Açıklama gerekli', 'error'); return; }
+  if (isNaN(total) || total <= 0) { toast('Geçerli bir tutar gir', 'error'); return; }
+
+  if (editId) {
+    const d = debts.find(x => x.id === editId);
+    if (!d) return;
+    d.name = name; d.bank = bank; d.total = total;
+    if (d.type === 'installment') {
+      const inst = parseInt(document.getElementById('f-installments').value);
+      const paidInst = parseInt(document.getElementById('f-paid-inst').value) || 0;
+      if (isNaN(inst) || inst < 1) { toast('Geçerli taksit sayısı gir', 'error'); return; }
+      d.installments = inst;
+      d.paidCount = Math.min(paidInst, inst);
+    }
+  } else {
+    const d = { id: uid(), type: currentType, name, bank, total, createdAt: Date.now() };
+    if (currentType === 'installment') {
+      const inst = parseInt(document.getElementById('f-installments').value);
+      if (isNaN(inst) || inst < 1) { toast('Geçerli taksit sayısı gir', 'error'); return; }
+      d.installments = inst;
+      d.paidCount = 0;
+    } else {
+      d.payments = [];
+    }
+    debts.push(d);
+  }
+
+  save(); render(); closeModal();
+  toast(editId ? 'Borç güncellendi ✓' : 'Borç eklendi ✓', 'success');
+}
+
+// ───────────── PAY MODAL ─────────────
+function openPayModal(id) {
+  document.getElementById('pay-debt-id').value = id;
+  document.getElementById('pay-amount').value = '';
+  document.getElementById('pay-note').value = '';
+  document.getElementById('pay-overlay').classList.add('open');
+}
+
+function closePayModal() {
+  document.getElementById('pay-overlay').classList.remove('open');
+}
+
+function payOverlayClick(e) {
+  if (e.target === document.getElementById('pay-overlay')) closePayModal();
+}
+
+function submitPayment() {
+  const id = document.getElementById('pay-debt-id').value;
+  const amount = parseFloat(document.getElementById('pay-amount').value);
+  const note = document.getElementById('pay-note').value.trim();
+  if (isNaN(amount) || amount <= 0) { toast('Geçerli tutar gir', 'error'); return; }
+  const d = debts.find(x => x.id === id);
+  if (!d) return;
+  d.payments.push({ amount, note, date: Date.now() });
+  save(); render(); closePayModal();
+  toast(`${fmt(amount)} ödeme kaydedildi ✓`, 'success');
+}
+
+// ───────────── TOAST ─────────────
+let toastTimer;
+function toast(msg, type = 'success') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.className = 'toast', 2800);
+}
+
+// ───────────── INIT ─────────────
+load();
+render();
+</script>
+</body>
+</html>
