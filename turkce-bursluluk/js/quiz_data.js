@@ -3,7 +3,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -13,7 +13,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             6,
@@ -25,7 +25,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             12,
@@ -36,7 +36,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             17,
@@ -49,7 +49,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             23,
@@ -90,7 +90,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -100,7 +100,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             5,
@@ -110,7 +110,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             10,
@@ -122,7 +122,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             16,
@@ -133,7 +133,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             21,
@@ -176,7 +176,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -186,7 +186,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             5,
@@ -199,7 +199,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             9,
@@ -214,7 +214,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             15,
@@ -230,7 +230,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             21,
@@ -273,7 +273,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -283,7 +283,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -292,7 +292,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -308,7 +308,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             15,
@@ -320,7 +320,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             21,
@@ -365,7 +365,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -375,7 +375,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             6,
@@ -384,7 +384,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             9,
@@ -394,7 +394,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             13,
@@ -408,7 +408,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             17,
@@ -418,7 +418,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             5,
             21,
@@ -428,7 +428,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             5,
             25
@@ -467,7 +467,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -477,7 +477,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             5,
@@ -486,7 +486,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             9,
@@ -499,7 +499,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             13,
@@ -509,7 +509,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             17,
@@ -519,7 +519,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             6,
             21,
@@ -528,7 +528,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             6,
             24,
@@ -571,7 +571,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -581,7 +581,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             5,
@@ -593,7 +593,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             9,
@@ -604,7 +604,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             13,
@@ -614,7 +614,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             17,
@@ -624,7 +624,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             7,
             21,
@@ -635,7 +635,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             7,
             24,
@@ -675,7 +675,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -685,7 +685,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -694,7 +694,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -704,7 +704,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             13,
@@ -714,7 +714,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             17,
@@ -725,7 +725,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             21,
@@ -734,7 +734,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             8,
             24,
@@ -779,7 +779,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -789,7 +789,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             6,
@@ -802,7 +802,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             9,
@@ -812,7 +812,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             13,
@@ -822,7 +822,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             17,
@@ -835,7 +835,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             5,
             21,
@@ -845,7 +845,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             5,
             25
@@ -884,7 +884,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -895,7 +895,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             7,
@@ -904,7 +904,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             10,
@@ -914,7 +914,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             14,
@@ -924,7 +924,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             18,
@@ -934,7 +934,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             6,
             22,
@@ -976,7 +976,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -986,7 +986,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             5,
@@ -995,7 +995,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             9,
@@ -1005,7 +1005,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             13,
@@ -1015,7 +1015,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             17,
@@ -1029,7 +1029,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             7,
             21,
@@ -1039,7 +1039,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             7,
             25
@@ -1078,7 +1078,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -1090,7 +1090,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             7,
@@ -1100,7 +1100,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             12,
@@ -1110,7 +1110,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             16,
@@ -1123,7 +1123,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             20,
@@ -1133,7 +1133,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             24,
@@ -1178,7 +1178,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -1188,7 +1188,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             6,
@@ -1197,7 +1197,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             9,
@@ -1207,7 +1207,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             13,
@@ -1217,7 +1217,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             17,
@@ -1227,7 +1227,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             5,
             21,
@@ -1237,7 +1237,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             5,
             25
@@ -1276,7 +1276,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -1287,7 +1287,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             7,
@@ -1296,7 +1296,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             10,
@@ -1310,7 +1310,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             14,
@@ -1320,7 +1320,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             18,
@@ -1330,7 +1330,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             6,
             22,
@@ -1372,7 +1372,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -1382,7 +1382,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             5,
@@ -1391,7 +1391,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             9,
@@ -1401,7 +1401,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             13,
@@ -1411,7 +1411,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             17,
@@ -1421,7 +1421,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             7,
             21,
@@ -1430,7 +1430,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             7,
             24,
@@ -1470,7 +1470,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -1480,7 +1480,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -1493,7 +1493,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -1504,7 +1504,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             14,
@@ -1514,7 +1514,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             18,
@@ -1525,7 +1525,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             23,
@@ -1568,7 +1568,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -1579,7 +1579,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             7,
@@ -1592,7 +1592,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             11,
@@ -1602,7 +1602,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             15,
@@ -1612,7 +1612,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             19,
@@ -1650,7 +1650,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -1661,7 +1661,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             7,
@@ -1670,7 +1670,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             10,
@@ -1681,7 +1681,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             15,
@@ -1695,7 +1695,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             20
@@ -1729,7 +1729,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -1740,7 +1740,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             6,
@@ -1750,7 +1750,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             11,
@@ -1761,7 +1761,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             16,
@@ -1774,7 +1774,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             20
@@ -1808,7 +1808,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -1818,7 +1818,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -1830,7 +1830,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -1841,7 +1841,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             13,
@@ -1854,7 +1854,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             17,
@@ -1863,7 +1863,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             20
@@ -1899,7 +1899,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -1909,7 +1909,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             6,
@@ -1918,7 +1918,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             9,
@@ -1928,7 +1928,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             13,
@@ -1938,7 +1938,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             17,
@@ -1946,7 +1946,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             5,
             19,
@@ -1981,7 +1981,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -1992,7 +1992,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             7,
@@ -2003,7 +2003,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             12,
@@ -2015,7 +2015,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             18,
@@ -2051,7 +2051,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -2063,7 +2063,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             8,
@@ -2072,7 +2072,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             11,
@@ -2083,7 +2083,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             16,
@@ -2093,7 +2093,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             20
@@ -2127,7 +2127,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -2137,7 +2137,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -2146,7 +2146,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -2156,7 +2156,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             13,
@@ -2166,7 +2166,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             17,
@@ -2175,7 +2175,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             20
@@ -2211,7 +2211,7 @@ const QUIZ_DATA = {
     "5": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             5,
             1,
@@ -2220,7 +2220,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             5,
             4,
@@ -2229,7 +2229,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             5,
             8,
@@ -2239,7 +2239,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             5,
             12,
@@ -2252,7 +2252,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             5,
             16,
@@ -2260,21 +2260,21 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             5,
             18
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             5,
             19
           ]
         },
         {
-          "page_img": "page_08.png",
+          "page_img": "page_08.jpg",
           "questions": [
             5,
             20
@@ -2308,7 +2308,7 @@ const QUIZ_DATA = {
     "6": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             6,
             1,
@@ -2318,7 +2318,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             6,
             3,
@@ -2327,7 +2327,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             6,
             7,
@@ -2335,7 +2335,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             6,
             9,
@@ -2345,7 +2345,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             6,
             11,
@@ -2354,7 +2354,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             6,
             14,
@@ -2362,7 +2362,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_07.png",
+          "page_img": "page_07.jpg",
           "questions": [
             6,
             16,
@@ -2370,7 +2370,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_08.png",
+          "page_img": "page_08.jpg",
           "questions": [
             6,
             18,
@@ -2379,7 +2379,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_09.png",
+          "page_img": "page_09.jpg",
           "questions": [
             6,
             20
@@ -2413,7 +2413,7 @@ const QUIZ_DATA = {
     "7": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             7,
             1,
@@ -2423,7 +2423,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             7,
             5,
@@ -2432,7 +2432,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             7,
             9,
@@ -2442,7 +2442,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             7,
             13,
@@ -2451,7 +2451,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             7,
             16,
@@ -2461,7 +2461,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             7,
             20
@@ -2495,7 +2495,7 @@ const QUIZ_DATA = {
     "8": {
       "pages": [
         {
-          "page_img": "page_01.png",
+          "page_img": "page_01.jpg",
           "questions": [
             8,
             1,
@@ -2505,7 +2505,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_02.png",
+          "page_img": "page_02.jpg",
           "questions": [
             8,
             5,
@@ -2514,7 +2514,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_03.png",
+          "page_img": "page_03.jpg",
           "questions": [
             8,
             9,
@@ -2523,7 +2523,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_04.png",
+          "page_img": "page_04.jpg",
           "questions": [
             8,
             12,
@@ -2533,7 +2533,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_05.png",
+          "page_img": "page_05.jpg",
           "questions": [
             8,
             16,
@@ -2543,7 +2543,7 @@ const QUIZ_DATA = {
           ]
         },
         {
-          "page_img": "page_06.png",
+          "page_img": "page_06.jpg",
           "questions": [
             8,
             20,
