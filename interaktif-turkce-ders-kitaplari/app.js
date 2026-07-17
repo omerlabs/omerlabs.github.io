@@ -46,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const outcomesList = document.getElementById("outcomes-list");
   const btnSidebarPlay = document.getElementById("btn-sidebar-play");
   const sidebarBookTitle = document.getElementById("sidebar-book-title");
+  const btnSidebarAnswers = document.getElementById("btn-sidebar-answers");
   let currentPlayUrl = "";
+  let currentAnswersUrl = "";
   
   // Zoom Controls
   const btnZoomIn = document.getElementById("btn-zoom-in");
@@ -58,12 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bookContainer = document.getElementById("book-container");
   const pageWrapper = document.getElementById("page-wrapper");
 
-  // Modals
-  const modalAnswer = document.getElementById("modal-answer");
-  const btnCloseAnswerModal = document.getElementById("btn-close-answer-modal");
-  
-  const answerModalTitle = document.getElementById("answer-modal-title");
-  const answerModalBody = document.getElementById("answer-modal-body");
+  // Modals have been removed in favor of direct external redirects
 
   // --- INITIALIZATION ---
   initApp();
@@ -202,6 +199,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // Sidebar Answers Button Control
+    if (btnSidebarAnswers) {
+      btnSidebarAnswers.addEventListener("click", () => {
+        if (currentAnswersUrl) {
+          window.open(currentAnswersUrl, "_blank");
+        }
+      });
+    }
+
     // Panning & Dragging Viewport Controls
     bookContainer.addEventListener("mousedown", dragStart);
     window.addEventListener("mousemove", dragMove);
@@ -211,23 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     bookContainer.addEventListener("touchstart", dragStartTouch, { passive: true });
     window.addEventListener("touchmove", dragMoveTouch, { passive: false });
     window.addEventListener("touchend", dragEnd);
-
-    // Modal Close buttons
-    btnCloseAnswerModal.addEventListener("click", () => closeModal(modalAnswer));
-    
-    // Close modals when clicking outside
-    modalAnswer.addEventListener("click", (e) => {
-      if (e.target === modalAnswer) {
-        closeModal(modalAnswer);
-      }
-    });
-
-    // ESC Key to close modals
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeModal(modalAnswer);
-      }
-    });
   }
 
   // --- VIEW ROUTING CONTROL ---
@@ -258,6 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderHotspots(pageNumber);
       renderPageOutcomes(pageNumber);
       updateSidebarPlayButton(pageNumber);
+      updateSidebarAnswersButton(pageNumber);
     };
 
     pageImage.onerror = () => {
@@ -266,57 +256,14 @@ document.addEventListener("DOMContentLoaded", () => {
       renderHotspots(pageNumber); // clear previous hotspots anyway
       renderPageOutcomes(pageNumber);
       updateSidebarPlayButton(pageNumber);
+      updateSidebarAnswersButton(pageNumber);
     };
   }
 
   // --- RENDERING HOTSPOTS ---
   function renderHotspots(pageNumber) {
-    // Clear existing hotspots
+    // Clear existing hotspots (inline buttons are removed in this version)
     hotspotsOverlay.innerHTML = "";
-    
-    const pageKey = pageNumber.toString();
-    const bookKey = `book${state.currentBook}`;
-    const pageHotspots = state.bookData[bookKey] ? state.bookData[bookKey][pageKey] : null;
-    
-    if (!pageHotspots) {
-      return; // No interactive hotspots defined for this page
-    }
-    
-    pageHotspots.forEach(hotspot => {
-      // Create hotspot container element
-      const container = document.createElement("div");
-      container.className = "hotspot-container";
-      container.style.left = `${hotspot.left}%`;
-      container.style.top = `${hotspot.top}%`;
-      
-      // Pulsing indicator dot
-      const glow = document.createElement("div");
-      glow.className = "hotspot-glow";
-      glow.title = `${hotspot.title} - Sihirli Düğmeler`;
-      container.appendChild(glow);
-      
-      // Magic Buttons Group
-      const btnGroup = document.createElement("div");
-      btnGroup.className = "magic-buttons-group";
-      
-      // 2. CEVAPLAR BUTTON
-      const btnAnswer = document.createElement("button");
-      btnAnswer.className = "btn-magic btn-magic-answer";
-      btnAnswer.title = "Sihirli Cevapları Göster";
-      btnAnswer.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-          <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-7.5Z" clip-rule="evenodd" />
-          <path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
-        </svg>
-      `;
-      btnAnswer.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openAnswerModal(hotspot);
-      });
-      btnGroup.appendChild(btnAnswer);
-      container.appendChild(btnGroup);
-      hotspotsOverlay.appendChild(container);
-    });
   }
 
   // --- RENDERING PAGE-BASED OUTCOMES ---
@@ -374,17 +321,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- MODAL CONTROLLERS ---
-  function openAnswerModal(hotspot) {
-    answerModalTitle.textContent = `${hotspot.title} - Sihirli Cevap Anahtarı`;
-    answerModalBody.innerHTML = hotspot.answers;
-    modalAnswer.classList.add("active");
-  }
-
-
-
-  function closeModal(modal) {
-    modal.classList.remove("active");
+  // --- SIDEBAR ANSWERS BUTTON UPDATE ---
+  function updateSidebarAnswersButton(pageNumber) {
+    if (!btnSidebarAnswers) return;
+    
+    const pageKey = pageNumber.toString();
+    const answersKey = `book${state.currentBook}_answers`;
+    const pageUrl = state.bookData[answersKey] ? state.bookData[answersKey][pageKey] : null;
+    
+    currentAnswersUrl = pageUrl || "";
+    if (currentAnswersUrl) {
+      btnSidebarAnswers.style.display = "inline-flex";
+    } else {
+      btnSidebarAnswers.style.display = "none";
+    }
   }
 
   // --- ZOOM & PAN LOGIC ---

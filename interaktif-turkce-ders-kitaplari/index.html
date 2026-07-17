@@ -186,6 +186,14 @@
             </button>
           </div>
 
+          <!-- CEVAP SİTESİ BUTONU -->
+          <button class="btn btn-secondary w-full mb-3 btn-sidebar-answers" id="btn-sidebar-answers" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
+              <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.06l-6.09 6.09a.75.75 0 1 1-1.06-1.06l6.09-6.09H15.75a.75.75 0 0 1 0-1.5Zm-10.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-5.25a.75.75 0 0 1 1.5 0v5.25a4.5 4.5 0 0 1-4.5 4.5h-9a4.5 4.5 0 0 1-4.5-4.5v-9a4.5 4.5 0 0 1 4.5-4.5h5.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+            </svg>
+            Cevap Sitesine Git
+          </button>
+
           <!-- KAZANIMLAR (OUTCOMES) -->
           <div class="control-group outcomes-group">
             <span class="control-group-title">SAYFA KAZANIMLARI</span>
@@ -212,31 +220,11 @@
 
   </div>
 
-  <!-- ANSWER MODAL (FullScreen / Popup) -->
-  <div id="modal-answer" class="modal-overlay">
-    <div class="modal-window scroll-custom">
-      <header class="modal-header header-answer">
-        <div class="modal-title-group">
-          <span class="modal-tag bg-answer">SİHİRLİ CEVAPLAR</span>
-          <h2 id="answer-modal-title">Etkinlik Cevap Anahtarı</h2>
-        </div>
-        <button class="btn-close" id="btn-close-answer-modal">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </header>
-      <div class="modal-body text-large" id="answer-modal-body">
-        <!-- Answers HTML injected dynamically -->
-      </div>
-    </div>
-  </div>
-
 
 
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="toast hidden"></div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2.0"></script>
 </body>
 </html>

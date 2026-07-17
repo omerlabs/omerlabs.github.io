@@ -1178,4 +1178,28 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateY(0) !important;
 }
 
+/* SIDEBAR ANSWERS BUTTON STYLING */
+.btn-sidebar-answers {
+  background: rgba(138, 43, 226, 0.08) !important;
+  color: #b388ff !important;
+  border-color: rgba(138, 43, 226, 0.25) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.1) !important;
+  transition: all var(--transition-fast) !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
+  width: 100% !important;
+}
+
+.btn-sidebar-answers:hover {
+  background: rgba(138, 43, 226, 0.16) !important;
+  border-color: #b388ff !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3), 0 4px 20px rgba(138, 43, 226, 0.25) !important;
+  transform: translateY(-1.5px) !important;
+}
+
+.btn-sidebar-answers:active {
+  transform: translateY(0) !important;
+}
+
 
