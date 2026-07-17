@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ortaokul Türkçe İnteraktif Ders Kitabı Portalı. 5, 6, 7 ve 8. Sınıf Ders Kitapları için Sihirli Cevaplar, Kazanımlar ve Dinleme Metinleri.">
+  <title>Maarif İnteraktif Kitaplık</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css?v=1.2">
+</head>
+<body>
+
+  <!-- LOADING OVERLAY -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p>Veriler Yükleniyor...</p>
+  </div>
+
+  <!-- APPLICATION WRAPPER -->
+  <div id="app">
+
+    <!-- VIEW 1: GRADE SELECTION -->
+    <section id="view-grades" class="view-section active">
+      <div class="container text-center">
+        <header class="main-header">
+          <h1 class="logo-text">MAARİF</h1>
+          <h2 class="sub-logo-text">İnteraktif Kitaplık Portalı</h2>
+          <p class="header-desc">Ders kitaplarını interaktif hale getiren sihirli eğitim asistanınız.</p>
+        </header>
+
+        <div class="grade-grid">
+          <!-- Grade 5 (Locked) -->
+          <div class="grade-card locked" data-grade="5">
+            <div class="lock-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="grade-number">5</div>
+            <div class="grade-title">5. Sınıf Türkçe</div>
+            <div class="grade-status">Yakında Eklenecek</div>
+          </div>
+
+          <!-- Grade 6 (Active) -->
+          <div class="grade-card active" data-grade="6">
+            <div class="grade-number">6</div>
+            <div class="grade-title">6. Sınıf Türkçe</div>
+            <div class="grade-status">1 Kitap Aktif</div>
+          </div>
+
+          <!-- Grade 7 (Locked) -->
+          <div class="grade-card locked" data-grade="7">
+            <div class="lock-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="grade-number">7</div>
+            <div class="grade-title">7. Sınıf Türkçe</div>
+            <div class="grade-status">Yakında Eklenecek</div>
+          </div>
+
+          <!-- Grade 8 (Locked) -->
+          <div class="grade-card locked" data-grade="8">
+            <div class="lock-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="grade-number">8</div>
+            <div class="grade-title">8. Sınıf Türkçe</div>
+            <div class="grade-status">Yakında Eklenecek</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VIEW 2: BOOK SELECTION -->
+    <section id="view-books" class="view-section">
+      <div class="container">
+        <header class="view-header">
+          <button class="btn btn-back" id="btn-back-to-grades">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            Sınıflar
+          </button>
+          <h2>6. Sınıf Türkçe Ders Kitapları</h2>
+          <p class="header-desc">Çalışmak istediğiniz kitabı seçin.</p>
+        </header>
+
+        <div class="book-grid">
+          <!-- Book 1 (Active) -->
+          <div class="book-card active" data-book="1">
+            <div class="book-cover-mock">
+              <span class="cover-grade">6</span>
+              <span class="cover-title">TÜRKÇE</span>
+              <span class="cover-subtitle">Ders Kitabı<br>1. Kitap</span>
+              <span class="cover-author">MEB Yayınları</span>
+            </div>
+            <div class="book-info">
+              <h3>6. Sınıf Türkçe (1. Kitap)</h3>
+              <p>Müfredat uyumlu, 1-3. temaları kapsayan interaktif ders kitabı.</p>
+              <div class="book-badge">Aktif (177 Sayfa)</div>
+            </div>
+          </div>
+
+          <!-- Book 2 (Active) -->
+          <div class="book-card active" data-book="2">
+            <div class="book-cover-mock">
+              <span class="cover-grade">6</span>
+              <span class="cover-title">TÜRKÇE</span>
+              <span class="cover-subtitle">Ders Kitabı<br>2. Kitap</span>
+              <span class="cover-author">MEB Yayınları</span>
+            </div>
+            <div class="book-info">
+              <h3>6. Sınıf Türkçe (2. Kitap)</h3>
+              <p>Müfredat uyumlu, 4-6. temaları kapsayan interaktif ders kitabı.</p>
+              <div class="book-badge">Aktif (162 Sayfa)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VIEW 3: BOOK READER -->
+    <section id="view-reader" class="view-section">
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar" id="reader-sidebar">
+        <div class="sidebar-header">
+          <button class="btn-sidebar-icon" id="btn-back-to-books" title="Kitap Seçimine Dön">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <span class="sidebar-title" id="sidebar-book-title">6. Sınıf Türkçe (1. Kitap)</span>
+        </div>
+
+        <div class="sidebar-content">
+          <!-- PAGE NAVIGATION -->
+          <div class="control-group">
+            <span class="control-group-title">SAYFA GEÇİŞİ</span>
+            <div class="page-controls">
+              <button class="btn btn-control" id="btn-prev-page" title="Önceki Sayfa">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+              </button>
+              <div class="page-indicator">
+                <input type="number" id="input-page" min="0" max="176" value="12">
+                <span>/ 176</span>
+              </div>
+              <button class="btn btn-control" id="btn-next-page" title="Sonraki Sayfa">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ZOOM CONTROLS -->
+          <div class="control-group">
+            <span class="control-group-title">YAKINLAŞTIRMA</span>
+            <div class="zoom-controls">
+              <button class="btn btn-control" id="btn-zoom-out" title="Uzaklaştır">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                </svg>
+              </button>
+              <span id="zoom-value">100%</span>
+              <button class="btn btn-control" id="btn-zoom-in" title="Yakınlaştır">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </button>
+            </div>
+            <button class="btn btn-secondary w-full mt-2 btn-sidebar-play" id="btn-sidebar-play" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-right: 6px; vertical-align: middle; display: inline-block;">
+                <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+              </svg>
+              Metni Oynat
+            </button>
+          </div>
+
+          <!-- KAZANIMLAR (OUTCOMES) -->
+          <div class="control-group outcomes-group">
+            <span class="control-group-title">SAYFA KAZANIMLARI</span>
+            <div id="outcomes-list" class="outcomes-list scroll-custom">
+              <!-- Dynamically populated page-based outcomes -->
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- READER VIEWPORT -->
+      <div class="reader-viewport" id="reader-viewport">
+        <!-- Pannable Container -->
+        <div class="book-container" id="book-container">
+          <div class="page-wrapper" id="page-wrapper">
+            <img src="" alt="Kitap Sayfası" id="page-image" draggable="false">
+            <div class="hotspots-overlay" id="hotspots-overlay">
+              <!-- Hotspots dynamically loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ANSWER MODAL (FullScreen / Popup) -->
+  <div id="modal-answer" class="modal-overlay">
+    <div class="modal-window scroll-custom">
+      <header class="modal-header header-answer">
+        <div class="modal-title-group">
+          <span class="modal-tag bg-answer">SİHİRLİ CEVAPLAR</span>
+          <h2 id="answer-modal-title">Etkinlik Cevap Anahtarı</h2>
+        </div>
+        <button class="btn-close" id="btn-close-answer-modal">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </header>
+      <div class="modal-body text-large" id="answer-modal-body">
+        <!-- Answers HTML injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
