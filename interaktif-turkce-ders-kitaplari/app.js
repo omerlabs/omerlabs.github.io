@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Modals have been removed in favor of direct external redirects
 
+  // Grade book group elements
+  const bookGradeGroups = document.querySelectorAll(".book-grade-group");
+  const booksViewTitle = document.getElementById("books-view-title");
+
   // --- INITIALIZATION ---
   initApp();
 
@@ -115,23 +119,29 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("click", () => {
         const book = card.dataset.book;
         if (card.classList.contains("locked")) {
-          showToast(`6. Sınıf 2. Kitap yakında eklenecektir.`);
+          showToast(`Bu kitap yakında eklenecektir.`);
           return;
         }
         state.currentBook = parseInt(book);
         state.currentView = "reader";
         
-        // Dynamically set maxPages and start page based on selected book
+        // Set maxPages and start page based on selected book
         if (state.currentBook === 1) {
           state.maxPages = 176;
-          state.currentPage = 12; // Bir Kelime Seyyahı starts on page 12
+          state.currentPage = 12;
         } else if (state.currentBook === 2) {
           state.maxPages = 161;
-          state.currentPage = 12; // Yeni Mahalleye Alışma Kılavuzu starts on page 12
+          state.currentPage = 12;
+        } else if (state.currentBook === 3) {
+          state.maxPages = 182;
+          state.currentPage = 12;
+        } else if (state.currentBook === 4) {
+          state.maxPages = 160;
+          state.currentPage = 12;
         }
         
         if (sidebarBookTitle) {
-          sidebarBookTitle.textContent = `6. Sınıf Türkçe (${state.currentBook}. Kitap)`;
+          sidebarBookTitle.textContent = `${state.currentGrade}. Sınıf Türkçe (${state.currentBook === 3 || state.currentBook === 4 ? state.currentBook - 2 : state.currentBook}. Kitap)`;
         }
         
         updateView();
@@ -228,6 +238,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show current view
     views[state.currentView].classList.add("active");
+
+    // If showing books view, show correct grade group and title
+    if (state.currentView === "books") {
+      bookGradeGroups.forEach(group => {
+        const grade = group.dataset.grade;
+        if (grade == state.currentGrade) {
+          group.classList.remove("hidden");
+        } else {
+          group.classList.add("hidden");
+        }
+      });
+      if (booksViewTitle) {
+        booksViewTitle.textContent = `${state.currentGrade}. Sınıf Türkçe Ders Kitapları`;
+      }
+    }
   }
 
   // --- PAGE LOADING & RENDERING ---
