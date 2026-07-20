@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Türkiye yatırım enstrümanları vergi rehberi — stopaj oranları ve beyan yükümlülükleri.">
+  <title>Vergi Rehberi — Yatırım Evreni</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🌐 Yatırım <span>Evreni</span></a>
+      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <nav>
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştır</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html" class="active">Vergi Rehberi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section style="padding-top: 2rem;">
+      <div class="section-header">
+        <h2>Vergi Rehberi</h2>
+        <p>Yatırım enstrümanlarında stopaj oranları ve beyan yükümlülükleri (genel bilgi)</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Enstrüman</th>
+              <th>Stopaj</th>
+              <th>Beyan</th>
+              <th>Not</th>
+            </tr>
+          </thead>
+          <tbody id="tax-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+      <div class="section-header">
+        <h2>Genel Vergi Bilgileri</h2>
+      </div>
+      <div class="cards-grid" style="grid-template-columns: 1fr;">
+        <div class="card" style="cursor: default;">
+          <h3>Stopaj Nedir?</h3>
+          <p>Kaynakta kesilen vergidir. Banka veya aracı kurum, yatırım getirinizden otomatik olarak vergiyi keser ve devlete öder. Çoğu durumda ayrıca beyan etmeniz gerekmez.</p>
+        </div>
+        <div class="card" style="cursor: default;">
+          <h3>Gelir Vergisi Beyanı</h3>
+          <p>Bazı yatırım gelirleri (hisse satış kârı, kripto kazancı vb.) yıllık gelir vergisi beyannamesinde bildirilmelidir. Stopaj kesilmiş olsa bile beyan gerekebilir.</p>
+        </div>
+        <div class="card" style="cursor: default;">
+          <h3>Önemli Hatırlatma</h3>
+          <p>Vergi oranları ve düzenlemeler sık değişmektedir. Güncel bilgi için Gelir İdaresi Başkanlığı (GİB) ve SPK kaynaklarını kontrol edin. Bu bilgiler 2026 başı itibarıyla genel bilgi niteliğindedir.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ Yasal Uyarı:</strong> Vergi bilgileri genel bilgilendirme amaçlıdır. Kişisel vergi durumunuz için bir mali müşavire danışın.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştırma</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </div>
+      <p>© 2026 Yatırım Evreni — Bilgilendirme amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="js/instruments.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderTaxTable("tax-body");
+    });
+  </script>
+</body>
+</html>

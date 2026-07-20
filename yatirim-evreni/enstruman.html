@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enstrüman Detayı — Yatırım Evreni</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🌐 Yatırım <span>Evreni</span></a>
+      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <nav>
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştır</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi Rehberi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="detail-page">
+    <!-- JS ile doldurulur -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştırma</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </div>
+      <p>© 2026 Yatırım Evreni — Bilgilendirme amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="js/instruments.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderDetailPage("detail-page");
+    });
+  </script>
+</body>
+</html>

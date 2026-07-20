@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Risk profilinize göre örnek yatırım portföyleri — muhafazakar, dengeli ve agresif portföy dağılımları.">
+  <title>Portföy Örnekleri — Yatırım Evreni</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🌐 Yatırım <span>Evreni</span></a>
+      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <nav>
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştır</a>
+        <a href="portfoy.html" class="active">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi Rehberi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section style="padding-top: 2rem;">
+      <div class="section-header">
+        <h2>Örnek Portföyler</h2>
+        <p>Risk profilinize göre hazırlanmış örnek portföy dağılımları — yatırım tavsiyesi değildir, yol gösterici amaçlıdır.</p>
+      </div>
+
+      <div class="hero" style="padding: 0 0 1rem 0; background: none; text-align: left;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 100%;">
+          Aşağıdaki portföyler, farklı risk profillerine göre örnek varlık dağılımı sunar. 
+          Kendi birikiminize, hedefinize ve risk toleransınıza göre uyarlamanız önerilir.
+        </p>
+      </div>
+
+      <div id="portfolio-list"></div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+      <div class="section-header">
+        <h2>Portföy Seçim Rehberi</h2>
+      </div>
+      <div class="cards-grid" style="grid-template-columns: 1fr;">
+        <div class="card" style="cursor: default;">
+          <h3>Risk Profilinizi Belirleyin</h3>
+          <p>Portföyünüzü oluşturmadan önce yatırım hedefinizi, vadeyi ve kaybetmeyi göze alabileceğiniz miktarı belirleyin. 
+          Kısa vadeli hedefler (1–3 yıl) için muhafazakar, uzun vadeli hedefler (7+ yıl) için agresif portföyler daha uygundur.</p>
+        </div>
+        <div class="card" style="cursor: default;">
+          <h3>Düzenli Portföy Gözden Geçirme</h3>
+          <p>Portföyünüzü yılda en az bir kez gözden geçirin. Varlık fiyatları değiştikçe dağılımınız bozulabilir. 
+          Hedef dağılıma dönmek için düzenli olarak "rebalancing" (yeniden dengeleme) yapın.</p>
+        </div>
+        <div class="card" style="cursor: default;">
+          <h3>DCA ile Portföy Oluşturma</h3>
+          <p>Tek seferde büyük meblağ yatırmak yerine, hedef dağılımınıza uygun şekilde düzenli alım yaparak 
+          piyasa zamanlaması riskini azaltabilir ve ortalama maliyetinizi dengeleyebilirsiniz.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ Yasal Uyarı:</strong> Bu portföy örnekleri yatırım tavsiyesi değildir. Kişisel durumunuza uygun yatırım kararları için profesyonel danışmanlık alın.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştırma</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </div>
+      <p>© 2026 Yatırım Evreni — Bilgilendirme amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="js/instruments.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPortfolioPage("portfolio-list");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yatırım stratejileri rehberi — DCA, değer yatırımı, büyüme yatırımı, temettü stratejisi, endeks takibi ve daha fazlası.">
+  <title>Yatırım Stratejileri — Yatırım Evreni</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🌐 Yatırım <span>Evreni</span></a>
+      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <nav>
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştır</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html" class="active">Stratejiler</a>
+        <a href="vergi.html">Vergi Rehberi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section style="padding-top: 2rem;">
+      <div class="section-header">
+        <h2>Yatırım Stratejileri</h2>
+        <p>Farklı hedef ve risk profillerine uygun yatırım yaklaşımları — her stratejinin artıları, eksileri ve örnek uygulamaları</p>
+      </div>
+
+      <div class="hero" style="padding: 0 0 1rem 0; background: none; text-align: left;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 100%;">
+          Her yatırımcının hedefi, vadesi ve risk toleransı farklıdır. 
+          Aşağıdaki stratejiler, kendi yatırım yaklaşımınızı belirlemenize yardımcı olmak için hazırlanmıştır.
+          Birden fazla stratejiyi bir arada kullanabilirsiniz.
+        </p>
+      </div>
+
+      <div id="strategies-list"></div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+      <div class="section-header">
+        <h2>Strateji Seçim Tablosu</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Strateji</th>
+              <th>Risk</th>
+              <th>Vade</th>
+              <th>Zaman Gereksinimi</th>
+              <th>Uygun Yatırımcı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>DCA</strong></td><td><span class="badge badge-risk-low">Düşük</span></td><td>Uzun</td><td>Az (otomatik)</td><td>Yeni başlayan, düzenli birikim yapacaklar</td></tr>
+            <tr><td><strong>Değer Yatırımı</strong></td><td><span class="badge badge-risk-mid">Orta</span></td><td>Uzun</td><td>Çok (analiz)</td><td>Finans okuryazarı, sabırlı yatırımcı</td></tr>
+            <tr><td><strong>Büyüme Yatırımı</strong></td><td><span class="badge badge-risk-high">Yüksek</span></td><td>Orta-Uzun</td><td>Orta (takip)</td><td>Risk seven, trend odaklı yatırımcı</td></tr>
+            <tr><td><strong>Temettü Yatırımı</strong></td><td><span class="badge badge-risk-low">Düşük-Orta</span></td><td>Uzun</td><td>Az</td><td>Pasif gelir arayan, düşük riskli yatırımcı</td></tr>
+            <tr><td><strong>Endeks Takibi</strong></td><td><span class="badge badge-risk-mid">Orta</span></td><td>Uzun</td><td>Çok az</td><td>Düşük maliyetle çeşitlendirme arayanlar</td></tr>
+            <tr><td><strong>Hedge / Korunma</strong></td><td><span class="badge badge-risk-mid">Orta</span></td><td>Kısa-Orta</td><td>Orta</td><td>Büyük portföy sahipleri, kurumsallar</td></tr>
+            <tr><td><strong>Trading</strong></td><td><span class="badge badge-risk-high">Çok Yüksek</span></td><td>Kısa</td><td>Çok fazla</td><td>Deneyimli, profesyonel yatırımcı</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ Yasal Uyarı:</strong> Strateji bilgileri eğitim amaçlıdır. Yatırım kararlarınızı vermeden önce kendi araştırmanızı yapın veya profesyonel danışmanlık alın.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştırma</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </div>
+      <p>© 2026 Yatırım Evreni — Bilgilendirme amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="js/instruments.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderStrategiesPage("strategies-list");
+    });
+  </script>
+</body>
+</html>

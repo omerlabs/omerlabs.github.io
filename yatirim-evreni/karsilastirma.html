@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Türkiye yatırım enstrümanları karşılaştırma tablosu — risk, likidite, getiri ve vergi.">
+  <title>Karşılaştırma — Yatırım Evreni</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🌐 Yatırım <span>Evreni</span></a>
+      <button class="menu-toggle" aria-label="Menü">☰</button>
+      <nav>
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html" class="active">Karşılaştır</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi Rehberi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section style="padding-top: 2rem;">
+      <div class="section-header">
+        <h2>Enstrüman Karşılaştırması</h2>
+        <p>Risk, likidite, getiri türü ve vergi açısından tüm enstrümanları yan yana görün</p>
+      </div>
+
+      <div class="table-wrap">
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th>Enstrüman</th>
+              <th>Kategori</th>
+              <th>Risk</th>
+              <th>Likidite</th>
+              <th>Getiri Türü</th>
+              <th>Min. Tutar</th>
+              <th>Vergi</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+      <div class="section-header">
+        <h2>Risk Skalası</h2>
+      </div>
+      <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="stat-card">
+          <div class="risk-bar" style="justify-content: center; margin-bottom: 0.5rem;">
+            <div class="risk-dot active-low"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+          </div>
+          <div class="label">1 — Çok Düşük</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Mevduat, Repo</p>
+        </div>
+        <div class="stat-card">
+          <div class="risk-bar" style="justify-content: center; margin-bottom: 0.5rem;">
+            <div class="risk-dot active-low"></div>
+            <div class="risk-dot active-low"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+          </div>
+          <div class="label">2 — Düşük</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Tahvil, BES, Sukuk</p>
+        </div>
+        <div class="stat-card">
+          <div class="risk-bar" style="justify-content: center; margin-bottom: 0.5rem;">
+            <div class="risk-dot active-mid"></div>
+            <div class="risk-dot active-mid"></div>
+            <div class="risk-dot active-mid"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+          </div>
+          <div class="label">3 — Orta</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Fon, Altın, Döviz, GYO</p>
+        </div>
+        <div class="stat-card">
+          <div class="risk-bar" style="justify-content: center; margin-bottom: 0.5rem;">
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot" style="background: var(--border);"></div>
+          </div>
+          <div class="label">4 — Yüksek</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Hisse, Gümüş/Emtia</p>
+        </div>
+        <div class="stat-card">
+          <div class="risk-bar" style="justify-content: center; margin-bottom: 0.5rem;">
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+            <div class="risk-dot active-high"></div>
+          </div>
+          <div class="label">5 — Çok Yüksek</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Kripto, VİOP</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ Yasal Uyarı:</strong> Bu site yatırım tavsiyesi değildir. Karşılaştırma bilgileri genel niteliktedir.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Enstrümanlar</a>
+        <a href="karsilastirma.html">Karşılaştırma</a>
+        <a href="portfoy.html">Portföyler</a>
+        <a href="stratejiler.html">Stratejiler</a>
+        <a href="vergi.html">Vergi</a>
+        <a href="sozluk.html">Sözlük</a>
+      </div>
+      <p>© 2026 Yatırım Evreni — Bilgilendirme amaçlıdır.</p>
+    </div>
+  </footer>
+
+  <script src="js/instruments.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderComparisonTable("comparison-body");
+    });
+  </script>
+</body>
+</html>
