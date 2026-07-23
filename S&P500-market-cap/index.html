@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&P 500 Market Cap Tracker & Terminal</title>
+    <meta name="description" content="CoinMarketCap style real-time dashboard for S&P 500 companies with dark financial terminal theme.">
+    <!-- Google Fonts: Inter & JetBrains Mono for numbers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <header class="app-header">
+            <div class="header-logo">
+                <i class="fa-solid fa-chart-line logo-icon"></i>
+                <div class="logo-text">
+                    <h1>S&P 500</h1>
+                    <span>TERMINAL</span>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Endeks Değeri:</span>
+                    <span class="stat-value" id="header-index-val">S&P 500</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Toplam Piyasa Değeri:</span>
+                    <span class="stat-value text-accent" id="header-total-cap">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Güncelleme:</span>
+                    <span class="stat-value" id="header-update-time">--</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Cards Grid -->
+        <section class="summary-cards" id="summary-cards-section">
+            <!-- S&P 500 Index Price Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>S&P 500 Endeks Fiyatı</h3>
+                    <i class="fa-solid fa-chart-line card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-value" id="card-index-price">--</div>
+                    <div class="card-subtext" id="card-index-change">--</div>
+                </div>
+            </div>
+
+            <!-- Total Market Cap Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>S&P 500 Piyasa Değeri</h3>
+                    <i class="fa-solid fa-database card-icon"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-value" id="card-total-cap">--</div>
+                    <div class="card-subtext" id="card-total-cap-sub">Tüm endeks piyasa büyüklüğü</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Search Toolbar -->
+        <section class="toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Şirket adı veya ticker ara (örn. NVDA, Apple)...">
+                <button id="clear-search" class="clear-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </section>
+
+        <!-- Main Terminal Table Wrapper -->
+        <main class="table-container">
+            <table class="terminal-table" id="companies-table">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="rank">Rank <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-left" data-sort="name">Şirket <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable" data-sort="ticker">Ticker <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="price">Fiyat <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="change24h">24s % <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="change7d">7G % <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="marketCap">Piyasa Değeri <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="sp500Weight">S&P500 Ağırlığı <i class="fa-solid fa-sort"></i></th>
+                        <th class="sortable text-right" data-sort="pe">P/E <i class="fa-solid fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Dynamic rows will be inserted here -->
+                    <tr class="loading-row">
+                        <td colspan="9" class="text-center">
+                            <div class="loader-spinner"></div>
+                            Veriler yükleniyor...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Table Pagination & Navigation -->
+        <footer class="table-footer">
+            <div class="footer-info">
+                Toplam <span id="filtered-count">0</span> / <span id="total-count">0</span> şirket gösteriliyor
+            </div>
+            <div class="pagination-controls" id="pagination-controls">
+                <button id="btn-prev" class="terminal-btn" disabled><i class="fa-solid fa-chevron-left"></i> Geri</button>
+                <span class="page-indicator">Sayfa <span id="current-page">1</span> / <span id="total-pages">1</span></span>
+                <button id="btn-next" class="terminal-btn" disabled>İleri <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Application Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
