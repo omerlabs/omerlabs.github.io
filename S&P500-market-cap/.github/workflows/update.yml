@@ -2,8 +2,8 @@ name: Update S&P 500 Data
 
 on:
   schedule:
-    # Runs at 22:30 UTC every weekday (Monday - Friday), about 2.5 hours after market close
-    - cron: '30 22 * * 1-5'
+    # Runs at the beginning of every hour on weekdays
+  - cron: '0 * * * 1-5'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 permissions:
