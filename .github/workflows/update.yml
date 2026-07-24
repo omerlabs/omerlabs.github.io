@@ -1,4 +1,4 @@
-name: Update S&P 500 Data
+name: Update SP 500 Data
 
 on:
   schedule:
@@ -29,13 +29,13 @@ jobs:
           pip install yfinance beautifulsoup4 requests lxml pandas
 
       - name: Run data update script
-        run: python S&P500-market-cap/scripts/update_data.py
+        run: python SP500-market-cap/scripts/update_data.py
 
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add S&P500-market-cap/data/sp500.json
+          git add SP500-market-cap/data/sp500.json
           # Commit only if there are changes
           if ! git diff --cached --quiet; then
             git commit -m "Auto-update S&P 500 financial data [skip ci]"
