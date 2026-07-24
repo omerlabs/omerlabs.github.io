@@ -307,8 +307,9 @@ def main():
         print(f"Error fetching ^GSPC data: {e}")
 
     # 5. Save data to JSON
-    os.makedirs("data", exist_ok=True)
-    json_path = os.path.join("data", "sp500.json")
+json_dir = os.path.join("SP500-market-cap", "data")
+os.makedirs(json_dir, exist_ok=True)
+json_path = os.path.join(json_dir, "sp500.json")
     
     output_payload = {
         "lastUpdated": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()),
