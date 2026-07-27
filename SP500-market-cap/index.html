@@ -79,6 +79,12 @@
                 <input type="text" id="search-input" placeholder="Şirket adı veya ticker ara (örn. NVDA, Apple)...">
                 <button id="clear-search" class="clear-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            <div class="filter-group">
+                <label for="sector-filter">Faaliyet Alanı:</label>
+                <select id="sector-filter" class="terminal-select">
+                    <option value="">Tüm Faaliyet Alanları</option>
+                </select>
+            </div>
         </section>
 
         <!-- Main Terminal Table Wrapper -->
@@ -88,7 +94,6 @@
                     <tr>
                         <th class="sortable" data-sort="rank">Rank <i class="fa-solid fa-sort"></i></th>
                         <th class="sortable text-left" data-sort="name">Şirket <i class="fa-solid fa-sort"></i></th>
-                        <th class="sortable" data-sort="ticker">Ticker <i class="fa-solid fa-sort"></i></th>
                         <th class="sortable text-right" data-sort="price">Fiyat <i class="fa-solid fa-sort"></i></th>
                         <th class="sortable text-right" data-sort="marketCap">Piyasa Değeri <i class="fa-solid fa-sort"></i></th>
                         <th class="sortable text-right" data-sort="sp500Weight">S&P500 Ağırlığı <i class="fa-solid fa-sort"></i></th>
@@ -101,7 +106,7 @@
                 <tbody id="table-body">
                     <!-- Dynamic rows will be inserted here -->
                     <tr class="loading-row">
-                        <td colspan="10" class="text-center">
+                        <td colspan="9" class="text-center">
                             <div class="loader-spinner"></div>
                             Veriler yükleniyor...
                         </td>

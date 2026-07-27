@@ -20,6 +20,7 @@ const elements = {
     
     searchInput: document.getElementById('search-input'),
     clearSearchBtn: document.getElementById('clear-search'),
+    sectorFilter: document.getElementById('sector-filter'),
     
     tableBody: document.getElementById('table-body'),
     tableHeaders: document.querySelectorAll('#companies-table th.sortable'),
@@ -63,6 +64,9 @@ async function fetchData() {
         // Update header & summary stats
         updateHeaderAndCards(payload);
         
+        // Populate sector filter options
+        populateSectorFilter();
+        
         // Render initial table
         renderTable();
         
@@ -70,7 +74,7 @@ async function fetchData() {
         console.error('Veri yükleme hatası:', error);
         elements.tableBody.innerHTML = `
             <tr class="error-row">
-                <td colspan="10" class="text-center text-negative" style="padding: 40px;">
+                <td colspan="9" class="text-center text-negative" style="padding: 40px;">
                     <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 12px; display: block;"></i>
                     Hata: Veriler yüklenemedi. Python veri güncelleme scriptinin çalıştırıldığından emin olun. <br>
                     <small style="color: var(--text-muted);">${error.message}</small>
@@ -86,6 +90,12 @@ function setupEventListeners() {
     elements.searchInput.addEventListener('input', (e) => {
         const value = e.target.value;
         elements.clearSearchBtn.style.display = value ? 'block' : 'none';
+        currentPage = 1;
+        applyFilters();
+    });
+    
+    // Sector Filter Change
+    elements.sectorFilter.addEventListener('change', () => {
         currentPage = 1;
         applyFilters();
     });
@@ -164,6 +174,7 @@ function updateHeaderAndCards(payload) {
 // Apply Search & Dropdown Filters
 function applyFilters() {
     const query = elements.searchInput.value.toLowerCase().trim();
+    const selectedSector = elements.sectorFilter.value;
     
     filteredData = allData.filter(item => {
         // Search Filter
@@ -171,12 +182,37 @@ function applyFilters() {
             item.ticker.toLowerCase().includes(query) || 
             item.name.toLowerCase().includes(query);
             
-        return matchesSearch;
+        // Sector Filter
+        const matchesSector = !selectedSector || item.subSector === selectedSector;
+            
+        return matchesSearch && matchesSector;
     });
     
     // Re-apply sorting on filtered data
     sortData();
     renderTable();
+}
+
+// Populate Sector Filter Options
+function populateSectorFilter() {
+    const sectors = new Set();
+    allData.forEach(item => {
+        if (item.subSector) {
+            sectors.add(item.subSector);
+        }
+    });
+    
+    // Sort sectors alphabetically
+    const sortedSectors = Array.from(sectors).sort();
+    
+    // Clear and populate select element
+    elements.sectorFilter.innerHTML = '<option value="">Tüm Faaliyet Alanları</option>';
+    sortedSectors.forEach(sector => {
+        const option = document.createElement('option');
+        option.value = sector;
+        option.textContent = sector;
+        elements.sectorFilter.appendChild(option);
+    });
 }
 
 // Manage header sort state and trigger sorting
@@ -259,7 +295,7 @@ function renderTable() {
     if (pageData.length === 0) {
         elements.tableBody.innerHTML = `
             <tr>
-                <td colspan="10" class="text-center text-muted" style="padding: 40px;">
+                <td colspan="9" class="text-center text-muted" style="padding: 40px;">
                     <i class="fa-regular fa-folder-open" style="font-size: 1.8rem; margin-bottom: 8px; display: block;"></i>
                     Arama kriterlerine uygun şirket bulunamadı.
                 </td>
@@ -287,17 +323,10 @@ function renderTable() {
                 <span class="company-name">${item.name || '--'}</span>
                 <span class="company-sub">
                     <span class="ticker-badge">${item.ticker}</span>
-                    <span>${item.subSector || '--'}</span>
                 </span>
             </div>
         `;
         tr.appendChild(tdName);
-        
-        // Ticker symbol (just for search/sorting compatibility)
-        const tdTicker = document.createElement('td');
-        tdTicker.className = 'font-mono text-center';
-        tdTicker.innerHTML = `<span class="company-name">${item.ticker}</span>`;
-        tr.appendChild(tdTicker);
         
         // Price
         const tdPrice = document.createElement('td');
