@@ -88,7 +88,8 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
         "marketCap": None,
         "sharesOutstanding": None,
         "floatPercent": None,
-        "pe": None
+        "pe": None,
+        "peg": None
     }
     
     # Calculate price and changes from history if available
@@ -181,6 +182,10 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                 if result["pe"] is not None:
                     result["pe"] = round(float(result["pe"]), 2)
                     
+                result["peg"] = info.get("pegRatio")
+                if result["peg"] is not None:
+                    result["peg"] = round(float(result["peg"]), 2)
+                    
                 break
         except Exception as e:
             err_str = str(e)
@@ -250,7 +255,8 @@ def main():
                     "marketCap": None,
                     "sharesOutstanding": None,
                     "floatPercent": None,
-                    "pe": None
+                    "pe": None,
+                    "peg": None
                 })
             
             completed += 1
@@ -307,7 +313,8 @@ def main():
         print(f"Error fetching ^GSPC data: {e}")
 
     # 5. Save data to JSON
-    json_dir = os.path.join("SP500-market-cap", "data")
+    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    json_dir = os.path.join(script_dir, "data")
     os.makedirs(json_dir, exist_ok=True)
     json_path = os.path.join(json_dir, "sp500.json")
    

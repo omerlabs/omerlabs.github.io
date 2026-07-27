@@ -70,7 +70,7 @@ async function fetchData() {
         console.error('Veri yükleme hatası:', error);
         elements.tableBody.innerHTML = `
             <tr class="error-row">
-                <td colspan="9" class="text-center text-negative" style="padding: 40px;">
+                <td colspan="10" class="text-center text-negative" style="padding: 40px;">
                     <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 12px; display: block;"></i>
                     Hata: Veriler yüklenemedi. Python veri güncelleme scriptinin çalıştırıldığından emin olun. <br>
                     <small style="color: var(--text-muted);">${error.message}</small>
@@ -259,7 +259,7 @@ function renderTable() {
     if (pageData.length === 0) {
         elements.tableBody.innerHTML = `
             <tr>
-                <td colspan="9" class="text-center text-muted" style="padding: 40px;">
+                <td colspan="10" class="text-center text-muted" style="padding: 40px;">
                     <i class="fa-regular fa-folder-open" style="font-size: 1.8rem; margin-bottom: 8px; display: block;"></i>
                     Arama kriterlerine uygun şirket bulunamadı.
                 </td>
@@ -322,6 +322,12 @@ function renderTable() {
         tdPE.className = 'font-mono text-right';
         tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toFixed(2) : '--';
         tr.appendChild(tdPE);
+        
+        // PEG Ratio
+        const tdPEG = document.createElement('td');
+        tdPEG.className = 'font-mono text-right';
+        tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
+        tr.appendChild(tdPEG);
         
         // 24h Change
         const tdChange24h = document.createElement('td');
