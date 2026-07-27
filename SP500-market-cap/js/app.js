@@ -36,7 +36,17 @@ const elements = {
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
     setupEventListeners();
+    registerServiceWorker();
 });
+
+// Register PWA Service Worker
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js')
+            .then((reg) => console.log('Service Worker registered successfully with scope:', reg.scope))
+            .catch((err) => console.error('Service Worker registration failed:', err));
+    }
+}
 
 // Fetch Data from JSON File
 async function fetchData() {
