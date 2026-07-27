@@ -30,7 +30,9 @@ const elements = {
     currentPage: document.getElementById('current-page'),
     totalPages: document.getElementById('total-pages'),
     btnPrev: document.getElementById('btn-prev'),
-    btnNext: document.getElementById('btn-next')
+    btnNext: document.getElementById('btn-next'),
+    chartModal: document.getElementById('chart-modal'),
+    closeModalBtn: document.getElementById('close-modal-btn')
 };
 
 // Initialize Application
@@ -130,6 +132,21 @@ function setupEventListeners() {
             const column = th.dataset.sort;
             handleSorting(column);
         });
+    });
+    
+    // Close Modal Events
+    elements.closeModalBtn.addEventListener('click', closeChartModal);
+    
+    window.addEventListener('click', (e) => {
+        if (e.target === elements.chartModal) {
+            closeChartModal();
+        }
+    });
+    
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && elements.chartModal.style.display === 'flex') {
+            closeChartModal();
+        }
     });
 }
 
@@ -370,6 +387,11 @@ function renderTable() {
         tdChange7d.appendChild(createChangeBadge(item.change7d));
         tr.appendChild(tdChange7d);
         
+        // Open chart modal on row click
+        tr.addEventListener('click', () => {
+            showChartModal(item.ticker);
+        });
+        
         fragment.appendChild(tr);
     });
     
@@ -416,4 +438,65 @@ function createChangeBadge(val) {
     }
     
     return span;
+}
+
+// Show TradingView Chart Modal
+function showChartModal(ticker) {
+    elements.chartModal.style.display = 'flex';
+    
+    // Clean ticker for TradingView symbol (e.g. replace "-" with "." for class shares if yfinance used dashes)
+    const tvSymbol = ticker.replace('-', '.');
+    
+    const container = document.getElementById('tv-chart-container');
+    container.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
+    
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+    script.async = true;
+    
+    const config = {
+        "symbols": [
+            [
+                tvSymbol,
+                tvSymbol + "|1D"
+            ]
+        ],
+        "chartOnly": false,
+        "width": "100%",
+        "height": "400",
+        "locale": "tr",
+        "colorTheme": "dark",
+        "autosize": false,
+        "showVolume": false,
+        "showMA": false,
+        "hideDateRanges": false,
+        "hideMarketStatus": false,
+        "hideSymbolLogo": false,
+        "scalePosition": "right",
+        "scaleMode": "Normal",
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "10",
+        "noTimeScale": false,
+        "valuesTracking": "1",
+        "changeMode": "price-and-percent",
+        "chartType": "area",
+        "headerFontSize": "medium",
+        "backgroundColor": "#0d1117",
+        "gridLineColor": "rgba(240, 243, 250, 0.06)",
+        "lineWidth": 2,
+        "lineColor": "#00e676",
+        "topColor": "rgba(0, 230, 118, 0.2)",
+        "bottomColor": "rgba(0, 230, 118, 0)"
+    };
+    
+    script.text = JSON.stringify(config);
+    container.appendChild(script);
+}
+
+// Close TradingView Chart Modal
+function closeChartModal() {
+    elements.chartModal.style.display = 'none';
+    const container = document.getElementById('tv-chart-container');
+    container.innerHTML = ''; // Stop background script processes
 }
