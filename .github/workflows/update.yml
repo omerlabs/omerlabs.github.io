@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add SP500-market-cap/data/sp500.json
+          git add SP500-market-cap/data/sp500.json SP500-market-cap/data/sp500_constituents.json
           # Commit only if there are changes
           if ! git diff --cached --quiet; then
             git commit -m "Auto-update S&P 500 financial data [skip ci]"

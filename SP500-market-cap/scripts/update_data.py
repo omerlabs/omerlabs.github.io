@@ -8,51 +8,89 @@ import time
 import random
 
 
-def fetch_sp500_wikipedia():
+def fetch_Sp500_wikipedia(json_dir):
     """
-    Fetches the list of S&P 500 companies from Wikipedia.
-    Returns a list of dictionaries with company details.
+    Checks if a cached list of constituents exists and is less than 7 days old.
+    If so, loads it. Otherwise, scrapes Wikipedia and saves the new cache.
     """
-    print("Fetching S&P 500 constituents from Wikipedia...")
-    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    
-    response = requests.get(url, headers=headers)
-    if response.status_code != 200:
-        raise Exception(f"Failed to fetch Wikipedia page: HTTP {response.status_code}")
-        
-    soup = BeautifulSoup(response.text, "html.parser")
-    table = soup.find("table", {"id": "constituents"})
-    if not table:
-        raise Exception("Could not find the constituents table in the Wikipedia page.")
-        
+    cache_path = os.path.join(json_dir, "sp500_constituents.json")
+    use_cache = False
     companies = []
-    rows = table.find_all("tr")[1:] # skip headers
     
-    for row in rows:
-        cols = row.find_all("td")
-        if len(cols) < 5:
-            continue
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cache_data = json.load(f)
             
-        ticker = cols[0].text.strip()
-        name = cols[1].text.strip()
-        sector = cols[2].text.strip()
-        sub_sector = cols[3].text.strip()
+            last_updated_str = cache_data.get("lastUpdated")
+            if last_updated_str:
+                from datetime import datetime, timezone
+                last_updated = datetime.fromisoformat(last_updated_str)
+                now = datetime.now(timezone.utc)
+                age_days = (now - last_updated).days
+                if age_days < 7:
+                    companies = cache_data.get("companies", [])
+                    if companies:
+                        use_cache = True
+                        print(f"Using cached S&P 500 constituents (Age: {age_days} days).")
+        except Exception as e:
+            print(f"Error reading constituents cache: {e}. Will scrape Wikipedia.")
+            
+    if not use_cache:
+        print("Fetching S&P 500 constituents from Wikipedia...")
+        url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
         
-        # yfinance uses '-' instead of '.' for class shares (e.g., BRK.B -> BRK-B)
-        yf_ticker = ticker.replace(".", "-")
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            raise Exception(f"Failed to fetch Wikipedia page: HTTP {response.status_code}")
+            
+        soup = BeautifulSoup(response.text, "html.parser")
+        table = soup.find("table", {"id": "constituents"})
+        if not table:
+            raise Exception("Could not find the constituents table in the Wikipedia page.")
+            
+        companies = []
+        rows = table.find_all("tr")[1:] # skip headers
         
-        companies.append({
-            "ticker": ticker,
-            "yf_ticker": yf_ticker,
-            "name": name,
-            "sector": sector,
-            "subSector": sub_sector
-        })
+        for row in rows:
+            cols = row.find_all("td")
+            if len(cols) < 5:
+                continue
+                
+            ticker = cols[0].text.strip()
+            name = cols[1].text.strip()
+            sector = cols[2].text.strip()
+            sub_sector = cols[3].text.strip()
+            
+            # yfinance uses '-' instead of '.' for class shares (e.g., BRK.B -> BRK-B)
+            yf_ticker = ticker.replace(".", "-")
+            
+            companies.append({
+                "ticker": ticker,
+                "yf_ticker": yf_ticker,
+                "name": name,
+                "sector": sector,
+                "subSector": sub_sector
+            })
+            
+        print(f"Successfully scraped {len(companies)} companies from Wikipedia.")
         
-    print(f"Successfully scraped {len(companies)} companies from Wikipedia.")
+        # Save cache
+        try:
+            from datetime import datetime, timezone
+            cache_payload = {
+                "lastUpdated": datetime.now(timezone.utc).isoformat(),
+                "companies": companies
+            }
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(cache_payload, f, indent=2, ensure_ascii=False)
+            print(f"Saved new constituents cache to {cache_path}")
+        except Exception as e:
+            print(f"Error saving constituents cache: {e}")
+            
     return companies
 
 def fetch_history_batch(yf_tickers):
@@ -203,9 +241,14 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
 def main():
     start_time = time.time()
     
+    # Get the parent directory of this script (which is the SP500-market-cap root)
+    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    json_dir = os.path.join(script_dir, "data")
+    os.makedirs(json_dir, exist_ok=True)
+    
     # 1. Fetch S&P 500 list
     try:
-        companies = fetch_sp500_wikipedia()
+        companies = fetch_Sp500_wikipedia(json_dir)
     except Exception as e:
         print(f"Critical Error: {e}")
         return
@@ -313,9 +356,6 @@ def main():
         print(f"Error fetching ^GSPC data: {e}")
 
     # 5. Save data to JSON
-    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    json_dir = os.path.join(script_dir, "data")
-    os.makedirs(json_dir, exist_ok=True)
     json_path = os.path.join(json_dir, "sp500.json")
    
     
