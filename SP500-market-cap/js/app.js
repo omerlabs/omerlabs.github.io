@@ -1,6 +1,8 @@
 // App Configuration & State
 let allData = [];
 let filteredData = [];
+let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
+let showWatchlistOnly = false;
 
 let currentPage = 1;
 const itemsPerPage = 50;
@@ -13,10 +15,7 @@ const elements = {
     headerIndexVal: document.getElementById('header-index-val'),
     headerTotalCap: document.getElementById('header-total-cap'),
     headerUpdateTime: document.getElementById('header-update-time'),
-    
-    cardIndexPrice: document.getElementById('card-index-price'),
-    cardIndexChange: document.getElementById('card-index-change'),
-    cardTotalCap: document.getElementById('card-total-cap'),
+
     
     searchInput: document.getElementById('search-input'),
     clearSearchBtn: document.getElementById('clear-search'),
@@ -32,7 +31,8 @@ const elements = {
     btnPrev: document.getElementById('btn-prev'),
     btnNext: document.getElementById('btn-next'),
     chartModal: document.getElementById('chart-modal'),
-    closeModalBtn: document.getElementById('close-modal-btn')
+    closeModalBtn: document.getElementById('close-modal-btn'),
+    watchlistToggleBtn: document.getElementById('watchlist-toggle-btn')
 };
 
 // Initialize Application
@@ -102,6 +102,22 @@ function setupEventListeners() {
         applyFilters();
     });
     
+    // Watchlist Filter Toggle
+    elements.watchlistToggleBtn.addEventListener('click', () => {
+        showWatchlistOnly = !showWatchlistOnly;
+        
+        if (showWatchlistOnly) {
+            elements.watchlistToggleBtn.classList.add('watchlist-active');
+            elements.watchlistToggleBtn.innerHTML = '<i class="fa-solid fa-heart text-negative"></i> Tüm Şirketler';
+        } else {
+            elements.watchlistToggleBtn.classList.remove('watchlist-active');
+            elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i> Takip Listesi';
+        }
+        
+        currentPage = 1;
+        applyFilters();
+    });
+    
     // Clear Search Button
     elements.clearSearchBtn.addEventListener('click', () => {
         elements.searchInput.value = '';
@@ -159,17 +175,13 @@ function updateHeaderAndCards(payload) {
     
     elements.headerUpdateTime.textContent = timeStr;
     elements.headerTotalCap.textContent = formatCompactCurrency(totalCap);
-    elements.cardTotalCap.textContent = formatCompactCurrency(totalCap);
     elements.totalCount.textContent = allData.length;
     
-    // Update S&P 500 Index Card
+    // Update S&P 500 Index Header Value
     if (indexPrice !== null && indexPrice !== undefined) {
-        elements.cardIndexPrice.textContent = formatPrice(indexPrice);
         if (indexChange !== null && indexChange !== undefined) {
             const sign = indexChange >= 0 ? '+' : '';
-            const caret = indexChange >= 0 ? '<i class="fa-solid fa-caret-up"></i>' : '<i class="fa-solid fa-caret-down"></i>';
             const colorClass = indexChange >= 0 ? 'text-positive' : 'text-negative';
-            elements.cardIndexChange.innerHTML = `<span class="${colorClass}">${caret} ${sign}${indexChange.toFixed(2)}% (Bugün)</span>`;
             
             // Also update header value
             elements.headerIndexVal.innerHTML = `
@@ -178,12 +190,9 @@ function updateHeaderAndCards(payload) {
                 </span>
             `;
         } else {
-            elements.cardIndexChange.textContent = '--';
             elements.headerIndexVal.textContent = `S&P 500 ${formatPrice(indexPrice)}`;
         }
     } else {
-        elements.cardIndexPrice.textContent = '--';
-        elements.cardIndexChange.textContent = '--';
         elements.headerIndexVal.textContent = 'S&P 500';
     }
 }
@@ -201,8 +210,11 @@ function applyFilters() {
             
         // Sector Filter
         const matchesSector = !selectedSector || item.subSector === selectedSector;
+        
+        // Watchlist Filter
+        const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
             
-        return matchesSearch && matchesSector;
+        return matchesSearch && matchesSector && matchesWatchlist;
     });
     
     // Re-apply sorting on filtered data
@@ -332,17 +344,33 @@ function renderTable() {
         tdRank.textContent = item.rank;
         tr.appendChild(tdRank);
         
-        // Name & Ticker
+        // Name & Ticker (with heart favorite button)
+        const isFav = watchlist.has(item.ticker);
+        const favIconClass = isFav ? 'fa-solid fa-heart fav-active' : 'fa-regular fa-heart fav-inactive';
+        
         const tdName = document.createElement('td');
         tdName.className = 'text-left';
         tdName.innerHTML = `
-            <div class="cell-company">
-                <span class="company-name">${item.name || '--'}</span>
-                <span class="company-sub">
-                    <span class="ticker-badge">${item.ticker}</span>
-                </span>
+            <div class="cell-company-row">
+                <button class="fav-btn" data-ticker="${item.ticker}">
+                    <i class="${favIconClass}"></i>
+                </button>
+                <div class="cell-company">
+                    <span class="company-name">${item.name || '--'}</span>
+                    <span class="company-sub">
+                        <span class="ticker-badge">${item.ticker}</span>
+                    </span>
+                </div>
             </div>
         `;
+        
+        // Setup favorite heart click handler
+        const favBtn = tdName.querySelector('.fav-btn');
+        favBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent opening the chart modal
+            toggleWatchlist(item.ticker);
+        });
+        
         tr.appendChild(tdName);
         
         // Price
@@ -499,4 +527,19 @@ function closeChartModal() {
     elements.chartModal.style.display = 'none';
     const container = document.getElementById('tv-chart-container');
     container.innerHTML = ''; // Stop background script processes
+}
+
+// Toggle Watchlist Item
+function toggleWatchlist(ticker) {
+    if (watchlist.has(ticker)) {
+        watchlist.delete(ticker);
+    } else {
+        watchlist.add(ticker);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+    
+    // Re-apply filters to update the view
+    applyFilters();
 }
