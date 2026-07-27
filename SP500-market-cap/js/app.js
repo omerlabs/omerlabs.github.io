@@ -295,18 +295,6 @@ function renderTable() {
         tdPrice.textContent = formatPrice(item.price);
         tr.appendChild(tdPrice);
         
-        // 24h Change
-        const tdChange24h = document.createElement('td');
-        tdChange24h.className = 'text-right';
-        tdChange24h.appendChild(createChangeBadge(item.change24h));
-        tr.appendChild(tdChange24h);
-        
-        // 7d Change
-        const tdChange7d = document.createElement('td');
-        tdChange7d.className = 'text-right';
-        tdChange7d.appendChild(createChangeBadge(item.change7d));
-        tr.appendChild(tdChange7d);
-        
         // Market Cap
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
@@ -324,6 +312,18 @@ function renderTable() {
         tdPE.className = 'font-mono text-right';
         tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toFixed(2) : '--';
         tr.appendChild(tdPE);
+        
+        // 24h Change
+        const tdChange24h = document.createElement('td');
+        tdChange24h.className = 'text-right';
+        tdChange24h.appendChild(createChangeBadge(item.change24h));
+        tr.appendChild(tdChange24h);
+        
+        // 7d Change
+        const tdChange7d = document.createElement('td');
+        tdChange7d.className = 'text-right';
+        tdChange7d.appendChild(createChangeBadge(item.change7d));
+        tr.appendChild(tdChange7d);
         
         fragment.appendChild(tr);
     });
