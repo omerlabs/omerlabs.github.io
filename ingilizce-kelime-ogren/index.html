@@ -1581,23 +1581,69 @@ function initPWA() {
     const c = document.createElement('canvas');
     c.width = size; c.height = size;
     const ctx = c.getContext('2d');
-    // Gradient background
-    const grad = ctx.createLinearGradient(0, 0, size, size);
-    grad.addColorStop(0, '#3b82f6');
-    grad.addColorStop(1, '#a855f7');
-    ctx.fillStyle = grad;
+    
+    // Premium dark indigo to violet-purple gradient
+    const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+    bgGrad.addColorStop(0, '#1e1b4b');
+    bgGrad.addColorStop(0.5, '#3730a3');
+    bgGrad.addColorStop(1, '#6b21a8');
+    
+    // Rounded squircle container
+    const r = size * 0.22;
+    ctx.fillStyle = bgGrad;
     ctx.beginPath();
-    ctx.roundRect(0, 0, size, size, size * 0.2);
+    ctx.roundRect(0, 0, size, size, r);
     ctx.fill();
-    // Emoji text
-    ctx.font = `${size * 0.5}px serif`;
+
+    // Subtle inner golden border ring
+    const goldGrad = ctx.createLinearGradient(0, 0, size, size);
+    goldGrad.addColorStop(0, '#fef08a');
+    goldGrad.addColorStop(0.5, '#f59e0b');
+    goldGrad.addColorStop(1, '#d97706');
+    
+    ctx.strokeStyle = goldGrad;
+    ctx.lineWidth = size * 0.035;
+    ctx.beginPath();
+    ctx.roundRect(size * 0.04, size * 0.04, size * 0.92, size * 0.92, r * 0.85);
+    ctx.stroke();
+
+    // Top Gloss shine
+    const shine = ctx.createLinearGradient(0, 0, 0, size * 0.5);
+    shine.addColorStop(0, 'rgba(255, 255, 255, 0.25)');
+    shine.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+    ctx.fillStyle = shine;
+    ctx.beginPath();
+    ctx.roundRect(size * 0.05, size * 0.05, size * 0.9, size * 0.42, [r * 0.8, r * 0.8, 0, 0]);
+    ctx.fill();
+
+    // Central Emblem: Glowing Star / Audio Speaker icon
+    ctx.save();
+    ctx.shadowColor = '#fbbf24';
+    ctx.shadowBlur = size * 0.08;
+    ctx.font = `${size * 0.34}px serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('🔊', size/2, size/2 - size*0.05);
-    // "Ada" text
-    ctx.fillStyle = 'white';
-    ctx.font = `bold ${size * 0.15}px Nunito, sans-serif`;
-    ctx.fillText('Ada', size/2, size * 0.82);
+    ctx.fillText('🌟', size / 2, size * 0.38);
+    ctx.restore();
+
+    // "WORDS" Text with gold gradient fill and subtle drop shadow
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = size * 0.06;
+    ctx.shadowOffsetY = size * 0.03;
+    
+    ctx.fillStyle = goldGrad;
+    ctx.font = `900 ${size * 0.22}px 'Fredoka One', 'Nunito', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('WORDS', size / 2, size * 0.74);
+    
+    // Inner white highlight on text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `900 ${size * 0.215}px 'Fredoka One', 'Nunito', sans-serif`;
+    ctx.fillText('WORDS', size / 2, size * 0.735);
+    ctx.restore();
+
     return c.toDataURL('image/png');
   }
 
