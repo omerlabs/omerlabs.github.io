@@ -1,8 +1,8 @@
-const CACHE_NAME = 'solarsystem-v1.4';
+const CACHE_NAME = 'solarsystem-v1.5';
 const ASSETS = [
   './',
   './index.html',
-  './css/styles.css?v=1.3',
+  './css/styles.css?v=1.5',
   './js/main.js',
   './js/data.js',
   './js/physics.js',

@@ -108,13 +108,10 @@ export class UIManager {
         const currMidX = (t1.clientX + t2.clientX) / 2;
         const currMidY = (t1.clientY + t2.clientY) / 2;
 
-        // 2-finger Pan (camera translation)
+        // 2-finger Pan (view-relative camera translation)
         const mdx = currMidX - touchState.lastMidX;
         const mdy = currMidY - touchState.lastMidY;
-        this.state.focus = null;
-        if (this.state.follow) this.updateFollowBtnText();
-        this.state.camTarget.x -= mdx / this.state.cam.zoom;
-        this.state.camTarget.y -= mdy / this.state.cam.zoom;
+        this.panCamera(mdx, mdy);
         touchState.lastMidX = currMidX;
         touchState.lastMidY = currMidY;
 
@@ -360,6 +357,22 @@ export class UIManager {
     this.renderer2d.canvas.classList.add('dragging');
   }
 
+  panCamera(dx, dy) {
+    this.state.focus = null;
+    if (this.state.follow) this.updateFollowBtnText();
+
+    const zoom = this.state.cam.zoom;
+    const rot = -this.state.viewRot;
+    const cosR = Math.cos(rot);
+    const sinR = Math.sin(rot);
+
+    const dwx = (dx * cosR - dy * sinR) / zoom;
+    const dwy = (dx * sinR + dy * cosR) / zoom;
+
+    this.state.camTarget.x -= dwx;
+    this.state.camTarget.y -= dwy;
+  }
+
   onPointerMove(e) {
     if (e.pointerType === 'touch') return;
     this.state.mouse.x = e.clientX; this.state.mouse.y = e.clientY;
@@ -377,10 +390,8 @@ export class UIManager {
           this.state.viewRot -= dx * 0.005;
           this.state.tiltTarget = clamp(this.state.tiltTarget - dy * 0.003, 0.02, Math.PI / 2 - 0.01);
         } else {
-          // 2D Camera Panning
-          this.state.focus = null;
-          this.state.camTarget.x -= dx / this.state.cam.zoom;
-          this.state.camTarget.y -= dy / this.state.cam.zoom;
+          // View-relative Camera Panning
+          this.panCamera(dx, dy);
         }
       }
       this.state.mouse.lastX = e.clientX; this.state.mouse.lastY = e.clientY;
