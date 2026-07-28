@@ -2,7 +2,8 @@
   "name": "Ada'nın İngilizce Oyunu",
   "short_name": "Ada English",
   "description": "6 yaş çocuklar için eğlenceli İngilizce kelime öğrenme oyunu. Dinle, seç, öğren!",
-  "id": "ingilizce-kelime-ogren",
+  "id": "./",
+  "scope": "./",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#e8f4ff",
@@ -13,13 +14,25 @@
       "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
