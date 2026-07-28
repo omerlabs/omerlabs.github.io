@@ -166,8 +166,11 @@ export class UIManager {
       this.updateFollowBtnText();
     });
 
-    document.getElementById('info-close').addEventListener('click', () => {
-      this.state.focus = null; this.closeInfo();
+    document.getElementById('info-close').addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      this.state.focus = null;
+      this.closeInfo();
     });
 
     document.getElementById('season-close').addEventListener('click', () => {

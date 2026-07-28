@@ -231,15 +231,24 @@ input[type="date"] {
   position: absolute;
   top: 6px;
   right: 10px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--text-dim);
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-#season-close:hover {
+#season-close:hover,
+#season-close:active {
   color: #fff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 #season-title-badge {
@@ -318,28 +327,48 @@ input[type="date"] {
   top: 20px;
   right: 20px;
   width: 310px;
+  max-width: calc(100vw - 40px);
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transform: translateX(350px);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(calc(100% + 40px));
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
   z-index: 11;
 }
 
 #info.open {
   transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 #info-close {
   position: absolute;
-  top: 12px;
-  right: 14px;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--text-dim);
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+#info-close:hover,
+#info-close:active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .portrait-box {
