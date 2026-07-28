@@ -68,7 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const gaQuestionSelect = document.getElementById("ga-question-select");
     const gaQuestionInput = document.getElementById("ga-question-input");
     const gaProgressNumber = document.getElementById("ga-progress-number");
-    const gaParagraphText = document.getElementById("ga-paragraph-text");
+    const gaParagraphImageContainer = document.getElementById("ga-paragraph-image-container");
+    const gaParagraphImage = document.getElementById("ga-paragraph-image");
     const gaParagraphSource = document.getElementById("ga-paragraph-source");
     const universeSymbolsContainer = document.getElementById("universe-symbols-container");
 
@@ -400,60 +401,42 @@ document.addEventListener("DOMContentLoaded", () => {
         gaProgressNumber.textContent = `Soru ${qIndex + 1} / ${generalActivityData.length}`;
         gaParagraphSource.textContent = paragraph.source;
 
-        // Parse brackets in paragraph text
-        // E.g. "Her gün[,] daima öğleden sonra oraya gidiyor[;] kapıdan..."
-        const regex = /\[([^\]]+)\]/g;
-        let originalText = paragraph.text;
-        
-        // Format dialogue lines (long dashes or hidden dashes) to start on a new line (satır başı)
-        originalText = originalText.replace(/ (—|\[—\]|\[-\])(?=\s)/g, "<br>$1");
-        
-        let match;
-        let parsedTextHTML = "";
-        let lastIdx = 0;
-        let blankCount = 0;
+        // Remove any existing overlay blank boxes from container
+        const existingBoxes = gaParagraphImageContainer.querySelectorAll(".image-blank-box");
+        existingBoxes.forEach(box => box.remove());
 
-        while ((match = regex.exec(originalText)) !== null) {
-            const startPos = match.index;
-            const endPos = regex.lastIndex;
-            const symbolInside = match[1];
+        // Set image source
+        gaParagraphImage.src = paragraph.imagePath;
 
-            // Add text before bracket
-            parsedTextHTML += originalText.substring(lastIdx, startPos);
+        // Create the absolute overlay boxes
+        paragraph.blanks.forEach((blankData, idx) => {
+            const blankEl = document.createElement("span");
+            blankEl.className = "image-blank-box";
+            blankEl.style.left = `${blankData.x}%`;
+            blankEl.style.top = `${blankData.y}%`;
+            blankEl.style.width = `${blankData.w}%`;
+            blankEl.style.height = `${blankData.h}%`;
+            blankEl.setAttribute("data-blank-index", idx);
 
-            // Add blank element instead of brackets (initially empty)
-            parsedTextHTML += `<span class="blank-box" data-blank-index="${blankCount}"></span>`;
-            
             // Record blank answer details
             state.currentParagraphBlanks.push({
-                index: blankCount,
-                correctSymbol: symbolInside,
-                element: null,
+                index: idx,
+                correctSymbol: blankData.correctSymbol,
+                element: blankEl,
                 solved: false,
                 userAnswer: null
             });
 
-            blankCount++;
-            lastIdx = endPos;
-        }
-
-        // Add remaining text after last bracket
-        parsedTextHTML += originalText.substring(lastIdx);
-        gaParagraphText.innerHTML = parsedTextHTML;
-
-        // Bind element references and event listeners
-        const blankElements = gaParagraphText.querySelectorAll(".blank-box");
-        blankElements.forEach((el, index) => {
-            state.currentParagraphBlanks[index].element = el;
-            
-            el.addEventListener("click", () => {
-                setActiveBlank(index);
-            });
+            // Add overlay box to container
+            gaParagraphImageContainer.appendChild(blankEl);
         });
 
-        // Check if paragraph was solved before in user session
-        // (Optional: we can save session progress. Let's make it fully responsive)
-        renderUniverseSymbols();
+        // Automatically activate the first blank box
+        if (state.currentParagraphBlanks.length > 0) {
+            setActiveBlank(0);
+        } else {
+            renderUniverseSymbols();
+        }
     }
 
     function setActiveBlank(index) {
@@ -470,11 +453,11 @@ document.addEventListener("DOMContentLoaded", () => {
             state.activeBlankIndex = index;
             blank.element.classList.add("active");
             
-            // Choose 6 options (correct + 5 random)
+            // Choose 4 options (correct + 3 random)
             const correct = blank.correctSymbol;
             const otherSymbols = universeSymbols.filter(s => s !== correct);
             const shuffledOthers = [...otherSymbols].sort(() => 0.5 - Math.random());
-            const selectedOthers = shuffledOthers.slice(0, 5);
+            const selectedOthers = shuffledOthers.slice(0, 3);
             const options = [correct, ...selectedOthers];
             const shuffledOptions = options.sort(() => 0.5 - Math.random());
             
@@ -484,7 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleUniverseSymbolClick(symbol) {
         if (state.activeBlankIndex === null) {
-            alert("Lütfen önce doldurmak istediğiniz boşluğa tıklayın!");
+            alert("Etkinlik tamamlandı! Sıradaki soruya geçebilirsiniz.");
             return;
         }
 
@@ -499,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Animate placement
             blank.element.textContent = symbol;
-            blank.element.className = "blank-box correct";
+            blank.element.className = "image-blank-box correct";
             
             // Clear current active selection
             state.activeBlankIndex = null;
@@ -511,19 +494,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateGlobalProgress();
                 renderSuccessMessage();
             } else {
-                renderUniverseSymbols(); // Show placeholder prompt
+                // Automatically transition to the next blank
+                const nextIdx = blank.index + 1;
+                if (nextIdx < state.currentParagraphBlanks.length) {
+                    setActiveBlank(nextIdx);
+                } else {
+                    renderUniverseSymbols();
+                }
             }
         } else {
-            // Incorrect Answer
-            blank.element.textContent = symbol;
-            blank.element.classList.add("shake");
+            // Incorrect Answer: Red outline and shake, keep box contents blank/white
+            blank.element.classList.add("incorrect", "shake");
             
-            // Revert back after animation completes (800ms)
             const targetEl = blank.element;
             setTimeout(() => {
                 if (!blank.solved) {
-                    targetEl.textContent = "";
-                    targetEl.classList.remove("shake");
+                    targetEl.classList.remove("incorrect", "shake");
                 }
             }, 800);
         }

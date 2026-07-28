@@ -1251,9 +1251,101 @@ body {
     color: var(--text-primary) !important;
 }
 
+/* Image Paragraph Crop Layout */
+.paragraph-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.paragraph-image-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#ga-paragraph-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image-blank-box {
+    position: absolute;
+    cursor: default;
+    background: #ffffff !important; /* solid white to hide printed sign completely */
+    border: 1px dashed rgba(99, 102, 241, 0.8);
+    box-shadow: 0 0 6px rgba(99, 102, 241, 0.25);
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 14px;
+    min-height: 18px;
+    line-height: 1;
+}
+
+.image-blank-box:hover:not(.correct):not(.active) {
+    border-color: rgba(99, 102, 241, 0.95);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    background: #ffffff !important;
+}
+
+.image-blank-box.active {
+    border: 1.5px solid var(--primary-color);
+    background: #ffffff !important;
+    animation: pulse-glow 1.4s infinite ease-in-out;
+    z-index: 12; /* Lift active box above surrounding text/images */
+}
+
+.image-blank-box.correct {
+    border: 1.5px solid var(--correct-color);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+    background: #ffffff !important; /* solid white background to blend in with page */
+    color: var(--correct-color);
+    font-weight: bold;
+    font-size: 1.15rem;
+    font-family: 'Space Grotesk', sans-serif;
+    transform: none !important;
+    cursor: default;
+}
+
+.image-blank-box.incorrect {
+    border: 1.5px solid var(--incorrect-color) !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.45) !important;
+    background: #ffffff !important;
+}
+
+.image-blank-box.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 4px rgba(99, 102, 241, 0.35), inset 0 0 2px rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 14px rgba(99, 102, 241, 0.9), inset 0 0 6px rgba(99, 102, 241, 0.45);
+        border-color: var(--primary-color);
+    }
+    100% {
+        box-shadow: 0 0 4px rgba(99, 102, 241, 0.35), inset 0 0 2px rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.6);
+    }
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
