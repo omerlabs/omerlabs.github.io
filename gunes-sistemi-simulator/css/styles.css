@@ -40,6 +40,7 @@ html, body {
   height: 100%;
   display: block;
   cursor: grab;
+  touch-action: none;
 }
 
 #space.dragging {
@@ -190,6 +191,19 @@ html, body {
   flex: 0 0 32px;
   padding: 7px 0;
   text-align: center;
+}
+
+.btn.pwa-install {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(245, 158, 11, 0.25));
+  border-color: var(--accent-cyan);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+  margin-top: 2px;
+}
+
+.btn.pwa-install:hover {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(245, 158, 11, 0.4));
 }
 
 input[type="range"] {

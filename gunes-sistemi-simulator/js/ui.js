@@ -31,6 +31,8 @@ export class UIManager {
     this.eclipseBanner = document.getElementById('eclipse-banner');
     this.tglFollowBtn = document.getElementById('tgl-follow');
     this.tglViewBtn = document.getElementById('tgl-view');
+    this.pwaInstallBtn = document.getElementById('btn-pwa-install');
+    this.deferredInstallPrompt = null;
   }
 
   bindEvents(onDblClick) {
@@ -45,6 +47,119 @@ export class UIManager {
     canvas.addEventListener('pointerup', (e) => this.onPointerUp(e));
     canvas.addEventListener('pointerleave', () => { this.state.hover = null; this.hideTip(); });
     canvas.addEventListener('dblclick', onDblClick);
+
+    // Multi-Touch Gestures for Mobile & Tablet
+    let touchState = {
+      active: false,
+      count: 0,
+      dragged: false,
+      startX: 0, startY: 0,
+      lastX: 0, lastY: 0,
+      initialDist: 0,
+      initialZoom: 1,
+      lastMidX: 0, lastMidY: 0,
+      lastTapTime: 0
+    };
+
+    canvas.addEventListener('touchstart', (e) => {
+      const touches = e.touches;
+      touchState.count = touches.length;
+
+      if (touches.length === 1) {
+        touchState.active = true;
+        touchState.dragged = false;
+        touchState.startX = touchState.lastX = touches[0].clientX;
+        touchState.startY = touchState.lastY = touches[0].clientY;
+      } else if (touches.length === 2) {
+        touchState.active = true;
+        touchState.dragged = true;
+        const t1 = touches[0], t2 = touches[1];
+        touchState.initialDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+        touchState.initialZoom = this.state.zoomTarget;
+        touchState.lastMidX = (t1.clientX + t2.clientX) / 2;
+        touchState.lastMidY = (t1.clientY + t2.clientY) / 2;
+      }
+    }, { passive: true });
+
+    canvas.addEventListener('touchmove', (e) => {
+      const touches = e.touches;
+
+      if (touches.length === 1 && touchState.active) {
+        const cx = touches[0].clientX, cy = touches[0].clientY;
+        const dx = cx - touchState.lastX, dy = cy - touchState.lastY;
+
+        if (!touchState.dragged && Math.hypot(cx - touchState.startX, cy - touchState.startY) > 6) {
+          touchState.dragged = true;
+        }
+
+        if (touchState.dragged) {
+          // 1-finger drag: Rotate view (pitch & yaw) in all modes per user decision
+          this.state.viewRot -= dx * 0.005;
+          this.state.tiltTarget = clamp(this.state.tiltTarget - dy * 0.003, 0.02, Math.PI / 2 - 0.01);
+        }
+
+        touchState.lastX = cx;
+        touchState.lastY = cy;
+        this.hideTip();
+      } else if (touches.length === 2 && touchState.active) {
+        touchState.dragged = true;
+        const t1 = touches[0], t2 = touches[1];
+        const currDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+        const currMidX = (t1.clientX + t2.clientX) / 2;
+        const currMidY = (t1.clientY + t2.clientY) / 2;
+
+        // 2-finger Pan (camera translation)
+        const mdx = currMidX - touchState.lastMidX;
+        const mdy = currMidY - touchState.lastMidY;
+        this.state.focus = null;
+        if (this.state.follow) this.updateFollowBtnText();
+        this.state.camTarget.x -= mdx / this.state.cam.zoom;
+        this.state.camTarget.y -= mdy / this.state.cam.zoom;
+        touchState.lastMidX = currMidX;
+        touchState.lastMidY = currMidY;
+
+        // 2-finger Pinch Zoom centered at finger midpoint
+        if (touchState.initialDist > 10) {
+          const scale = currDist / touchState.initialDist;
+          const nz = clamp(touchState.initialZoom * scale, 0.2, 20);
+
+          const W2 = window.innerWidth / 2, H2 = window.innerHeight / 2;
+          const wx = this.state.cam.x + (currMidX - W2) / this.state.cam.zoom;
+          const wy = this.state.cam.y + (currMidY - H2) / this.state.cam.zoom;
+
+          this.state.zoomTarget = nz;
+          this.state.camTarget.x = wx - (currMidX - W2) / nz;
+          this.state.camTarget.y = wy - (currMidY - H2) / nz;
+        }
+        this.hideTip();
+      }
+    }, { passive: true });
+
+    canvas.addEventListener('touchend', (e) => {
+      if (touchState.count === 1 && !touchState.dragged) {
+        const now = Date.now();
+        if (now - touchState.lastTapTime < 300) {
+          onDblClick();
+          touchState.lastTapTime = 0;
+        } else {
+          touchState.lastTapTime = now;
+          this.handleClick(touchState.startX, touchState.startY);
+        }
+      }
+      if (e.touches.length === 0) {
+        touchState.active = false;
+        touchState.count = 0;
+      } else if (e.touches.length === 1) {
+        touchState.count = 1;
+        touchState.lastX = e.touches[0].clientX;
+        touchState.lastY = e.touches[0].clientY;
+      }
+    });
+
+    canvas.addEventListener('touchcancel', () => {
+      touchState.active = false;
+      touchState.count = 0;
+    });
 
     window.addEventListener('resize', () => this.onResize());
 
@@ -184,6 +299,34 @@ export class UIManager {
       e.currentTarget.textContent = isHidden ? '▶' : '◀';
     });
 
+    // PWA Install Prompt Listener
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.deferredInstallPrompt = e;
+      if (this.pwaInstallBtn) {
+        this.pwaInstallBtn.style.display = 'block';
+      }
+    });
+
+    if (this.pwaInstallBtn) {
+      this.pwaInstallBtn.addEventListener('click', async () => {
+        if (this.deferredInstallPrompt) {
+          this.deferredInstallPrompt.prompt();
+          const { outcome } = await this.deferredInstallPrompt.userChoice;
+          if (outcome === 'accepted') {
+            this.pwaInstallBtn.style.display = 'none';
+          }
+          this.deferredInstallPrompt = null;
+        }
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      if (this.pwaInstallBtn) {
+        this.pwaInstallBtn.style.display = 'none';
+      }
+    });
+
     try { this.dateInput.value = new Date().toISOString().slice(0, 10); } catch (e) { }
   }
 
@@ -214,6 +357,7 @@ export class UIManager {
   }
 
   onPointerDown(e) {
+    if (e.pointerType === 'touch') return;
     this.renderer2d.canvas.setPointerCapture(e.pointerId);
     this.state.mouse.down = true; this.state.mouse.dragged = false;
     this.state.mouse.button = e.button; // 0: Left, 2: Right
@@ -224,6 +368,7 @@ export class UIManager {
   }
 
   onPointerMove(e) {
+    if (e.pointerType === 'touch') return;
     this.state.mouse.x = e.clientX; this.state.mouse.y = e.clientY;
     if (this.state.mouse.down) {
       const dx = e.clientX - this.state.mouse.lastX, dy = e.clientY - this.state.mouse.lastY;
@@ -256,6 +401,7 @@ export class UIManager {
   }
 
   onPointerUp(e) {
+    if (e.pointerType === 'touch') return;
     this.renderer2d.canvas.classList.remove('dragging');
     if (this.state.mouse.down && !this.state.mouse.dragged && e.button === 0) {
       this.handleClick(this.state.mouse.x, this.state.mouse.y);

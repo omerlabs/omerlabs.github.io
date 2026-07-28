@@ -194,4 +194,10 @@ class SolarApp {
 window.addEventListener('DOMContentLoaded', () => {
   const app = new SolarApp();
   app.init();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch((err) => {
+      console.warn('Service Worker kaydı başarısız:', err);
+    });
+  }
 });

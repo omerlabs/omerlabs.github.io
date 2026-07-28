@@ -5,7 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Güneş Sistemi - Etkileşimli Simülasyon</title>
-  <link rel="stylesheet" href="css/styles.css?v=1.1">
+  <link rel="stylesheet" href="css/styles.css?v=1.2">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#02050e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Güneş Sistemi">
+  <link rel="apple-touch-icon" href="icons/icon-192.jpg">
 </head>
 
 <body>
@@ -75,6 +81,10 @@
     <div class="ctl-row btns">
       <button class="btn" id="tgl-seasons" title="Dünya için mevsim simülatörü">🌍 MEVSİMLER</button>
       <button class="btn" id="tgl-follow" title="Odaklanan cisimle birlikte kamera döner">🎥 TAKİP: KAPALI</button>
+    </div>
+
+    <div class="ctl-row btns">
+      <button class="btn pwa-install" id="btn-pwa-install" style="display:none;" title="Uygulamayı cihaza indir">📲 UYGULAMAYI İNDİR</button>
     </div>
   </div>
   <button class="panel sq" id="controls-toggle" title="Kontrol Panelini Göster/Gizle" aria-label="Kontrol panelini göster veya gizle">◀</button>
