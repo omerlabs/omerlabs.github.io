@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Borç Takip</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0e0f13">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Borç Takip">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -47,12 +54,19 @@
   .header-left h1 span { color: var(--accent); }
   .header-left p { color: var(--muted); font-size: 13px; margin-top: 4px; }
 
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   .btn-add {
     background: var(--accent);
     color: #0e0f13;
     border: none;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     font-family: 'Syne', sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -61,6 +75,39 @@
     white-space: nowrap;
   }
   .btn-add:hover { opacity: .88; transform: translateY(-1px); }
+
+  .btn-pwa {
+    background: #1e3a5f;
+    color: #60a5fa;
+    border: 1px solid #2b4c7e;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-pwa:hover { background: #2b4c7e; color: #ffffff; }
+
+  .btn-secondary {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
   /* SUMMARY CARDS */
   .summary {
@@ -453,7 +500,13 @@
     <h1>Borç <span>Takip</span></h1>
     <p>Tüm borçlarını tek yerden yönet</p>
   </div>
-  <button class="btn-add" onclick="openAddModal()">+ Borç Ekle</button>
+  <div class="header-actions">
+    <button class="btn-pwa" id="pwa-install-btn" onclick="triggerPwaInstall()">📲 Uygulamayı Yükle</button>
+    <button class="btn-secondary" onclick="exportBackup()" title="Verileri JSON olarak yedekle">💾 Yedekle</button>
+    <button class="btn-secondary" onclick="document.getElementById('import-file-input').click()" title="Yedek JSON yükle">📥 Yükle</button>
+    <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="importBackup(event)">
+    <button class="btn-add" onclick="openAddModal()">+ Borç Ekle</button>
+  </div>
 </div>
 
 <!-- SUMMARY -->
@@ -550,6 +603,24 @@
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closePayModal()">İptal</button>
       <button class="btn-save" onclick="submitPayment()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- iOS INSTALL MODAL -->
+<div class="overlay" id="ios-modal-overlay" onclick="closeIosModal(event)">
+  <div class="modal">
+    <h2>Uygulamayı <span>Ana Ekrana Ekle</span></h2>
+    <div style="font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px;">
+      <p style="margin-bottom:12px;">iPhone / iPad tarayıcınızda bu uygulamayı telefonunuza yüklemek için:</p>
+      <ol style="padding-left:20px; color:var(--text);">
+        <li style="margin-bottom:8px;">Safari ekranının altındaki <strong>Paylaş (Share)</strong> simgesine dokunun.</li>
+        <li style="margin-bottom:8px;">Açılan menüde <strong>Ana Ekrana Ekle (Add to Home Screen)</strong> seçeneğini bulun.</li>
+        <li>Sağ üstteki <strong>Ekle</strong> butonuna tıklayarak kurulumu tamamlayın.</li>
+      </ol>
+    </div>
+    <div class="modal-actions" style="grid-template-columns:1fr;">
+      <button class="btn-save" onclick="closeIosModal()">Anladım</button>
     </div>
   </div>
 </div>
@@ -854,6 +925,114 @@ function toast(msg, type = 'success') {
 // ───────────── INIT ─────────────
 load();
 render();
+
+// ───────────── PWA INSTALLATION & BACKUP ─────────────
+let deferredPrompt = null;
+const isIos = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const pwaBtn = document.getElementById('pwa-install-btn');
+  if (pwaBtn) pwaBtn.style.display = 'inline-flex';
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredPrompt = null;
+  const pwaBtn = document.getElementById('pwa-install-btn');
+  if (pwaBtn) pwaBtn.style.display = 'none';
+  toast('Uygulama başarıyla yüklendi! 🎉', 'success');
+});
+
+function triggerPwaInstall() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        toast('Yükleme başlatıldı', 'success');
+      }
+      deferredPrompt = null;
+    });
+  } else if (isIos) {
+    document.getElementById('ios-modal-overlay').classList.add('open');
+  } else {
+    toast('Tarayıcı menüsünden "Uygulamayı Yükle" veya "Ana Ekrana Ekle" seçeneğini kullanabilirsiniz.', 'success');
+  }
+}
+
+function closeIosModal(e) {
+  if (!e || e.target === document.getElementById('ios-modal-overlay') || e.type === 'click') {
+    document.getElementById('ios-modal-overlay').classList.remove('open');
+  }
+}
+
+// Hide install button if already in standalone app mode
+if (isStandalone) {
+  window.addEventListener('DOMContentLoaded', () => {
+    const pwaBtn = document.getElementById('pwa-install-btn');
+    if (pwaBtn) pwaBtn.style.display = 'none';
+  });
+}
+
+// ───────────── BACKUP & RESTORE ─────────────
+function exportBackup() {
+  if (!debts || debts.length === 0) {
+    toast('Yedeklenecek veri bulunmuyor', 'error');
+    return;
+  }
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(debts, null, 2));
+  const downloadAnchor = document.createElement('a');
+  const dateStr = new Date().toISOString().slice(0,10);
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `borc-takip-yedek-${dateStr}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  toast('Yedek JSON dosyası indirildi ✓', 'success');
+}
+
+function importBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (Array.isArray(parsed)) {
+        debts = parsed;
+        save();
+        render();
+        toast('Veriler başarıyla yüklendi ✓', 'success');
+      } else {
+        toast('Geçersiz yedek dosyası formatı', 'error');
+      }
+    } catch (err) {
+      toast('Yedek dosyası okunamadı', 'error');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ───────────── SERVICE WORKER REGISTRATION ─────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => console.log('[SW] Kayıt başarılı:', reg.scope))
+      .catch((err) => console.error('[SW] Kayıt hatası:', err));
+  });
+}
+
+// ───────────── STORAGE PERSISTENCE ─────────────
+if (navigator.storage && navigator.storage.persist) {
+  navigator.storage.persist().then((persistent) => {
+    if (persistent) {
+      console.log("[Storage] Veri saklama koruması aktif.");
+    }
+  });
+}
 </script>
 </body>
 </html>

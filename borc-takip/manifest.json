@@ -1,0 +1,26 @@
+{
+  "name": "Borç Takip - Kişisel Finans",
+  "short_name": "Borç Takip",
+  "description": "Tüm borçlarını, kredilerini ve ödemelerini kolayca takip et.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0e0f13",
+  "theme_color": "#0e0f13",
+  "categories": ["finance", "utilities"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
