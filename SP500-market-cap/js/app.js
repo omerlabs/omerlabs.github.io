@@ -3,6 +3,7 @@ let allData = [];
 let filteredData = [];
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
+let deferredPrompt = null;
 
 let currentPage = 1;
 const itemsPerPage = 50;
@@ -32,7 +33,8 @@ const elements = {
     btnNext: document.getElementById('btn-next'),
     chartModal: document.getElementById('chart-modal'),
     closeModalBtn: document.getElementById('close-modal-btn'),
-    watchlistToggleBtn: document.getElementById('watchlist-toggle-btn')
+    watchlistToggleBtn: document.getElementById('watchlist-toggle-btn'),
+    installBtn: document.getElementById('install-btn')
 };
 
 // Initialize Application
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=8')
+        navigator.serviceWorker.register('./service-worker.js?v=9')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -176,6 +178,36 @@ function setupEventListeners() {
         if (e.key === 'Escape' && elements.chartModal.style.display === 'flex') {
             closeChartModal();
         }
+    });
+    
+    // Listen for PWA install prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (elements.installBtn) {
+            elements.installBtn.style.display = 'inline-flex';
+        }
+    });
+
+    // Custom PWA Install Button Click
+    if (elements.installBtn) {
+        elements.installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            deferredPrompt = null;
+            elements.installBtn.style.display = 'none';
+        });
+    }
+
+    // Hide install button once PWA is successfully installed
+    window.addEventListener('appinstalled', (event) => {
+        console.log('PWA was installed successfully!');
+        if (elements.installBtn) {
+            elements.installBtn.style.display = 'none';
+        }
+        deferredPrompt = null;
     });
 }
 

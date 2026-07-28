@@ -480,6 +480,33 @@ body {
 }
 #fw { position:fixed; inset:0; pointer-events:none; z-index:199; }
 
+/* ── INSTALL BUTTON ── */
+.install-wrap {
+  margin-top:12px; display:none;
+}
+.install-wrap.show { display:block; }
+.install-btn {
+  width:100%; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem;
+  padding:14px; border:none; border-radius:20px; cursor:pointer;
+  background:linear-gradient(135deg,#3b82f6,#0ea5e9); color:white;
+  box-shadow:0 4px 20px rgba(59,130,246,.4);
+  transition:transform .15s, box-shadow .15s;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  position:relative; overflow:hidden;
+}
+.install-btn:hover { transform:scale(1.04); box-shadow:0 6px 28px rgba(59,130,246,.5); }
+.install-btn:active { transform:scale(.97); }
+.install-btn::after {
+  content:''; position:absolute; top:0; left:-100%; width:60%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  animation:installShimmer 3s ease-in-out infinite;
+}
+@keyframes installShimmer { 0%{left:-100%} 50%{left:150%} 100%{left:150%} }
+.install-badge {
+  font-size:.65rem; background:rgba(255,255,255,.25); padding:2px 8px;
+  border-radius:8px; letter-spacing:.3px;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:380px){
   .choice-emoji{font-size:2.4rem;}
@@ -520,6 +547,11 @@ body {
     <div class="cat-sub">Hangi konuyu öğrenmek istiyorsun?</div>
     <div class="cat-grid" id="catGrid"></div>
     <button class="random-btn" onclick="startRandom()">🎲 Hepsini Karıştır!</button>
+    <div class="install-wrap" id="installWrap">
+      <button class="install-btn" id="installBtn" onclick="installApp()">
+        📲 Uygulamayı Yükle <span class="install-badge">ÜCRETSİZ</span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1616,6 +1648,40 @@ function initPWA() {
 /* ══════════════════════════════════════════════
    INIT
 ══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════
+   PWA INSTALL PROMPT
+══════════════════════════════════════════════ */
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installWrap').classList.add('show');
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredPrompt = null;
+  document.getElementById('installWrap').classList.remove('show');
+});
+
+function installApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then((result) => {
+    if (result.outcome === 'accepted') {
+      document.getElementById('installWrap').classList.remove('show');
+    }
+    deferredPrompt = null;
+  });
+}
+
+// Check if already installed (standalone mode)
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+  // Already installed, don't show button
+} else {
+  // Button visibility is controlled by beforeinstallprompt event
+}
+
 applyTheme();
 buildCatScreen();
 initPWA();
