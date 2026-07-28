@@ -9,7 +9,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Ada English">
 <title>Ada'nın İngilizce Oyunu 🔊</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
 <style>
 /* ═══════════════════════════════════════
    DESIGN TOKENS — LIGHT THEME
@@ -1576,118 +1578,10 @@ window.addEventListener('resize', () => {
    PWA — Dynamic Manifest + Service Worker
 ══════════════════════════════════════════════ */
 function initPWA() {
-  // Generate icon via canvas
-  function generateIcon(size) {
-    const c = document.createElement('canvas');
-    c.width = size; c.height = size;
-    const ctx = c.getContext('2d');
-    
-    // Premium dark indigo to violet-purple gradient
-    const bgGrad = ctx.createLinearGradient(0, 0, size, size);
-    bgGrad.addColorStop(0, '#1e1b4b');
-    bgGrad.addColorStop(0.5, '#3730a3');
-    bgGrad.addColorStop(1, '#6b21a8');
-    
-    // Rounded squircle container
-    const r = size * 0.22;
-    ctx.fillStyle = bgGrad;
-    ctx.beginPath();
-    ctx.roundRect(0, 0, size, size, r);
-    ctx.fill();
-
-    // Subtle inner golden border ring
-    const goldGrad = ctx.createLinearGradient(0, 0, size, size);
-    goldGrad.addColorStop(0, '#fef08a');
-    goldGrad.addColorStop(0.5, '#f59e0b');
-    goldGrad.addColorStop(1, '#d97706');
-    
-    ctx.strokeStyle = goldGrad;
-    ctx.lineWidth = size * 0.035;
-    ctx.beginPath();
-    ctx.roundRect(size * 0.04, size * 0.04, size * 0.92, size * 0.92, r * 0.85);
-    ctx.stroke();
-
-    // Top Gloss shine
-    const shine = ctx.createLinearGradient(0, 0, 0, size * 0.5);
-    shine.addColorStop(0, 'rgba(255, 255, 255, 0.25)');
-    shine.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-    ctx.fillStyle = shine;
-    ctx.beginPath();
-    ctx.roundRect(size * 0.05, size * 0.05, size * 0.9, size * 0.42, [r * 0.8, r * 0.8, 0, 0]);
-    ctx.fill();
-
-    // Central Emblem: Glowing Star / Audio Speaker icon
-    ctx.save();
-    ctx.shadowColor = '#fbbf24';
-    ctx.shadowBlur = size * 0.08;
-    ctx.font = `${size * 0.34}px serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('🌟', size / 2, size * 0.38);
-    ctx.restore();
-
-    // "WORDS" Text with gold gradient fill and subtle drop shadow
-    ctx.save();
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-    ctx.shadowBlur = size * 0.06;
-    ctx.shadowOffsetY = size * 0.03;
-    
-    ctx.fillStyle = goldGrad;
-    ctx.font = `900 ${size * 0.22}px 'Fredoka One', 'Nunito', sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('WORDS', size / 2, size * 0.74);
-    
-    // Inner white highlight on text
-    ctx.fillStyle = '#ffffff';
-    ctx.font = `900 ${size * 0.215}px 'Fredoka One', 'Nunito', sans-serif`;
-    ctx.fillText('WORDS', size / 2, size * 0.735);
-    ctx.restore();
-
-    return c.toDataURL('image/png');
-  }
-
-  const icon192 = generateIcon(192);
-  const icon512 = generateIcon(512);
-
-  const manifest = {
-    name: "Ada'nın İngilizce Oyunu",
-    short_name: "Ada English",
-    description: "6 yaş çocuklar için İngilizce kelime öğrenme oyunu",
-    start_url: "./index.html",
-    display: "standalone",
-    background_color: "#e8f4ff",
-    theme_color: "#3b82f6",
-    orientation: "portrait",
-    icons: [
-      { src: icon192, sizes: "192x192", type: "image/png", purpose: "any" },
-      { src: icon512, sizes: "512x512", type: "image/png", purpose: "any" }
-    ]
-  };
-
-  const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('link');
-  link.rel = 'manifest';
-  link.href = url;
-  document.head.appendChild(link);
-
-  // Also set apple touch icon
-  const appleLink = document.createElement('link');
-  appleLink.rel = 'apple-touch-icon';
-  appleLink.href = icon192;
-  document.head.appendChild(appleLink);
-
-  // Favicon
-  const favicon = document.createElement('link');
-  favicon.rel = 'icon';
-  favicon.href = icon192;
-  favicon.type = 'image/png';
-  document.head.appendChild(favicon);
-
-  // Register service worker
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
+    navigator.serviceWorker.register('./sw.js').catch((err) => {
+      console.log('Service Worker registration failed:', err);
+    });
   }
 }
 

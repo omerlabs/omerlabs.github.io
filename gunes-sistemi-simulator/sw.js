@@ -1,8 +1,8 @@
-const CACHE_NAME = 'solarsystem-v1.5';
+const CACHE_NAME = 'solarsystem-v1.6';
 const ASSETS = [
   './',
   './index.html',
-  './css/styles.css?v=1.5',
+  './css/styles.css?v=1.6',
   './js/main.js',
   './js/data.js',
   './js/physics.js',
@@ -10,8 +10,8 @@ const ASSETS = [
   './js/textures.js',
   './js/ui.js',
   './manifest.json',
-  './icons/icon-192.jpg',
-  './icons/icon-512.jpg'
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {
@@ -37,20 +37,18 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Ignore non-GET requests or external extensions
   if (e.request.method !== 'GET') return;
 
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Return cached version and update cache in background
         fetch(e.request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(e.request, networkResponse);
             });
           }
-        }).catch(() => {/* offline fallback */});
+        }).catch(() => {});
         return cachedResponse;
       }
       return fetch(e.request).then((networkResponse) => {
