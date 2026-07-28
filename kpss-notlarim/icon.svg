@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Wood Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a2d21" />
+      <stop offset="100%" stop-color="#150e0a" />
+    </linearGradient>
+    <!-- Brass/Gold Gradient -->
+    <linearGradient id="brass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0cb85" />
+      <stop offset="30%" stop-color="#d8ae66" />
+      <stop offset="70%" stop-color="#b98f45" />
+      <stop offset="100%" stop-color="#8d6828" />
+    </linearGradient>
+    <!-- Inner text shadow/gradient -->
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2b211a" />
+      <stop offset="100%" stop-color="#1b140f" />
+    </linearGradient>
+    <!-- Drop Shadow for the seal -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#050302" flood-opacity="0.65" />
+    </filter>
+  </defs>
+  <!-- Base Background (Rounded for maskable compatibility) -->
+  <rect x="0" y="0" width="512" height="512" rx="100" fill="url(#bg-grad)" />
+  
+  <!-- Outer Ring / Gold Rim -->
+  <circle cx="256" cy="256" r="180" fill="url(#brass-grad)" filter="url(#shadow)" />
+  <!-- Inner Gold Seal Surface -->
+  <circle cx="256" cy="256" r="160" fill="url(#brass-grad)" stroke="#694d1b" stroke-width="2" />
+  <!-- Dark Inner Ring -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#694d1b" stroke-dasharray="8 6" stroke-width="3" opacity="0.6" />
+  
+  <!-- KPSS Text -->
+  <text x="256" y="292" font-family="'Fraunces', 'Source Serif 4', 'Georgia', serif" font-weight="900" font-size="108" fill="url(#text-grad)" text-anchor="middle" letter-spacing="4">KPSS</text>
+  
+  <!-- Tiny Details -->
+  <text x="256" y="335" font-family="'IBM Plex Mono', monospace" font-size="18" font-weight="bold" fill="#694d1b" text-anchor="middle" letter-spacing="3" opacity="0.8">FİŞ KUTUSU</text>
+</svg>

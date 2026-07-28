@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="WORDS">
 <title>WORDS 🔊</title>
-<link rel="manifest" href="manifest.json?v=5.0">
-<link rel="apple-touch-icon" href="icon-192.png?v=5.0">
-<link rel="icon" type="image/png" href="icon-192.png?v=5.0">
+<link rel="manifest" href="manifest.json?v=6.0">
+<link rel="apple-touch-icon" href="icon-192.png?v=6.0">
+<link rel="icon" type="image/png" href="icon-192.png?v=6.0">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
@@ -699,37 +699,58 @@ const CATEGORIES = {
   animals: {
     name:'Hayvanlar', emoji:'🐾', color:'linear-gradient(135deg,#f97316,#fb923c)',
     words:[
-      {en:'cat',      tr:'Kedi',      emoji:'🐱'},
-      {en:'dog',      tr:'Köpek',     emoji:'🐶'},
-      {en:'snake',    tr:'Yılan',     emoji:'🐍'},
-      {en:'cow',      tr:'İnek',      emoji:'🐄'},
-      {en:'monkey',   tr:'Maymun',    emoji:'🐒'},
-      {en:'lion',     tr:'Aslan',     emoji:'🦁'},
-      {en:'elephant', tr:'Fil',       emoji:'🐘'},
-      {en:'rabbit',   tr:'Tavşan',    emoji:'🐰'},
-      {en:'bird',     tr:'Kuş',       emoji:'🐦'},
-      {en:'fish',     tr:'Balık',     emoji:'🐟'},
-      {en:'frog',     tr:'Kurbağa',   emoji:'🐸'},
-      {en:'horse',    tr:'At',        emoji:'🐴'},
-      {en:'bear',     tr:'Ayı',       emoji:'🐻'},
-      {en:'duck',     tr:'Ördek',     emoji:'🦆'},
-      {en:'penguin',  tr:'Penguen',   emoji:'🐧'},
-      {en:'tiger',    tr:'Kaplan',    emoji:'🐯'},
-      {en:'giraffe',  tr:'Zürafa',    emoji:'🦒'},
-      {en:'sheep',    tr:'Koyun',     emoji:'🐑'},
-      {en:'pig',      tr:'Domuz',     emoji:'🐷'},
-      {en:'butterfly',tr:'Kelebek',   emoji:'🦋'},
+      {en:'cat',      tr:'Kedi',          emoji:'🐱'},
+      {en:'dog',      tr:'Köpek',         emoji:'🐶'},
+      {en:'snake',    tr:'Yılan',         emoji:'🐍'},
+      {en:'cow',      tr:'İnek',          emoji:'🐄'},
+      {en:'monkey',   tr:'Maymun',        emoji:'🐒'},
+      {en:'lion',     tr:'Aslan',         emoji:'🦁'},
+      {en:'elephant', tr:'Fil',           emoji:'🐘'},
+      {en:'rabbit',   tr:'Tavşan',        emoji:'🐰'},
+      {en:'bird',     tr:'Kuş',           emoji:'🐦'},
+      {en:'fish',     tr:'Balık',         emoji:'🐟'},
+      {en:'frog',     tr:'Kurbağa',       emoji:'🐸'},
+      {en:'horse',    tr:'At',            emoji:'🐴'},
+      {en:'bear',     tr:'Ayı',           emoji:'🐻'},
+      {en:'duck',     tr:'Ördek',         emoji:'🦆'},
+      {en:'penguin',  tr:'Penguen',       emoji:'🐧'},
+      {en:'tiger',    tr:'Kaplan',        emoji:'🐯'},
+      {en:'giraffe',  tr:'Zürafa',        emoji:'🦒'},
+      {en:'sheep',    tr:'Koyun',         emoji:'🐑'},
+      {en:'pig',      tr:'Domuz',         emoji:'🐷'},
+      {en:'butterfly',tr:'Kelebek',       emoji:'🦋'},
+      {en:'turtle',   tr:'Kaplumbağa',    emoji:'🐢'},
+      {en:'bee',      tr:'Arı',           emoji:'🐝'},
+      {en:'ladybug',  tr:'Uğur Böceği',   emoji:'🐞'},
+      {en:'chicken',  tr:'Tavuk',         emoji:'🐔'},
+      {en:'rooster',  tr:'Horoz',         emoji:'干燥'},
+      {en:'goat',     tr:'Keçi',          emoji:'🐐'},
+      {en:'wolf',     tr:'Kurt',          emoji:'🐺'},
+      {en:'fox',      tr:'Tilki',         emoji:'🦊'},
+      {en:'mouse',    tr:'Fare',          emoji:'🐭'},
+      {en:'owl',      tr:'Baykuş',        emoji:'🦉'},
+      {en:'spider',   tr:'Örümcek',       emoji:'🕷️'},
+      {en:'crab',     tr:'Yengeç',        emoji:'🦀'},
+      {en:'octopus',  tr:'Ahtapot',       emoji:'🐙'},
+      {en:'whale',    tr:'Balina',        emoji:'🐳'},
+      {en:'dolphin',  tr:'Yunus',         emoji:'🐬'},
+      {en:'shark',    tr:'Köpek Balığı',  emoji:'🦈'},
+      {en:'squirrel', tr:'Sincap',        emoji:'🐿️'},
+      {en:'koala',    tr:'Koala',         emoji:'🐨'},
+      {en:'kangaroo', tr:'Kanguru',       emoji:'🦘'},
+      {en:'camel',    tr:'Deve',          emoji:'🐪'},
+      {en:'panda',    tr:'Panda',         emoji:'🐼'},
     ]
   },
   fruits: {
-    name:'Meyveler', emoji:'🍎', color:'linear-gradient(135deg,#22c55e,#16a34a)',
+    name:'Meyve & Sebze', emoji:'🍎', color:'linear-gradient(135deg,#22c55e,#16a34a)',
     words:[
       {en:'apple',      tr:'Elma',            emoji:'🍎'},
       {en:'banana',     tr:'Muz',             emoji:'🍌'},
       {en:'orange',     tr:'Portakal',        emoji:'🍊'},
       {en:'strawberry', tr:'Çilek',           emoji:'🍓'},
       {en:'watermelon', tr:'Karpuz',          emoji:'🍉'},
-      {en:'grape',      tr:'Üzüm',           emoji:'🍇'},
+      {en:'grape',      tr:'Üzüm',            emoji:'🍇'},
       {en:'cherry',     tr:'Kiraz',           emoji:'🍒'},
       {en:'peach',      tr:'Şeftali',         emoji:'🍑'},
       {en:'lemon',      tr:'Limon',           emoji:'🍋'},
@@ -739,6 +760,21 @@ const CATEGORIES = {
       {en:'melon',      tr:'Kavun',           emoji:'🍈'},
       {en:'pear',       tr:'Armut',           emoji:'🍐'},
       {en:'kiwi',       tr:'Kivi',            emoji:'🥝'},
+      {en:'green apple',tr:'Yeşil Elma',      emoji:'🍏'},
+      {en:'avocado',    tr:'Avokado',         emoji:'🥑'},
+      {en:'tomato',     tr:'Domates',         emoji:'🍅'},
+      {en:'carrot',     tr:'Havuç',           emoji:'🥕'},
+      {en:'corn',       tr:'Mısır',           emoji:'🌽'},
+      {en:'broccoli',   tr:'Brokoli',         emoji:'🥦'},
+      {en:'potato',     tr:'Patates',         emoji:'🥔'},
+      {en:'cucumber',   tr:'Salatalık',       emoji:'🥒'},
+      {en:'eggplant',   tr:'Patlıcan',        emoji:'🍆'},
+      {en:'pumpkin',    tr:'Balkabağı',       emoji:'🎃'},
+      {en:'pepper',     tr:'Biber',           emoji:'🌶️'},
+      {en:'garlic',     tr:'Sarımsak',        emoji:'🧄'},
+      {en:'onion',      tr:'Soğan',           emoji:'🧅'},
+      {en:'mushroom',   tr:'Mantar',          emoji:'🍄'},
+      {en:'peanut',     tr:'Fıstık',          emoji:'🥜'},
     ]
   },
   food: {
@@ -759,6 +795,21 @@ const CATEGORIES = {
       {en:'taco',      tr:'Taco',            emoji:'🌮'},
       {en:'sushi',     tr:'Suşi',            emoji:'🍱'},
       {en:'chocolate', tr:'Çikolata',        emoji:'🍫'},
+      {en:'burger',    tr:'Burger',          emoji:'🍔'},
+      {en:'hot dog',   tr:'Sosisli',         emoji:'🌭'},
+      {en:'french fries',tr:'Patates Kızartması',emoji:'🍟'},
+      {en:'pancake',   tr:'Krep',            emoji:'🥞'},
+      {en:'honey',     tr:'Bal',             emoji:'🍯'},
+      {en:'milk',      tr:'Süt',             emoji:'🥛'},
+      {en:'tea',       tr:'Çay',             emoji:'🍵'},
+      {en:'candy',     tr:'Şeker',           emoji:'🍬'},
+      {en:'lollipop',  tr:'Lolipop',         emoji:'🍭'},
+      {en:'meat',      tr:'Et',              emoji:'🥩'},
+      {en:'chicken leg',tr:'Tavuk Budu',      emoji:'🍗'},
+      {en:'croissant', tr:'Kroasan',         emoji:'🥐'},
+      {en:'pretzel',   tr:'Simit',           emoji:'🥨'},
+      {en:'salt',      tr:'Tuz',             emoji:'🧂'},
+      {en:'butter',    tr:'Tereyağı',        emoji:'🧈'},
     ]
   },
   nature: {
@@ -779,6 +830,21 @@ const CATEGORIES = {
       {en:'lightning', tr:'Şimşek',    emoji:'⚡'},
       {en:'leaf',      tr:'Yaprak',    emoji:'🍃'},
       {en:'mushroom',  tr:'Mantar',    emoji:'🍄'},
+      {en:'rose',      tr:'Gül',       emoji:'🌹'},
+      {en:'sunflower', tr:'Ayçiçeği',  emoji:'🌻'},
+      {en:'tulip',     tr:'Lale',      emoji:'🌷'},
+      {en:'cactus',    tr:'Kaktüs',    emoji:'🌵'},
+      {en:'palm tree', tr:'Palmiye',   emoji:'🌴'},
+      {en:'green leaf',tr:'Yaprak',    emoji:'🌿'},
+      {en:'wind',      tr:'Rüzgar',    emoji:'💨'},
+      {en:'island',    tr:'Ada',       emoji:'🏝️'},
+      {en:'volcano',   tr:'Yanardağ',  emoji:'🌋'},
+      {en:'earth',     tr:'Dünya',     emoji:'🌍'},
+      {en:'comet',     tr:'Kuyruklu Yıldız',emoji:'☄️'},
+      {en:'drop',      tr:'Su Damlası',emoji:'💧'},
+      {en:'shell',     tr:'Deniz Kabuğu',emoji:'🐚'},
+      {en:'forest',    tr:'Orman',     emoji:'🌲'},
+      {en:'snow mountain',tr:'Karlı Dağ',emoji:'🏔️'},
     ]
   },
   objects: {
@@ -799,6 +865,21 @@ const CATEGORIES = {
       {en:'umbrella',  tr:'Şemsiye',          emoji:'☂️'},
       {en:'hat',       tr:'Şapka',            emoji:'🎩'},
       {en:'balloon',   tr:'Balon',            emoji:'🎈'},
+      {en:'train',     tr:'Tren',             emoji:'🚂'},
+      {en:'boat',      tr:'Tekne',            emoji:'⛵'},
+      {en:'truck',     tr:'Kamyon',           emoji:'🚚'},
+      {en:'helicopter',tr:'Helikopter',       emoji:'🚁'},
+      {en:'rocket',    tr:'Roket',            emoji:'🚀'},
+      {en:'backpack',  tr:'Sırt Çantası',     emoji:'🎒'},
+      {en:'scissors',  tr:'Makas',            emoji:'✂️'},
+      {en:'radio',     tr:'Radyo',            emoji:'📻'},
+      {en:'present',   tr:'Hediye',           emoji:'🎁'},
+      {en:'toy',       tr:'Oyuncak',          emoji:'🧸'},
+      {en:'crown',     tr:'Taç',              emoji:'👑'},
+      {en:'ring',      tr:'Yüzük',            emoji:'💍'},
+      {en:'box',       tr:'Kutu',             emoji:'📦'},
+      {en:'bulb',      tr:'Ampul',            emoji:'💡'},
+      {en:'magnet',    tr:'Mıknatıs',         emoji:'🧲'},
     ]
   },
   colors: {
@@ -814,6 +895,16 @@ const CATEGORIES = {
       {en:'black',  tr:'Siyah',      emoji:'⬛'},
       {en:'pink',   tr:'Pembe',      emoji:'💗'},
       {en:'brown',  tr:'Kahverengi', emoji:'🟫'},
+      {en:'gold',   tr:'Altın',      emoji:'🪙'},
+      {en:'silver', tr:'Gümüş',      emoji:'🥈'},
+      {en:'rainbow',tr:'Gökkuşağı',  emoji:'🌈'},
+      {en:'red heart',tr:'Kırmızı Kalp',emoji:'❤️'},
+      {en:'blue heart',tr:'Mavi Kalp',  emoji:'💙'},
+      {en:'green heart',tr:'Yeşil Kalp',emoji:'💚'},
+      {en:'yellow heart',tr:'Sarı Kalp',emoji:'💛'},
+      {en:'purple heart',tr:'Mor Kalp', emoji:'💜'},
+      {en:'orange heart',tr:'Turuncu Kalp',emoji:'🧡'},
+      {en:'black heart',tr:'Siyah Kalp',emoji:'🖤'},
     ]
   },
   numbers: {
@@ -829,6 +920,16 @@ const CATEGORIES = {
       {en:'eight', tr:'Sekiz', emoji:'8️⃣'},
       {en:'nine',  tr:'Dokuz', emoji:'9️⃣'},
       {en:'ten',   tr:'On',    emoji:'🔟'},
+      {en:'zero',  tr:'Sıfır', emoji:'0️⃣'},
+      {en:'plus',  tr:'Artı',  emoji:'➕'},
+      {en:'minus', tr:'Eksi',  emoji:'➖'},
+      {en:'multiply',tr:'Çarpı', emoji:'✖️'},
+      {en:'divide',tr:'Bölme',   emoji:'➗'},
+      {en:'hash',  tr:'Kare',    emoji:'#️⃣'},
+      {en:'chart', tr:'Grafik',  emoji:'📈'},
+      {en:'abacus',tr:'Abaküs',  emoji:'🧮'},
+      {en:'ruler', tr:'Cetvel',  emoji:'📏'},
+      {en:'triangle',tr:'Üçgen', emoji:'🔺'},
     ]
   },
   body: {
@@ -844,9 +945,18 @@ const CATEGORIES = {
       {en:'tooth', tr:'Diş',   emoji:'🦷'},
       {en:'brain', tr:'Beyin', emoji:'🧠'},
       {en:'bone',  tr:'Kemik', emoji:'🦴'},
+      {en:'tongue',tr:'Dil',   emoji:'👅'},
+      {en:'finger',tr:'Parmak',emoji:'👉'},
+      {en:'leg',   tr:'Bacak', emoji:'🦵'},
+      {en:'arm',   tr:'Kol',   emoji:'💪'},
+      {en:'hair',  tr:'Saç',   emoji:'💇'},
+      {en:'face',  tr:'Yüz',   emoji:'👤'},
+      {en:'kiss',  tr:'Öpücük',emoji:'💋'},
+      {en:'skull', tr:'Kafatası',emoji:'💀'},
+      {en:'fist',  tr:'Yumruk',emoji:'✊'},
+      {en:'handshake',tr:'Tokalaşma',emoji:'🤝'},
     ]
   },
-  /* ── NEW CATEGORIES ── */
   clothes: {
     name:'Kıyafetler', emoji:'👗', color:'linear-gradient(135deg,#e879f9,#c084fc)',
     words:[
@@ -862,6 +972,18 @@ const CATEGORIES = {
       {en:'boots',   tr:'Bot',      emoji:'👢'},
       {en:'glasses', tr:'Gözlük',   emoji:'👓'},
       {en:'tie',     tr:'Kravat',   emoji:'👔'},
+      {en:'sweater', tr:'Kazak',    emoji:'🧶'},
+      {en:'swimsuit',tr:'Mayo',     emoji:'🩱'},
+      {en:'shorts',  tr:'Şort',     emoji:'🩳'},
+      {en:'crown',   tr:'Taç',      emoji:'👑'},
+      {en:'purse',   tr:'Çanta',    emoji:'👛'},
+      {en:'ring',    tr:'Yüzük',    emoji:'💍'},
+      {en:'watch',   tr:'Saat',     emoji:'⌚'},
+      {en:'umbrella',tr:'Şemsiye',  emoji:'☂️'},
+      {en:'mask',    tr:'Maske',    emoji:'😷'},
+      {en:'sleep',   tr:'Pijama',   emoji:'💤'},
+      {en:'backpack',tr:'Sırt Çantası',emoji:'🎒'},
+      {en:'coat',    tr:'Palto',    emoji:'🧥'},
     ]
   },
   family: {
@@ -877,6 +999,16 @@ const CATEGORIES = {
       {en:'friend',  tr:'Arkadaş',    emoji:'🤝'},
       {en:'teacher', tr:'Öğretmen',    emoji:'👩‍🏫'},
       {en:'family',  tr:'Aile',       emoji:'👨‍👩‍👧'},
+      {en:'woman',   tr:'Kadın',       emoji:'👩'},
+      {en:'man',     tr:'Adam',        emoji:'👨'},
+      {en:'girl',    tr:'Kız Çocuk',   emoji:'👧'},
+      {en:'boy',     tr:'Erkek Çocuk',  emoji:'👦'},
+      {en:'home',    tr:'Ev',          emoji:'🏠'},
+      {en:'love',    tr:'Sevgi',       emoji:'❤️'},
+      {en:'hug',     tr:'Sarılma',     emoji:'🫂'},
+      {en:'daughter',tr:'Kız Evlat',   emoji:'👧'},
+      {en:'son',     tr:'Erkek Evlat', emoji:'👦'},
+      {en:'marriage',tr:'Evlilik',     emoji:'💍'},
     ]
   },
   emotions: {
@@ -892,6 +1024,16 @@ const CATEGORIES = {
       {en:'excited',   tr:'Heyecanlı', emoji:'🤩'},
       {en:'shy',       tr:'Utangaç',   emoji:'🙈'},
       {en:'brave',     tr:'Cesur',     emoji:'💪'},
+      {en:'cool',      tr:'Havalı',    emoji:'😎'},
+      {en:'laughing',  tr:'Gülen',     emoji:'😂'},
+      {en:'silly',     tr:'Şakacı',    emoji:'😜'},
+      {en:'sick',      tr:'Hasta',     emoji:'🤒'},
+      {en:'wink',      tr:'Göz Kırpan',emoji:'😉'},
+      {en:'quiet',     tr:'Sessiz',    emoji:'🤫'},
+      {en:'crying',    tr:'Ağlayan',   emoji:'😭'},
+      {en:'thinking',  tr:'Düşünen',   emoji:'🤔'},
+      {en:'love',      tr:'Aşık',      emoji:'😍'},
+      {en:'hot',       tr:'Sıcaklamış',emoji:'🥵'},
     ]
   },
   jobs: {
@@ -900,7 +1042,7 @@ const CATEGORIES = {
       {en:'doctor',      tr:'Doktor',     emoji:'👨‍⚕️'},
       {en:'teacher',     tr:'Öğretmen',   emoji:'👨‍🏫'},
       {en:'pilot',       tr:'Pilot',      emoji:'👨‍✈️'},
-      {en:'firefighter', tr:'İtfaiyeci',  emoji:'👨‍🚒'},
+      {en:'firefighter', tr:'İtfaiyeci',  emoji:'👨‍打'},
       {en:'police',      tr:'Polis',      emoji:'👮'},
       {en:'farmer',      tr:'Çiftçi',     emoji:'👨‍🌾'},
       {en:'cook',        tr:'Aşçı',       emoji:'👨‍🍳'},
@@ -909,6 +1051,18 @@ const CATEGORIES = {
       {en:'astronaut',   tr:'Astronot',   emoji:'👨‍🚀'},
       {en:'scientist',   tr:'Bilim İnsanı',emoji:'🔬'},
       {en:'dancer',      tr:'Dansçı',     emoji:'💃'},
+      {en:'builder',     tr:'İnşaatçı',   emoji:'👷'},
+      {en:'detective',   tr:'Dedektif',   emoji:'🕵️'},
+      {en:'judge',       tr:'Hakim',      emoji:'⚖️'},
+      {en:'writer',      tr:'Yazar',      emoji:'✍️'},
+      {en:'barber',      tr:'Berber',     emoji:'💈'},
+      {en:'postman',     tr:'Postacı',    emoji:'✉️'},
+      {en:'soldier',     tr:'Asker',      emoji:'🪖'},
+      {en:'mechanic',    tr:'Tamirci',    emoji:'🔧'},
+      {en:'dentist',     tr:'Diş Hekimi', emoji:'🪥'},
+      {en:'programmer',  tr:'Yazılımcı',  emoji:'💻'},
+      {en:'diver',       tr:'Dalgıç',     emoji:'🤿'},
+      {en:'photographer',tr:'Fotoğrafçı', emoji:'📷'},
     ]
   },
   weather: {
@@ -924,6 +1078,16 @@ const CATEGORIES = {
       {en:'stormy',  tr:'Fırtınalı',  emoji:'⛈️'},
       {en:'foggy',   tr:'Sisli',      emoji:'🌫️'},
       {en:'rainbow', tr:'Gökkuşağı',  emoji:'🌈'},
+      {en:'umbrella',tr:'Şemsiye',    emoji:'☔'},
+      {en:'lightning',tr:'Şimşek',    emoji:'⚡'},
+      {en:'thermometer',tr:'Termometre',emoji:'🌡️'},
+      {en:'snowflake',tr:'Kar Tanesi', emoji:'❄️'},
+      {en:'sun face', tr:'Güneş',      emoji:'🌞'},
+      {en:'full moon',tr:'Dolunay',    emoji:'🌕'},
+      {en:'tornado',  tr:'Hortum',     emoji:'🌪️'},
+      {en:'drop',     tr:'Su Damlası', emoji:'💧'},
+      {en:'star',     tr:'Yıldız',     emoji:'⭐'},
+      {en:'sky',      tr:'Gökyüzü',    emoji:'🌌'},
     ]
   },
   sports: {
@@ -941,6 +1105,18 @@ const CATEGORIES = {
       {en:'skating',    tr:'Paten',      emoji:'⛸️'},
       {en:'skiing',     tr:'Kayak',      emoji:'⛷️'},
       {en:'boxing',     tr:'Boks',       emoji:'🥊'},
+      {en:'golf',       tr:'Golf',       emoji:'⛳'},
+      {en:'baseball',   tr:'Beyzbol',    emoji:'⚾'},
+      {en:'volleyball', tr:'Voleybol',   emoji:'🏐'},
+      {en:'table tennis',tr:'Masa Tenisi',emoji:'🏓'},
+      {en:'badminton',  tr:'Badminton',  emoji:'🏸'},
+      {en:'archery',    tr:'Okçuluk',    emoji:'🏹'},
+      {en:'trophy',     tr:'Kupa',       emoji:'🏆'},
+      {en:'medal',      tr:'Madalya',    emoji:'🏅'},
+      {en:'target',     tr:'Hedef',      emoji:'🎯'},
+      {en:'skateboard', tr:'Kaykay',     emoji:'🛹'},
+      {en:'surf',       tr:'Sörf',       emoji:'🏄'},
+      {en:'bowling',    tr:'Bowling',    emoji:'🎳'},
     ]
   },
   music: {
@@ -956,6 +1132,16 @@ const CATEGORIES = {
       {en:'bell',       tr:'Zil',       emoji:'🔔'},
       {en:'saxophone',  tr:'Saksafon',  emoji:'🎷'},
       {en:'banjo',      tr:'Banjo',     emoji:'🪕'},
+      {en:'headphones', tr:'Kulaklık',   emoji:'🎧'},
+      {en:'speaker',    tr:'Hoparlör',   emoji:'🔊'},
+      {en:'disc',       tr:'CD',        emoji:'💿'},
+      {en:'radio',      tr:'Radyo',     emoji:'📻'},
+      {en:'note',       tr:'Müzik Notası',emoji:'🎵'},
+      {en:'notes',      tr:'Müzik Notaları',emoji:'🎶'},
+      {en:'cassette',   tr:'Kaset',     emoji:' cassette 📼'},
+      {en:'applause',   tr:'Alkış',     emoji:'👏'},
+      {en:'stage',      tr:'Sahne',     emoji:'🎭'},
+      {en:'guitarist',  tr:'Gitarist',  emoji:'🎸'},
     ]
   },
   home: {
@@ -973,6 +1159,18 @@ const CATEGORIES = {
       {en:'shower',     tr:'Duş',       emoji:'🚿'},
       {en:'candle',     tr:'Mum',       emoji:'🕯️'},
       {en:'radio',      tr:'Radyo',     emoji:'📻'},
+      {en:'key',        tr:'Anahtar',   emoji:'🔑'},
+      {en:'house',      tr:'Ev',        emoji:'🏠'},
+      {en:'clock',      tr:'Saat',      emoji:'⏰'},
+      {en:'telephone',  tr:'Telefon',   emoji:'☎️'},
+      {en:'book',       tr:'Kitap',     emoji:'📖'},
+      {en:'paint',      tr:'Boya',      emoji:'🎨'},
+      {en:'cup',        tr:'Fincan',    emoji:'☕'},
+      {en:'spoon',      tr:'Kaşık',     emoji:'🔑'},
+      {en:'fork',       tr:'Çatal',     emoji:'🍴'},
+      {en:'knife',      tr:'Bıçak',     emoji:'🔪'},
+      {en:'bin',        tr:'Çöp Kutusu',emoji:'🗑️'},
+      {en:'flower',     tr:'Çiçek',     emoji:'🌸'},
     ]
   },
 };
@@ -1208,9 +1406,11 @@ function loadWord() {
   // Show English word
   document.getElementById('wordDisplay').textContent = w.en.toUpperCase();
 
-  // Choices: correct + 2 random distractors
-  const allWords = Object.values(CATEGORIES).flatMap(c => c.words);
-  const pool = shuffle(allWords.filter(x => x.emoji !== w.emoji));
+  // Choices: correct + 2 random distractors from the same category
+  const distractorPool = (currentCatKey === 'random') 
+    ? Object.values(CATEGORIES).flatMap(c => c.words)
+    : currentCatInfo.words;
+  const pool = shuffle(distractorPool.filter(x => x.emoji !== w.emoji));
   const choices = shuffle([w, pool[0], pool[1]]);
 
   const grid = document.getElementById('choicesGrid');

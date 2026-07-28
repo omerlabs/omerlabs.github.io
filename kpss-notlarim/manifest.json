@@ -1,0 +1,32 @@
+{
+  "name": "Fiş Kutusu KPSS Notları",
+  "short_name": "KPSS Notları",
+  "description": "Tomboy Notes ile tutulan 985 adet birbirine bağlantılı KPSS çalışma notu arşivi.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#2b211a",
+  "theme_color": "#201812",
+  "categories": ["education", "reference"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

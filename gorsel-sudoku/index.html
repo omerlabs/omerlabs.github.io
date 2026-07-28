@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ada'nın Sudoku Dünyası ✨</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ec4899">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ada Sudoku">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800;900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -353,6 +359,52 @@ body {
 .menu-btn:hover { background:var(--t-cell); }
 
 #fwCanvas { position:fixed; inset:0; pointer-events:none; z-index:9998; }
+
+/* PWA INSTALL BUTTON */
+#pwaInstallContainer {
+  display: none;
+  justify-content: center;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 500px;
+}
+.pwa-install-btn {
+  background: linear-gradient(135deg, var(--t-accent), var(--t-accent2));
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 900;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--t-glow);
+  transition: transform .2s var(--ease-spring), box-shadow .2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulseInstall 2.2s infinite ease-in-out;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.pwa-install-btn:hover {
+  transform: scale(1.06) rotate(-1deg);
+  box-shadow: 0 8px 24px var(--t-glow);
+}
+.pwa-install-btn:active {
+  transform: scale(0.96);
+}
+.pwa-install-btn svg {
+  animation: bounceSvg 1s infinite alternate;
+}
+@keyframes pulseInstall {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes bounceSvg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3px); }
+}
 </style>
 </head>
 <body>
@@ -408,6 +460,18 @@ body {
   <div class="size-toggle">
     <button class="size-btn active" id="btn4x4" onclick="setSize(4)">⊞ 4×4 Kolay</button>
     <button class="size-btn"        id="btn6x6" onclick="setSize(6)">⊞ 6×6 Zor</button>
+  </div>
+
+  <!-- PWA Yükle Butonu -->
+  <div id="pwaInstallContainer">
+    <button id="pwaInstallBtn" class="pwa-install-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Uygulamayı Yükle
+    </button>
   </div>
 
   <div class="sel-section-lbl">🎨 Tema Seç</div>
@@ -953,6 +1017,58 @@ function startFireworks(){
     if(!fireworksRunning){ clearInterval(fwTimer); return; }
     spawnFW(); if(Math.random()<.4) spawnFW();
   },380);
+}
+
+/* ══════════════════════════════════════════
+   PWA SERVICE WORKER & INSTALLATION
+   ══════════════════════════════════════════ */
+// 1. Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => console.log('Service Worker registered successfully:', reg.scope))
+      .catch((err) => console.error('Service Worker registration failed:', err));
+  });
+}
+
+// 2. Custom PWA Installation Logic
+let deferredPrompt = null;
+const pwaContainer = document.getElementById('pwaInstallContainer');
+const pwaBtn = document.getElementById('pwaInstallBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (pwaContainer) {
+    pwaContainer.style.display = 'flex';
+  }
+});
+
+if (pwaBtn) {
+  pwaBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User choice outcome: ${outcome}`);
+    deferredPrompt = null;
+    if (pwaContainer) {
+      pwaContainer.style.display = 'none';
+    }
+  });
+}
+
+window.addEventListener('appinstalled', (e) => {
+  console.log('App was successfully installed on user device!');
+  deferredPrompt = null;
+  if (pwaContainer) {
+    pwaContainer.style.display = 'none';
+  }
+});
+
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+  if (pwaContainer) {
+    pwaContainer.style.display = 'none';
+  }
 }
 
 // Startup particles

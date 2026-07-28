@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terazi Dengesi ⚖️</title>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Terazi Dengesi">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#e07800">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -195,6 +201,103 @@ body{
   cursor:pointer;background:transparent;color:var(--muted);transition:all .15s;
 }
 .resume-btn:hover{color:var(--accent);border-color:var(--accent);}
+
+/* PWA Install Banner */
+.pwa-install-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(150%);
+  width: calc(100% - 32px);
+  max-width: 480px;
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 24px;
+  box-shadow: 0 12px 36px rgba(224, 120, 0, 0.16);
+  padding: 16px 20px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+.pwa-install-banner.show {
+  transform: translateX(-50%) translateY(0);
+}
+.pwa-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pwa-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.pwa-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pwa-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.pwa-subtitle {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+.pwa-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(224,120,0,0.25);
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.pwa-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(224,120,0,0.35);
+}
+.pwa-btn:active {
+  transform: scale(0.98);
+}
+.pwa-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--border);
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  transition: all 0.15s;
+}
+.pwa-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.1);
+}
 </style>
 </head>
 <body>
@@ -761,6 +864,83 @@ function playWin() {
 }
 
 startGame(0);
+</script>
+
+<!-- PWA Install Banner -->
+<div id="pwaBanner" class="pwa-install-banner">
+  <button id="pwaCloseBtn" class="pwa-close" aria-label="Kapat">&times;</button>
+  <div class="pwa-info">
+    <img src="icon-192.png" alt="Terazi Dengesi" class="pwa-icon">
+    <div class="pwa-text">
+      <span class="pwa-title">Terazi Dengesi</span>
+      <span class="pwa-subtitle">Telefonuna yükle, internetsiz oyna!</span>
+    </div>
+  </div>
+  <button id="pwaInstallBtn" class="pwa-btn">Yükle</button>
+</div>
+
+<script>
+let deferredPrompt;
+const pwaBanner = document.getElementById('pwaBanner');
+const installBtn = document.getElementById('pwaInstallBtn');
+const closeBtn = document.getElementById('pwaCloseBtn');
+
+// Register Service Worker for offline capability
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+      .catch(err => console.error('Service Worker registration failed:', err));
+  });
+}
+
+// Capture browser's native install prompt trigger
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the default browser-driven install dialog
+  e.preventDefault();
+  // Keep the trigger event for later click invocation
+  deferredPrompt = e;
+  
+  // Show our custom banner if the user hasn't dismissed it in the past 24 hours
+  const dismissedTime = localStorage.getItem('pwa_dismissed_time');
+  const now = Date.now();
+  const oneDay = 24 * 60 * 60 * 1000;
+  
+  if (!dismissedTime || (now - dismissedTime > oneDay)) {
+    // Animate banner entry
+    setTimeout(() => {
+      pwaBanner.classList.add('show');
+    }, 1500); // Small delay so page is fully visible first
+  }
+});
+
+// Trigger native PWA installation dialog on click
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  // Trigger prompt
+  deferredPrompt.prompt();
+  // Await decision
+  const { outcome } = await deferredPrompt.userChoice;
+  console.log(`User installation choice: ${outcome}`);
+  // Nullify deferred prompt since it can only be run once
+  deferredPrompt = null;
+  // Hide banner
+  pwaBanner.classList.remove('show');
+});
+
+// Close button functionality
+closeBtn.addEventListener('click', () => {
+  pwaBanner.classList.remove('show');
+  // Store the timestamp when the user dismissed the install banner
+  localStorage.setItem('pwa_dismissed_time', Date.now().toString());
+});
+
+// Handle successful installation callback
+window.addEventListener('appinstalled', (evt) => {
+  console.log('App was successfully installed on the system.');
+  pwaBanner.classList.remove('show');
+  deferredPrompt = null;
+});
 </script>
 </body>
 </html>
