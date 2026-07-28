@@ -64,13 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnGaBackToHome = document.getElementById("btn-ga-back-to-home");
     const btnPrevQuestion = document.getElementById("btn-prev-question");
     const btnNextQuestion = document.getElementById("btn-next-question");
+    const btnNextQuestionFooter = document.getElementById("btn-next-question-footer");
     const gaQuestionSelect = document.getElementById("ga-question-select");
     const gaQuestionInput = document.getElementById("ga-question-input");
     const gaProgressNumber = document.getElementById("ga-progress-number");
     const gaParagraphText = document.getElementById("ga-paragraph-text");
     const gaParagraphSource = document.getElementById("ga-paragraph-source");
     const universeSymbolsContainer = document.getElementById("universe-symbols-container");
-    const gaFeedbackBar = document.getElementById("ga-feedback-bar");
 
     /* ==========================================================================
        INITIALIZATION
@@ -353,11 +353,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function renderUniverseSymbols() {
+    function renderUniverseSymbols(customSymbols) {
         universeSymbolsContainer.innerHTML = "";
-        universeSymbols.forEach(symbol => {
+        
+        if (!customSymbols) {
+            const prompt = document.createElement("p");
+            prompt.className = "select-blank-prompt";
+            prompt.textContent = "Seçenekleri görmek için metindeki bir boşluğa tıklayın.";
+            universeSymbolsContainer.appendChild(prompt);
+            return;
+        }
+
+        customSymbols.forEach(symbol => {
             const btn = document.createElement("button");
-            btn.className = "universe-symbol-btn";
+            btn.className = "universe-symbol-btn animate-fade-in";
             btn.textContent = symbol;
             
             btn.addEventListener("click", () => {
@@ -368,13 +377,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function renderSuccessMessage() {
+        universeSymbolsContainer.innerHTML = "";
+        const prompt = document.createElement("p");
+        prompt.className = "select-blank-prompt success-prompt animate-fade-in";
+        prompt.innerHTML = '🎉 <span style="font-weight: 600; color: #10B981;">Harika!</span> Tüm noktalama işaretlerini doğru yerleştirdiniz.';
+        universeSymbolsContainer.appendChild(prompt);
+    }
+
     function loadParagraph(qIndex) {
         state.activeParagraphIndex = qIndex;
         const paragraph = generalActivityData[qIndex];
         if (!paragraph) return;
 
         // Reset UI status
-        gaFeedbackBar.classList.add("hidden");
         state.activeBlankIndex = null;
         state.currentParagraphBlanks = [];
 
@@ -437,6 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check if paragraph was solved before in user session
         // (Optional: we can save session progress. Let's make it fully responsive)
+        renderUniverseSymbols();
     }
 
     function setActiveBlank(index) {
@@ -452,6 +469,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (blank && !blank.solved) {
             state.activeBlankIndex = index;
             blank.element.classList.add("active");
+            
+            // Choose 6 options (correct + 5 random)
+            const correct = blank.correctSymbol;
+            const otherSymbols = universeSymbols.filter(s => s !== correct);
+            const shuffledOthers = [...otherSymbols].sort(() => 0.5 - Math.random());
+            const selectedOthers = shuffledOthers.slice(0, 5);
+            const options = [correct, ...selectedOthers];
+            const shuffledOptions = options.sort(() => 0.5 - Math.random());
+            
+            renderUniverseSymbols(shuffledOptions);
         }
     }
 
@@ -476,13 +503,15 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Clear current active selection
             state.activeBlankIndex = null;
-
+            
             // Check if all blanks solved in this paragraph
             const allSolved = state.currentParagraphBlanks.every(b => b.solved);
             if (allSolved) {
-                gaFeedbackBar.classList.remove("hidden");
                 state.userProgress.solvedParagraphs.add(generalActivityData[state.activeParagraphIndex].id);
                 updateGlobalProgress();
+                renderSuccessMessage();
+            } else {
+                renderUniverseSymbols(); // Show placeholder prompt
             }
         } else {
             // Incorrect Answer
@@ -553,6 +582,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         btnNextQuestion.addEventListener("click", () => {
+            navigateQuestion(1);
+        });
+
+        btnNextQuestionFooter.addEventListener("click", () => {
             navigateQuestion(1);
         });
 

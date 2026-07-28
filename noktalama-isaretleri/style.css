@@ -1028,17 +1028,29 @@ body {
     box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
+/* Merged Paragraph Footer Layout */
 .paragraph-footer {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    justify-content: space-between;
+    gap: 1.5rem;
     border-top: 1px solid var(--border-color);
-    padding-top: 1.2rem;
+    padding-top: 1rem;
     margin-top: auto;
+    min-height: 6rem;
+}
+
+.source-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .source-icon {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 #ga-paragraph-source {
@@ -1046,82 +1058,197 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 500;
     color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-/* Punctuation Universe panel */
-.universe-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.panel-header h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
-    margin-bottom: 0.2rem;
-}
-
-.panel-header p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .universe-symbols {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-wrap: nowrap;
+    gap: 0.8rem;
     justify-content: center;
+    align-items: center;
 }
 
-.universe-symbol-btn {
-    width: 3.5rem;
-    height: 3.5rem;
+/* Redefine button sizes for compact footer */
+.universe-symbols .universe-symbol-btn {
+    width: 3.8rem !important;
+    height: 3.8rem !important;
+    font-size: 1.8rem !important;
+    border-radius: 12px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
-    font-weight: bold;
-    border-radius: 12px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
     transition: var(--transition-bounce);
 }
 
-.universe-symbol-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-3px);
+.universe-symbols .universe-symbol-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-3px) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
 }
 
-.universe-symbol-btn:disabled {
+.universe-symbols .universe-symbol-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
 }
 
-/* Feedback bar inside general activity */
-.question-feedback-bar {
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    padding: 1.2rem;
-    border-radius: 12px;
+.universe-symbols .select-blank-prompt {
+    font-size: 1rem !important;
+    padding: 0.8rem 1.5rem !important;
+    margin: 0 !important;
+    width: auto !important;
+    border-radius: 8px !important;
+    opacity: 0.75;
+}
+
+.footer-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    animation: slideUp 0.3s ease;
+    justify-content: flex-end;
 }
 
-.feedback-emoji {
-    font-size: 1.5rem;
-}
-
-.feedback-text {
+.footer-next-btn {
+    background: var(--gradient-primary);
+    border: none;
+    color: white;
+    padding: 0.8rem 1.5rem;
     font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
     font-weight: 600;
-    color: var(--correct-color);
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: var(--neon-glow-primary);
+}
+
+.footer-next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+.footer-next-btn:active {
+    transform: translateY(0);
+}
+
+.select-blank-prompt {
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.7;
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.25s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Compact Header Navigation controls */
+#header-nav-ga {
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.ga-header-nav-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.3rem;
+    border-radius: 8px;
+    margin-left: 0.5rem;
+}
+
+.compact-btn {
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: unset !important;
+    padding: 0 !important;
+    font-size: 1rem !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.compact-btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.compact-select {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.85rem !important;
+    height: 2rem !important;
+    border-radius: 6px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.compact-input {
+    width: 3.2rem !important;
+    height: 2rem !important;
+    padding: 0.25rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.compact-input::-webkit-outer-spin-button,
+.compact-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.compact-indicator {
+    font-size: 0.85rem;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin: 0 0.5rem;
+    white-space: nowrap;
+}
+
+/* Success prompt override */
+.success-prompt {
+    background: rgba(16, 185, 129, 0.05) !important;
+    border: 1px dashed rgba(16, 185, 129, 0.2) !important;
+    color: var(--text-primary) !important;
 }
 
 /* ==========================================================================
@@ -1258,5 +1385,51 @@ body {
         height: 2.8rem;
         font-size: 1.3rem;
         border-radius: 8px;
+    }
+
+    .paragraph-footer {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: stretch;
+        min-height: auto;
+        padding-top: 1.5rem;
+    }
+
+    .source-info {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+    .universe-symbols {
+        width: 100% !important;
+    }
+
+    .universe-symbols .universe-symbol-btn {
+        width: 2.8rem !important;
+        height: 2.8rem !important;
+        font-size: 1.3rem !important;
+        border-radius: 8px !important;
+    }
+
+    .universe-symbols .select-blank-prompt {
+        font-size: 0.85rem !important;
+        padding: 0.6rem 1rem !important;
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .footer-actions {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center;
+    }
+    
+    .footer-next-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
     }
 }

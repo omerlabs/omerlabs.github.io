@@ -38,24 +38,30 @@
                             <h2 id="detail-mark-name">Nokta</h2>
                         </div>
                     </div>
-
-                    <!-- General Activity Header Content -->
-                    <div id="header-nav-ga" class="header-dynamic-nav hidden">
-                        <button class="back-btn" id="btn-ga-back-to-home">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                            Ana Sayfa
-                        </button>
-                        <div class="ga-title-area">
-                            <h2>Edebi Paragraf Pratiği</h2>
-                            <span class="ga-sub-badge">Boşlukları Doldur</span>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="header-stats">
-                <div class="stat-badge">
-                    <span class="stat-label">Toplam İlerleme:</span>
-                    <span id="global-progress-text" class="stat-value">0%</span>
+            
+            <div class="header-nav-right-area">
+                <!-- Keep global progress text hidden for DOM reference safety -->
+                <span id="global-progress-text" style="display: none;">0%</span>
+
+                <!-- General Activity Header Navigation Content -->
+                <div id="header-nav-ga" class="header-dynamic-nav hidden">
+                    <button class="back-btn" id="btn-ga-back-to-home">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Ana Sayfa
+                    </button>
+                    
+                    <div class="ga-header-nav-group">
+                        <button class="nav-control-btn compact-btn" id="btn-prev-question" title="Önceki Soru">←</button>
+                        <select id="ga-question-select" class="nav-select compact-select">
+                            <!-- Options 1 to 1000 dynamically populated -->
+                        </select>
+                        <button class="nav-control-btn compact-btn" id="btn-next-question" title="Sonraki Soru">→</button>
+                        
+                        <input type="number" id="ga-question-input" min="1" max="1000" class="nav-input compact-input" placeholder="No">
+                        <span class="ga-progress-indicator compact-indicator" id="ga-progress-number">Soru 1 / 1000</span>
+                    </div>
                 </div>
             </div>
         </header>
@@ -70,9 +76,9 @@
                             <div class="hero-content">
                                 <div class="hero-badge">ÖZEL ETKİNLİK</div>
                                 <h2>Edebi Paragraf Pratiği</h2>
-                                <p>Türk edebiyatından 500 seçkin paragraftaki noktalama işaretlerini tamamlayın.</p>
+                                <p>Türk edebiyatından bini geçik seçkin paragraftaki noktalama işaretlerini tamamlayın.</p>
                                 <div class="hero-stats">
-                                    <span id="general-activity-progress">Soru: 0 / 500</span>
+                                    <span id="general-activity-progress">Soru: 0 / 1000</span>
                                 </div>
                             </div>
                             <div class="hero-action">
@@ -158,24 +164,7 @@
         <main id="general-activity-screen" class="screen">
 
 
-            <!-- Navigation Controls -->
-            <div class="ga-nav-bar glass-card">
-                <div class="nav-left">
-                    <button class="nav-control-btn" id="btn-prev-question">← Önceki</button>
-                    <div class="question-selector-area">
-                        <select id="ga-question-select" class="nav-select">
-                            <!-- Options 1 to 100 dynamically populated -->
-                        </select>
-                    </div>
-                    <button class="nav-control-btn" id="btn-next-question">Sonraki →</button>
-                </div>
-                <div class="nav-right">
-                    <div class="keyboard-jump">
-                        <input type="number" id="ga-question-input" min="1" max="600" class="nav-input" placeholder="Soru No">
-                    </div>
-                    <div class="ga-progress-indicator" id="ga-progress-number">Soru 1 / 600</div>
-                </div>
-            </div>
+
 
             <!-- Main Paragraph Area -->
             <div class="ga-content-layout">
@@ -185,20 +174,18 @@
                             <!-- Paragraph text with placeholders like: ... gidiyor<span class="blank" data-index="0">?</span> kapıdan... -->
                         </p>
                     </div>
-                    <div class="paragraph-footer">
-                        <span class="source-icon">📖</span>
-                        <cite id="ga-paragraph-source">Yazar - Kitap</cite>
-                    </div>
-                </div>
 
-                <!-- Punctuation Universe panel -->
-                <div class="universe-panel glass-card">
-                    <div class="universe-symbols" id="universe-symbols-container">
-                        <!-- 13 punctuation symbols -->
-                    </div>
-                    <div class="question-feedback-bar hidden" id="ga-feedback-bar">
-                        <span class="feedback-emoji">🎉</span>
-                        <span class="feedback-text">Harika! Tüm noktalama işaretlerini doğru yerleştirdiniz.</span>
+                    <div class="paragraph-footer">
+                        <div class="source-info">
+                            <span class="source-icon">📖</span>
+                            <cite id="ga-paragraph-source">Yazar - Kitap</cite>
+                        </div>
+                        <div class="universe-symbols" id="universe-symbols-container">
+                            <!-- 6 options dynamically populated -->
+                        </div>
+                        <div class="footer-actions">
+                            <button class="footer-next-btn" id="btn-next-question-footer" title="Sonraki Soru">Sonraki →</button>
+                        </div>
                     </div>
                 </div>
             </div>
