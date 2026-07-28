@@ -118,18 +118,10 @@ export class UIManager {
         touchState.lastMidX = currMidX;
         touchState.lastMidY = currMidY;
 
-        // 2-finger Pinch Zoom centered at finger midpoint
+        // 2-finger Pinch Zoom
         if (touchState.initialDist > 10) {
           const scale = currDist / touchState.initialDist;
-          const nz = clamp(touchState.initialZoom * scale, 0.2, 20);
-
-          const W2 = window.innerWidth / 2, H2 = window.innerHeight / 2;
-          const wx = this.state.cam.x + (currMidX - W2) / this.state.cam.zoom;
-          const wy = this.state.cam.y + (currMidY - H2) / this.state.cam.zoom;
-
-          this.state.zoomTarget = nz;
-          this.state.camTarget.x = wx - (currMidX - W2) / nz;
-          this.state.camTarget.y = wy - (currMidY - H2) / nz;
+          this.state.zoomTarget = clamp(touchState.initialZoom * scale, 0.2, 20);
         }
         this.hideTip();
       }
@@ -151,6 +143,7 @@ export class UIManager {
         touchState.count = 0;
       } else if (e.touches.length === 1) {
         touchState.count = 1;
+        touchState.dragged = true;
         touchState.lastX = e.touches[0].clientX;
         touchState.lastY = e.touches[0].clientY;
       }
