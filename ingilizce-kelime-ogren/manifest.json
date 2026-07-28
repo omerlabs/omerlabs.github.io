@@ -1,6 +1,6 @@
 {
-  "name": "Ada'nın İngilizce Oyunu",
-  "short_name": "Ada English",
+  "name": "WORDS İngilizce Oyunu",
+  "short_name": "WORDS",
   "description": "6 yaş çocuklar için eğlenceli İngilizce kelime öğrenme oyunu. Dinle, seç, öğren!",
   "id": "./index.html",
   "start_url": "./index.html",
