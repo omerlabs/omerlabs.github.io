@@ -1259,9 +1259,15 @@ body {
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
-        max-width: 170px;
+        max-width: 210px;
         display: inline-block;
         vertical-align: middle;
+    }
+    /* Widen the company/asset column on desktop */
+    .terminal-table th:nth-child(2),
+    .terminal-table td:nth-child(2) {
+        min-width: 250px;
+        max-width: 320px;
     }
 }
 
