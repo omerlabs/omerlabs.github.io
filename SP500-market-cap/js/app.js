@@ -385,10 +385,12 @@ function setupEventListeners() {
     // Index Info Display Click (Open Index Chart)
     if (elements.indexInfoDisplay) {
         elements.indexInfoDisplay.addEventListener('click', () => {
+            // Use ETF proxies that work reliably with TradingView widget
+            // SP500 → VOO, Nasdaq100 → QQQ, NTTR → QTEC (First Trust Nasdaq-100 Tech Sector ETF)
             const indexSymbolMap = {
-                sp500: 'SP:SPX',
-                nasdaq100: 'NASDAQ:NDX',
-                nttr: 'NASDAQ:NTTR'
+                sp500: 'VOO',
+                nasdaq100: 'QQQ',
+                nttr: 'QTEC'
             };
             const symbol = indexSymbolMap[activeTab];
             if (symbol) {
