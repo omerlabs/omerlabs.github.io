@@ -193,7 +193,7 @@ def fetch_history_batch(yf_tickers):
         print(f"Error during bulk history download: {e}")
         return None
 
-def fetch_single_ticker_info(company, hist_df=None, session=None):
+def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache=None):
     """
     Fetches the metadata (market cap, float, PE) for a single ticker.
     Uses historical dataframe to compute 24h & 7d change, and current price if possible.
@@ -201,6 +201,16 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
     ticker = company["ticker"]
     yf_ticker = company["yf_ticker"]
     
+    # Check cache first
+    if metadata_cache is not None and yf_ticker in metadata_cache:
+        cached_data = metadata_cache[yf_ticker].copy()
+        # Update context-specific fields
+        cached_data["ticker"] = ticker
+        cached_data["name"] = company["name"]
+        cached_data["sector"] = company["sector"]
+        cached_data["subSector"] = company["subSector"]
+        return cached_data
+        
     result = {
         "ticker": ticker,
         "name": company["name"],
@@ -320,9 +330,20 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                 print(f"Error fetching metadata for {yf_ticker}: {e}")
                 break
                 
+    # Save successful result to cache
+    if metadata_cache is not None and result["price"] is not None:
+        metadata_cache[yf_ticker] = {
+            "price": result["price"],
+            "change24h": result["change24h"],
+            "change7d": result["change7d"],
+            "marketCap": result["marketCap"],
+            "pe": result["pe"],
+            "peg": result["peg"]
+        }
+        
     return result
 
-def collect_index_data(index_name, companies, index_ticker, output_path, session):
+def collect_index_data(index_name, companies, index_ticker, output_path, session, global_hist_df, metadata_cache):
     """
     Downloads historical close prices, metadata (market cap, P/E, PEG),
     and computes weights for the given index constituents, then saves to output_path.
@@ -330,19 +351,14 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
     print(f"\n===== Collecting Data for {index_name} ({len(companies)} companies) =====")
     start_time = time.time()
     
-    yf_tickers = [c["yf_ticker"] for c in companies]
-    
-    # 1. Fetch history in batch
-    hist_df = fetch_history_batch(yf_tickers)
-    
-    # 2. Fetch metadata in parallel
+    # Parallel metadata fetching
     print(f"Fetching {index_name} ticker metadata in parallel...")
     results = []
     max_workers = 6
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_company = {
-            executor.submit(fetch_single_ticker_info, company, hist_df, session): company 
+            executor.submit(fetch_single_ticker_info, company, global_hist_df, session, metadata_cache): company 
             for company in companies
         }
         
@@ -511,20 +527,38 @@ def main():
         {"ticker": "XLE", "yf_ticker": "XLE", "name": "Energy Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Energy Index"},
         {"ticker": "QTEC", "yf_ticker": "QTEC", "name": "First Trust Nasdaq-100 Technology Sector Index Fund", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Technology Index"}
     ]
+
+    # Gather all constituents globally to batch download history and run shared caching
+    all_companies = []
+    if sp500_companies:
+        all_companies.extend(sp500_companies)
+    if nasdaq100_companies:
+        all_companies.extend(nasdaq100_companies)
+    all_companies.extend(COMMODITIES_LIST)
+    all_companies.extend(ETFS_LIST)
+    
+    # Get all unique yfinance tickers
+    all_yf_tickers = list(set(c["yf_ticker"] for c in all_companies))
+    
+    # Download history once globally
+    global_hist_df = fetch_history_batch(all_yf_tickers)
+    
+    # Shared metadata cache dictionary
+    metadata_cache = {}
     
     # 4. Collect and save index data
     if sp500_companies:
-        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session)
+        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session, global_hist_df, metadata_cache)
         
     if nasdaq100_companies:
-        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session)
+        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session, global_hist_df, metadata_cache)
         
     if nttr_companies:
-        collect_index_data("NTTR", nttr_companies, "^NTTR", os.path.join(json_dir, "nttr.json"), session)
+        collect_index_data("NTTR", nttr_companies, "^NTTR", os.path.join(json_dir, "nttr.json"), session, global_hist_df, metadata_cache)
         
     # 5. Collect non-stock datasets
-    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session)
-    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session)
+    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session, global_hist_df, metadata_cache)
+    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session, global_hist_df, metadata_cache)
         
     elapsed = time.time() - start_time
     print(f"\nAll index updates completed in {elapsed:.2f} seconds.")

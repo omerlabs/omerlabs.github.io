@@ -907,6 +907,17 @@ body {
     }
 }
 
+/* Last updated timestamp indicator */
+.last-updated-text {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    margin-bottom: 8px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
 /* Search Section layout */
 .search-section {
     margin-top: 24px;

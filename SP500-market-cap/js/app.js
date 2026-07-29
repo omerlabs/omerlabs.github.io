@@ -106,6 +106,11 @@ async function fetchData() {
         dataStore.sp500 = sp500Payload.data || [];
         indexMetadata.sp500 = { price: sp500Payload.indexPrice, change: sp500Payload.indexChangePercent };
         
+        // Update last updated timestamp display using the S&P 500 JSON timestamp
+        if (sp500Payload && sp500Payload.lastUpdated) {
+            updateLastUpdatedUI(sp500Payload.lastUpdated);
+        }
+        
         dataStore.nasdaq100 = nasdaq100Payload.data || [];
         indexMetadata.nasdaq100 = { price: nasdaq100Payload.indexPrice, change: nasdaq100Payload.indexChangePercent };
         
@@ -975,4 +980,37 @@ function triggerHeartBurstAnimation(element) {
     setTimeout(() => {
         container.remove();
     }, 800);
+}
+
+// Function to update last updated time on UI in Turkey Time (TSİ)
+function updateLastUpdatedUI(utcTimeStr) {
+    const el = document.getElementById('last-updated');
+    if (!el || !utcTimeStr) return;
+    
+    try {
+        // Parse UTC time string (e.g., "2026-07-29 12:53:23 UTC")
+        const cleanStr = utcTimeStr.replace(' UTC', '').replace(' ', 'T') + 'Z';
+        const date = new Date(cleanStr);
+        
+        if (isNaN(date.getTime())) {
+            el.textContent = `Son Güncelleme: ${utcTimeStr}`;
+            return;
+        }
+        
+        // Format to Turkey Time (UTC+3)
+        const trTimeStr = date.toLocaleString('tr-TR', {
+            timeZone: 'Europe/Istanbul',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        
+        el.textContent = `Son Güncelleme: ${trTimeStr} (TSİ)`;
+    } catch (e) {
+        console.error("Error formatting date:", e);
+        el.textContent = `Son Güncelleme: ${utcTimeStr}`;
+    }
 }
