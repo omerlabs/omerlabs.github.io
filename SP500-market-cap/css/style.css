@@ -1252,9 +1252,16 @@ body {
     }
     /* Enforce single line display on desktop for table headers and company name texts */
     .terminal-table th,
-    .company-name,
     .ticker-badge-watchlist {
         white-space: nowrap !important;
+    }
+    .company-name {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 170px;
+        display: inline-block;
+        vertical-align: middle;
     }
 }
 

@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=34')
+        navigator.serviceWorker.register('./service-worker.js?v=35')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -793,7 +793,7 @@ function renderTable() {
                         <i class="${isFav ? 'fa-solid fa-heart text-negative' : 'fa-regular fa-heart'}"></i>
                     </button>
                     <div class="cell-company" style="position: relative; cursor: pointer; user-select: none;">
-                        <span class="company-name">${displayName || '--'}</span>
+                        <span class="company-name" title="${item.name || ''}">${displayName || '--'}</span>
                         ${showSubBadge ? `<span class="company-sub"><span class="ticker-badge">${item.ticker}</span></span>` : ''}
                     </div>
                 </div>
