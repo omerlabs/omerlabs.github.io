@@ -93,6 +93,92 @@ def fetch_Sp500_wikipedia(json_dir):
             
     return companies
 
+
+def fetch_nasdaq100_wikipedia(json_dir):
+    """
+    Checks if a cached list of Nasdaq 100 constituents exists and is less than 7 days old.
+    If so, loads it. Otherwise, scrapes Wikipedia and saves the new cache.
+    """
+    cache_path = os.path.join(json_dir, "nasdaq100_constituents.json")
+    use_cache = False
+    companies = []
+    
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cache_data = json.load(f)
+            last_updated_str = cache_data.get("lastUpdated")
+            if last_updated_str:
+                from datetime import datetime, timezone
+                last_updated = datetime.fromisoformat(last_updated_str)
+                now = datetime.now(timezone.utc)
+                age_days = (now - last_updated).days
+                if age_days < 7:
+                    companies = cache_data.get("companies", [])
+                    if companies:
+                        use_cache = True
+                        print(f"Using cached Nasdaq 100 constituents (Age: {age_days} days).")
+        except Exception as e:
+            print(f"Error reading Nasdaq 100 cache: {e}. Will scrape Wikipedia.")
+            
+    if not use_cache:
+        print("Fetching Nasdaq 100 constituents from Wikipedia...")
+        url = "https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+        
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            raise Exception(f"Failed to fetch Wikipedia page: HTTP {response.status_code}")
+            
+        soup = BeautifulSoup(response.text, "html.parser")
+        table = soup.find("table", {"class": "wikitable"})
+        if not table:
+            raise Exception("Could not find the constituents table in the Wikipedia page.")
+            
+        companies = []
+        rows = table.find_all("tr")[1:] # skip headers
+        
+        for row in rows:
+            cols = row.find_all("td")
+            if len(cols) < 4:
+                continue
+                
+            ticker = cols[0].text.strip()
+            name = cols[1].text.strip()
+            sector = cols[2].text.strip()
+            sub_sector = cols[3].text.strip()
+            
+            # yfinance uses '-' instead of '.' for class shares
+            yf_ticker = ticker.replace(".", "-")
+            
+            companies.append({
+                "ticker": ticker,
+                "yf_ticker": yf_ticker,
+                "name": name,
+                "sector": sector,
+                "subSector": sub_sector
+            })
+            
+        print(f"Successfully scraped {len(companies)} Nasdaq 100 companies from Wikipedia.")
+        
+        # Save cache
+        try:
+            from datetime import datetime, timezone
+            cache_payload = {
+                "lastUpdated": datetime.now(timezone.utc).isoformat(),
+                "companies": companies
+            }
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(cache_payload, f, indent=2, ensure_ascii=False)
+            print(f"Saved new Nasdaq 100 constituents cache to {cache_path}")
+        except Exception as e:
+            print(f"Error saving constituents cache: {e}")
+            
+    return companies
+
+
 def fetch_history_batch(yf_tickers):
     """
     Downloads historical close prices in bulk for the given list of tickers
@@ -238,44 +324,29 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                 
     return result
 
-def main():
+def collect_index_data(index_name, companies, index_ticker, output_path, session):
+    """
+    Downloads historical close prices, metadata (market cap, P/E, PEG),
+    and computes weights for the given index constituents, then saves to output_path.
+    """
+    print(f"\n===== Collecting Data for {index_name} ({len(companies)} companies) =====")
     start_time = time.time()
     
-    # Get the parent directory of this script (which is the SP500-market-cap root)
-    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    json_dir = os.path.join(script_dir, "data")
-    os.makedirs(json_dir, exist_ok=True)
-    
-    # 1. Fetch S&P 500 list
-    try:
-        companies = fetch_Sp500_wikipedia(json_dir)
-    except Exception as e:
-        print(f"Critical Error: {e}")
-        return
-        
     yf_tickers = [c["yf_ticker"] for c in companies]
     
-    # 2. Fetch history in batch
+    # 1. Fetch history in batch
     hist_df = fetch_history_batch(yf_tickers)
     
-    # Create persistent session with retries and a custom user agent
-    session = requests.Session()
-    session.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    })
-    from urllib3.util import Retry
-    from requests.adapters import HTTPAdapter
-    retries = Retry(total=5, backoff_factor=1.5, status_forcelist=[429, 500, 502, 503, 504])
-    session.mount('https://', HTTPAdapter(max_retries=retries))
-    
-    # 3. Fetch metadata in parallel using ThreadPoolExecutor
-    print("Fetching ticker metadata in parallel...")
+    # 2. Fetch metadata in parallel
+    print(f"Fetching {index_name} ticker metadata in parallel...")
     results = []
-    max_workers = 6  # reduced workers to be respectful of rate limits
+    max_workers = 6
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit tasks passing the session
-        future_to_company = {executor.submit(fetch_single_ticker_info, company, hist_df, session): company for company in companies}
+        future_to_company = {
+            executor.submit(fetch_single_ticker_info, company, hist_df, session): company 
+            for company in companies
+        }
         
         completed = 0
         total = len(companies)
@@ -286,7 +357,6 @@ def main():
                 results.append(data)
             except Exception as exc:
                 print(f"{company['ticker']} generated an exception: {exc}")
-                # Append blank structure
                 results.append({
                     "ticker": company["ticker"],
                     "name": company["name"],
@@ -305,12 +375,11 @@ def main():
             completed += 1
             if completed % 50 == 0 or completed == total:
                 print(f"Metadata progress: {completed}/{total} fetched...")
-
-    # 4. Clean up results and compute weights
-    # Calculate S&P 500 Weight
+                
+    # 3. Calculate weights based on market cap
     valid_market_caps = [r["marketCap"] for r in results if r["marketCap"] is not None]
     total_market_cap = sum(valid_market_caps)
-    print(f"Total computed S&P 500 Market Cap: ${total_market_cap:,.2f}")
+    print(f"Total computed {index_name} Market Cap: ${total_market_cap:,.2f}")
     
     # Sort results by market cap descending
     results.sort(key=lambda x: x["marketCap"] if x["marketCap"] is not None else -1, reverse=True)
@@ -318,7 +387,6 @@ def main():
     final_data = []
     rank = 1
     for r in results:
-        # Calculate weight
         weight = 0.0
         if r["marketCap"] is not None and total_market_cap > 0:
             weight = round((r["marketCap"] / total_market_cap) * 100, 3)
@@ -328,24 +396,24 @@ def main():
         rank += 1
         final_data.append(r)
         
-    # Fetch S&P 500 index price & change
-    print("Fetching S&P 500 index price (^GSPC)...")
+    # 4. Fetch Index price & change
+    print(f"Fetching index price for {index_ticker}...")
     index_price = None
     index_change = None
     try:
-        gspc = yf.Ticker("^GSPC", session=session)
-        gspc_info = gspc.info
-        if gspc_info:
-            index_price = gspc_info.get("currentPrice") or gspc_info.get("regularMarketPrice") or gspc_info.get("previousClose")
-            index_change = gspc_info.get("regularMarketChangePercent")
-        
+        idx_ticker = yf.Ticker(index_ticker, session=session)
+        idx_info = idx_ticker.info
+        if idx_info:
+            index_price = idx_info.get("currentPrice") or idx_info.get("regularMarketPrice") or idx_info.get("previousClose")
+            index_change = idx_info.get("regularMarketChangePercent")
+            
         # fallback
         if index_price is None or index_change is None:
-            gspc_hist = gspc.history(period="2d")
-            if len(gspc_hist) >= 1:
-                index_price = round(float(gspc_hist["Close"].iloc[-1]), 2)
-            if len(gspc_hist) >= 2:
-                prev = float(gspc_hist["Close"].iloc[-2])
+            idx_hist = idx_ticker.history(period="2d")
+            if len(idx_hist) >= 1:
+                index_price = round(float(idx_hist["Close"].iloc[-1]), 2)
+            if len(idx_hist) >= 2:
+                prev = float(idx_hist["Close"].iloc[-2])
                 index_change = round(((index_price - prev) / prev) * 100, 2)
                 
         if index_price is not None:
@@ -353,12 +421,9 @@ def main():
         if index_change is not None:
             index_change = round(float(index_change), 2)
     except Exception as e:
-        print(f"Error fetching ^GSPC data: {e}")
-
+        print(f"Error fetching index {index_ticker} data: {e}")
+        
     # 5. Save data to JSON
-    json_path = os.path.join(json_dir, "sp500.json")
-   
-    
     output_payload = {
         "lastUpdated": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()),
         "totalMarketCap": total_market_cap,
@@ -368,11 +433,59 @@ def main():
         "data": final_data
     }
     
-    with open(json_path, "w", encoding="utf-8") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output_payload, f, indent=2, ensure_ascii=False)
         
     elapsed = time.time() - start_time
-    print(f"Data collection completed in {elapsed:.2f} seconds. Output written to {json_path}")
+    print(f"Collection for {index_name} completed in {elapsed:.2f} seconds. Written to {output_path}")
+
+def main():
+    start_time = time.time()
+    
+    # Get the parent directory of this script (which is the SP500-market-cap root)
+    script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    json_dir = os.path.join(script_dir, "data")
+    os.makedirs(json_dir, exist_ok=True)
+    
+    # Create persistent session with retries and a custom user agent
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    })
+    from urllib3.util import Retry
+    from requests.adapters import HTTPAdapter
+    retries = Retry(total=5, backoff_factor=1.5, status_forcelist=[429, 500, 502, 503, 504])
+    session.mount('https://', HTTPAdapter(max_retries=retries))
+    
+    # 1. Fetch S&P 500 constituents
+    try:
+        sp500_companies = fetch_Sp500_wikipedia(json_dir)
+    except Exception as e:
+        print(f"Critical Error scraping S&P 500: {e}")
+        sp500_companies = []
+        
+    # 2. Fetch Nasdaq 100 constituents
+    try:
+        nasdaq100_companies = fetch_nasdaq100_wikipedia(json_dir)
+    except Exception as e:
+        print(f"Critical Error scraping Nasdaq 100: {e}")
+        nasdaq100_companies = []
+        
+    # 3. Filter NTTR constituents
+    nttr_companies = [c for c in nasdaq100_companies if c.get("sector") == "Technology"]
+    
+    # 4. Collect and save index data
+    if sp500_companies:
+        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session)
+        
+    if nasdaq100_companies:
+        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session)
+        
+    if nttr_companies:
+        collect_index_data("NTTR", nttr_companies, "^NTTR", os.path.join(json_dir, "nttr.json"), session)
+        
+    elapsed = time.time() - start_time
+    print(f"\nAll index updates completed in {elapsed:.2f} seconds.")
 
 if __name__ == "__main__":
     main()

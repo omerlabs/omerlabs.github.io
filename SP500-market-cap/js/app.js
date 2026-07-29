@@ -4,6 +4,7 @@ let filteredData = [];
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
 let deferredPrompt = null;
+let activeTab = 'sp500'; // 'sp500', 'nasdaq100', 'nttr'
 
 let currentPage = 1;
 const itemsPerPage = 50;
@@ -13,11 +14,6 @@ let sortAsc = true;
 
 // DOM Elements
 const elements = {
-    headerIndexVal: document.getElementById('header-index-val'),
-    headerTotalCap: document.getElementById('header-total-cap'),
-    headerUpdateTime: document.getElementById('header-update-time'),
-
-    
     searchInput: document.getElementById('search-input'),
     clearSearchBtn: document.getElementById('clear-search'),
     sectorFilter: document.getElementById('sector-filter'),
@@ -34,7 +30,8 @@ const elements = {
     chartModal: document.getElementById('chart-modal'),
     closeModalBtn: document.getElementById('close-modal-btn'),
     watchlistToggleBtn: document.getElementById('watchlist-toggle-btn'),
-    installBtn: document.getElementById('install-btn')
+    installBtn: document.getElementById('install-btn'),
+    tabButtons: document.querySelectorAll('.tab-btn')
 };
 
 // Initialize Application
@@ -47,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=9')
+        navigator.serviceWorker.register('./service-worker.js?v=10')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -69,7 +66,7 @@ function registerServiceWorker() {
 // Fetch Data from JSON File
 async function fetchData() {
     try {
-        const response = await fetch('data/sp500.json');
+        const response = await fetch(`data/${activeTab}.json`);
         if (!response.ok) {
             throw new Error(`Veri dosyası yüklenemedi: HTTP ${response.status}`);
         }
@@ -78,8 +75,8 @@ async function fetchData() {
         allData = payload.data || [];
         filteredData = [...allData];
         
-        // Update header & summary stats
-        updateHeaderAndCards(payload);
+        // Update total count
+        elements.totalCount.textContent = allData.length;
         
         // Populate sector filter options
         populateSectorFilter();
@@ -209,37 +206,29 @@ function setupEventListeners() {
         }
         deferredPrompt = null;
     });
-}
 
-// Calculate and render Top Stats cards
-function updateHeaderAndCards(payload) {
-    const timeStr = payload.lastUpdated || '--';
-    const totalCap = payload.totalMarketCap || 0;
-    const indexPrice = payload.indexPrice;
-    const indexChange = payload.indexChangePercent;
-    
-    elements.headerUpdateTime.textContent = timeStr;
-    elements.headerTotalCap.textContent = formatCompactCurrency(totalCap);
-    elements.totalCount.textContent = allData.length;
-    
-    // Update S&P 500 Index Header Value
-    if (indexPrice !== null && indexPrice !== undefined) {
-        if (indexChange !== null && indexChange !== undefined) {
-            const sign = indexChange >= 0 ? '+' : '';
-            const colorClass = indexChange >= 0 ? 'text-positive' : 'text-negative';
+    // Tab Switch Events
+    elements.tabButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const targetIndex = e.currentTarget.dataset.index;
+            if (activeTab === targetIndex) return;
             
-            // Also update header value
-            elements.headerIndexVal.innerHTML = `
-                <span class="${colorClass}">
-                    S&P 500 ${formatPrice(indexPrice)} (${sign}${indexChange.toFixed(2)}%) <i class="fa-solid ${indexChange >= 0 ? 'fa-caret-up' : 'fa-caret-down'}"></i>
-                </span>
-            `;
-        } else {
-            elements.headerIndexVal.textContent = `S&P 500 ${formatPrice(indexPrice)}`;
-        }
-    } else {
-        elements.headerIndexVal.textContent = 'S&P 500';
-    }
+            activeTab = targetIndex;
+            
+            // Toggle active classes
+            elements.tabButtons.forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            
+            // Reset filters & inputs
+            elements.searchInput.value = '';
+            elements.clearSearchBtn.style.display = 'none';
+            elements.sectorFilter.value = '';
+            currentPage = 1;
+            
+            // Reload dynamic index json
+            fetchData();
+        });
+    });
 }
 
 // Apply Search & Dropdown Filters

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&P 500 Market Cap Tracker & Terminal</title>
-    <meta name="description" content="CoinMarketCap style real-time dashboard for S&P 500 companies with dark financial terminal theme.">
+    <title>BORSA Market Cap Tracker & Terminal</title>
+    <meta name="description" content="CoinMarketCap style real-time dashboard for S&P 500, Nasdaq 100, and NTTR with dark financial terminal theme.">
     <!-- Google Fonts: Inter & JetBrains Mono for numbers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,25 +66,18 @@
             <div class="header-logo">
                 <i class="fa-solid fa-chart-line logo-icon"></i>
                 <div class="logo-text">
-                    <h1>S&P 500</h1>
+                    <h1>BORSA</h1>
                     <span>TERMINAL</span>
                 </div>
             </div>
-            <div class="header-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Endeks Değeri:</span>
-                    <span class="stat-value" id="header-index-val">S&P 500</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Toplam Piyasa Değeri:</span>
-                    <span class="stat-value text-accent" id="header-total-cap">--</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Güncelleme:</span>
-                    <span class="stat-value" id="header-update-time">--</span>
-                </div>
-            </div>
         </header>
+
+        <!-- Tabs Section -->
+        <div class="terminal-tabs">
+            <button class="tab-btn active" data-index="sp500">S&P 500</button>
+            <button class="tab-btn" data-index="nasdaq100">Nasdaq 100</button>
+            <button class="tab-btn" data-index="nttr">NTTR</button>
+        </div>
 
 
         <!-- Filters & Search Toolbar -->

@@ -745,3 +745,75 @@ body {
         box-shadow: 0 0 0 0 rgba(41, 98, 255, 0);
     }
 }
+
+/* Terminal Tabs */
+.terminal-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.tab-btn {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-hover);
+}
+
+.tab-btn.active {
+    color: var(--text-primary);
+    background-color: var(--color-accent-dim);
+    border-color: var(--color-accent);
+}
+
+/* Sticky columns for horizontal scrolling on mobile */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto;
+        position: relative;
+    }
+    
+    .terminal-table th:nth-child(1),
+    .terminal-table td:nth-child(1) {
+        position: sticky;
+        left: 0;
+        background-color: var(--bg-primary);
+        z-index: 5;
+        border-right: 1px solid var(--border-color);
+    }
+    
+    .terminal-table th:nth-child(2),
+    .terminal-table td:nth-child(2) {
+        position: sticky;
+        left: 60px; /* Rank width is 60px */
+        background-color: var(--bg-primary);
+        z-index: 5;
+        border-right: 1px solid var(--border-color);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .terminal-table th:nth-child(1),
+    .terminal-table th:nth-child(2) {
+        z-index: 10;
+        background-color: var(--bg-secondary);
+    }
+    
+    /* Synchronize row hover backgrounds for sticky cells */
+    .terminal-table tbody tr:hover td:nth-child(1),
+    .terminal-table tbody tr:hover td:nth-child(2) {
+        background-color: var(--bg-tertiary);
+    }
+}

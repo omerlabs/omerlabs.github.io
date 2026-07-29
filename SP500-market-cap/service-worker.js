@@ -1,10 +1,12 @@
-const CACHE_NAME = 'sp500-tracker-v9';
+const CACHE_NAME = 'sp500-tracker-v10';
 const ASSETS = [
   './',
   './index.html',
   './css/style.css',
   './js/app.js',
   './data/sp500.json',
+  './data/nasdaq100.json',
+  './data/nttr.json',
   './icon.jpg',
   './manifest.json'
 ];
@@ -39,8 +41,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // For data/sp500.json, use Network First so we always get fresh data if online
-  if (url.pathname.includes('/data/sp500.json')) {
+  // For data/*.json, use Network First so we always get fresh data if online
+  if (url.pathname.includes('/data/')) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {

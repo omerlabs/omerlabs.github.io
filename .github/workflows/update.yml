@@ -2,8 +2,9 @@ name: Update SP 500 Data
 
 on:
   schedule:
-    # Runs after market open and after market close
+    # Runs 3 times daily (Monday to Friday)
     - cron: '30 14 * * 1-5'
+    - cron: '0 18 * * 1-5'
     - cron: '0 21 * * 1-5'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
@@ -16,6 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
+          # Note: this checkout will pull the source code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -36,11 +38,11 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add SP500-market-cap/data/sp500.json SP500-market-cap/data/sp500_constituents.json
+          git add SP500-market-cap/data/*.json
           # Commit only if there are changes
           if ! git diff --cached --quiet; then
-            git commit -m "Auto-update S&P 500 financial data [skip ci]"
+            git commit -m "Auto-update market indexes financial data [skip ci]"
             git push origin main
           else
-            echo "No changes in S&P 500 data, skipping commit."
+            echo "No changes in index data, skipping commit."
           fi
