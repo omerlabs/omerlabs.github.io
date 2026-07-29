@@ -1242,3 +1242,28 @@ body {
     user-select: none !important;
 }
 
+/* Responsive word wrapping and spaces for headers and company names */
+@media (min-width: 769px) {
+    .mobile-br {
+        display: none !important;
+    }
+    .desktop-space {
+        display: inline !important;
+    }
+    /* Enforce single line display on desktop for table headers and company name texts */
+    .terminal-table th,
+    .company-name,
+    .ticker-badge-watchlist {
+        white-space: nowrap !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-br {
+        display: inline !important;
+    }
+    .desktop-space {
+        display: none !important;
+    }
+}
+

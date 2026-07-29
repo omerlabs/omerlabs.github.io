@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=33')
+        navigator.serviceWorker.register('./service-worker.js?v=34')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -200,7 +200,7 @@ function updateTableHeaders() {
     if (showWatchlistOnly) {
         // Global Watchlist displays all columns: S | Varlık | Fiyat | 24s % | 7G % | DEĞER / HACİM | AĞIRLIK | P/E | PEG
         headers[1].innerHTML = `Varlık <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `DEĞER /<br>HACİM <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `DEĞER /<span class="desktop-space"> </span><br class="mobile-br">HACİM <i class="fa-solid fa-sort"></i>`;
         headers[6].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
         headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
         headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
@@ -211,18 +211,18 @@ function updateTableHeaders() {
         // Both commodity and ETF tabs: S | Ad | Fiyat | 24s% | 7G% | Günlük Hacim
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
         headers[1].innerHTML = `${label} <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `GÜNLÜK<br>HACİM <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `GÜNLÜK<span class="desktop-space"> </span><br class="mobile-br">HACİM <i class="fa-solid fa-sort"></i>`;
         // Hide Weight, P/E, PEG columns — they don't exist for these assets
         headers[6].style.display = 'none';
         headers[7].style.display = 'none';
         headers[8].style.display = 'none';
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `PİYASA<br>DEĞERİ <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `PİYASA<span class="desktop-space"> </span><br class="mobile-br">DEĞERİ <i class="fa-solid fa-sort"></i>`;
         const weightLabels = {
-            sp500: 'S&P 500<br>AĞIRLIĞI',
-            nasdaq100: 'NASDAQ 100<br>AĞIRLIĞI',
-            nttr: 'NTTR<br>AĞIRLIĞI'
+            sp500: 'S&P 500<span class="desktop-space"> </span><br class="mobile-br">AĞIRLIĞI',
+            nasdaq100: 'NASDAQ 100<span class="desktop-space"> </span><br class="mobile-br">AĞIRLIĞI',
+            nttr: 'NTTR<span class="desktop-space"> </span><br class="mobile-br">AĞIRLIĞI'
         };
         headers[6].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
         headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
@@ -762,7 +762,7 @@ function renderTable() {
         // Name cell — for commodities use short ticker name only, no sub-badge
         const displayName = activeTab === 'commodities'
             ? item.ticker
-            : (item.name || '').split(' ').join('<br>');
+            : (item.name || '').split(' ').map(part => `<span>${part}</span>`).join('<span class="desktop-space"> </span><br class="mobile-br">');
         const showSubBadge = activeTab !== 'commodities';
         
         const tdName = document.createElement('td');
