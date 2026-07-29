@@ -61,16 +61,14 @@
 </style>
 
     <div class="app-container">
-        <!-- Top Navbar -->
-        <header class="app-header">
-            <div class="header-logo">
-                <i class="fa-solid fa-chart-line logo-icon"></i>
-                <div class="logo-text">
-                    <h1>BORSA</h1>
-                    <span>TERMINAL</span>
-                </div>
+        <!-- Top Search Box Section -->
+        <section class="search-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Şirket adı veya ticker ara (örn. Apple, NVDA)...">
+                <button id="clear-search" class="clear-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
             </div>
-        </header>
+        </section>
 
         <!-- Tabs Section -->
         <div class="terminal-tabs">
@@ -79,14 +77,8 @@
             <button class="tab-btn" data-index="nttr">NTTR</button>
         </div>
 
-
-        <!-- Filters & Search Toolbar -->
+        <!-- Filters Toolbar (Below Tabs) -->
         <section class="toolbar">
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="search-input" placeholder="Şirket adı veya ticker ara (örn. NVDA, Apple)...">
-                <button id="clear-search" class="clear-btn" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
-            </div>
             <div class="filter-group">
                 <label for="sector-filter">Faaliyet Alanı:</label>
                 <select id="sector-filter" class="terminal-select">

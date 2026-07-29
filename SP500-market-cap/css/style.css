@@ -817,3 +817,15 @@ body {
         background-color: var(--bg-tertiary);
     }
 }
+
+/* Search Section layout */
+.search-section {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.search-section .search-box {
+    max-width: 100%;
+    width: 100%;
+}

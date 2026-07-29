@@ -1,6 +1,11 @@
 // App Configuration & State
 let allData = [];
 let filteredData = [];
+let dataStore = {
+    sp500: [],
+    nasdaq100: [],
+    nttr: []
+};
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
 let deferredPrompt = null;
@@ -44,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=10')
+        navigator.serviceWorker.register('./service-worker.js?v=11')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -66,23 +71,29 @@ function registerServiceWorker() {
 // Fetch Data from JSON File
 async function fetchData() {
     try {
-        const response = await fetch(`data/${activeTab}.json`);
-        if (!response.ok) {
-            throw new Error(`Veri dosyası yüklenemedi: HTTP ${response.status}`);
+        // Fetch all three datasets in parallel
+        const [sp500Res, nasdaq100Res, nttrRes] = await Promise.all([
+            fetch('data/sp500.json'),
+            fetch('data/nasdaq100.json'),
+            fetch('data/nttr.json')
+        ]);
+        
+        if (!sp500Res.ok || !nasdaq100Res.ok || !nttrRes.ok) {
+            throw new Error("Bazı endeks dosyaları yüklenemedi.");
         }
-        const payload = await response.json();
         
-        allData = payload.data || [];
-        filteredData = [...allData];
+        const [sp500Payload, nasdaq100Payload, nttrPayload] = await Promise.all([
+            sp500Res.json(),
+            nasdaq100Res.json(),
+            nttrRes.json()
+        ]);
         
-        // Update total count
-        elements.totalCount.textContent = allData.length;
+        dataStore.sp500 = sp500Payload.data || [];
+        dataStore.nasdaq100 = nasdaq100Payload.data || [];
+        dataStore.nttr = nttrPayload.data || [];
         
-        // Populate sector filter options
-        populateSectorFilter();
-        
-        // Render initial table
-        renderTable();
+        // Update active dataset
+        updateActiveDataset();
         
     } catch (error) {
         console.error('Veri yükleme hatası:', error);
@@ -96,6 +107,20 @@ async function fetchData() {
             </tr>
         `;
     }
+}
+
+// Update active dataset when switching tabs
+function updateActiveDataset() {
+    allData = dataStore[activeTab] || [];
+    
+    // Update total count
+    elements.totalCount.textContent = allData.length;
+    
+    // Populate sector filter options
+    populateSectorFilter();
+    
+    // Apply filters and render
+    applyFilters();
 }
 
 // Setup Event Listeners for controls & table headers
@@ -219,14 +244,12 @@ function setupEventListeners() {
             elements.tabButtons.forEach(b => b.classList.remove('active'));
             e.currentTarget.classList.add('active');
             
-            // Reset filters & inputs
-            elements.searchInput.value = '';
-            elements.clearSearchBtn.style.display = 'none';
+            // Reset sector filter and page (preserve search query)
             elements.sectorFilter.value = '';
             currentPage = 1;
             
-            // Reload dynamic index json
-            fetchData();
+            // Update active dataset
+            updateActiveDataset();
         });
     });
 }
@@ -236,20 +259,58 @@ function applyFilters() {
     const query = elements.searchInput.value.toLowerCase().trim();
     const selectedSector = elements.sectorFilter.value;
     
-    filteredData = allData.filter(item => {
-        // Search Filter
-        const matchesSearch = !query || 
-            item.ticker.toLowerCase().includes(query) || 
-            item.name.toLowerCase().includes(query);
-            
-        // Sector Filter
-        const matchesSector = !selectedSector || item.subSector === selectedSector;
+    if (query) {
+        // Global Search across all tabs
+        const uniqueMatches = [];
+        const tickersSeen = new Set();
         
-        // Watchlist Filter
-        const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
+        // Priority order: active tab first, then others
+        const searchOrder = [activeTab];
+        ['sp500', 'nasdaq100', 'nttr'].forEach(idx => {
+            if (!searchOrder.includes(idx)) {
+                searchOrder.push(idx);
+            }
+        });
+        
+        searchOrder.forEach(idxName => {
+            const db = dataStore[idxName] || [];
+            db.forEach(item => {
+                if (tickersSeen.has(item.ticker)) return;
+                
+                const matchesSearch = item.ticker.toLowerCase().includes(query) || 
+                                      item.name.toLowerCase().includes(query);
+                
+                if (matchesSearch) {
+                    tickersSeen.add(item.ticker);
+                    
+                    // Check sector filter and watchlist filter
+                    const matchesSector = !selectedSector || item.subSector === selectedSector;
+                    const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
+                    
+                    if (matchesSector && matchesWatchlist) {
+                        uniqueMatches.push(item);
+                    }
+                }
+            });
+        });
+        
+        filteredData = uniqueMatches;
+    } else {
+        // Standard Tab Filtered Search (no active query)
+        const activeDb = dataStore[activeTab] || [];
+        filteredData = activeDb.filter(item => {
+            // Sector Filter
+            const matchesSector = !selectedSector || item.subSector === selectedSector;
             
-        return matchesSearch && matchesSector && matchesWatchlist;
-    });
+            // Watchlist Filter
+            const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
+                
+            return matchesSector && matchesWatchlist;
+        });
+    }
+    
+    // Update footer info counts
+    elements.filteredCount.textContent = filteredData.length;
     
     // Re-apply sorting on filtered data
     sortData();
