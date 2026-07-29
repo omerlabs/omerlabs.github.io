@@ -1151,3 +1151,73 @@ body {
     }
 }
 
+/* Desktop Only Hover Hearts & Watchlist Styles */
+.cell-company-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fav-btn:hover {
+    transform: scale(1.15);
+}
+
+.desktop-only-heart {
+    opacity: 0;
+}
+
+.terminal-table tbody tr:hover .desktop-only-heart,
+.desktop-only-heart.active {
+    opacity: 1;
+}
+
+.ticker-badge-watchlist {
+    background-color: var(--bg-tertiary);
+    color: var(--color-accent);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.5px;
+}
+
+/* HTML5 Drag & Drop visual indicators */
+.terminal-table tbody tr[draggable="true"] {
+    cursor: grab;
+    user-select: none;
+}
+
+.terminal-table tbody tr.dragging {
+    opacity: 0.35;
+    border: 1px dashed var(--color-accent) !important;
+    background-color: var(--bg-primary) !important;
+}
+
+.terminal-table tbody tr.drag-over-above {
+    border-top: 2px solid var(--color-accent) !important;
+}
+
+.terminal-table tbody tr.drag-over-below {
+    border-bottom: 2px solid var(--color-accent) !important;
+}
+
+/* Mobile Swipe-to-delete transitions */
+.terminal-table tbody tr {
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+

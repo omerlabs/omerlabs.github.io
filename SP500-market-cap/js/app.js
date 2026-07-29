@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=30')
+        navigator.serviceWorker.register('./service-worker.js?v=31')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -415,20 +415,26 @@ function applyFilters() {
     // Determine the base source data depending on whether Watchlist is on
     let sourceData = [];
     if (showWatchlistOnly) {
-        // Global Watchlist across all tabs
+        // Global Watchlist across all tabs in the exact order of the watchlist array
         const seen = new Set();
-        const tabsOrder = ['sp500', 'nasdaq100', 'nttr', 'commodities', 'etfs'];
-        // Put active tab first to prioritize its rank/weight context for duplicate tickers
-        const priorityTabs = [activeTab].concat(tabsOrder.filter(t => t !== activeTab));
+        const watchlistArr = Array.from(watchlist);
         
-        priorityTabs.forEach(tabKey => {
-            const db = dataStore[tabKey] || [];
-            db.forEach(item => {
-                if (watchlist.has(item.ticker) && !seen.has(item.ticker)) {
-                    seen.add(item.ticker);
-                    sourceData.push(item);
+        watchlistArr.forEach(ticker => {
+            let foundItem = null;
+            // Look in activeTab first, then others to prioritize rank/weight context
+            const tabsOrder = [activeTab].concat(['sp500', 'nasdaq100', 'nttr', 'commodities', 'etfs'].filter(t => t !== activeTab));
+            for (const tabKey of tabsOrder) {
+                const db = dataStore[tabKey] || [];
+                const match = db.find(item => item.ticker === ticker);
+                if (match) {
+                    foundItem = match;
+                    break;
                 }
-            });
+            }
+            if (foundItem && !seen.has(ticker)) {
+                seen.add(ticker);
+                sourceData.push(foundItem);
+            }
         });
     } else {
         // Standard single-tab source data
@@ -578,6 +584,8 @@ function handleSorting(column) {
 
 // Perform sorting in-place
 function sortData() {
+    if (!sortBy) return;
+    
     filteredData.sort((a, b) => {
         let valA = a[sortBy];
         let valB = b[sortBy];
@@ -649,61 +657,89 @@ function renderTable() {
         
         const tdName = document.createElement('td');
         tdName.className = 'text-left';
-        tdName.innerHTML = `
-            <div class="cell-company" style="position: relative; width: 100%; height: 100%; cursor: pointer; user-select: none;">
-                <span class="company-name">${displayName || '--'}</span>
-                ${showSubBadge ? `<span class="company-sub"><span class="ticker-badge">${item.ticker}</span></span>` : ''}
-            </div>
-        `;
         
-        const companyCell = tdName.querySelector('.cell-company');
-        let pressTimer = null;
-        let didLongPress = false;
-        let touchStartPos = { x: 0, y: 0 };
-        
-        const startPress = (e) => {
-            didLongPress = false;
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            touchStartPos = { x: clientX, y: clientY };
+        if (showWatchlistOnly) {
+            tdName.innerHTML = `
+                <div class="cell-company-row">
+                    <button class="fav-btn watchlist-heart-btn" title="Takibi Bırak">
+                        <i class="fa-solid fa-heart text-negative"></i>
+                    </button>
+                    <span class="ticker-badge-watchlist">${item.ticker}</span>
+                </div>
+            `;
             
-            pressTimer = setTimeout(() => {
-                didLongPress = true;
-                handleCompanyLongPress(companyCell, item.ticker);
-            }, 550);
-        };
-        
-        const cancelPress = () => {
-            if (pressTimer) {
-                clearTimeout(pressTimer);
-                pressTimer = null;
-            }
-        };
-        
-        const movePress = (e) => {
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            if (Math.abs(clientX - touchStartPos.x) > 10 || Math.abs(clientY - touchStartPos.y) > 10) {
-                cancelPress();
-            }
-        };
-        
-        companyCell.addEventListener('mousedown', startPress);
-        companyCell.addEventListener('touchstart', startPress, { passive: true });
-        
-        companyCell.addEventListener('mouseup', cancelPress);
-        companyCell.addEventListener('touchend', cancelPress);
-        companyCell.addEventListener('mouseleave', cancelPress);
-        
-        companyCell.addEventListener('mousemove', movePress);
-        companyCell.addEventListener('touchmove', movePress, { passive: true });
-        
-        companyCell.addEventListener('click', (e) => {
-            if (didLongPress) {
+            const heartBtn = tdName.querySelector('.watchlist-heart-btn');
+            heartBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                toggleWatchlist(item.ticker);
+            });
+        } else {
+            const isFav = watchlist.has(item.ticker);
+            tdName.innerHTML = `
+                <div class="cell-company-row">
+                    <button class="fav-btn desktop-only-heart ${isFav ? 'active' : ''}" title="${isFav ? 'Takibi Bırak' : 'Takip Et'}">
+                        <i class="${isFav ? 'fa-solid fa-heart text-negative' : 'fa-regular fa-heart'}"></i>
+                    </button>
+                    <div class="cell-company" style="position: relative; cursor: pointer; user-select: none;">
+                        <span class="company-name">${displayName || '--'}</span>
+                        ${showSubBadge ? `<span class="company-sub"><span class="ticker-badge">${item.ticker}</span></span>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            const heartBtn = tdName.querySelector('.desktop-only-heart');
+            heartBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleWatchlist(item.ticker);
+            });
+            
+            const companyCell = tdName.querySelector('.cell-company');
+            let pressTimer = null;
+            let didLongPress = false;
+            let touchStartPos = { x: 0, y: 0 };
+            
+            const startPress = (e) => {
                 didLongPress = false;
-            }
-        });
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                touchStartPos = { x: clientX, y: clientY };
+                
+                pressTimer = setTimeout(() => {
+                    didLongPress = true;
+                    handleCompanyLongPress(companyCell, item.ticker);
+                }, 550);
+            };
+            
+            const cancelPress = () => {
+                if (pressTimer) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                }
+            };
+            
+            const movePress = (e) => {
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                if (Math.abs(clientX - touchStartPos.x) > 10 || Math.abs(clientY - touchStartPos.y) > 10) {
+                    cancelPress();
+                }
+            };
+            
+            companyCell.addEventListener('mousedown', startPress);
+            companyCell.addEventListener('touchstart', startPress, { passive: true });
+            companyCell.addEventListener('mouseup', cancelPress);
+            companyCell.addEventListener('touchend', cancelPress);
+            companyCell.addEventListener('mouseleave', cancelPress);
+            companyCell.addEventListener('mousemove', movePress);
+            companyCell.addEventListener('touchmove', movePress, { passive: true });
+            
+            companyCell.addEventListener('click', (e) => {
+                if (didLongPress) {
+                    e.stopPropagation();
+                    didLongPress = false;
+                }
+            });
+        }
         
         tr.appendChild(tdName);
         
@@ -764,8 +800,160 @@ function renderTable() {
             tr.appendChild(tdPEG);
         }
         
-        // Open chart modal on row click
-        tr.addEventListener('click', () => {
+        // Touch Swipe-to-delete logic for mobile
+        let hasSwiped = false;
+        if (showWatchlistOnly) {
+            let startX = 0;
+            let startY = 0;
+            let currentX = 0;
+            let currentY = 0;
+            let isSwiping = false;
+            
+            tr.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isSwiping = true;
+                hasSwiped = false;
+                tr.style.transition = 'none';
+            }, { passive: true });
+            
+            tr.addEventListener('touchmove', (e) => {
+                if (!isSwiping) return;
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+                
+                const diffX = currentX - startX;
+                const diffY = currentY - startY;
+                
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 10) {
+                        hasSwiped = true;
+                    }
+                    if (diffX < 0) {
+                        if (e.cancelable) e.preventDefault();
+                        const translation = Math.max(diffX, -200); 
+                        tr.style.transform = `translateX(${translation}px)`;
+                        const ratio = Math.min(Math.abs(translation) / 150, 1);
+                        tr.style.backgroundColor = `rgba(242, 54, 69, ${ratio * 0.25})`;
+                    }
+                }
+            }, { passive: false });
+            
+            tr.addEventListener('touchend', () => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                
+                const diffX = currentX - startX;
+                
+                if (diffX < -100) {
+                    tr.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                    tr.style.transform = 'translateX(-120%)';
+                    tr.style.opacity = '0';
+                    
+                    if (navigator.vibrate) {
+                        navigator.vibrate(40);
+                    }
+                    
+                    setTimeout(() => {
+                        watchlist.delete(item.ticker);
+                        localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+                        applyFilters();
+                    }, 300);
+                } else {
+                    tr.style.transition = 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.25s ease';
+                    tr.style.transform = 'translateX(0)';
+                    tr.style.backgroundColor = '';
+                }
+                
+                startX = 0;
+                startY = 0;
+                currentX = 0;
+                currentY = 0;
+            });
+
+            // HTML5 Drag & Drop reordering for desktop
+            tr.setAttribute('draggable', 'true');
+            
+            tr.addEventListener('dragstart', (e) => {
+                tr.classList.add('dragging');
+                e.dataTransfer.setData('text/plain', item.ticker);
+                e.dataTransfer.effectAllowed = 'move';
+            });
+            
+            tr.addEventListener('dragend', () => {
+                tr.classList.remove('dragging');
+                const rows = elements.tableBody.querySelectorAll('tr');
+                rows.forEach(r => r.classList.remove('drag-over-above', 'drag-over-below'));
+            });
+            
+            tr.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                
+                const rect = tr.getBoundingClientRect();
+                const relativeY = e.clientY - rect.top;
+                if (relativeY < rect.height / 2) {
+                    tr.classList.add('drag-over-above');
+                    tr.classList.remove('drag-over-below');
+                } else {
+                    tr.classList.add('drag-over-below');
+                    tr.classList.remove('drag-over-above');
+                }
+            });
+            
+            tr.addEventListener('dragleave', () => {
+                tr.classList.remove('drag-over-above', 'drag-over-below');
+            });
+            
+            tr.addEventListener('drop', (e) => {
+                e.preventDefault();
+                tr.classList.remove('drag-over-above', 'drag-over-below');
+                
+                const draggedTicker = e.dataTransfer.getData('text/plain');
+                if (draggedTicker === item.ticker) return;
+                
+                const currentOrder = filteredData.map(d => d.ticker);
+                const draggedIndex = currentOrder.indexOf(draggedTicker);
+                const targetIndex = currentOrder.indexOf(item.ticker);
+                
+                if (draggedIndex !== -1 && targetIndex !== -1) {
+                    currentOrder.splice(draggedIndex, 1);
+                    
+                    const rect = tr.getBoundingClientRect();
+                    const relativeY = e.clientY - rect.top;
+                    const insertIndex = relativeY < rect.height / 2 ? targetIndex : targetIndex + 1;
+                    
+                    currentOrder.splice(insertIndex > draggedIndex && insertIndex > 0 ? insertIndex - 1 : insertIndex, 0, draggedTicker);
+                    
+                    const otherWatchlistItems = Array.from(watchlist).filter(t => !currentOrder.includes(t));
+                    const newWatchlistOrder = currentOrder.concat(otherWatchlistItems);
+                    
+                    watchlist = new Set(newWatchlistOrder);
+                    localStorage.setItem('sp500_watchlist', JSON.stringify(newWatchlistOrder));
+                    
+                    // Clear sorting UI and reset sortBy
+                    sortBy = null;
+                    elements.tableHeaders.forEach(th => {
+                        const icon = th.querySelector('i');
+                        th.classList.remove('active');
+                        if (icon) {
+                            icon.className = 'fa-solid fa-sort';
+                            icon.style.opacity = 0.5;
+                        }
+                    });
+                    
+                    applyFilters();
+                }
+            });
+        }
+        
+        // Open chart modal on row click (if not swiping)
+        tr.addEventListener('click', (e) => {
+            if (hasSwiped) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
             showChartModal(item.ticker);
         });
         
