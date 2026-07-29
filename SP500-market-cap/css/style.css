@@ -385,21 +385,21 @@ body {
 
 .terminal-table th:nth-child(1),
 .terminal-table td:nth-child(1) {
-    width: 32px;
-    min-width: 32px;
-    max-width: 32px;
+    width: 20px;
+    min-width: 20px;
+    max-width: 20px;
     text-align: center;
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
 }
 
 .terminal-table th:nth-child(2),
 .terminal-table td:nth-child(2) {
-    max-width: 140px;
-    min-width: 140px;
-    width: 140px;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    max-width: 90px;
+    min-width: 90px;
+    width: 90px;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
 }
 
 .cell-rank {
@@ -884,6 +884,26 @@ body {
     /* Synchronize row hover backgrounds for sticky cells */
     .terminal-table tbody tr:hover td:nth-child(2) {
         background-color: var(--bg-tertiary);
+    }
+    
+    /* Compact tab buttons on mobile to fit 5 tabs in a single row */
+    .tab-group {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 3px;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        padding: 8px 2px;
+        font-size: 0.68rem;
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .terminal-tabs {
+        gap: 8px;
     }
 }
 

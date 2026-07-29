@@ -210,8 +210,6 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
         "change24h": None,
         "change7d": None,
         "marketCap": None,
-        "sharesOutstanding": None,
-        "floatPercent": None,
         "pe": None,
         "peg": None
     }
@@ -286,21 +284,6 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                         
                 # Set key financials
                 result["marketCap"] = info.get("marketCap")
-                result["sharesOutstanding"] = info.get("sharesOutstanding")
-                
-                # Free Float computation: leave null if not provided, no estimations!
-                float_shares = info.get("floatShares")
-                shares_out = info.get("sharesOutstanding")
-                shares_percent_out = info.get("sharesPercentSharesOut")
-                
-                if float_shares is not None and shares_out:
-                    val = (float(float_shares) / float(shares_out)) * 100
-                    result["floatPercent"] = round(min(val, 100.0), 2)
-                elif shares_percent_out is not None:
-                    val = float(shares_percent_out) * 100
-                    result["floatPercent"] = round(min(val, 100.0), 2)
-                else:
-                    result["floatPercent"] = None
                     
                 # Custom mapping for commodities and ETFs
                 if "desc" in company:
@@ -381,8 +364,6 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
                     "change24h": None,
                     "change7d": None,
                     "marketCap": None,
-                    "sharesOutstanding": None,
-                    "floatPercent": None,
                     "pe": None,
                     "peg": None
                 })
@@ -527,7 +508,8 @@ def main():
         {"ticker": "XLF", "yf_ticker": "XLF", "name": "Financial Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Financials Index"},
         {"ticker": "XLK", "yf_ticker": "XLK", "name": "Technology Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Technology Index"},
         {"ticker": "XLV", "yf_ticker": "XLV", "name": "Health Care Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Health Care Index"},
-        {"ticker": "XLE", "yf_ticker": "XLE", "name": "Energy Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Energy Index"}
+        {"ticker": "XLE", "yf_ticker": "XLE", "name": "Energy Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Energy Index"},
+        {"ticker": "QTEC", "yf_ticker": "QTEC", "name": "First Trust Nasdaq-100 Technology Sector Index Fund", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Technology Index"}
     ]
     
     # 4. Collect and save index data

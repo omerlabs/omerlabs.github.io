@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=19')
+        navigator.serviceWorker.register('./service-worker.js?v=24')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -189,18 +189,18 @@ function updateTableHeaders() {
         // Both commodity and ETF tabs: S | Ad | Fiyat | Günlük Hacim | 24s% | 7G%
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
         headers[1].innerHTML = `${label} <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `GÜNLÜK<br>HACİM <i class="fa-solid fa-sort"></i>`;
         // Hide Weight, P/E, PEG columns — they don't exist for these assets
         headers[4].style.display = 'none';
         headers[5].style.display = 'none';
         headers[6].style.display = 'none';
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `Piyasa Değeri <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `PİYASA<br>DEĞERİ <i class="fa-solid fa-sort"></i>`;
         const weightLabels = {
-            sp500: 'S&P 500 Ağırlığı',
-            nasdaq100: 'Nasdaq 100 Ağırlığı',
-            nttr: 'NTTR Ağırlığı'
+            sp500: 'S&P 500<br>AĞIRLIĞI',
+            nasdaq100: 'NASDAQ 100<br>AĞIRLIĞI',
+            nttr: 'NTTR<br>AĞIRLIĞI'
         };
         headers[4].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
@@ -208,38 +208,9 @@ function updateTableHeaders() {
     }
 }
 
-// Update index price/change header stats on tab change
+// Update index price/change header stats on tab change (stubbed out since index displays are removed)
 function updateIndexDisplay() {
-    // Commodities and ETFs are not indices — hide the badge entirely
-    if (activeTab === 'commodities' || activeTab === 'etfs') {
-        elements.indexInfoDisplay.style.display = 'none';
-        return;
-    }
-    
-    const meta = indexMetadata[activeTab];
-    const labelMap = {
-        sp500: 'S&P 500',
-        nasdaq100: 'Nasdaq 100',
-        nttr: 'NTTR'
-    };
-    
-    if (meta && meta.price !== null && meta.price !== undefined) {
-        elements.indexInfoLabel.textContent = `${labelMap[activeTab]}:`;
-        elements.indexPriceVal.textContent = formatPrice(meta.price);
-        
-        if (meta.change !== null && meta.change !== undefined) {
-            const sign = meta.change >= 0 ? '+' : '';
-            const colorClass = meta.change >= 0 ? 'text-positive' : 'text-negative';
-            elements.indexChangeVal.className = `index-change ${colorClass}`;
-            elements.indexChangeVal.textContent = `${sign}${meta.change.toFixed(2)}%`;
-        } else {
-            elements.indexChangeVal.textContent = '';
-        }
-        
-        elements.indexInfoDisplay.style.display = 'inline-flex';
-    } else {
-        elements.indexInfoDisplay.style.display = 'none';
-    }
+    // No-op
 }
 
 // Setup Event Listeners for controls & table headers
@@ -398,6 +369,27 @@ function setupEventListeners() {
             }
         });
     }
+    
+    // Smooth Page-Level Sticky Header Translator
+    window.addEventListener('scroll', () => {
+        const table = document.getElementById('companies-table');
+        if (!table) return;
+        const thead = table.querySelector('thead');
+        if (!thead) return;
+        
+        const rect = table.getBoundingClientRect();
+        const headerHeight = thead.offsetHeight;
+        
+        // If the table is scrolled past the top of the viewport but hasn't fully scrolled off the screen
+        if (rect.top < 0 && rect.bottom > headerHeight) {
+            const maxTranslate = rect.height - headerHeight;
+            const translateVal = Math.min(Math.abs(rect.top), maxTranslate);
+            thead.style.transform = `translateY(${translateVal}px)`;
+            thead.style.zIndex = '15';
+        } else {
+            thead.style.transform = 'translateY(0)';
+        }
+    });
 }
 
 // Apply Search & Dropdown Filters
@@ -794,21 +786,21 @@ function createChangeBadge(val) {
 function showChartModal(ticker) {
     elements.chartModal.style.display = 'flex';
     
-    // Commodity mapping dictionary
+    // Commodity mapping dictionary using free TVC / Capital.com CFD symbols to avoid licensing constraints
     const commodityTVMap = {
-        'Altın': 'COMEX:GC1!',
-        'Gümüş': 'COMEX:SI1!',
-        'Platin': 'NYMEX:PL1!',
-        'Ham Petrol': 'NYMEX:CL1!',
-        'Brent Petrol': 'ICE:BRN1!',
-        'Doğal Gaz': 'NYMEX:NG1!',
-        'Bakır': 'COMEX:HG1!',
-        'Mısır': 'CBOT:ZC1!',
-        'Buğday': 'CBOT:ZW1!',
-        'Soya Fasulyesi': 'CBOT:ZS1!',
-        'Kahve': 'NYBOT:KC1!',
-        'Şeker': 'NYBOT:SB1!',
-        'Pamuk': 'NYBOT:CT1!'
+        'Altın': 'TVC:GOLD',
+        'Gümüş': 'TVC:SILVER',
+        'Platin': 'TVC:PLATINUM',
+        'Ham Petrol': 'TVC:USOIL',
+        'Brent Petrol': 'TVC:UKOIL',
+        'Doğal Gaz': 'TVC:NATGAS',
+        'Bakır': 'CAPITALCOM:COPPER',
+        'Mısır': 'CAPITALCOM:CORN',
+        'Buğday': 'CAPITALCOM:WHEAT',
+        'Soya Fasulyesi': 'CAPITALCOM:SOYBEAN',
+        'Kahve': 'CAPITALCOM:COFFEE',
+        'Şeker': 'CAPITALCOM:SUGAR',
+        'Pamuk': 'CAPITALCOM:COTTON'
     };
     
     // Clean ticker for TradingView symbol (e.g. replace "-" with "." for class shares if yfinance used dashes)
