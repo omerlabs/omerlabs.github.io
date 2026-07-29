@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=35')
+        navigator.serviceWorker.register('./service-worker.js?v=36')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -357,22 +357,31 @@ function setupEventListeners() {
     elements.tabButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const targetIndex = e.currentTarget.dataset.index;
-            if (activeTab === targetIndex) return;
             
-            activeTab = targetIndex;
-            
-            // Toggle active classes
-            elements.tabButtons.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            
-            // Reset sector filter state (preserve search query)
-            selectedSector = '';
-            elements.sectorMenuBtn.classList.remove('active-sector');
-            elements.sectorMenuBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
-            currentPage = 1;
-            
-            // Update active dataset
-            updateActiveDataset();
+            if (showWatchlistOnly || activeTab !== targetIndex) {
+                if (showWatchlistOnly) {
+                    showWatchlistOnly = false;
+                    if (elements.watchlistToggleBtn) {
+                        elements.watchlistToggleBtn.classList.remove('active');
+                        elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                    }
+                }
+                
+                activeTab = targetIndex;
+                
+                // Toggle active classes
+                elements.tabButtons.forEach(b => b.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                
+                // Reset sector filter state (preserve search query)
+                selectedSector = '';
+                elements.sectorMenuBtn.classList.remove('active-sector');
+                elements.sectorMenuBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+                currentPage = 1;
+                
+                // Update active dataset
+                updateActiveDataset();
+            }
         });
     });
     
