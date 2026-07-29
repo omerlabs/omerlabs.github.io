@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=29')
+        navigator.serviceWorker.register('./service-worker.js?v=30')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -191,35 +191,35 @@ function updateTableHeaders() {
     Array.from(headers).forEach(h => { h.style.display = ''; });
     
     if (showWatchlistOnly) {
-        // Global Watchlist displays all columns: S | Varlık | Fiyat | DEĞER / HACİM | AĞIRLIK | P/E | PEG | 24s % | 7G %
+        // Global Watchlist displays all columns: S | Varlık | Fiyat | 24s % | 7G % | DEĞER / HACİM | AĞIRLIK | P/E | PEG
         headers[1].innerHTML = `Varlık <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `DEĞER /<br>HACİM <i class="fa-solid fa-sort"></i>`;
-        headers[4].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
-        headers[6].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `DEĞER /<br>HACİM <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
+        headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
+        headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
         return;
     }
     
     if (activeTab === 'commodities' || activeTab === 'etfs') {
-        // Both commodity and ETF tabs: S | Ad | Fiyat | Günlük Hacim | 24s% | 7G%
+        // Both commodity and ETF tabs: S | Ad | Fiyat | 24s% | 7G% | Günlük Hacim
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
         headers[1].innerHTML = `${label} <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `GÜNLÜK<br>HACİM <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `GÜNLÜK<br>HACİM <i class="fa-solid fa-sort"></i>`;
         // Hide Weight, P/E, PEG columns — they don't exist for these assets
-        headers[4].style.display = 'none';
-        headers[5].style.display = 'none';
         headers[6].style.display = 'none';
+        headers[7].style.display = 'none';
+        headers[8].style.display = 'none';
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `PİYASA<br>DEĞERİ <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `PİYASA<br>DEĞERİ <i class="fa-solid fa-sort"></i>`;
         const weightLabels = {
             sp500: 'S&P 500<br>AĞIRLIĞI',
             nasdaq100: 'NASDAQ 100<br>AĞIRLIĞI',
             nttr: 'NTTR<br>AĞIRLIĞI'
         };
-        headers[4].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
-        headers[6].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
+        headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
+        headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
     }
 }
 
@@ -713,6 +713,18 @@ function renderTable() {
         tdPrice.textContent = formatPrice(item.price);
         tr.appendChild(tdPrice);
         
+        // 24h Change
+        const tdChange24h = document.createElement('td');
+        tdChange24h.className = 'text-right';
+        tdChange24h.appendChild(createChangeBadge(item.change24h));
+        tr.appendChild(tdChange24h);
+        
+        // 7d Change
+        const tdChange7d = document.createElement('td');
+        tdChange7d.className = 'text-right';
+        tdChange7d.appendChild(createChangeBadge(item.change7d));
+        tr.appendChild(tdChange7d);
+        
         // Volume / Market Cap
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
@@ -731,7 +743,7 @@ function renderTable() {
         }
         tr.appendChild(tdMarketCap);
         
-        // Columns 5-7 (Weight / P/E / PEG) — only for stock tabs when not in global watchlist
+        // Columns 6-8 (Weight / P/E / PEG) — only for stock tabs when not in global watchlist
         if ((activeTab === 'commodities' || activeTab === 'etfs') && !showWatchlistOnly) {
             // Only show volume (already in marketCap). No weight, no P/E, no PEG cells
         } else {
@@ -751,18 +763,6 @@ function renderTable() {
             tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
             tr.appendChild(tdPEG);
         }
-        
-        // 24h Change
-        const tdChange24h = document.createElement('td');
-        tdChange24h.className = 'text-right';
-        tdChange24h.appendChild(createChangeBadge(item.change24h));
-        tr.appendChild(tdChange24h);
-        
-        // 7d Change
-        const tdChange7d = document.createElement('td');
-        tdChange7d.className = 'text-right';
-        tdChange7d.appendChild(createChangeBadge(item.change7d));
-        tr.appendChild(tdChange7d);
         
         // Open chart modal on row click
         tr.addEventListener('click', () => {
