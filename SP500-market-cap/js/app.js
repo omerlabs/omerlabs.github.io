@@ -63,6 +63,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.warn("Watchlist dual-database synchronization failed, using fallback:", e);
     }
     
+    // Detect PWA Standalone Mode on Startup
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                         window.navigator.standalone === true || 
+                         window.location.search.includes('source=pwa');
+    
+    if (isStandalone) {
+        showWatchlistOnly = true;
+        sortBy = null; // Disable default rank sorting to use custom drag order
+        
+        // Update watchlist button state visually
+        if (elements.watchlistToggleBtn) {
+            elements.watchlistToggleBtn.classList.add('active');
+            elements.watchlistToggleBtn.innerHTML = '<i class="fa-solid fa-heart text-negative"></i>';
+        }
+        
+        // Reset sorting headers visual indicators
+        elements.tableHeaders.forEach(th => {
+            const icon = th.querySelector('i');
+            th.classList.remove('active');
+            if (icon) {
+                icon.className = 'fa-solid fa-sort';
+                icon.style.opacity = 0.5;
+            }
+        });
+    }
+    
     fetchData();
     setupEventListeners();
     registerServiceWorker();
@@ -71,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=39')
+        navigator.serviceWorker.register('./service-worker.js?v=40')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
