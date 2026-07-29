@@ -884,3 +884,131 @@ body {
     max-width: 100%;
     width: 100%;
 }
+
+/* Omnibar Custom Styling */
+.search-box.omnibar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-box.omnibar input {
+    width: 100%;
+    padding-right: 140px; /* Room for clear-btn, sector-menu-btn, watchlist-btn, and install-btn */
+}
+
+.omnibar-actions {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.omnibar-action-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.omnibar-action-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+.omnibar-action-btn.active {
+    color: var(--color-negative); /* Red color for active heart */
+}
+
+/* Specific styling for active sector menu button (accent blue icon) */
+.omnibar-action-btn.active-sector {
+    color: var(--color-accent);
+}
+
+/* Clear btn inside actions group (no absolute positioning override) */
+.omnibar-actions .clear-btn {
+    position: static;
+    transform: none;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sector Dropdown Menu */
+.omnibar-dropdown {
+    position: relative;
+}
+
+.omnibar-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 260px;
+    max-height: 320px;
+    overflow-y: auto;
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    padding: 6px 0;
+    animation: menuFadeIn 0.15s ease-out;
+}
+
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.omnibar-menu-item {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    text-align: left;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.omnibar-menu-item:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.omnibar-menu-item.active {
+    color: var(--color-accent);
+    background-color: var(--color-accent-dim);
+    font-weight: 600;
+}
+
+.omnibar-menu-item.active::after {
+    content: "\f00c"; /* FontAwesome check icon code */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.75rem;
+}

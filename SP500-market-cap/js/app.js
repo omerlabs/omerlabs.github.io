@@ -15,6 +15,7 @@ let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[
 let showWatchlistOnly = false;
 let deferredPrompt = null;
 let activeTab = 'sp500'; // 'sp500', 'nasdaq100', 'nttr'
+let selectedSector = ''; // Selected sector filter
 
 let currentPage = 1;
 const itemsPerPage = 50;
@@ -26,7 +27,8 @@ let sortAsc = true;
 const elements = {
     searchInput: document.getElementById('search-input'),
     clearSearchBtn: document.getElementById('clear-search'),
-    sectorFilter: document.getElementById('sector-filter'),
+    sectorMenuBtn: document.getElementById('sector-menu-btn'),
+    sectorMenuList: document.getElementById('sector-menu-list'),
     
     tableBody: document.getElementById('table-body'),
     tableHeaders: document.querySelectorAll('#companies-table th.sortable'),
@@ -58,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=12')
+        navigator.serviceWorker.register('./service-worker.js?v=13')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -178,22 +180,30 @@ function setupEventListeners() {
         applyFilters();
     });
     
-    // Sector Filter Change
-    elements.sectorFilter.addEventListener('change', () => {
-        currentPage = 1;
-        applyFilters();
+    // Sector Dropdown Toggle Button
+    elements.sectorMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = elements.sectorMenuList.style.display === 'none' || !elements.sectorMenuList.style.display;
+        elements.sectorMenuList.style.display = isHidden ? 'block' : 'none';
     });
     
-    // Watchlist Filter Toggle
+    // Close Dropdown Menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (elements.sectorMenuList && !elements.sectorMenuList.contains(e.target) && e.target !== elements.sectorMenuBtn) {
+            elements.sectorMenuList.style.display = 'none';
+        }
+    });
+    
+    // Watchlist Filter Toggle (Inside search bar)
     elements.watchlistToggleBtn.addEventListener('click', () => {
         showWatchlistOnly = !showWatchlistOnly;
         
         if (showWatchlistOnly) {
-            elements.watchlistToggleBtn.classList.add('watchlist-active');
-            elements.watchlistToggleBtn.innerHTML = '<i class="fa-solid fa-heart text-negative"></i> Tüm Şirketler';
+            elements.watchlistToggleBtn.classList.add('active');
+            elements.watchlistToggleBtn.innerHTML = '<i class="fa-solid fa-heart text-negative"></i>';
         } else {
-            elements.watchlistToggleBtn.classList.remove('watchlist-active');
-            elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i> Takip Listesi';
+            elements.watchlistToggleBtn.classList.remove('active');
+            elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
         }
         
         currentPage = 1;
@@ -289,8 +299,10 @@ function setupEventListeners() {
             elements.tabButtons.forEach(b => b.classList.remove('active'));
             e.currentTarget.classList.add('active');
             
-            // Reset sector filter and page (preserve search query)
-            elements.sectorFilter.value = '';
+            // Reset sector filter state (preserve search query)
+            selectedSector = '';
+            elements.sectorMenuBtn.classList.remove('active-sector');
+            elements.sectorMenuBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
             currentPage = 1;
             
             // Update active dataset
@@ -317,7 +329,6 @@ function setupEventListeners() {
 // Apply Search & Dropdown Filters
 function applyFilters() {
     const query = elements.searchInput.value.toLowerCase().trim();
-    const selectedSector = elements.sectorFilter.value;
     
     if (query) {
         // Global Search across all tabs
@@ -377,7 +388,7 @@ function applyFilters() {
     renderTable();
 }
 
-// Populate Sector Filter Options
+// Populate Sector Filter Options in the Omnibar Menu
 function populateSectorFilter() {
     const sectors = new Set();
     allData.forEach(item => {
@@ -386,17 +397,52 @@ function populateSectorFilter() {
         }
     });
     
-    // Sort sectors alphabetically
     const sortedSectors = Array.from(sectors).sort();
     
-    // Clear and populate select element
-    elements.sectorFilter.innerHTML = '<option value="">Tüm Faaliyet Alanları</option>';
-    sortedSectors.forEach(sector => {
-        const option = document.createElement('option');
-        option.value = sector;
-        option.textContent = sector;
-        elements.sectorFilter.appendChild(option);
+    if (!elements.sectorMenuList) return;
+    
+    // Clear menu list
+    elements.sectorMenuList.innerHTML = '';
+    
+    // Add "Tüm Faaliyet Alanları" default option
+    const defaultBtn = document.createElement('button');
+    defaultBtn.className = `omnibar-menu-item ${!selectedSector ? 'active' : ''}`;
+    defaultBtn.textContent = 'Tüm Faaliyet Alanları';
+    defaultBtn.addEventListener('click', () => {
+        selectSector('');
     });
+    elements.sectorMenuList.appendChild(defaultBtn);
+    
+    // Add each sector option
+    sortedSectors.forEach(sector => {
+        const sectorBtn = document.createElement('button');
+        sectorBtn.className = `omnibar-menu-item ${selectedSector === sector ? 'active' : ''}`;
+        sectorBtn.textContent = sector;
+        sectorBtn.addEventListener('click', () => {
+            selectSector(sector);
+        });
+        elements.sectorMenuList.appendChild(sectorBtn);
+    });
+}
+
+// Select dynamic sector from dropdown
+function selectSector(sector) {
+    selectedSector = sector;
+    
+    // Toggle active visual classes on sector menu button
+    if (selectedSector) {
+        elements.sectorMenuBtn.classList.add('active-sector');
+        elements.sectorMenuBtn.innerHTML = '<i class="fa-solid fa-chevron-down text-accent"></i>'; // Change color to accent blue
+    } else {
+        elements.sectorMenuBtn.classList.remove('active-sector');
+        elements.sectorMenuBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+    }
+    
+    // Close the dropdown menu
+    elements.sectorMenuList.style.display = 'none';
+    
+    currentPage = 1;
+    applyFilters();
 }
 
 // Manage header sort state and trigger sorting
