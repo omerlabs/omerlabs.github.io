@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=16')
+        navigator.serviceWorker.register('./service-worker.js?v=17')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -314,9 +314,9 @@ function setupEventListeners() {
     if (elements.indexInfoDisplay) {
         elements.indexInfoDisplay.addEventListener('click', () => {
             const indexSymbolMap = {
-                sp500: 'SPX',
-                nasdaq100: 'NDX',
-                nttr: 'NTTR'
+                sp500: 'SP:SPX',
+                nasdaq100: 'NASDAQ:NDX',
+                nttr: 'NASDAQ:NTTR'
             };
             const symbol = indexSymbolMap[activeTab];
             if (symbol) {
