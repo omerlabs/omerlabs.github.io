@@ -294,8 +294,7 @@ body {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    overflow: auto;
-    max-height: calc(100vh - 200px);
+    overflow-x: auto;
     box-shadow: var(--shadow-md);
 }
 
@@ -859,7 +858,7 @@ body {
 /* Sticky columns for horizontal scrolling on mobile */
 @media (max-width: 768px) {
     .table-container {
-        overflow: auto;
+        overflow-x: auto;
         position: relative;
     }
     
@@ -1126,7 +1125,7 @@ body {
     display: none !important;
 }
 
-/* Commodities: hide columns 5, 6, 7 (nth-child counts from 1: S, Emtia, Fiyat, Hacim, [5], [6], [7], 24s, 7g) */
+/* Commodities: hide columns 5, 6, 7 */
 #companies-table[data-tab="commodities"] th:nth-child(5),
 #companies-table[data-tab="commodities"] td:nth-child(5),
 #companies-table[data-tab="commodities"] th:nth-child(6),
@@ -1136,7 +1135,11 @@ body {
     display: none !important;
 }
 
-/* ETFs: hide column 7 (Takip Ettiği Varlık / PEG placeholder) */
+/* ETFs: hide columns 4 (AUM), 5 (Kategori/Odak), and 7 (PEG placeholder) */
+#companies-table[data-tab="etfs"] th:nth-child(4),
+#companies-table[data-tab="etfs"] td:nth-child(4),
+#companies-table[data-tab="etfs"] th:nth-child(5),
+#companies-table[data-tab="etfs"] td:nth-child(5),
 #companies-table[data-tab="etfs"] th:nth-child(7),
 #companies-table[data-tab="etfs"] td:nth-child(7) {
     display: none !important;
