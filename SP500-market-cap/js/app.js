@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=14')
+        navigator.serviceWorker.register('./service-worker.js?v=15')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -320,7 +320,7 @@ function setupEventListeners() {
             };
             const symbol = indexSymbolMap[activeTab];
             if (symbol) {
-                openChartModal(symbol);
+                showChartModal(symbol);
             }
         });
     }
