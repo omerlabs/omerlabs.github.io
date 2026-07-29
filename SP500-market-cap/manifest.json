@@ -1,6 +1,6 @@
 {
-  "name": "BORSA Market Tracker & Terminal",
-  "short_name": "BORSA",
+  "name": "ENDKS Market Tracker & Terminal",
+  "short_name": "ENDKS",
   "description": "Real-time dashboard for S&P 500, Nasdaq 100, and NTTR with dark financial terminal theme.",
   "start_url": "./index.html",
   "display": "standalone",
