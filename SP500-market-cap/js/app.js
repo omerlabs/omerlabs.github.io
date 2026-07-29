@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=24')
+        navigator.serviceWorker.register('./service-worker.js?v=29')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -412,11 +412,6 @@ function setupEventListeners() {
 function applyFilters() {
     const query = elements.searchInput.value.toLowerCase().trim();
     
-    if (query) {
-        // Global Search across all tabs
-        const uniqueMatches = [];
-        const tickersSeen = new Set();
-        
     // Determine the base source data depending on whether Watchlist is on
     let sourceData = [];
     if (showWatchlistOnly) {
