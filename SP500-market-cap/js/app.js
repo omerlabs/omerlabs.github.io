@@ -182,18 +182,21 @@ function updateTableHeaders() {
     const headers = document.querySelectorAll('#companies-table th.sortable');
     if (!headers || headers.length < 9) return;
     
-    if (activeTab === 'commodities') {
-        headers[1].innerHTML = `Emtia <i class="fa-solid fa-sort"></i>`;
+    // First restore all headers to visible
+    Array.from(headers).forEach(h => { h.style.display = ''; });
+    
+    if (activeTab === 'commodities' || activeTab === 'etfs') {
+        // Both commodity and ETF tabs: S | Ad | Fiyat | Günlük Hacim | 24s% | 7G%
+        const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
+        headers[1].innerHTML = `${label} <i class="fa-solid fa-sort"></i>`;
         headers[3].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
-    } else if (activeTab === 'etfs') {
-        headers[1].innerHTML = `ETF <i class="fa-solid fa-sort"></i>`;
-        headers[3].innerHTML = `Yönetilen Varlık (AUM) <i class="fa-solid fa-sort"></i>`;
-        headers[4].innerHTML = `Kategori / Odak <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
+        // Hide Weight, P/E, PEG columns — they don't exist for these assets
+        headers[4].style.display = 'none';
+        headers[5].style.display = 'none';
+        headers[6].style.display = 'none';
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
         headers[3].innerHTML = `Piyasa Değeri <i class="fa-solid fa-sort"></i>`;
-        
         const weightLabels = {
             sp500: 'S&P 500 Ağırlığı',
             nasdaq100: 'Nasdaq 100 Ağırlığı',
@@ -686,45 +689,22 @@ function renderTable() {
         tdPrice.textContent = formatPrice(item.price);
         tr.appendChild(tdPrice);
         
-        // Market Cap / Günlük Hacim / AUM
+        // Volume / Market Cap
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
-        if (activeTab === 'commodities') {
-            tdMarketCap.textContent = item.marketCap !== null && item.marketCap !== undefined ? item.marketCap.toLocaleString('en-US') : '--';
+        if (activeTab === 'commodities' || activeTab === 'etfs') {
+            // marketCap holds daily volume for both commodity and ETF tabs
+            tdMarketCap.textContent = item.marketCap !== null && item.marketCap !== undefined
+                ? item.marketCap.toLocaleString('en-US') : '--';
         } else {
             tdMarketCap.textContent = formatCompactCurrency(item.marketCap);
         }
         tr.appendChild(tdMarketCap);
         
-        // Columns 5-7 vary by tab:
-        // - Stocks: Weight | P/E | PEG
-        // - Commodities: (none — 3 cols hidden via CSS data-tab)
-        // - ETFs: Kategori | Günlük Hacim | (none — hidden via CSS data-tab)
-        if (activeTab === 'commodities') {
-            // Skip tdWeight, tdPE, tdPEG — CSS hides col 5,6,7 for this tab
-            // Add 3 placeholder tds to keep column alignment before CSS hides them
-            for (let i = 0; i < 3; i++) {
-                const ph = document.createElement('td');
-                ph.className = 'col-hidden';
-                tr.appendChild(ph);
-            }
-        } else if (activeTab === 'etfs') {
-            // Weight → Kategori/Odak
-            const tdWeight = document.createElement('td');
-            tdWeight.className = 'text-right text-accent';
-            tdWeight.textContent = item.subSector || '--';
-            tr.appendChild(tdWeight);
-            
-            // PE → Günlük Hacim
-            const tdPE = document.createElement('td');
-            tdPE.className = 'font-mono text-right';
-            tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toLocaleString('en-US') : '--';
-            tr.appendChild(tdPE);
-            
-            // PEG → hidden placeholder
-            const tdPEG = document.createElement('td');
-            tdPEG.className = 'col-hidden';
-            tr.appendChild(tdPEG);
+        // Columns 5-7 (Weight / P/E / PEG) — only for stock tabs
+        if (activeTab === 'commodities' || activeTab === 'etfs') {
+            // Only show volume (already in marketCap field for both).
+            // No weight, no P/E, no PEG cells — headers are hidden via JS
         } else {
             // Standard stock columns
             const tdWeight = document.createElement('td');

@@ -1120,27 +1120,3 @@ body {
     }
 }
 
-/* Tab-based column visibility */
-.col-hidden {
-    display: none !important;
-}
-
-/* Commodities: hide columns 5, 6, 7 */
-#companies-table[data-tab="commodities"] th:nth-child(5),
-#companies-table[data-tab="commodities"] td:nth-child(5),
-#companies-table[data-tab="commodities"] th:nth-child(6),
-#companies-table[data-tab="commodities"] td:nth-child(6),
-#companies-table[data-tab="commodities"] th:nth-child(7),
-#companies-table[data-tab="commodities"] td:nth-child(7) {
-    display: none !important;
-}
-
-/* ETFs: hide columns 4 (AUM), 5 (Kategori/Odak), and 7 (PEG placeholder) */
-#companies-table[data-tab="etfs"] th:nth-child(4),
-#companies-table[data-tab="etfs"] td:nth-child(4),
-#companies-table[data-tab="etfs"] th:nth-child(5),
-#companies-table[data-tab="etfs"] td:nth-child(5),
-#companies-table[data-tab="etfs"] th:nth-child(7),
-#companies-table[data-tab="etfs"] td:nth-child(7) {
-    display: none !important;
-}

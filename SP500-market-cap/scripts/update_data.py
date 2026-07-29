@@ -304,18 +304,17 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                     
                 # Custom mapping for commodities and ETFs
                 if "desc" in company:
-                    # Commodity
+                    # Commodity — only need daily volume, no P/E, no PEG
                     volume = info.get("volume") or info.get("regularMarketVolume") or info.get("averageVolume") or 0
-                    result["pe"] = volume
-                    result["peg"] = company["desc"]
                     result["marketCap"] = volume
+                    result["pe"] = None
+                    result["peg"] = None
                 elif "target" in company:
-                    # ETF
+                    # ETF — only need daily volume, no AUM, no category, no underlying
                     volume = info.get("volume") or info.get("regularMarketVolume") or info.get("averageVolume") or 0
-                    total_assets = info.get("totalAssets") or info.get("marketCap") or 0
-                    result["pe"] = volume
-                    result["peg"] = company["target"]
-                    result["marketCap"] = total_assets
+                    result["marketCap"] = volume
+                    result["pe"] = None
+                    result["peg"] = None
                 else:
                     # Standard stock trailingPE & pegRatio
                     result["pe"] = info.get("trailingPE") or info.get("forwardPE")
