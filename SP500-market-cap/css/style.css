@@ -1280,3 +1280,24 @@ body {
     }
 }
 
+/* Drag handle vertical grip icon styling for mobile watchlist */
+.drag-handle-icon {
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-size: 1.1rem;
+    cursor: grab;
+    transition: color 0.2s, opacity 0.2s;
+}
+.dragging .drag-handle-icon {
+    color: var(--accent) !important;
+    opacity: 1 !important;
+}
+
+@media (min-width: 769px) {
+    /* Hide the Rank (S) column entirely on desktop when watchlist is active */
+    .watchlist-active th:first-child,
+    .watchlist-active td:first-child {
+        display: none !important;
+    }
+}
+

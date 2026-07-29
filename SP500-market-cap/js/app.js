@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=38')
+        navigator.serviceWorker.register('./service-worker.js?v=39')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -191,14 +191,25 @@ function updateActiveDataset() {
 
 // Update table header labels based on selected asset tab
 function updateTableHeaders() {
+    const table = document.getElementById('companies-table');
+    if (table) {
+        if (showWatchlistOnly) {
+            table.classList.add('watchlist-active');
+        } else {
+            table.classList.remove('watchlist-active');
+        }
+    }
+
     const headers = document.querySelectorAll('#companies-table th.sortable');
     if (!headers || headers.length < 9) return;
     
-    // First restore all headers to visible
+    // First restore all headers to visible and reset Rank header
     Array.from(headers).forEach(h => { h.style.display = ''; });
+    headers[0].innerHTML = `S <i class="fa-solid fa-sort"></i>`;
     
     if (showWatchlistOnly) {
         // Global Watchlist displays all columns: S | Varlık | Fiyat | 24s % | 7G % | DEĞER / HACİM | AĞIRLIK | P/E | PEG
+        headers[0].innerHTML = `&nbsp;`;
         headers[1].innerHTML = `Varlık <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `DEĞER /<span class="desktop-space"> </span><br class="mobile-br">HACİM <i class="fa-solid fa-sort"></i>`;
         headers[6].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
@@ -616,6 +627,8 @@ function selectSector(sector) {
 
 // Manage header sort state and trigger sorting
 function handleSorting(column) {
+    if (showWatchlistOnly && column === 'rank') return;
+    
     if (sortBy === column) {
         // Toggle direction
         sortAsc = !sortAsc;
@@ -714,7 +727,11 @@ function renderTable() {
         // Rank
         const tdRank = document.createElement('td');
         tdRank.className = 'cell-rank';
-        tdRank.textContent = item.rank;
+        if (showWatchlistOnly) {
+            tdRank.innerHTML = '<i class="fa-solid fa-grip-vertical drag-handle-icon" title="Sürükle"></i>';
+        } else {
+            tdRank.textContent = item.rank;
+        }
         tr.appendChild(tdRank);
         
         // Mobile touch-based drag reordering (using Rank cell as handle)
