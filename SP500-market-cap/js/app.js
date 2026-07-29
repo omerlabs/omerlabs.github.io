@@ -55,7 +55,14 @@ const elements = {
 };
 
 // Initialize Application
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Sync localStorage and IndexedDB databases first (Union fallback protection)
+    try {
+        await syncWatchlistDatabases();
+    } catch (e) {
+        console.warn("Watchlist dual-database synchronization failed, using fallback:", e);
+    }
+    
     fetchData();
     setupEventListeners();
     registerServiceWorker();
@@ -64,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=31')
+        navigator.serviceWorker.register('./service-worker.js?v=32')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -856,7 +863,9 @@ function renderTable() {
                     
                     setTimeout(() => {
                         watchlist.delete(item.ticker);
-                        localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+                        const listArr = Array.from(watchlist);
+                        localStorage.setItem('sp500_watchlist', JSON.stringify(listArr));
+                        saveWatchlistToIndexedDB(listArr);
                         applyFilters();
                     }, 300);
                 } else {
@@ -930,6 +939,7 @@ function renderTable() {
                     
                     watchlist = new Set(newWatchlistOrder);
                     localStorage.setItem('sp500_watchlist', JSON.stringify(newWatchlistOrder));
+                    saveWatchlistToIndexedDB(newWatchlistOrder);
                     
                     // Clear sorting UI and reset sortBy
                     sortBy = null;
@@ -1093,7 +1103,9 @@ function toggleWatchlist(ticker) {
     } else {
         watchlist.add(ticker);
     }
-    localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+    const listArr = Array.from(watchlist);
+    localStorage.setItem('sp500_watchlist', JSON.stringify(listArr));
+    saveWatchlistToIndexedDB(listArr);
     applyFilters();
 }
 
@@ -1112,7 +1124,9 @@ function handleCompanyLongPress(element, ticker) {
             
             setTimeout(() => {
                 watchlist.delete(ticker);
-                localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+                const listArr = Array.from(watchlist);
+                localStorage.setItem('sp500_watchlist', JSON.stringify(listArr));
+                saveWatchlistToIndexedDB(listArr);
                 applyFilters();
             }, 600);
         }
@@ -1120,7 +1134,9 @@ function handleCompanyLongPress(element, ticker) {
         // Main View: Long press only ADDS the item
         if (!isFav) {
             watchlist.add(ticker);
-            localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+            const listArr = Array.from(watchlist);
+            localStorage.setItem('sp500_watchlist', JSON.stringify(listArr));
+            saveWatchlistToIndexedDB(listArr);
             triggerHeartPopupAnimation(element);
         } else {
             // If already added, trigger a small heart popup as visual feedback
@@ -1196,4 +1212,106 @@ function updateLastUpdatedUI(utcTimeStr) {
         console.error("Error formatting date:", e);
         el.textContent = `Son Güncelleme: ${utcTimeStr}`;
     }
+}
+
+// --- IndexedDB Backup Database Helpers ---
+const DB_NAME = 'endks_db';
+const DB_VERSION = 1;
+const STORE_NAME = 'watchlist_store';
+const KEY_NAME = 'user_watchlist';
+
+// Initialize IndexedDB
+function initIndexedDB() {
+    return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+            reject(new Error("IndexedDB is not supported by this browser."));
+            return;
+        }
+        
+        const request = window.indexedDB.open(DB_NAME, DB_VERSION);
+        
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME);
+            }
+        };
+        
+        request.onsuccess = (event) => {
+            resolve(event.target.result);
+        };
+        
+        request.onerror = (event) => {
+            reject(event.target.error);
+        };
+    });
+}
+
+// Save watchlist to IndexedDB
+function saveWatchlistToIndexedDB(watchlistArray) {
+    return initIndexedDB().then((db) => {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.put(watchlistArray, KEY_NAME);
+            
+            request.onsuccess = () => resolve();
+            request.onerror = (event) => reject(event.target.error);
+        });
+    }).catch((err) => {
+        console.warn("Could not save to IndexedDB:", err);
+    });
+}
+
+// Get watchlist from IndexedDB
+function getWatchlistFromIndexedDB() {
+    return initIndexedDB().then((db) => {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.get(KEY_NAME);
+            
+            request.onsuccess = (event) => resolve(event.target.result || []);
+            request.onerror = (event) => reject(event.target.error);
+        });
+    }).catch((err) => {
+        console.warn("Could not read from IndexedDB:", err);
+        return [];
+    });
+}
+
+// Synchronization flow on startup (Union sync)
+async function syncWatchlistDatabases() {
+    let localData = [];
+    try {
+        localData = JSON.parse(localStorage.getItem('sp500_watchlist') || '[]');
+    } catch (e) {
+        console.warn("Error parsing localStorage watchlist:", e);
+    }
+    
+    let dbData = [];
+    try {
+        dbData = await getWatchlistFromIndexedDB();
+    } catch (e) {
+        console.warn("Error reading IndexedDB watchlist:", e);
+    }
+    
+    // Merge both arrays taking the union to prevent any data loss, preserving order
+    const mergedList = Array.from(new Set([...localData, ...dbData]));
+    
+    // Write back the merged list to both storage layers
+    try {
+        localStorage.setItem('sp500_watchlist', JSON.stringify(mergedList));
+    } catch (e) {
+        console.warn("Error writing back to localStorage:", e);
+    }
+    
+    try {
+        await saveWatchlistToIndexedDB(mergedList);
+    } catch (e) {
+        console.warn("Error writing back to IndexedDB:", e);
+    }
+    
+    // Update the in-memory runtime watchlist
+    watchlist = new Set(mergedList);
 }
