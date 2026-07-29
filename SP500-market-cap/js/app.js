@@ -160,6 +160,10 @@ function updateActiveDataset() {
     // Update total count
     elements.totalCount.textContent = allData.length;
     
+    // Set data-tab on table for CSS column visibility
+    const table = document.getElementById('companies-table');
+    if (table) table.setAttribute('data-tab', activeTab);
+    
     // Update headers dynamically based on asset tab
     updateTableHeaders();
     
@@ -181,15 +185,11 @@ function updateTableHeaders() {
     if (activeTab === 'commodities') {
         headers[1].innerHTML = `Emtia <i class="fa-solid fa-sort"></i>`;
         headers[3].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
-        headers[4].innerHTML = `Kategori <i class="fa-solid fa-sort"></i>`;
-        headers[5].innerHTML = `Açıklama <i class="fa-solid fa-sort"></i>`;
-        headers[6].innerHTML = `-- <i class="fa-solid fa-sort"></i>`;
     } else if (activeTab === 'etfs') {
         headers[1].innerHTML = `ETF <i class="fa-solid fa-sort"></i>`;
         headers[3].innerHTML = `Yönetilen Varlık (AUM) <i class="fa-solid fa-sort"></i>`;
         headers[4].innerHTML = `Kategori / Odak <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
-        headers[6].innerHTML = `Takip Ettiği Varlık <i class="fa-solid fa-sort"></i>`;
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
         headers[3].innerHTML = `Piyasa Değeri <i class="fa-solid fa-sort"></i>`;
@@ -207,6 +207,12 @@ function updateTableHeaders() {
 
 // Update index price/change header stats on tab change
 function updateIndexDisplay() {
+    // Commodities and ETFs are not indices — hide the badge entirely
+    if (activeTab === 'commodities' || activeTab === 'etfs') {
+        elements.indexInfoDisplay.style.display = 'none';
+        return;
+    }
+    
     const meta = indexMetadata[activeTab];
     const labelMap = {
         sp500: 'S&P 500',
@@ -608,17 +614,18 @@ function renderTable() {
         tdRank.textContent = item.rank;
         tr.appendChild(tdRank);
         
-        const words = (item.name || '').split(' ');
-        const nameFormatted = words.join('<br>');
+        // Name cell — for commodities use short ticker name only, no sub-badge
+        const displayName = activeTab === 'commodities'
+            ? item.ticker
+            : (item.name || '').split(' ').join('<br>');
+        const showSubBadge = activeTab !== 'commodities';
         
         const tdName = document.createElement('td');
         tdName.className = 'text-left';
         tdName.innerHTML = `
             <div class="cell-company" style="position: relative; width: 100%; height: 100%; cursor: pointer; user-select: none;">
-                <span class="company-name">${nameFormatted || '--'}</span>
-                <span class="company-sub">
-                    <span class="ticker-badge">${item.ticker}</span>
-                </span>
+                <span class="company-name">${displayName || '--'}</span>
+                ${showSubBadge ? `<span class="company-sub"><span class="ticker-badge">${item.ticker}</span></span>` : ''}
             </div>
         `;
         
@@ -679,7 +686,7 @@ function renderTable() {
         tdPrice.textContent = formatPrice(item.price);
         tr.appendChild(tdPrice);
         
-        // Market Cap / volume / AUM
+        // Market Cap / Günlük Hacim / AUM
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
         if (activeTab === 'commodities') {
@@ -689,44 +696,52 @@ function renderTable() {
         }
         tr.appendChild(tdMarketCap);
         
-        // Weight / Category
-        const tdWeight = document.createElement('td');
-        if (activeTab === 'commodities' || activeTab === 'etfs') {
+        // Columns 5-7 vary by tab:
+        // - Stocks: Weight | P/E | PEG
+        // - Commodities: (none — 3 cols hidden via CSS data-tab)
+        // - ETFs: Kategori | Günlük Hacim | (none — hidden via CSS data-tab)
+        if (activeTab === 'commodities') {
+            // Skip tdWeight, tdPE, tdPEG — CSS hides col 5,6,7 for this tab
+            // Add 3 placeholder tds to keep column alignment before CSS hides them
+            for (let i = 0; i < 3; i++) {
+                const ph = document.createElement('td');
+                ph.className = 'col-hidden';
+                tr.appendChild(ph);
+            }
+        } else if (activeTab === 'etfs') {
+            // Weight → Kategori/Odak
+            const tdWeight = document.createElement('td');
             tdWeight.className = 'text-right text-accent';
             tdWeight.textContent = item.subSector || '--';
-        } else {
-            tdWeight.className = 'cell-weight text-right text-accent';
-            tdWeight.textContent = item.sp500Weight !== undefined && item.sp500Weight !== null ? `%${item.sp500Weight.toFixed(3)}` : '--';
-        }
-        tr.appendChild(tdWeight);
-        
-        // P/E Ratio / Description / volume
-        const tdPE = document.createElement('td');
-        if (activeTab === 'commodities') {
-            tdPE.className = 'text-right';
-            tdPE.textContent = item.peg || '--';
-        } else if (activeTab === 'etfs') {
+            tr.appendChild(tdWeight);
+            
+            // PE → Günlük Hacim
+            const tdPE = document.createElement('td');
             tdPE.className = 'font-mono text-right';
             tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toLocaleString('en-US') : '--';
+            tr.appendChild(tdPE);
+            
+            // PEG → hidden placeholder
+            const tdPEG = document.createElement('td');
+            tdPEG.className = 'col-hidden';
+            tr.appendChild(tdPEG);
         } else {
+            // Standard stock columns
+            const tdWeight = document.createElement('td');
+            tdWeight.className = 'cell-weight text-right text-accent';
+            tdWeight.textContent = item.sp500Weight !== undefined && item.sp500Weight !== null ? `%${item.sp500Weight.toFixed(3)}` : '--';
+            tr.appendChild(tdWeight);
+            
+            const tdPE = document.createElement('td');
             tdPE.className = 'font-mono text-right';
             tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toFixed(2) : '--';
-        }
-        tr.appendChild(tdPE);
-        
-        // PEG Ratio / Underlying Asset / Empty
-        const tdPEG = document.createElement('td');
-        if (activeTab === 'commodities') {
-            tdPEG.className = 'text-right';
-            tdPEG.textContent = '--';
-        } else if (activeTab === 'etfs') {
-            tdPEG.className = 'text-right';
-            tdPEG.textContent = item.peg || '--';
-        } else {
+            tr.appendChild(tdPE);
+            
+            const tdPEG = document.createElement('td');
             tdPEG.className = 'font-mono text-right';
             tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
+            tr.appendChild(tdPEG);
         }
-        tr.appendChild(tdPEG);
         
         // 24h Change
         const tdChange24h = document.createElement('td');

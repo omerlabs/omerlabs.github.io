@@ -1120,3 +1120,24 @@ body {
         opacity: 0;
     }
 }
+
+/* Tab-based column visibility */
+.col-hidden {
+    display: none !important;
+}
+
+/* Commodities: hide columns 5, 6, 7 (nth-child counts from 1: S, Emtia, Fiyat, Hacim, [5], [6], [7], 24s, 7g) */
+#companies-table[data-tab="commodities"] th:nth-child(5),
+#companies-table[data-tab="commodities"] td:nth-child(5),
+#companies-table[data-tab="commodities"] th:nth-child(6),
+#companies-table[data-tab="commodities"] td:nth-child(6),
+#companies-table[data-tab="commodities"] th:nth-child(7),
+#companies-table[data-tab="commodities"] td:nth-child(7) {
+    display: none !important;
+}
+
+/* ETFs: hide column 7 (Takip Ettiği Varlık / PEG placeholder) */
+#companies-table[data-tab="etfs"] th:nth-child(7),
+#companies-table[data-tab="etfs"] td:nth-child(7) {
+    display: none !important;
+}
