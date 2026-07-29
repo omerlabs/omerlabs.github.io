@@ -185,6 +185,16 @@ function updateTableHeaders() {
     // First restore all headers to visible
     Array.from(headers).forEach(h => { h.style.display = ''; });
     
+    if (showWatchlistOnly) {
+        // Global Watchlist displays all columns: S | Varlık | Fiyat | DEĞER / HACİM | AĞIRLIK | P/E | PEG | 24s % | 7G %
+        headers[1].innerHTML = `Varlık <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `DEĞER /<br>HACİM <i class="fa-solid fa-sort"></i>`;
+        headers[4].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+        return;
+    }
+    
     if (activeTab === 'commodities' || activeTab === 'etfs') {
         // Both commodity and ETF tabs: S | Ad | Fiyat | Günlük Hacim | 24s% | 7G%
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
@@ -250,6 +260,7 @@ function setupEventListeners() {
         }
         
         currentPage = 1;
+        updateTableHeaders();
         applyFilters();
     });
     
@@ -401,13 +412,49 @@ function applyFilters() {
         const uniqueMatches = [];
         const tickersSeen = new Set();
         
-        // Priority order: active tab first, then others
-        const searchOrder = [activeTab];
-        ['sp500', 'nasdaq100', 'nttr'].forEach(idx => {
-            if (!searchOrder.includes(idx)) {
-                searchOrder.push(idx);
-            }
+    // Determine the base source data depending on whether Watchlist is on
+    let sourceData = [];
+    if (showWatchlistOnly) {
+        // Global Watchlist across all tabs
+        const seen = new Set();
+        const tabsOrder = ['sp500', 'nasdaq100', 'nttr', 'commodities', 'etfs'];
+        // Put active tab first to prioritize its rank/weight context for duplicate tickers
+        const priorityTabs = [activeTab].concat(tabsOrder.filter(t => t !== activeTab));
+        
+        priorityTabs.forEach(tabKey => {
+            const db = dataStore[tabKey] || [];
+            db.forEach(item => {
+                if (watchlist.has(item.ticker) && !seen.has(item.ticker)) {
+                    seen.add(item.ticker);
+                    sourceData.push(item);
+                }
+            });
         });
+    } else {
+        // Standard single-tab source data
+        sourceData = dataStore[activeTab] || [];
+    }
+
+    // Now filter this sourceData by query and sector
+    filteredData = sourceData.filter(item => {
+        // Sector Filter
+        const matchesSector = !selectedSector || item.subSector === selectedSector;
+        
+        // Search Query Filter
+        let matchesSearch = true;
+        if (query) {
+            matchesSearch = item.ticker.toLowerCase().includes(query) || 
+                            item.name.toLowerCase().includes(query);
+        }
+        
+        return matchesSector && matchesSearch;
+    });
+
+    // If query is active AND showWatchlistOnly is false, the user wants global search across all tabs
+    if (query && !showWatchlistOnly) {
+        const uniqueMatches = [];
+        const tickersSeen = new Set();
+        const searchOrder = [activeTab].concat(['sp500', 'nasdaq100', 'nttr', 'commodities', 'etfs'].filter(t => t !== activeTab));
         
         searchOrder.forEach(idxName => {
             const db = dataStore[idxName] || [];
@@ -419,31 +466,14 @@ function applyFilters() {
                 
                 if (matchesSearch) {
                     tickersSeen.add(item.ticker);
-                    
-                    // Check sector filter and watchlist filter
                     const matchesSector = !selectedSector || item.subSector === selectedSector;
-                    const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
-                    
-                    if (matchesSector && matchesWatchlist) {
+                    if (matchesSector) {
                         uniqueMatches.push(item);
                     }
                 }
             });
         });
-        
         filteredData = uniqueMatches;
-    } else {
-        // Standard Tab Filtered Search (no active query)
-        const activeDb = dataStore[activeTab] || [];
-        filteredData = activeDb.filter(item => {
-            // Sector Filter
-            const matchesSector = !selectedSector || item.subSector === selectedSector;
-            
-            // Watchlist Filter
-            const matchesWatchlist = !showWatchlistOnly || watchlist.has(item.ticker);
-                
-            return matchesSector && matchesWatchlist;
-        });
     }
     
     // Update footer info counts
@@ -686,19 +716,24 @@ function renderTable() {
         // Volume / Market Cap
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
-        if (activeTab === 'commodities' || activeTab === 'etfs') {
+        if ((activeTab === 'commodities' || activeTab === 'etfs') && !showWatchlistOnly) {
             // marketCap holds daily volume for both commodity and ETF tabs
             tdMarketCap.textContent = item.marketCap !== null && item.marketCap !== undefined
                 ? item.marketCap.toLocaleString('en-US') : '--';
         } else {
-            tdMarketCap.textContent = formatCompactCurrency(item.marketCap);
+            // In stock tabs or global watchlist, format appropriately
+            if (item.sector === 'Emtia' || item.sector === 'ETF') {
+                tdMarketCap.textContent = item.marketCap !== null && item.marketCap !== undefined
+                    ? item.marketCap.toLocaleString('en-US') : '--';
+            } else {
+                tdMarketCap.textContent = formatCompactCurrency(item.marketCap);
+            }
         }
         tr.appendChild(tdMarketCap);
         
-        // Columns 5-7 (Weight / P/E / PEG) — only for stock tabs
-        if (activeTab === 'commodities' || activeTab === 'etfs') {
-            // Only show volume (already in marketCap field for both).
-            // No weight, no P/E, no PEG cells — headers are hidden via JS
+        // Columns 5-7 (Weight / P/E / PEG) — only for stock tabs when not in global watchlist
+        if ((activeTab === 'commodities' || activeTab === 'etfs') && !showWatchlistOnly) {
+            // Only show volume (already in marketCap). No weight, no P/E, no PEG cells
         } else {
             // Standard stock columns
             const tdWeight = document.createElement('td');
