@@ -72,9 +72,17 @@
 
         <!-- Tabs Section -->
         <div class="terminal-tabs">
-            <button class="tab-btn active" data-index="sp500">S&P 500</button>
-            <button class="tab-btn" data-index="nasdaq100">Nasdaq 100</button>
-            <button class="tab-btn" data-index="nttr">NTTR</button>
+            <div class="tab-group">
+                <button class="tab-btn active" data-index="sp500">S&P 500</button>
+                <button class="tab-btn" data-index="nasdaq100">Nasdaq 100</button>
+                <button class="tab-btn" data-index="nttr">NTTR</button>
+            </div>
+            <button id="index-info-display" class="index-info-btn" title="Endeks Grafiğini Göster" style="display: none;">
+                <span id="index-info-label" class="index-label">S&P 500:</span>
+                <span id="index-price-val" class="index-val">--</span>
+                <span id="index-change-val" class="index-change">--</span>
+                <i class="fa-solid fa-chart-line index-chart-icon"></i>
+            </button>
         </div>
 
         <!-- Filters Toolbar (Below Tabs) -->

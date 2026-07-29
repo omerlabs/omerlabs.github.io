@@ -6,6 +6,11 @@ let dataStore = {
     nasdaq100: [],
     nttr: []
 };
+let indexMetadata = {
+    sp500: { price: null, change: null },
+    nasdaq100: { price: null, change: null },
+    nttr: { price: null, change: null }
+};
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
 let deferredPrompt = null;
@@ -36,7 +41,11 @@ const elements = {
     closeModalBtn: document.getElementById('close-modal-btn'),
     watchlistToggleBtn: document.getElementById('watchlist-toggle-btn'),
     installBtn: document.getElementById('install-btn'),
-    tabButtons: document.querySelectorAll('.tab-btn')
+    tabButtons: document.querySelectorAll('.tab-btn'),
+    indexInfoDisplay: document.getElementById('index-info-display'),
+    indexInfoLabel: document.getElementById('index-info-label'),
+    indexPriceVal: document.getElementById('index-price-val'),
+    indexChangeVal: document.getElementById('index-change-val')
 };
 
 // Initialize Application
@@ -49,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=11')
+        navigator.serviceWorker.register('./service-worker.js?v=12')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -89,8 +98,13 @@ async function fetchData() {
         ]);
         
         dataStore.sp500 = sp500Payload.data || [];
+        indexMetadata.sp500 = { price: sp500Payload.indexPrice, change: sp500Payload.indexChangePercent };
+        
         dataStore.nasdaq100 = nasdaq100Payload.data || [];
+        indexMetadata.nasdaq100 = { price: nasdaq100Payload.indexPrice, change: nasdaq100Payload.indexChangePercent };
+        
         dataStore.nttr = nttrPayload.data || [];
+        indexMetadata.nttr = { price: nttrPayload.indexPrice, change: nttrPayload.indexChangePercent };
         
         // Update active dataset
         updateActiveDataset();
@@ -119,8 +133,39 @@ function updateActiveDataset() {
     // Populate sector filter options
     populateSectorFilter();
     
+    // Update index price/change display
+    updateIndexDisplay();
+    
     // Apply filters and render
     applyFilters();
+}
+
+// Update index price/change header stats on tab change
+function updateIndexDisplay() {
+    const meta = indexMetadata[activeTab];
+    const labelMap = {
+        sp500: 'S&P 500',
+        nasdaq100: 'Nasdaq 100',
+        nttr: 'NTTR'
+    };
+    
+    if (meta && meta.price !== null && meta.price !== undefined) {
+        elements.indexInfoLabel.textContent = `${labelMap[activeTab]}:`;
+        elements.indexPriceVal.textContent = formatPrice(meta.price);
+        
+        if (meta.change !== null && meta.change !== undefined) {
+            const sign = meta.change >= 0 ? '+' : '';
+            const colorClass = meta.change >= 0 ? 'text-positive' : 'text-negative';
+            elements.indexChangeVal.className = `index-change ${colorClass}`;
+            elements.indexChangeVal.textContent = `${sign}${meta.change.toFixed(2)}%`;
+        } else {
+            elements.indexChangeVal.textContent = '';
+        }
+        
+        elements.indexInfoDisplay.style.display = 'inline-flex';
+    } else {
+        elements.indexInfoDisplay.style.display = 'none';
+    }
 }
 
 // Setup Event Listeners for controls & table headers
@@ -252,6 +297,21 @@ function setupEventListeners() {
             updateActiveDataset();
         });
     });
+    
+    // Index Info Display Click (Open Index Chart)
+    if (elements.indexInfoDisplay) {
+        elements.indexInfoDisplay.addEventListener('click', () => {
+            const indexSymbolMap = {
+                sp500: 'SPX',
+                nasdaq100: 'NDX',
+                nttr: 'NTTR'
+            };
+            const symbol = indexSymbolMap[activeTab];
+            if (symbol) {
+                openChartModal(symbol);
+            }
+        });
+    }
 }
 
 // Apply Search & Dropdown Filters
