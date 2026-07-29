@@ -543,8 +543,11 @@
   </div>
   <div class="header-actions">
     <button class="btn-pwa" id="pwa-install-btn" onclick="triggerPwaInstall()">📲 Uygulamayı Yükle</button>
+    <button class="btn-secondary" onclick="scanAndRecoverStorage(true)" title="Silinen / Kayıp verileri tara ve kurtar">🔍 Kurtar</button>
     <button class="btn-secondary" onclick="exportBackup()" title="Verileri JSON olarak yedekle">💾 Yedekle</button>
     <button class="btn-secondary" onclick="document.getElementById('import-file-input').click()" title="Yedek JSON yükle">📥 Yükle</button>
+    <button class="btn-secondary" onclick="copyBackupText()" title="Verileri panoya kopyala">📋 Kopyala</button>
+    <button class="btn-secondary" onclick="pasteBackupText()" title="Panodan veri yükle">📋 Yapıştır</button>
     <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="importBackup(event)">
     <button class="btn-add" onclick="openAddModal()">+ Borç Ekle</button>
   </div>
@@ -670,20 +673,110 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ───────────── STATE ─────────────
+// ───────────── DUAL STORAGE ENGINE (IndexedDB + localStorage) ─────────────
 const STORAGE_KEY = 'borc_takip_v1';
+const BACKUP_KEY = 'borc_takip_backup_v1';
+const DB_NAME = 'BorcTakipDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'debts';
+
 let debts = [];
 let currentType = 'installment';
 
-function load() {
+function openDB() {
+  return new Promise((resolve) => {
+    if (!window.indexedDB) { resolve(null); return; }
+    try {
+      const request = indexedDB.open(DB_NAME, DB_VERSION);
+      request.onerror = () => resolve(null);
+      request.onsuccess = (e) => resolve(e.target.result);
+      request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) {
+          db.createObjectStore(STORE_NAME);
+        }
+      };
+    } catch (e) {
+      resolve(null);
+    }
+  });
+}
+
+async function saveToIndexedDB(data) {
+  try {
+    const db = await openDB();
+    if (!db) return;
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    const store = tx.objectStore(STORE_NAME);
+    store.put(JSON.stringify(data), 'debts_data');
+  } catch (e) {
+    console.error('IndexedDB save error:', e);
+  }
+}
+
+async function loadFromIndexedDB() {
+  try {
+    const db = await openDB();
+    if (!db) return null;
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const store = tx.objectStore(STORE_NAME);
+      const req = store.get('debts_data');
+      req.onsuccess = () => {
+        if (req.result) {
+          try { resolve(JSON.parse(req.result)); } catch { resolve(null); }
+        } else resolve(null);
+      };
+      req.onerror = () => resolve(null);
+    });
+  } catch (e) {
+    return null;
+  }
+}
+
+async function load() {
+  let localData = null;
+  let backupData = null;
+
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    debts = raw ? JSON.parse(raw) : [];
-  } catch { debts = []; }
+    localData = raw ? JSON.parse(raw) : null;
+  } catch { localData = null; }
+
+  try {
+    const rawB = localStorage.getItem(BACKUP_KEY);
+    backupData = rawB ? JSON.parse(rawB) : null;
+  } catch { backupData = null; }
+
+  const idbData = await loadFromIndexedDB();
+
+  // Evaluate candidate datasets
+  const candidates = [localData, backupData, idbData].filter(c => Array.isArray(c) && c.length > 0);
+
+  if (candidates.length > 0) {
+    // Pick the dataset with the maximum items or latest entries
+    candidates.sort((a, b) => b.length - a.length);
+    debts = candidates[0];
+
+    // Ensure all storage tiers are updated with the winning dataset
+    save();
+  } else {
+    // Scan browser storage for any leftover or legacy keys
+    scanAndRecoverStorage(false);
+  }
+
+  render();
 }
 
 function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(debts));
+  try {
+    const str = JSON.stringify(debts);
+    localStorage.setItem(STORAGE_KEY, str);
+    localStorage.setItem(BACKUP_KEY, str);
+  } catch (e) {
+    console.error('localStorage save error:', e);
+  }
+  saveToIndexedDB(debts);
 }
 
 function uid() {
@@ -1055,6 +1148,90 @@ function importBackup(event) {
   };
   reader.readAsText(file);
   event.target.value = '';
+}
+
+// ───────────── RECOVERY & CLIPBOARD SYNC ─────────────
+function scanAndRecoverStorage(userTriggered = true) {
+  let recoveredCount = 0;
+  try {
+    // 1. Scan localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      try {
+        const val = localStorage.getItem(k);
+        const parsed = JSON.parse(val);
+        if (Array.isArray(parsed) && parsed.length > 0 && (parsed[0].total || parsed[0].name)) {
+          for (const item of parsed) {
+            if (!debts.some(d => d.id === item.id || (d.name === item.name && d.total === item.total))) {
+              debts.push(item);
+              recoveredCount++;
+            }
+          }
+        }
+      } catch {}
+    }
+    // 2. Scan sessionStorage
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const k = sessionStorage.key(i);
+      if (!k) continue;
+      try {
+        const val = sessionStorage.getItem(k);
+        const parsed = JSON.parse(val);
+        if (Array.isArray(parsed) && parsed.length > 0 && (parsed[0].total || parsed[0].name)) {
+          for (const item of parsed) {
+            if (!debts.some(d => d.id === item.id || (d.name === item.name && d.total === item.total))) {
+              debts.push(item);
+              recoveredCount++;
+            }
+          }
+        }
+      } catch {}
+    }
+  } catch {}
+
+  if (recoveredCount > 0) {
+    save();
+    render();
+    if (userTriggered) toast(`${recoveredCount} borç kaydı başarıyla kurtarıldı! 🎉`, 'success');
+  } else if (userTriggered) {
+    toast('Farklı bir hafıza kaydı bulunamadı', 'error');
+  }
+}
+
+function copyBackupText() {
+  if (!debts || debts.length === 0) {
+    toast('Kopyalanacak borç verisi yok', 'error');
+    return;
+  }
+  const text = JSON.stringify(debts);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      toast('Tüm veriler panoya kopyalandı! ✓', 'success');
+    }).catch(() => {
+      prompt('Aşağıdaki veriyi kopyalayın:', text);
+    });
+  } else {
+    prompt('Aşağıdaki veriyi kopyalayın:', text);
+  }
+}
+
+function pasteBackupText() {
+  const input = prompt('Tarayıcıdan kopyaladığınız borç verisini (JSON metni) buraya yapıştırın:');
+  if (!input) return;
+  try {
+    const parsed = JSON.parse(input.trim());
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      debts = parsed;
+      save();
+      render();
+      toast('Veriler panodan başarıyla aktarıldı ✓', 'success');
+    } else {
+      toast('Geçersiz veri biçimi', 'error');
+    }
+  } catch {
+    toast('Metin okunamadı, geçerli borç verisi yapıştırın', 'error');
+  }
 }
 
 // ───────────── SERVICE WORKER REGISTRATION ─────────────
