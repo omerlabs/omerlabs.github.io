@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=15')
+        navigator.serviceWorker.register('./service-worker.js?v=16')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -549,6 +549,9 @@ function renderTable() {
         const isFav = watchlist.has(item.ticker);
         const favIconClass = isFav ? 'fa-solid fa-heart fav-active' : 'fa-regular fa-heart fav-inactive';
         
+        const words = (item.name || '').split(' ');
+        const nameFormatted = words.join('<br>');
+        
         const tdName = document.createElement('td');
         tdName.className = 'text-left';
         tdName.innerHTML = `
@@ -557,7 +560,7 @@ function renderTable() {
                     <i class="${favIconClass}"></i>
                 </button>
                 <div class="cell-company">
-                    <span class="company-name">${item.name || '--'}</span>
+                    <span class="company-name">${nameFormatted || '--'}</span>
                     <span class="company-sub">
                         <span class="ticker-badge">${item.ticker}</span>
                     </span>

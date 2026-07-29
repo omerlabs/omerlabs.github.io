@@ -383,12 +383,30 @@ body {
     font-family: var(--font-mono);
 }
 
+.terminal-table th:nth-child(1),
+.terminal-table td:nth-child(1) {
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    text-align: center;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
+.terminal-table th:nth-child(2),
+.terminal-table td:nth-child(2) {
+    max-width: 140px;
+    min-width: 140px;
+    width: 140px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
 .cell-rank {
     font-family: var(--font-mono);
     color: var(--text-muted);
     font-weight: 500;
     text-align: center;
-    width: 60px;
 }
 
 .cell-company {
@@ -400,6 +418,9 @@ body {
 .company-name {
     font-weight: 600;
     color: var(--text-primary);
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
 }
 
 .company-sub {
@@ -841,33 +862,22 @@ body {
         position: relative;
     }
     
-    .terminal-table th:nth-child(1),
-    .terminal-table td:nth-child(1) {
-        position: sticky;
-        left: 0;
-        background-color: var(--bg-primary);
-        z-index: 5;
-        border-right: 1px solid var(--border-color);
-    }
-    
     .terminal-table th:nth-child(2),
     .terminal-table td:nth-child(2) {
         position: sticky;
-        left: 60px; /* Rank width is 60px */
+        left: 0;
         background-color: var(--bg-primary);
         z-index: 5;
         border-right: 1px solid var(--border-color);
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
     }
     
-    .terminal-table th:nth-child(1),
     .terminal-table th:nth-child(2) {
         z-index: 10;
         background-color: var(--bg-secondary);
     }
     
     /* Synchronize row hover backgrounds for sticky cells */
-    .terminal-table tbody tr:hover td:nth-child(1),
     .terminal-table tbody tr:hover td:nth-child(2) {
         background-color: var(--bg-tertiary);
     }
