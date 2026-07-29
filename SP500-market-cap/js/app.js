@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=17')
+        navigator.serviceWorker.register('./service-worker.js?v=18')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -545,34 +545,67 @@ function renderTable() {
         tdRank.textContent = item.rank;
         tr.appendChild(tdRank);
         
-        // Name & Ticker (with heart favorite button)
-        const isFav = watchlist.has(item.ticker);
-        const favIconClass = isFav ? 'fa-solid fa-heart fav-active' : 'fa-regular fa-heart fav-inactive';
-        
         const words = (item.name || '').split(' ');
         const nameFormatted = words.join('<br>');
         
         const tdName = document.createElement('td');
         tdName.className = 'text-left';
         tdName.innerHTML = `
-            <div class="cell-company-row">
-                <button class="fav-btn" data-ticker="${item.ticker}">
-                    <i class="${favIconClass}"></i>
-                </button>
-                <div class="cell-company">
-                    <span class="company-name">${nameFormatted || '--'}</span>
-                    <span class="company-sub">
-                        <span class="ticker-badge">${item.ticker}</span>
-                    </span>
-                </div>
+            <div class="cell-company" style="position: relative; width: 100%; height: 100%; cursor: pointer; user-select: none;">
+                <span class="company-name">${nameFormatted || '--'}</span>
+                <span class="company-sub">
+                    <span class="ticker-badge">${item.ticker}</span>
+                </span>
             </div>
         `;
         
-        // Setup favorite heart click handler
-        const favBtn = tdName.querySelector('.fav-btn');
-        favBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent opening the chart modal
-            toggleWatchlist(item.ticker);
+        const companyCell = tdName.querySelector('.cell-company');
+        let pressTimer = null;
+        let didLongPress = false;
+        let touchStartPos = { x: 0, y: 0 };
+        
+        const startPress = (e) => {
+            didLongPress = false;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            touchStartPos = { x: clientX, y: clientY };
+            
+            pressTimer = setTimeout(() => {
+                didLongPress = true;
+                handleCompanyLongPress(companyCell, item.ticker);
+            }, 550);
+        };
+        
+        const cancelPress = () => {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        };
+        
+        const movePress = (e) => {
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            if (Math.abs(clientX - touchStartPos.x) > 10 || Math.abs(clientY - touchStartPos.y) > 10) {
+                cancelPress();
+            }
+        };
+        
+        companyCell.addEventListener('mousedown', startPress);
+        companyCell.addEventListener('touchstart', startPress, { passive: true });
+        
+        companyCell.addEventListener('mouseup', cancelPress);
+        companyCell.addEventListener('touchend', cancelPress);
+        companyCell.addEventListener('mouseleave', cancelPress);
+        
+        companyCell.addEventListener('mousemove', movePress);
+        companyCell.addEventListener('touchmove', movePress, { passive: true });
+        
+        companyCell.addEventListener('click', (e) => {
+            if (didLongPress) {
+                e.stopPropagation();
+                didLongPress = false;
+            }
         });
         
         tr.appendChild(tdName);
@@ -740,10 +773,74 @@ function toggleWatchlist(ticker) {
     } else {
         watchlist.add(ticker);
     }
-    
-    // Save to localStorage
     localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
-    
-    // Re-apply filters to update the view
     applyFilters();
+}
+
+// Handle company cell long press (add or remove watchlist)
+function handleCompanyLongPress(element, ticker) {
+    if (navigator.vibrate) {
+        navigator.vibrate(50); // device vibration haptic feedback
+    }
+    
+    const isFav = watchlist.has(ticker);
+    
+    if (showWatchlistOnly) {
+        // Watchlist View: Long press REMOVES the item
+        if (isFav) {
+            triggerHeartBurstAnimation(element);
+            
+            setTimeout(() => {
+                watchlist.delete(ticker);
+                localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+                applyFilters();
+            }, 600);
+        }
+    } else {
+        // Main View: Long press only ADDS the item
+        if (!isFav) {
+            watchlist.add(ticker);
+            localStorage.setItem('sp500_watchlist', JSON.stringify(Array.from(watchlist)));
+            triggerHeartPopupAnimation(element);
+        } else {
+            // If already added, trigger a small heart popup as visual feedback
+            triggerHeartPopupAnimation(element);
+        }
+    }
+}
+
+// Sparkle/Popup heart animation (Follow feedback)
+function triggerHeartPopupAnimation(element) {
+    const heart = document.createElement('i');
+    heart.className = 'fa-solid fa-heart heart-anim-overlay';
+    element.appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, 800);
+}
+
+// Particle explosion heart animation (Unfollow feedback)
+function triggerHeartBurstAnimation(element) {
+    const container = document.createElement('div');
+    container.className = 'heart-burst-container';
+    element.appendChild(container);
+    
+    const mainHeart = document.createElement('i');
+    mainHeart.className = 'fa-solid fa-heart main-burst-heart';
+    container.appendChild(mainHeart);
+    
+    for (let i = 0; i < 6; i++) {
+        const particle = document.createElement('i');
+        particle.className = 'fa-solid fa-heart burst-particle';
+        const angle = (i * 60) + Math.random() * 20;
+        const dist = 30 + Math.random() * 20;
+        particle.style.setProperty('--angle', `${angle}deg`);
+        particle.style.setProperty('--dist', `${dist}px`);
+        container.appendChild(particle);
+    }
+    
+    setTimeout(() => {
+        container.remove();
+    }, 800);
 }

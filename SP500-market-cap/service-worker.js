@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sp500-tracker-v17';
+const CACHE_NAME = 'sp500-tracker-v18';
 const ASSETS = [
   './',
   './index.html',
