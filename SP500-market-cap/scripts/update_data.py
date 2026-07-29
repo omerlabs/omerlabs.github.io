@@ -302,13 +302,29 @@ def fetch_single_ticker_info(company, hist_df=None, session=None):
                 else:
                     result["floatPercent"] = None
                     
-                result["pe"] = info.get("trailingPE") or info.get("forwardPE")
-                if result["pe"] is not None:
-                    result["pe"] = round(float(result["pe"]), 2)
-                    
-                result["peg"] = info.get("pegRatio")
-                if result["peg"] is not None:
-                    result["peg"] = round(float(result["peg"]), 2)
+                # Custom mapping for commodities and ETFs
+                if "desc" in company:
+                    # Commodity
+                    volume = info.get("volume") or info.get("regularMarketVolume") or info.get("averageVolume") or 0
+                    result["pe"] = volume
+                    result["peg"] = company["desc"]
+                    result["marketCap"] = volume
+                elif "target" in company:
+                    # ETF
+                    volume = info.get("volume") or info.get("regularMarketVolume") or info.get("averageVolume") or 0
+                    total_assets = info.get("totalAssets") or info.get("marketCap") or 0
+                    result["pe"] = volume
+                    result["peg"] = company["target"]
+                    result["marketCap"] = total_assets
+                else:
+                    # Standard stock trailingPE & pegRatio
+                    result["pe"] = info.get("trailingPE") or info.get("forwardPE")
+                    if result["pe"] is not None:
+                        result["pe"] = round(float(result["pe"]), 2)
+                        
+                    result["peg"] = info.get("pegRatio")
+                    if result["peg"] is not None:
+                        result["peg"] = round(float(result["peg"]), 2)
                     
                 break
         except Exception as e:
@@ -474,6 +490,47 @@ def main():
     # 3. Filter NTTR constituents
     nttr_companies = [c for c in nasdaq100_companies if c.get("sector") == "Technology"]
     
+    # Curated Commodities list
+    COMMODITIES_LIST = [
+        {"ticker": "Altın", "yf_ticker": "GC=F", "name": "Altın (Gold Futures)", "sector": "Emtia", "subSector": "Değerli Metaller", "desc": "1 Ons Altın Vadeli İşlemi"},
+        {"ticker": "Gümüş", "yf_ticker": "SI=F", "name": "Gümüş (Silver Futures)", "sector": "Emtia", "subSector": "Değerli Metaller", "desc": "Gümüş Vadeli İşlemi"},
+        {"ticker": "Platin", "yf_ticker": "PL=F", "name": "Platin (Platinum Futures)", "sector": "Emtia", "subSector": "Değerli Metaller", "desc": "Platin Vadeli İşlemi"},
+        {"ticker": "Ham Petrol", "yf_ticker": "CL=F", "name": "Ham Petrol (WTI Crude)", "sector": "Emtia", "subSector": "Enerji", "desc": "WTI Petrol Vadeli İşlemi"},
+        {"ticker": "Brent Petrol", "yf_ticker": "BZ=F", "name": "Brent Petrol (Brent Crude)", "sector": "Emtia", "subSector": "Enerji", "desc": "Brent Petrol Vadeli İşlemi"},
+        {"ticker": "Doğal Gaz", "yf_ticker": "NG=F", "name": "Doğal Gaz (Natural Gas)", "sector": "Emtia", "subSector": "Enerji", "desc": "Doğal Gaz Vadeli İşlemi"},
+        {"ticker": "Bakır", "yf_ticker": "HG=F", "name": "Bakır (Copper Futures)", "sector": "Emtia", "subSector": "Endüstriyel Metaller", "desc": "Bakır Vadeli İşlemi"},
+        {"ticker": "Mısır", "yf_ticker": "ZC=F", "name": "Mısır (Corn Futures)", "sector": "Emtia", "subSector": "Tarım", "desc": "Mısır Vadeli İşlemi"},
+        {"ticker": "Buğday", "yf_ticker": "ZW=F", "name": "Buğday (Wheat Futures)", "sector": "Emtia", "subSector": "Tarım", "desc": "Buğday Vadeli İşlemi"},
+        {"ticker": "Soya Fasulyesi", "yf_ticker": "ZS=F", "name": "Soya Fasulyesi (Soybeans)", "sector": "Emtia", "subSector": "Tarım", "desc": "Soya Fasulyesi Vadeli İşlemi"},
+        {"ticker": "Kahve", "yf_ticker": "KC=F", "name": "Kahve (Coffee Futures)", "sector": "Emtia", "subSector": "Tarım", "desc": "Kahve Vadeli İşlemi"},
+        {"ticker": "Şeker", "yf_ticker": "SB=F", "name": "Şeker (Sugar Futures)", "sector": "Emtia", "subSector": "Tarım", "desc": "Şeker Vadeli İşlemi"},
+        {"ticker": "Pamuk", "yf_ticker": "CT=F", "name": "Pamuk (Cotton Futures)", "sector": "Emtia", "subSector": "Tarım", "desc": "Pamuk Vadeli İşlemi"}
+    ]
+
+    # Curated ETFs list
+    ETFS_LIST = [
+        {"ticker": "SPY", "yf_ticker": "SPY", "name": "SPDR S&P 500 ETF Trust", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "S&P 500 Index"},
+        {"ticker": "QQQ", "yf_ticker": "QQQ", "name": "Invesco QQQ Trust", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Index"},
+        {"ticker": "DIA", "yf_ticker": "DIA", "name": "SPDR Dow Jones Industrial Average", "sector": "ETF", "subSector": "Hisse Senedi (Mavi Çip)", "target": "Dow Jones Index"},
+        {"ticker": "IWM", "yf_ticker": "IWM", "name": "iShares Russell 2000 ETF", "sector": "ETF", "subSector": "Hisse Senedi (Küçük Ölçek)", "target": "Russell 2000 Index"},
+        {"ticker": "VTI", "yf_ticker": "VTI", "name": "Vanguard Total Stock Market", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "US Stock Market"},
+        {"ticker": "VOO", "yf_ticker": "VOO", "name": "Vanguard S&P 500 ETF", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "S&P 500 Index"},
+        {"ticker": "VWO", "yf_ticker": "VWO", "name": "Vanguard FTSE Emerging Markets", "sector": "ETF", "subSector": "Gelişmekte Olan Ülkeler", "target": "FTSE Emerging Index"},
+        {"ticker": "VEA", "yf_ticker": "VEA", "name": "Vanguard FTSE Developed Markets", "sector": "ETF", "subSector": "Gelişmiş Ülkeler (ABD hariç)", "target": "FTSE Developed Index"},
+        {"ticker": "GLD", "yf_ticker": "GLD", "name": "SPDR Gold Shares", "sector": "ETF", "subSector": "Emtia (Altın)", "target": "Gold Bullion"},
+        {"ticker": "SLV", "yf_ticker": "SLV", "name": "iShares Silver Trust", "sector": "ETF", "subSector": "Emtia (Gümüş)", "target": "Silver Bullion"},
+        {"ticker": "USO", "yf_ticker": "USO", "name": "United States Oil Fund", "sector": "ETF", "subSector": "Emtia (Petrol)", "target": "WTI Light Sweet Crude"},
+        {"ticker": "UNG", "yf_ticker": "UNG", "name": "United States Natural Gas", "sector": "ETF", "subSector": "Emtia (Gaz)", "target": "Natural Gas Price"},
+        {"ticker": "TLT", "yf_ticker": "TLT", "name": "iShares 20+ Year Treasury Bond", "sector": "ETF", "subSector": "Tahvil (Uzun Vade)", "target": "US 20+ Year Bond"},
+        {"ticker": "HYG", "yf_ticker": "HYG", "name": "iShares iBoxx $ High Yield Corp", "sector": "ETF", "subSector": "Tahvil (Yüksek Getiri)", "target": "High Yield Corporate Bond"},
+        {"ticker": "SMH", "yf_ticker": "SMH", "name": "VanEck Semiconductor ETF", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Semiconductor Stocks"},
+        {"ticker": "ARKK", "yf_ticker": "ARKK", "name": "ARK Innovation ETF", "sector": "ETF", "subSector": "Hisse Senedi (Aktif/İnovasyon)", "target": "Disruptive Innovation"},
+        {"ticker": "XLF", "yf_ticker": "XLF", "name": "Financial Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Financials Index"},
+        {"ticker": "XLK", "yf_ticker": "XLK", "name": "Technology Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Technology Index"},
+        {"ticker": "XLV", "yf_ticker": "XLV", "name": "Health Care Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Health Care Index"},
+        {"ticker": "XLE", "yf_ticker": "XLE", "name": "Energy Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Energy Index"}
+    ]
+    
     # 4. Collect and save index data
     if sp500_companies:
         collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session)
@@ -483,6 +540,10 @@ def main():
         
     if nttr_companies:
         collect_index_data("NTTR", nttr_companies, "^NTTR", os.path.join(json_dir, "nttr.json"), session)
+        
+    # 5. Collect non-stock datasets
+    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session)
+    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session)
         
     elapsed = time.time() - start_time
     print(f"\nAll index updates completed in {elapsed:.2f} seconds.")

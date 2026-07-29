@@ -4,12 +4,16 @@ let filteredData = [];
 let dataStore = {
     sp500: [],
     nasdaq100: [],
-    nttr: []
+    nttr: [],
+    commodities: [],
+    etfs: []
 };
 let indexMetadata = {
     sp500: { price: null, change: null },
     nasdaq100: { price: null, change: null },
-    nttr: { price: null, change: null }
+    nttr: { price: null, change: null },
+    commodities: { price: null, change: null },
+    etfs: { price: null, change: null }
 };
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=18')
+        navigator.serviceWorker.register('./service-worker.js?v=19')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -82,7 +86,7 @@ function registerServiceWorker() {
 // Fetch Data from JSON File
 async function fetchData() {
     try {
-        // Fetch all three datasets in parallel
+        // Fetch all three index datasets in parallel
         const [sp500Res, nasdaq100Res, nttrRes] = await Promise.all([
             fetch('data/sp500.json'),
             fetch('data/nasdaq100.json'),
@@ -108,6 +112,30 @@ async function fetchData() {
         dataStore.nttr = nttrPayload.data || [];
         indexMetadata.nttr = { price: nttrPayload.indexPrice, change: nttrPayload.indexChangePercent };
         
+        // Defensively fetch Commodities
+        try {
+            const commRes = await fetch('data/commodities.json');
+            if (commRes.ok) {
+                const commPayload = await commRes.json();
+                dataStore.commodities = commPayload.data || [];
+                indexMetadata.commodities = { price: commPayload.indexPrice, change: commPayload.indexChangePercent };
+            }
+        } catch (e) {
+            console.warn("commodities.json yüklenemedi (henüz oluşturulmamış olabilir):", e);
+        }
+        
+        // Defensively fetch ETFs
+        try {
+            const etfsRes = await fetch('data/etfs.json');
+            if (etfsRes.ok) {
+                const etfsPayload = await etfsRes.json();
+                dataStore.etfs = etfsPayload.data || [];
+                indexMetadata.etfs = { price: etfsPayload.indexPrice, change: etfsPayload.indexChangePercent };
+            }
+        } catch (e) {
+            console.warn("etfs.json yüklenemedi (henüz oluşturulmamış olabilir):", e);
+        }
+        
         // Update active dataset
         updateActiveDataset();
         
@@ -132,6 +160,9 @@ function updateActiveDataset() {
     // Update total count
     elements.totalCount.textContent = allData.length;
     
+    // Update headers dynamically based on asset tab
+    updateTableHeaders();
+    
     // Populate sector filter options
     populateSectorFilter();
     
@@ -140,6 +171,38 @@ function updateActiveDataset() {
     
     // Apply filters and render
     applyFilters();
+}
+
+// Update table header labels based on selected asset tab
+function updateTableHeaders() {
+    const headers = document.querySelectorAll('#companies-table th.sortable');
+    if (!headers || headers.length < 9) return;
+    
+    if (activeTab === 'commodities') {
+        headers[1].innerHTML = `Emtia <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
+        headers[4].innerHTML = `Kategori <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `Açıklama <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `-- <i class="fa-solid fa-sort"></i>`;
+    } else if (activeTab === 'etfs') {
+        headers[1].innerHTML = `ETF <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `Yönetilen Varlık (AUM) <i class="fa-solid fa-sort"></i>`;
+        headers[4].innerHTML = `Kategori / Odak <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `Günlük Hacim <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `Takip Ettiği Varlık <i class="fa-solid fa-sort"></i>`;
+    } else {
+        headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
+        headers[3].innerHTML = `Piyasa Değeri <i class="fa-solid fa-sort"></i>`;
+        
+        const weightLabels = {
+            sp500: 'S&P 500 Ağırlığı',
+            nasdaq100: 'Nasdaq 100 Ağırlığı',
+            nttr: 'NTTR Ağırlığı'
+        };
+        headers[4].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
+        headers[5].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
+        headers[6].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+    }
 }
 
 // Update index price/change header stats on tab change
@@ -616,28 +679,53 @@ function renderTable() {
         tdPrice.textContent = formatPrice(item.price);
         tr.appendChild(tdPrice);
         
-        // Market Cap
+        // Market Cap / volume / AUM
         const tdMarketCap = document.createElement('td');
         tdMarketCap.className = 'font-mono text-right';
-        tdMarketCap.textContent = formatCompactCurrency(item.marketCap);
+        if (activeTab === 'commodities') {
+            tdMarketCap.textContent = item.marketCap !== null && item.marketCap !== undefined ? item.marketCap.toLocaleString('en-US') : '--';
+        } else {
+            tdMarketCap.textContent = formatCompactCurrency(item.marketCap);
+        }
         tr.appendChild(tdMarketCap);
         
-        // S&P 500 Weight
+        // Weight / Category
         const tdWeight = document.createElement('td');
-        tdWeight.className = 'cell-weight text-right text-accent';
-        tdWeight.textContent = item.sp500Weight !== undefined ? `%${item.sp500Weight.toFixed(3)}` : '--';
+        if (activeTab === 'commodities' || activeTab === 'etfs') {
+            tdWeight.className = 'text-right text-accent';
+            tdWeight.textContent = item.subSector || '--';
+        } else {
+            tdWeight.className = 'cell-weight text-right text-accent';
+            tdWeight.textContent = item.sp500Weight !== undefined && item.sp500Weight !== null ? `%${item.sp500Weight.toFixed(3)}` : '--';
+        }
         tr.appendChild(tdWeight);
         
-        // P/E Ratio
+        // P/E Ratio / Description / volume
         const tdPE = document.createElement('td');
-        tdPE.className = 'font-mono text-right';
-        tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toFixed(2) : '--';
+        if (activeTab === 'commodities') {
+            tdPE.className = 'text-right';
+            tdPE.textContent = item.peg || '--';
+        } else if (activeTab === 'etfs') {
+            tdPE.className = 'font-mono text-right';
+            tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toLocaleString('en-US') : '--';
+        } else {
+            tdPE.className = 'font-mono text-right';
+            tdPE.textContent = item.pe !== null && item.pe !== undefined ? item.pe.toFixed(2) : '--';
+        }
         tr.appendChild(tdPE);
         
-        // PEG Ratio
+        // PEG Ratio / Underlying Asset / Empty
         const tdPEG = document.createElement('td');
-        tdPEG.className = 'font-mono text-right';
-        tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
+        if (activeTab === 'commodities') {
+            tdPEG.className = 'text-right';
+            tdPEG.textContent = '--';
+        } else if (activeTab === 'etfs') {
+            tdPEG.className = 'text-right';
+            tdPEG.textContent = item.peg || '--';
+        } else {
+            tdPEG.className = 'font-mono text-right';
+            tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
+        }
         tr.appendChild(tdPEG);
         
         // 24h Change
@@ -709,8 +797,28 @@ function createChangeBadge(val) {
 function showChartModal(ticker) {
     elements.chartModal.style.display = 'flex';
     
+    // Commodity mapping dictionary
+    const commodityTVMap = {
+        'Altın': 'COMEX:GC1!',
+        'Gümüş': 'COMEX:SI1!',
+        'Platin': 'NYMEX:PL1!',
+        'Ham Petrol': 'NYMEX:CL1!',
+        'Brent Petrol': 'ICE:BRN1!',
+        'Doğal Gaz': 'NYMEX:NG1!',
+        'Bakır': 'COMEX:HG1!',
+        'Mısır': 'CBOT:ZC1!',
+        'Buğday': 'CBOT:ZW1!',
+        'Soya Fasulyesi': 'CBOT:ZS1!',
+        'Kahve': 'NYBOT:KC1!',
+        'Şeker': 'NYBOT:SB1!',
+        'Pamuk': 'NYBOT:CT1!'
+    };
+    
     // Clean ticker for TradingView symbol (e.g. replace "-" with "." for class shares if yfinance used dashes)
-    const tvSymbol = ticker.replace('-', '.');
+    let tvSymbol = ticker.replace('-', '.');
+    if (commodityTVMap[ticker]) {
+        tvSymbol = commodityTVMap[ticker];
+    }
     
     const container = document.getElementById('tv-chart-container');
     container.innerHTML = '<div class="tradingview-widget-container__widget"></div>';

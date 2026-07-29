@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-29 08:24:52 UTC",
+  "lastUpdated": "2026-07-29 10:32:58 UTC",
   "totalMarketCap": 71889732065280,
   "companiesCount": 503,
   "indexPrice": 7428.78,
@@ -16,7 +16,7 @@
       "marketCap": 4994876047360,
       "sharesOutstanding": 14687356000,
       "floatPercent": 99.83,
-      "pe": 40.83,
+      "pe": 41.17,
       "peg": 2.71,
       "sp500Weight": 6.948,
       "rank": 1
@@ -48,7 +48,7 @@
       "marketCap": 4081251516416,
       "sharesOutstanding": 5867155790,
       "floatPercent": 100.0,
-      "pe": 16.39,
+      "pe": 16.75,
       "peg": 1.27,
       "sp500Weight": 5.677,
       "rank": 3
@@ -64,7 +64,7 @@
       "marketCap": 4067676389376,
       "sharesOutstanding": 5527000000,
       "floatPercent": 100.0,
-      "pe": 16.39,
+      "pe": 16.7,
       "peg": 1.27,
       "sp500Weight": 5.658,
       "rank": 4
@@ -96,7 +96,7 @@
       "marketCap": 2483386318848,
       "sharesOutstanding": 10757109436,
       "floatPercent": 90.91,
-      "pe": 27.71,
+      "pe": 27.61,
       "peg": 1.24,
       "sp500Weight": 3.454,
       "rank": 6
@@ -160,7 +160,7 @@
       "marketCap": 1105107091456,
       "sharesOutstanding": 1398308677,
       "floatPercent": 0.08,
-      "pe": 14.79,
+      "pe": 15.24,
       "peg": 10.06,
       "sp500Weight": 1.537,
       "rank": 10
@@ -176,7 +176,7 @@
       "marketCap": 1088513048576,
       "sharesOutstanding": 891741406,
       "floatPercent": 99.73,
-      "pe": 42.55,
+      "pe": 43.29,
       "peg": 1.67,
       "sp500Weight": 1.514,
       "rank": 11
@@ -192,7 +192,7 @@
       "marketCap": 949801451520,
       "sharesOutstanding": 2658200000,
       "floatPercent": 99.46,
-      "pe": 15.27,
+      "pe": 15.32,
       "peg": 1.79,
       "sp500Weight": 1.321,
       "rank": 12
@@ -336,7 +336,7 @@
       "marketCap": 455551025152,
       "sharesOutstanding": 3941434665,
       "floatPercent": 99.84,
-      "pe": 38.15,
+      "pe": 38.4,
       "peg": 1.59,
       "sp500Weight": 0.634,
       "rank": 21
@@ -352,7 +352,7 @@
       "marketCap": 439465115648,
       "sharesOutstanding": 7017967460,
       "floatPercent": 99.61,
-      "pe": 14.36,
+      "pe": 14.46,
       "peg": 1.07,
       "sp500Weight": 0.611,
       "rank": 22
@@ -384,7 +384,7 @@
       "marketCap": 428657770496,
       "sharesOutstanding": 443478804,
       "floatPercent": 99.43,
-      "pe": 47.85,
+      "pe": 48.55,
       "peg": 4.62,
       "sp500Weight": 0.596,
       "rank": 24
@@ -448,7 +448,7 @@
       "marketCap": 378289913856,
       "sharesOutstanding": 793959430,
       "floatPercent": 99.6,
-      "pe": 48.52,
+      "pe": 44.82,
       "peg": 1.31,
       "sp500Weight": 0.526,
       "rank": 28
@@ -464,7 +464,7 @@
       "marketCap": 377247334400,
       "sharesOutstanding": 1037562513,
       "floatPercent": 99.62,
-      "pe": 42.57,
+      "pe": 42.93,
       "peg": 5.31,
       "sp500Weight": 0.525,
       "rank": 29
@@ -496,7 +496,7 @@
       "marketCap": 346681835520,
       "sharesOutstanding": 2328598978,
       "floatPercent": 99.81,
-      "pe": 21.73,
+      "pe": 21.8,
       "peg": 4.18,
       "sp500Weight": 0.482,
       "rank": 31
@@ -592,7 +592,7 @@
       "marketCap": 311987634176,
       "sharesOutstanding": 1558613439,
       "floatPercent": 99.74,
-      "pe": 26.87,
+      "pe": 27.46,
       "peg": 2.73,
       "sp500Weight": 0.434,
       "rank": 37
@@ -720,7 +720,7 @@
       "marketCap": 253033545728,
       "sharesOutstanding": 913247686,
       "floatPercent": 99.76,
-      "pe": 42.56,
+      "pe": 42.17,
       "peg": 1.23,
       "sp500Weight": 0.352,
       "rank": 45
@@ -752,7 +752,7 @@
       "marketCap": 249237307392,
       "sharesOutstanding": 1306275210,
       "floatPercent": 99.76,
-      "pe": 57.47,
+      "pe": 54.05,
       "peg": 2.09,
       "sp500Weight": 0.347,
       "rank": 47
@@ -784,7 +784,7 @@
       "marketCap": 227329556480,
       "sharesOutstanding": 675309833,
       "floatPercent": 77.33,
-      "pe": 20.36,
+      "pe": 20.41,
       "peg": 1.56,
       "sp500Weight": 0.316,
       "rank": 49
@@ -800,7 +800,7 @@
       "marketCap": 222205181952,
       "sharesOutstanding": 1677400000,
       "floatPercent": 99.71,
-      "pe": 14.35,
+      "pe": 14.26,
       "peg": 0.72,
       "sp500Weight": 0.309,
       "rank": 50
@@ -816,7 +816,7 @@
       "marketCap": 214382690304,
       "sharesOutstanding": 942134390,
       "floatPercent": 99.79,
-      "pe": 19.19,
+      "pe": 20.21,
       "peg": 2.18,
       "sp500Weight": 0.298,
       "rank": 51
@@ -944,7 +944,7 @@
       "marketCap": 186844282880,
       "sharesOutstanding": 1741813154,
       "floatPercent": 99.39,
-      "pe": 33.73,
+      "pe": 34.72,
       "peg": 2.11,
       "sp500Weight": 0.26,
       "rank": 59
@@ -1008,7 +1008,7 @@
       "marketCap": 178464178176,
       "sharesOutstanding": 154995389,
       "floatPercent": 92.86,
-      "pe": 25.45,
+      "pe": 26.31,
       "peg": 1.14,
       "sp500Weight": 0.248,
       "rank": 63
@@ -1040,7 +1040,7 @@
       "marketCap": 177636474880,
       "sharesOutstanding": 1104704446,
       "floatPercent": 99.77,
-      "pe": 30.4,
+      "pe": 31.22,
       "peg": 3.34,
       "sp500Weight": 0.247,
       "rank": 65
@@ -1056,7 +1056,7 @@
       "marketCap": 176969236480,
       "sharesOutstanding": 1230234445,
       "floatPercent": 99.36,
-      "pe": 42.94,
+      "pe": 41.34,
       "peg": 1.28,
       "sp500Weight": 0.246,
       "rank": 66
@@ -1087,8 +1087,8 @@
       "change7d": -1.18,
       "marketCap": 174986428416,
       "sharesOutstanding": 789792534,
-      "floatPercent": 95.77,
-      "pe": 83.29,
+      "floatPercent": 95.96,
+      "pe": 87.57,
       "peg": 26.48,
       "sp500Weight": 0.243,
       "rank": 68
@@ -1152,7 +1152,7 @@
       "marketCap": 171675533312,
       "sharesOutstanding": 1054000000,
       "floatPercent": 99.79,
-      "pe": 18.28,
+      "pe": 17.51,
       "peg": 0.54,
       "sp500Weight": 0.239,
       "rank": 72
@@ -1168,7 +1168,7 @@
       "marketCap": 168979824640,
       "sharesOutstanding": 6852385650,
       "floatPercent": 99.79,
-      "pe": 8.06,
+      "pe": 8.14,
       "peg": 1.63,
       "sp500Weight": 0.235,
       "rank": 73
@@ -1200,7 +1200,7 @@
       "marketCap": 166767673344,
       "sharesOutstanding": 1241569874,
       "floatPercent": 99.78,
-      "pe": 17.77,
+      "pe": 18.27,
       "peg": 2.14,
       "sp500Weight": 0.232,
       "rank": 75
@@ -1232,7 +1232,7 @@
       "marketCap": 162321186816,
       "sharesOutstanding": 148089758,
       "floatPercent": 98.59,
-      "pe": 43.67,
+      "pe": 37.45,
       "peg": null,
       "sp500Weight": 0.226,
       "rank": 77
@@ -1248,7 +1248,7 @@
       "marketCap": 159763628032,
       "sharesOutstanding": 344682131,
       "floatPercent": 99.25,
-      "pe": 29.77,
+      "pe": 27.71,
       "peg": 0.44,
       "sp500Weight": 0.222,
       "rank": 78
@@ -1344,7 +1344,7 @@
       "marketCap": 143998271488,
       "sharesOutstanding": 2035599013,
       "floatPercent": 99.42,
-      "pe": 16.92,
+      "pe": 17.55,
       "peg": 5.52,
       "sp500Weight": 0.2,
       "rank": 84
@@ -1392,7 +1392,7 @@
       "marketCap": 140496633856,
       "sharesOutstanding": 305732000,
       "floatPercent": 83.64,
-      "pe": 35.84,
+      "pe": 36.37,
       "peg": 1.13,
       "sp500Weight": 0.195,
       "rank": 87
@@ -1424,7 +1424,7 @@
       "marketCap": 139929370624,
       "sharesOutstanding": 702986054,
       "floatPercent": 89.03,
-      "pe": 35.11,
+      "pe": 35.48,
       "peg": 1.28,
       "sp500Weight": 0.195,
       "rank": 89
@@ -1440,7 +1440,7 @@
       "marketCap": 139509891072,
       "sharesOutstanding": 1275927307,
       "floatPercent": 99.79,
-      "pe": 46.93,
+      "pe": 47.75,
       "peg": 0.3,
       "sp500Weight": 0.194,
       "rank": 90
@@ -1472,7 +1472,7 @@
       "marketCap": 134160973824,
       "sharesOutstanding": 230790753,
       "floatPercent": 85.72,
-      "pe": 21.36,
+      "pe": 21.41,
       "peg": 1.22,
       "sp500Weight": 0.187,
       "rank": 92
@@ -1536,7 +1536,7 @@
       "marketCap": 129624989696,
       "sharesOutstanding": 358278038,
       "floatPercent": 98.03,
-      "pe": 40.97,
+      "pe": 41.49,
       "peg": 1.78,
       "sp500Weight": 0.18,
       "rank": 96
@@ -1600,7 +1600,7 @@
       "marketCap": 124941262848,
       "sharesOutstanding": 1669891235,
       "floatPercent": 99.8,
-      "pe": 15.21,
+      "pe": 15.62,
       "peg": 1.67,
       "sp500Weight": 0.174,
       "rank": 100
@@ -1632,7 +1632,7 @@
       "marketCap": 122432643072,
       "sharesOutstanding": 561000000,
       "floatPercent": 99.73,
-      "pe": 17.89,
+      "pe": 18.45,
       "peg": 1.38,
       "sp500Weight": 0.17,
       "rank": 102
@@ -1743,7 +1743,7 @@
       "change7d": -7.28,
       "marketCap": 108322963456,
       "sharesOutstanding": 859637825,
-      "floatPercent": 91.86,
+      "floatPercent": 96.71,
       "pe": 68.86,
       "peg": 1.36,
       "sp500Weight": 0.151,
@@ -1792,7 +1792,7 @@
       "marketCap": 105597804544,
       "sharesOutstanding": 399734282,
       "floatPercent": 99.77,
-      "pe": 23.8,
+      "pe": 24.62,
       "peg": 2.38,
       "sp500Weight": 0.147,
       "rank": 112
@@ -1888,7 +1888,7 @@
       "marketCap": 100762386432,
       "sharesOutstanding": 611942109,
       "floatPercent": 99.81,
-      "pe": 12.3,
+      "pe": 13.16,
       "peg": 1.12,
       "sp500Weight": 0.14,
       "rank": 118
@@ -1936,7 +1936,7 @@
       "marketCap": 100364656640,
       "sharesOutstanding": 1557731728,
       "floatPercent": 99.71,
-      "pe": 12.68,
+      "pe": 12.86,
       "peg": 2.12,
       "sp500Weight": 0.14,
       "rank": 121
@@ -1952,7 +1952,7 @@
       "marketCap": 99049046016,
       "sharesOutstanding": 397500000,
       "floatPercent": 99.68,
-      "pe": 13.61,
+      "pe": 14.25,
       "peg": 0.65,
       "sp500Weight": 0.138,
       "rank": 122
@@ -1984,7 +1984,7 @@
       "marketCap": 96141246464,
       "sharesOutstanding": 401575752,
       "floatPercent": 99.7,
-      "pe": 34.5,
+      "pe": 34.6,
       "peg": 2.43,
       "sp500Weight": 0.134,
       "rank": 124
@@ -2144,7 +2144,7 @@
       "marketCap": 90871537664,
       "sharesOutstanding": 417930233,
       "floatPercent": 96.52,
-      "pe": 36.2,
+      "pe": 37.71,
       "peg": 1.36,
       "sp500Weight": 0.126,
       "rank": 134
@@ -2160,7 +2160,7 @@
       "marketCap": 89941172224,
       "sharesOutstanding": 324281912,
       "floatPercent": 98.86,
-      "pe": 16.1,
+      "pe": 16.45,
       "peg": 4.58,
       "sp500Weight": 0.125,
       "rank": 135
@@ -2175,8 +2175,8 @@
       "change7d": -4.05,
       "marketCap": 89701163008,
       "sharesOutstanding": 746581816,
-      "floatPercent": 99.89,
-      "pe": 18.29,
+      "floatPercent": 100.0,
+      "pe": 17.08,
       "peg": 1.78,
       "sp500Weight": 0.125,
       "rank": 136
@@ -2256,7 +2256,7 @@
       "marketCap": 88533786624,
       "sharesOutstanding": 137989067,
       "floatPercent": 99.57,
-      "pe": 34.37,
+      "pe": 33.33,
       "peg": 1.57,
       "sp500Weight": 0.123,
       "rank": 141
@@ -2272,7 +2272,7 @@
       "marketCap": 88289386496,
       "sharesOutstanding": 150060149,
       "floatPercent": 99.1,
-      "pe": 84.78,
+      "pe": 80.6,
       "peg": 1.92,
       "sp500Weight": 0.123,
       "rank": 142
@@ -2287,8 +2287,8 @@
       "change7d": -3.21,
       "marketCap": 87375593472,
       "sharesOutstanding": 246635621,
-      "floatPercent": 92.67,
-      "pe": 31.43,
+      "floatPercent": 92.17,
+      "pe": 34.0,
       "peg": 2.53,
       "sp500Weight": 0.122,
       "rank": 143
@@ -2352,7 +2352,7 @@
       "marketCap": 85841526784,
       "sharesOutstanding": 3539192198,
       "floatPercent": 99.2,
-      "pe": 7.31,
+      "pe": 7.75,
       "peg": 142.98,
       "sp500Weight": 0.119,
       "rank": 147
@@ -2368,7 +2368,7 @@
       "marketCap": 85805563904,
       "sharesOutstanding": 1222998265,
       "floatPercent": 99.42,
-      "pe": 31.04,
+      "pe": 30.77,
       "peg": 2.22,
       "sp500Weight": 0.119,
       "rank": 148
@@ -2416,7 +2416,7 @@
       "marketCap": 85191729152,
       "sharesOutstanding": 411336610,
       "floatPercent": 91.59,
-      "pe": 87.68,
+      "pe": 92.66,
       "peg": 4.22,
       "sp500Weight": 0.119,
       "rank": 151
@@ -2447,8 +2447,8 @@
       "change7d": 0.65,
       "marketCap": 84917534720,
       "sharesOutstanding": 287700000,
-      "floatPercent": 90.58,
-      "pe": 26.45,
+      "floatPercent": 90.17,
+      "pe": 27.41,
       "peg": 2.87,
       "sp500Weight": 0.118,
       "rank": 153
@@ -2480,7 +2480,7 @@
       "marketCap": 83652993024,
       "sharesOutstanding": 216869290,
       "floatPercent": 99.79,
-      "pe": 16.72,
+      "pe": 17.07,
       "peg": 1.34,
       "sp500Weight": 0.116,
       "rank": 155
@@ -2496,7 +2496,7 @@
       "marketCap": 83530850304,
       "sharesOutstanding": 791184698,
       "floatPercent": 99.16,
-      "pe": 46.61,
+      "pe": 45.03,
       "peg": 2.59,
       "sp500Weight": 0.116,
       "rank": 156
@@ -2528,7 +2528,7 @@
       "marketCap": 82532474880,
       "sharesOutstanding": 400935020,
       "floatPercent": 99.77,
-      "pe": 20.54,
+      "pe": 20.32,
       "peg": 1.2,
       "sp500Weight": 0.115,
       "rank": 158
@@ -2544,7 +2544,7 @@
       "marketCap": 81671979008,
       "sharesOutstanding": 904451541,
       "floatPercent": 96.7,
-      "pe": 38.92,
+      "pe": 40.31,
       "peg": 0.35,
       "sp500Weight": 0.114,
       "rank": 159
@@ -2576,7 +2576,7 @@
       "marketCap": 80525672448,
       "sharesOutstanding": 320781076,
       "floatPercent": 97.61,
-      "pe": 34.01,
+      "pe": 35.11,
       "peg": 2.88,
       "sp500Weight": 0.112,
       "rank": 161
@@ -2607,8 +2607,8 @@
       "change7d": -1.29,
       "marketCap": 79900655616,
       "sharesOutstanding": 465893069,
-      "floatPercent": 99.69,
-      "pe": 26.88,
+      "floatPercent": 99.7,
+      "pe": 27.62,
       "peg": 1.75,
       "sp500Weight": 0.111,
       "rank": 163
@@ -2624,7 +2624,7 @@
       "marketCap": 79640125440,
       "sharesOutstanding": 264532404,
       "floatPercent": 99.49,
-      "pe": 12.33,
+      "pe": 12.76,
       "peg": 0.87,
       "sp500Weight": 0.111,
       "rank": 164
@@ -2704,7 +2704,7 @@
       "marketCap": 75553947648,
       "sharesOutstanding": 828715079,
       "floatPercent": 99.07,
-      "pe": 29.5,
+      "pe": 29.7,
       "peg": 1.93,
       "sp500Weight": 0.105,
       "rank": 169
@@ -2800,7 +2800,7 @@
       "marketCap": 73159450624,
       "sharesOutstanding": 55933583,
       "floatPercent": 99.49,
-      "pe": 40.16,
+      "pe": 40.81,
       "peg": 3.05,
       "sp500Weight": 0.102,
       "rank": 175
@@ -2944,7 +2944,7 @@
       "marketCap": 70326747136,
       "sharesOutstanding": 2224825757,
       "floatPercent": 86.99,
-      "pe": 20.53,
+      "pe": 20.39,
       "peg": 3.55,
       "sp500Weight": 0.098,
       "rank": 184
@@ -2960,7 +2960,7 @@
       "marketCap": 70126616576,
       "sharesOutstanding": 257420930,
       "floatPercent": 99.39,
-      "pe": 5.78,
+      "pe": 6.03,
       "peg": 3.13,
       "sp500Weight": 0.098,
       "rank": 185
@@ -2976,7 +2976,7 @@
       "marketCap": 69091901440,
       "sharesOutstanding": 668200216,
       "floatPercent": 99.75,
-      "pe": 19.08,
+      "pe": 19.18,
       "peg": 2.07,
       "sp500Weight": 0.096,
       "rank": 186
@@ -3104,7 +3104,7 @@
       "marketCap": 65494355968,
       "sharesOutstanding": 454191112,
       "floatPercent": 99.69,
-      "pe": 18.56,
+      "pe": 19.05,
       "peg": 2.61,
       "sp500Weight": 0.091,
       "rank": 194
@@ -3120,7 +3120,7 @@
       "marketCap": 65420304384,
       "sharesOutstanding": 252471079,
       "floatPercent": 99.81,
-      "pe": 25.58,
+      "pe": 24.75,
       "peg": 0.68,
       "sp500Weight": 0.091,
       "rank": 195
@@ -3200,7 +3200,7 @@
       "marketCap": 62985150464,
       "sharesOutstanding": 49130000,
       "floatPercent": 96.37,
-      "pe": 96.17,
+      "pe": 91.77,
       "peg": 1.74,
       "sp500Weight": 0.088,
       "rank": 200
@@ -3248,7 +3248,7 @@
       "marketCap": 62131384320,
       "sharesOutstanding": 289940672,
       "floatPercent": 99.67,
-      "pe": 20.33,
+      "pe": 21.01,
       "peg": 0.89,
       "sp500Weight": 0.086,
       "rank": 203
@@ -3280,7 +3280,7 @@
       "marketCap": 61713866752,
       "sharesOutstanding": 186745748,
       "floatPercent": 84.31,
-      "pe": 166.9,
+      "pe": 169.47,
       "peg": 4.72,
       "sp500Weight": 0.086,
       "rank": 205
@@ -3344,7 +3344,7 @@
       "marketCap": 59611004928,
       "sharesOutstanding": 3913840554,
       "floatPercent": 98.97,
-      "pe": 8.18,
+      "pe": 8.12,
       "peg": 8.48,
       "sp500Weight": 0.083,
       "rank": 209
@@ -3440,7 +3440,7 @@
       "marketCap": 56857219072,
       "sharesOutstanding": 186294951,
       "floatPercent": 100.0,
-      "pe": 32.99,
+      "pe": 33.1,
       "peg": 1.71,
       "sp500Weight": 0.079,
       "rank": 215
@@ -3504,7 +3504,7 @@
       "marketCap": 55194632192,
       "sharesOutstanding": 1147497573,
       "floatPercent": 99.71,
-      "pe": 40.76,
+      "pe": 41.11,
       "peg": 3.45,
       "sp500Weight": 0.077,
       "rank": 219
@@ -3583,8 +3583,8 @@
       "change7d": 0.35,
       "marketCap": 52459458560,
       "sharesOutstanding": 830580423,
-      "floatPercent": 95.16,
-      "pe": 46.44,
+      "floatPercent": 94.87,
+      "pe": 42.11,
       "peg": 1.67,
       "sp500Weight": 0.073,
       "rank": 224
@@ -3616,7 +3616,7 @@
       "marketCap": 52407963648,
       "sharesOutstanding": 466595090,
       "floatPercent": 97.59,
-      "pe": 28.95,
+      "pe": 28.65,
       "peg": 2.09,
       "sp500Weight": 0.073,
       "rank": 226
@@ -3632,7 +3632,7 @@
       "marketCap": 52399919104,
       "sharesOutstanding": 906573000,
       "floatPercent": 99.55,
-      "pe": 19.2,
+      "pe": 19.46,
       "peg": 2.07,
       "sp500Weight": 0.073,
       "rank": 227
@@ -3664,7 +3664,7 @@
       "marketCap": 52152139776,
       "sharesOutstanding": 170895368,
       "floatPercent": 99.39,
-      "pe": 50.52,
+      "pe": 49.3,
       "peg": 1.12,
       "sp500Weight": 0.073,
       "rank": 229
@@ -3680,7 +3680,7 @@
       "marketCap": 52143362048,
       "sharesOutstanding": 444000000,
       "floatPercent": 89.81,
-      "pe": 26.16,
+      "pe": 27.12,
       "peg": 1.77,
       "sp500Weight": 0.073,
       "rank": 230
@@ -3696,7 +3696,7 @@
       "marketCap": 51651248128,
       "sharesOutstanding": 168910851,
       "floatPercent": 98.76,
-      "pe": 40.5,
+      "pe": 41.16,
       "peg": 1.37,
       "sp500Weight": 0.072,
       "rank": 231
@@ -3728,7 +3728,7 @@
       "marketCap": 50720153600,
       "sharesOutstanding": 77800000,
       "floatPercent": 91.47,
-      "pe": 124.89,
+      "pe": 114.98,
       "peg": 0.63,
       "sp500Weight": 0.071,
       "rank": 233
@@ -3776,7 +3776,7 @@
       "marketCap": 50152448000,
       "sharesOutstanding": 274702550,
       "floatPercent": 100.0,
-      "pe": 16.29,
+      "pe": 16.1,
       "peg": 0.78,
       "sp500Weight": 0.07,
       "rank": 236
@@ -3824,7 +3824,7 @@
       "marketCap": 50118799360,
       "sharesOutstanding": 337182468,
       "floatPercent": 93.27,
-      "pe": 26.26,
+      "pe": 24.86,
       "peg": 0.46,
       "sp500Weight": 0.07,
       "rank": 239
@@ -3872,7 +3872,7 @@
       "marketCap": 49204178944,
       "sharesOutstanding": 1153403107,
       "floatPercent": 53.49,
-      "pe": 12.02,
+      "pe": 11.88,
       "peg": 2.92,
       "sp500Weight": 0.068,
       "rank": 242
@@ -3888,7 +3888,7 @@
       "marketCap": 48917975040,
       "sharesOutstanding": 192856206,
       "floatPercent": 85.36,
-      "pe": 27.01,
+      "pe": 28.34,
       "peg": 3.33,
       "sp500Weight": 0.068,
       "rank": 243
@@ -3968,7 +3968,7 @@
       "marketCap": 47604916224,
       "sharesOutstanding": 195639321,
       "floatPercent": 99.62,
-      "pe": 130.12,
+      "pe": 116.43,
       "peg": 0.92,
       "sp500Weight": 0.066,
       "rank": 248
@@ -3984,7 +3984,7 @@
       "marketCap": 47059062784,
       "sharesOutstanding": 207968283,
       "floatPercent": 89.59,
-      "pe": 47.44,
+      "pe": 47.24,
       "peg": 3.35,
       "sp500Weight": 0.065,
       "rank": 249
@@ -4080,7 +4080,7 @@
       "marketCap": 44141731840,
       "sharesOutstanding": 80602077,
       "floatPercent": 95.26,
-      "pe": 213.09,
+      "pe": 222.62,
       "peg": 4.15,
       "sp500Weight": 0.061,
       "rank": 255
@@ -4096,7 +4096,7 @@
       "marketCap": 43058679808,
       "sharesOutstanding": 292816579,
       "floatPercent": 99.32,
-      "pe": 32.9,
+      "pe": 33.57,
       "peg": 1.02,
       "sp500Weight": 0.06,
       "rank": 256
@@ -4112,7 +4112,7 @@
       "marketCap": 43044003840,
       "sharesOutstanding": 347325107,
       "floatPercent": 99.59,
-      "pe": 12.54,
+      "pe": 12.75,
       "peg": 1.33,
       "sp500Weight": 0.06,
       "rank": 257
@@ -4160,7 +4160,7 @@
       "marketCap": 42286190592,
       "sharesOutstanding": 1360559471,
       "floatPercent": 99.54,
-      "pe": 22.36,
+      "pe": 23.02,
       "peg": 1.01,
       "sp500Weight": 0.059,
       "rank": 260
@@ -4336,7 +4336,7 @@
       "marketCap": 40171995136,
       "sharesOutstanding": 324569728,
       "floatPercent": 99.16,
-      "pe": 11.28,
+      "pe": 11.59,
       "peg": 6.5,
       "sp500Weight": 0.056,
       "rank": 271
@@ -4367,7 +4367,7 @@
       "change7d": 1.3,
       "marketCap": 39987924992,
       "sharesOutstanding": 164600000,
-      "floatPercent": 96.32,
+      "floatPercent": 95.0,
       "pe": 26.46,
       "peg": 0.86,
       "sp500Weight": 0.056,
@@ -4384,7 +4384,7 @@
       "marketCap": 39692984320,
       "sharesOutstanding": 282431944,
       "floatPercent": 99.66,
-      "pe": 27.72,
+      "pe": 28.22,
       "peg": 1.22,
       "sp500Weight": 0.055,
       "rank": 274
@@ -4448,7 +4448,7 @@
       "marketCap": 39158087680,
       "sharesOutstanding": 2202366906,
       "floatPercent": 99.68,
-      "pe": 12.7,
+      "pe": 12.79,
       "peg": 1.13,
       "sp500Weight": 0.054,
       "rank": 278
@@ -4464,7 +4464,7 @@
       "marketCap": 38665195520,
       "sharesOutstanding": 1369649119,
       "floatPercent": 99.63,
-      "pe": 12.22,
+      "pe": 12.72,
       "peg": 1.09,
       "sp500Weight": 0.054,
       "rank": 279
@@ -4512,7 +4512,7 @@
       "marketCap": 37693550592,
       "sharesOutstanding": 98185855,
       "floatPercent": 99.81,
-      "pe": 47.16,
+      "pe": 48.78,
       "peg": 1.66,
       "sp500Weight": 0.052,
       "rank": 282
@@ -4544,7 +4544,7 @@
       "marketCap": 37457825792,
       "sharesOutstanding": 144212781,
       "floatPercent": 93.09,
-      "pe": 22.68,
+      "pe": 23.59,
       "peg": 11.95,
       "sp500Weight": 0.052,
       "rank": 284
@@ -4576,7 +4576,7 @@
       "marketCap": 37398851584,
       "sharesOutstanding": 297524681,
       "floatPercent": 99.05,
-      "pe": 138.13,
+      "pe": 136.63,
       "peg": 2.7,
       "sp500Weight": 0.052,
       "rank": 286
@@ -4592,7 +4592,7 @@
       "marketCap": 37203005440,
       "sharesOutstanding": 349389588,
       "floatPercent": 96.08,
-      "pe": 7.99,
+      "pe": 8.19,
       "peg": 1.05,
       "sp500Weight": 0.052,
       "rank": 287
@@ -4624,7 +4624,7 @@
       "marketCap": 37005692928,
       "sharesOutstanding": 325725678,
       "floatPercent": 99.72,
-      "pe": 22.81,
+      "pe": 22.77,
       "peg": 2.39,
       "sp500Weight": 0.051,
       "rank": 289
@@ -4640,7 +4640,7 @@
       "marketCap": 36611522560,
       "sharesOutstanding": 144933000,
       "floatPercent": 99.52,
-      "pe": 13.14,
+      "pe": 13.37,
       "peg": 1.67,
       "sp500Weight": 0.051,
       "rank": 290
@@ -4688,7 +4688,7 @@
       "marketCap": 35501330432,
       "sharesOutstanding": 114498625,
       "floatPercent": 99.18,
-      "pe": 24.55,
+      "pe": 26.15,
       "peg": 0.91,
       "sp500Weight": 0.049,
       "rank": 293
@@ -4768,7 +4768,7 @@
       "marketCap": 33850636288,
       "sharesOutstanding": 391336834,
       "floatPercent": 99.68,
-      "pe": 57.28,
+      "pe": 58.45,
       "peg": 0.81,
       "sp500Weight": 0.047,
       "rank": 298
@@ -4784,7 +4784,7 @@
       "marketCap": 33591822336,
       "sharesOutstanding": 211260936,
       "floatPercent": 98.86,
-      "pe": 33.31,
+      "pe": 34.28,
       "peg": 6.4,
       "sp500Weight": 0.047,
       "rank": 299
@@ -4800,7 +4800,7 @@
       "marketCap": 33102749696,
       "sharesOutstanding": 437000000,
       "floatPercent": 97.25,
-      "pe": 30.18,
+      "pe": 30.92,
       "peg": 0.9,
       "sp500Weight": 0.046,
       "rank": 300
@@ -4832,7 +4832,7 @@
       "marketCap": 32683591680,
       "sharesOutstanding": 162443291,
       "floatPercent": 91.67,
-      "pe": 34.51,
+      "pe": 35.74,
       "peg": 0.88,
       "sp500Weight": 0.045,
       "rank": 302
@@ -4880,7 +4880,7 @@
       "marketCap": 32314159104,
       "sharesOutstanding": 625516000,
       "floatPercent": 99.11,
-      "pe": 12.07,
+      "pe": 11.99,
       "peg": 2.26,
       "sp500Weight": 0.045,
       "rank": 305
@@ -4896,7 +4896,7 @@
       "marketCap": 31972249600,
       "sharesOutstanding": 662637325,
       "floatPercent": 44.09,
-      "pe": 18.49,
+      "pe": 18.7,
       "peg": 1.13,
       "sp500Weight": 0.044,
       "rank": 306
@@ -4928,7 +4928,7 @@
       "marketCap": 31708028928,
       "sharesOutstanding": 37004914,
       "floatPercent": 99.3,
-      "pe": 44.44,
+      "pe": 44.65,
       "peg": 3.68,
       "sp500Weight": 0.044,
       "rank": 308
@@ -4960,7 +4960,7 @@
       "marketCap": 31431976960,
       "sharesOutstanding": 44440278,
       "floatPercent": 98.74,
-      "pe": 24.94,
+      "pe": 23.69,
       "peg": 0.4,
       "sp500Weight": 0.044,
       "rank": 310
@@ -4976,7 +4976,7 @@
       "marketCap": 31137325056,
       "sharesOutstanding": 276751616,
       "floatPercent": 99.52,
-      "pe": 20.16,
+      "pe": 20.24,
       "peg": 2.51,
       "sp500Weight": 0.043,
       "rank": 311
@@ -4992,7 +4992,7 @@
       "marketCap": 31122991104,
       "sharesOutstanding": 104653784,
       "floatPercent": 99.62,
-      "pe": 24.7,
+      "pe": 25.37,
       "peg": 2.73,
       "sp500Weight": 0.043,
       "rank": 312
@@ -5087,8 +5087,8 @@
       "change7d": -1.13,
       "marketCap": 30388776960,
       "sharesOutstanding": 208028313,
-      "floatPercent": 99.46,
-      "pe": 24.23,
+      "floatPercent": 99.49,
+      "pe": 24.03,
       "peg": 2.04,
       "sp500Weight": 0.042,
       "rank": 318
@@ -5168,7 +5168,7 @@
       "marketCap": 29860671488,
       "sharesOutstanding": 94447976,
       "floatPercent": 99.51,
-      "pe": 17.76,
+      "pe": 18.55,
       "peg": 1.27,
       "sp500Weight": 0.042,
       "rank": 323
@@ -5184,7 +5184,7 @@
       "marketCap": 29839273984,
       "sharesOutstanding": 1101080187,
       "floatPercent": 96.69,
-      "pe": 9.16,
+      "pe": 9.28,
       "peg": null,
       "sp500Weight": 0.042,
       "rank": 324
@@ -5200,7 +5200,7 @@
       "marketCap": 29563936768,
       "sharesOutstanding": 963308388,
       "floatPercent": 87.76,
-      "pe": 18.49,
+      "pe": 19.06,
       "peg": 3.58,
       "sp500Weight": 0.041,
       "rank": 325
@@ -5232,7 +5232,7 @@
       "marketCap": 29163112448,
       "sharesOutstanding": 454891786,
       "floatPercent": 99.68,
-      "pe": 14.67,
+      "pe": 15.37,
       "peg": 1.72,
       "sp500Weight": 0.041,
       "rank": 327
@@ -5264,7 +5264,7 @@
       "marketCap": 28907698176,
       "sharesOutstanding": 533253986,
       "floatPercent": null,
-      "pe": 8.87,
+      "pe": 9.19,
       "peg": null,
       "sp500Weight": 0.04,
       "rank": 329
@@ -5280,7 +5280,7 @@
       "marketCap": 28882593792,
       "sharesOutstanding": 385872977,
       "floatPercent": 99.66,
-      "pe": 31.45,
+      "pe": 32.12,
       "peg": 1.37,
       "sp500Weight": 0.04,
       "rank": 330
@@ -5392,7 +5392,7 @@
       "marketCap": 27825879040,
       "sharesOutstanding": 117746611,
       "floatPercent": 98.7,
-      "pe": 26.26,
+      "pe": 26.52,
       "peg": 3.08,
       "sp500Weight": 0.039,
       "rank": 337
@@ -5408,7 +5408,7 @@
       "marketCap": 27810695168,
       "sharesOutstanding": 131021840,
       "floatPercent": 99.69,
-      "pe": 31.59,
+      "pe": 32.41,
       "peg": 2.0,
       "sp500Weight": 0.039,
       "rank": 338
@@ -5456,7 +5456,7 @@
       "marketCap": 27332888576,
       "sharesOutstanding": 752350362,
       "floatPercent": 99.72,
-      "pe": 22.02,
+      "pe": 22.29,
       "peg": 1.4,
       "sp500Weight": 0.038,
       "rank": 341
@@ -5472,7 +5472,7 @@
       "marketCap": 27222663168,
       "sharesOutstanding": 142983687,
       "floatPercent": 92.91,
-      "pe": 25.76,
+      "pe": 26.19,
       "peg": 7.17,
       "sp500Weight": 0.038,
       "rank": 342
@@ -5552,7 +5552,7 @@
       "marketCap": 26685177856,
       "sharesOutstanding": 853379538,
       "floatPercent": 99.49,
-      "pe": 12.51,
+      "pe": 12.71,
       "peg": 1.9,
       "sp500Weight": 0.037,
       "rank": 347
@@ -5600,7 +5600,7 @@
       "marketCap": 26308339712,
       "sharesOutstanding": 374712144,
       "floatPercent": 89.72,
-      "pe": 29.35,
+      "pe": 29.73,
       "peg": 16.1,
       "sp500Weight": 0.037,
       "rank": 350
@@ -5616,7 +5616,7 @@
       "marketCap": 26089472000,
       "sharesOutstanding": 835397735,
       "floatPercent": 99.16,
-      "pe": 16.79,
+      "pe": 16.35,
       "peg": 0.79,
       "sp500Weight": 0.036,
       "rank": 351
@@ -5679,7 +5679,7 @@
       "change7d": 1.9,
       "marketCap": 25957695488,
       "sharesOutstanding": 199782155,
-      "floatPercent": 83.83,
+      "floatPercent": 84.08,
       "pe": 16.81,
       "peg": 12.21,
       "sp500Weight": 0.036,
@@ -5696,7 +5696,7 @@
       "marketCap": 25871847424,
       "sharesOutstanding": 914522690,
       "floatPercent": 99.64,
-      "pe": 9.82,
+      "pe": 10.48,
       "peg": 21.83,
       "sp500Weight": 0.036,
       "rank": 356
@@ -5743,8 +5743,8 @@
       "change7d": -0.27,
       "marketCap": 25557452800,
       "sharesOutstanding": 52841777,
-      "floatPercent": 99.55,
-      "pe": 29.42,
+      "floatPercent": 99.66,
+      "pe": 28.57,
       "peg": 2.38,
       "sp500Weight": 0.036,
       "rank": 359
@@ -5792,7 +5792,7 @@
       "marketCap": 25092599808,
       "sharesOutstanding": 325370840,
       "floatPercent": 99.35,
-      "pe": 7.72,
+      "pe": 7.91,
       "peg": 0.97,
       "sp500Weight": 0.035,
       "rank": 362
@@ -5824,7 +5824,7 @@
       "marketCap": 24644055040,
       "sharesOutstanding": 334610357,
       "floatPercent": 86.14,
-      "pe": 22.25,
+      "pe": 23.53,
       "peg": 1.51,
       "sp500Weight": 0.034,
       "rank": 364
@@ -5856,7 +5856,7 @@
       "marketCap": 24568805376,
       "sharesOutstanding": 205768873,
       "floatPercent": 81.06,
-      "pe": 15.08,
+      "pe": 15.19,
       "peg": 1.32,
       "sp500Weight": 0.034,
       "rank": 366
@@ -5920,7 +5920,7 @@
       "marketCap": 24236664832,
       "sharesOutstanding": 199474449,
       "floatPercent": 100.0,
-      "pe": 14.91,
+      "pe": 15.19,
       "peg": 24.95,
       "sp500Weight": 0.034,
       "rank": 370
@@ -6016,7 +6016,7 @@
       "marketCap": 23677773824,
       "sharesOutstanding": 236943602,
       "floatPercent": 99.69,
-      "pe": 32.44,
+      "pe": 32.87,
       "peg": 3.03,
       "sp500Weight": 0.033,
       "rank": 376
@@ -6063,7 +6063,7 @@
       "change7d": -0.16,
       "marketCap": 22974353408,
       "sharesOutstanding": 308919602,
-      "floatPercent": 99.31,
+      "floatPercent": 100.0,
       "pe": 20.54,
       "peg": 2.87,
       "sp500Weight": 0.032,
@@ -6096,7 +6096,7 @@
       "marketCap": 22771906560,
       "sharesOutstanding": 194018115,
       "floatPercent": 82.29,
-      "pe": 30.97,
+      "pe": 30.89,
       "peg": 1.37,
       "sp500Weight": 0.032,
       "rank": 381
@@ -6144,7 +6144,7 @@
       "marketCap": 22549592064,
       "sharesOutstanding": 170752511,
       "floatPercent": 90.06,
-      "pe": 12.36,
+      "pe": 12.57,
       "peg": 1.65,
       "sp500Weight": 0.031,
       "rank": 384
@@ -6192,7 +6192,7 @@
       "marketCap": 22448402432,
       "sharesOutstanding": 97457680,
       "floatPercent": 99.72,
-      "pe": 27.55,
+      "pe": 29.08,
       "peg": 1.77,
       "sp500Weight": 0.031,
       "rank": 387
@@ -6256,7 +6256,7 @@
       "marketCap": 21972025344,
       "sharesOutstanding": 117484896,
       "floatPercent": 99.57,
-      "pe": 31.17,
+      "pe": 32.87,
       "peg": 1.77,
       "sp500Weight": 0.031,
       "rank": 391
@@ -6288,7 +6288,7 @@
       "marketCap": 21768976384,
       "sharesOutstanding": 107453363,
       "floatPercent": 94.56,
-      "pe": 13.3,
+      "pe": 13.09,
       "peg": 0.54,
       "sp500Weight": 0.03,
       "rank": 393
@@ -6320,7 +6320,7 @@
       "marketCap": 21679470592,
       "sharesOutstanding": 220426203,
       "floatPercent": 100.0,
-      "pe": 13.38,
+      "pe": 13.59,
       "peg": null,
       "sp500Weight": 0.03,
       "rank": 395
@@ -6368,7 +6368,7 @@
       "marketCap": 21543276544,
       "sharesOutstanding": 282120397,
       "floatPercent": 97.45,
-      "pe": 47.8,
+      "pe": 48.17,
       "peg": 1.04,
       "sp500Weight": 0.03,
       "rank": 398
@@ -6448,7 +6448,7 @@
       "marketCap": 20300140544,
       "sharesOutstanding": 64261739,
       "floatPercent": 98.9,
-      "pe": 32.69,
+      "pe": 33.13,
       "peg": 7.02,
       "sp500Weight": 0.028,
       "rank": 403
@@ -6496,7 +6496,7 @@
       "marketCap": 19960621056,
       "sharesOutstanding": 117873042,
       "floatPercent": 99.61,
-      "pe": 35.35,
+      "pe": 34.28,
       "peg": 2.46,
       "sp500Weight": 0.028,
       "rank": 406
@@ -6576,7 +6576,7 @@
       "marketCap": 18935009280,
       "sharesOutstanding": 34799968,
       "floatPercent": 85.2,
-      "pe": 24.33,
+      "pe": 24.15,
       "peg": 1.58,
       "sp500Weight": 0.026,
       "rank": 411
@@ -6624,7 +6624,7 @@
       "marketCap": 18857334784,
       "sharesOutstanding": 210767126,
       "floatPercent": 93.82,
-      "pe": 16.36,
+      "pe": 16.57,
       "peg": 1.69,
       "sp500Weight": 0.026,
       "rank": 414
@@ -6672,7 +6672,7 @@
       "marketCap": 18553602048,
       "sharesOutstanding": 106063017,
       "floatPercent": 99.27,
-      "pe": 18.18,
+      "pe": 18.43,
       "peg": 7.17,
       "sp500Weight": 0.026,
       "rank": 417
@@ -6704,7 +6704,7 @@
       "marketCap": 18403538944,
       "sharesOutstanding": 646873027,
       "floatPercent": 78.68,
-      "pe": 15.72,
+      "pe": 14.97,
       "peg": 0.91,
       "sp500Weight": 0.026,
       "rank": 419
@@ -6720,7 +6720,7 @@
       "marketCap": 18400329728,
       "sharesOutstanding": 127753451,
       "floatPercent": 99.64,
-      "pe": 16.81,
+      "pe": 17.54,
       "peg": 1.33,
       "sp500Weight": 0.026,
       "rank": 420
@@ -6736,7 +6736,7 @@
       "marketCap": 18294829056,
       "sharesOutstanding": 115658297,
       "floatPercent": 99.54,
-      "pe": 16.34,
+      "pe": 16.92,
       "peg": 1.05,
       "sp500Weight": 0.025,
       "rank": 421
@@ -6752,7 +6752,7 @@
       "marketCap": 17881790464,
       "sharesOutstanding": 137859758,
       "floatPercent": 99.71,
-      "pe": 498.88,
+      "pe": 518.84,
       "peg": 1.32,
       "sp500Weight": 0.025,
       "rank": 422
@@ -6848,7 +6848,7 @@
       "marketCap": 17331318784,
       "sharesOutstanding": 2678153,
       "floatPercent": 98.35,
-      "pe": 16.39,
+      "pe": 16.81,
       "peg": 4.97,
       "sp500Weight": 0.024,
       "rank": 428
@@ -6896,7 +6896,7 @@
       "marketCap": 16863036416,
       "sharesOutstanding": 55717948,
       "floatPercent": 89.1,
-      "pe": 31.76,
+      "pe": 32.37,
       "peg": 1.84,
       "sp500Weight": 0.023,
       "rank": 431
@@ -6992,7 +6992,7 @@
       "marketCap": 16252640256,
       "sharesOutstanding": 145385451,
       "floatPercent": 97.71,
-      "pe": 38.15,
+      "pe": 37.77,
       "peg": 1.34,
       "sp500Weight": 0.023,
       "rank": 437
@@ -7024,7 +7024,7 @@
       "marketCap": 15777197056,
       "sharesOutstanding": 39571602,
       "floatPercent": 68.36,
-      "pe": 7.93,
+      "pe": 8.12,
       "peg": 0.97,
       "sp500Weight": 0.022,
       "rank": 439
@@ -7104,7 +7104,7 @@
       "marketCap": 15136124928,
       "sharesOutstanding": 183096790,
       "floatPercent": 89.7,
-      "pe": 28.31,
+      "pe": 27.82,
       "peg": 2.61,
       "sp500Weight": 0.021,
       "rank": 444
@@ -7136,7 +7136,7 @@
       "marketCap": 14887967744,
       "sharesOutstanding": 125785466,
       "floatPercent": 99.22,
-      "pe": 10.51,
+      "pe": 10.84,
       "peg": 2.46,
       "sp500Weight": 0.021,
       "rank": 446
@@ -7152,7 +7152,7 @@
       "marketCap": 14728143872,
       "sharesOutstanding": 115505791,
       "floatPercent": 99.52,
-      "pe": 12.02,
+      "pe": 12.26,
       "peg": 1.03,
       "sp500Weight": 0.02,
       "rank": 447
@@ -7232,7 +7232,7 @@
       "marketCap": 14053906432,
       "sharesOutstanding": 195030630,
       "floatPercent": 99.3,
-      "pe": 59.55,
+      "pe": 61.07,
       "peg": 0.67,
       "sp500Weight": 0.02,
       "rank": 452
@@ -7248,7 +7248,7 @@
       "marketCap": 14025944064,
       "sharesOutstanding": 49547637,
       "floatPercent": 99.25,
-      "pe": 14.18,
+      "pe": 14.52,
       "peg": 2.16,
       "sp500Weight": 0.02,
       "rank": 453
@@ -7296,7 +7296,7 @@
       "marketCap": 13714204672,
       "sharesOutstanding": 41140555,
       "floatPercent": 96.02,
-      "pe": 43.69,
+      "pe": 46.11,
       "peg": 1.52,
       "sp500Weight": 0.019,
       "rank": 456
@@ -7376,7 +7376,7 @@
       "marketCap": 13609051136,
       "sharesOutstanding": 233111519,
       "floatPercent": 99.45,
-      "pe": 29.19,
+      "pe": 30.57,
       "peg": 1.56,
       "sp500Weight": 0.019,
       "rank": 461
@@ -7392,7 +7392,7 @@
       "marketCap": 13546936320,
       "sharesOutstanding": 47633392,
       "floatPercent": 99.03,
-      "pe": 31.96,
+      "pe": 34.35,
       "peg": 0.56,
       "sp500Weight": 0.019,
       "rank": 462
@@ -7424,7 +7424,7 @@
       "marketCap": 13261176832,
       "sharesOutstanding": 290383416,
       "floatPercent": 100.0,
-      "pe": 17.95,
+      "pe": 18.89,
       "peg": 4.4,
       "sp500Weight": 0.018,
       "rank": 464
@@ -7455,7 +7455,7 @@
       "change7d": -0.63,
       "marketCap": 12993345536,
       "sharesOutstanding": 441500000,
-      "floatPercent": 81.14,
+      "floatPercent": 80.81,
       "pe": 9.15,
       "peg": 0.9,
       "sp500Weight": 0.018,
@@ -7472,7 +7472,7 @@
       "marketCap": 12936818688,
       "sharesOutstanding": 76490385,
       "floatPercent": 99.24,
-      "pe": 18.34,
+      "pe": 19.05,
       "peg": 1.92,
       "sp500Weight": 0.018,
       "rank": 467
@@ -7504,7 +7504,7 @@
       "marketCap": 12676632576,
       "sharesOutstanding": 46189068,
       "floatPercent": 54.42,
-      "pe": 20.92,
+      "pe": 22.22,
       "peg": 2.67,
       "sp500Weight": 0.018,
       "rank": 469
@@ -7536,7 +7536,7 @@
       "marketCap": 12576143360,
       "sharesOutstanding": 71618127,
       "floatPercent": 93.58,
-      "pe": 28.23,
+      "pe": 29.51,
       "peg": 0.89,
       "sp500Weight": 0.017,
       "rank": 471
@@ -7568,7 +7568,7 @@
       "marketCap": 12474667008,
       "sharesOutstanding": 159477391,
       "floatPercent": 92.69,
-      "pe": 34.81,
+      "pe": 35.16,
       "peg": 3.16,
       "sp500Weight": 0.017,
       "rank": 473
@@ -7584,7 +7584,7 @@
       "marketCap": 12440031232,
       "sharesOutstanding": 111559773,
       "floatPercent": 91.56,
-      "pe": 52.11,
+      "pe": 53.35,
       "peg": 0.68,
       "sp500Weight": 0.017,
       "rank": 474
@@ -7760,7 +7760,7 @@
       "marketCap": 11229274112,
       "sharesOutstanding": 155810652,
       "floatPercent": 100.0,
-      "pe": 101.51,
+      "pe": 102.96,
       "peg": 0.96,
       "sp500Weight": 0.016,
       "rank": 485
@@ -7792,7 +7792,7 @@
       "marketCap": 10962148352,
       "sharesOutstanding": 86389197,
       "floatPercent": 90.23,
-      "pe": 22.01,
+      "pe": 21.82,
       "peg": 3.59,
       "sp500Weight": 0.015,
       "rank": 487
@@ -7807,7 +7807,7 @@
       "change7d": -3.4,
       "marketCap": 10790401024,
       "sharesOutstanding": 161605541,
-      "floatPercent": 99.16,
+      "floatPercent": 98.67,
       "pe": 15.86,
       "peg": 1.06,
       "sp500Weight": 0.015,
@@ -7840,7 +7840,7 @@
       "marketCap": 10433781760,
       "sharesOutstanding": 66951889,
       "floatPercent": 91.03,
-      "pe": 14.58,
+      "pe": 15.41,
       "peg": 0.64,
       "sp500Weight": 0.015,
       "rank": 490
@@ -7984,7 +7984,7 @@
       "marketCap": 8889748480,
       "sharesOutstanding": 426999732,
       "floatPercent": 97.9,
-      "pe": 20.33,
+      "pe": 21.49,
       "peg": 0.85,
       "sp500Weight": 0.012,
       "rank": 499
@@ -8032,7 +8032,7 @@
       "marketCap": 7925011456,
       "sharesOutstanding": 107559876,
       "floatPercent": 97.09,
-      "pe": 27.8,
+      "pe": 28.12,
       "peg": 2.02,
       "sp500Weight": 0.011,
       "rank": 502
