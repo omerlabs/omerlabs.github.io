@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=37')
+        navigator.serviceWorker.register('./service-worker.js?v=38')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -266,9 +266,40 @@ function setupEventListeners() {
         if (showWatchlistOnly) {
             elements.watchlistToggleBtn.classList.add('active');
             elements.watchlistToggleBtn.innerHTML = '<i class="fa-solid fa-heart text-negative"></i>';
+            
+            // Reset sorting to custom drag-and-drop order when entering watchlist
+            sortBy = null;
+            elements.tableHeaders.forEach(th => {
+                const icon = th.querySelector('i');
+                th.classList.remove('active');
+                if (icon) {
+                    icon.className = 'fa-solid fa-sort';
+                    icon.style.opacity = 0.5;
+                }
+            });
         } else {
             elements.watchlistToggleBtn.classList.remove('active');
             elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            
+            // Restore default sort by rank when going back to stock tabs
+            sortBy = 'rank';
+            sortAsc = true;
+            elements.tableHeaders.forEach(th => {
+                const icon = th.querySelector('i');
+                if (th.dataset.sort === 'rank') {
+                    th.classList.add('active');
+                    if (icon) {
+                        icon.className = 'fa-solid fa-sort-up';
+                        icon.style.opacity = 1;
+                    }
+                } else {
+                    th.classList.remove('active');
+                    if (icon) {
+                        icon.className = 'fa-solid fa-sort';
+                        icon.style.opacity = 0.5;
+                    }
+                }
+            });
         }
         
         currentPage = 1;
@@ -365,6 +396,26 @@ function setupEventListeners() {
                         elements.watchlistToggleBtn.classList.remove('active');
                         elements.watchlistToggleBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
                     }
+                    
+                    // Restore default sort by rank when going back to stock tabs
+                    sortBy = 'rank';
+                    sortAsc = true;
+                    elements.tableHeaders.forEach(th => {
+                        const icon = th.querySelector('i');
+                        if (th.dataset.sort === 'rank') {
+                            th.classList.add('active');
+                            if (icon) {
+                                icon.className = 'fa-solid fa-sort-up';
+                                icon.style.opacity = 1;
+                            }
+                        } else {
+                            th.classList.remove('active');
+                            if (icon) {
+                                icon.className = 'fa-solid fa-sort';
+                                icon.style.opacity = 0.5;
+                            }
+                        }
+                    });
                 }
                 
                 activeTab = targetIndex;
