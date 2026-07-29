@@ -1216,8 +1216,29 @@ body {
     border-bottom: 2px solid var(--color-accent) !important;
 }
 
-/* Mobile Swipe-to-delete transitions */
+/* Drag & Drop sorting transitions */
 .terminal-table tbody tr {
     transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hide heart icons on touch screen / mobile layout */
+@media (pointer: coarse), (max-width: 768px) {
+    .desktop-only-heart,
+    .watchlist-heart-btn {
+        display: none !important;
+    }
+    
+    /* Make the rank cell touch-friendly and show it as a drag handle on mobile */
+    .cell-rank {
+        cursor: ns-resize;
+        user-select: none;
+        touch-action: none; /* prevents default touch gestures on the rank number cell */
+    }
+}
+
+/* Disable scrolling while actively dragging row on mobile */
+.table-dragging-mode {
+    touch-action: none !important;
+    user-select: none !important;
 }
 

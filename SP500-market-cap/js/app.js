@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=32')
+        navigator.serviceWorker.register('./service-worker.js?v=33')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -649,12 +649,115 @@ function renderTable() {
     
     pageData.forEach(item => {
         const tr = document.createElement('tr');
+        tr.dataset.ticker = item.ticker;
         
         // Rank
         const tdRank = document.createElement('td');
         tdRank.className = 'cell-rank';
         tdRank.textContent = item.rank;
         tr.appendChild(tdRank);
+        
+        // Mobile touch-based drag reordering (using Rank cell as handle)
+        if (showWatchlistOnly) {
+            let touchDragActive = false;
+            let lastOverRow = null;
+            
+            tdRank.addEventListener('touchstart', (e) => {
+                touchDragActive = true;
+                tr.classList.add('dragging');
+                tr.style.transition = 'none';
+                
+                const touch = e.touches[0];
+                tr.dataset.startY = touch.clientY;
+                elements.tableBody.classList.add('table-dragging-mode');
+                e.stopPropagation();
+            }, { passive: true });
+            
+            tdRank.addEventListener('touchmove', (e) => {
+                if (!touchDragActive) return;
+                const touch = e.touches[0];
+                
+                const diffY = touch.clientY - parseFloat(tr.dataset.startY);
+                tr.style.transform = `translateY(${diffY}px)`;
+                tr.style.zIndex = '100';
+                
+                const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                const targetRow = element ? element.closest('tr') : null;
+                
+                const rows = elements.tableBody.querySelectorAll('tr');
+                rows.forEach(r => {
+                    if (r !== tr) r.classList.remove('drag-over-above', 'drag-over-below');
+                });
+                
+                if (targetRow && targetRow !== tr && targetRow.parentNode === elements.tableBody) {
+                    lastOverRow = targetRow;
+                    const rect = targetRow.getBoundingClientRect();
+                    const relativeY = touch.clientY - rect.top;
+                    if (relativeY < rect.height / 2) {
+                        targetRow.classList.add('drag-over-above');
+                    } else {
+                        targetRow.classList.add('drag-over-below');
+                    }
+                } else {
+                    lastOverRow = null;
+                }
+                
+                if (e.cancelable) e.preventDefault();
+            }, { passive: false });
+            
+            tdRank.addEventListener('touchend', (e) => {
+                if (!touchDragActive) return;
+                touchDragActive = false;
+                tr.classList.remove('dragging');
+                tr.style.transform = '';
+                tr.style.zIndex = '';
+                elements.tableBody.classList.remove('table-dragging-mode');
+                e.stopPropagation();
+                
+                const rows = elements.tableBody.querySelectorAll('tr');
+                rows.forEach(r => r.classList.remove('drag-over-above', 'drag-over-below'));
+                
+                if (lastOverRow) {
+                    const draggedTicker = item.ticker;
+                    const targetTicker = lastOverRow.dataset.ticker;
+                    
+                    if (draggedTicker && targetTicker && draggedTicker !== targetTicker) {
+                        const currentOrder = filteredData.map(d => d.ticker);
+                        const draggedIndex = currentOrder.indexOf(draggedTicker);
+                        const targetIndex = currentOrder.indexOf(targetTicker);
+                        
+                        if (draggedIndex !== -1 && targetIndex !== -1) {
+                            currentOrder.splice(draggedIndex, 1);
+                            
+                            const isAbove = lastOverRow.classList.contains('drag-over-above');
+                            const insertIndex = isAbove ? targetIndex : targetIndex + 1;
+                            
+                            currentOrder.splice(insertIndex > draggedIndex && insertIndex > 0 ? insertIndex - 1 : insertIndex, 0, draggedTicker);
+                            
+                            const otherWatchlistItems = Array.from(watchlist).filter(t => !currentOrder.includes(t));
+                            const newWatchlistOrder = currentOrder.concat(otherWatchlistItems);
+                            
+                            watchlist = new Set(newWatchlistOrder);
+                            localStorage.setItem('sp500_watchlist', JSON.stringify(newWatchlistOrder));
+                            saveWatchlistToIndexedDB(newWatchlistOrder);
+                            
+                            sortBy = null;
+                            elements.tableHeaders.forEach(th => {
+                                const icon = th.querySelector('i');
+                                th.classList.remove('active');
+                                if (icon) {
+                                    icon.className = 'fa-solid fa-sort';
+                                    icon.style.opacity = 0.5;
+                                }
+                            });
+                            
+                            applyFilters();
+                        }
+                    }
+                }
+                lastOverRow = null;
+            });
+        }
         
         // Name cell — for commodities use short ticker name only, no sub-badge
         const displayName = activeTab === 'commodities'
@@ -671,7 +774,9 @@ function renderTable() {
                     <button class="fav-btn watchlist-heart-btn" title="Takibi Bırak">
                         <i class="fa-solid fa-heart text-negative"></i>
                     </button>
-                    <span class="ticker-badge-watchlist">${item.ticker}</span>
+                    <div class="cell-company" style="position: relative; cursor: pointer; user-select: none;">
+                        <span class="ticker-badge-watchlist">${item.ticker}</span>
+                    </div>
                 </div>
             `;
             
@@ -699,54 +804,54 @@ function renderTable() {
                 e.stopPropagation();
                 toggleWatchlist(item.ticker);
             });
-            
-            const companyCell = tdName.querySelector('.cell-company');
-            let pressTimer = null;
-            let didLongPress = false;
-            let touchStartPos = { x: 0, y: 0 };
-            
-            const startPress = (e) => {
-                didLongPress = false;
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                touchStartPos = { x: clientX, y: clientY };
-                
-                pressTimer = setTimeout(() => {
-                    didLongPress = true;
-                    handleCompanyLongPress(companyCell, item.ticker);
-                }, 550);
-            };
-            
-            const cancelPress = () => {
-                if (pressTimer) {
-                    clearTimeout(pressTimer);
-                    pressTimer = null;
-                }
-            };
-            
-            const movePress = (e) => {
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                if (Math.abs(clientX - touchStartPos.x) > 10 || Math.abs(clientY - touchStartPos.y) > 10) {
-                    cancelPress();
-                }
-            };
-            
-            companyCell.addEventListener('mousedown', startPress);
-            companyCell.addEventListener('touchstart', startPress, { passive: true });
-            companyCell.addEventListener('mouseup', cancelPress);
-            companyCell.addEventListener('touchend', cancelPress);
-            companyCell.addEventListener('mouseleave', cancelPress);
-            companyCell.addEventListener('mousemove', movePress);
-            companyCell.addEventListener('touchmove', movePress, { passive: true });
-            
-            companyCell.addEventListener('click', (e) => {
-                if (didLongPress) {
-                    e.stopPropagation();
-                    didLongPress = false;
-                }
-            });
         }
+        
+        const companyCell = tdName.querySelector('.cell-company');
+        let pressTimer = null;
+        let didLongPress = false;
+        let touchStartPos = { x: 0, y: 0 };
+        
+        const startPress = (e) => {
+            didLongPress = false;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            touchStartPos = { x: clientX, y: clientY };
+            
+            pressTimer = setTimeout(() => {
+                didLongPress = true;
+                handleCompanyLongPress(companyCell, item.ticker);
+            }, 550);
+        };
+        
+        const cancelPress = () => {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+        };
+        
+        const movePress = (e) => {
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            if (Math.abs(clientX - touchStartPos.x) > 10 || Math.abs(clientY - touchStartPos.y) > 10) {
+                cancelPress();
+            }
+        };
+        
+        companyCell.addEventListener('mousedown', startPress);
+        companyCell.addEventListener('touchstart', startPress, { passive: true });
+        companyCell.addEventListener('mouseup', cancelPress);
+        companyCell.addEventListener('touchend', cancelPress);
+        companyCell.addEventListener('mouseleave', cancelPress);
+        companyCell.addEventListener('mousemove', movePress);
+        companyCell.addEventListener('touchmove', movePress, { passive: true });
+        
+        companyCell.addEventListener('click', (e) => {
+            if (didLongPress) {
+                e.stopPropagation();
+                didLongPress = false;
+            }
+        });
         
         tr.appendChild(tdName);
         
@@ -807,161 +912,89 @@ function renderTable() {
             tr.appendChild(tdPEG);
         }
         
-        // Touch Swipe-to-delete logic for mobile
-        let hasSwiped = false;
         if (showWatchlistOnly) {
-            let startX = 0;
-            let startY = 0;
-            let currentX = 0;
-            let currentY = 0;
-            let isSwiping = false;
-            
-            tr.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                isSwiping = true;
-                hasSwiped = false;
-                tr.style.transition = 'none';
-            }, { passive: true });
-            
-            tr.addEventListener('touchmove', (e) => {
-                if (!isSwiping) return;
-                currentX = e.touches[0].clientX;
-                currentY = e.touches[0].clientY;
-                
-                const diffX = currentX - startX;
-                const diffY = currentY - startY;
-                
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (Math.abs(diffX) > 10) {
-                        hasSwiped = true;
-                    }
-                    if (diffX < 0) {
-                        if (e.cancelable) e.preventDefault();
-                        const translation = Math.max(diffX, -200); 
-                        tr.style.transform = `translateX(${translation}px)`;
-                        const ratio = Math.min(Math.abs(translation) / 150, 1);
-                        tr.style.backgroundColor = `rgba(242, 54, 69, ${ratio * 0.25})`;
-                    }
-                }
-            }, { passive: false });
-            
-            tr.addEventListener('touchend', () => {
-                if (!isSwiping) return;
-                isSwiping = false;
-                
-                const diffX = currentX - startX;
-                
-                if (diffX < -100) {
-                    tr.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-                    tr.style.transform = 'translateX(-120%)';
-                    tr.style.opacity = '0';
-                    
-                    if (navigator.vibrate) {
-                        navigator.vibrate(40);
-                    }
-                    
-                    setTimeout(() => {
-                        watchlist.delete(item.ticker);
-                        const listArr = Array.from(watchlist);
-                        localStorage.setItem('sp500_watchlist', JSON.stringify(listArr));
-                        saveWatchlistToIndexedDB(listArr);
-                        applyFilters();
-                    }, 300);
-                } else {
-                    tr.style.transition = 'transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.25s ease';
-                    tr.style.transform = 'translateX(0)';
-                    tr.style.backgroundColor = '';
-                }
-                
-                startX = 0;
-                startY = 0;
-                currentX = 0;
-                currentY = 0;
-            });
-
             // HTML5 Drag & Drop reordering for desktop
-            tr.setAttribute('draggable', 'true');
-            
-            tr.addEventListener('dragstart', (e) => {
-                tr.classList.add('dragging');
-                e.dataTransfer.setData('text/plain', item.ticker);
-                e.dataTransfer.effectAllowed = 'move';
-            });
-            
-            tr.addEventListener('dragend', () => {
-                tr.classList.remove('dragging');
-                const rows = elements.tableBody.querySelectorAll('tr');
-                rows.forEach(r => r.classList.remove('drag-over-above', 'drag-over-below'));
-            });
-            
-            tr.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                e.dataTransfer.dropEffect = 'move';
+            if (window.matchMedia('(pointer: fine)').matches) {
+                tr.setAttribute('draggable', 'true');
                 
-                const rect = tr.getBoundingClientRect();
-                const relativeY = e.clientY - rect.top;
-                if (relativeY < rect.height / 2) {
-                    tr.classList.add('drag-over-above');
-                    tr.classList.remove('drag-over-below');
-                } else {
-                    tr.classList.add('drag-over-below');
-                    tr.classList.remove('drag-over-above');
-                }
-            });
-            
-            tr.addEventListener('dragleave', () => {
-                tr.classList.remove('drag-over-above', 'drag-over-below');
-            });
-            
-            tr.addEventListener('drop', (e) => {
-                e.preventDefault();
-                tr.classList.remove('drag-over-above', 'drag-over-below');
+                tr.addEventListener('dragstart', (e) => {
+                    tr.classList.add('dragging');
+                    e.dataTransfer.setData('text/plain', item.ticker);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
                 
-                const draggedTicker = e.dataTransfer.getData('text/plain');
-                if (draggedTicker === item.ticker) return;
+                tr.addEventListener('dragend', () => {
+                    tr.classList.remove('dragging');
+                    const rows = elements.tableBody.querySelectorAll('tr');
+                    rows.forEach(r => r.classList.remove('drag-over-above', 'drag-over-below'));
+                });
                 
-                const currentOrder = filteredData.map(d => d.ticker);
-                const draggedIndex = currentOrder.indexOf(draggedTicker);
-                const targetIndex = currentOrder.indexOf(item.ticker);
-                
-                if (draggedIndex !== -1 && targetIndex !== -1) {
-                    currentOrder.splice(draggedIndex, 1);
+                tr.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
                     
                     const rect = tr.getBoundingClientRect();
                     const relativeY = e.clientY - rect.top;
-                    const insertIndex = relativeY < rect.height / 2 ? targetIndex : targetIndex + 1;
+                    if (relativeY < rect.height / 2) {
+                        tr.classList.add('drag-over-above');
+                        tr.classList.remove('drag-over-below');
+                    } else {
+                        tr.classList.add('drag-over-below');
+                        tr.classList.remove('drag-over-above');
+                    }
+                });
+                
+                tr.addEventListener('dragleave', () => {
+                    tr.classList.remove('drag-over-above', 'drag-over-below');
+                });
+                
+                tr.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    tr.classList.remove('drag-over-above', 'drag-over-below');
                     
-                    currentOrder.splice(insertIndex > draggedIndex && insertIndex > 0 ? insertIndex - 1 : insertIndex, 0, draggedTicker);
+                    const draggedTicker = e.dataTransfer.getData('text/plain');
+                    if (draggedTicker === item.ticker) return;
                     
-                    const otherWatchlistItems = Array.from(watchlist).filter(t => !currentOrder.includes(t));
-                    const newWatchlistOrder = currentOrder.concat(otherWatchlistItems);
+                    const currentOrder = filteredData.map(d => d.ticker);
+                    const draggedIndex = currentOrder.indexOf(draggedTicker);
+                    const targetIndex = currentOrder.indexOf(item.ticker);
                     
-                    watchlist = new Set(newWatchlistOrder);
-                    localStorage.setItem('sp500_watchlist', JSON.stringify(newWatchlistOrder));
-                    saveWatchlistToIndexedDB(newWatchlistOrder);
-                    
-                    // Clear sorting UI and reset sortBy
-                    sortBy = null;
-                    elements.tableHeaders.forEach(th => {
-                        const icon = th.querySelector('i');
-                        th.classList.remove('active');
-                        if (icon) {
-                            icon.className = 'fa-solid fa-sort';
-                            icon.style.opacity = 0.5;
-                        }
-                    });
-                    
-                    applyFilters();
-                }
-            });
+                    if (draggedIndex !== -1 && targetIndex !== -1) {
+                        currentOrder.splice(draggedIndex, 1);
+                        
+                        const rect = tr.getBoundingClientRect();
+                        const relativeY = e.clientY - rect.top;
+                        const insertIndex = relativeY < rect.height / 2 ? targetIndex : targetIndex + 1;
+                        
+                        currentOrder.splice(insertIndex > draggedIndex && insertIndex > 0 ? insertIndex - 1 : insertIndex, 0, draggedTicker);
+                        
+                        const otherWatchlistItems = Array.from(watchlist).filter(t => !currentOrder.includes(t));
+                        const newWatchlistOrder = currentOrder.concat(otherWatchlistItems);
+                        
+                        watchlist = new Set(newWatchlistOrder);
+                        localStorage.setItem('sp500_watchlist', JSON.stringify(newWatchlistOrder));
+                        saveWatchlistToIndexedDB(newWatchlistOrder);
+                        
+                        // Clear sorting UI and reset sortBy
+                        sortBy = null;
+                        elements.tableHeaders.forEach(th => {
+                            const icon = th.querySelector('i');
+                            th.classList.remove('active');
+                            if (icon) {
+                                icon.className = 'fa-solid fa-sort';
+                                icon.style.opacity = 0.5;
+                            }
+                        });
+                        
+                        applyFilters();
+                    }
+                });
+            }
         }
         
-        // Open chart modal on row click (if not swiping)
+        // Open chart modal on row click (if not clicking drag handle or heart)
         tr.addEventListener('click', (e) => {
-            if (hasSwiped) {
-                e.preventDefault();
-                e.stopPropagation();
+            if (e.target.closest('.cell-rank') || e.target.closest('.fav-btn')) {
                 return;
             }
             showChartModal(item.ticker);
