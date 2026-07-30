@@ -17,13 +17,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-          # Note: this checkout will pull the source code
+        # Note: this checkout will pull the source code
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-size: '3.11'
+          python-version: '3.11'
           cache: 'pip'
 
       - name: Install dependencies
