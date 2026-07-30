@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-29 21:17:09 UTC",
-  "totalMarketCap": 31219577659392,
+  "lastUpdated": "2026-07-30 00:16:15 UTC",
+  "totalMarketCap": 31221481197568,
   "companiesCount": 48,
   "indexPrice": 19084.33,
   "indexChangePercent": -1.92,
@@ -16,7 +16,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "subSector": "Computer Hardware",
-      "sp500Weight": 15.91,
+      "sp500Weight": 15.909,
       "rank": 1
     },
     {
@@ -44,7 +44,7 @@
       "name": "Alphabet Inc. (Class A)",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 13.19,
+      "sp500Weight": 13.189,
       "rank": 3
     },
     {
@@ -58,7 +58,7 @@
       "name": "Alphabet Inc. (Class C)",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 13.153,
+      "sp500Weight": 13.152,
       "rank": 4
     },
     {
@@ -67,12 +67,12 @@
       "change7d": -1.81,
       "marketCap": 2901100986368,
       "pe": 23.25,
-      "peg": 1.2,
+      "peg": 1.21,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 9.293,
+      "sp500Weight": 9.292,
       "rank": 5
     },
     {
@@ -100,7 +100,7 @@
       "name": "Meta Platforms",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 4.762,
+      "sp500Weight": 4.761,
       "rank": 7
     },
     {
@@ -128,7 +128,7 @@
       "name": "Advanced Micro Devices",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "sp500Weight": 2.244,
+      "sp500Weight": 2.243,
       "rank": 9
     },
     {
@@ -179,7 +179,7 @@
       "change7d": -21.63,
       "marketCap": 315581595648,
       "pe": 47.79,
-      "peg": 1.68,
+      "peg": 1.56,
       "ticker": "LRCX",
       "name": "Lam Research",
       "sector": "Technology",
@@ -198,7 +198,7 @@
       "name": "Palantir Technologies",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 0.945,
+      "sp500Weight": 0.944,
       "rank": 14
     },
     {
@@ -235,7 +235,7 @@
       "change7d": -22.38,
       "marketCap": 240200237056,
       "pe": 261.5,
-      "peg": 2.2,
+      "peg": 2.02,
       "ticker": "ARM",
       "name": "Arm Holdings",
       "sector": "Technology",
@@ -272,6 +272,20 @@
       "rank": 19
     },
     {
+      "price": 764.43,
+      "change24h": 2.29,
+      "change7d": -14.29,
+      "marketCap": 173525614592,
+      "pe": 72.53,
+      "peg": 0.57,
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "sector": "Technology",
+      "subSector": "Electronic Components",
+      "sp500Weight": 0.556,
+      "rank": 20
+    },
+    {
       "price": 353.37,
       "change24h": -3.41,
       "change7d": -7.69,
@@ -283,20 +297,6 @@
       "sector": "Technology",
       "subSector": "Semiconductors",
       "sp500Weight": 0.551,
-      "rank": 20
-    },
-    {
-      "price": 764.43,
-      "change24h": 2.29,
-      "change7d": -14.29,
-      "marketCap": 171407360000,
-      "pe": 72.53,
-      "peg": 0.57,
-      "ticker": "STX",
-      "name": "Seagate Technology",
-      "sector": "Technology",
-      "subSector": "Electronic Components",
-      "sp500Weight": 0.549,
       "rank": 21
     },
     {
@@ -319,7 +319,7 @@
       "change7d": -10.27,
       "marketCap": 164086710272,
       "pe": 16.74,
-      "peg": 0.54,
+      "peg": 0.51,
       "ticker": "QCOM",
       "name": "Qualcomm",
       "sector": "Technology",
@@ -443,7 +443,7 @@
       "price": 332.76,
       "change24h": -3.47,
       "change7d": -3.45,
-      "marketCap": 91780538368,
+      "marketCap": 91639775232,
       "pe": 77.93,
       "peg": 3.21,
       "ticker": "CDNS",
@@ -513,7 +513,7 @@
       "price": 240.98,
       "change24h": -7.0,
       "change7d": -11.78,
-      "marketCap": 60840476672,
+      "marketCap": 60766523392,
       "pe": 23.02,
       "peg": 0.68,
       "ticker": "NXPI",

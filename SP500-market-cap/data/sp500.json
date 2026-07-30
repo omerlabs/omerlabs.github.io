@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-29 21:17:08 UTC",
-  "totalMarketCap": 70919188535296,
+  "lastUpdated": "2026-07-30 00:16:13 UTC",
+  "totalMarketCap": 70885745044480,
   "companiesCount": 503,
   "indexPrice": 7316.15,
   "indexChangePercent": -1.52,
@@ -16,7 +16,7 @@
       "marketCap": 4967117094912,
       "pe": 40.94,
       "peg": 2.71,
-      "sp500Weight": 7.004,
+      "sp500Weight": 7.007,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "marketCap": 4602232045568,
       "pe": 29.14,
       "peg": 0.54,
-      "sp500Weight": 6.489,
+      "sp500Weight": 6.492,
       "rank": 2
     },
     {
@@ -44,7 +44,7 @@
       "marketCap": 4117941452800,
       "pe": 16.9,
       "peg": 1.27,
-      "sp500Weight": 5.807,
+      "sp500Weight": 5.809,
       "rank": 3
     },
     {
@@ -58,7 +58,7 @@
       "marketCap": 4106323230720,
       "pe": 16.86,
       "peg": 1.27,
-      "sp500Weight": 5.79,
+      "sp500Weight": 5.793,
       "rank": 4
     },
     {
@@ -71,8 +71,8 @@
       "change7d": -1.81,
       "marketCap": 2901100986368,
       "pe": 23.25,
-      "peg": 1.2,
-      "sp500Weight": 4.091,
+      "peg": 1.21,
+      "sp500Weight": 4.093,
       "rank": 5
     },
     {
@@ -86,7 +86,7 @@
       "marketCap": 2438098845696,
       "pe": 27.11,
       "peg": 1.24,
-      "sp500Weight": 3.438,
+      "sp500Weight": 3.439,
       "rank": 6
     },
     {
@@ -100,7 +100,7 @@
       "marketCap": 1761827225600,
       "pe": 61.51,
       "peg": 0.43,
-      "sp500Weight": 2.484,
+      "sp500Weight": 2.485,
       "rank": 7
     },
     {
@@ -114,7 +114,7 @@
       "marketCap": 1486526087168,
       "pe": 21.32,
       "peg": 0.87,
-      "sp500Weight": 2.096,
+      "sp500Weight": 2.097,
       "rank": 8
     },
     {
@@ -128,7 +128,7 @@
       "marketCap": 1178229014528,
       "pe": 276.22,
       "peg": 4.4,
-      "sp500Weight": 1.661,
+      "sp500Weight": 1.662,
       "rank": 9
     },
     {
@@ -156,7 +156,7 @@
       "marketCap": 1079024943104,
       "pe": 42.91,
       "peg": 1.67,
-      "sp500Weight": 1.521,
+      "sp500Weight": 1.522,
       "rank": 11
     },
     {
@@ -170,7 +170,7 @@
       "marketCap": 916308099072,
       "pe": 14.78,
       "peg": 1.79,
-      "sp500Weight": 1.292,
+      "sp500Weight": 1.293,
       "rank": 12
     },
     {
@@ -202,20 +202,6 @@
       "rank": 14
     },
     {
-      "ticker": "V",
-      "name": "Visa Inc.",
-      "sector": "Financials",
-      "subSector": "Transaction & Payment Processing Services",
-      "price": 368.73,
-      "change24h": 0.58,
-      "change7d": 3.63,
-      "marketCap": 701230022656,
-      "pe": 32.15,
-      "peg": 1.59,
-      "sp500Weight": 0.989,
-      "rank": 15
-    },
-    {
       "ticker": "AMD",
       "name": "Advanced Micro Devices",
       "sector": "Information Technology",
@@ -227,6 +213,20 @@
       "pe": 143.19,
       "peg": 1.16,
       "sp500Weight": 0.988,
+      "rank": 15
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc.",
+      "sector": "Financials",
+      "subSector": "Transaction & Payment Processing Services",
+      "price": 368.73,
+      "change24h": 0.58,
+      "change7d": 3.63,
+      "marketCap": 677389729792,
+      "pe": 32.15,
+      "peg": 1.59,
+      "sp500Weight": 0.956,
       "rank": 16
     },
     {
@@ -240,7 +240,7 @@
       "marketCap": 649720496128,
       "pe": 26.39,
       "peg": 1.32,
-      "sp500Weight": 0.916,
+      "sp500Weight": 0.917,
       "rank": 17
     },
     {
@@ -254,7 +254,7 @@
       "marketCap": 639900319744,
       "pe": 30.8,
       "peg": 4.4,
-      "sp500Weight": 0.902,
+      "sp500Weight": 0.903,
       "rank": 18
     },
     {
@@ -324,7 +324,7 @@
       "marketCap": 428587286528,
       "pe": 14.1,
       "peg": 1.07,
-      "sp500Weight": 0.604,
+      "sp500Weight": 0.605,
       "rank": 23
     },
     {
@@ -338,7 +338,7 @@
       "marketCap": 413002694656,
       "pe": 40.24,
       "peg": 1.36,
-      "sp500Weight": 0.582,
+      "sp500Weight": 0.583,
       "rank": 24
     },
     {
@@ -352,7 +352,7 @@
       "marketCap": 383311249408,
       "pe": 28.01,
       "peg": 4.11,
-      "sp500Weight": 0.54,
+      "sp500Weight": 0.541,
       "rank": 25
     },
     {
@@ -408,7 +408,7 @@
       "marketCap": 360509964288,
       "pe": 38.94,
       "peg": 2.05,
-      "sp500Weight": 0.508,
+      "sp500Weight": 0.509,
       "rank": 29
     },
     {
@@ -505,7 +505,7 @@
       "change7d": -21.63,
       "marketCap": 315581595648,
       "pe": 47.79,
-      "peg": 1.68,
+      "peg": 1.56,
       "sp500Weight": 0.445,
       "rank": 36
     },
@@ -534,7 +534,7 @@
       "marketCap": 306590875648,
       "pe": 23.15,
       "peg": 1.58,
-      "sp500Weight": 0.432,
+      "sp500Weight": 0.433,
       "rank": 38
     },
     {
@@ -601,7 +601,7 @@
       "price": 83.87,
       "change24h": -3.45,
       "change7d": -4.41,
-      "marketCap": 254001594368,
+      "marketCap": 253622829056,
       "pe": 12.19,
       "peg": 1.65,
       "sp500Weight": 0.358,
@@ -618,7 +618,7 @@
       "marketCap": 247764090880,
       "pe": 41.29,
       "peg": 1.23,
-      "sp500Weight": 0.349,
+      "sp500Weight": 0.35,
       "rank": 44
     },
     {
@@ -688,7 +688,7 @@
       "marketCap": 222314987520,
       "pe": 48.21,
       "peg": 2.09,
-      "sp500Weight": 0.313,
+      "sp500Weight": 0.314,
       "rank": 49
     },
     {
@@ -758,7 +758,7 @@
       "marketCap": 198911000576,
       "pe": 54.47,
       "peg": 2.18,
-      "sp500Weight": 0.28,
+      "sp500Weight": 0.281,
       "rank": 54
     },
     {
@@ -786,7 +786,7 @@
       "marketCap": 196020994048,
       "pe": 18.81,
       "peg": 1.51,
-      "sp500Weight": 0.276,
+      "sp500Weight": 0.277,
       "rank": 56
     },
     {
@@ -825,10 +825,10 @@
       "price": 108.0,
       "change24h": 0.68,
       "change7d": 8.36,
-      "marketCap": 188115812352,
+      "marketCap": 186881409024,
       "pe": 34.95,
       "peg": 2.11,
-      "sp500Weight": 0.265,
+      "sp500Weight": 0.264,
       "rank": 59
     },
     {
@@ -853,7 +853,7 @@
       "price": 88.46,
       "change24h": -0.92,
       "change7d": 0.6,
-      "marketCap": 184492654592,
+      "marketCap": 184525635584,
       "pe": 19.88,
       "peg": 1.95,
       "sp500Weight": 0.26,
@@ -912,8 +912,22 @@
       "marketCap": 175478784000,
       "pe": 25.87,
       "peg": 1.14,
-      "sp500Weight": 0.247,
+      "sp500Weight": 0.248,
       "rank": 65
+    },
+    {
+      "ticker": "WELL",
+      "name": "Welltower",
+      "sector": "Real Estate",
+      "subSector": "Health Care REITs",
+      "price": 241.08,
+      "change24h": -1.02,
+      "change7d": -2.15,
+      "marketCap": 173715505152,
+      "pe": 116.46,
+      "peg": 3.66,
+      "sp500Weight": 0.245,
+      "rank": 66
     },
     {
       "ticker": "UNP",
@@ -927,21 +941,21 @@
       "pe": 23.68,
       "peg": 3.31,
       "sp500Weight": 0.245,
-      "rank": 66
+      "rank": 67
     },
     {
-      "ticker": "WELL",
-      "name": "Welltower",
-      "sector": "Real Estate",
-      "subSector": "Health Care REITs",
-      "price": 241.08,
-      "change24h": -1.02,
-      "change7d": -2.15,
-      "marketCap": 173312901120,
-      "pe": 116.46,
-      "peg": 3.66,
-      "sp500Weight": 0.244,
-      "rank": 67
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "sector": "Information Technology",
+      "subSector": "Technology Hardware, Storage & Peripherals",
+      "price": 764.43,
+      "change24h": 2.29,
+      "change7d": -14.29,
+      "marketCap": 173525614592,
+      "pe": 72.53,
+      "peg": 0.57,
+      "sp500Weight": 0.245,
+      "rank": 68
     },
     {
       "ticker": "ADI",
@@ -955,20 +969,6 @@
       "pe": 52.51,
       "peg": 0.68,
       "sp500Weight": 0.243,
-      "rank": 68
-    },
-    {
-      "ticker": "STX",
-      "name": "Seagate Technology",
-      "sector": "Information Technology",
-      "subSector": "Technology Hardware, Storage & Peripherals",
-      "price": 764.43,
-      "change24h": 2.29,
-      "change7d": -14.29,
-      "marketCap": 171407360000,
-      "pe": 72.53,
-      "peg": 0.57,
-      "sp500Weight": 0.242,
       "rank": 69
     },
     {
@@ -993,10 +993,10 @@
       "price": 214.01,
       "change24h": -3.41,
       "change7d": 4.5,
-      "marketCap": 169023488000,
+      "marketCap": 169147088896,
       "pe": 84.59,
       "peg": 26.48,
-      "sp500Weight": 0.238,
+      "sp500Weight": 0.239,
       "rank": 71
     },
     {
@@ -1037,7 +1037,7 @@
       "change7d": -10.27,
       "marketCap": 164086710272,
       "pe": 16.74,
-      "peg": 0.54,
+      "peg": 0.51,
       "sp500Weight": 0.231,
       "rank": 74
     },
@@ -1217,10 +1217,10 @@
       "price": 361.9,
       "change24h": -0.44,
       "change7d": 2.0,
-      "marketCap": 140366561280,
+      "marketCap": 139620974592,
       "pe": 12.83,
       "peg": 2.83,
-      "sp500Weight": 0.198,
+      "sp500Weight": 0.197,
       "rank": 87
     },
     {
@@ -1276,7 +1276,7 @@
       "marketCap": 135038828544,
       "pe": 40.82,
       "peg": 1.6,
-      "sp500Weight": 0.19,
+      "sp500Weight": 0.191,
       "rank": 91
     },
     {
@@ -1329,7 +1329,7 @@
       "price": 208.71,
       "change24h": -1.74,
       "change7d": 1.21,
-      "marketCap": 128043597824,
+      "marketCap": 128040427520,
       "pe": 11.51,
       "peg": 0.22,
       "sp500Weight": 0.181,
@@ -1388,7 +1388,7 @@
       "marketCap": 123709874176,
       "pe": 26.51,
       "peg": 1.83,
-      "sp500Weight": 0.174,
+      "sp500Weight": 0.175,
       "rank": 99
     },
     {
@@ -1457,7 +1457,7 @@
       "change7d": -0.3,
       "marketCap": 118688350208,
       "pe": 79.5,
-      "peg": 1.27,
+      "peg": 1.26,
       "sp500Weight": 0.167,
       "rank": 104
     },
@@ -1653,7 +1653,7 @@
       "change7d": -1.93,
       "marketCap": 99415220224,
       "pe": 69.57,
-      "peg": 3.41,
+      "peg": 3.37,
       "sp500Weight": 0.14,
       "rank": 118
     },
@@ -1826,20 +1826,6 @@
       "rank": 130
     },
     {
-      "ticker": "CDNS",
-      "name": "Cadence Design Systems",
-      "sector": "Information Technology",
-      "subSector": "Application Software",
-      "price": 332.76,
-      "change24h": -3.47,
-      "change7d": -3.45,
-      "marketCap": 91780538368,
-      "pe": 77.93,
-      "peg": 3.21,
-      "sp500Weight": 0.129,
-      "rank": 131
-    },
-    {
       "ticker": "MMM",
       "name": "3M",
       "sector": "Industrials",
@@ -1850,6 +1836,20 @@
       "marketCap": 91772805120,
       "pe": 31.55,
       "peg": 1.83,
+      "sp500Weight": 0.129,
+      "rank": 131
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems",
+      "sector": "Information Technology",
+      "subSector": "Application Software",
+      "price": 332.76,
+      "change24h": -3.47,
+      "change7d": -3.45,
+      "marketCap": 91639775232,
+      "pe": 77.93,
+      "peg": 3.21,
       "sp500Weight": 0.129,
       "rank": 132
     },
@@ -1864,7 +1864,7 @@
       "marketCap": 91123376128,
       "pe": 20.31,
       "peg": 0.79,
-      "sp500Weight": 0.128,
+      "sp500Weight": 0.129,
       "rank": 133
     },
     {
@@ -1882,20 +1882,6 @@
       "rank": 134
     },
     {
-      "ticker": "HCA",
-      "name": "HCA Healthcare",
-      "sector": "Health Care",
-      "subSector": "Health Care Facilities",
-      "price": 408.18,
-      "change24h": -2.39,
-      "change7d": 9.41,
-      "marketCap": 90550575104,
-      "pe": 13.69,
-      "peg": 1.26,
-      "sp500Weight": 0.128,
-      "rank": 135
-    },
-    {
       "ticker": "MPC",
       "name": "Marathon Petroleum",
       "sector": "Energy",
@@ -1907,7 +1893,7 @@
       "pe": 20.34,
       "peg": 1.55,
       "sp500Weight": 0.127,
-      "rank": 136
+      "rank": 135
     },
     {
       "ticker": "SPG",
@@ -1921,7 +1907,7 @@
       "pe": 16.37,
       "peg": 4.58,
       "sp500Weight": 0.126,
-      "rank": 137
+      "rank": 136
     },
     {
       "ticker": "VLO",
@@ -1935,7 +1921,7 @@
       "pe": 22.01,
       "peg": 4.08,
       "sp500Weight": 0.126,
-      "rank": 138
+      "rank": 137
     },
     {
       "ticker": "UPS",
@@ -1948,6 +1934,20 @@
       "marketCap": 88876654592,
       "pe": 16.92,
       "peg": 1.78,
+      "sp500Weight": 0.125,
+      "rank": 138
+    },
+    {
+      "ticker": "HCA",
+      "name": "HCA Healthcare",
+      "sector": "Health Care",
+      "subSector": "Health Care Facilities",
+      "price": 408.18,
+      "change24h": -2.39,
+      "change7d": 9.41,
+      "marketCap": 88371585024,
+      "pe": 13.69,
+      "peg": 1.26,
       "sp500Weight": 0.125,
       "rank": 139
     },
@@ -1980,20 +1980,6 @@
       "rank": 141
     },
     {
-      "ticker": "RCL",
-      "name": "Royal Caribbean Group",
-      "sector": "Consumer Discretionary",
-      "subSector": "Hotels, Resorts & Cruise Lines",
-      "price": 323.58,
-      "change24h": 0.33,
-      "change7d": 12.39,
-      "marketCap": 86782525440,
-      "pe": 19.75,
-      "peg": 1.46,
-      "sp500Weight": 0.122,
-      "rank": 142
-    },
-    {
       "ticker": "CTAS",
       "name": "Cintas",
       "sector": "Industrials",
@@ -2004,6 +1990,20 @@
       "marketCap": 86643834880,
       "pe": 44.19,
       "peg": 3.35,
+      "sp500Weight": 0.122,
+      "rank": 142
+    },
+    {
+      "ticker": "RCL",
+      "name": "Royal Caribbean Group",
+      "sector": "Consumer Discretionary",
+      "subSector": "Hotels, Resorts & Cruise Lines",
+      "price": 323.58,
+      "change24h": 0.33,
+      "change7d": 12.39,
+      "marketCap": 86542139392,
+      "pe": 19.75,
+      "peg": 1.46,
       "sp500Weight": 0.122,
       "rank": 143
     },
@@ -2022,6 +2022,20 @@
       "rank": 144
     },
     {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "sector": "Industrials",
+      "subSector": "Electrical Components & Equipment",
+      "price": 223.04,
+      "change24h": -17.26,
+      "change7d": -26.75,
+      "marketCap": 85856346112,
+      "pe": 55.9,
+      "peg": 1.44,
+      "sp500Weight": 0.121,
+      "rank": 145
+    },
+    {
       "ticker": "WMB",
       "name": "Williams Companies",
       "sector": "Energy",
@@ -2032,20 +2046,6 @@
       "marketCap": 85768863744,
       "pe": 30.76,
       "peg": 2.22,
-      "sp500Weight": 0.121,
-      "rank": 145
-    },
-    {
-      "ticker": "VRT",
-      "name": "Vertiv",
-      "sector": "Industrials",
-      "subSector": "Electrical Components & Equipment",
-      "price": 223.04,
-      "change24h": -17.26,
-      "change7d": -26.75,
-      "marketCap": 85671624704,
-      "pe": 55.9,
-      "peg": 1.44,
       "sp500Weight": 0.121,
       "rank": 146
     },
@@ -2064,20 +2064,6 @@
       "rank": 147
     },
     {
-      "ticker": "SHW",
-      "name": "Sherwin-Williams",
-      "sector": "Materials",
-      "subSector": "Specialty Chemicals",
-      "price": 343.88,
-      "change24h": -2.93,
-      "change7d": 7.98,
-      "marketCap": 84813053952,
-      "pe": 33.0,
-      "peg": 2.53,
-      "sp500Weight": 0.12,
-      "rank": 148
-    },
-    {
       "ticker": "DASH",
       "name": "DoorDash",
       "sector": "Consumer Discretionary",
@@ -2089,7 +2075,7 @@
       "pe": 91.72,
       "peg": 4.22,
       "sp500Weight": 0.119,
-      "rank": 149
+      "rank": 148
     },
     {
       "ticker": "PWR",
@@ -2103,7 +2089,7 @@
       "pe": 76.87,
       "peg": 1.92,
       "sp500Weight": 0.119,
-      "rank": 150
+      "rank": 149
     },
     {
       "ticker": "ITW",
@@ -2117,7 +2103,7 @@
       "pe": 27.15,
       "peg": 2.87,
       "sp500Weight": 0.119,
-      "rank": 151
+      "rank": 150
     },
     {
       "ticker": "MCO",
@@ -2131,7 +2117,7 @@
       "pe": 30.7,
       "peg": 2.23,
       "sp500Weight": 0.118,
-      "rank": 152
+      "rank": 151
     },
     {
       "ticker": "CMI",
@@ -2145,7 +2131,7 @@
       "pe": 31.48,
       "peg": 1.57,
       "sp500Weight": 0.118,
-      "rank": 153
+      "rank": 152
     },
     {
       "ticker": "AMT",
@@ -2155,9 +2141,23 @@
       "price": 179.26,
       "change24h": 4.52,
       "change7d": 9.71,
-      "marketCap": 83515990016,
+      "marketCap": 83527999488,
       "pe": 28.87,
       "peg": 1.75,
+      "sp500Weight": 0.118,
+      "rank": 153
+    },
+    {
+      "ticker": "SHW",
+      "name": "Sherwin-Williams",
+      "sector": "Materials",
+      "subSector": "Specialty Chemicals",
+      "price": 343.88,
+      "change24h": -2.93,
+      "change7d": 7.98,
+      "marketCap": 83479674880,
+      "pe": 33.0,
+      "peg": 2.53,
       "sp500Weight": 0.118,
       "rank": 154
     },
@@ -2169,10 +2169,10 @@
       "price": 64.99,
       "change24h": 4.02,
       "change7d": 8.57,
-      "marketCap": 83424395264,
+      "marketCap": 82947260416,
       "pe": 32.17,
       "peg": 1.0,
-      "sp500Weight": 0.118,
+      "sp500Weight": 0.117,
       "rank": 155
     },
     {
@@ -2241,7 +2241,7 @@
       "change7d": -15.53,
       "marketCap": 80901373952,
       "pe": 43.61,
-      "peg": 2.59,
+      "peg": 2.51,
       "sp500Weight": 0.114,
       "rank": 160
     },
@@ -2381,7 +2381,7 @@
       "change7d": 3.02,
       "marketCap": 75106443264,
       "pe": 29.52,
-      "peg": 1.93,
+      "peg": 1.95,
       "sp500Weight": 0.106,
       "rank": 170
     },
@@ -2396,7 +2396,7 @@
       "marketCap": 74809696256,
       "pe": 36.24,
       "peg": 1.64,
-      "sp500Weight": 0.105,
+      "sp500Weight": 0.106,
       "rank": 171
     },
     {
@@ -2463,7 +2463,7 @@
       "price": 321.72,
       "change24h": -0.22,
       "change7d": -0.69,
-      "marketCap": 72419172352,
+      "marketCap": 72407883776,
       "pe": 49.12,
       "peg": 1.64,
       "sp500Weight": 0.102,
@@ -2505,7 +2505,7 @@
       "price": 31.85,
       "change24h": 0.76,
       "change7d": -1.64,
-      "marketCap": 70860701696,
+      "marketCap": 70923649024,
       "pe": 20.55,
       "peg": 3.55,
       "sp500Weight": 0.1,
@@ -2620,7 +2620,7 @@
       "marketCap": 68431794176,
       "pe": 19.26,
       "peg": 0.56,
-      "sp500Weight": 0.096,
+      "sp500Weight": 0.097,
       "rank": 187
     },
     {
@@ -2746,7 +2746,7 @@
       "marketCap": 64158855168,
       "pe": 36.52,
       "peg": 2.19,
-      "sp500Weight": 0.09,
+      "sp500Weight": 0.091,
       "rank": 196
     },
     {
@@ -2799,10 +2799,10 @@
       "price": 70.55,
       "change24h": -0.1,
       "change7d": 1.0,
-      "marketCap": 62049611776,
+      "marketCap": 62050557952,
       "pe": 20.81,
       "peg": 2.99,
-      "sp500Weight": 0.087,
+      "sp500Weight": 0.088,
       "rank": 200
     },
     {
@@ -2829,7 +2829,7 @@
       "change7d": 6.36,
       "marketCap": 61521518592,
       "pe": 168.94,
-      "peg": 4.72,
+      "peg": 4.81,
       "sp500Weight": 0.087,
       "rank": 202
     },
@@ -2869,7 +2869,7 @@
       "price": 15.28,
       "change24h": 2.14,
       "change7d": 7.08,
-      "marketCap": 60886102016,
+      "marketCap": 60930461696,
       "pe": 8.12,
       "peg": 8.48,
       "sp500Weight": 0.086,
@@ -2883,7 +2883,7 @@
       "price": 240.98,
       "change24h": -7.0,
       "change7d": -11.78,
-      "marketCap": 60840476672,
+      "marketCap": 60766523392,
       "pe": 23.02,
       "peg": 0.68,
       "sp500Weight": 0.086,
@@ -2981,7 +2981,7 @@
       "price": 294.83,
       "change24h": 16.23,
       "change7d": 24.58,
-      "marketCap": 56859791360,
+      "marketCap": 56858714112,
       "pe": 32.94,
       "peg": 3.33,
       "sp500Weight": 0.08,
@@ -3067,7 +3067,7 @@
       "change7d": 7.14,
       "marketCap": 55428333568,
       "pe": 32.27,
-      "peg": 1.71,
+      "peg": 1.72,
       "sp500Weight": 0.078,
       "rank": 219
     },
@@ -3149,7 +3149,7 @@
       "price": 208.91,
       "change24h": 0.02,
       "change7d": -0.06,
-      "marketCap": 52384493568,
+      "marketCap": 52725510144,
       "pe": 59.52,
       "peg": 1.3,
       "sp500Weight": 0.074,
@@ -3254,20 +3254,6 @@
       "rank": 232
     },
     {
-      "ticker": "PYPL",
-      "name": "PayPal",
-      "sector": "Financials",
-      "subSector": "Transaction & Payment Processing Services",
-      "price": 58.35,
-      "change24h": 0.05,
-      "change7d": 4.48,
-      "marketCap": 50297700352,
-      "pe": 10.95,
-      "peg": 1.01,
-      "sp500Weight": 0.071,
-      "rank": 233
-    },
-    {
       "ticker": "ETR",
       "name": "Entergy",
       "sector": "Utilities",
@@ -3279,7 +3265,7 @@
       "pe": 27.5,
       "peg": 2.06,
       "sp500Weight": 0.071,
-      "rank": 234
+      "rank": 233
     },
     {
       "ticker": "TER",
@@ -3293,6 +3279,20 @@
       "pe": 59.26,
       "peg": 1.32,
       "sp500Weight": 0.071,
+      "rank": 234
+    },
+    {
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "sector": "Financials",
+      "subSector": "Transaction & Payment Processing Services",
+      "price": 58.35,
+      "change24h": 0.05,
+      "change7d": 4.48,
+      "marketCap": 49916141568,
+      "pe": 10.95,
+      "peg": 1.01,
+      "sp500Weight": 0.07,
       "rank": 235
     },
     {
@@ -3303,7 +3303,7 @@
       "price": 59.92,
       "change24h": -5.13,
       "change7d": -10.15,
-      "marketCap": 49768378368,
+      "marketCap": 49393557504,
       "pe": 39.95,
       "peg": 1.67,
       "sp500Weight": 0.07,
@@ -3334,7 +3334,7 @@
       "marketCap": 49281429504,
       "pe": 39.27,
       "peg": 1.37,
-      "sp500Weight": 0.069,
+      "sp500Weight": 0.07,
       "rank": 238
     },
     {
@@ -3529,7 +3529,7 @@
       "change7d": 2.76,
       "marketCap": 43920814080,
       "pe": 31.41,
-      "peg": 1.79,
+      "peg": 1.8,
       "sp500Weight": 0.062,
       "rank": 252
     },
@@ -3684,7 +3684,7 @@
       "marketCap": 42177433600,
       "pe": 58.86,
       "peg": 1.61,
-      "sp500Weight": 0.059,
+      "sp500Weight": 0.06,
       "rank": 263
     },
     {
@@ -4010,20 +4010,6 @@
       "rank": 286
     },
     {
-      "ticker": "ACGL",
-      "name": "Arch Capital Group",
-      "sector": "Financials",
-      "subSector": "Property & Casualty Insurance",
-      "price": 104.55,
-      "change24h": -1.81,
-      "change7d": 3.98,
-      "marketCap": 36528685056,
-      "pe": 8.04,
-      "peg": 1.05,
-      "sp500Weight": 0.052,
-      "rank": 287
-    },
-    {
       "ticker": "EXPE",
       "name": "Expedia Group",
       "sector": "Consumer Discretionary",
@@ -4034,22 +4020,8 @@
       "marketCap": 36519116800,
       "pe": 26.9,
       "peg": 0.91,
-      "sp500Weight": 0.051,
-      "rank": 288
-    },
-    {
-      "ticker": "STLD",
-      "name": "Steel Dynamics",
-      "sector": "Materials",
-      "subSector": "Steel",
-      "price": 252.34,
-      "change24h": -2.85,
-      "change7d": 8.06,
-      "marketCap": 36390653952,
-      "pe": 22.92,
-      "peg": 11.95,
-      "sp500Weight": 0.051,
-      "rank": 289
+      "sp500Weight": 0.052,
+      "rank": 287
     },
     {
       "ticker": "MTB",
@@ -4063,7 +4035,7 @@
       "pe": 13.24,
       "peg": 1.67,
       "sp500Weight": 0.051,
-      "rank": 290
+      "rank": 288
     },
     {
       "ticker": "WEC",
@@ -4077,7 +4049,21 @@
       "pe": 22.3,
       "peg": 2.39,
       "sp500Weight": 0.051,
-      "rank": 291
+      "rank": 289
+    },
+    {
+      "ticker": "STLD",
+      "name": "Steel Dynamics",
+      "sector": "Materials",
+      "subSector": "Steel",
+      "price": 252.34,
+      "change24h": -2.85,
+      "change7d": 8.06,
+      "marketCap": 36167409664,
+      "pe": 22.92,
+      "peg": 11.95,
+      "sp500Weight": 0.051,
+      "rank": 290
     },
     {
       "ticker": "IRM",
@@ -4091,7 +4077,7 @@
       "pe": 131.25,
       "peg": 2.7,
       "sp500Weight": 0.051,
-      "rank": 292
+      "rank": 291
     },
     {
       "ticker": "TKO",
@@ -4104,6 +4090,20 @@
       "marketCap": 35807510528,
       "pe": 69.39,
       "peg": 1.29,
+      "sp500Weight": 0.051,
+      "rank": 292
+    },
+    {
+      "ticker": "ACGL",
+      "name": "Arch Capital Group",
+      "sector": "Financials",
+      "subSector": "Property & Casualty Insurance",
+      "price": 104.55,
+      "change24h": -1.81,
+      "change7d": 3.98,
+      "marketCap": 35651551232,
+      "pe": 8.04,
+      "peg": 1.05,
       "sp500Weight": 0.05,
       "rank": 293
     },
@@ -4157,7 +4157,7 @@
       "price": 173.23,
       "change24h": -0.74,
       "change7d": 4.51,
-      "marketCap": 33939206144,
+      "marketCap": 33993662464,
       "pe": 27.28,
       "peg": 1.91,
       "sp500Weight": 0.048,
@@ -4185,7 +4185,7 @@
       "price": 152.85,
       "change24h": 0.42,
       "change7d": 5.02,
-      "marketCap": 33733066752,
+      "marketCap": 33734922240,
       "pe": 34.43,
       "peg": 6.4,
       "sp500Weight": 0.048,
@@ -4248,20 +4248,6 @@
       "rank": 303
     },
     {
-      "ticker": "GEHC",
-      "name": "GE HealthCare",
-      "sector": "Health Care",
-      "subSector": "Health Care Equipment",
-      "price": 71.9,
-      "change24h": 12.15,
-      "change7d": 15.96,
-      "marketCap": 32706719744,
-      "pe": 17.24,
-      "peg": 1.72,
-      "sp500Weight": 0.046,
-      "rank": 304
-    },
-    {
       "ticker": "ZTS",
       "name": "Zoetis",
       "sector": "Health Care",
@@ -4272,6 +4258,20 @@
       "marketCap": 32670447616,
       "pe": 12.78,
       "peg": 1.84,
+      "sp500Weight": 0.046,
+      "rank": 304
+    },
+    {
+      "ticker": "GEHC",
+      "name": "GE HealthCare",
+      "sector": "Health Care",
+      "subSector": "Health Care Equipment",
+      "price": 71.9,
+      "change24h": 12.15,
+      "change7d": 15.96,
+      "marketCap": 32476241920,
+      "pe": 17.24,
+      "peg": 1.72,
       "sp500Weight": 0.046,
       "rank": 305
     },
@@ -4290,20 +4290,6 @@
       "rank": 306
     },
     {
-      "ticker": "LVS",
-      "name": "Las Vegas Sands",
-      "sector": "Consumer Discretionary",
-      "subSector": "Casinos & Gaming",
-      "price": 48.55,
-      "change24h": 0.62,
-      "change7d": 6.77,
-      "marketCap": 32171040768,
-      "pe": 18.82,
-      "peg": 1.13,
-      "sp500Weight": 0.045,
-      "rank": 307
-    },
-    {
       "ticker": "CASY",
       "name": "Casey's",
       "sector": "Consumer Staples",
@@ -4315,7 +4301,7 @@
       "pe": 45.19,
       "peg": 3.68,
       "sp500Weight": 0.045,
-      "rank": 308
+      "rank": 307
     },
     {
       "ticker": "FICO",
@@ -4327,8 +4313,22 @@
       "change7d": 11.87,
       "marketCap": 31842967552,
       "pe": 43.55,
-      "peg": 0.89,
+      "peg": 0.93,
       "sp500Weight": 0.045,
+      "rank": 308
+    },
+    {
+      "ticker": "LVS",
+      "name": "Las Vegas Sands",
+      "sector": "Consumer Discretionary",
+      "subSector": "Casinos & Gaming",
+      "price": 48.55,
+      "change24h": 0.62,
+      "change7d": 6.77,
+      "marketCap": 31445891072,
+      "pe": 18.82,
+      "peg": 1.13,
+      "sp500Weight": 0.044,
       "rank": 309
     },
     {
@@ -4353,7 +4353,7 @@
       "price": 209.23,
       "change24h": 1.76,
       "change7d": 2.99,
-      "marketCap": 30890113024,
+      "marketCap": 30914568192,
       "pe": 22.52,
       "peg": 4.79,
       "sp500Weight": 0.044,
@@ -4507,7 +4507,7 @@
       "price": 143.52,
       "change24h": -1.75,
       "change7d": -1.04,
-      "marketCap": 29856225280,
+      "marketCap": 29864800256,
       "pe": 23.61,
       "peg": 2.04,
       "sp500Weight": 0.042,
@@ -4605,7 +4605,7 @@
       "price": 122.13,
       "change24h": -2.27,
       "change7d": 4.38,
-      "marketCap": 28517353472,
+      "marketCap": 28515743744,
       "pe": 30.38,
       "peg": 1.7,
       "sp500Weight": 0.04,
@@ -4619,7 +4619,7 @@
       "price": 49.13,
       "change24h": -1.05,
       "change7d": 1.53,
-      "marketCap": 28418324480,
+      "marketCap": 28428580864,
       "pe": 26.7,
       "peg": 1.75,
       "sp500Weight": 0.04,
@@ -4696,20 +4696,6 @@
       "rank": 335
     },
     {
-      "ticker": "VRSK",
-      "name": "Verisk Analytics",
-      "sector": "Industrials",
-      "subSector": "Research & Consulting Services",
-      "price": 213.15,
-      "change24h": 0.42,
-      "change7d": 9.17,
-      "marketCap": 27927304192,
-      "pe": 32.54,
-      "peg": 2.05,
-      "sp500Weight": 0.039,
-      "rank": 336
-    },
-    {
       "ticker": "OTIS",
       "name": "Otis Worldwide",
       "sector": "Industrials",
@@ -4721,7 +4707,7 @@
       "pe": 18.86,
       "peg": 1.39,
       "sp500Weight": 0.039,
-      "rank": 337
+      "rank": 336
     },
     {
       "ticker": "CINF",
@@ -4734,6 +4720,20 @@
       "marketCap": 27830175744,
       "pe": 10.37,
       "peg": 2.19,
+      "sp500Weight": 0.039,
+      "rank": 337
+    },
+    {
+      "ticker": "VRSK",
+      "name": "Verisk Analytics",
+      "sector": "Industrials",
+      "subSector": "Research & Consulting Services",
+      "price": 213.15,
+      "change24h": 0.42,
+      "change7d": 9.17,
+      "marketCap": 27742754816,
+      "pe": 32.54,
+      "peg": 2.05,
       "sp500Weight": 0.039,
       "rank": 338
     },
@@ -4775,7 +4775,7 @@
       "change7d": 4.99,
       "marketCap": 26966288384,
       "pe": 24.44,
-      "peg": 2.61,
+      "peg": 2.68,
       "sp500Weight": 0.038,
       "rank": 341
     },
@@ -4836,20 +4836,6 @@
       "rank": 345
     },
     {
-      "ticker": "CTSH",
-      "name": "Cognizant",
-      "sector": "Information Technology",
-      "subSector": "IT Consulting & Other Services",
-      "price": 55.97,
-      "change24h": 11.25,
-      "change7d": 28.28,
-      "marketCap": 26473809920,
-      "pe": 12.14,
-      "peg": 0.77,
-      "sp500Weight": 0.037,
-      "rank": 346
-    },
-    {
       "ticker": "RF",
       "name": "Regions Financial Corporation",
       "sector": "Financials",
@@ -4861,7 +4847,7 @@
       "pe": 12.58,
       "peg": 1.9,
       "sp500Weight": 0.037,
-      "rank": 347
+      "rank": 346
     },
     {
       "ticker": "VRSN",
@@ -4875,7 +4861,7 @@
       "pe": 31.55,
       "peg": 2.79,
       "sp500Weight": 0.037,
-      "rank": 348
+      "rank": 347
     },
     {
       "ticker": "NRG",
@@ -4889,7 +4875,7 @@
       "pe": 136.52,
       "peg": 0.63,
       "sp500Weight": 0.037,
-      "rank": 349
+      "rank": 348
     },
     {
       "ticker": "HAL",
@@ -4903,7 +4889,7 @@
       "pe": 16.33,
       "peg": 0.79,
       "sp500Weight": 0.037,
-      "rank": 350
+      "rank": 349
     },
     {
       "ticker": "HPQ",
@@ -4917,7 +4903,7 @@
       "pe": 10.52,
       "peg": 21.83,
       "sp500Weight": 0.037,
-      "rank": 351
+      "rank": 350
     },
     {
       "ticker": "DGX",
@@ -4931,7 +4917,7 @@
       "pe": 25.0,
       "peg": 1.97,
       "sp500Weight": 0.037,
-      "rank": 352
+      "rank": 351
     },
     {
       "ticker": "JBHT",
@@ -4941,11 +4927,11 @@
       "price": 276.14,
       "change24h": -0.53,
       "change7d": -5.84,
-      "marketCap": 25929547776,
+      "marketCap": 25933672448,
       "pe": 39.34,
       "peg": 2.62,
       "sp500Weight": 0.037,
-      "rank": 353
+      "rank": 352
     },
     {
       "ticker": "Q",
@@ -4958,6 +4944,20 @@
       "marketCap": 25830363136,
       "pe": 39.68,
       "peg": 2.2,
+      "sp500Weight": 0.036,
+      "rank": 353
+    },
+    {
+      "ticker": "INCY",
+      "name": "Incyte",
+      "sector": "Health Care",
+      "subSector": "Biotechnology",
+      "price": 127.1,
+      "change24h": -2.18,
+      "change7d": 8.27,
+      "marketCap": 25762883584,
+      "pe": 17.95,
+      "peg": 12.21,
       "sp500Weight": 0.036,
       "rank": 354
     },
@@ -4990,20 +4990,6 @@
       "rank": 356
     },
     {
-      "ticker": "INCY",
-      "name": "Incyte",
-      "sector": "Health Care",
-      "subSector": "Biotechnology",
-      "price": 127.1,
-      "change24h": -2.18,
-      "change7d": 8.27,
-      "marketCap": 25392312320,
-      "pe": 17.95,
-      "peg": 12.21,
-      "sp500Weight": 0.036,
-      "rank": 357
-    },
-    {
       "ticker": "SW",
       "name": "Smurfit Westrock",
       "sector": "Materials",
@@ -5014,6 +5000,20 @@
       "marketCap": 25310633984,
       "pe": 67.03,
       "peg": 0.26,
+      "sp500Weight": 0.036,
+      "rank": 357
+    },
+    {
+      "ticker": "CTSH",
+      "name": "Cognizant",
+      "sector": "Information Technology",
+      "subSector": "IT Consulting & Other Services",
+      "price": 55.97,
+      "change24h": 11.25,
+      "change7d": 28.28,
+      "marketCap": 25211363328,
+      "pe": 12.14,
+      "peg": 0.77,
       "sp500Weight": 0.036,
       "rank": 358
     },
@@ -5137,7 +5137,7 @@
       "price": 460.96,
       "change24h": -4.69,
       "change7d": -3.95,
-      "marketCap": 24357945344,
+      "marketCap": 24353701888,
       "pe": 27.23,
       "peg": 2.38,
       "sp500Weight": 0.034,
@@ -5186,20 +5186,6 @@
       "rank": 370
     },
     {
-      "ticker": "VLTO",
-      "name": "Veralto",
-      "sector": "Industrials",
-      "subSector": "Environmental & Facilities Services",
-      "price": 98.83,
-      "change24h": 0.37,
-      "change7d": 9.59,
-      "marketCap": 24272576512,
-      "pe": 25.47,
-      "peg": 2.77,
-      "sp500Weight": 0.034,
-      "rank": 371
-    },
-    {
       "ticker": "FIS",
       "name": "Fidelity National Information Services",
       "sector": "Financials",
@@ -5211,7 +5197,7 @@
       "pe": 9.07,
       "peg": 0.24,
       "sp500Weight": 0.034,
-      "rank": 372
+      "rank": 371
     },
     {
       "ticker": "GPN",
@@ -5224,6 +5210,20 @@
       "marketCap": 24145686528,
       "pe": 32.45,
       "peg": 0.24,
+      "sp500Weight": 0.034,
+      "rank": 372
+    },
+    {
+      "ticker": "VLTO",
+      "name": "Veralto",
+      "sector": "Industrials",
+      "subSector": "Environmental & Facilities Services",
+      "price": 98.83,
+      "change24h": 0.37,
+      "change7d": 9.59,
+      "marketCap": 24094097408,
+      "pe": 25.47,
+      "peg": 2.77,
       "sp500Weight": 0.034,
       "rank": 373
     },
@@ -5252,7 +5252,7 @@
       "marketCap": 23749003264,
       "pe": 43.15,
       "peg": 2.84,
-      "sp500Weight": 0.033,
+      "sp500Weight": 0.034,
       "rank": 375
     },
     {
@@ -5270,20 +5270,6 @@
       "rank": 376
     },
     {
-      "ticker": "OMC",
-      "name": "Omnicom Group",
-      "sector": "Communication Services",
-      "subSector": "Advertising",
-      "price": 82.58,
-      "change24h": -4.22,
-      "change7d": 4.25,
-      "marketCap": 23535812608,
-      "pe": 6.77,
-      "peg": 15.97,
-      "sp500Weight": 0.033,
-      "rank": 377
-    },
-    {
       "ticker": "CMS",
       "name": "CMS Energy",
       "sector": "Utilities",
@@ -5291,11 +5277,11 @@
       "price": 74.36,
       "change24h": -0.01,
       "change7d": 2.57,
-      "marketCap": 22971262976,
+      "marketCap": 23317598208,
       "pe": 20.6,
       "peg": 2.87,
-      "sp500Weight": 0.032,
-      "rank": 378
+      "sp500Weight": 0.033,
+      "rank": 377
     },
     {
       "ticker": "STE",
@@ -5308,6 +5294,20 @@
       "marketCap": 22885986304,
       "pe": 29.65,
       "peg": 1.77,
+      "sp500Weight": 0.032,
+      "rank": 378
+    },
+    {
+      "ticker": "OMC",
+      "name": "Omnicom Group",
+      "sector": "Communication Services",
+      "subSector": "Advertising",
+      "price": 82.58,
+      "change24h": -4.22,
+      "change7d": 4.25,
+      "marketCap": 22655490048,
+      "pe": 6.77,
+      "peg": 15.97,
       "sp500Weight": 0.032,
       "rank": 379
     },
@@ -5396,20 +5396,6 @@
       "rank": 385
     },
     {
-      "ticker": "EXE",
-      "name": "Expand Energy",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Exploration & Production",
-      "price": 92.46,
-      "change24h": 4.45,
-      "change7d": 4.38,
-      "marketCap": 22119098368,
-      "pe": 6.88,
-      "peg": 2.81,
-      "sp500Weight": 0.031,
-      "rank": 386
-    },
-    {
       "ticker": "DOW",
       "name": "Dow Inc.",
       "sector": "Materials",
@@ -5421,7 +5407,7 @@
       "pe": 16.51,
       "peg": 38.89,
       "sp500Weight": 0.031,
-      "rank": 387
+      "rank": 386
     },
     {
       "ticker": "FFIV",
@@ -5435,7 +5421,7 @@
       "pe": 31.77,
       "peg": 1.76,
       "sp500Weight": 0.031,
-      "rank": 388
+      "rank": 387
     },
     {
       "ticker": "EFX",
@@ -5449,7 +5435,7 @@
       "pe": 32.87,
       "peg": 1.77,
       "sp500Weight": 0.031,
-      "rank": 389
+      "rank": 388
     },
     {
       "ticker": "ULTA",
@@ -5463,7 +5449,7 @@
       "pe": 19.04,
       "peg": 1.67,
       "sp500Weight": 0.031,
-      "rank": 390
+      "rank": 389
     },
     {
       "ticker": "NTRS",
@@ -5477,7 +5463,7 @@
       "pe": 15.26,
       "peg": 1.21,
       "sp500Weight": 0.031,
-      "rank": 391
+      "rank": 390
     },
     {
       "ticker": "LUV",
@@ -5491,7 +5477,7 @@
       "pe": 27.74,
       "peg": 0.36,
       "sp500Weight": 0.031,
-      "rank": 392
+      "rank": 391
     },
     {
       "ticker": "MRNA",
@@ -5504,8 +5490,8 @@
       "marketCap": 21620885504,
       "pe": -13.03,
       "peg": null,
-      "sp500Weight": 0.03,
-      "rank": 393
+      "sp500Weight": 0.031,
+      "rank": 392
     },
     {
       "ticker": "FDXF",
@@ -5519,7 +5505,7 @@
       "pe": 31.66,
       "peg": null,
       "sp500Weight": 0.03,
-      "rank": 394
+      "rank": 393
     },
     {
       "ticker": "TSN",
@@ -5533,7 +5519,7 @@
       "pe": 48.06,
       "peg": 1.04,
       "sp500Weight": 0.03,
-      "rank": 395
+      "rank": 394
     },
     {
       "ticker": "NI",
@@ -5547,7 +5533,7 @@
       "pe": 22.29,
       "peg": 2.61,
       "sp500Weight": 0.03,
-      "rank": 396
+      "rank": 395
     },
     {
       "ticker": "SNA",
@@ -5561,7 +5547,7 @@
       "pe": 21.19,
       "peg": 2.26,
       "sp500Weight": 0.03,
-      "rank": 397
+      "rank": 396
     },
     {
       "ticker": "FSLR",
@@ -5574,6 +5560,20 @@
       "marketCap": 21409007616,
       "pe": 12.87,
       "peg": 0.54,
+      "sp500Weight": 0.03,
+      "rank": 397
+    },
+    {
+      "ticker": "EXE",
+      "name": "Expand Energy",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Exploration & Production",
+      "price": 92.46,
+      "change24h": 4.45,
+      "change7d": 4.38,
+      "marketCap": 21404839936,
+      "pe": 6.88,
+      "peg": 2.81,
       "sp500Weight": 0.03,
       "rank": 398
     },
@@ -5629,7 +5629,7 @@
       "change7d": -17.03,
       "marketCap": 20480440320,
       "pe": 35.17,
-      "peg": 2.46,
+      "peg": 2.39,
       "sp500Weight": 0.029,
       "rank": 402
     },
@@ -5865,10 +5865,10 @@
       "price": 59.54,
       "change24h": -7.1,
       "change7d": -1.86,
-      "marketCap": 18151426048,
+      "marketCap": 17982095360,
       "pe": 35.02,
       "peg": 0.98,
-      "sp500Weight": 0.026,
+      "sp500Weight": 0.025,
       "rank": 419
     },
     {
@@ -6229,7 +6229,7 @@
       "price": 85.65,
       "change24h": -4.79,
       "change7d": -5.39,
-      "marketCap": 14893591552,
+      "marketCap": 14730679296,
       "pe": 16.35,
       "peg": 1.24,
       "sp500Weight": 0.021,
@@ -6243,25 +6243,11 @@
       "price": 39.72,
       "change24h": 1.85,
       "change7d": 0.38,
-      "marketCap": 14716881920,
+      "marketCap": 14591707136,
       "pe": 27.02,
       "peg": 8.17,
       "sp500Weight": 0.021,
       "rank": 446
-    },
-    {
-      "ticker": "MAS",
-      "name": "Masco",
-      "sector": "Industrials",
-      "subSector": "Building Products",
-      "price": 72.56,
-      "change24h": -11.09,
-      "change7d": -5.55,
-      "marketCap": 14637849600,
-      "pe": 17.96,
-      "peg": 2.05,
-      "sp500Weight": 0.021,
-      "rank": 447
     },
     {
       "ticker": "SWK",
@@ -6275,7 +6261,7 @@
       "pe": 38.14,
       "peg": 1.39,
       "sp500Weight": 0.02,
-      "rank": 448
+      "rank": 447
     },
     {
       "ticker": "LDOS",
@@ -6288,6 +6274,20 @@
       "marketCap": 14386083840,
       "pe": 10.47,
       "peg": 2.46,
+      "sp500Weight": 0.02,
+      "rank": 448
+    },
+    {
+      "ticker": "MAS",
+      "name": "Masco",
+      "sector": "Industrials",
+      "subSector": "Building Products",
+      "price": 72.56,
+      "change24h": -11.09,
+      "change7d": -5.55,
+      "marketCap": 14307918848,
+      "pe": 17.96,
+      "peg": 2.05,
       "sp500Weight": 0.02,
       "rank": 449
     },
@@ -6399,7 +6399,7 @@
       "change7d": 11.26,
       "marketCap": 13720375296,
       "pe": 46.13,
-      "peg": 1.52,
+      "peg": 1.6,
       "sp500Weight": 0.019,
       "rank": 457
     },
@@ -6567,7 +6567,7 @@
       "change7d": 1.45,
       "marketCap": 12896992256,
       "pe": 30.27,
-      "peg": 0.89,
+      "peg": 0.93,
       "sp500Weight": 0.018,
       "rank": 469
     },
@@ -6747,7 +6747,7 @@
       "price": 195.19,
       "change24h": -0.21,
       "change7d": -9.47,
-      "marketCap": 11490577408,
+      "marketCap": 11517310976,
       "pe": 60.81,
       "peg": 0.82,
       "sp500Weight": 0.016,
@@ -6845,7 +6845,7 @@
       "price": 66.59,
       "change24h": -0.27,
       "change7d": 8.78,
-      "marketCap": 10761312256,
+      "marketCap": 10627763200,
       "pe": 16.73,
       "peg": 1.06,
       "sp500Weight": 0.015,
@@ -6957,7 +6957,7 @@
       "price": 61.19,
       "change24h": -5.4,
       "change7d": -2.8,
-      "marketCap": 9203341312,
+      "marketCap": 9207429120,
       "pe": 25.5,
       "peg": 1.37,
       "sp500Weight": 0.013,
@@ -7014,7 +7014,7 @@
       "change24h": 0.59,
       "change7d": 4.65,
       "marketCap": 8019695616,
-      "pe": 8.6,
+      "pe": 8.59,
       "peg": 3.92,
       "sp500Weight": 0.011,
       "rank": 501

@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-29 21:17:09 UTC",
-  "totalMarketCap": 42371858139136,
+  "lastUpdated": "2026-07-30 00:16:15 UTC",
+  "totalMarketCap": 42373355358208,
   "companiesCount": 103,
   "indexPrice": 27192.31,
   "indexChangePercent": -2.06,
@@ -16,7 +16,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "subSector": "Computer Hardware",
-      "sp500Weight": 11.723,
+      "sp500Weight": 11.722,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "name": "Nvidia",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "sp500Weight": 10.862,
+      "sp500Weight": 10.861,
       "rank": 2
     },
     {
@@ -44,7 +44,7 @@
       "name": "Alphabet Inc. (Class A)",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 9.719,
+      "sp500Weight": 9.718,
       "rank": 3
     },
     {
@@ -67,7 +67,7 @@
       "change7d": -1.81,
       "marketCap": 2901100986368,
       "pe": 23.25,
-      "peg": 1.2,
+      "peg": 1.21,
       "ticker": "MSFT",
       "name": "Microsoft",
       "sector": "Technology",
@@ -263,7 +263,7 @@
       "change7d": -21.63,
       "marketCap": 315581595648,
       "pe": 47.79,
-      "peg": 1.68,
+      "peg": 1.56,
       "ticker": "LRCX",
       "name": "Lam Research",
       "sector": "Technology",
@@ -337,7 +337,7 @@
       "change7d": -22.38,
       "marketCap": 240200237056,
       "pe": 261.5,
-      "peg": 2.2,
+      "peg": 2.02,
       "sp500Weight": 0.567,
       "rank": 24
     },
@@ -426,6 +426,20 @@
       "rank": 30
     },
     {
+      "price": 764.43,
+      "change24h": 2.29,
+      "change7d": -14.29,
+      "marketCap": 173525614592,
+      "pe": 72.53,
+      "peg": 0.57,
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "sector": "Technology",
+      "subSector": "Electronic Components",
+      "sp500Weight": 0.41,
+      "rank": 31
+    },
+    {
       "price": 353.37,
       "change24h": -3.41,
       "change7d": -7.69,
@@ -437,20 +451,6 @@
       "sector": "Technology",
       "subSector": "Semiconductors",
       "sp500Weight": 0.406,
-      "rank": 31
-    },
-    {
-      "price": 764.43,
-      "change24h": 2.29,
-      "change7d": -14.29,
-      "marketCap": 171407360000,
-      "pe": 72.53,
-      "peg": 0.57,
-      "ticker": "STX",
-      "name": "Seagate Technology",
-      "sector": "Technology",
-      "subSector": "Electronic Components",
-      "sp500Weight": 0.405,
       "rank": 32
     },
     {
@@ -487,7 +487,7 @@
       "change7d": -10.27,
       "marketCap": 164086710272,
       "pe": 16.74,
-      "peg": 0.54,
+      "peg": 0.51,
       "ticker": "QCOM",
       "name": "Qualcomm",
       "sector": "Technology",
@@ -613,7 +613,7 @@
       "change7d": -0.3,
       "marketCap": 118688350208,
       "pe": 79.5,
-      "peg": 1.27,
+      "peg": 1.26,
       "ticker": "SBUX",
       "name": "Starbucks",
       "sector": "Consumer Discretionary",
@@ -751,14 +751,14 @@
       "price": 332.76,
       "change24h": -3.47,
       "change7d": -3.45,
-      "marketCap": 91780538368,
+      "marketCap": 91639775232,
       "pe": 77.93,
       "peg": 3.21,
       "ticker": "CDNS",
       "name": "Cadence Design Systems",
       "sector": "Technology",
       "subSector": "Software",
-      "sp500Weight": 0.217,
+      "sp500Weight": 0.216,
       "rank": 54
     },
     {
@@ -835,14 +835,14 @@
       "price": 64.99,
       "change24h": 4.02,
       "change7d": 8.57,
-      "marketCap": 83424395264,
+      "marketCap": 82947260416,
       "pe": 32.17,
       "peg": 1.0,
       "ticker": "MDLZ",
       "name": "Mondelez International",
       "sector": "Consumer Staples",
       "subSector": "Packaged Foods",
-      "sp500Weight": 0.197,
+      "sp500Weight": 0.196,
       "rank": 60
     },
     {
@@ -879,7 +879,7 @@
       "change7d": 3.02,
       "marketCap": 75106443264,
       "pe": 29.52,
-      "peg": 1.93,
+      "peg": 1.95,
       "ticker": "ORLY",
       "name": "O'Reilly Automotive",
       "sector": "Consumer Discretionary",
@@ -989,14 +989,14 @@
       "price": 240.98,
       "change24h": -7.0,
       "change7d": -11.78,
-      "marketCap": 60840476672,
+      "marketCap": 60766523392,
       "pe": 23.02,
       "peg": 0.68,
       "ticker": "NXPI",
       "name": "NXP Semiconductors",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "sp500Weight": 0.144,
+      "sp500Weight": 0.143,
       "rank": 71
     },
     {
@@ -1045,7 +1045,7 @@
       "price": 208.91,
       "change24h": 0.02,
       "change7d": -0.06,
-      "marketCap": 52384493568,
+      "marketCap": 52725510144,
       "pe": 59.52,
       "peg": 1.3,
       "ticker": "EA",
@@ -1070,20 +1070,6 @@
       "rank": 76
     },
     {
-      "price": 58.35,
-      "change24h": 0.05,
-      "change7d": 4.48,
-      "marketCap": 50297700352,
-      "pe": 10.95,
-      "peg": 1.01,
-      "ticker": "PYPL",
-      "name": "PayPal",
-      "sector": "Industrials",
-      "subSector": "Diversified Commercial Services",
-      "sp500Weight": 0.119,
-      "rank": 77
-    },
-    {
       "price": 319.41,
       "change24h": -0.39,
       "change7d": -14.61,
@@ -1094,6 +1080,20 @@
       "name": "Teradyne",
       "sector": "Technology",
       "subSector": "Semiconductors",
+      "sp500Weight": 0.118,
+      "rank": 77
+    },
+    {
+      "price": 58.35,
+      "change24h": 0.05,
+      "change7d": 4.48,
+      "marketCap": 49916141568,
+      "pe": 10.95,
+      "peg": 1.01,
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "sector": "Industrials",
+      "subSector": "Diversified Commercial Services",
       "sp500Weight": 0.118,
       "rank": 78
     },
@@ -1196,6 +1196,20 @@
       "rank": 85
     },
     {
+      "ticker": "FER",
+      "name": "Ferrovial",
+      "sector": "Industrials",
+      "subSector": "Military, Government, Technical",
+      "price": 62.54,
+      "change24h": 1.25,
+      "change7d": -1.59,
+      "marketCap": 45088346112,
+      "pe": 50.03,
+      "peg": 4.87,
+      "sp500Weight": 0.106,
+      "rank": 86
+    },
+    {
       "price": 569.77,
       "change24h": 0.04,
       "change7d": 3.13,
@@ -1206,20 +1220,6 @@
       "name": "Idexx Laboratories",
       "sector": "Health Care",
       "subSector": "Biotechnology",
-      "sp500Weight": 0.106,
-      "rank": 86
-    },
-    {
-      "ticker": "FER",
-      "name": "Ferrovial",
-      "sector": "Industrials",
-      "subSector": "Military, Government, Technical",
-      "price": 62.54,
-      "change24h": 1.25,
-      "change7d": -1.59,
-      "marketCap": 44746510336,
-      "pe": 50.03,
-      "peg": 4.87,
       "sp500Weight": 0.106,
       "rank": 87
     },
@@ -1409,7 +1409,7 @@
       "price": 71.9,
       "change24h": 12.15,
       "change7d": 15.96,
-      "marketCap": 32706719744,
+      "marketCap": 32476241920,
       "pe": 17.24,
       "peg": 1.72,
       "ticker": "GEHC",
