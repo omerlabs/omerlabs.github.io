@@ -347,7 +347,7 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
         
     return result
 
-def collect_index_data(index_name, companies, index_ticker, output_path, session, global_hist_df, metadata_cache, metadata_cache_lock=None):
+def collect_index_data(index_name, companies, output_path, session, global_hist_df, metadata_cache, metadata_cache_lock=None):
     """
     Downloads historical close prices, metadata (market cap, P/E, PEG),
     and computes weights for the given index constituents, then saves to output_path.
@@ -412,34 +412,7 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
         rank += 1
         final_data.append(r)
         
-    # 4. Fetch Index price & change
-    print(f"Fetching index price for {index_ticker}...")
-    index_price = None
-    index_change = None
-    try:
-        idx_ticker = yf.Ticker(index_ticker, session=session)
-        idx_info = idx_ticker.info
-        if idx_info:
-            index_price = idx_info.get("currentPrice") or idx_info.get("regularMarketPrice") or idx_info.get("previousClose")
-            index_change = idx_info.get("regularMarketChangePercent")
-            
-        # fallback
-        if index_price is None or index_change is None:
-            idx_hist = idx_ticker.history(period="2d")
-            if len(idx_hist) >= 1:
-                index_price = round(float(idx_hist["Close"].iloc[-1]), 2)
-            if len(idx_hist) >= 2:
-                prev = float(idx_hist["Close"].iloc[-2])
-                index_change = round(((index_price - prev) / prev) * 100, 2)
-                
-        if index_price is not None:
-            index_price = round(float(index_price), 2)
-        if index_change is not None:
-            index_change = round(float(index_change), 2)
-    except Exception as e:
-        print(f"Error fetching index {index_ticker} data: {e}")
-        
-    # 5. Data validation before writing — protect against overwriting with bad data
+    # 4. Data validation before writing — protect against overwriting with bad data
     valid_prices = [r for r in final_data if r.get("price") is not None]
     valid_ratio = len(valid_prices) / len(final_data) if final_data else 0
     
@@ -450,13 +423,11 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
         print(f"Collection for {index_name} aborted in {elapsed:.2f} seconds.")
         return
     
-    # 6. Save data to JSON
+    # 5. Save data to JSON
     output_payload = {
         "lastUpdated": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()),
         "totalMarketCap": total_market_cap,
         "companiesCount": len(final_data),
-        "indexPrice": index_price,
-        "indexChangePercent": index_change,
         "data": final_data
     }
     
@@ -564,17 +535,17 @@ def main():
     
     # 4. Collect and save index data
     if sp500_companies:
-        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+        collect_index_data("S&P 500", sp500_companies, os.path.join(json_dir, "sp500.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     if nasdaq100_companies:
-        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+        collect_index_data("Nasdaq 100", nasdaq100_companies, os.path.join(json_dir, "nasdaq100.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     if nttr_companies:
-        collect_index_data("NTTR", nttr_companies, "^NDXT", os.path.join(json_dir, "nttr.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+        collect_index_data("NTTR", nttr_companies, os.path.join(json_dir, "nttr.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     # 5. Collect non-stock datasets
-    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
-    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+    collect_index_data("Emtia", COMMODITIES_LIST, os.path.join(json_dir, "commodities.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+    collect_index_data("ETFs", ETFS_LIST, os.path.join(json_dir, "etfs.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     elapsed = time.time() - start_time
     print(f"\nAll index updates completed in {elapsed:.2f} seconds.")

@@ -8,13 +8,7 @@ let dataStore = {
     commodities: [],
     etfs: []
 };
-let indexMetadata = {
-    sp500: { price: null, change: null },
-    nasdaq100: { price: null, change: null },
-    nttr: { price: null, change: null },
-    commodities: { price: null, change: null },
-    etfs: { price: null, change: null }
-};
+
 let watchlist = new Set(JSON.parse(localStorage.getItem('sp500_watchlist') || '[]'));
 let showWatchlistOnly = false;
 let deferredPrompt = null;
@@ -47,11 +41,7 @@ const elements = {
     closeModalBtn: document.getElementById('close-modal-btn'),
     watchlistToggleBtn: document.getElementById('watchlist-toggle-btn'),
     installBtn: document.getElementById('install-btn'),
-    tabButtons: document.querySelectorAll('.tab-btn'),
-    indexInfoDisplay: document.getElementById('index-info-display'),
-    indexInfoLabel: document.getElementById('index-info-label'),
-    indexPriceVal: document.getElementById('index-price-val'),
-    indexChangeVal: document.getElementById('index-change-val')
+    tabButtons: document.querySelectorAll('.tab-btn')
 };
 
 // Initialize Application
@@ -137,7 +127,6 @@ async function fetchData() {
         ]);
         
         dataStore.sp500 = sp500Payload.data || [];
-        indexMetadata.sp500 = { price: sp500Payload.indexPrice, change: sp500Payload.indexChangePercent };
         
         // Update last updated timestamp display using the S&P 500 JSON timestamp
         if (sp500Payload && sp500Payload.lastUpdated) {
@@ -145,10 +134,7 @@ async function fetchData() {
         }
         
         dataStore.nasdaq100 = nasdaq100Payload.data || [];
-        indexMetadata.nasdaq100 = { price: nasdaq100Payload.indexPrice, change: nasdaq100Payload.indexChangePercent };
-        
         dataStore.nttr = nttrPayload.data || [];
-        indexMetadata.nttr = { price: nttrPayload.indexPrice, change: nttrPayload.indexChangePercent };
         
         // Defensively fetch Commodities
         try {
@@ -156,7 +142,6 @@ async function fetchData() {
             if (commRes.ok) {
                 const commPayload = await commRes.json();
                 dataStore.commodities = commPayload.data || [];
-                indexMetadata.commodities = { price: commPayload.indexPrice, change: commPayload.indexChangePercent };
             }
         } catch (e) {
             console.warn("commodities.json yüklenemedi (henüz oluşturulmamış olabilir):", e);
@@ -168,7 +153,6 @@ async function fetchData() {
             if (etfsRes.ok) {
                 const etfsPayload = await etfsRes.json();
                 dataStore.etfs = etfsPayload.data || [];
-                indexMetadata.etfs = { price: etfsPayload.indexPrice, change: etfsPayload.indexChangePercent };
             }
         } catch (e) {
             console.warn("etfs.json yüklenemedi (henüz oluşturulmamış olabilir):", e);
@@ -207,9 +191,6 @@ function updateActiveDataset() {
     
     // Populate sector filter options
     populateSectorFilter();
-    
-    // Update index price/change display
-    updateIndexDisplay();
     
     // Apply filters and render
     applyFilters();
@@ -267,10 +248,7 @@ function updateTableHeaders() {
     }
 }
 
-// Update index price/change header stats on tab change (stubbed out since index displays are removed)
-function updateIndexDisplay() {
-    // No-op
-}
+
 
 // Setup Event Listeners for controls & table headers
 function setupEventListeners() {
@@ -473,22 +451,7 @@ function setupEventListeners() {
         });
     });
     
-    // Index Info Display Click (Open Index Chart)
-    if (elements.indexInfoDisplay) {
-        elements.indexInfoDisplay.addEventListener('click', () => {
-            // Use ETF proxies that work reliably with TradingView widget
-            // SP500 → VOO, Nasdaq100 → QQQ, NTTR → QTEC (First Trust Nasdaq-100 Tech Sector ETF)
-            const indexSymbolMap = {
-                sp500: 'VOO',
-                nasdaq100: 'QQQ',
-                nttr: 'QTEC'
-            };
-            const symbol = indexSymbolMap[activeTab];
-            if (symbol) {
-                showChartModal(symbol);
-            }
-        });
-    }
+
     
     // Smooth Page-Level Sticky Header Translator
     window.addEventListener('scroll', () => {
