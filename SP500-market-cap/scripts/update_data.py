@@ -491,27 +491,25 @@ def main():
 
     # Curated ETFs list
     ETFS_LIST = [
-        {"ticker": "SPY", "yf_ticker": "SPY", "name": "SPDR S&P 500 ETF Trust", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "S&P 500 Index"},
         {"ticker": "QQQ", "yf_ticker": "QQQ", "name": "Invesco QQQ Trust", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Index"},
-        {"ticker": "DIA", "yf_ticker": "DIA", "name": "SPDR Dow Jones Industrial Average", "sector": "ETF", "subSector": "Hisse Senedi (Mavi Çip)", "target": "Dow Jones Index"},
-        {"ticker": "IWM", "yf_ticker": "IWM", "name": "iShares Russell 2000 ETF", "sector": "ETF", "subSector": "Hisse Senedi (Küçük Ölçek)", "target": "Russell 2000 Index"},
-        {"ticker": "VTI", "yf_ticker": "VTI", "name": "Vanguard Total Stock Market", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "US Stock Market"},
         {"ticker": "VOO", "yf_ticker": "VOO", "name": "Vanguard S&P 500 ETF", "sector": "ETF", "subSector": "Hisse Senedi (Geniş)", "target": "S&P 500 Index"},
-        {"ticker": "VWO", "yf_ticker": "VWO", "name": "Vanguard FTSE Emerging Markets", "sector": "ETF", "subSector": "Gelişmekte Olan Ülkeler", "target": "FTSE Emerging Index"},
-        {"ticker": "VEA", "yf_ticker": "VEA", "name": "Vanguard FTSE Developed Markets", "sector": "ETF", "subSector": "Gelişmiş Ülkeler (ABD hariç)", "target": "FTSE Developed Index"},
-        {"ticker": "GLD", "yf_ticker": "GLD", "name": "SPDR Gold Shares", "sector": "ETF", "subSector": "Emtia (Altın)", "target": "Gold Bullion"},
-        {"ticker": "SLV", "yf_ticker": "SLV", "name": "iShares Silver Trust", "sector": "ETF", "subSector": "Emtia (Gümüş)", "target": "Silver Bullion"},
-        {"ticker": "USO", "yf_ticker": "USO", "name": "United States Oil Fund", "sector": "ETF", "subSector": "Emtia (Petrol)", "target": "WTI Light Sweet Crude"},
-        {"ticker": "UNG", "yf_ticker": "UNG", "name": "United States Natural Gas", "sector": "ETF", "subSector": "Emtia (Gaz)", "target": "Natural Gas Price"},
-        {"ticker": "TLT", "yf_ticker": "TLT", "name": "iShares 20+ Year Treasury Bond", "sector": "ETF", "subSector": "Tahvil (Uzun Vade)", "target": "US 20+ Year Bond"},
-        {"ticker": "HYG", "yf_ticker": "HYG", "name": "iShares iBoxx $ High Yield Corp", "sector": "ETF", "subSector": "Tahvil (Yüksek Getiri)", "target": "High Yield Corporate Bond"},
-        {"ticker": "SMH", "yf_ticker": "SMH", "name": "VanEck Semiconductor ETF", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Semiconductor Stocks"},
-        {"ticker": "ARKK", "yf_ticker": "ARKK", "name": "ARK Innovation ETF", "sector": "ETF", "subSector": "Hisse Senedi (Aktif/İnovasyon)", "target": "Disruptive Innovation"},
-        {"ticker": "XLF", "yf_ticker": "XLF", "name": "Financial Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Financials Index"},
-        {"ticker": "XLK", "yf_ticker": "XLK", "name": "Technology Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Technology Index"},
-        {"ticker": "XLV", "yf_ticker": "XLV", "name": "Health Care Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Health Care Index"},
+        {"ticker": "IWM", "yf_ticker": "IWM", "name": "iShares Russell 2000 ETF", "sector": "ETF", "subSector": "Hisse Senedi (Küçük Ölçek)", "target": "Russell 2000 Index"},
         {"ticker": "XLE", "yf_ticker": "XLE", "name": "Energy Select Sector SPDR", "sector": "ETF", "subSector": "Hisse Senedi (Sektör)", "target": "Energy Index"},
-        {"ticker": "QTEC", "yf_ticker": "QTEC", "name": "First Trust Nasdaq-100 Technology Sector Index Fund", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Technology Index"}
+        {"ticker": "ARKK", "yf_ticker": "ARKK", "name": "ARK Innovation ETF", "sector": "ETF", "subSector": "Hisse Senedi (Aktif/İnovasyon)", "target": "Disruptive Innovation"},
+        {"ticker": "QTEC", "yf_ticker": "QTEC", "name": "First Trust Nasdaq-100 Technology Sector Index Fund", "sector": "ETF", "subSector": "Hisse Senedi (Teknoloji)", "target": "Nasdaq 100 Technology Index"},
+        {"ticker": "EWJ", "yf_ticker": "EWJ", "name": "iShares MSCI Japan ETF", "sector": "ETF", "subSector": "Ülke (Japonya)", "target": "MSCI Japan Index"},
+        {"ticker": "EWG", "yf_ticker": "EWG", "name": "iShares MSCI Germany ETF", "sector": "ETF", "subSector": "Ülke (Almanya)", "target": "MSCI Germany Index"},
+        {"ticker": "EWU", "yf_ticker": "EWU", "name": "iShares MSCI United Kingdom ETF", "sector": "ETF", "subSector": "Ülke (İngiltere)", "target": "MSCI UK Index"},
+        {"ticker": "INDA", "yf_ticker": "INDA", "name": "iShares MSCI India ETF", "sector": "ETF", "subSector": "Ülke (Hindistan)", "target": "MSCI India Index"},
+        {"ticker": "EPI", "yf_ticker": "EPI", "name": "WisdomTree India Earnings Fund", "sector": "ETF", "subSector": "Ülke (Hindistan)", "target": "WisdomTree India Index"},
+        {"ticker": "EWT", "yf_ticker": "EWT", "name": "iShares MSCI Taiwan ETF", "sector": "ETF", "subSector": "Ülke (Tayvan)", "target": "MSCI Taiwan Index"},
+        {"ticker": "EWY", "yf_ticker": "EWY", "name": "iShares MSCI South Korea ETF", "sector": "ETF", "subSector": "Ülke (Güney Kore)", "target": "MSCI South Korea Index"},
+        {"ticker": "MCHI", "yf_ticker": "MCHI", "name": "iShares MSCI China ETF", "sector": "ETF", "subSector": "Ülke (Çin)", "target": "MSCI China Index"},
+        {"ticker": "FXI", "yf_ticker": "FXI", "name": "iShares China Large-Cap ETF", "sector": "ETF", "subSector": "Ülke (Çin)", "target": "China Large-Cap Index"},
+        {"ticker": "EWZ", "yf_ticker": "EWZ", "name": "iShares MSCI Brazil ETF", "sector": "ETF", "subSector": "Ülke (Brezilya)", "target": "MSCI Brazil Index"},
+        {"ticker": "EWW", "yf_ticker": "EWW", "name": "iShares MSCI Mexico ETF", "sector": "ETF", "subSector": "Ülke (Meksika)", "target": "MSCI Mexico Index"},
+        {"ticker": "KSA", "yf_ticker": "KSA", "name": "iShares MSCI Saudi Arabia ETF", "sector": "ETF", "subSector": "Ülke (Suudi Arabistan)", "target": "MSCI Saudi Arabia Index"},
+        {"ticker": "TUR", "yf_ticker": "TUR", "name": "iShares MSCI Turkey ETF", "sector": "ETF", "subSector": "Ülke (Türkiye)", "target": "MSCI Turkey Index"}
     ]
 
     # Gather all constituents globally to batch download history and run shared caching
