@@ -2,10 +2,12 @@ name: Update SP 500 Data
 
 on:
   schedule:
-    # Runs 3 times daily (Monday to Friday)
-    - cron: '30 14 * * 1-5'
-    - cron: '0 18 * * 1-5'
-    - cron: '0 21 * * 1-5'
+    # Runs 5 times daily (Monday to Friday) — TSI times in comments
+    - cron: '45 13 * * 1-5'  # 16:45 TSİ — Borsa açılışı
+    - cron: '30 14 * * 1-5'  # 17:30 TSİ — Açılış sonrası
+    - cron: '30 16 * * 1-5'  # 19:30 TSİ — Gün ortası
+    - cron: '0 18 * * 1-5'   # 21:00 TSİ — Kapanış öncesi
+    - cron: '0 21 * * 1-5'   # 00:00 TSİ — Kapanış sonrası
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 permissions:
@@ -14,6 +16,7 @@ permissions:
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
@@ -25,11 +28,12 @@ jobs:
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: 'SP500-market-cap/scripts/requirements.txt'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install yfinance beautifulsoup4 requests lxml pandas
+          pip install -r SP500-market-cap/scripts/requirements.txt
 
       - name: Run data update script
         run: python SP500-market-cap/scripts/update_data.py

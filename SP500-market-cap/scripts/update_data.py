@@ -6,6 +6,7 @@ import yfinance as yf
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import random
+import threading
 
 
 def fetch_Sp500_wikipedia(json_dir):
@@ -193,7 +194,7 @@ def fetch_history_batch(yf_tickers):
         print(f"Error during bulk history download: {e}")
         return None
 
-def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache=None):
+def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache=None, metadata_cache_lock=None):
     """
     Fetches the metadata (market cap, float, PE) for a single ticker.
     Uses historical dataframe to compute 24h & 7d change, and current price if possible.
@@ -201,15 +202,17 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
     ticker = company["ticker"]
     yf_ticker = company["yf_ticker"]
     
-    # Check cache first
-    if metadata_cache is not None and yf_ticker in metadata_cache:
-        cached_data = metadata_cache[yf_ticker].copy()
-        # Update context-specific fields
-        cached_data["ticker"] = ticker
-        cached_data["name"] = company["name"]
-        cached_data["sector"] = company["sector"]
-        cached_data["subSector"] = company["subSector"]
-        return cached_data
+    # Check cache first (thread-safe read)
+    if metadata_cache is not None and metadata_cache_lock is not None:
+        with metadata_cache_lock:
+            if yf_ticker in metadata_cache:
+                cached_data = metadata_cache[yf_ticker].copy()
+                # Update context-specific fields
+                cached_data["ticker"] = ticker
+                cached_data["name"] = company["name"]
+                cached_data["sector"] = company["sector"]
+                cached_data["subSector"] = company["subSector"]
+                return cached_data
         
     result = {
         "ticker": ticker,
@@ -330,20 +333,21 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
                 print(f"Error fetching metadata for {yf_ticker}: {e}")
                 break
                 
-    # Save successful result to cache
-    if metadata_cache is not None and result["price"] is not None:
-        metadata_cache[yf_ticker] = {
-            "price": result["price"],
-            "change24h": result["change24h"],
-            "change7d": result["change7d"],
-            "marketCap": result["marketCap"],
-            "pe": result["pe"],
-            "peg": result["peg"]
-        }
+    # Save successful result to cache (thread-safe write)
+    if metadata_cache is not None and metadata_cache_lock is not None and result["price"] is not None:
+        with metadata_cache_lock:
+            metadata_cache[yf_ticker] = {
+                "price": result["price"],
+                "change24h": result["change24h"],
+                "change7d": result["change7d"],
+                "marketCap": result["marketCap"],
+                "pe": result["pe"],
+                "peg": result["peg"]
+            }
         
     return result
 
-def collect_index_data(index_name, companies, index_ticker, output_path, session, global_hist_df, metadata_cache):
+def collect_index_data(index_name, companies, index_ticker, output_path, session, global_hist_df, metadata_cache, metadata_cache_lock=None):
     """
     Downloads historical close prices, metadata (market cap, P/E, PEG),
     and computes weights for the given index constituents, then saves to output_path.
@@ -358,7 +362,7 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_company = {
-            executor.submit(fetch_single_ticker_info, company, global_hist_df, session, metadata_cache): company 
+            executor.submit(fetch_single_ticker_info, company, global_hist_df, session, metadata_cache, metadata_cache_lock): company 
             for company in companies
         }
         
@@ -403,7 +407,7 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
         if r["marketCap"] is not None and total_market_cap > 0:
             weight = round((r["marketCap"] / total_market_cap) * 100, 3)
             
-        r["sp500Weight"] = weight
+        r["weight"] = weight
         r["rank"] = rank
         rank += 1
         final_data.append(r)
@@ -435,7 +439,18 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
     except Exception as e:
         print(f"Error fetching index {index_ticker} data: {e}")
         
-    # 5. Save data to JSON
+    # 5. Data validation before writing — protect against overwriting with bad data
+    valid_prices = [r for r in final_data if r.get("price") is not None]
+    valid_ratio = len(valid_prices) / len(final_data) if final_data else 0
+    
+    if valid_ratio < 0.80:
+        print(f"WARNING: Only {len(valid_prices)}/{len(final_data)} ({valid_ratio:.0%}) tickers have valid prices for {index_name}.")
+        print(f"Skipping write to {output_path} to protect existing data (threshold: 80%).")
+        elapsed = time.time() - start_time
+        print(f"Collection for {index_name} aborted in {elapsed:.2f} seconds.")
+        return
+    
+    # 6. Save data to JSON
     output_payload = {
         "lastUpdated": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime()),
         "totalMarketCap": total_market_cap,
@@ -449,7 +464,7 @@ def collect_index_data(index_name, companies, index_ticker, output_path, session
         json.dump(output_payload, f, indent=2, ensure_ascii=False)
         
     elapsed = time.time() - start_time
-    print(f"Collection for {index_name} completed in {elapsed:.2f} seconds. Written to {output_path}")
+    print(f"Collection for {index_name} completed in {elapsed:.2f} seconds. Written to {output_path} ({len(valid_prices)}/{len(final_data)} valid prices)")
 
 def main():
     start_time = time.time()
@@ -543,22 +558,23 @@ def main():
     # Download history once globally
     global_hist_df = fetch_history_batch(all_yf_tickers)
     
-    # Shared metadata cache dictionary
+    # Shared metadata cache dictionary (thread-safe)
     metadata_cache = {}
+    metadata_cache_lock = threading.Lock()
     
     # 4. Collect and save index data
     if sp500_companies:
-        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session, global_hist_df, metadata_cache)
+        collect_index_data("S&P 500", sp500_companies, "^GSPC", os.path.join(json_dir, "sp500.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     if nasdaq100_companies:
-        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session, global_hist_df, metadata_cache)
+        collect_index_data("Nasdaq 100", nasdaq100_companies, "^NDX", os.path.join(json_dir, "nasdaq100.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     if nttr_companies:
-        collect_index_data("NTTR", nttr_companies, "^NTTR", os.path.join(json_dir, "nttr.json"), session, global_hist_df, metadata_cache)
+        collect_index_data("NTTR", nttr_companies, "^NDXT", os.path.join(json_dir, "nttr.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     # 5. Collect non-stock datasets
-    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session, global_hist_df, metadata_cache)
-    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session, global_hist_df, metadata_cache)
+    collect_index_data("Emtia", COMMODITIES_LIST, "GC=F", os.path.join(json_dir, "commodities.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
+    collect_index_data("ETFs", ETFS_LIST, "SPY", os.path.join(json_dir, "etfs.json"), session, global_hist_df, metadata_cache, metadata_cache_lock)
         
     elapsed = time.time() - start_time
     print(f"\nAll index updates completed in {elapsed:.2f} seconds.")

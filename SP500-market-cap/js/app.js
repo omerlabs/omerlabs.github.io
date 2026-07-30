@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=40')
+        navigator.serviceWorker.register('./service-worker.js?v=41')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -1001,7 +1001,7 @@ function renderTable() {
             // Standard stock columns
             const tdWeight = document.createElement('td');
             tdWeight.className = 'cell-weight text-right text-accent';
-            tdWeight.textContent = item.sp500Weight !== undefined && item.sp500Weight !== null ? `%${item.sp500Weight.toFixed(3)}` : '--';
+            tdWeight.textContent = item.weight !== undefined && item.weight !== null ? `%${item.weight.toFixed(3)}` : '--';
             tr.appendChild(tdWeight);
             
             const tdPE = document.createElement('td');
