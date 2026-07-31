@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-31 18:56:47 UTC",
-  "totalMarketCap": 956406,
+  "lastUpdated": "2026-07-31 19:00:04 UTC",
+  "totalMarketCap": 956997,
   "companiesCount": 13,
   "data": [
     {
@@ -8,13 +8,13 @@
       "name": "Ham Petrol (WTI Crude)",
       "sector": "Emtia",
       "subSector": "Enerji",
-      "price": 84.67,
-      "change24h": 1.29,
-      "change7d": -8.16,
-      "marketCap": 220996,
+      "price": 84.65,
+      "change24h": 1.27,
+      "change7d": -8.18,
+      "marketCap": 221311,
       "pe": null,
       "peg": null,
-      "weight": 23.107,
+      "weight": 23.126,
       "rank": 1
     },
     {
@@ -28,7 +28,7 @@
       "marketCap": 168521,
       "pe": null,
       "peg": null,
-      "weight": 17.62,
+      "weight": 17.609,
       "rank": 2
     },
     {
@@ -42,7 +42,7 @@
       "marketCap": 103678,
       "pe": null,
       "peg": null,
-      "weight": 10.84,
+      "weight": 10.834,
       "rank": 3
     },
     {
@@ -53,10 +53,10 @@
       "price": 2.74,
       "change24h": -0.65,
       "change7d": -6.04,
-      "marketCap": 102902,
+      "marketCap": 102999,
       "pe": null,
       "peg": null,
-      "weight": 10.759,
+      "weight": 10.763,
       "rank": 4
     },
     {
@@ -64,13 +64,13 @@
       "name": "Altın (Gold Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 4105.3,
+      "price": 4105.4,
       "change24h": 0.13,
       "change7d": 1.45,
-      "marketCap": 99905,
+      "marketCap": 99980,
       "pe": null,
       "peg": null,
-      "weight": 10.446,
+      "weight": 10.447,
       "rank": 5
     },
     {
@@ -84,7 +84,7 @@
       "marketCap": 89054,
       "pe": null,
       "peg": null,
-      "weight": 9.311,
+      "weight": 9.306,
       "rank": 6
     },
     {
@@ -95,10 +95,10 @@
       "price": 14.65,
       "change24h": 1.52,
       "change7d": -0.27,
-      "marketCap": 69242,
+      "marketCap": 69237,
       "pe": null,
       "peg": null,
-      "weight": 7.24,
+      "weight": 7.235,
       "rank": 7
     },
     {
@@ -106,13 +106,13 @@
       "name": "Bakır (Copper Futures)",
       "sector": "Emtia",
       "subSector": "Endüstriyel Metaller",
-      "price": 6.53,
-      "change24h": 1.33,
-      "change7d": 3.57,
-      "marketCap": 36138,
+      "price": 6.52,
+      "change24h": 1.17,
+      "change7d": 3.41,
+      "marketCap": 36229,
       "pe": null,
       "peg": null,
-      "weight": 3.779,
+      "weight": 3.786,
       "rank": 8
     },
     {
@@ -120,13 +120,13 @@
       "name": "Gümüş (Silver Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 58.1,
-      "change24h": -1.22,
-      "change7d": 0.52,
-      "marketCap": 25795,
+      "price": 58.11,
+      "change24h": -1.2,
+      "change7d": 0.54,
+      "marketCap": 25821,
       "pe": null,
       "peg": null,
-      "weight": 2.697,
+      "weight": 2.698,
       "rank": 9
     },
     {
@@ -140,7 +140,7 @@
       "marketCap": 14000,
       "pe": null,
       "peg": null,
-      "weight": 1.464,
+      "weight": 1.463,
       "rank": 10
     },
     {
@@ -154,7 +154,7 @@
       "marketCap": 12694,
       "pe": null,
       "peg": null,
-      "weight": 1.327,
+      "weight": 1.326,
       "rank": 11
     },
     {
@@ -162,10 +162,10 @@
       "name": "Platin (Platinum Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 1666.3,
-      "change24h": 0.87,
-      "change7d": 4.2,
-      "marketCap": 12465,
+      "price": 1665.8,
+      "change24h": 0.84,
+      "change7d": 4.17,
+      "marketCap": 12467,
       "pe": null,
       "peg": null,
       "weight": 1.303,
@@ -179,10 +179,10 @@
       "price": 90.12,
       "change24h": 1.22,
       "change7d": -10.5,
-      "marketCap": 1016,
+      "marketCap": 1006,
       "pe": null,
       "peg": null,
-      "weight": 0.106,
+      "weight": 0.105,
       "rank": 13
     }
   ]
