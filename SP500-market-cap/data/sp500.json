@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-30 21:50:52 UTC",
-  "totalMarketCap": 59481038761472,
+  "lastUpdated": "2026-07-31 08:12:59 UTC",
+  "totalMarketCap": 60300030736896,
   "companiesCount": 503,
   "data": [
     {
@@ -12,9 +12,9 @@
       "change24h": -1.41,
       "change7d": 2.31,
       "marketCap": 4897204862976,
-      "pe": 40.42,
+      "pe": 40.96,
       "peg": 2.72,
-      "weight": 8.233,
+      "weight": 8.121,
       "rank": 1
     },
     {
@@ -26,9 +26,9 @@
       "change24h": 2.65,
       "change7d": -8.03,
       "marketCap": 4724063469568,
-      "pe": 29.82,
-      "peg": 0.54,
-      "weight": 7.942,
+      "pe": 29.07,
+      "peg": 0.52,
+      "weight": 7.834,
       "rank": 2
     },
     {
@@ -40,9 +40,9 @@
       "change24h": -0.62,
       "change7d": -2.41,
       "marketCap": 4080884776960,
-      "pe": 16.73,
+      "pe": 16.84,
       "peg": 0.91,
-      "weight": 6.861,
+      "weight": 6.768,
       "rank": 3
     },
     {
@@ -54,9 +54,9 @@
       "change24h": -0.91,
       "change7d": -2.46,
       "marketCap": 4080640196608,
-      "pe": 16.74,
+      "pe": 16.89,
       "peg": 0.91,
-      "weight": 6.86,
+      "weight": 6.767,
       "rank": 4
     },
     {
@@ -67,10 +67,10 @@
       "price": 451.1,
       "change24h": 15.51,
       "change7d": 15.57,
-      "marketCap": 3350967091200,
-      "pe": 25.12,
+      "marketCap": 3349663711232,
+      "pe": 21.74,
       "peg": 1.21,
-      "weight": 5.634,
+      "weight": 5.555,
       "rank": 5
     },
     {
@@ -82,9 +82,9 @@
       "change24h": 3.9,
       "change7d": -3.82,
       "marketCap": 2533299322880,
-      "pe": 28.17,
+      "pe": 27.1,
       "peg": 1.22,
-      "weight": 4.259,
+      "weight": 4.201,
       "rank": 6
     },
     {
@@ -96,9 +96,9 @@
       "change24h": 4.73,
       "change7d": -2.26,
       "marketCap": 1845179973632,
-      "pe": 64.64,
-      "peg": 0.43,
-      "weight": 3.102,
+      "pe": 61.76,
+      "peg": 0.42,
+      "weight": 3.06,
       "rank": 7
     },
     {
@@ -109,10 +109,10 @@
       "price": 539.03,
       "change24h": -7.95,
       "change7d": -14.05,
-      "marketCap": 1368286429184,
-      "pe": 20.32,
+      "marketCap": 1373182361600,
+      "pe": 22.07,
       "peg": 0.85,
-      "weight": 2.3,
+      "weight": 2.277,
       "rank": 8
     },
     {
@@ -124,9 +124,9 @@
       "change24h": 3.53,
       "change7d": -17.42,
       "marketCap": 1219817766912,
-      "pe": 288.64,
-      "peg": 4.4,
-      "weight": 2.051,
+      "pe": 278.24,
+      "peg": 4.37,
+      "weight": 2.023,
       "rank": 9
     },
     {
@@ -138,9 +138,9 @@
       "change24h": 0.1,
       "change7d": 4.15,
       "marketCap": 1099305189376,
-      "pe": 15.17,
+      "pe": 15.15,
       "peg": 10.06,
-      "weight": 1.848,
+      "weight": 1.823,
       "rank": 10
     },
     {
@@ -152,9 +152,9 @@
       "change24h": -2.73,
       "change7d": 1.62,
       "marketCap": 884142571520,
-      "pe": 39.12,
-      "peg": 4.26,
-      "weight": 1.486,
+      "pe": 40.11,
+      "peg": 4.35,
+      "weight": 1.466,
       "rank": 11
     },
     {
@@ -165,10 +165,10 @@
       "price": 366.27,
       "change24h": -0.67,
       "change7d": 3.64,
-      "marketCap": 672870498304,
-      "pe": 31.15,
-      "peg": 1.59,
-      "weight": 1.131,
+      "marketCap": 683843387392,
+      "pe": 31.36,
+      "peg": 1.62,
+      "weight": 1.134,
       "rank": 12
     },
     {
@@ -180,9 +180,9 @@
       "change24h": -3.66,
       "change7d": 0.07,
       "marketCap": 616500232192,
-      "pe": 29.64,
-      "peg": 4.4,
-      "weight": 1.036,
+      "pe": 30.78,
+      "peg": 4.38,
+      "weight": 1.022,
       "rank": 13
     },
     {
@@ -196,7 +196,7 @@
       "marketCap": 459659673600,
       "pe": 44.73,
       "peg": 1.36,
-      "weight": 0.773,
+      "weight": 0.762,
       "rank": 14
     },
     {
@@ -208,9 +208,9 @@
       "change24h": -2.24,
       "change7d": 1.62,
       "marketCap": 454790152192,
-      "pe": 126.8,
-      "peg": 0.42,
-      "weight": 0.765,
+      "pe": 130.01,
+      "peg": 0.43,
+      "weight": 0.754,
       "rank": 15
     },
     {
@@ -222,9 +222,9 @@
       "change24h": 0.96,
       "change7d": 1.2,
       "marketCap": 447589318656,
-      "pe": 37.85,
+      "pe": 37.48,
       "peg": 1.56,
-      "weight": 0.752,
+      "weight": 0.742,
       "rank": 16
     },
     {
@@ -236,9 +236,9 @@
       "change24h": -2.04,
       "change7d": 3.06,
       "marketCap": 423154188288,
-      "pe": 48.02,
+      "pe": 49.01,
       "peg": 4.73,
-      "weight": 0.711,
+      "weight": 0.702,
       "rank": 17
     },
     {
@@ -250,9 +250,9 @@
       "change24h": 14.97,
       "change7d": -9.41,
       "marketCap": 398385020928,
-      "pe": 47.11,
-      "peg": 1.31,
-      "weight": 0.67,
+      "pe": 40.99,
+      "peg": 1.1,
+      "weight": 0.661,
       "rank": 18
     },
     {
@@ -264,9 +264,9 @@
       "change24h": 0.23,
       "change7d": -0.35,
       "marketCap": 383004147712,
-      "pe": 33.5,
+      "pe": 33.45,
       "peg": 0.78,
-      "weight": 0.644,
+      "weight": 0.635,
       "rank": 19
     },
     {
@@ -278,9 +278,9 @@
       "change24h": 0.21,
       "change7d": -2.28,
       "marketCap": 382755602432,
-      "pe": 31.71,
+      "pe": 31.64,
       "peg": 1.3,
-      "weight": 0.643,
+      "weight": 0.635,
       "rank": 20
     },
     {
@@ -291,10 +291,10 @@
       "price": 88.49,
       "change24h": -0.66,
       "change7d": 7.65,
-      "marketCap": 380772450304,
-      "pe": 26.57,
+      "marketCap": 380732538880,
+      "pe": 26.73,
       "peg": 4.36,
-      "weight": 0.64,
+      "weight": 0.631,
       "rank": 21
     },
     {
@@ -305,10 +305,10 @@
       "price": 297.72,
       "change24h": 17.98,
       "change7d": -6.76,
-      "marketCap": 372320010240,
-      "pe": 56.17,
+      "marketCap": 372530479104,
+      "pe": 47.64,
       "peg": 1.46,
-      "weight": 0.626,
+      "weight": 0.618,
       "rank": 22
     },
     {
@@ -320,9 +320,9 @@
       "change24h": 1.26,
       "change7d": 4.06,
       "marketCap": 368376184832,
-      "pe": 41.82,
-      "peg": 5.31,
-      "weight": 0.619,
+      "pe": 41.33,
+      "peg": 5.15,
+      "weight": 0.611,
       "rank": 23
     },
     {
@@ -334,9 +334,9 @@
       "change24h": 8.34,
       "change7d": 1.37,
       "marketCap": 367432892416,
-      "pe": 21.88,
-      "peg": 0.68,
-      "weight": 0.618,
+      "pe": 20.22,
+      "peg": 0.67,
+      "weight": 0.609,
       "rank": 24
     },
     {
@@ -348,9 +348,9 @@
       "change24h": 3.41,
       "change7d": -3.86,
       "marketCap": 330214309888,
-      "pe": 16.98,
+      "pe": 16.42,
       "peg": 1.92,
-      "weight": 0.555,
+      "weight": 0.548,
       "rank": 25
     },
     {
@@ -362,9 +362,9 @@
       "change24h": -0.62,
       "change7d": 6.77,
       "marketCap": 304675454976,
-      "pe": 23.01,
+      "pe": 23.16,
       "peg": 1.65,
-      "weight": 0.512,
+      "weight": 0.505,
       "rank": 26
     },
     {
@@ -378,7 +378,7 @@
       "marketCap": 299253760000,
       "pe": 26.37,
       "peg": 2.59,
-      "weight": 0.503,
+      "weight": 0.496,
       "rank": 27
     },
     {
@@ -390,9 +390,9 @@
       "change24h": -0.6,
       "change7d": -1.85,
       "marketCap": 293095374848,
-      "pe": 137.37,
+      "pe": 138.93,
       "peg": 1.76,
-      "weight": 0.493,
+      "weight": 0.486,
       "rank": 28
     },
     {
@@ -404,9 +404,9 @@
       "change24h": -0.4,
       "change7d": 10.01,
       "marketCap": 288932397056,
-      "pe": 37.74,
-      "peg": 2.82,
-      "weight": 0.486,
+      "pe": 37.88,
+      "peg": 2.77,
+      "weight": 0.479,
       "rank": 29
     },
     {
@@ -418,9 +418,9 @@
       "change24h": 3.67,
       "change7d": -2.86,
       "marketCap": 265429188608,
-      "pe": 280.76,
+      "pe": 269.16,
       "peg": 3.48,
-      "weight": 0.446,
+      "weight": 0.44,
       "rank": 30
     },
     {
@@ -432,9 +432,9 @@
       "change24h": 9.51,
       "change7d": -8.37,
       "marketCap": 261564907520,
-      "pe": 778.48,
+      "pe": 710.19,
       "peg": 0.61,
-      "weight": 0.44,
+      "weight": 0.434,
       "rank": 31
     },
     {
@@ -446,9 +446,9 @@
       "change24h": 9.07,
       "change7d": -0.31,
       "marketCap": 261534253056,
-      "pe": 28.19,
-      "peg": 1.69,
-      "weight": 0.44,
+      "pe": 25.84,
+      "peg": 1.53,
+      "weight": 0.434,
       "rank": 32
     },
     {
@@ -460,9 +460,9 @@
       "change24h": 1.86,
       "change7d": -1.15,
       "marketCap": 258340257792,
-      "pe": 12.42,
-      "peg": 1.65,
-      "weight": 0.434,
+      "pe": 12.19,
+      "peg": 1.59,
+      "weight": 0.428,
       "rank": 33
     },
     {
@@ -474,9 +474,9 @@
       "change24h": 2.75,
       "change7d": -5.24,
       "marketCap": 254576934912,
-      "pe": 42.3,
-      "peg": 1.23,
-      "weight": 0.428,
+      "pe": 41.18,
+      "peg": 1.2,
+      "weight": 0.422,
       "rank": 34
     },
     {
@@ -488,9 +488,9 @@
       "change24h": 5.96,
       "change7d": -16.0,
       "marketCap": 235560615936,
-      "pe": 51.23,
+      "pe": 48.35,
       "peg": 1.75,
-      "weight": 0.396,
+      "weight": 0.391,
       "rank": 35
     },
     {
@@ -502,9 +502,9 @@
       "change24h": -0.49,
       "change7d": -0.01,
       "marketCap": 235168333824,
-      "pe": 33.73,
-      "peg": 2.14,
-      "weight": 0.395,
+      "pe": 33.91,
+      "peg": 2.16,
+      "weight": 0.39,
       "rank": 36
     },
     {
@@ -516,9 +516,9 @@
       "change24h": 1.82,
       "change7d": -3.22,
       "marketCap": 227930570752,
-      "pe": 20.48,
-      "peg": 1.56,
-      "weight": 0.383,
+      "pe": 20.13,
+      "peg": 1.54,
+      "weight": 0.378,
       "rank": 37
     },
     {
@@ -530,9 +530,9 @@
       "change24h": 4.08,
       "change7d": 0.05,
       "marketCap": 221953589248,
-      "pe": 14.26,
-      "peg": 0.72,
-      "weight": 0.373,
+      "pe": 13.7,
+      "peg": 0.68,
+      "weight": 0.368,
       "rank": 38
     },
     {
@@ -544,9 +544,9 @@
       "change24h": 8.26,
       "change7d": -2.2,
       "marketCap": 215343153152,
-      "pe": 58.77,
+      "pe": 54.29,
       "peg": 2.01,
-      "weight": 0.362,
+      "weight": 0.357,
       "rank": 39
     },
     {
@@ -560,7 +560,7 @@
       "marketCap": 209212522496,
       "pe": 26.96,
       "peg": 2.13,
-      "weight": 0.352,
+      "weight": 0.347,
       "rank": 40
     },
     {
@@ -572,9 +572,9 @@
       "change24h": -2.08,
       "change7d": 7.76,
       "marketCap": 208908894208,
-      "pe": 19.71,
-      "peg": 2.18,
-      "weight": 0.351,
+      "pe": 20.12,
+      "peg": 2.3,
+      "weight": 0.346,
       "rank": 41
     },
     {
@@ -586,9 +586,9 @@
       "change24h": 11.41,
       "change7d": -6.21,
       "marketCap": 193331363840,
-      "pe": 3702.96,
+      "pe": 3275.69,
       "peg": 0.53,
-      "weight": 0.325,
+      "weight": 0.321,
       "rank": 42
     },
     {
@@ -600,9 +600,9 @@
       "change24h": -2.35,
       "change7d": 4.11,
       "marketCap": 192535019520,
-      "pe": 12.01,
+      "pe": 12.3,
       "peg": 0.9,
-      "weight": 0.324,
+      "weight": 0.319,
       "rank": 43
     },
     {
@@ -614,9 +614,9 @@
       "change24h": -2.3,
       "change7d": 3.35,
       "marketCap": 191513198592,
-      "pe": 18.37,
+      "pe": 18.79,
       "peg": 1.55,
-      "weight": 0.322,
+      "weight": 0.318,
       "rank": 44
     },
     {
@@ -628,9 +628,9 @@
       "change24h": 25.99,
       "change7d": -19.97,
       "marketCap": 189548969984,
-      "pe": 43.74,
+      "pe": 34.72,
       "peg": null,
-      "weight": 0.319,
+      "weight": 0.314,
       "rank": 45
     },
     {
@@ -644,7 +644,7 @@
       "marketCap": 188601974784,
       "pe": 118.53,
       "peg": 5.83,
-      "weight": 0.317,
+      "weight": 0.313,
       "rank": 46
     },
     {
@@ -656,9 +656,9 @@
       "change24h": -4.51,
       "change7d": -9.22,
       "marketCap": 185936887808,
-      "pe": 18.11,
+      "pe": 18.96,
       "peg": 0.84,
-      "weight": 0.313,
+      "weight": 0.308,
       "rank": 47
     },
     {
@@ -670,9 +670,9 @@
       "change24h": -0.6,
       "change7d": -1.66,
       "marketCap": 183420059648,
-      "pe": 19.76,
+      "pe": 19.89,
       "peg": 1.93,
-      "weight": 0.308,
+      "weight": 0.304,
       "rank": 48
     },
     {
@@ -684,9 +684,9 @@
       "change24h": -2.21,
       "change7d": 5.01,
       "marketCap": 182745792512,
-      "pe": 34.18,
+      "pe": 34.97,
       "peg": 2.17,
-      "weight": 0.307,
+      "weight": 0.303,
       "rank": 49
     },
     {
@@ -700,7 +700,7 @@
       "marketCap": 181444001792,
       "pe": 18.97,
       "peg": 1.05,
-      "weight": 0.305,
+      "weight": 0.301,
       "rank": 50
     },
     {
@@ -712,9 +712,9 @@
       "change24h": -1.47,
       "change7d": 2.48,
       "marketCap": 175935209472,
-      "pe": 30.98,
+      "pe": 31.47,
       "peg": 3.45,
-      "weight": 0.296,
+      "weight": 0.292,
       "rank": 51
     },
     {
@@ -726,9 +726,9 @@
       "change24h": 3.22,
       "change7d": 5.87,
       "marketCap": 174592737280,
-      "pe": 79.46,
+      "pe": 76.97,
       "peg": 23.19,
-      "weight": 0.294,
+      "weight": 0.29,
       "rank": 52
     },
     {
@@ -740,9 +740,9 @@
       "change24h": -0.93,
       "change7d": -1.06,
       "marketCap": 171961090048,
-      "pe": 23.42,
-      "peg": 3.31,
-      "weight": 0.289,
+      "pe": 23.65,
+      "peg": 3.23,
+      "weight": 0.285,
       "rank": 53
     },
     {
@@ -754,9 +754,9 @@
       "change24h": -2.26,
       "change7d": -3.84,
       "marketCap": 169788391424,
-      "pe": 105.19,
+      "pe": 107.59,
       "peg": 3.66,
-      "weight": 0.285,
+      "weight": 0.282,
       "rank": 54
     },
     {
@@ -768,9 +768,9 @@
       "change24h": 12.18,
       "change7d": -13.12,
       "marketCap": 164519903232,
-      "pe": 62.99,
+      "pe": 56.23,
       "peg": 0.92,
-      "weight": 0.277,
+      "weight": 0.273,
       "rank": 55
     },
     {
@@ -782,9 +782,9 @@
       "change24h": -1.09,
       "change7d": 0.72,
       "marketCap": 162993291264,
-      "pe": 17.86,
+      "pe": 18.06,
       "peg": 2.14,
-      "weight": 0.274,
+      "weight": 0.27,
       "rank": 56
     },
     {
@@ -796,24 +796,10 @@
       "change24h": -1.88,
       "change7d": -1.29,
       "marketCap": 161819394048,
-      "pe": 33.95,
-      "peg": 1.44,
-      "weight": 0.272,
+      "pe": 34.61,
+      "peg": 1.4,
+      "weight": 0.268,
       "rank": 57
-    },
-    {
-      "ticker": "QCOM",
-      "name": "Qualcomm",
-      "sector": "Information Technology",
-      "subSector": "Semiconductors",
-      "price": 151.6,
-      "change24h": -2.62,
-      "change7d": -13.68,
-      "marketCap": 159786401792,
-      "pe": 17.33,
-      "peg": 0.51,
-      "weight": 0.269,
-      "rank": 58
     },
     {
       "ticker": "BX",
@@ -824,9 +810,23 @@
       "change24h": -1.03,
       "change7d": 4.27,
       "marketCap": 159396872192,
-      "pe": 28.72,
-      "peg": 1.56,
-      "weight": 0.268,
+      "pe": 28.98,
+      "peg": 1.53,
+      "weight": 0.264,
+      "rank": 58
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "sector": "Information Technology",
+      "subSector": "Semiconductors",
+      "price": 151.6,
+      "change24h": -2.62,
+      "change7d": -13.68,
+      "marketCap": 159180013568,
+      "pe": 17.79,
+      "peg": 0.49,
+      "weight": 0.264,
       "rank": 59
     },
     {
@@ -838,9 +838,9 @@
       "change24h": -3.05,
       "change7d": 0.74,
       "marketCap": 159043862528,
-      "pe": 7.66,
+      "pe": 7.89,
       "peg": 1.59,
-      "weight": 0.267,
+      "weight": 0.264,
       "rank": 60
     },
     {
@@ -852,9 +852,9 @@
       "change24h": 4.89,
       "change7d": -3.23,
       "marketCap": 153474187264,
-      "pe": 35.9,
-      "peg": 1.77,
-      "weight": 0.258,
+      "pe": 34.27,
+      "peg": 1.66,
+      "weight": 0.255,
       "rank": 61
     },
     {
@@ -866,9 +866,9 @@
       "change24h": -4.0,
       "change7d": 8.65,
       "marketCap": 149737521152,
-      "pe": 25.46,
-      "peg": 0.81,
-      "weight": 0.252,
+      "pe": 26.51,
+      "peg": 0.87,
+      "weight": 0.248,
       "rank": 62
     },
     {
@@ -880,9 +880,9 @@
       "change24h": 0.82,
       "change7d": 0.2,
       "marketCap": 145013538816,
-      "pe": 20.17,
+      "pe": 20.01,
       "peg": 1.0,
-      "weight": 0.244,
+      "weight": 0.24,
       "rank": 63
     },
     {
@@ -894,10 +894,24 @@
       "change24h": -1.17,
       "change7d": 0.06,
       "marketCap": 143245099008,
-      "pe": 17.46,
+      "pe": 17.68,
       "peg": 7.89,
-      "weight": 0.241,
+      "weight": 0.238,
       "rank": 64
+    },
+    {
+      "ticker": "PLD",
+      "name": "Prologis",
+      "sector": "Real Estate",
+      "subSector": "Industrial REITs",
+      "price": 146.19,
+      "change24h": 0.49,
+      "change7d": 1.03,
+      "marketCap": 139587174400,
+      "pe": 32.34,
+      "peg": 134.23,
+      "weight": 0.231,
+      "rank": 65
     },
     {
       "ticker": "DHR",
@@ -908,10 +922,10 @@
       "change24h": -0.16,
       "change7d": 9.51,
       "marketCap": 137904766976,
-      "pe": 34.91,
+      "pe": 34.97,
       "peg": 1.28,
-      "weight": 0.232,
-      "rank": 65
+      "weight": 0.229,
+      "rank": 66
     },
     {
       "ticker": "APP",
@@ -922,10 +936,10 @@
       "change24h": 1.1,
       "change7d": -2.09,
       "marketCap": 135675895808,
-      "pe": 35.12,
+      "pe": 34.73,
       "peg": 1.1,
-      "weight": 0.228,
-      "rank": 66
+      "weight": 0.225,
+      "rank": 67
     },
     {
       "ticker": "CB",
@@ -936,10 +950,10 @@
       "change24h": -3.25,
       "change7d": 2.02,
       "marketCap": 135087824896,
-      "pe": 12.4,
-      "peg": 2.83,
-      "weight": 0.227,
-      "rank": 67
+      "pe": 12.82,
+      "peg": 2.85,
+      "weight": 0.224,
+      "rank": 68
     },
     {
       "ticker": "CVS",
@@ -950,10 +964,10 @@
       "change24h": -0.66,
       "change7d": -2.04,
       "marketCap": 134253068288,
-      "pe": 46.15,
+      "pe": 46.56,
       "peg": 0.3,
-      "weight": 0.226,
-      "rank": 68
+      "weight": 0.223,
+      "rank": 69
     },
     {
       "ticker": "SYK",
@@ -964,10 +978,10 @@
       "change24h": -1.2,
       "change7d": 12.55,
       "marketCap": 133424881664,
-      "pe": 40.33,
+      "pe": 40.8,
       "peg": 1.68,
-      "weight": 0.224,
-      "rank": 69
+      "weight": 0.221,
+      "rank": 70
     },
     {
       "ticker": "LMT",
@@ -978,10 +992,10 @@
       "change24h": 0.86,
       "change7d": 11.62,
       "marketCap": 132499275776,
-      "pe": 21.19,
-      "peg": 1.22,
-      "weight": 0.223,
-      "rank": 70
+      "pe": 21.01,
+      "peg": 1.18,
+      "weight": 0.22,
+      "rank": 71
     },
     {
       "ticker": "BMY",
@@ -992,10 +1006,10 @@
       "change24h": 2.79,
       "change7d": 6.75,
       "marketCap": 132448747520,
-      "pe": 18.17,
+      "pe": 17.67,
       "peg": 1.64,
-      "weight": 0.223,
-      "rank": 71
+      "weight": 0.22,
+      "rank": 72
     },
     {
       "ticker": "COF",
@@ -1006,10 +1020,10 @@
       "change24h": 0.69,
       "change7d": 4.36,
       "marketCap": 128917708800,
-      "pe": 11.57,
+      "pe": 11.5,
       "peg": 0.22,
-      "weight": 0.217,
-      "rank": 72
+      "weight": 0.214,
+      "rank": 73
     },
     {
       "ticker": "ISRG",
@@ -1021,9 +1035,9 @@
       "change7d": 3.6,
       "marketCap": 126461403136,
       "pe": 40.48,
-      "peg": 1.78,
-      "weight": 0.213,
-      "rank": 73
+      "peg": 1.73,
+      "weight": 0.21,
+      "rank": 74
     },
     {
       "ticker": "PGR",
@@ -1034,10 +1048,10 @@
       "change24h": -3.05,
       "change7d": 4.27,
       "marketCap": 124000993280,
-      "pe": 10.7,
+      "pe": 11.04,
       "peg": 63.05,
-      "weight": 0.208,
-      "rank": 74
+      "weight": 0.206,
+      "rank": 75
     },
     {
       "ticker": "SPGI",
@@ -1048,10 +1062,10 @@
       "change24h": -1.11,
       "change7d": -3.28,
       "marketCap": 122341998592,
-      "pe": 25.23,
+      "pe": 25.51,
       "peg": 1.74,
-      "weight": 0.206,
-      "rank": 75
+      "weight": 0.203,
+      "rank": 76
     },
     {
       "ticker": "VRTX",
@@ -1062,10 +1076,10 @@
       "change24h": -0.34,
       "change7d": 1.93,
       "marketCap": 122258079744,
-      "pe": 28.55,
+      "pe": 28.66,
       "peg": 1.64,
-      "weight": 0.206,
-      "rank": 76
+      "weight": 0.203,
+      "rank": 77
     },
     {
       "ticker": "PH",
@@ -1076,10 +1090,10 @@
       "change24h": 1.23,
       "change7d": -0.82,
       "marketCap": 121394716672,
-      "pe": 35.51,
+      "pe": 35.09,
       "peg": 3.72,
-      "weight": 0.204,
-      "rank": 77
+      "weight": 0.201,
+      "rank": 78
     },
     {
       "ticker": "SBUX",
@@ -1089,11 +1103,11 @@
       "price": 105.85,
       "change24h": 1.64,
       "change7d": 1.8,
-      "marketCap": 120637243392,
-      "pe": 61.18,
-      "peg": 1.26,
-      "weight": 0.203,
-      "rank": 78
+      "marketCap": 120668995584,
+      "pe": 60.14,
+      "peg": 1.27,
+      "weight": 0.2,
+      "rank": 79
     },
     {
       "ticker": "GLW",
@@ -1104,10 +1118,10 @@
       "change24h": 9.0,
       "change7d": -12.23,
       "marketCap": 116240228352,
-      "pe": 62.31,
-      "peg": 1.36,
-      "weight": 0.195,
-      "rank": 79
+      "pe": 57.05,
+      "peg": 1.18,
+      "weight": 0.193,
+      "rank": 80
     },
     {
       "ticker": "NOW",
@@ -1118,10 +1132,24 @@
       "change24h": -4.92,
       "change7d": 15.3,
       "marketCap": 113797193728,
-      "pe": 68.79,
+      "pe": 72.41,
       "peg": 1.03,
-      "weight": 0.191,
-      "rank": 80
+      "weight": 0.189,
+      "rank": 81
+    },
+    {
+      "ticker": "MO",
+      "name": "Altria",
+      "sector": "Consumer Staples",
+      "subSector": "Tobacco",
+      "price": 67.94,
+      "change24h": -9.32,
+      "change7d": -5.86,
+      "marketCap": 113442406400,
+      "pe": 15.65,
+      "peg": 1.72,
+      "weight": 0.188,
+      "rank": 82
     },
     {
       "ticker": "FTNT",
@@ -1132,10 +1160,10 @@
       "change24h": 0.67,
       "change7d": -0.52,
       "marketCap": 113011015680,
-      "pe": 54.51,
+      "pe": 54.12,
       "peg": 3.58,
-      "weight": 0.19,
-      "rank": 81
+      "weight": 0.187,
+      "rank": 83
     },
     {
       "ticker": "HWM",
@@ -1146,10 +1174,24 @@
       "change24h": 1.65,
       "change7d": -1.22,
       "marketCap": 110941806592,
-      "pe": 64.33,
+      "pe": 63.31,
       "peg": 0.8,
-      "weight": 0.187,
-      "rank": 82
+      "weight": 0.184,
+      "rank": 84
+    },
+    {
+      "ticker": "SO",
+      "name": "Southern Company",
+      "sector": "Utilities",
+      "subSector": "Electric Utilities",
+      "price": 94.34,
+      "change24h": -1.78,
+      "change7d": -1.52,
+      "marketCap": 108525240320,
+      "pe": 24.57,
+      "peg": 2.44,
+      "weight": 0.18,
+      "rank": 85
     },
     {
       "ticker": "BNY",
@@ -1160,10 +1202,10 @@
       "change24h": 2.35,
       "change7d": -2.3,
       "marketCap": 105900908544,
-      "pe": 18.21,
+      "pe": 17.8,
       "peg": 1.26,
-      "weight": 0.178,
-      "rank": 83
+      "weight": 0.176,
+      "rank": 86
     },
     {
       "ticker": "ADP",
@@ -1173,11 +1215,11 @@
       "price": 263.87,
       "change24h": -3.48,
       "change7d": 8.53,
-      "marketCap": 105477881856,
-      "pe": 24.14,
+      "marketCap": 104967487488,
+      "pe": 25.01,
       "peg": 2.55,
-      "weight": 0.177,
-      "rank": 84
+      "weight": 0.174,
+      "rank": 87
     },
     {
       "ticker": "GD",
@@ -1187,11 +1229,11 @@
       "price": 382.2,
       "change24h": 0.33,
       "change7d": 2.42,
-      "marketCap": 103358414848,
-      "pe": 23.33,
+      "marketCap": 103406960640,
+      "pe": 23.26,
       "peg": 2.83,
-      "weight": 0.174,
-      "rank": 85
+      "weight": 0.171,
+      "rank": 88
     },
     {
       "ticker": "EQIX",
@@ -1201,11 +1243,11 @@
       "price": 1047.53,
       "change24h": 3.92,
       "change7d": 1.83,
-      "marketCap": 103311859712,
+      "marketCap": 103361552384,
       "pe": 67.5,
       "peg": 3.28,
-      "weight": 0.174,
-      "rank": 86
+      "weight": 0.171,
+      "rank": 89
     },
     {
       "ticker": "NEM",
@@ -1216,10 +1258,10 @@
       "change24h": 4.84,
       "change7d": 0.01,
       "marketCap": 100901576704,
-      "pe": 12.08,
+      "pe": 11.52,
       "peg": 2.78,
-      "weight": 0.17,
-      "rank": 87
+      "weight": 0.167,
+      "rank": 90
     },
     {
       "ticker": "ACN",
@@ -1230,10 +1272,10 @@
       "change24h": -5.71,
       "change7d": 16.56,
       "marketCap": 99924017152,
-      "pe": 13.04,
-      "peg": 1.12,
-      "weight": 0.168,
-      "rank": 88
+      "pe": 13.83,
+      "peg": 1.26,
+      "weight": 0.166,
+      "rank": 91
     },
     {
       "ticker": "PNC",
@@ -1244,10 +1286,10 @@
       "change24h": 0.09,
       "change7d": -1.5,
       "marketCap": 99235291136,
-      "pe": 13.7,
+      "pe": 13.68,
       "peg": 1.95,
-      "weight": 0.167,
-      "rank": 89
+      "weight": 0.165,
+      "rank": 92
     },
     {
       "ticker": "PWR",
@@ -1258,10 +1300,10 @@
       "change24h": 17.26,
       "change7d": 2.31,
       "marketCap": 98736570368,
-      "pe": 90.26,
+      "pe": 76.96,
       "peg": 1.74,
-      "weight": 0.166,
-      "rank": 90
+      "weight": 0.164,
+      "rank": 93
     },
     {
       "ticker": "ADBE",
@@ -1272,10 +1314,10 @@
       "change24h": -5.9,
       "change7d": 13.53,
       "marketCap": 98540249088,
-      "pe": 14.17,
-      "peg": 0.65,
-      "weight": 0.166,
-      "rank": 91
+      "pe": 15.06,
+      "peg": 0.72,
+      "weight": 0.163,
+      "rank": 94
     },
     {
       "ticker": "DUK",
@@ -1286,10 +1328,10 @@
       "change24h": -2.18,
       "change7d": -1.31,
       "marketCap": 98439610368,
-      "pe": 19.4,
+      "pe": 19.85,
       "peg": 2.57,
-      "weight": 0.165,
-      "rank": 92
+      "weight": 0.163,
+      "rank": 95
     },
     {
       "ticker": "USB",
@@ -1300,10 +1342,10 @@
       "change24h": 0.13,
       "change7d": -2.44,
       "marketCap": 97981325312,
-      "pe": 12.55,
+      "pe": 12.53,
       "peg": 2.1,
-      "weight": 0.165,
-      "rank": 93
+      "weight": 0.162,
+      "rank": 96
     },
     {
       "ticker": "TT",
@@ -1314,10 +1356,10 @@
       "change24h": -1.46,
       "change7d": -7.04,
       "marketCap": 97326301184,
-      "pe": 33.63,
+      "pe": 34.13,
       "peg": 1.9,
-      "weight": 0.164,
-      "rank": 94
+      "weight": 0.161,
+      "rank": 97
     },
     {
       "ticker": "CME",
@@ -1330,8 +1372,8 @@
       "marketCap": 96086769664,
       "pe": 22.66,
       "peg": 4.66,
-      "weight": 0.162,
-      "rank": 95
+      "weight": 0.159,
+      "rank": 98
     },
     {
       "ticker": "DDOG",
@@ -1344,8 +1386,8 @@
       "marketCap": 95596666880,
       "pe": 671.4,
       "peg": 1.65,
-      "weight": 0.161,
-      "rank": 96
+      "weight": 0.159,
+      "rank": 99
     },
     {
       "ticker": "MNST",
@@ -1358,8 +1400,8 @@
       "marketCap": 95502491648,
       "pe": 47.17,
       "peg": 2.86,
-      "weight": 0.161,
-      "rank": 97
+      "weight": 0.158,
+      "rank": 100
     },
     {
       "ticker": "KKR",
@@ -1370,10 +1412,10 @@
       "change24h": 1.71,
       "change7d": 5.71,
       "marketCap": 94157946880,
-      "pe": 34.35,
+      "pe": 33.77,
       "peg": 0.55,
-      "weight": 0.158,
-      "rank": 98
+      "weight": 0.156,
+      "rank": 101
     },
     {
       "ticker": "CEG",
@@ -1384,10 +1426,10 @@
       "change24h": 2.17,
       "change7d": -4.13,
       "marketCap": 94117806080,
-      "pe": 22.92,
+      "pe": 22.43,
       "peg": 3.74,
-      "weight": 0.158,
-      "rank": 99
+      "weight": 0.156,
+      "rank": 102
     },
     {
       "ticker": "CSX",
@@ -1398,10 +1440,10 @@
       "change24h": -1.08,
       "change7d": 0.52,
       "marketCap": 92975710208,
-      "pe": 29.18,
+      "pe": 29.52,
       "peg": 2.08,
-      "weight": 0.156,
-      "rank": 100
+      "weight": 0.154,
+      "rank": 103
     },
     {
       "ticker": "VLO",
@@ -1412,10 +1454,10 @@
       "change24h": 3.45,
       "change7d": 0.25,
       "marketCap": 92556910592,
-      "pe": 22.79,
+      "pe": 22.03,
       "peg": 4.08,
-      "weight": 0.156,
-      "rank": 101
+      "weight": 0.153,
+      "rank": 104
     },
     {
       "ticker": "MPC",
@@ -1426,10 +1468,10 @@
       "change24h": 1.74,
       "change7d": -0.55,
       "marketCap": 91691458560,
-      "pe": 20.68,
+      "pe": 20.33,
       "peg": 1.53,
-      "weight": 0.154,
-      "rank": 102
+      "weight": 0.152,
+      "rank": 105
     },
     {
       "ticker": "CDNS",
@@ -1442,8 +1484,22 @@
       "marketCap": 91656298496,
       "pe": 66.3,
       "peg": 3.04,
-      "weight": 0.154,
-      "rank": 103
+      "weight": 0.152,
+      "rank": 106
+    },
+    {
+      "ticker": "CVNA",
+      "name": "Carvana",
+      "sector": "Consumer Discretionary",
+      "subSector": "Automotive Retail",
+      "price": 61.44,
+      "change24h": -7.36,
+      "change7d": -2.09,
+      "marketCap": 91427160064,
+      "pe": 35.11,
+      "peg": null,
+      "weight": 0.152,
+      "rank": 107
     },
     {
       "ticker": "MRSH",
@@ -1454,24 +1510,10 @@
       "change24h": -3.08,
       "change7d": 9.43,
       "marketCap": 91390730240,
-      "pe": 23.41,
-      "peg": 1.76,
-      "weight": 0.154,
-      "rank": 104
-    },
-    {
-      "ticker": "WM",
-      "name": "Waste Management",
-      "sector": "Industrials",
-      "subSector": "Environmental & Facilities Services",
-      "price": 226.33,
-      "change24h": -4.34,
-      "change7d": -4.25,
-      "marketCap": 90888642560,
-      "pe": 59.4,
-      "peg": 2.42,
-      "weight": 0.153,
-      "rank": 105
+      "pe": 24.15,
+      "peg": 1.9,
+      "weight": 0.152,
+      "rank": 108
     },
     {
       "ticker": "MMM",
@@ -1482,10 +1524,24 @@
       "change24h": -1.06,
       "change7d": 3.11,
       "marketCap": 90803249152,
-      "pe": 31.33,
-      "peg": 1.83,
-      "weight": 0.153,
-      "rank": 106
+      "pe": 31.67,
+      "peg": 1.79,
+      "weight": 0.151,
+      "rank": 109
+    },
+    {
+      "ticker": "WM",
+      "name": "Waste Management",
+      "sector": "Industrials",
+      "subSector": "Environmental & Facilities Services",
+      "price": 226.33,
+      "change24h": -4.34,
+      "change7d": -4.25,
+      "marketCap": 90467540992,
+      "pe": 62.18,
+      "peg": 2.42,
+      "weight": 0.15,
+      "rank": 110
     },
     {
       "ticker": "ABNB",
@@ -1496,10 +1552,10 @@
       "change24h": -0.61,
       "change7d": 8.59,
       "marketCap": 90260226048,
-      "pe": 37.55,
+      "pe": 37.74,
       "peg": 1.41,
-      "weight": 0.152,
-      "rank": 107
+      "weight": 0.15,
+      "rank": 111
     },
     {
       "ticker": "VRT",
@@ -1509,11 +1565,11 @@
       "price": 227.5,
       "change24h": 2.0,
       "change7d": -24.46,
-      "marketCap": 87573168128,
-      "pe": 51.47,
-      "peg": 1.35,
-      "weight": 0.147,
-      "rank": 108
+      "marketCap": 87584808960,
+      "pe": 50.56,
+      "peg": 1.12,
+      "weight": 0.145,
+      "rank": 112
     },
     {
       "ticker": "CMI",
@@ -1524,10 +1580,24 @@
       "change24h": 4.45,
       "change7d": -4.2,
       "marketCap": 87344316416,
-      "pe": 32.85,
+      "pe": 31.44,
       "peg": 1.44,
-      "weight": 0.147,
-      "rank": 109
+      "weight": 0.145,
+      "rank": 113
+    },
+    {
+      "ticker": "JCI",
+      "name": "Johnson Controls",
+      "sector": "Industrials",
+      "subSector": "Building Products",
+      "price": 143.88,
+      "change24h": 3.2,
+      "change7d": 0.98,
+      "marketCap": 87154081792,
+      "pe": 39.2,
+      "peg": 1.89,
+      "weight": 0.145,
+      "rank": 114
     },
     {
       "ticker": "WMB",
@@ -1538,10 +1608,10 @@
       "change24h": 1.11,
       "change7d": -4.81,
       "marketCap": 86722813952,
-      "pe": 31.1,
+      "pe": 30.83,
       "peg": 2.2,
-      "weight": 0.146,
-      "rank": 110
+      "weight": 0.144,
+      "rank": 115
     },
     {
       "ticker": "INTU",
@@ -1552,10 +1622,10 @@
       "change24h": -5.29,
       "change7d": 10.91,
       "marketCap": 86300917760,
-      "pe": 19.25,
+      "pe": 20.33,
       "peg": 0.86,
-      "weight": 0.145,
-      "rank": 111
+      "weight": 0.143,
+      "rank": 116
     },
     {
       "ticker": "RCL",
@@ -1566,10 +1636,10 @@
       "change24h": -0.51,
       "change7d": 12.63,
       "marketCap": 86103523328,
-      "pe": 19.9,
+      "pe": 20.0,
       "peg": 1.55,
-      "weight": 0.145,
-      "rank": 112
+      "weight": 0.143,
+      "rank": 117
     },
     {
       "ticker": "DASH",
@@ -1580,10 +1650,10 @@
       "change24h": 2.07,
       "change7d": 11.14,
       "marketCap": 86067519488,
-      "pe": 93.62,
-      "peg": 4.22,
-      "weight": 0.145,
-      "rank": 113
+      "pe": 91.87,
+      "peg": 4.43,
+      "weight": 0.143,
+      "rank": 118
     },
     {
       "ticker": "HCA",
@@ -1594,10 +1664,10 @@
       "change24h": -3.04,
       "change7d": 6.43,
       "marketCap": 85689131008,
-      "pe": 13.26,
+      "pe": 13.68,
       "peg": 1.32,
-      "weight": 0.144,
-      "rank": 114
+      "weight": 0.142,
+      "rank": 119
     },
     {
       "ticker": "PSX",
@@ -1608,10 +1678,10 @@
       "change24h": 1.83,
       "change7d": -0.38,
       "marketCap": 84436918272,
-      "pe": 20.83,
+      "pe": 20.45,
       "peg": 1.2,
-      "weight": 0.142,
-      "rank": 115
+      "weight": 0.14,
+      "rank": 120
     },
     {
       "ticker": "CMCSA",
@@ -1622,10 +1692,10 @@
       "change24h": -3.82,
       "change7d": 0.64,
       "marketCap": 83996229632,
-      "pe": 7.59,
+      "pe": 7.89,
       "peg": 142.98,
-      "weight": 0.141,
-      "rank": 116
+      "weight": 0.139,
+      "rank": 121
     },
     {
       "ticker": "SHW",
@@ -1636,10 +1706,10 @@
       "change24h": 0.28,
       "change7d": 7.79,
       "marketCap": 83712720896,
-      "pe": 31.84,
+      "pe": 31.75,
       "peg": 2.58,
-      "weight": 0.141,
-      "rank": 117
+      "weight": 0.139,
+      "rank": 122
     },
     {
       "ticker": "MCO",
@@ -1650,10 +1720,10 @@
       "change24h": -0.2,
       "change7d": -1.52,
       "marketCap": 83518267392,
-      "pe": 30.62,
+      "pe": 30.68,
       "peg": 2.09,
-      "weight": 0.14,
-      "rank": 118
+      "weight": 0.139,
+      "rank": 123
     },
     {
       "ticker": "EMR",
@@ -1664,10 +1734,10 @@
       "change24h": 2.0,
       "change7d": 6.45,
       "marketCap": 83253256192,
-      "pe": 34.49,
-      "peg": 2.08,
-      "weight": 0.14,
-      "rank": 119
+      "pe": 33.78,
+      "peg": 2.03,
+      "weight": 0.138,
+      "rank": 124
     },
     {
       "ticker": "CTAS",
@@ -1677,11 +1747,11 @@
       "price": 206.79,
       "change24h": -4.5,
       "change7d": 2.7,
-      "marketCap": 82746400768,
-      "pe": 42.03,
+      "marketCap": 82751062016,
+      "pe": 44.09,
       "peg": 3.44,
-      "weight": 0.139,
-      "rank": 120
+      "weight": 0.137,
+      "rank": 125
     },
     {
       "ticker": "ELV",
@@ -1692,10 +1762,10 @@
       "change24h": 0.11,
       "change7d": -3.26,
       "marketCap": 81629601792,
-      "pe": 16.65,
+      "pe": 16.64,
       "peg": 1.33,
-      "weight": 0.137,
-      "rank": 121
+      "weight": 0.135,
+      "rank": 126
     },
     {
       "ticker": "ITW",
@@ -1706,10 +1776,10 @@
       "change24h": -2.99,
       "change7d": 3.57,
       "marketCap": 81620492288,
-      "pe": 25.67,
+      "pe": 26.46,
       "peg": 2.89,
-      "weight": 0.137,
-      "rank": 122
+      "weight": 0.135,
+      "rank": 127
     },
     {
       "ticker": "AMT",
@@ -1720,10 +1790,10 @@
       "change24h": -2.68,
       "change7d": 5.06,
       "marketCap": 81291395072,
-      "pe": 28.14,
+      "pe": 28.88,
       "peg": 1.88,
-      "weight": 0.137,
-      "rank": 123
+      "weight": 0.135,
+      "rank": 128
     },
     {
       "ticker": "ROST",
@@ -1734,10 +1804,10 @@
       "change24h": 0.24,
       "change7d": 6.03,
       "marketCap": 81019682816,
-      "pe": 35.28,
+      "pe": 35.23,
       "peg": 2.98,
-      "weight": 0.136,
-      "rank": 124
+      "weight": 0.134,
+      "rank": 129
     },
     {
       "ticker": "MDLZ",
@@ -1748,10 +1818,10 @@
       "change24h": -2.94,
       "change7d": 3.65,
       "marketCap": 80509517824,
-      "pe": 38.46,
+      "pe": 39.67,
       "peg": 1.07,
-      "weight": 0.135,
-      "rank": 125
+      "weight": 0.134,
+      "rank": 130
     },
     {
       "ticker": "GM",
@@ -1762,10 +1832,10 @@
       "change24h": -1.12,
       "change7d": 7.63,
       "marketCap": 79953518592,
-      "pe": 39.46,
+      "pe": 39.82,
       "peg": 0.36,
-      "weight": 0.134,
-      "rank": 126
+      "weight": 0.133,
+      "rank": 131
     },
     {
       "ticker": "ECL",
@@ -1776,10 +1846,10 @@
       "change24h": -1.54,
       "change7d": 4.67,
       "marketCap": 78616748032,
-      "pe": 37.45,
+      "pe": 38.01,
       "peg": 2.7,
-      "weight": 0.132,
-      "rank": 127
+      "weight": 0.13,
+      "rank": 132
     },
     {
       "ticker": "TRV",
@@ -1790,24 +1860,10 @@
       "change24h": -3.35,
       "change7d": 1.05,
       "marketCap": 78422122496,
-      "pe": 10.1,
+      "pe": 10.45,
       "peg": 2.36,
-      "weight": 0.132,
-      "rank": 128
-    },
-    {
-      "ticker": "AON",
-      "name": "Aon plc",
-      "sector": "Financials",
-      "subSector": "Insurance Brokers",
-      "price": 366.57,
-      "change24h": -2.81,
-      "change7d": 4.04,
-      "marketCap": 78290903040,
-      "pe": 20.21,
-      "peg": 3.24,
-      "weight": 0.132,
-      "rank": 129
+      "weight": 0.13,
+      "rank": 133
     },
     {
       "ticker": "HOOD",
@@ -1817,11 +1873,25 @@
       "price": 86.6,
       "change24h": -3.61,
       "change7d": -17.11,
-      "marketCap": 77983735808,
-      "pe": 38.32,
-      "peg": 2.51,
-      "weight": 0.131,
-      "rank": 130
+      "marketCap": 77853401088,
+      "pe": 39.72,
+      "peg": 2.43,
+      "weight": 0.129,
+      "rank": 134
+    },
+    {
+      "ticker": "AON",
+      "name": "Aon plc",
+      "sector": "Financials",
+      "subSector": "Insurance Brokers",
+      "price": 366.57,
+      "change24h": -2.81,
+      "change7d": 4.04,
+      "marketCap": 77758824448,
+      "pe": 20.79,
+      "peg": 3.21,
+      "weight": 0.129,
+      "rank": 135
     },
     {
       "ticker": "EOG",
@@ -1832,24 +1902,10 @@
       "change24h": -0.29,
       "change7d": 1.05,
       "marketCap": 77502775296,
-      "pe": 14.31,
+      "pe": 14.35,
       "peg": 1.17,
-      "weight": 0.13,
-      "rank": 131
-    },
-    {
-      "ticker": "REGN",
-      "name": "Regeneron Pharmaceuticals",
-      "sector": "Health Care",
-      "subSector": "Biotechnology",
-      "price": 738.34,
-      "change24h": 6.17,
-      "change7d": 13.38,
-      "marketCap": 77406855168,
-      "pe": 18.03,
-      "peg": 1.23,
-      "weight": 0.13,
-      "rank": 132
+      "weight": 0.129,
+      "rank": 136
     },
     {
       "ticker": "HON",
@@ -1860,10 +1916,10 @@
       "change24h": 0.33,
       "change7d": 3.83,
       "marketCap": 76670959616,
-      "pe": 9.3,
-      "peg": 3.9,
-      "weight": 0.129,
-      "rank": 133
+      "pe": 9.27,
+      "peg": 3.83,
+      "weight": 0.127,
+      "rank": 137
     },
     {
       "ticker": "CI",
@@ -1874,10 +1930,24 @@
       "change24h": -2.97,
       "change7d": 0.99,
       "marketCap": 76095389696,
-      "pe": 12.19,
+      "pe": 12.56,
       "peg": 0.89,
-      "weight": 0.128,
-      "rank": 134
+      "weight": 0.126,
+      "rank": 138
+    },
+    {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals",
+      "sector": "Health Care",
+      "subSector": "Biotechnology",
+      "price": 738.34,
+      "change24h": 6.17,
+      "change7d": 13.38,
+      "marketCap": 76015788032,
+      "pe": 16.98,
+      "peg": 1.23,
+      "weight": 0.126,
+      "rank": 139
     },
     {
       "ticker": "NOC",
@@ -1888,10 +1958,10 @@
       "change24h": -0.04,
       "change7d": 1.82,
       "marketCap": 75982405632,
-      "pe": 17.0,
+      "pe": 17.01,
       "peg": 3.7,
-      "weight": 0.128,
-      "rank": 135
+      "weight": 0.126,
+      "rank": 140
     },
     {
       "ticker": "NSC",
@@ -1902,10 +1972,10 @@
       "change24h": -0.54,
       "change7d": 0.9,
       "marketCap": 75003469824,
-      "pe": 28.49,
+      "pe": 28.66,
       "peg": 4.45,
-      "weight": 0.126,
-      "rank": 136
+      "weight": 0.124,
+      "rank": 141
     },
     {
       "ticker": "FDX",
@@ -1916,10 +1986,10 @@
       "change24h": -0.02,
       "change7d": -3.88,
       "marketCap": 72997117952,
-      "pe": 16.63,
-      "peg": 1.31,
-      "weight": 0.123,
-      "rank": 137
+      "pe": 16.64,
+      "peg": 1.3,
+      "weight": 0.121,
+      "rank": 142
     },
     {
       "ticker": "DLR",
@@ -1930,10 +2000,10 @@
       "change24h": 2.66,
       "change7d": 8.28,
       "marketCap": 72691408896,
-      "pe": 94.24,
+      "pe": 91.56,
       "peg": 13.62,
-      "weight": 0.122,
-      "rank": 138
+      "weight": 0.121,
+      "rank": 143
     },
     {
       "ticker": "SLB",
@@ -1943,11 +2013,11 @@
       "price": 48.91,
       "change24h": -0.1,
       "change7d": 2.6,
-      "marketCap": 72582438912,
+      "marketCap": 72589443072,
       "pe": 23.86,
-      "peg": 1.77,
-      "weight": 0.122,
-      "rank": 139
+      "peg": 1.65,
+      "weight": 0.12,
+      "rank": 144
     },
     {
       "ticker": "HLT",
@@ -1958,24 +2028,10 @@
       "change24h": 0.09,
       "change7d": -0.68,
       "marketCap": 72475402240,
-      "pe": 49.09,
+      "pe": 49.01,
       "peg": 1.59,
-      "weight": 0.122,
-      "rank": 140
-    },
-    {
-      "ticker": "ORLY",
-      "name": "O’Reilly Automotive",
-      "sector": "Consumer Discretionary",
-      "subSector": "Automotive Retail",
-      "price": 87.36,
-      "change24h": -3.61,
-      "change7d": 0.96,
-      "marketCap": 72396546048,
-      "pe": 27.73,
-      "peg": 1.93,
-      "weight": 0.122,
-      "rank": 141
+      "weight": 0.12,
+      "rank": 145
     },
     {
       "ticker": "MSI",
@@ -1986,10 +2042,24 @@
       "change24h": -0.78,
       "change7d": 6.55,
       "marketCap": 71514218496,
-      "pe": 34.69,
+      "pe": 34.97,
       "peg": 2.34,
-      "weight": 0.12,
-      "rank": 142
+      "weight": 0.119,
+      "rank": 146
+    },
+    {
+      "ticker": "ORLY",
+      "name": "O’Reilly Automotive",
+      "sector": "Consumer Discretionary",
+      "subSector": "Automotive Retail",
+      "price": 87.36,
+      "change24h": -3.61,
+      "change7d": 0.96,
+      "marketCap": 71300243456,
+      "pe": 28.74,
+      "peg": 1.93,
+      "weight": 0.118,
+      "rank": 147
     },
     {
       "ticker": "SNPS",
@@ -2000,10 +2070,10 @@
       "change24h": -0.36,
       "change7d": -1.4,
       "marketCap": 71293493248,
-      "pe": 85.2,
+      "pe": 85.4,
       "peg": 2.01,
-      "weight": 0.12,
-      "rank": 143
+      "weight": 0.118,
+      "rank": 148
     },
     {
       "ticker": "KMI",
@@ -2014,10 +2084,10 @@
       "change24h": -0.6,
       "change7d": -2.55,
       "marketCap": 70500556800,
-      "pe": 20.43,
+      "pe": 20.56,
       "peg": 3.46,
-      "weight": 0.119,
-      "rank": 144
+      "weight": 0.117,
+      "rank": 149
     },
     {
       "ticker": "PCAR",
@@ -2027,11 +2097,11 @@
       "price": 133.76,
       "change24h": -0.08,
       "change7d": 2.02,
-      "marketCap": 70396043264,
+      "marketCap": 70406578176,
       "pe": 28.16,
       "peg": 1.35,
-      "weight": 0.118,
-      "rank": 145
+      "weight": 0.117,
+      "rank": 150
     },
     {
       "ticker": "AEP",
@@ -2042,10 +2112,10 @@
       "change24h": -1.25,
       "change7d": -3.98,
       "marketCap": 69525741568,
-      "pe": 18.93,
+      "pe": 19.16,
       "peg": 2.2,
-      "weight": 0.117,
-      "rank": 146
+      "weight": 0.115,
+      "rank": 151
     },
     {
       "ticker": "APO",
@@ -2056,10 +2126,10 @@
       "change24h": 0.4,
       "change7d": 1.02,
       "marketCap": 69326233600,
-      "pe": 75.63,
-      "peg": 0.57,
-      "weight": 0.117,
-      "rank": 147
+      "pe": 75.16,
+      "peg": 0.55,
+      "weight": 0.115,
+      "rank": 152
     },
     {
       "ticker": "BSX",
@@ -2072,8 +2142,8 @@
       "marketCap": 68372340736,
       "pe": 18.62,
       "peg": 0.57,
-      "weight": 0.115,
-      "rank": 148
+      "weight": 0.113,
+      "rank": 153
     },
     {
       "ticker": "ALL",
@@ -2084,24 +2154,10 @@
       "change24h": -3.28,
       "change7d": 5.38,
       "marketCap": 68314365952,
-      "pe": 5.87,
+      "pe": 6.07,
       "peg": 3.29,
-      "weight": 0.115,
-      "rank": 149
-    },
-    {
-      "ticker": "CVNA",
-      "name": "Carvana",
-      "sector": "Consumer Discretionary",
-      "subSector": "Automotive Retail",
-      "price": 61.44,
-      "change24h": -7.36,
-      "change7d": -2.09,
-      "marketCap": 67389583360,
-      "pe": 32.51,
-      "peg": null,
       "weight": 0.113,
-      "rank": 150
+      "rank": 154
     },
     {
       "ticker": "URI",
@@ -2112,10 +2168,10 @@
       "change24h": 1.28,
       "change7d": 3.24,
       "marketCap": 66514190336,
-      "pe": 25.71,
+      "pe": 25.38,
       "peg": 1.64,
-      "weight": 0.112,
-      "rank": 151
+      "weight": 0.11,
+      "rank": 155
     },
     {
       "ticker": "HONA",
@@ -2126,10 +2182,10 @@
       "change24h": -0.42,
       "change7d": -1.67,
       "marketCap": 64757129216,
-      "pe": 42.92,
+      "pe": 43.11,
       "peg": 0.93,
-      "weight": 0.109,
-      "rank": 152
+      "weight": 0.107,
+      "rank": 156
     },
     {
       "ticker": "MPWR",
@@ -2140,10 +2196,24 @@
       "change24h": 5.4,
       "change7d": -5.88,
       "marketCap": 64663924736,
-      "pe": 94.08,
+      "pe": 89.29,
       "peg": 1.62,
-      "weight": 0.109,
-      "rank": 153
+      "weight": 0.107,
+      "rank": 157
+    },
+    {
+      "ticker": "CRH",
+      "name": "CRH plc",
+      "sector": "Materials",
+      "subSector": "Construction Materials",
+      "price": 96.0,
+      "change24h": -3.72,
+      "change7d": -4.06,
+      "marketCap": 63867310080,
+      "pe": 18.5,
+      "peg": 2.01,
+      "weight": 0.106,
+      "rank": 158
     },
     {
       "ticker": "WBD",
@@ -2156,8 +2226,8 @@
       "marketCap": 63856771072,
       "pe": 1157.73,
       "peg": 216.92,
-      "weight": 0.107,
-      "rank": 154
+      "weight": 0.106,
+      "rank": 159
     },
     {
       "ticker": "TFC",
@@ -2168,10 +2238,10 @@
       "change24h": -0.57,
       "change7d": 0.54,
       "marketCap": 63536766976,
-      "pe": 11.96,
-      "peg": 1.3,
-      "weight": 0.107,
-      "rank": 155
+      "pe": 12.01,
+      "peg": 1.33,
+      "weight": 0.105,
+      "rank": 160
     },
     {
       "ticker": "NKE",
@@ -2182,10 +2252,10 @@
       "change24h": -2.15,
       "change7d": 0.19,
       "marketCap": 62737162240,
-      "pe": 20.14,
+      "pe": 20.53,
       "peg": 1.66,
-      "weight": 0.105,
-      "rank": 156
+      "weight": 0.104,
+      "rank": 161
     },
     {
       "ticker": "MET",
@@ -2198,8 +2268,8 @@
       "marketCap": 62458408960,
       "pe": 18.78,
       "peg": 0.51,
-      "weight": 0.105,
-      "rank": 157
+      "weight": 0.104,
+      "rank": 162
     },
     {
       "ticker": "HPE",
@@ -2210,10 +2280,10 @@
       "change24h": 6.08,
       "change7d": -2.06,
       "marketCap": 62422953984,
-      "pe": 44.06,
+      "pe": 41.35,
       "peg": 0.85,
-      "weight": 0.105,
-      "rank": 158
+      "weight": 0.104,
+      "rank": 163
     },
     {
       "ticker": "NXPI",
@@ -2224,10 +2294,10 @@
       "change24h": 1.73,
       "change7d": -12.07,
       "marketCap": 61820571648,
-      "pe": 48.93,
+      "pe": 48.07,
       "peg": 0.61,
-      "weight": 0.104,
-      "rank": 159
+      "weight": 0.103,
+      "rank": 164
     },
     {
       "ticker": "D",
@@ -2238,10 +2308,10 @@
       "change24h": -1.16,
       "change7d": -1.91,
       "marketCap": 61329346560,
-      "pe": 20.57,
+      "pe": 20.81,
       "peg": 3.0,
-      "weight": 0.103,
-      "rank": 160
+      "weight": 0.102,
+      "rank": 165
     },
     {
       "ticker": "COR",
@@ -2252,10 +2322,10 @@
       "change24h": -2.0,
       "change7d": 3.88,
       "marketCap": 60747800576,
-      "pe": 23.91,
+      "pe": 24.39,
       "peg": 0.67,
-      "weight": 0.102,
-      "rank": 161
+      "weight": 0.101,
+      "rank": 166
     },
     {
       "ticker": "TEL",
@@ -2266,10 +2336,10 @@
       "change24h": -0.18,
       "change7d": 3.15,
       "marketCap": 59895943168,
-      "pe": 20.25,
+      "pe": 20.29,
       "peg": 0.89,
-      "weight": 0.101,
-      "rank": 162
+      "weight": 0.099,
+      "rank": 167
     },
     {
       "ticker": "FIX",
@@ -2280,10 +2350,10 @@
       "change24h": 11.7,
       "change7d": -5.2,
       "marketCap": 59754336256,
-      "pe": 41.84,
-      "peg": 0.83,
-      "weight": 0.1,
-      "rank": 163
+      "pe": 37.46,
+      "peg": 0.7,
+      "weight": 0.099,
+      "rank": 168
     },
     {
       "ticker": "CTVA",
@@ -2294,10 +2364,10 @@
       "change24h": -1.29,
       "change7d": 0.91,
       "marketCap": 59752374272,
-      "pe": 48.29,
-      "peg": 1.4,
-      "weight": 0.1,
-      "rank": 164
+      "pe": 49.09,
+      "peg": 1.44,
+      "weight": 0.099,
+      "rank": 169
     },
     {
       "ticker": "BKR",
@@ -2308,10 +2378,10 @@
       "change24h": 2.01,
       "change7d": 5.83,
       "marketCap": 59461177344,
-      "pe": 19.26,
-      "peg": 2.43,
-      "weight": 0.1,
-      "rank": 165
+      "pe": 18.9,
+      "peg": 2.02,
+      "weight": 0.099,
+      "rank": 170
     },
     {
       "ticker": "PSA",
@@ -2322,10 +2392,10 @@
       "change24h": -3.64,
       "change7d": 1.84,
       "marketCap": 59282440192,
-      "pe": 32.76,
+      "pe": 34.02,
       "peg": 4.8,
-      "weight": 0.1,
-      "rank": 166
+      "weight": 0.098,
+      "rank": 171
     },
     {
       "ticker": "F",
@@ -2338,8 +2408,8 @@
       "marketCap": 59255672832,
       "pe": 7.85,
       "peg": 8.48,
-      "weight": 0.1,
-      "rank": 167
+      "weight": 0.098,
+      "rank": 172
     },
     {
       "ticker": "TRGP",
@@ -2350,10 +2420,10 @@
       "change24h": 1.39,
       "change7d": -5.66,
       "marketCap": 57597542400,
-      "pe": 27.41,
+      "pe": 27.02,
       "peg": 1.25,
-      "weight": 0.097,
-      "rank": 168
+      "weight": 0.096,
+      "rank": 173
     },
     {
       "ticker": "GRMN",
@@ -2364,10 +2434,10 @@
       "change24h": 0.92,
       "change7d": 23.72,
       "marketCap": 57383272448,
-      "pe": 30.68,
-      "peg": 3.48,
-      "weight": 0.096,
-      "rank": 169
+      "pe": 30.39,
+      "peg": 4.05,
+      "weight": 0.095,
+      "rank": 174
     },
     {
       "ticker": "FANG",
@@ -2380,8 +2450,8 @@
       "marketCap": 56197959680,
       "pe": 1664.75,
       "peg": 56.78,
-      "weight": 0.094,
-      "rank": 170
+      "weight": 0.093,
+      "rank": 175
     },
     {
       "ticker": "OKE",
@@ -2392,10 +2462,10 @@
       "change24h": -1.03,
       "change7d": -2.92,
       "marketCap": 56117022720,
-      "pe": 15.88,
+      "pe": 16.05,
       "peg": 2.12,
-      "weight": 0.094,
-      "rank": 171
+      "weight": 0.093,
+      "rank": 176
     },
     {
       "ticker": "OXY",
@@ -2408,8 +2478,8 @@
       "marketCap": 55649812480,
       "pe": 75.61,
       "peg": 1.18,
-      "weight": 0.094,
-      "rank": 172
+      "weight": 0.092,
+      "rank": 177
     },
     {
       "ticker": "AME",
@@ -2420,10 +2490,10 @@
       "change24h": 2.02,
       "change7d": 1.23,
       "marketCap": 55011012608,
-      "pe": 36.31,
+      "pe": 35.61,
       "peg": 3.05,
-      "weight": 0.092,
-      "rank": 173
+      "weight": 0.091,
+      "rank": 178
     },
     {
       "ticker": "LITE",
@@ -2434,10 +2504,10 @@
       "change24h": 15.09,
       "change7d": -16.45,
       "marketCap": 53934071808,
-      "pe": 122.48,
+      "pe": 106.33,
       "peg": 0.63,
-      "weight": 0.091,
-      "rank": 174
+      "weight": 0.089,
+      "rank": 179
     },
     {
       "ticker": "FAST",
@@ -2448,10 +2518,10 @@
       "change24h": -2.34,
       "change7d": 3.5,
       "marketCap": 53542236160,
-      "pe": 39.88,
+      "pe": 40.93,
       "peg": 3.46,
-      "weight": 0.09,
-      "rank": 175
+      "weight": 0.089,
+      "rank": 180
     },
     {
       "ticker": "KEYS",
@@ -2462,10 +2532,10 @@
       "change24h": 5.38,
       "change7d": -4.53,
       "marketCap": 53437272064,
-      "pe": 50.43,
+      "pe": 47.81,
       "peg": 1.06,
-      "weight": 0.09,
-      "rank": 176
+      "weight": 0.089,
+      "rank": 181
     },
     {
       "ticker": "NDAQ",
@@ -2476,10 +2546,10 @@
       "change24h": -0.41,
       "change7d": 4.69,
       "marketCap": 53192286208,
-      "pe": 27.74,
+      "pe": 27.82,
       "peg": 1.8,
-      "weight": 0.089,
-      "rank": 177
+      "weight": 0.088,
+      "rank": 182
     },
     {
       "ticker": "CAH",
@@ -2490,10 +2560,10 @@
       "change24h": -0.89,
       "change7d": 2.96,
       "marketCap": 53181124608,
-      "pe": 34.67,
+      "pe": 34.99,
       "peg": 1.42,
-      "weight": 0.089,
-      "rank": 178
+      "weight": 0.088,
+      "rank": 183
     },
     {
       "ticker": "EA",
@@ -2504,10 +2574,10 @@
       "change24h": 0.33,
       "change7d": 0.31,
       "marketCap": 52897128448,
-      "pe": 59.71,
+      "pe": 59.54,
       "peg": 1.3,
-      "weight": 0.089,
-      "rank": 179
+      "weight": 0.088,
+      "rank": 184
     },
     {
       "ticker": "CIEN",
@@ -2518,10 +2588,10 @@
       "change24h": 12.62,
       "change7d": -6.32,
       "marketCap": 52667600896,
-      "pe": 123.61,
+      "pe": 109.76,
       "peg": 0.57,
-      "weight": 0.089,
-      "rank": 180
+      "weight": 0.087,
+      "rank": 185
     },
     {
       "ticker": "ROK",
@@ -2532,10 +2602,10 @@
       "change24h": 2.53,
       "change7d": 2.8,
       "marketCap": 52411146240,
-      "pe": 48.81,
+      "pe": 47.62,
       "peg": 2.0,
-      "weight": 0.088,
-      "rank": 181
+      "weight": 0.087,
+      "rank": 186
     },
     {
       "ticker": "FITB",
@@ -2548,8 +2618,8 @@
       "marketCap": 51302965248,
       "pe": 19.05,
       "peg": 2.05,
-      "weight": 0.086,
-      "rank": 182
+      "weight": 0.085,
+      "rank": 187
     },
     {
       "ticker": "LHX",
@@ -2560,10 +2630,10 @@
       "change24h": -8.61,
       "change7d": -4.65,
       "marketCap": 50653593600,
-      "pe": 27.44,
+      "pe": 30.04,
       "peg": 1.68,
-      "weight": 0.085,
-      "rank": 183
+      "weight": 0.084,
+      "rank": 188
     },
     {
       "ticker": "CARR",
@@ -2574,10 +2644,10 @@
       "change24h": 2.45,
       "change7d": -9.85,
       "marketCap": 50605314048,
-      "pe": 43.85,
-      "peg": 1.67,
-      "weight": 0.085,
-      "rank": 184
+      "pe": 42.63,
+      "peg": 1.44,
+      "weight": 0.084,
+      "rank": 189
     },
     {
       "ticker": "ETR",
@@ -2587,11 +2657,11 @@
       "price": 108.03,
       "change24h": 0.22,
       "change7d": -5.96,
-      "marketCap": 50406268928,
-      "pe": 27.63,
+      "marketCap": 50410201088,
+      "pe": 27.56,
       "peg": 1.98,
-      "weight": 0.085,
-      "rank": 185
+      "weight": 0.084,
+      "rank": 190
     },
     {
       "ticker": "EBAY",
@@ -2602,10 +2672,10 @@
       "change24h": -1.54,
       "change7d": 2.32,
       "marketCap": 50402877440,
-      "pe": 26.16,
-      "peg": 1.77,
-      "weight": 0.085,
-      "rank": 186
+      "pe": 26.59,
+      "peg": 1.8,
+      "weight": 0.084,
+      "rank": 191
     },
     {
       "ticker": "STT",
@@ -2616,10 +2686,10 @@
       "change24h": 3.85,
       "change7d": -1.31,
       "marketCap": 50221125632,
-      "pe": 16.12,
+      "pe": 15.53,
       "peg": 0.74,
-      "weight": 0.084,
-      "rank": 187
+      "weight": 0.083,
+      "rank": 192
     },
     {
       "ticker": "VST",
@@ -2630,10 +2700,10 @@
       "change24h": 4.07,
       "change7d": -10.87,
       "marketCap": 50112057344,
-      "pe": 24.85,
+      "pe": 23.86,
       "peg": 0.41,
-      "weight": 0.084,
-      "rank": 188
+      "weight": 0.083,
+      "rank": 193
     },
     {
       "ticker": "EW",
@@ -2644,10 +2714,10 @@
       "change24h": 1.35,
       "change7d": 3.02,
       "marketCap": 50048536576,
-      "pe": 51.74,
-      "peg": 2.0,
-      "weight": 0.084,
-      "rank": 189
+      "pe": 51.13,
+      "peg": 2.06,
+      "weight": 0.083,
+      "rank": 194
     },
     {
       "ticker": "ADSK",
@@ -2658,10 +2728,10 @@
       "change24h": -4.19,
       "change7d": 15.46,
       "marketCap": 49612800000,
-      "pe": 34.35,
+      "pe": 35.82,
       "peg": 0.94,
-      "weight": 0.083,
-      "rank": 190
+      "weight": 0.082,
+      "rank": 195
     },
     {
       "ticker": "WAB",
@@ -2672,10 +2742,10 @@
       "change24h": 0.24,
       "change7d": 0.85,
       "marketCap": 49399664640,
-      "pe": 39.31,
+      "pe": 39.2,
       "peg": 1.37,
-      "weight": 0.083,
-      "rank": 191
+      "weight": 0.082,
+      "rank": 196
     },
     {
       "ticker": "PYPL",
@@ -2686,10 +2756,10 @@
       "change24h": -1.2,
       "change7d": 3.86,
       "marketCap": 49317318656,
-      "pe": 10.9,
-      "peg": 1.01,
-      "weight": 0.083,
-      "rank": 192
+      "pe": 11.02,
+      "peg": 1.07,
+      "weight": 0.082,
+      "rank": 197
     },
     {
       "ticker": "XYZ",
@@ -2700,10 +2770,24 @@
       "change24h": 0.5,
       "change7d": 6.62,
       "marketCap": 49155997696,
-      "pe": 64.52,
-      "peg": 0.86,
-      "weight": 0.083,
-      "rank": 193
+      "pe": 64.02,
+      "peg": 0.87,
+      "weight": 0.082,
+      "rank": 198
+    },
+    {
+      "ticker": "CMG",
+      "name": "Chipotle Mexican Grill",
+      "sector": "Consumer Discretionary",
+      "subSector": "Restaurants",
+      "price": 38.52,
+      "change24h": 12.5,
+      "change7d": 19.63,
+      "marketCap": 48837120000,
+      "pe": 31.83,
+      "peg": 1.84,
+      "weight": 0.081,
+      "rank": 199
     },
     {
       "ticker": "XEL",
@@ -2714,10 +2798,10 @@
       "change24h": -0.66,
       "change7d": -2.44,
       "marketCap": 48836612096,
-      "pe": 22.54,
+      "pe": 22.68,
       "peg": 2.13,
-      "weight": 0.082,
-      "rank": 194
+      "weight": 0.081,
+      "rank": 200
     },
     {
       "ticker": "COHR",
@@ -2728,10 +2812,10 @@
       "change24h": 12.16,
       "change7d": -20.22,
       "marketCap": 48725929984,
-      "pe": 118.04,
+      "pe": 105.09,
       "peg": 0.92,
-      "weight": 0.082,
-      "rank": 195
+      "weight": 0.081,
+      "rank": 201
     },
     {
       "ticker": "AMP",
@@ -2742,10 +2826,24 @@
       "change24h": 0.77,
       "change7d": 3.35,
       "marketCap": 48130265088,
-      "pe": 13.56,
+      "pe": 13.46,
       "peg": 1.76,
-      "weight": 0.081,
-      "rank": 196
+      "weight": 0.08,
+      "rank": 202
+    },
+    {
+      "ticker": "VTR",
+      "name": "Ventas",
+      "sector": "Real Estate",
+      "subSector": "Health Care REITs",
+      "price": 91.92,
+      "change24h": -5.94,
+      "change7d": -5.41,
+      "marketCap": 47149993984,
+      "pe": 180.24,
+      "peg": 1.72,
+      "weight": 0.078,
+      "rank": 203
     },
     {
       "ticker": "TTWO",
@@ -2758,8 +2856,8 @@
       "marketCap": 46264569856,
       "pe": 24.73,
       "peg": 3.44,
-      "weight": 0.078,
-      "rank": 197
+      "weight": 0.077,
+      "rank": 204
     },
     {
       "ticker": "ODFL",
@@ -2770,10 +2868,10 @@
       "change24h": -4.63,
       "change7d": -8.73,
       "marketCap": 44187021312,
-      "pe": 44.26,
-      "peg": 3.34,
-      "weight": 0.074,
-      "rank": 198
+      "pe": 46.49,
+      "peg": 3.29,
+      "weight": 0.073,
+      "rank": 205
     },
     {
       "ticker": "IDXX",
@@ -2784,10 +2882,24 @@
       "change24h": -1.93,
       "change7d": 2.53,
       "marketCap": 44079820800,
-      "pe": 41.03,
+      "pe": 41.83,
       "peg": 3.65,
-      "weight": 0.074,
-      "rank": 199
+      "weight": 0.073,
+      "rank": 206
+    },
+    {
+      "ticker": "HUM",
+      "name": "Humana",
+      "sector": "Health Care",
+      "subSector": "Managed Health Care",
+      "price": 366.66,
+      "change24h": 0.34,
+      "change7d": -7.78,
+      "marketCap": 44028645376,
+      "pe": 34.49,
+      "peg": 2.07,
+      "weight": 0.073,
+      "rank": 207
     },
     {
       "ticker": "CBRE",
@@ -2797,11 +2909,11 @@
       "price": 149.46,
       "change24h": 1.14,
       "change7d": 9.02,
-      "marketCap": 43764367360,
-      "pe": 34.2,
+      "marketCap": 43279925248,
+      "pe": 33.81,
       "peg": 1.05,
-      "weight": 0.074,
-      "rank": 200
+      "weight": 0.072,
+      "rank": 208
     },
     {
       "ticker": "YUM",
@@ -2812,10 +2924,10 @@
       "change24h": 3.34,
       "change7d": 6.39,
       "marketCap": 43272531968,
-      "pe": 25.32,
+      "pe": 24.49,
       "peg": 1.95,
-      "weight": 0.073,
-      "rank": 201
+      "weight": 0.072,
+      "rank": 209
     },
     {
       "ticker": "COIN",
@@ -2826,10 +2938,10 @@
       "change24h": 2.18,
       "change7d": -1.53,
       "marketCap": 43096911872,
-      "pe": 60.14,
+      "pe": 58.84,
       "peg": 1.54,
-      "weight": 0.072,
-      "rank": 202
+      "weight": 0.071,
+      "rank": 210
     },
     {
       "ticker": "KDP",
@@ -2841,9 +2953,9 @@
       "change7d": 4.54,
       "marketCap": 42952863744,
       "pe": 23.39,
-      "peg": 1.01,
-      "weight": 0.072,
-      "rank": 203
+      "peg": 1.05,
+      "weight": 0.071,
+      "rank": 211
     },
     {
       "ticker": "AXON",
@@ -2854,10 +2966,10 @@
       "change24h": -1.11,
       "change7d": 6.88,
       "marketCap": 42340270080,
-      "pe": 210.12,
+      "pe": 212.67,
       "peg": 4.2,
-      "weight": 0.071,
-      "rank": 204
+      "weight": 0.07,
+      "rank": 212
     },
     {
       "ticker": "MSCI",
@@ -2868,10 +2980,10 @@
       "change24h": -1.23,
       "change7d": 0.84,
       "marketCap": 41856299008,
-      "pe": 31.46,
+      "pe": 31.84,
       "peg": 2.28,
-      "weight": 0.07,
-      "rank": 205
+      "weight": 0.069,
+      "rank": 213
     },
     {
       "ticker": "PAYX",
@@ -2882,10 +2994,10 @@
       "change24h": -4.75,
       "change7d": 6.14,
       "marketCap": 41376587776,
-      "pe": 23.79,
+      "pe": 25.02,
       "peg": 2.16,
-      "weight": 0.07,
-      "rank": 206
+      "weight": 0.069,
+      "rank": 214
     },
     {
       "ticker": "FLEX",
@@ -2896,10 +3008,10 @@
       "change24h": 8.63,
       "change7d": -11.88,
       "marketCap": 41002659840,
-      "pe": 48.03,
+      "pe": 44.23,
       "peg": 0.94,
-      "weight": 0.069,
-      "rank": 207
+      "weight": 0.068,
+      "rank": 215
     },
     {
       "ticker": "ARES",
@@ -2910,10 +3022,10 @@
       "change24h": -0.39,
       "change7d": 3.81,
       "marketCap": 40940564480,
-      "pe": 57.2,
-      "peg": 1.21,
-      "weight": 0.069,
-      "rank": 208
+      "pe": 57.46,
+      "peg": 1.18,
+      "weight": 0.068,
+      "rank": 216
     },
     {
       "ticker": "MCHP",
@@ -2924,10 +3036,10 @@
       "change24h": 5.1,
       "change7d": -11.77,
       "marketCap": 40731058176,
-      "pe": 340.95,
+      "pe": 326.13,
       "peg": 0.26,
       "weight": 0.068,
-      "rank": 209
+      "rank": 217
     },
     {
       "ticker": "DHI",
@@ -2938,10 +3050,10 @@
       "change24h": -1.11,
       "change7d": 2.11,
       "marketCap": 40704925696,
-      "pe": 13.87,
+      "pe": 14.02,
       "peg": 1.24,
       "weight": 0.068,
-      "rank": 210
+      "rank": 218
     },
     {
       "ticker": "SYY",
@@ -2952,10 +3064,10 @@
       "change24h": -0.71,
       "change7d": 3.15,
       "marketCap": 40554090496,
-      "pe": 23.53,
+      "pe": 23.73,
       "peg": 1.68,
-      "weight": 0.068,
-      "rank": 211
+      "weight": 0.067,
+      "rank": 219
     },
     {
       "ticker": "UAL",
@@ -2966,10 +3078,10 @@
       "change24h": 3.47,
       "change7d": 5.37,
       "marketCap": 40103833600,
-      "pe": 11.57,
+      "pe": 11.18,
       "peg": 6.5,
       "weight": 0.067,
-      "rank": 212
+      "rank": 220
     },
     {
       "ticker": "HIG",
@@ -2980,10 +3092,10 @@
       "change24h": -1.81,
       "change7d": 1.57,
       "marketCap": 39214415872,
-      "pe": 9.88,
+      "pe": 10.06,
       "peg": 0.12,
-      "weight": 0.066,
-      "rank": 213
+      "weight": 0.065,
+      "rank": 221
     },
     {
       "ticker": "A",
@@ -2994,10 +3106,10 @@
       "change24h": -1.13,
       "change7d": 3.93,
       "marketCap": 39176134656,
-      "pe": 27.85,
+      "pe": 28.19,
       "peg": 1.24,
-      "weight": 0.066,
-      "rank": 214
+      "weight": 0.065,
+      "rank": 222
     },
     {
       "ticker": "PCG",
@@ -3008,10 +3120,10 @@
       "change24h": 0.4,
       "change7d": -1.82,
       "marketCap": 39158087680,
-      "pe": 12.79,
+      "pe": 12.7,
       "peg": 1.14,
-      "weight": 0.066,
-      "rank": 215
+      "weight": 0.065,
+      "rank": 223
     },
     {
       "ticker": "IQV",
@@ -3022,10 +3134,10 @@
       "change24h": -3.95,
       "change7d": 19.78,
       "marketCap": 39140233216,
-      "pe": 29.54,
+      "pe": 30.76,
       "peg": 1.0,
-      "weight": 0.066,
-      "rank": 216
+      "weight": 0.065,
+      "rank": 224
     },
     {
       "ticker": "WDAY",
@@ -3036,10 +3148,10 @@
       "change24h": -5.89,
       "change7d": 19.4,
       "marketCap": 39048974336,
-      "pe": 49.26,
+      "pe": 52.35,
       "peg": 0.66,
-      "weight": 0.066,
-      "rank": 217
+      "weight": 0.065,
+      "rank": 225
     },
     {
       "ticker": "PEG",
@@ -3050,10 +3162,10 @@
       "change24h": -0.26,
       "change7d": -2.55,
       "marketCap": 38644826112,
-      "pe": 17.16,
+      "pe": 17.2,
       "peg": 3.86,
-      "weight": 0.065,
-      "rank": 218
+      "weight": 0.064,
+      "rank": 226
     },
     {
       "ticker": "ROP",
@@ -3064,10 +3176,10 @@
       "change24h": -4.61,
       "change7d": 15.6,
       "marketCap": 38496825344,
-      "pe": 16.23,
+      "pe": 17.01,
       "peg": 1.78,
-      "weight": 0.065,
-      "rank": 219
+      "weight": 0.064,
+      "rank": 227
     },
     {
       "ticker": "CCL",
@@ -3080,8 +3192,8 @@
       "marketCap": 38035156992,
       "pe": 12.51,
       "peg": 1.12,
-      "weight": 0.064,
-      "rank": 220
+      "weight": 0.063,
+      "rank": 228
     },
     {
       "ticker": "WAT",
@@ -3092,10 +3204,10 @@
       "change24h": 0.22,
       "change7d": 2.56,
       "marketCap": 37340078080,
-      "pe": 48.38,
+      "pe": 48.32,
       "peg": 1.7,
-      "weight": 0.063,
-      "rank": 221
+      "weight": 0.062,
+      "rank": 229
     },
     {
       "ticker": "IRM",
@@ -3106,10 +3218,10 @@
       "change24h": 3.22,
       "change7d": 0.1,
       "marketCap": 37083475968,
-      "pe": 135.48,
+      "pe": 131.2,
       "peg": 2.7,
-      "weight": 0.062,
-      "rank": 222
+      "weight": 0.061,
+      "rank": 230
     },
     {
       "ticker": "KVUE",
@@ -3120,10 +3232,10 @@
       "change24h": -2.43,
       "change7d": 0.94,
       "marketCap": 37075365888,
-      "pe": 22.99,
-      "peg": 1.61,
-      "weight": 0.062,
-      "rank": 223
+      "pe": 23.55,
+      "peg": 1.64,
+      "weight": 0.061,
+      "rank": 231
     },
     {
       "ticker": "KMB",
@@ -3134,10 +3246,10 @@
       "change24h": -2.67,
       "change7d": 1.2,
       "marketCap": 36576509952,
-      "pe": 21.31,
+      "pe": 21.86,
       "peg": 2.29,
       "weight": 0.061,
-      "rank": 224
+      "rank": 232
     },
     {
       "ticker": "STLD",
@@ -3150,8 +3262,8 @@
       "marketCap": 36190343168,
       "pe": 22.89,
       "peg": 11.95,
-      "weight": 0.061,
-      "rank": 225
+      "weight": 0.06,
+      "rank": 233
     },
     {
       "ticker": "HSY",
@@ -3162,10 +3274,24 @@
       "change24h": -3.63,
       "change7d": 2.84,
       "marketCap": 35949932544,
-      "pe": 33.0,
+      "pe": 34.21,
       "peg": 1.06,
       "weight": 0.06,
-      "rank": 226
+      "rank": 234
+    },
+    {
+      "ticker": "WEC",
+      "name": "WEC Energy Group",
+      "sector": "Utilities",
+      "subSector": "Electric Utilities",
+      "price": 110.05,
+      "change24h": -1.11,
+      "change7d": -3.01,
+      "marketCap": 35859726336,
+      "pe": 21.58,
+      "peg": 2.34,
+      "weight": 0.059,
+      "rank": 235
     },
     {
       "ticker": "MTB",
@@ -3176,10 +3302,10 @@
       "change24h": -1.33,
       "change7d": -1.49,
       "marketCap": 35798450176,
-      "pe": 13.07,
+      "pe": 13.24,
       "peg": 1.68,
-      "weight": 0.06,
-      "rank": 227
+      "weight": 0.059,
+      "rank": 236
     },
     {
       "ticker": "EME",
@@ -3189,25 +3315,11 @@
       "price": 802.37,
       "change24h": 19.32,
       "change7d": 6.25,
-      "marketCap": 35731595264,
-      "pe": 26.93,
+      "marketCap": 35392458752,
+      "pe": 22.58,
       "peg": 0.36,
-      "weight": 0.06,
-      "rank": 228
-    },
-    {
-      "ticker": "VMC",
-      "name": "Vulcan Materials Company",
-      "sector": "Materials",
-      "subSector": "Construction Materials",
-      "price": 271.24,
-      "change24h": -4.47,
-      "change7d": -2.37,
-      "marketCap": 35194716160,
-      "pe": 31.95,
-      "peg": 2.46,
       "weight": 0.059,
-      "rank": 229
+      "rank": 237
     },
     {
       "ticker": "EXPE",
@@ -3218,10 +3330,24 @@
       "change24h": -3.73,
       "change7d": 12.2,
       "marketCap": 35158065152,
-      "pe": 25.88,
-      "peg": 0.91,
-      "weight": 0.059,
-      "rank": 230
+      "pe": 26.87,
+      "peg": 1.0,
+      "weight": 0.058,
+      "rank": 238
+    },
+    {
+      "ticker": "VMC",
+      "name": "Vulcan Materials Company",
+      "sector": "Materials",
+      "subSector": "Construction Materials",
+      "price": 271.24,
+      "change24h": -4.47,
+      "change7d": -2.37,
+      "marketCap": 35146936320,
+      "pe": 33.45,
+      "peg": 2.46,
+      "weight": 0.058,
+      "rank": 239
     },
     {
       "ticker": "TKO",
@@ -3232,10 +3358,10 @@
       "change24h": -1.89,
       "change7d": 1.19,
       "marketCap": 35130920960,
-      "pe": 68.08,
+      "pe": 69.36,
       "peg": 1.32,
-      "weight": 0.059,
-      "rank": 231
+      "weight": 0.058,
+      "rank": 240
     },
     {
       "ticker": "HBAN",
@@ -3246,10 +3372,10 @@
       "change24h": 1.43,
       "change7d": -6.51,
       "marketCap": 34508685312,
-      "pe": 13.14,
+      "pe": 12.94,
       "peg": 1.97,
-      "weight": 0.058,
-      "rank": 232
+      "weight": 0.057,
+      "rank": 241
     },
     {
       "ticker": "ACGL",
@@ -3260,10 +3386,10 @@
       "change24h": -3.26,
       "change7d": 2.54,
       "marketCap": 34488737792,
-      "pe": 7.91,
+      "pe": 8.18,
       "peg": 1.05,
-      "weight": 0.058,
-      "rank": 233
+      "weight": 0.057,
+      "rank": 242
     },
     {
       "ticker": "NTAP",
@@ -3274,10 +3400,10 @@
       "change24h": 0.43,
       "change7d": 4.47,
       "marketCap": 34140837888,
-      "pe": 27.36,
+      "pe": 27.23,
       "peg": 1.95,
       "weight": 0.057,
-      "rank": 234
+      "rank": 243
     },
     {
       "ticker": "RJF",
@@ -3288,10 +3414,10 @@
       "change24h": 0.47,
       "change7d": 4.14,
       "marketCap": 33611737088,
-      "pe": 15.24,
+      "pe": 15.18,
       "peg": 0.91,
-      "weight": 0.057,
-      "rank": 235
+      "weight": 0.056,
+      "rank": 244
     },
     {
       "ticker": "CCI",
@@ -3302,10 +3428,10 @@
       "change24h": -3.26,
       "change7d": -1.28,
       "marketCap": 33434871808,
-      "pe": 31.23,
+      "pe": 32.28,
       "peg": 0.96,
-      "weight": 0.056,
-      "rank": 236
+      "weight": 0.055,
+      "rank": 245
     },
     {
       "ticker": "EQT",
@@ -3316,10 +3442,10 @@
       "change24h": 0.27,
       "change7d": -2.41,
       "marketCap": 32970948608,
-      "pe": 12.23,
+      "pe": 12.2,
       "peg": 2.28,
       "weight": 0.055,
-      "rank": 237
+      "rank": 246
     },
     {
       "ticker": "VEEV",
@@ -3330,10 +3456,10 @@
       "change24h": -3.05,
       "change7d": 9.22,
       "marketCap": 32742070272,
-      "pe": 35.8,
+      "pe": 36.92,
       "peg": 0.94,
-      "weight": 0.055,
-      "rank": 238
+      "weight": 0.054,
+      "rank": 247
     },
     {
       "ticker": "EXR",
@@ -3344,10 +3470,10 @@
       "change24h": -3.04,
       "change7d": 2.18,
       "marketCap": 32710846464,
-      "pe": 98.15,
+      "pe": 100.82,
       "peg": 6.6,
-      "weight": 0.055,
-      "rank": 239
+      "weight": 0.054,
+      "rank": 248
     },
     {
       "ticker": "ON",
@@ -3358,10 +3484,10 @@
       "change24h": 6.19,
       "change7d": -9.3,
       "marketCap": 32590401536,
-      "pe": 61.57,
+      "pe": 58.15,
       "peg": 0.26,
-      "weight": 0.055,
-      "rank": 240
+      "weight": 0.054,
+      "rank": 249
     },
     {
       "ticker": "MLM",
@@ -3372,10 +3498,10 @@
       "change24h": -5.21,
       "change7d": -1.94,
       "marketCap": 32424785920,
-      "pe": 33.86,
+      "pe": 35.71,
       "peg": 2.77,
-      "weight": 0.055,
-      "rank": 241
+      "weight": 0.054,
+      "rank": 250
     },
     {
       "ticker": "JBL",
@@ -3386,10 +3512,10 @@
       "change24h": 7.45,
       "change7d": -3.07,
       "marketCap": 32328910848,
-      "pe": 38.66,
+      "pe": 35.96,
       "peg": 0.82,
       "weight": 0.054,
-      "rank": 242
+      "rank": 251
     },
     {
       "ticker": "LVS",
@@ -3400,10 +3526,10 @@
       "change24h": 2.72,
       "change7d": 10.21,
       "marketCap": 32300857344,
-      "pe": 19.33,
+      "pe": 18.82,
       "peg": 1.15,
       "weight": 0.054,
-      "rank": 243
+      "rank": 252
     },
     {
       "ticker": "CASY",
@@ -3414,10 +3540,10 @@
       "change24h": 0.04,
       "change7d": 1.26,
       "marketCap": 32101761024,
-      "pe": 45.25,
-      "peg": 3.68,
-      "weight": 0.054,
-      "rank": 244
+      "pe": 45.23,
+      "peg": 3.74,
+      "weight": 0.053,
+      "rank": 253
     },
     {
       "ticker": "WTW",
@@ -3428,10 +3554,10 @@
       "change24h": 6.37,
       "change7d": 17.29,
       "marketCap": 31739240448,
-      "pe": 19.72,
+      "pe": 18.55,
       "peg": 1.27,
       "weight": 0.053,
-      "rank": 245
+      "rank": 254
     },
     {
       "ticker": "GEHC",
@@ -3442,10 +3568,10 @@
       "change24h": -2.73,
       "change7d": 13.95,
       "marketCap": 31590936576,
-      "pe": 16.12,
+      "pe": 16.57,
       "peg": 2.03,
-      "weight": 0.053,
-      "rank": 246
+      "weight": 0.052,
+      "rank": 255
     },
     {
       "ticker": "KHC",
@@ -3458,8 +3584,8 @@
       "marketCap": 31280814080,
       "pe": 12.57,
       "peg": 0.99,
-      "weight": 0.053,
-      "rank": 247
+      "weight": 0.052,
+      "rank": 256
     },
     {
       "ticker": "CBOE",
@@ -3472,8 +3598,8 @@
       "marketCap": 31031939072,
       "pe": 25.34,
       "peg": 2.9,
-      "weight": 0.052,
-      "rank": 248
+      "weight": 0.051,
+      "rank": 257
     },
     {
       "ticker": "TPR",
@@ -3484,10 +3610,10 @@
       "change24h": 1.65,
       "change7d": 6.16,
       "marketCap": 30827982848,
-      "pe": 46.38,
+      "pe": 45.68,
       "peg": 0.31,
-      "weight": 0.052,
-      "rank": 249
+      "weight": 0.051,
+      "rank": 258
     },
     {
       "ticker": "BIIB",
@@ -3500,8 +3626,8 @@
       "marketCap": 30722488320,
       "pe": 36.93,
       "peg": 5.06,
-      "weight": 0.052,
-      "rank": 250
+      "weight": 0.051,
+      "rank": 259
     },
     {
       "ticker": "CFG",
@@ -3509,13 +3635,13 @@
       "sector": "Financials",
       "subSector": "Regional Banks",
       "price": 71.73,
-      "change24h": 0.59,
-      "change7d": -0.98,
+      "change24h": 1.24,
+      "change7d": -0.34,
       "marketCap": 30318669824,
-      "pe": 15.63,
+      "pe": 15.53,
       "peg": 1.65,
-      "weight": 0.051,
-      "rank": 251
+      "weight": 0.05,
+      "rank": 260
     },
     {
       "ticker": "RMD",
@@ -3526,10 +3652,10 @@
       "change24h": -2.67,
       "change7d": 8.11,
       "marketCap": 30252959744,
-      "pe": 20.11,
+      "pe": 20.67,
       "peg": 1.28,
-      "weight": 0.051,
-      "rank": 252
+      "weight": 0.05,
+      "rank": 261
     },
     {
       "ticker": "CNC",
@@ -3540,10 +3666,10 @@
       "change24h": -1.59,
       "change7d": -7.66,
       "marketCap": 30054656000,
-      "pe": 11.81,
+      "pe": 11.78,
       "peg": 1.19,
-      "weight": 0.051,
-      "rank": 253
+      "weight": 0.05,
+      "rank": 262
     },
     {
       "ticker": "DTE",
@@ -3554,10 +3680,10 @@
       "change24h": -1.27,
       "change7d": -4.61,
       "marketCap": 29486077952,
-      "pe": 22.46,
+      "pe": 22.74,
       "peg": 1.99,
-      "weight": 0.05,
-      "rank": 254
+      "weight": 0.049,
+      "rank": 263
     },
     {
       "ticker": "ATO",
@@ -3568,10 +3694,10 @@
       "change24h": -1.92,
       "change7d": -2.36,
       "marketCap": 29087447040,
-      "pe": 21.46,
-      "peg": 2.15,
-      "weight": 0.049,
-      "rank": 255
+      "pe": 21.89,
+      "peg": 2.14,
+      "weight": 0.048,
+      "rank": 264
     },
     {
       "ticker": "VICI",
@@ -3581,11 +3707,11 @@
       "price": 26.31,
       "change24h": -3.02,
       "change7d": -1.02,
-      "marketCap": 28969418752,
-      "pe": 10.2,
+      "marketCap": 28969349120,
+      "pe": 10.52,
       "peg": null,
-      "weight": 0.049,
-      "rank": 256
+      "weight": 0.048,
+      "rank": 265
     },
     {
       "ticker": "FISV",
@@ -3596,10 +3722,10 @@
       "change24h": -2.8,
       "change7d": 7.67,
       "marketCap": 28833042432,
-      "pe": 9.16,
+      "pe": 9.42,
       "peg": null,
       "weight": 0.048,
-      "rank": 257
+      "rank": 266
     },
     {
       "ticker": "DXCM",
@@ -3610,10 +3736,10 @@
       "change24h": -0.8,
       "change7d": 4.35,
       "marketCap": 28762972160,
-      "pe": 31.99,
+      "pe": 32.27,
       "peg": 1.4,
       "weight": 0.048,
-      "rank": 258
+      "rank": 267
     },
     {
       "ticker": "FE",
@@ -3624,10 +3750,10 @@
       "change24h": -0.85,
       "change7d": -1.26,
       "marketCap": 28185550848,
-      "pe": 103.64,
+      "pe": 105.89,
       "peg": 1.75,
       "weight": 0.047,
-      "rank": 259
+      "rank": 268
     },
     {
       "ticker": "DG",
@@ -3638,10 +3764,10 @@
       "change24h": -0.92,
       "change7d": 6.04,
       "marketCap": 28124796928,
-      "pe": 18.06,
+      "pe": 18.21,
       "peg": 1.85,
       "weight": 0.047,
-      "rank": 260
+      "rank": 269
     },
     {
       "ticker": "ES",
@@ -3652,10 +3778,10 @@
       "change24h": -1.23,
       "change7d": -0.83,
       "marketCap": 27769747456,
-      "pe": 15.81,
+      "pe": 15.98,
       "peg": 2.78,
-      "weight": 0.047,
-      "rank": 261
+      "weight": 0.046,
+      "rank": 270
     },
     {
       "ticker": "CNP",
@@ -3666,10 +3792,10 @@
       "change24h": -1.82,
       "change7d": -3.5,
       "marketCap": 27765059584,
-      "pe": 25.09,
+      "pe": 25.55,
       "peg": 2.03,
-      "weight": 0.047,
-      "rank": 262
+      "weight": 0.046,
+      "rank": 271
     },
     {
       "ticker": "DOV",
@@ -3680,10 +3806,10 @@
       "change24h": 3.07,
       "change7d": -4.88,
       "marketCap": 27482845184,
-      "pe": 24.64,
+      "pe": 23.92,
       "peg": 1.64,
       "weight": 0.046,
-      "rank": 263
+      "rank": 272
     },
     {
       "ticker": "WSM",
@@ -3694,10 +3820,10 @@
       "change24h": -0.21,
       "change7d": 4.94,
       "marketCap": 27472640000,
-      "pe": 26.13,
+      "pe": 26.19,
       "peg": 3.08,
       "weight": 0.046,
-      "rank": 264
+      "rank": 273
     },
     {
       "ticker": "CPRT",
@@ -3708,10 +3834,10 @@
       "change24h": -4.06,
       "change7d": 8.83,
       "marketCap": 27371616256,
-      "pe": 18.36,
+      "pe": 19.2,
       "peg": 3.7,
-      "weight": 0.046,
-      "rank": 265
+      "weight": 0.045,
+      "rank": 274
     },
     {
       "ticker": "Q",
@@ -3722,10 +3848,10 @@
       "change24h": 5.78,
       "change7d": -5.92,
       "marketCap": 27322953728,
-      "pe": 41.97,
+      "pe": 39.67,
       "peg": 2.04,
-      "weight": 0.046,
-      "rank": 266
+      "weight": 0.045,
+      "rank": 275
     },
     {
       "ticker": "OTIS",
@@ -3736,10 +3862,10 @@
       "change24h": -2.28,
       "change7d": 1.82,
       "marketCap": 27290185728,
-      "pe": 18.43,
+      "pe": 18.87,
       "peg": 1.44,
-      "weight": 0.046,
-      "rank": 267
+      "weight": 0.045,
+      "rank": 276
     },
     {
       "ticker": "XYL",
@@ -3750,10 +3876,10 @@
       "change24h": -4.35,
       "change7d": 0.59,
       "marketCap": 27275929600,
-      "pe": 27.81,
+      "pe": 29.06,
       "peg": 1.73,
-      "weight": 0.046,
-      "rank": 268
+      "weight": 0.045,
+      "rank": 277
     },
     {
       "ticker": "WRB",
@@ -3764,10 +3890,10 @@
       "change24h": -3.0,
       "change7d": 1.41,
       "marketCap": 27228233728,
-      "pe": 15.1,
+      "pe": 15.58,
       "peg": 5.11,
-      "weight": 0.046,
-      "rank": 269
+      "weight": 0.045,
+      "rank": 278
     },
     {
       "ticker": "TPL",
@@ -3778,10 +3904,24 @@
       "change24h": 1.24,
       "change7d": -8.97,
       "marketCap": 27193169920,
-      "pe": 54.16,
+      "pe": 53.49,
       "peg": 7.33,
-      "weight": 0.046,
-      "rank": 270
+      "weight": 0.045,
+      "rank": 279
+    },
+    {
+      "ticker": "AWK",
+      "name": "American Water Works",
+      "sector": "Utilities",
+      "subSector": "Water Utilities",
+      "price": 136.81,
+      "change24h": -0.93,
+      "change7d": 2.23,
+      "marketCap": 27188113408,
+      "pe": 23.92,
+      "peg": 2.68,
+      "weight": 0.045,
+      "rank": 280
     },
     {
       "ticker": "AVB",
@@ -3792,10 +3932,10 @@
       "change24h": -2.43,
       "change7d": -1.31,
       "marketCap": 26849474560,
-      "pe": 25.83,
+      "pe": 26.45,
       "peg": 7.17,
       "weight": 0.045,
-      "rank": 271
+      "rank": 281
     },
     {
       "ticker": "CINF",
@@ -3806,10 +3946,10 @@
       "change24h": -3.64,
       "change7d": -2.51,
       "marketCap": 26817218560,
-      "pe": 8.25,
+      "pe": 8.56,
       "peg": 2.19,
-      "weight": 0.045,
-      "rank": 272
+      "weight": 0.044,
+      "rank": 282
     },
     {
       "ticker": "HAL",
@@ -3820,24 +3960,10 @@
       "change24h": 1.44,
       "change7d": -4.21,
       "marketCap": 26431983616,
-      "pe": 16.57,
-      "peg": 0.79,
+      "pe": 16.31,
+      "peg": 0.76,
       "weight": 0.044,
-      "rank": 273
-    },
-    {
-      "ticker": "FICO",
-      "name": "Fair Isaac",
-      "sector": "Information Technology",
-      "subSector": "Application Software",
-      "price": 1139.54,
-      "change24h": -17.01,
-      "change7d": -6.71,
-      "marketCap": 26426966016,
-      "pe": 32.93,
-      "peg": 0.93,
-      "weight": 0.044,
-      "rank": 274
+      "rank": 283
     },
     {
       "ticker": "VRSK",
@@ -3848,10 +3974,10 @@
       "change24h": -6.01,
       "change7d": 4.2,
       "marketCap": 26076758016,
-      "pe": 30.82,
+      "pe": 32.79,
       "peg": 2.06,
-      "weight": 0.044,
-      "rank": 275
+      "weight": 0.043,
+      "rank": 284
     },
     {
       "ticker": "VRSN",
@@ -3862,10 +3988,10 @@
       "change24h": -1.49,
       "change7d": 9.14,
       "marketCap": 25906831360,
-      "pe": 31.08,
+      "pe": 31.56,
       "peg": 2.96,
-      "weight": 0.044,
-      "rank": 276
+      "weight": 0.043,
+      "rank": 285
     },
     {
       "ticker": "DGX",
@@ -3876,10 +4002,10 @@
       "change24h": -0.39,
       "change7d": 11.66,
       "marketCap": 25860478976,
-      "pe": 24.9,
+      "pe": 25.01,
       "peg": 2.0,
       "weight": 0.043,
-      "rank": 277
+      "rank": 286
     },
     {
       "ticker": "TROW",
@@ -3890,10 +4016,10 @@
       "change24h": 0.34,
       "change7d": 2.82,
       "marketCap": 25557721088,
-      "pe": 12.8,
+      "pe": 12.76,
       "peg": 6.79,
-      "weight": 0.043,
-      "rank": 278
+      "weight": 0.042,
+      "rank": 287
     },
     {
       "ticker": "CPAY",
@@ -3904,10 +4030,10 @@
       "change24h": -0.69,
       "change7d": 8.67,
       "marketCap": 25498992640,
-      "pe": 23.36,
-      "peg": 0.91,
-      "weight": 0.043,
-      "rank": 279
+      "pe": 23.53,
+      "peg": 0.94,
+      "weight": 0.042,
+      "rank": 288
     },
     {
       "ticker": "JBHT",
@@ -3918,10 +4044,10 @@
       "change24h": -2.51,
       "change7d": -7.88,
       "marketCap": 25282838528,
-      "pe": 38.24,
+      "pe": 39.24,
       "peg": 2.57,
-      "weight": 0.043,
-      "rank": 280
+      "weight": 0.042,
+      "rank": 289
     },
     {
       "ticker": "SYF",
@@ -3932,10 +4058,10 @@
       "change24h": 2.93,
       "change7d": 5.99,
       "marketCap": 25108867072,
-      "pe": 7.91,
+      "pe": 7.69,
       "peg": 0.97,
       "weight": 0.042,
-      "rank": 281
+      "rank": 290
     },
     {
       "ticker": "HUBB",
@@ -3946,10 +4072,10 @@
       "change24h": 2.76,
       "change7d": -0.66,
       "marketCap": 25026260992,
-      "pe": 28.08,
-      "peg": 2.38,
+      "pe": 27.32,
+      "peg": 2.23,
       "weight": 0.042,
-      "rank": 282
+      "rank": 291
     },
     {
       "ticker": "ECHO",
@@ -3962,8 +4088,8 @@
       "marketCap": 24961636352,
       "pe": -755.53,
       "peg": 1.33,
-      "weight": 0.042,
-      "rank": 283
+      "weight": 0.041,
+      "rank": 292
     },
     {
       "ticker": "INCY",
@@ -3974,10 +4100,10 @@
       "change24h": -3.23,
       "change7d": 6.22,
       "marketCap": 24929796096,
-      "pe": 15.67,
+      "pe": 16.16,
       "peg": 13.2,
-      "weight": 0.042,
-      "rank": 284
+      "weight": 0.041,
+      "rank": 293
     },
     {
       "ticker": "SW",
@@ -3987,11 +4113,25 @@
       "price": 47.52,
       "change24h": -1.53,
       "change7d": 6.76,
-      "marketCap": 24922531840,
-      "pe": 50.55,
+      "marketCap": 24925329408,
+      "pe": 51.1,
       "peg": 0.26,
-      "weight": 0.042,
-      "rank": 285
+      "weight": 0.041,
+      "rank": 294
+    },
+    {
+      "ticker": "PPG",
+      "name": "PPG Industries",
+      "sector": "Materials",
+      "subSector": "Specialty Chemicals",
+      "price": 112.03,
+      "change24h": 0.18,
+      "change7d": -4.57,
+      "marketCap": 24904267776,
+      "pe": 16.07,
+      "peg": 1.7,
+      "weight": 0.041,
+      "rank": 295
     },
     {
       "ticker": "DLTR",
@@ -4002,10 +4142,10 @@
       "change24h": -0.29,
       "change7d": 5.26,
       "marketCap": 24707889152,
-      "pe": 20.64,
+      "pe": 20.7,
       "peg": 1.61,
-      "weight": 0.042,
-      "rank": 286
+      "weight": 0.041,
+      "rank": 296
     },
     {
       "ticker": "FOXA",
@@ -4016,10 +4156,24 @@
       "change24h": -0.22,
       "change7d": 4.2,
       "marketCap": 24698556416,
-      "pe": 15.48,
-      "peg": 24.95,
-      "weight": 0.042,
-      "rank": 287
+      "pe": 15.52,
+      "peg": 25.97,
+      "weight": 0.041,
+      "rank": 297
+    },
+    {
+      "ticker": "FICO",
+      "name": "Fair Isaac",
+      "sector": "Information Technology",
+      "subSector": "Application Software",
+      "price": 1139.54,
+      "change24h": -17.01,
+      "change7d": -6.71,
+      "marketCap": 24611371008,
+      "pe": 39.68,
+      "peg": 0.96,
+      "weight": 0.041,
+      "rank": 298
     },
     {
       "ticker": "PFG",
@@ -4029,11 +4183,11 @@
       "price": 113.95,
       "change24h": 0.68,
       "change7d": 5.27,
-      "marketCap": 24453668864,
-      "pe": 16.23,
+      "marketCap": 24397223936,
+      "pe": 16.14,
       "peg": 1.06,
-      "weight": 0.041,
-      "rank": 288
+      "weight": 0.04,
+      "rank": 299
     },
     {
       "ticker": "CTSH",
@@ -4044,10 +4198,10 @@
       "change24h": -3.7,
       "change7d": 24.83,
       "marketCap": 24276690944,
-      "pe": 11.57,
+      "pe": 12.03,
       "peg": 0.91,
-      "weight": 0.041,
-      "rank": 289
+      "weight": 0.04,
+      "rank": 300
     },
     {
       "ticker": "KEY",
@@ -4058,10 +4212,10 @@
       "change24h": 1.94,
       "change7d": -2.16,
       "marketCap": 24238712832,
-      "pe": 13.22,
+      "pe": 12.99,
       "peg": 1.66,
-      "weight": 0.041,
-      "rank": 290
+      "weight": 0.04,
+      "rank": 301
     },
     {
       "ticker": "L",
@@ -4072,10 +4226,10 @@
       "change24h": -2.16,
       "change7d": 1.46,
       "marketCap": 23945324544,
-      "pe": 14.81,
+      "pe": 15.13,
       "peg": 1.32,
       "weight": 0.04,
-      "rank": 291
+      "rank": 302
     },
     {
       "ticker": "WST",
@@ -4086,10 +4240,10 @@
       "change24h": 0.63,
       "change7d": -5.19,
       "marketCap": 23898904576,
-      "pe": 43.54,
+      "pe": 43.32,
       "peg": 2.9,
       "weight": 0.04,
-      "rank": 292
+      "rank": 303
     },
     {
       "ticker": "FIS",
@@ -4100,10 +4254,10 @@
       "change24h": -1.73,
       "change7d": 13.47,
       "marketCap": 23776440320,
-      "pe": 8.91,
+      "pe": 9.07,
       "peg": 0.26,
-      "weight": 0.04,
-      "rank": 293
+      "weight": 0.039,
+      "rank": 304
     },
     {
       "ticker": "BRO",
@@ -4114,10 +4268,10 @@
       "change24h": -5.34,
       "change7d": 8.38,
       "marketCap": 23713837056,
-      "pe": 22.64,
+      "pe": 23.94,
       "peg": 1.51,
-      "weight": 0.04,
-      "rank": 294
+      "weight": 0.039,
+      "rank": 305
     },
     {
       "ticker": "DRI",
@@ -4128,10 +4282,10 @@
       "change24h": -2.48,
       "change7d": 6.72,
       "marketCap": 23705309184,
-      "pe": 19.82,
+      "pe": 20.33,
       "peg": 1.89,
-      "weight": 0.04,
-      "rank": 295
+      "weight": 0.039,
+      "rank": 306
     },
     {
       "ticker": "VLTO",
@@ -4142,10 +4296,10 @@
       "change24h": -4.17,
       "change7d": 3.91,
       "marketCap": 23089668096,
-      "pe": 23.86,
-      "peg": 2.77,
-      "weight": 0.039,
-      "rank": 296
+      "pe": 24.86,
+      "peg": 2.91,
+      "weight": 0.038,
+      "rank": 307
     },
     {
       "ticker": "MRNA",
@@ -4156,10 +4310,10 @@
       "change24h": 6.29,
       "change7d": -0.26,
       "marketCap": 22981859328,
-      "pe": -13.85,
+      "pe": -12.49,
       "peg": null,
-      "weight": 0.039,
-      "rank": 297
+      "weight": 0.038,
+      "rank": 308
     },
     {
       "ticker": "RL",
@@ -4170,10 +4324,10 @@
       "change24h": 2.72,
       "change7d": -0.32,
       "marketCap": 22967953408,
-      "pe": 25.56,
+      "pe": 24.88,
       "peg": 2.16,
-      "weight": 0.039,
-      "rank": 298
+      "weight": 0.038,
+      "rank": 309
     },
     {
       "ticker": "CMS",
@@ -4184,10 +4338,10 @@
       "change24h": -2.82,
       "change7d": -2.32,
       "marketCap": 22659086336,
-      "pe": 21.77,
+      "pe": 22.37,
       "peg": 2.87,
       "weight": 0.038,
-      "rank": 299
+      "rank": 310
     },
     {
       "ticker": "STE",
@@ -4198,10 +4352,10 @@
       "change24h": -1.54,
       "change7d": 9.8,
       "marketCap": 22533191680,
-      "pe": 29.12,
-      "peg": 1.77,
-      "weight": 0.038,
-      "rank": 300
+      "pe": 29.6,
+      "peg": 1.9,
+      "weight": 0.037,
+      "rank": 311
     },
     {
       "ticker": "NTRS",
@@ -4212,10 +4366,10 @@
       "change24h": 2.74,
       "change7d": 2.15,
       "marketCap": 22418020352,
-      "pe": 15.68,
+      "pe": 15.26,
       "peg": 1.18,
-      "weight": 0.038,
-      "rank": 301
+      "weight": 0.037,
+      "rank": 312
     },
     {
       "ticker": "LUV",
@@ -4226,10 +4380,10 @@
       "change24h": 2.75,
       "change7d": -4.32,
       "marketCap": 22307893248,
-      "pe": 28.5,
+      "pe": 27.64,
       "peg": 0.35,
-      "weight": 0.038,
-      "rank": 302
+      "weight": 0.037,
+      "rank": 313
     },
     {
       "ticker": "STZ",
@@ -4237,13 +4391,13 @@
       "sector": "Consumer Staples",
       "subSector": "Distillers & Vintners",
       "price": 130.38,
-      "change24h": -1.04,
-      "change7d": -1.29,
+      "change24h": -0.26,
+      "change7d": -0.51,
       "marketCap": 22269472768,
-      "pe": 12.42,
-      "peg": 1.65,
+      "pe": 12.55,
+      "peg": 1.68,
       "weight": 0.037,
-      "rank": 303
+      "rank": 314
     },
     {
       "ticker": "ULTA",
@@ -4254,10 +4408,10 @@
       "change24h": 1.7,
       "change7d": 6.87,
       "marketCap": 22213865472,
-      "pe": 19.37,
+      "pe": 19.05,
       "peg": 1.76,
       "weight": 0.037,
-      "rank": 304
+      "rank": 315
     },
     {
       "ticker": "PKG",
@@ -4268,10 +4422,10 @@
       "change24h": -0.32,
       "change7d": 8.96,
       "marketCap": 22152597504,
-      "pe": 32.25,
+      "pe": 32.37,
       "peg": 1.96,
       "weight": 0.037,
-      "rank": 305
+      "rank": 316
     },
     {
       "ticker": "FSLR",
@@ -4282,10 +4436,10 @@
       "change24h": 3.4,
       "change7d": -1.36,
       "marketCap": 22136465408,
-      "pe": 13.31,
+      "pe": 12.87,
       "peg": 0.52,
       "weight": 0.037,
-      "rank": 306
+      "rank": 317
     },
     {
       "ticker": "FFIV",
@@ -4296,10 +4450,10 @@
       "change24h": 0.47,
       "change7d": -2.96,
       "marketCap": 22091108352,
-      "pe": 31.0,
+      "pe": 30.88,
       "peg": 1.38,
       "weight": 0.037,
-      "rank": 307
+      "rank": 318
     },
     {
       "ticker": "FOX",
@@ -4310,10 +4464,10 @@
       "change24h": -0.74,
       "change7d": 3.38,
       "marketCap": 21977600000,
-      "pe": 13.77,
+      "pe": 13.85,
       "peg": null,
-      "weight": 0.037,
-      "rank": 308
+      "weight": 0.036,
+      "rank": 319
     },
     {
       "ticker": "EXPD",
@@ -4324,10 +4478,10 @@
       "change24h": -1.83,
       "change7d": -5.88,
       "marketCap": 21843427328,
-      "pe": 26.98,
+      "pe": 27.47,
       "peg": 3.91,
-      "weight": 0.037,
-      "rank": 309
+      "weight": 0.036,
+      "rank": 320
     },
     {
       "ticker": "OMC",
@@ -4338,10 +4492,10 @@
       "change24h": -3.6,
       "change7d": 0.29,
       "marketCap": 21840680960,
-      "pe": 215.16,
+      "pe": 221.14,
       "peg": 15.97,
-      "weight": 0.037,
-      "rank": 310
+      "weight": 0.036,
+      "rank": 321
     },
     {
       "ticker": "DOW",
@@ -4354,8 +4508,8 @@
       "marketCap": 21735233536,
       "pe": 16.32,
       "peg": 38.89,
-      "weight": 0.037,
-      "rank": 311
+      "weight": 0.036,
+      "rank": 322
     },
     {
       "ticker": "NI",
@@ -4366,10 +4520,10 @@
       "change24h": 0.58,
       "change7d": -3.22,
       "marketCap": 21608325120,
-      "pe": 22.42,
+      "pe": 22.31,
       "peg": 2.55,
       "weight": 0.036,
-      "rank": 312
+      "rank": 323
     },
     {
       "ticker": "EXE",
@@ -4381,9 +4535,9 @@
       "change7d": -0.8,
       "marketCap": 21395580928,
       "pe": 7.97,
-      "peg": 2.81,
-      "weight": 0.036,
-      "rank": 313
+      "peg": 2.52,
+      "weight": 0.035,
+      "rank": 324
     },
     {
       "ticker": "SNA",
@@ -4394,10 +4548,10 @@
       "change24h": -1.39,
       "change7d": 0.71,
       "marketCap": 21158979584,
-      "pe": 20.89,
+      "pe": 21.18,
       "peg": 2.3,
-      "weight": 0.036,
-      "rank": 314
+      "weight": 0.035,
+      "rank": 325
     },
     {
       "ticker": "AMCR",
@@ -4409,9 +4563,9 @@
       "change7d": 4.49,
       "marketCap": 20874909696,
       "pe": 36.12,
-      "peg": 0.62,
+      "peg": 0.63,
       "weight": 0.035,
-      "rank": 315
+      "rank": 326
     },
     {
       "ticker": "EFX",
@@ -4422,10 +4576,10 @@
       "change24h": -5.84,
       "change7d": 3.33,
       "marketCap": 20692615168,
-      "pe": 30.95,
+      "pe": 32.92,
       "peg": 1.87,
-      "weight": 0.035,
-      "rank": 316
+      "weight": 0.034,
+      "rank": 327
     },
     {
       "ticker": "VTRS",
@@ -4437,9 +4591,9 @@
       "change7d": 4.41,
       "marketCap": 20682457088,
       "pe": 6.76,
-      "peg": 1.13,
-      "weight": 0.035,
-      "rank": 317
+      "peg": 1.14,
+      "weight": 0.034,
+      "rank": 328
     },
     {
       "ticker": "FDXF",
@@ -4450,10 +4604,24 @@
       "change24h": -4.72,
       "change7d": -7.88,
       "marketCap": 20482041856,
-      "pe": 30.23,
+      "pe": 31.77,
       "peg": null,
       "weight": 0.034,
-      "rank": 318
+      "rank": 329
+    },
+    {
+      "ticker": "BG",
+      "name": "Bunge Global",
+      "sector": "Consumer Staples",
+      "subSector": "Agricultural Products & Services",
+      "price": 105.07,
+      "change24h": -2.51,
+      "change7d": -15.18,
+      "marketCap": 20185956352,
+      "pe": 23.19,
+      "peg": 1.37,
+      "weight": 0.033,
+      "rank": 330
     },
     {
       "ticker": "LEN",
@@ -4464,10 +4632,10 @@
       "change24h": -0.96,
       "change7d": 1.95,
       "marketCap": 20174966784,
-      "pe": 13.13,
+      "pe": 13.27,
       "peg": 11.3,
-      "weight": 0.034,
-      "rank": 319
+      "weight": 0.033,
+      "rank": 331
     },
     {
       "ticker": "ESS",
@@ -4478,10 +4646,10 @@
       "change24h": -5.03,
       "change7d": -3.83,
       "marketCap": 19427534848,
-      "pe": 43.97,
+      "pe": 46.28,
       "peg": 7.02,
-      "weight": 0.033,
-      "rank": 320
+      "weight": 0.032,
+      "rank": 332
     },
     {
       "ticker": "CF",
@@ -4492,10 +4660,10 @@
       "change24h": -1.24,
       "change7d": -1.24,
       "marketCap": 19321954304,
-      "pe": 11.33,
+      "pe": 11.46,
       "peg": 3.81,
       "weight": 0.032,
-      "rank": 321
+      "rank": 333
     },
     {
       "ticker": "SBAC",
@@ -4506,10 +4674,10 @@
       "change24h": -2.36,
       "change7d": 2.18,
       "marketCap": 19292862464,
-      "pe": 19.13,
+      "pe": 19.6,
       "peg": 7.74,
       "weight": 0.032,
-      "rank": 322
+      "rank": 334
     },
     {
       "ticker": "EVRG",
@@ -4520,10 +4688,10 @@
       "change24h": -0.89,
       "change7d": -3.82,
       "marketCap": 19190208512,
-      "pe": 22.14,
-      "peg": 2.42,
+      "pe": 22.32,
+      "peg": 2.36,
       "weight": 0.032,
-      "rank": 323
+      "rank": 335
     },
     {
       "ticker": "CHTR",
@@ -4534,10 +4702,10 @@
       "change24h": -2.2,
       "change7d": 9.89,
       "marketCap": 19138402304,
-      "pe": 3.7,
+      "pe": 3.78,
       "peg": 0.91,
       "weight": 0.032,
-      "rank": 324
+      "rank": 336
     },
     {
       "ticker": "ROL",
@@ -4548,10 +4716,10 @@
       "change24h": -1.03,
       "change7d": -11.78,
       "marketCap": 18451924992,
-      "pe": 34.86,
-      "peg": 2.89,
+      "pe": 35.18,
+      "peg": 2.86,
       "weight": 0.031,
-      "rank": 325
+      "rank": 337
     },
     {
       "ticker": "ZBH",
@@ -4562,10 +4730,10 @@
       "change24h": -2.25,
       "change7d": 7.08,
       "marketCap": 18371196928,
-      "pe": 24.6,
-      "peg": 0.65,
-      "weight": 0.031,
-      "rank": 326
+      "pe": 25.19,
+      "peg": 0.69,
+      "weight": 0.03,
+      "rank": 338
     },
     {
       "ticker": "LNT",
@@ -4578,8 +4746,8 @@
       "marketCap": 18309259264,
       "pe": 22.29,
       "peg": 2.38,
-      "weight": 0.031,
-      "rank": 327
+      "weight": 0.03,
+      "rank": 339
     },
     {
       "ticker": "SMCI",
@@ -4590,10 +4758,10 @@
       "change24h": 7.9,
       "change7d": -9.26,
       "marketCap": 17937788928,
-      "pe": 14.59,
+      "pe": 13.53,
       "peg": 0.91,
       "weight": 0.03,
-      "rank": 328
+      "rank": 340
     },
     {
       "ticker": "FTV",
@@ -4604,10 +4772,10 @@
       "change24h": -1.78,
       "change7d": -2.94,
       "marketCap": 17661958144,
-      "pe": 30.94,
+      "pe": 31.61,
       "peg": 0.98,
-      "weight": 0.03,
-      "rank": 329
+      "weight": 0.029,
+      "rank": 341
     },
     {
       "ticker": "INVH",
@@ -4618,10 +4786,10 @@
       "change24h": -1.46,
       "change7d": 0.58,
       "marketCap": 17625225216,
-      "pe": 27.22,
+      "pe": 27.73,
       "peg": 13.14,
-      "weight": 0.03,
-      "rank": 330
+      "weight": 0.029,
+      "rank": 342
     },
     {
       "ticker": "BALL",
@@ -4632,10 +4800,10 @@
       "change24h": -0.8,
       "change7d": 4.75,
       "marketCap": 17388558336,
-      "pe": 19.04,
+      "pe": 19.21,
       "peg": 1.39,
       "weight": 0.029,
-      "rank": 331
+      "rank": 343
     },
     {
       "ticker": "CHRW",
@@ -4649,21 +4817,7 @@
       "pe": 29.8,
       "peg": 2.45,
       "weight": 0.029,
-      "rank": 332
-    },
-    {
-      "ticker": "IEX",
-      "name": "IDEX Corporation",
-      "sector": "Industrials",
-      "subSector": "Industrial Machinery & Supplies & Components",
-      "price": 233.77,
-      "change24h": 1.85,
-      "change7d": 4.75,
-      "marketCap": 17302499328,
-      "pe": 33.64,
-      "peg": 1.92,
-      "weight": 0.029,
-      "rank": 333
+      "rank": 344
     },
     {
       "ticker": "BEN",
@@ -4674,10 +4828,24 @@
       "change24h": 2.41,
       "change7d": 2.44,
       "marketCap": 17236363264,
-      "pe": 25.32,
-      "peg": 0.37,
+      "pe": 24.75,
+      "peg": 0.36,
       "weight": 0.029,
-      "rank": 334
+      "rank": 345
+    },
+    {
+      "ticker": "IEX",
+      "name": "IDEX Corporation",
+      "sector": "Industrials",
+      "subSector": "Industrial Machinery & Supplies & Components",
+      "price": 233.77,
+      "change24h": 1.85,
+      "change7d": 4.75,
+      "marketCap": 17233500160,
+      "pe": 33.02,
+      "peg": 1.96,
+      "weight": 0.029,
+      "rank": 346
     },
     {
       "ticker": "NWS",
@@ -4687,11 +4855,11 @@
       "price": 31.8,
       "change24h": -2.57,
       "change7d": 2.75,
-      "marketCap": 17217202176,
-      "pe": 40.25,
+      "marketCap": 17214357504,
+      "pe": 41.3,
       "peg": 3.53,
       "weight": 0.029,
-      "rank": 335
+      "rank": 347
     },
     {
       "ticker": "GPC",
@@ -4702,10 +4870,10 @@
       "change24h": -3.96,
       "change7d": 3.71,
       "marketCap": 17209034752,
-      "pe": 499.32,
+      "pe": 520.12,
       "peg": 1.32,
       "weight": 0.029,
-      "rank": 336
+      "rank": 348
     },
     {
       "ticker": "WY",
@@ -4716,10 +4884,10 @@
       "change24h": -3.89,
       "change7d": -1.34,
       "marketCap": 16944501760,
-      "pe": 41.96,
+      "pe": 43.52,
       "peg": 1.86,
       "weight": 0.028,
-      "rank": 337
+      "rank": 349
     },
     {
       "ticker": "NVR",
@@ -4730,10 +4898,10 @@
       "change24h": -1.46,
       "change7d": -0.95,
       "marketCap": 16842047488,
-      "pe": 16.34,
+      "pe": 16.58,
       "peg": 4.97,
       "weight": 0.028,
-      "rank": 338
+      "rank": 350
     },
     {
       "ticker": "AKAM",
@@ -4744,10 +4912,10 @@
       "change24h": 5.9,
       "change7d": -8.49,
       "marketCap": 16537595904,
-      "pe": 38.43,
+      "pe": 36.23,
       "peg": 1.27,
-      "weight": 0.028,
-      "rank": 339
+      "weight": 0.027,
+      "rank": 351
     },
     {
       "ticker": "NDSN",
@@ -4758,10 +4926,10 @@
       "change24h": 0.08,
       "change7d": 1.25,
       "marketCap": 16449610752,
-      "pe": 31.58,
-      "peg": 1.84,
-      "weight": 0.028,
-      "rank": 340
+      "pe": 31.54,
+      "peg": 1.82,
+      "weight": 0.027,
+      "rank": 352
     },
     {
       "ticker": "GEN",
@@ -4772,10 +4940,10 @@
       "change24h": -1.23,
       "change7d": 6.68,
       "marketCap": 16335169536,
-      "pe": 17.38,
+      "pe": 17.61,
       "peg": 1.56,
       "weight": 0.027,
-      "rank": 341
+      "rank": 353
     },
     {
       "ticker": "MAA",
@@ -4786,10 +4954,10 @@
       "change24h": -2.96,
       "change7d": 1.33,
       "marketCap": 15908628480,
-      "pe": 121.2,
+      "pe": 124.6,
       "peg": 7.03,
-      "weight": 0.027,
-      "rank": 342
+      "weight": 0.026,
+      "rank": 354
     },
     {
       "ticker": "TSCO",
@@ -4800,10 +4968,10 @@
       "change24h": -2.55,
       "change7d": 2.9,
       "marketCap": 15843621888,
-      "pe": 15.73,
-      "peg": 1.41,
-      "weight": 0.027,
-      "rank": 343
+      "pe": 16.16,
+      "peg": 1.7,
+      "weight": 0.026,
+      "rank": 355
     },
     {
       "ticker": "PTC",
@@ -4814,10 +4982,10 @@
       "change24h": 2.9,
       "change7d": 20.5,
       "marketCap": 15743439872,
-      "pe": 13.22,
+      "pe": 12.87,
       "peg": 1.09,
       "weight": 0.026,
-      "rank": 344
+      "rank": 356
     },
     {
       "ticker": "J",
@@ -4828,10 +4996,10 @@
       "change24h": -2.33,
       "change7d": 1.72,
       "marketCap": 15675236352,
-      "pe": 39.28,
+      "pe": 40.11,
       "peg": 0.43,
       "weight": 0.026,
-      "rank": 345
+      "rank": 357
     },
     {
       "ticker": "DVA",
@@ -4842,10 +5010,10 @@
       "change24h": -0.87,
       "change7d": 2.92,
       "marketCap": 15331228672,
-      "pe": 22.99,
+      "pe": 23.21,
       "peg": 0.75,
-      "weight": 0.026,
-      "rank": 346
+      "weight": 0.025,
+      "rank": 358
     },
     {
       "ticker": "NWSA",
@@ -4855,11 +5023,11 @@
       "price": 28.09,
       "change24h": -2.53,
       "change7d": 2.74,
-      "marketCap": 15208527872,
-      "pe": 35.56,
+      "marketCap": 15206017024,
+      "pe": 36.48,
       "peg": 3.07,
-      "weight": 0.026,
-      "rank": 347
+      "weight": 0.025,
+      "rank": 359
     },
     {
       "ticker": "SOLV",
@@ -4870,10 +5038,10 @@
       "change24h": -1.95,
       "change7d": 11.82,
       "marketCap": 15035029504,
-      "pe": 10.63,
+      "pe": 10.84,
       "peg": 1.22,
       "weight": 0.025,
-      "rank": 348
+      "rank": 360
     },
     {
       "ticker": "TXT",
@@ -4884,24 +5052,10 @@
       "change24h": 1.68,
       "change7d": -5.04,
       "marketCap": 14978339840,
-      "pe": 16.4,
+      "pe": 16.13,
       "peg": 1.1,
       "weight": 0.025,
-      "rank": 349
-    },
-    {
-      "ticker": "SWK",
-      "name": "Stanley Black & Decker",
-      "sector": "Industrials",
-      "subSector": "Industrial Machinery & Supplies & Components",
-      "price": 95.55,
-      "change24h": 2.69,
-      "change7d": 7.06,
-      "marketCap": 14853780480,
-      "pe": 39.16,
-      "peg": 1.39,
-      "weight": 0.025,
-      "rank": 350
+      "rank": 361
     },
     {
       "ticker": "EG",
@@ -4911,11 +5065,39 @@
       "price": 375.36,
       "change24h": -4.7,
       "change7d": 0.61,
-      "marketCap": 14853595136,
-      "pe": 7.93,
+      "marketCap": 14526431232,
+      "pe": 8.33,
       "peg": 0.97,
-      "weight": 0.025,
-      "rank": 351
+      "weight": 0.024,
+      "rank": 362
+    },
+    {
+      "ticker": "SWK",
+      "name": "Stanley Black & Decker",
+      "sector": "Industrials",
+      "subSector": "Industrial Machinery & Supplies & Components",
+      "price": 95.55,
+      "change24h": 2.69,
+      "change7d": 7.06,
+      "marketCap": 14429640704,
+      "pe": 38.22,
+      "peg": 1.39,
+      "weight": 0.024,
+      "rank": 363
+    },
+    {
+      "ticker": "LII",
+      "name": "Lennox International",
+      "sector": "Industrials",
+      "subSector": "Building Products",
+      "price": 417.45,
+      "change24h": -2.92,
+      "change7d": -21.65,
+      "marketCap": 14427354112,
+      "pe": 19.12,
+      "peg": 1.24,
+      "weight": 0.024,
+      "rank": 364
     },
     {
       "ticker": "MAS",
@@ -4926,10 +5108,10 @@
       "change24h": -0.62,
       "change7d": -7.56,
       "marketCap": 14219185152,
-      "pe": 16.62,
+      "pe": 16.73,
       "peg": 1.84,
       "weight": 0.024,
-      "rank": 352
+      "rank": 365
     },
     {
       "ticker": "GL",
@@ -4940,10 +5122,10 @@
       "change24h": 1.84,
       "change7d": -0.55,
       "marketCap": 14207437824,
-      "pe": 12.17,
+      "pe": 11.94,
       "peg": 1.3,
       "weight": 0.024,
-      "rank": 353
+      "rank": 366
     },
     {
       "ticker": "LDOS",
@@ -4954,10 +5136,10 @@
       "change24h": -1.71,
       "change7d": 4.8,
       "marketCap": 14139544576,
-      "pe": 10.28,
+      "pe": 10.46,
       "peg": 2.46,
-      "weight": 0.024,
-      "rank": 354
+      "weight": 0.023,
+      "rank": 367
     },
     {
       "ticker": "UDR",
@@ -4968,10 +5150,10 @@
       "change24h": -3.58,
       "change7d": -3.14,
       "marketCap": 14070049792,
-      "pe": 24.24,
+      "pe": 25.2,
       "peg": 8.17,
-      "weight": 0.024,
-      "rank": 355
+      "weight": 0.023,
+      "rank": 368
     },
     {
       "ticker": "ALB",
@@ -4985,7 +5167,7 @@
       "pe": 9.44,
       "peg": 0.79,
       "weight": 0.023,
-      "rank": 356
+      "rank": 369
     },
     {
       "ticker": "BAX",
@@ -4996,10 +5178,10 @@
       "change24h": 7.99,
       "change7d": 23.05,
       "marketCap": 13815545856,
-      "pe": 13.35,
+      "pe": 13.13,
       "peg": 36.68,
       "weight": 0.023,
-      "rank": 357
+      "rank": 370
     },
     {
       "ticker": "ZBRA",
@@ -5010,10 +5192,10 @@
       "change24h": 1.98,
       "change7d": 9.83,
       "marketCap": 13745568768,
-      "pe": 34.89,
-      "peg": 0.56,
+      "pe": 34.23,
+      "peg": 0.6,
       "weight": 0.023,
-      "rank": 358
+      "rank": 371
     },
     {
       "ticker": "MKC",
@@ -5024,10 +5206,10 @@
       "change24h": -1.98,
       "change7d": -2.04,
       "marketCap": 13700674560,
-      "pe": 8.48,
+      "pe": 8.65,
       "peg": 2.24,
       "weight": 0.023,
-      "rank": 359
+      "rank": 372
     },
     {
       "ticker": "DECK",
@@ -5038,24 +5220,24 @@
       "change24h": -3.72,
       "change7d": -2.71,
       "marketCap": 13575969792,
-      "pe": 14.18,
-      "peg": 1.21,
+      "pe": 14.73,
+      "peg": 1.28,
       "weight": 0.023,
-      "rank": 360
+      "rank": 373
     },
     {
       "ticker": "LULU",
       "name": "Lululemon Athletica",
       "sector": "Consumer Discretionary",
       "subSector": "Apparel, Accessories & Luxury Goods",
-      "price": 119.47,
-      "change24h": 0.37,
-      "change7d": 5.38,
+      "price": 119.48,
+      "change24h": 0.38,
+      "change7d": 5.39,
       "marketCap": 13566854144,
-      "pe": 9.67,
+      "pe": 9.64,
       "peg": 0.91,
-      "weight": 0.023,
-      "rank": 361
+      "weight": 0.022,
+      "rank": 374
     },
     {
       "ticker": "ALLE",
@@ -5066,10 +5248,10 @@
       "change24h": -0.89,
       "change7d": 12.23,
       "marketCap": 13355877376,
-      "pe": 20.61,
-      "peg": 2.26,
+      "pe": 20.8,
+      "peg": 2.27,
       "weight": 0.022,
-      "rank": 362
+      "rank": 375
     },
     {
       "ticker": "TRMB",
@@ -5080,10 +5262,24 @@
       "change24h": -2.03,
       "change7d": 13.89,
       "marketCap": 13301343232,
-      "pe": 29.87,
-      "peg": 1.56,
+      "pe": 30.51,
+      "peg": 1.62,
       "weight": 0.022,
-      "rank": 363
+      "rank": 376
+    },
+    {
+      "ticker": "TYL",
+      "name": "Tyler Technologies",
+      "sector": "Information Technology",
+      "subSector": "Application Software",
+      "price": 323.31,
+      "change24h": -3.06,
+      "change7d": 13.71,
+      "marketCap": 13240279040,
+      "pe": 43.87,
+      "peg": 1.6,
+      "weight": 0.022,
+      "rank": 377
     },
     {
       "ticker": "BF.B",
@@ -5094,10 +5290,10 @@
       "change24h": -2.34,
       "change7d": 9.16,
       "marketCap": 13229056000,
-      "pe": 18.84,
+      "pe": 19.35,
       "peg": 2.22,
       "weight": 0.022,
-      "rank": 364
+      "rank": 378
     },
     {
       "ticker": "GDDY",
@@ -5108,10 +5304,10 @@
       "change24h": -5.49,
       "change7d": 11.11,
       "marketCap": 13152270336,
-      "pe": 15.74,
+      "pe": 16.67,
       "peg": 0.68,
       "weight": 0.022,
-      "rank": 365
+      "rank": 379
     },
     {
       "ticker": "SJM",
@@ -5125,7 +5321,7 @@
       "pe": 11.42,
       "peg": 2.17,
       "weight": 0.022,
-      "rank": 366
+      "rank": 380
     },
     {
       "ticker": "IVZ",
@@ -5139,7 +5335,7 @@
       "pe": 9.06,
       "peg": 0.9,
       "weight": 0.022,
-      "rank": 367
+      "rank": 381
     },
     {
       "ticker": "BXP",
@@ -5150,10 +5346,10 @@
       "change24h": -1.78,
       "change7d": 6.32,
       "marketCap": 12779579392,
-      "pe": 38.53,
+      "pe": 39.16,
       "peg": 3.34,
       "weight": 0.021,
-      "rank": 368
+      "rank": 382
     },
     {
       "ticker": "RVTY",
@@ -5164,10 +5360,10 @@
       "change24h": 0.15,
       "change7d": 2.71,
       "marketCap": 12666497024,
-      "pe": 54.85,
+      "pe": 54.59,
       "peg": 0.71,
       "weight": 0.021,
-      "rank": 369
+      "rank": 383
     },
     {
       "ticker": "ALGN",
@@ -5178,10 +5374,10 @@
       "change24h": -3.7,
       "change7d": 0.55,
       "marketCap": 12419299328,
-      "pe": 30.11,
+      "pe": 31.25,
       "peg": 0.95,
       "weight": 0.021,
-      "rank": 370
+      "rank": 384
     },
     {
       "ticker": "APTV",
@@ -5194,8 +5390,8 @@
       "marketCap": 12293036032,
       "pe": 34.58,
       "peg": 0.95,
-      "weight": 0.021,
-      "rank": 371
+      "weight": 0.02,
+      "rank": 385
     },
     {
       "ticker": "ERIE",
@@ -5206,10 +5402,10 @@
       "change24h": -5.99,
       "change7d": 10.82,
       "marketCap": 12218573824,
-      "pe": 21.42,
+      "pe": 22.77,
       "peg": 2.67,
-      "weight": 0.021,
-      "rank": 372
+      "weight": 0.02,
+      "rank": 386
     },
     {
       "ticker": "CSGP",
@@ -5219,11 +5415,11 @@
       "price": 29.46,
       "change24h": -1.24,
       "change7d": 6.39,
-      "marketCap": 12030158848,
+      "marketCap": 11937121280,
       "pe": 163.67,
-      "peg": 0.11,
+      "peg": 0.12,
       "weight": 0.02,
-      "rank": 373
+      "rank": 387
     },
     {
       "ticker": "DPZ",
@@ -5234,10 +5430,10 @@
       "change24h": -2.15,
       "change7d": 10.14,
       "marketCap": 11653041152,
-      "pe": 19.97,
-      "peg": 1.72,
-      "weight": 0.02,
-      "rank": 374
+      "pe": 20.41,
+      "peg": 1.8,
+      "weight": 0.019,
+      "rank": 388
     },
     {
       "ticker": "PODD",
@@ -5248,10 +5444,10 @@
       "change24h": -2.9,
       "change7d": 4.25,
       "marketCap": 11475770368,
-      "pe": 38.71,
-      "peg": 1.46,
+      "pe": 39.83,
+      "peg": 1.51,
       "weight": 0.019,
-      "rank": 375
+      "rank": 389
     },
     {
       "ticker": "GNRC",
@@ -5262,10 +5458,10 @@
       "change24h": -1.68,
       "change7d": -10.08,
       "marketCap": 11323772928,
-      "pe": 44.12,
+      "pe": 44.84,
       "peg": 0.81,
       "weight": 0.019,
-      "rank": 376
+      "rank": 390
     },
     {
       "ticker": "TECH",
@@ -5277,9 +5473,9 @@
       "change7d": 0.35,
       "marketCap": 11223041024,
       "pe": 102.9,
-      "peg": 0.96,
+      "peg": 0.97,
       "weight": 0.019,
-      "rank": 377
+      "rank": 391
     },
     {
       "ticker": "JKHY",
@@ -5290,10 +5486,10 @@
       "change24h": -4.29,
       "change7d": 5.53,
       "marketCap": 10958873600,
-      "pe": 21.54,
+      "pe": 22.52,
       "peg": 2.18,
       "weight": 0.018,
-      "rank": 378
+      "rank": 392
     },
     {
       "ticker": "FRT",
@@ -5304,10 +5500,10 @@
       "change24h": -1.34,
       "change7d": -0.77,
       "marketCap": 10785703936,
-      "pe": 21.51,
+      "pe": 21.77,
       "peg": 3.59,
       "weight": 0.018,
-      "rank": 379
+      "rank": 393
     },
     {
       "ticker": "AES",
@@ -5321,7 +5517,7 @@
       "pe": 7.73,
       "peg": 0.81,
       "weight": 0.018,
-      "rank": 380
+      "rank": 394
     },
     {
       "ticker": "PNR",
@@ -5332,10 +5528,10 @@
       "change24h": -0.63,
       "change7d": 5.46,
       "marketCap": 10560732160,
-      "pe": 17.05,
-      "peg": 1.06,
+      "pe": 17.14,
+      "peg": 1.12,
       "weight": 0.018,
-      "rank": 381
+      "rank": 395
     },
     {
       "ticker": "WYNN",
@@ -5346,10 +5542,10 @@
       "change24h": 1.71,
       "change7d": 6.71,
       "marketCap": 10451322880,
-      "pe": 28.85,
+      "pe": 28.45,
       "peg": 1.66,
-      "weight": 0.018,
-      "rank": 382
+      "weight": 0.017,
+      "rank": 396
     },
     {
       "ticker": "IT",
@@ -5360,10 +5556,10 @@
       "change24h": -7.68,
       "change7d": 15.76,
       "marketCap": 10238282752,
-      "pe": 15.11,
+      "pe": 16.37,
       "peg": 0.72,
       "weight": 0.017,
-      "rank": 383
+      "rank": 397
     },
     {
       "ticker": "UHS",
@@ -5374,10 +5570,10 @@
       "change24h": -2.9,
       "change7d": 9.34,
       "marketCap": 9884980224,
-      "pe": 6.66,
+      "pe": 6.86,
       "peg": 1.2,
-      "weight": 0.017,
-      "rank": 384
+      "weight": 0.016,
+      "rank": 398
     },
     {
       "ticker": "HSIC",
@@ -5388,10 +5584,10 @@
       "change24h": -0.77,
       "change7d": 0.42,
       "marketCap": 9702290432,
-      "pe": 25.73,
+      "pe": 25.89,
       "peg": 1.84,
       "weight": 0.016,
-      "rank": 385
+      "rank": 399
     },
     {
       "ticker": "SWKS",
@@ -5402,10 +5598,10 @@
       "change24h": 2.11,
       "change7d": -1.08,
       "marketCap": 9401539584,
-      "pe": 32.37,
+      "pe": 31.72,
       "peg": 1.32,
       "weight": 0.016,
-      "rank": 386
+      "rank": 400
     },
     {
       "ticker": "FDS",
@@ -5416,10 +5612,10 @@
       "change24h": -6.74,
       "change7d": 7.27,
       "marketCap": 9354805248,
-      "pe": 17.34,
-      "peg": 1.22,
+      "pe": 18.59,
+      "peg": 1.3,
       "weight": 0.016,
-      "rank": 387
+      "rank": 401
     },
     {
       "ticker": "PSKY",
@@ -5432,8 +5628,8 @@
       "marketCap": 8740742144,
       "pe": 390.5,
       "peg": 1.31,
-      "weight": 0.015,
-      "rank": 388
+      "weight": 0.014,
+      "rank": 402
     },
     {
       "ticker": "NCLH",
@@ -5444,10 +5640,10 @@
       "change24h": -9.78,
       "change7d": -3.16,
       "marketCap": 8594541568,
-      "pe": 15.1,
+      "pe": 16.71,
       "peg": 1.02,
       "weight": 0.014,
-      "rank": 389
+      "rank": 403
     },
     {
       "ticker": "TTD",
@@ -5458,10 +5654,10 @@
       "change24h": -4.24,
       "change7d": 3.98,
       "marketCap": 8593581056,
-      "pe": 20.77,
+      "pe": 21.76,
       "peg": 0.91,
       "weight": 0.014,
-      "rank": 390
+      "rank": 404
     },
     {
       "ticker": "AOS",
@@ -5472,10 +5668,10 @@
       "change24h": -3.59,
       "change7d": 0.78,
       "marketCap": 8243530240,
-      "pe": 15.95,
+      "pe": 16.57,
       "peg": 1.63,
       "weight": 0.014,
-      "rank": 391
+      "rank": 405
     },
     {
       "ticker": "TAP",
@@ -5489,7 +5685,7 @@
       "pe": 8.37,
       "peg": 3.92,
       "weight": 0.013,
-      "rank": 392
+      "rank": 406
     },
     {
       "ticker": "MOS",
@@ -5503,7 +5699,7 @@
       "pe": 162.64,
       "peg": 2.02,
       "weight": 0.012,
-      "rank": 393
+      "rank": 407
     },
     {
       "ticker": "BLDR",
@@ -5514,10 +5710,10 @@
       "change24h": -2.58,
       "change7d": -7.07,
       "marketCap": 7100027392,
-      "pe": 25.19,
+      "pe": 25.89,
       "peg": 2.02,
       "weight": 0.012,
-      "rank": 394
+      "rank": 408
     },
     {
       "ticker": "AMD",
@@ -5528,24 +5724,10 @@
       "change24h": 13.0,
       "change7d": -12.12,
       "marketCap": null,
-      "pe": 161.26,
-      "peg": 1.16,
+      "pe": 142.76,
+      "peg": 1.01,
       "weight": 0.0,
-      "rank": 395
-    },
-    {
-      "ticker": "APD",
-      "name": "Air Products",
-      "sector": "Materials",
-      "subSector": "Industrial Gases",
-      "price": 300.2,
-      "change24h": 2.02,
-      "change7d": 1.08,
-      "marketCap": null,
-      "pe": 31.67,
-      "peg": 2.17,
-      "weight": 0.0,
-      "rank": 396
+      "rank": 409
     },
     {
       "ticker": "AFL",
@@ -5556,10 +5738,24 @@
       "change24h": -1.02,
       "change7d": 3.06,
       "marketCap": null,
-      "pe": 14.56,
+      "pe": 14.71,
       "peg": 1.18,
       "weight": 0.0,
-      "rank": 397
+      "rank": 410
+    },
+    {
+      "ticker": "APD",
+      "name": "Air Products",
+      "sector": "Materials",
+      "subSector": "Industrial Gases",
+      "price": 300.2,
+      "change24h": 2.02,
+      "change7d": 1.08,
+      "marketCap": null,
+      "pe": 31.04,
+      "peg": 2.17,
+      "weight": 0.0,
+      "rank": 411
     },
     {
       "ticker": "ARE",
@@ -5573,21 +5769,7 @@
       "pe": -59.65,
       "peg": 3.24,
       "weight": 0.0,
-      "rank": 398
-    },
-    {
-      "ticker": "MO",
-      "name": "Altria",
-      "sector": "Consumer Staples",
-      "subSector": "Tobacco",
-      "price": 67.94,
-      "change24h": -9.32,
-      "change7d": -5.86,
-      "marketCap": null,
-      "pe": 14.18,
-      "peg": 1.72,
-      "weight": 0.0,
-      "rank": 399
+      "rank": 412
     },
     {
       "ticker": "AEE",
@@ -5598,10 +5780,10 @@
       "change24h": -1.11,
       "change7d": -2.91,
       "marketCap": null,
-      "pe": 19.56,
+      "pe": 19.77,
       "peg": 2.46,
       "weight": 0.0,
-      "rank": 400
+      "rank": 413
     },
     {
       "ticker": "AIG",
@@ -5612,24 +5794,10 @@
       "change24h": -1.63,
       "change7d": 0.82,
       "marketCap": null,
-      "pe": 13.89,
+      "pe": 14.11,
       "peg": 0.66,
       "weight": 0.0,
-      "rank": 401
-    },
-    {
-      "ticker": "AWK",
-      "name": "American Water Works",
-      "sector": "Utilities",
-      "subSector": "Water Utilities",
-      "price": 136.81,
-      "change24h": -0.93,
-      "change7d": 2.23,
-      "marketCap": null,
-      "pe": 23.71,
-      "peg": 2.68,
-      "weight": 0.0,
-      "rank": 402
+      "rank": 414
     },
     {
       "ticker": "ADI",
@@ -5640,10 +5808,10 @@
       "change24h": 3.76,
       "change7d": -5.19,
       "marketCap": null,
-      "pe": 54.65,
+      "pe": 52.61,
       "peg": 0.65,
       "weight": 0.0,
-      "rank": 403
+      "rank": 415
     },
     {
       "ticker": "APH",
@@ -5654,10 +5822,10 @@
       "change24h": 6.33,
       "change7d": 1.47,
       "marketCap": null,
-      "pe": 39.95,
+      "pe": 37.6,
       "peg": 1.29,
       "weight": 0.0,
-      "rank": 404
+      "rank": 416
     },
     {
       "ticker": "APA",
@@ -5668,10 +5836,10 @@
       "change24h": -1.01,
       "change7d": 0.41,
       "marketCap": null,
-      "pe": 8.47,
+      "pe": 8.55,
       "peg": 0.7,
       "weight": 0.0,
-      "rank": 405
+      "rank": 417
     },
     {
       "ticker": "ADM",
@@ -5682,24 +5850,10 @@
       "change24h": 0.29,
       "change7d": -7.68,
       "marketCap": null,
-      "pe": 35.99,
+      "pe": 35.83,
       "peg": 2.44,
       "weight": 0.0,
-      "rank": 406
-    },
-    {
-      "ticker": "AIZ",
-      "name": "Assurant",
-      "sector": "Financials",
-      "subSector": "Multi-line Insurance",
-      "price": 282.46,
-      "change24h": 0.52,
-      "change7d": 3.41,
-      "marketCap": null,
-      "pe": 14.49,
-      "peg": 2.16,
-      "weight": 0.0,
-      "rank": 407
+      "rank": 418
     },
     {
       "ticker": "AJG",
@@ -5710,10 +5864,24 @@
       "change24h": -4.63,
       "change7d": 5.76,
       "marketCap": null,
-      "pe": 41.5,
+      "pe": 43.47,
       "peg": 0.88,
       "weight": 0.0,
-      "rank": 408
+      "rank": 419
+    },
+    {
+      "ticker": "AIZ",
+      "name": "Assurant",
+      "sector": "Financials",
+      "subSector": "Multi-line Insurance",
+      "price": 282.46,
+      "change24h": 0.52,
+      "change7d": 3.41,
+      "marketCap": null,
+      "pe": 14.41,
+      "peg": 2.16,
+      "weight": 0.0,
+      "rank": 420
     },
     {
       "ticker": "AVY",
@@ -5724,10 +5892,10 @@
       "change24h": 4.59,
       "change7d": 10.87,
       "marketCap": null,
-      "pe": 19.69,
+      "pe": 18.84,
       "peg": 1.92,
       "weight": 0.0,
-      "rank": 409
+      "rank": 421
     },
     {
       "ticker": "AZO",
@@ -5738,10 +5906,10 @@
       "change24h": -4.32,
       "change7d": 1.15,
       "marketCap": null,
-      "pe": 20.67,
+      "pe": 21.6,
       "peg": 1.42,
       "weight": 0.0,
-      "rank": 410
+      "rank": 422
     },
     {
       "ticker": "BAC",
@@ -5752,24 +5920,10 @@
       "change24h": 1.08,
       "change7d": 0.18,
       "marketCap": null,
-      "pe": 14.26,
+      "pe": 14.09,
       "peg": 1.04,
       "weight": 0.0,
-      "rank": 411
-    },
-    {
-      "ticker": "BDX",
-      "name": "Becton Dickinson",
-      "sector": "Health Care",
-      "subSector": "Health Care Equipment",
-      "price": 165.45,
-      "change24h": -1.75,
-      "change7d": 8.02,
-      "marketCap": null,
-      "pe": 28.87,
-      "peg": 1.11,
-      "weight": 0.0,
-      "rank": 412
+      "rank": 423
     },
     {
       "ticker": "BBY",
@@ -5780,10 +5934,10 @@
       "change24h": -2.61,
       "change7d": 0.82,
       "marketCap": null,
-      "pe": 16.26,
+      "pe": 16.7,
       "peg": 1.72,
       "weight": 0.0,
-      "rank": 413
+      "rank": 424
     },
     {
       "ticker": "BLK",
@@ -5794,10 +5948,24 @@
       "change24h": 1.78,
       "change7d": 3.95,
       "marketCap": null,
-      "pe": 26.3,
+      "pe": 25.84,
       "peg": 1.16,
       "weight": 0.0,
-      "rank": 414
+      "rank": 425
+    },
+    {
+      "ticker": "BDX",
+      "name": "Becton Dickinson",
+      "sector": "Health Care",
+      "subSector": "Health Care Equipment",
+      "price": 165.45,
+      "change24h": -1.75,
+      "change7d": 8.02,
+      "marketCap": null,
+      "pe": 29.39,
+      "peg": 1.11,
+      "weight": 0.0,
+      "rank": 426
     },
     {
       "ticker": "BR",
@@ -5808,24 +5976,10 @@
       "change24h": -2.78,
       "change7d": 7.39,
       "marketCap": null,
-      "pe": 16.55,
+      "pe": 17.05,
       "peg": 1.09,
       "weight": 0.0,
-      "rank": 415
-    },
-    {
-      "ticker": "BG",
-      "name": "Bunge Global",
-      "sector": "Consumer Staples",
-      "subSector": "Agricultural Products & Services",
-      "price": 105.07,
-      "change24h": -2.51,
-      "change7d": -15.18,
-      "marketCap": null,
-      "pe": 22.6,
-      "peg": 1.37,
-      "weight": 0.0,
-      "rank": 416
+      "rank": 427
     },
     {
       "ticker": "CPT",
@@ -5836,10 +5990,10 @@
       "change24h": -2.65,
       "change7d": 1.14,
       "marketCap": null,
-      "pe": 31.65,
+      "pe": 32.46,
       "peg": 9.17,
       "weight": 0.0,
-      "rank": 417
+      "rank": 428
     },
     {
       "ticker": "CAT",
@@ -5850,10 +6004,10 @@
       "change24h": 3.38,
       "change7d": -9.01,
       "marketCap": null,
-      "pe": 40.22,
-      "peg": 2.05,
+      "pe": 38.92,
+      "peg": 1.84,
       "weight": 0.0,
-      "rank": 418
+      "rank": 429
     },
     {
       "ticker": "CDW",
@@ -5867,7 +6021,7 @@
       "pe": 17.73,
       "peg": 1.33,
       "weight": 0.0,
-      "rank": 419
+      "rank": 430
     },
     {
       "ticker": "CRL",
@@ -5881,21 +6035,7 @@
       "pe": 19.03,
       "peg": 0.12,
       "weight": 0.0,
-      "rank": 420
-    },
-    {
-      "ticker": "CMG",
-      "name": "Chipotle Mexican Grill",
-      "sector": "Consumer Discretionary",
-      "subSector": "Restaurants",
-      "price": 38.52,
-      "change24h": 12.5,
-      "change7d": 19.63,
-      "marketCap": null,
-      "pe": 35.67,
-      "peg": 1.84,
-      "weight": 0.0,
-      "rank": 421
+      "rank": 431
     },
     {
       "ticker": "CHD",
@@ -5906,10 +6046,10 @@
       "change24h": -2.18,
       "change7d": 0.57,
       "marketCap": null,
-      "pe": 32.13,
+      "pe": 32.89,
       "peg": 3.06,
       "weight": 0.0,
-      "rank": 422
+      "rank": 432
     },
     {
       "ticker": "CLX",
@@ -5920,10 +6060,10 @@
       "change24h": -2.91,
       "change7d": 1.01,
       "marketCap": null,
-      "pe": 15.73,
+      "pe": 16.2,
       "peg": 2.29,
       "weight": 0.0,
-      "rank": 423
+      "rank": 433
     },
     {
       "ticker": "CL",
@@ -5934,24 +6074,10 @@
       "change24h": -2.02,
       "change7d": -0.03,
       "marketCap": null,
-      "pe": 35.5,
+      "pe": 36.21,
       "peg": 1.67,
       "weight": 0.0,
-      "rank": 424
-    },
-    {
-      "ticker": "COO",
-      "name": "Cooper Companies (The)",
-      "sector": "Health Care",
-      "subSector": "Health Care Supplies",
-      "price": 72.65,
-      "change24h": -0.56,
-      "change7d": 3.05,
-      "marketCap": null,
-      "pe": 61.57,
-      "peg": 0.69,
-      "weight": 0.0,
-      "rank": 425
+      "rank": 434
     },
     {
       "ticker": "ED",
@@ -5962,24 +6088,24 @@
       "change24h": -2.31,
       "change7d": -2.17,
       "marketCap": null,
-      "pe": 18.49,
+      "pe": 18.94,
       "peg": 2.96,
       "weight": 0.0,
-      "rank": 426
+      "rank": 435
     },
     {
-      "ticker": "CRH",
-      "name": "CRH plc",
-      "sector": "Materials",
-      "subSector": "Construction Materials",
-      "price": 96.0,
-      "change24h": -3.72,
-      "change7d": -4.06,
+      "ticker": "COO",
+      "name": "Cooper Companies (The)",
+      "sector": "Health Care",
+      "subSector": "Health Care Supplies",
+      "price": 72.65,
+      "change24h": -0.56,
+      "change7d": 3.05,
       "marketCap": null,
-      "pe": 17.81,
-      "peg": 2.01,
+      "pe": 62.09,
+      "peg": 0.69,
       "weight": 0.0,
-      "rank": 427
+      "rank": 436
     },
     {
       "ticker": "DAL",
@@ -5990,10 +6116,10 @@
       "change24h": 2.71,
       "change7d": 6.07,
       "marketCap": null,
-      "pe": 14.69,
+      "pe": 14.31,
       "peg": 0.21,
       "weight": 0.0,
-      "rank": 428
+      "rank": 437
     },
     {
       "ticker": "DVN",
@@ -6004,24 +6130,10 @@
       "change24h": -0.65,
       "change7d": -1.58,
       "marketCap": null,
-      "pe": 12.3,
+      "pe": 12.41,
       "peg": 2.92,
       "weight": 0.0,
-      "rank": 429
-    },
-    {
-      "ticker": "ETN",
-      "name": "Eaton Corporation",
-      "sector": "Industrials",
-      "subSector": "Electrical Components & Equipment",
-      "price": 386.89,
-      "change24h": 6.91,
-      "change7d": -4.92,
-      "marketCap": null,
-      "pe": 37.89,
-      "peg": 3.0,
-      "weight": 0.0,
-      "rank": 430
+      "rank": 438
     },
     {
       "ticker": "DD",
@@ -6035,7 +6147,21 @@
       "pe": 120.73,
       "peg": 1.72,
       "weight": 0.0,
-      "rank": 431
+      "rank": 439
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton Corporation",
+      "sector": "Industrials",
+      "subSector": "Electrical Components & Equipment",
+      "price": 386.89,
+      "change24h": 6.91,
+      "change7d": -4.92,
+      "marketCap": null,
+      "pe": 35.46,
+      "peg": 2.72,
+      "weight": 0.0,
+      "rank": 440
     },
     {
       "ticker": "EIX",
@@ -6046,10 +6172,10 @@
       "change24h": 0.13,
       "change7d": -2.05,
       "marketCap": null,
-      "pe": 8.56,
+      "pe": 8.55,
       "peg": 3.71,
       "weight": 0.0,
-      "rank": 432
+      "rank": 441
     },
     {
       "ticker": "EQR",
@@ -6060,10 +6186,10 @@
       "change24h": -2.51,
       "change7d": -1.71,
       "marketCap": null,
-      "pe": 29.31,
+      "pe": 30.1,
       "peg": 16.1,
       "weight": 0.0,
-      "rank": 433
+      "rank": 442
     },
     {
       "ticker": "EL",
@@ -6077,7 +6203,7 @@
       "pe": 26.68,
       "peg": 1.42,
       "weight": 0.0,
-      "rank": 434
+      "rank": 443
     },
     {
       "ticker": "EXC",
@@ -6088,10 +6214,10 @@
       "change24h": -3.08,
       "change7d": -2.4,
       "marketCap": null,
-      "pe": 16.7,
+      "pe": 17.27,
       "peg": 2.71,
       "weight": 0.0,
-      "rank": 435
+      "rank": 444
     },
     {
       "ticker": "XOM",
@@ -6102,10 +6228,10 @@
       "change24h": 0.14,
       "change7d": 1.63,
       "marketCap": null,
-      "pe": 26.43,
+      "pe": 26.38,
       "peg": 1.33,
       "weight": 0.0,
-      "rank": 436
+      "rank": 445
     },
     {
       "ticker": "FCX",
@@ -6116,10 +6242,10 @@
       "change24h": 5.75,
       "change7d": -2.4,
       "marketCap": null,
-      "pe": 31.1,
-      "peg": 5.62,
+      "pe": 29.37,
+      "peg": 5.38,
       "weight": 0.0,
-      "rank": 437
+      "rank": 446
     },
     {
       "ticker": "GIS",
@@ -6133,7 +6259,7 @@
       "pe": 11.34,
       "peg": 11.74,
       "weight": 0.0,
-      "rank": 438
+      "rank": 447
     },
     {
       "ticker": "GPN",
@@ -6144,10 +6270,10 @@
       "change24h": -1.62,
       "change7d": 9.97,
       "marketCap": null,
-      "pe": 31.93,
+      "pe": 32.52,
       "peg": 0.25,
       "weight": 0.0,
-      "rank": 439
+      "rank": 448
     },
     {
       "ticker": "GS",
@@ -6158,10 +6284,10 @@
       "change24h": 4.5,
       "change7d": -6.68,
       "marketCap": null,
-      "pe": 15.83,
-      "peg": 1.49,
+      "pe": 15.15,
+      "peg": 1.39,
       "weight": 0.0,
-      "rank": 440
+      "rank": 449
     },
     {
       "ticker": "HAS",
@@ -6172,10 +6298,10 @@
       "change24h": -0.67,
       "change7d": 6.17,
       "marketCap": null,
-      "pe": 16.82,
+      "pe": 16.91,
       "peg": 1.81,
       "weight": 0.0,
-      "rank": 441
+      "rank": 450
     },
     {
       "ticker": "DOC",
@@ -6186,10 +6312,10 @@
       "change24h": -1.87,
       "change7d": -0.59,
       "marketCap": null,
-      "pe": 68.94,
+      "pe": 71.16,
       "peg": 4.32,
       "weight": 0.0,
-      "rank": 442
+      "rank": 451
     },
     {
       "ticker": "HD",
@@ -6200,10 +6326,10 @@
       "change24h": -1.45,
       "change7d": 0.57,
       "marketCap": null,
-      "pe": 23.69,
+      "pe": 24.03,
       "peg": 1.91,
       "weight": 0.0,
-      "rank": 443
+      "rank": 452
     },
     {
       "ticker": "HRL",
@@ -6214,24 +6340,10 @@
       "change24h": -1.67,
       "change7d": 0.63,
       "marketCap": null,
-      "pe": 29.85,
+      "pe": 30.57,
       "peg": 1.82,
       "weight": 0.0,
-      "rank": 444
-    },
-    {
-      "ticker": "HST",
-      "name": "Host Hotels & Resorts",
-      "sector": "Real Estate",
-      "subSector": "Hotel & Resort REITs",
-      "price": 25.09,
-      "change24h": -1.76,
-      "change7d": 2.41,
-      "marketCap": null,
-      "pe": 17.07,
-      "peg": 4.21,
-      "weight": 0.0,
-      "rank": 445
+      "rank": 453
     },
     {
       "ticker": "HPQ",
@@ -6242,24 +6354,24 @@
       "change24h": -5.46,
       "change7d": 7.01,
       "marketCap": null,
-      "pe": 9.95,
+      "pe": 10.53,
       "peg": 23.36,
       "weight": 0.0,
-      "rank": 446
+      "rank": 454
     },
     {
-      "ticker": "HUM",
-      "name": "Humana",
-      "sector": "Health Care",
-      "subSector": "Managed Health Care",
-      "price": 366.66,
-      "change24h": 0.34,
-      "change7d": -7.78,
+      "ticker": "HST",
+      "name": "Host Hotels & Resorts",
+      "sector": "Real Estate",
+      "subSector": "Hotel & Resort REITs",
+      "price": 25.09,
+      "change24h": -1.76,
+      "change7d": 2.41,
       "marketCap": null,
-      "pe": 34.59,
-      "peg": 2.07,
+      "pe": 17.42,
+      "peg": 4.21,
       "weight": 0.0,
-      "rank": 447
+      "rank": 455
     },
     {
       "ticker": "HII",
@@ -6270,10 +6382,10 @@
       "change24h": 14.09,
       "change7d": 15.37,
       "marketCap": null,
-      "pe": 20.79,
+      "pe": 18.22,
       "peg": 1.02,
       "weight": 0.0,
-      "rank": 448
+      "rank": 456
     },
     {
       "ticker": "IR",
@@ -6287,7 +6399,7 @@
       "pe": 56.97,
       "peg": 0.81,
       "weight": 0.0,
-      "rank": 449
+      "rank": 457
     },
     {
       "ticker": "ICE",
@@ -6298,10 +6410,10 @@
       "change24h": 1.29,
       "change7d": 9.64,
       "marketCap": null,
-      "pe": 22.75,
+      "pe": 22.48,
       "peg": 2.5,
       "weight": 0.0,
-      "rank": 450
+      "rank": 458
     },
     {
       "ticker": "IP",
@@ -6312,10 +6424,10 @@
       "change24h": 1.2,
       "change7d": 13.28,
       "marketCap": null,
-      "pe": 15.06,
+      "pe": 14.84,
       "peg": 1.58,
       "weight": 0.0,
-      "rank": 451
+      "rank": 459
     },
     {
       "ticker": "IFF",
@@ -6329,21 +6441,7 @@
       "pe": 24.61,
       "peg": 0.9,
       "weight": 0.0,
-      "rank": 452
-    },
-    {
-      "ticker": "JCI",
-      "name": "Johnson Controls",
-      "sector": "Industrials",
-      "subSector": "Building Products",
-      "price": 143.88,
-      "change24h": 3.2,
-      "change7d": 0.98,
-      "marketCap": null,
-      "pe": 40.42,
-      "peg": 1.9,
-      "weight": 0.0,
-      "rank": 453
+      "rank": 460
     },
     {
       "ticker": "JPM",
@@ -6354,10 +6452,10 @@
       "change24h": 1.78,
       "change7d": 0.76,
       "marketCap": null,
-      "pe": 15.03,
+      "pe": 14.77,
       "peg": 1.69,
       "weight": 0.0,
-      "rank": 454
+      "rank": 461
     },
     {
       "ticker": "KIM",
@@ -6368,10 +6466,10 @@
       "change24h": -1.92,
       "change7d": -2.41,
       "marketCap": null,
-      "pe": 29.32,
+      "pe": 30.01,
       "peg": 3.37,
       "weight": 0.0,
-      "rank": 455
+      "rank": 462
     },
     {
       "ticker": "KR",
@@ -6382,10 +6480,10 @@
       "change24h": -3.36,
       "change7d": 0.56,
       "marketCap": null,
-      "pe": 33.84,
+      "pe": 35.07,
       "peg": 0.58,
       "weight": 0.0,
-      "rank": 456
+      "rank": 463
     },
     {
       "ticker": "LH",
@@ -6396,24 +6494,10 @@
       "change24h": 2.73,
       "change7d": 12.1,
       "marketCap": null,
-      "pe": 27.92,
+      "pe": 27.18,
       "peg": 1.3,
       "weight": 0.0,
-      "rank": 457
-    },
-    {
-      "ticker": "LII",
-      "name": "Lennox International",
-      "sector": "Industrials",
-      "subSector": "Building Products",
-      "price": 417.45,
-      "change24h": -2.92,
-      "change7d": -21.65,
-      "marketCap": null,
-      "pe": 18.56,
-      "peg": 1.57,
-      "weight": 0.0,
-      "rank": 458
+      "rank": 464
     },
     {
       "ticker": "LLY",
@@ -6424,10 +6508,10 @@
       "change24h": -4.55,
       "change7d": -0.69,
       "marketCap": null,
-      "pe": 40.97,
-      "peg": 1.67,
+      "pe": 42.92,
+      "peg": 1.69,
       "weight": 0.0,
-      "rank": 459
+      "rank": 465
     },
     {
       "ticker": "LYV",
@@ -6438,10 +6522,10 @@
       "change24h": -0.47,
       "change7d": 3.17,
       "marketCap": null,
-      "pe": 85.49,
+      "pe": 83.24,
       "peg": 18.96,
       "weight": 0.0,
-      "rank": 460
+      "rank": 466
     },
     {
       "ticker": "LOW",
@@ -6452,10 +6536,10 @@
       "change24h": -2.6,
       "change7d": 2.8,
       "marketCap": null,
-      "pe": 17.77,
+      "pe": 18.25,
       "peg": 1.41,
       "weight": 0.0,
-      "rank": 461
+      "rank": 467
     },
     {
       "ticker": "LYB",
@@ -6469,7 +6553,7 @@
       "pe": 9.34,
       "peg": 1.53,
       "weight": 0.0,
-      "rank": 462
+      "rank": 468
     },
     {
       "ticker": "MAR",
@@ -6480,10 +6564,10 @@
       "change24h": -1.48,
       "change7d": 1.54,
       "marketCap": null,
-      "pe": 39.24,
+      "pe": 39.86,
       "peg": 2.25,
       "weight": 0.0,
-      "rank": 463
+      "rank": 469
     },
     {
       "ticker": "MA",
@@ -6494,38 +6578,10 @@
       "change24h": 2.49,
       "change7d": 8.53,
       "marketCap": null,
-      "pe": 33.39,
+      "pe": 32.58,
       "peg": 1.73,
       "weight": 0.0,
-      "rank": 464
-    },
-    {
-      "ticker": "MRK",
-      "name": "Merck & Co.",
-      "sector": "Health Care",
-      "subSector": "Pharmaceuticals",
-      "price": 129.79,
-      "change24h": -0.44,
-      "change7d": 1.82,
-      "marketCap": null,
-      "pe": 36.56,
-      "peg": 12.07,
-      "weight": 0.0,
-      "rank": 465
-    },
-    {
-      "ticker": "MCK",
-      "name": "McKesson Corporation",
-      "sector": "Health Care",
-      "subSector": "Health Care Distributors",
-      "price": 865.51,
-      "change24h": -2.59,
-      "change7d": 6.32,
-      "marketCap": null,
-      "pe": 22.55,
-      "peg": 1.74,
-      "weight": 0.0,
-      "rank": 466
+      "rank": 470
     },
     {
       "ticker": "MCD",
@@ -6536,10 +6592,24 @@
       "change24h": -1.13,
       "change7d": 1.85,
       "marketCap": null,
-      "pe": 22.11,
+      "pe": 22.37,
       "peg": 2.61,
       "weight": 0.0,
-      "rank": 467
+      "rank": 471
+    },
+    {
+      "ticker": "MCK",
+      "name": "McKesson Corporation",
+      "sector": "Health Care",
+      "subSector": "Health Care Distributors",
+      "price": 865.51,
+      "change24h": -2.59,
+      "change7d": 6.32,
+      "marketCap": null,
+      "pe": 23.15,
+      "peg": 1.74,
+      "weight": 0.0,
+      "rank": 472
     },
     {
       "ticker": "MDT",
@@ -6550,10 +6620,24 @@
       "change24h": -2.09,
       "change7d": 4.66,
       "marketCap": null,
-      "pe": 22.98,
-      "peg": 1.66,
+      "pe": 23.48,
+      "peg": 1.73,
       "weight": 0.0,
-      "rank": 468
+      "rank": 473
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "sector": "Health Care",
+      "subSector": "Pharmaceuticals",
+      "price": 129.79,
+      "change24h": -0.44,
+      "change7d": 1.82,
+      "marketCap": null,
+      "pe": 36.77,
+      "peg": 12.07,
+      "weight": 0.0,
+      "rank": 474
     },
     {
       "ticker": "MTD",
@@ -6567,7 +6651,7 @@
       "pe": 32.39,
       "peg": 2.91,
       "weight": 0.0,
-      "rank": 469
+      "rank": 475
     },
     {
       "ticker": "MGM",
@@ -6581,7 +6665,7 @@
       "pe": 62.55,
       "peg": 1.23,
       "weight": 0.0,
-      "rank": 470
+      "rank": 476
     },
     {
       "ticker": "MU",
@@ -6592,10 +6676,10 @@
       "change24h": 18.36,
       "change7d": -8.84,
       "marketCap": null,
-      "pe": 19.76,
-      "peg": 0.13,
+      "pe": 16.7,
+      "peg": 0.11,
       "weight": 0.0,
-      "rank": 471
+      "rank": 477
     },
     {
       "ticker": "NRG",
@@ -6606,10 +6690,10 @@
       "change24h": 7.84,
       "change7d": -4.29,
       "marketCap": null,
-      "pe": 147.22,
+      "pe": 136.7,
       "peg": 0.56,
       "weight": 0.0,
-      "rank": 472
+      "rank": 478
     },
     {
       "ticker": "NUE",
@@ -6620,10 +6704,10 @@
       "change24h": 0.4,
       "change7d": 8.96,
       "marketCap": null,
-      "pe": 20.53,
+      "pe": 20.45,
       "peg": 5.21,
       "weight": 0.0,
-      "rank": 473
+      "rank": 479
     },
     {
       "ticker": "PFE",
@@ -6637,7 +6721,7 @@
       "pe": 19.02,
       "peg": 2.96,
       "weight": 0.0,
-      "rank": 474
+      "rank": 480
     },
     {
       "ticker": "PNW",
@@ -6648,10 +6732,10 @@
       "change24h": -0.94,
       "change7d": -4.68,
       "marketCap": null,
-      "pe": 18.9,
+      "pe": 19.08,
       "peg": 3.63,
       "weight": 0.0,
-      "rank": 475
+      "rank": 481
     },
     {
       "ticker": "PPL",
@@ -6665,21 +6749,7 @@
       "pe": 21.82,
       "peg": 1.39,
       "weight": 0.0,
-      "rank": 476
-    },
-    {
-      "ticker": "PPG",
-      "name": "PPG Industries",
-      "sector": "Materials",
-      "subSector": "Specialty Chemicals",
-      "price": 112.03,
-      "change24h": 0.18,
-      "change7d": -4.57,
-      "marketCap": null,
-      "pe": 16.07,
-      "peg": 1.7,
-      "weight": 0.0,
-      "rank": 477
+      "rank": 482
     },
     {
       "ticker": "PG",
@@ -6690,10 +6760,10 @@
       "change24h": -1.46,
       "change7d": -2.75,
       "marketCap": null,
-      "pe": 21.05,
+      "pe": 21.36,
       "peg": 4.1,
       "weight": 0.0,
-      "rank": 478
+      "rank": 483
     },
     {
       "ticker": "PRU",
@@ -6704,24 +6774,10 @@
       "change24h": 0.11,
       "change7d": 3.3,
       "marketCap": null,
-      "pe": 12.64,
+      "pe": 12.63,
       "peg": 1.33,
       "weight": 0.0,
-      "rank": 479
-    },
-    {
-      "ticker": "PLD",
-      "name": "Prologis",
-      "sector": "Real Estate",
-      "subSector": "Industrial REITs",
-      "price": 146.19,
-      "change24h": 0.49,
-      "change7d": 1.03,
-      "marketCap": null,
-      "pe": 32.49,
-      "peg": 134.23,
-      "weight": 0.0,
-      "rank": 480
+      "rank": 484
     },
     {
       "ticker": "PHM",
@@ -6732,24 +6788,10 @@
       "change24h": -2.7,
       "change7d": 1.57,
       "marketCap": null,
-      "pe": 13.15,
+      "pe": 13.51,
       "peg": 1.16,
       "weight": 0.0,
-      "rank": 481
-    },
-    {
-      "ticker": "O",
-      "name": "Realty Income",
-      "sector": "Real Estate",
-      "subSector": "Retail REITs",
-      "price": 64.43,
-      "change24h": -1.69,
-      "change7d": -0.92,
-      "marketCap": null,
-      "pe": 52.81,
-      "peg": 3.11,
-      "weight": 0.0,
-      "rank": 482
+      "rank": 485
     },
     {
       "ticker": "REG",
@@ -6760,10 +6802,24 @@
       "change24h": -0.92,
       "change7d": -2.26,
       "marketCap": null,
-      "pe": 27.62,
+      "pe": 27.9,
       "peg": 2.61,
       "weight": 0.0,
-      "rank": 483
+      "rank": 486
+    },
+    {
+      "ticker": "O",
+      "name": "Realty Income",
+      "sector": "Real Estate",
+      "subSector": "Retail REITs",
+      "price": 64.43,
+      "change24h": -1.69,
+      "change7d": -0.92,
+      "marketCap": null,
+      "pe": 53.69,
+      "peg": 3.11,
+      "weight": 0.0,
+      "rank": 487
     },
     {
       "ticker": "RSG",
@@ -6774,10 +6830,10 @@
       "change24h": -3.46,
       "change7d": -2.4,
       "marketCap": null,
-      "pe": 30.36,
+      "pe": 31.45,
       "peg": 3.15,
       "weight": 0.0,
-      "rank": 484
+      "rank": 488
     },
     {
       "ticker": "RF",
@@ -6788,10 +6844,10 @@
       "change24h": -0.29,
       "change7d": -0.03,
       "marketCap": null,
-      "pe": 12.54,
+      "pe": 12.59,
       "peg": 1.91,
       "weight": 0.0,
-      "rank": 485
+      "rank": 489
     },
     {
       "ticker": "CRM",
@@ -6802,10 +6858,10 @@
       "change24h": -4.07,
       "change7d": 10.87,
       "marketCap": null,
-      "pe": 20.94,
+      "pe": 21.82,
       "peg": 0.78,
       "weight": 0.0,
-      "rank": 486
+      "rank": 490
     },
     {
       "ticker": "SRE",
@@ -6816,10 +6872,10 @@
       "change24h": 0.86,
       "change7d": -3.73,
       "marketCap": null,
-      "pe": 30.47,
+      "pe": 30.16,
       "peg": 0.79,
       "weight": 0.0,
-      "rank": 487
+      "rank": 491
     },
     {
       "ticker": "SPG",
@@ -6830,24 +6886,10 @@
       "change24h": -2.19,
       "change7d": 1.87,
       "marketCap": null,
-      "pe": 64.01,
+      "pe": 65.28,
       "peg": 4.58,
       "weight": 0.0,
-      "rank": 488
-    },
-    {
-      "ticker": "SO",
-      "name": "Southern Company",
-      "sector": "Utilities",
-      "subSector": "Electric Utilities",
-      "price": 94.34,
-      "change24h": -1.78,
-      "change7d": -1.52,
-      "marketCap": null,
-      "pe": 24.13,
-      "peg": 2.44,
-      "weight": 0.0,
-      "rank": 489
+      "rank": 492
     },
     {
       "ticker": "TGT",
@@ -6858,10 +6900,10 @@
       "change24h": -0.95,
       "change7d": 4.78,
       "marketCap": null,
-      "pe": 19.09,
+      "pe": 19.27,
       "peg": 2.71,
       "weight": 0.0,
-      "rank": 490
+      "rank": 493
     },
     {
       "ticker": "TDY",
@@ -6872,10 +6914,10 @@
       "change24h": 2.82,
       "change7d": -0.2,
       "marketCap": null,
-      "pe": 31.44,
+      "pe": 30.58,
       "peg": 1.4,
       "weight": 0.0,
-      "rank": 491
+      "rank": 494
     },
     {
       "ticker": "TER",
@@ -6886,10 +6928,10 @@
       "change24h": 14.43,
       "change7d": -1.07,
       "marketCap": null,
-      "pe": 50.2,
+      "pe": 43.88,
       "peg": 1.26,
       "weight": 0.0,
-      "rank": 492
+      "rank": 495
     },
     {
       "ticker": "TMO",
@@ -6900,10 +6942,10 @@
       "change24h": 0.05,
       "change7d": 9.56,
       "marketCap": null,
-      "pe": 31.08,
+      "pe": 31.06,
       "peg": 1.88,
       "weight": 0.0,
-      "rank": 493
+      "rank": 496
     },
     {
       "ticker": "TDG",
@@ -6914,24 +6956,10 @@
       "change24h": -1.16,
       "change7d": 4.62,
       "marketCap": null,
-      "pe": 39.07,
+      "pe": 39.53,
       "peg": 3.05,
       "weight": 0.0,
-      "rank": 494
-    },
-    {
-      "ticker": "TYL",
-      "name": "Tyler Technologies",
-      "sector": "Information Technology",
-      "subSector": "Application Software",
-      "price": 323.31,
-      "change24h": -3.06,
-      "change7d": 13.71,
-      "marketCap": null,
-      "pe": 42.54,
-      "peg": 1.6,
-      "weight": 0.0,
-      "rank": 495
+      "rank": 497
     },
     {
       "ticker": "TSN",
@@ -6942,10 +6970,10 @@
       "change24h": -0.64,
       "change7d": 6.29,
       "marketCap": null,
-      "pe": 47.76,
+      "pe": 48.13,
       "peg": 1.04,
       "weight": 0.0,
-      "rank": 496
+      "rank": 498
     },
     {
       "ticker": "UPS",
@@ -6956,24 +6984,10 @@
       "change24h": 0.68,
       "change7d": -9.12,
       "marketCap": null,
-      "pe": 19.57,
+      "pe": 19.42,
       "peg": 1.65,
       "weight": 0.0,
-      "rank": 497
-    },
-    {
-      "ticker": "VTR",
-      "name": "Ventas",
-      "sector": "Real Estate",
-      "subSector": "Health Care REITs",
-      "price": 91.92,
-      "change24h": -5.94,
-      "change7d": -5.41,
-      "marketCap": null,
-      "pe": 167.13,
-      "peg": 1.72,
-      "weight": 0.0,
-      "rank": 498
+      "rank": 499
     },
     {
       "ticker": "GWW",
@@ -6984,10 +6998,10 @@
       "change24h": -0.25,
       "change7d": 0.11,
       "marketCap": null,
-      "pe": 36.41,
+      "pe": 36.5,
       "peg": 2.13,
       "weight": 0.0,
-      "rank": 499
+      "rank": 500
     },
     {
       "ticker": "DIS",
@@ -6998,22 +7012,8 @@
       "change24h": -2.36,
       "change7d": 0.3,
       "marketCap": null,
-      "pe": 15.39,
+      "pe": 15.74,
       "peg": 2.3,
-      "weight": 0.0,
-      "rank": 500
-    },
-    {
-      "ticker": "WEC",
-      "name": "WEC Energy Group",
-      "sector": "Utilities",
-      "subSector": "Electric Utilities",
-      "price": 110.05,
-      "change24h": -1.11,
-      "change7d": -3.01,
-      "marketCap": null,
-      "pe": 21.37,
-      "peg": 2.34,
       "weight": 0.0,
       "rank": 501
     },
@@ -7026,7 +7026,7 @@
       "change24h": 15.37,
       "change7d": -4.24,
       "marketCap": null,
-      "pe": 31.86,
+      "pe": 27.62,
       "peg": 0.41,
       "weight": 0.0,
       "rank": 502
@@ -7040,7 +7040,7 @@
       "change24h": -2.44,
       "change7d": 2.48,
       "marketCap": null,
-      "pe": 12.46,
+      "pe": 12.78,
       "peg": 1.87,
       "weight": 0.0,
       "rank": 503
