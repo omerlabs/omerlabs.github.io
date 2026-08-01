@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-31 21:48:30 UTC",
-  "totalMarketCap": 32655850633216,
+  "lastUpdated": "2026-08-01 00:16:23 UTC",
+  "totalMarketCap": 30526095910912,
   "companiesCount": 48,
   "data": [
     {
@@ -14,7 +14,7 @@
       "name": "Nvidia",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 14.89,
+      "weight": 15.929,
       "rank": 1
     },
     {
@@ -28,7 +28,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "subSector": "Computer Hardware",
-      "weight": 13.894,
+      "weight": 14.863,
       "rank": 2
     },
     {
@@ -42,7 +42,7 @@
       "name": "Alphabet Inc. (Class C)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 13.357,
+      "weight": 14.289,
       "rank": 3
     },
     {
@@ -56,7 +56,7 @@
       "name": "Alphabet Inc. (Class A)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 13.337,
+      "weight": 14.268,
       "rank": 4
     },
     {
@@ -70,7 +70,7 @@
       "name": "Microsoft",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 10.567,
+      "weight": 11.304,
       "rank": 5
     },
     {
@@ -84,7 +84,7 @@
       "name": "Broadcom",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 5.671,
+      "weight": 6.067,
       "rank": 6
     },
     {
@@ -93,41 +93,13 @@
       "change7d": -8.15,
       "marketCap": 1418222239744,
       "pe": 20.95,
-      "peg": 0.87,
+      "peg": 0.85,
       "ticker": "META",
       "name": "Meta Platforms",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 4.343,
+      "weight": 4.646,
       "rank": 7
-    },
-    {
-      "price": 823.03,
-      "change24h": -5.9,
-      "change7d": -16.88,
-      "marketCap": 929524482048,
-      "pe": 18.6,
-      "peg": 0.11,
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "sector": "Technology",
-      "subSector": "Semiconductors",
-      "weight": 2.846,
-      "rank": 8
-    },
-    {
-      "price": 476.15,
-      "change24h": -1.9,
-      "change7d": -11.77,
-      "marketCap": 776410431488,
-      "pe": 158.19,
-      "peg": 1.01,
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
-      "sector": "Technology",
-      "subSector": "Semiconductors",
-      "weight": 2.378,
-      "rank": 9
     },
     {
       "price": 1629.0,
@@ -140,8 +112,8 @@
       "name": "ASML Holding",
       "sector": "Technology",
       "subSector": "Industrial Machinery",
-      "weight": 1.916,
-      "rank": 10
+      "weight": 2.05,
+      "rank": 8
     },
     {
       "price": 90.2,
@@ -154,8 +126,8 @@
       "name": "Intel",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 1.393,
-      "rank": 11
+      "weight": 1.49,
+      "rank": 9
     },
     {
       "price": 507.67,
@@ -168,8 +140,8 @@
       "name": "Applied Materials",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 1.234,
-      "rank": 12
+      "weight": 1.32,
+      "rank": 10
     },
     {
       "price": 293.02,
@@ -182,8 +154,8 @@
       "name": "Lam Research",
       "sector": "Technology",
       "subSector": "Industrial Machinery",
-      "weight": 1.123,
-      "rank": 13
+      "weight": 1.201,
+      "rank": 11
     },
     {
       "price": 123.06,
@@ -196,8 +168,8 @@
       "name": "Palantir Technologies",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.903,
-      "rank": 14
+      "weight": 0.966,
+      "rank": 12
     },
     {
       "price": 331.83,
@@ -210,8 +182,8 @@
       "name": "Palo Alto Networks",
       "sector": "Technology",
       "subSector": "Computer Peripheral Equipment",
-      "weight": 0.828,
-      "rank": 15
+      "weight": 0.886,
+      "rank": 13
     },
     {
       "price": 239.69,
@@ -224,8 +196,8 @@
       "name": "Arm Holdings",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.784,
-      "rank": 16
+      "weight": 0.839,
+      "rank": 14
     },
     {
       "price": 275.74,
@@ -238,8 +210,8 @@
       "name": "Texas Instruments",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.771,
-      "rank": 17
+      "weight": 0.825,
+      "rank": 15
     },
     {
       "price": 182.82,
@@ -252,8 +224,8 @@
       "name": "KLA Corporation",
       "sector": "Technology",
       "subSector": "Electronic Components",
-      "weight": 0.731,
-      "rank": 18
+      "weight": 0.782,
+      "rank": 16
     },
     {
       "price": 190.86,
@@ -266,36 +238,22 @@
       "name": "CrowdStrike",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.595,
-      "rank": 19
+      "weight": 0.637,
+      "rank": 17
     },
     {
       "price": 856.13,
       "change24h": 0.52,
       "change7d": -6.27,
-      "marketCap": 193701216256,
+      "marketCap": 194341502976,
       "pe": 61.68,
       "peg": 0.53,
       "ticker": "STX",
       "name": "Seagate Technology",
       "sector": "Technology",
       "subSector": "Electronic Components",
-      "weight": 0.593,
-      "rank": 20
-    },
-    {
-      "price": 544.84,
-      "change24h": 2.21,
-      "change7d": -2.41,
-      "marketCap": 187796635648,
-      "pe": 32.66,
-      "peg": 0.44,
-      "ticker": "WDC",
-      "name": "Western Digital",
-      "sector": "Technology",
-      "subSector": "Electronic Components",
-      "weight": 0.575,
-      "rank": 21
+      "weight": 0.637,
+      "rank": 18
     },
     {
       "price": 1214.83,
@@ -308,22 +266,8 @@
       "name": "Sandisk",
       "sector": "Technology",
       "subSector": "Electronic Components",
-      "weight": 0.551,
-      "rank": 22
-    },
-    {
-      "price": 367.41,
-      "change24h": 0.2,
-      "change7d": -3.36,
-      "marketCap": 178960646144,
-      "pe": 54.76,
-      "peg": 0.65,
-      "ticker": "ADI",
-      "name": "Analog Devices",
-      "sector": "Technology",
-      "subSector": "Semiconductors",
-      "weight": 0.548,
-      "rank": 23
+      "weight": 0.589,
+      "rank": 19
     },
     {
       "price": 187.56,
@@ -336,8 +280,8 @@
       "name": "Marvell Technology",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.516,
-      "rank": 24
+      "weight": 0.551,
+      "rank": 20
     },
     {
       "price": 147.61,
@@ -350,8 +294,8 @@
       "name": "Qualcomm",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.475,
-      "rank": 25
+      "weight": 0.508,
+      "rank": 21
     },
     {
       "price": 117.15,
@@ -364,8 +308,8 @@
       "name": "Shopify",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.466,
-      "rank": 26
+      "weight": 0.498,
+      "rank": 22
     },
     {
       "price": 395.9,
@@ -378,8 +322,8 @@
       "name": "AppLovin",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.407,
-      "rank": 27
+      "weight": 0.436,
+      "rank": 23
     },
     {
       "price": 88.56,
@@ -392,8 +336,8 @@
       "name": "PDD Holdings",
       "sector": "Technology",
       "subSector": "EDP Services",
-      "weight": 0.386,
-      "rank": 28
+      "weight": 0.413,
+      "rank": 24
     },
     {
       "price": 161.95,
@@ -406,8 +350,8 @@
       "name": "Fortinet",
       "sector": "Technology",
       "subSector": "Computer Peripheral Equipment",
-      "weight": 0.363,
-      "rank": 29
+      "weight": 0.389,
+      "rank": 25
     },
     {
       "price": 250.41,
@@ -420,8 +364,8 @@
       "name": "Adobe Inc.",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.305,
-      "rank": 30
+      "weight": 0.326,
+      "rank": 26
     },
     {
       "price": 267.97,
@@ -434,22 +378,22 @@
       "name": "Datadog",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.292,
-      "rank": 31
+      "weight": 0.312,
+      "rank": 27
     },
     {
       "price": 340.02,
       "change24h": 2.16,
       "change7d": 2.89,
-      "marketCap": 93782949888,
+      "marketCap": 93639122944,
       "pe": 67.6,
       "peg": 3.04,
       "ticker": "CDNS",
       "name": "Cadence Design Systems",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.287,
-      "rank": 32
+      "weight": 0.307,
+      "rank": 28
     },
     {
       "price": 316.07,
@@ -462,8 +406,8 @@
       "name": "Intuit",
       "sector": "Technology",
       "subSector": "Computer Software",
-      "weight": 0.265,
-      "rank": 33
+      "weight": 0.283,
+      "rank": 29
     },
     {
       "price": 196.16,
@@ -476,8 +420,8 @@
       "name": "DoorDash",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.262,
-      "rank": 34
+      "weight": 0.28,
+      "rank": 30
     },
     {
       "price": 388.76,
@@ -490,8 +434,8 @@
       "name": "Synopsys",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.228,
-      "rank": 35
+      "weight": 0.244,
+      "rank": 31
     },
     {
       "price": 1426.03,
@@ -504,8 +448,8 @@
       "name": "Monolithic Power Systems",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.215,
-      "rank": 36
+      "weight": 0.23,
+      "rank": 32
     },
     {
       "price": 229.16,
@@ -518,22 +462,8 @@
       "name": "NXP Semiconductors",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.177,
-      "rank": 37
-    },
-    {
-      "price": 367.69,
-      "change24h": 0.6,
-      "change7d": -1.62,
-      "marketCap": 57558986752,
-      "pe": 50.58,
-      "peg": 1.26,
-      "ticker": "TER",
-      "name": "Teradyne",
-      "sector": "Technology",
-      "subSector": "Semiconductors",
-      "weight": 0.176,
-      "rank": 38
+      "weight": 0.189,
+      "rank": 33
     },
     {
       "price": 713.94,
@@ -546,8 +476,8 @@
       "name": "Lumentum",
       "sector": "Technology",
       "subSector": "Communication Equipment",
-      "weight": 0.17,
-      "rank": 39
+      "weight": 0.182,
+      "rank": 34
     },
     {
       "price": 311.23,
@@ -560,8 +490,8 @@
       "name": "Astera Labs",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.163,
-      "rank": 40
+      "weight": 0.175,
+      "rank": 35
     },
     {
       "price": 234.2,
@@ -574,8 +504,8 @@
       "name": "Autodesk",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.151,
-      "rank": 41
+      "weight": 0.162,
+      "rank": 36
     },
     {
       "price": 190.41,
@@ -588,8 +518,8 @@
       "name": "Nebius Group",
       "sector": "Technology",
       "subSector": "Computer Services",
-      "weight": 0.148,
-      "rank": 42
+      "weight": 0.158,
+      "rank": 37
     },
     {
       "price": 98.13,
@@ -602,8 +532,8 @@
       "name": "Thomson Reuters",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.131,
-      "rank": 43
+      "weight": 0.14,
+      "rank": 38
     },
     {
       "price": 74.29,
@@ -616,8 +546,8 @@
       "name": "Microchip Technology",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 0.124,
-      "rank": 44
+      "weight": 0.132,
+      "rank": 39
     },
     {
       "price": 160.34,
@@ -630,8 +560,8 @@
       "name": "Workday, Inc.",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.121,
-      "rank": 45
+      "weight": 0.13,
+      "rank": 40
     },
     {
       "price": 71.77,
@@ -644,8 +574,8 @@
       "name": "CoreWeave",
       "sector": "Technology",
       "subSector": "Computer Services",
-      "weight": 0.12,
-      "rank": 46
+      "weight": 0.128,
+      "rank": 41
     },
     {
       "price": 391.97,
@@ -658,8 +588,8 @@
       "name": "Roper Technologies",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.119,
-      "rank": 47
+      "weight": 0.127,
+      "rank": 42
     },
     {
       "price": 93.28,
@@ -672,7 +602,77 @@
       "name": "MicroStrategy",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.104,
+      "weight": 0.112,
+      "rank": 43
+    },
+    {
+      "price": 476.15,
+      "change24h": -1.9,
+      "change7d": -11.77,
+      "marketCap": null,
+      "pe": 158.19,
+      "peg": 1.01,
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "sector": "Technology",
+      "subSector": "Semiconductors",
+      "weight": 0.0,
+      "rank": 44
+    },
+    {
+      "price": 367.41,
+      "change24h": 0.2,
+      "change7d": -3.36,
+      "marketCap": null,
+      "pe": 54.76,
+      "peg": 0.65,
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "sector": "Technology",
+      "subSector": "Semiconductors",
+      "weight": 0.0,
+      "rank": 45
+    },
+    {
+      "price": 823.03,
+      "change24h": -5.9,
+      "change7d": -16.88,
+      "marketCap": null,
+      "pe": 18.6,
+      "peg": 0.11,
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sector": "Technology",
+      "subSector": "Semiconductors",
+      "weight": 0.0,
+      "rank": 46
+    },
+    {
+      "price": 367.69,
+      "change24h": 0.6,
+      "change7d": -1.62,
+      "marketCap": null,
+      "pe": 50.58,
+      "peg": 1.26,
+      "ticker": "TER",
+      "name": "Teradyne",
+      "sector": "Technology",
+      "subSector": "Semiconductors",
+      "weight": 0.0,
+      "rank": 47
+    },
+    {
+      "price": 544.84,
+      "change24h": 2.21,
+      "change7d": -2.41,
+      "marketCap": null,
+      "pe": 32.66,
+      "peg": 0.41,
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "sector": "Technology",
+      "subSector": "Electronic Components",
+      "weight": 0.0,
       "rank": 48
     }
   ]

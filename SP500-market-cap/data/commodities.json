@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-31 21:48:31 UTC",
-  "totalMarketCap": 989522,
+  "lastUpdated": "2026-08-01 00:16:24 UTC",
+  "totalMarketCap": 989505,
   "companiesCount": 13,
   "data": [
     {
@@ -11,7 +11,7 @@
       "price": 86.8,
       "change24h": 3.84,
       "change7d": -5.85,
-      "marketCap": 235348,
+      "marketCap": 235346,
       "pe": null,
       "peg": null,
       "weight": 23.784,
@@ -95,10 +95,10 @@
       "price": 14.65,
       "change24h": 1.52,
       "change7d": -0.27,
-      "marketCap": 69242,
+      "marketCap": 69237,
       "pe": null,
       "peg": null,
-      "weight": 6.998,
+      "weight": 6.997,
       "rank": 7
     },
     {
@@ -179,10 +179,10 @@
       "price": 90.12,
       "change24h": 1.22,
       "change7d": -10.5,
-      "marketCap": 1016,
+      "marketCap": 1006,
       "pe": null,
       "peg": null,
-      "weight": 0.103,
+      "weight": 0.102,
       "rank": 13
     }
   ]
