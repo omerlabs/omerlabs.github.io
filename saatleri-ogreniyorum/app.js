@@ -24,9 +24,10 @@
   let lastQuestionKey1 = '';
   let lastQuestionKey2 = '';
 
-  // Track last ticked time to ensure sound ONLY plays when time actually steps
   let lastSoundMinute = -1;
   let lastSoundHour = -1;
+
+  let autoNextTimer = null;
 
   function loadState() {
     try {
@@ -59,7 +60,7 @@
   }
 
   // ==========================================
-  // WEB AUDIO SYNTHESIZER (Clean Mechanical Ticks)
+  // WEB AUDIO SYNTHESIZER
   // ==========================================
   let audioCtx = null;
 
@@ -81,7 +82,6 @@
     const now = audioCtx.currentTime;
 
     if (type === 'tick') {
-      // Soft, ultra-clean mechanical woodblock tick (no buzz/crackle)
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sine';
@@ -94,7 +94,6 @@
       osc.start(now);
       osc.stop(now + 0.02);
     } else if (type === 'correct') {
-      // Upbeat 3-note harmonic chime (C5 -> E5 -> G5)
       const notes = [523.25, 659.25, 783.99];
       notes.forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
@@ -125,7 +124,6 @@
         osc.stop(start + 0.3);
       });
     } else if (type === 'wrong') {
-      // Gentle soft low double-bloop
       [220, 196].forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -161,31 +159,23 @@
   const mascotAvatar = document.getElementById('mascot-avatar');
   const mascotSpeech = document.getElementById('mascot-speech');
 
-  // Modals
   const modalHelp = document.getElementById('modal-help');
   const modalStats = document.getElementById('modal-stats');
   const modalIosGuide = document.getElementById('modal-ios-guide');
 
-  // Mode 1 Elements
   const mode1LevelPill = document.getElementById('mode1-level-pill');
   const mode1StreakEl = document.getElementById('mode1-streak');
   const mode1TargetDigital = document.getElementById('mode1-target-digital');
   const mode1CurrentVal = document.getElementById('mode1-current-val');
   const mode1Feedback = document.getElementById('mode1-feedback');
   const btnMode1Check = document.getElementById('btn-mode1-check');
-  const btnMode1Next = document.getElementById('btn-mode1-next');
   const svgClockInteractive = document.getElementById('interactive-clock');
 
-  // Mode 2 Elements
   const mode2LevelPill = document.getElementById('mode2-level-pill');
   const mode2StreakEl = document.getElementById('mode2-streak');
   const mode2Feedback = document.getElementById('mode2-feedback');
   const choiceButtonsGrid = document.getElementById('choice-buttons-grid');
-  const btnMode2Next = document.getElementById('btn-mode2-next');
 
-  // ==========================================
-  // GAME ENGINE STATE
-  // ==========================================
   let activeQuestion = {
     targetHour: 3,
     targetMinute: 0,
@@ -397,7 +387,6 @@
       activeQuestion.currentHour = hourVal;
     }
 
-    // Play tick sound ONLY when the snapped minute or hour actually changes
     if (activeQuestion.currentMinute !== lastSoundMinute || activeQuestion.currentHour !== lastSoundHour) {
       playSound('tick');
       lastSoundMinute = activeQuestion.currentMinute;
@@ -486,10 +475,18 @@
     return arr.sort(() => Math.random() - 0.5);
   }
 
+  function clearAutoTimer() {
+    if (autoNextTimer) {
+      clearTimeout(autoNextTimer);
+      autoNextTimer = null;
+    }
+  }
+
   // ==========================================
   // GAME FLOW - MODE 1: SAATİ KUR
   // ==========================================
   function setupMode1() {
+    clearAutoTimer();
     state.currentMode = 1;
     const maxTarget = LEVEL_TARGETS[state.currentLevel];
 
@@ -505,13 +502,13 @@
     updateHandPositions('interactive', 12, 0);
 
     const targetFormatted = formatTime(q.hour, q.minute);
-    mode1TargetDigital.textContent = targetFormatted; // Clean time readout only
+    mode1TargetDigital.textContent = targetFormatted;
 
     mode1Feedback.textContent = '';
     mode1Feedback.className = 'feedback-msg';
 
+    btnMode1Check.disabled = false;
     btnMode1Check.classList.remove('hidden');
-    btnMode1Next.classList.add('hidden');
 
     setMascotSpeech('İbreleri çevir ve saati ayarla! 🕒');
   }
@@ -524,22 +521,22 @@
                       (activeQuestion.currentMinute === activeQuestion.targetMinute);
 
     if (isCorrect) {
+      btnMode1Check.disabled = true; // Prevent extra clicks during auto advance
       state.stars++;
       state.totalCorrect++;
       state.levelProgress1++;
       starCountEl.textContent = state.stars;
       mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
 
-      btnMode1Check.classList.add('hidden');
-
       if (state.levelProgress1 >= maxTarget) {
         handleLevelCompletion(1);
+        autoNextTimer = setTimeout(() => { setupMode1(); }, 1800);
       } else {
         playSound('correct');
         mode1Feedback.textContent = 'Harika! Doğru buldun! 🎉';
         mode1Feedback.className = 'feedback-msg correct';
         triggerMascotCelebrate('Aferin sana! Çok zekisin! 🌟');
-        btnMode1Next.classList.remove('hidden');
+        autoNextTimer = setTimeout(() => { setupMode1(); }, 1200);
       }
 
       saveState();
@@ -557,6 +554,7 @@
   // GAME FLOW - MODE 2: DOĞRU SAATİ BUL
   // ==========================================
   function setupMode2() {
+    clearAutoTimer();
     state.currentMode = 2;
     const maxTarget = LEVEL_TARGETS[state.currentLevel];
 
@@ -583,7 +581,6 @@
 
     mode2Feedback.textContent = '';
     mode2Feedback.className = 'feedback-msg';
-    btnMode2Next.classList.add('hidden');
 
     setMascotSpeech('Doğru cevaba tıkla! 🧐');
   }
@@ -607,12 +604,13 @@
 
       if (state.levelProgress2 >= maxTarget) {
         handleLevelCompletion(2);
+        autoNextTimer = setTimeout(() => { setupMode2(); }, 1800);
       } else {
         playSound('correct');
         mode2Feedback.textContent = 'Tebrikler! Çok hızlısın! 🎉';
         mode2Feedback.className = 'feedback-msg correct';
         triggerMascotCelebrate('Muhteşemsin! ⭐');
-        btnMode2Next.classList.remove('hidden');
+        autoNextTimer = setTimeout(() => { setupMode2(); }, 1200);
       }
 
       saveState();
@@ -629,7 +627,9 @@
       mode2Feedback.textContent = `Doğru cevap ${targetStr} olmalıydı. 💛`;
       mode2Feedback.className = 'feedback-msg wrong';
       setMascotSpeech('Bir sonraki soruda bulacaksın! 💪');
-      btnMode2Next.classList.remove('hidden');
+
+      // Auto advance after brief delay so child sees correct answer
+      autoNextTimer = setTimeout(() => { setupMode2(); }, 1800);
       saveState();
     }
   }
@@ -653,13 +653,9 @@
       if (mode === 1) {
         mode1Feedback.textContent = msg;
         mode1Feedback.className = 'feedback-msg correct';
-        btnMode1Next.textContent = `Seviye ${nextLevel}'e Geç 🚀`;
-        btnMode1Next.classList.remove('hidden');
       } else {
         mode2Feedback.textContent = msg;
         mode2Feedback.className = 'feedback-msg correct';
-        btnMode2Next.textContent = `Seviye ${nextLevel}'e Geç 🚀`;
-        btnMode2Next.classList.remove('hidden');
       }
       triggerMascotCelebrate(`Seviye ${nextLevel}'e geçtik! ⭐`);
 
@@ -672,13 +668,9 @@
       if (mode === 1) {
         mode1Feedback.textContent = winMsg;
         mode1Feedback.className = 'feedback-msg correct';
-        btnMode1Next.textContent = 'Yeni Sorular İle Devam Et 🔄';
-        btnMode1Next.classList.remove('hidden');
       } else {
         mode2Feedback.textContent = winMsg;
         mode2Feedback.className = 'feedback-msg correct';
-        btnMode2Next.textContent = 'Yeni Sorular İle Devam Et 🔄';
-        btnMode2Next.classList.remove('hidden');
       }
       triggerMascotCelebrate('Sen tam bir şampiyonsun! 🏆');
     }
@@ -698,6 +690,7 @@
   // UI NAVIGATION
   // ==========================================
   function showScreen(targetScreenId) {
+    clearAutoTimer();
     Object.values(screens).forEach(s => s.classList.remove('active'));
     screens[targetScreenId].classList.add('active');
 
@@ -770,12 +763,10 @@
 
       if (state.currentMode === 1) {
         state.levelProgress1 = 0;
-        btnMode1Next.textContent = 'Sonraki Soru ➡️';
         setupMode1();
         showScreen('mode1');
       } else {
         state.levelProgress2 = 0;
-        btnMode2Next.textContent = 'Sonraki Soru ➡️';
         setupMode2();
         showScreen('mode2');
       }
@@ -788,17 +779,6 @@
   });
 
   btnMode1Check.addEventListener('click', checkMode1);
-  btnMode1Next.addEventListener('click', () => {
-    playSound('tick');
-    btnMode1Next.textContent = 'Sonraki Soru ➡️';
-    setupMode1();
-  });
-
-  btnMode2Next.addEventListener('click', () => {
-    playSound('tick');
-    btnMode2Next.textContent = 'Sonraki Soru ➡️';
-    setupMode2();
-  });
 
   btnSoundToggle.addEventListener('click', () => {
     state.soundEnabled = !state.soundEnabled;
