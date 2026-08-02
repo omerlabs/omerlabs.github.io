@@ -5,7 +5,6 @@
 (function () {
   'use strict';
 
-  // Level Question Targets: Level 1: 5, Level 2: 10, Level 3: 15, Level 4: 20
   const LEVEL_TARGETS = { 1: 5, 2: 10, 3: 15, 4: 20 };
   const STORAGE_KEY = 'saatleri_ogreniyorum_data_v1';
 
@@ -307,7 +306,7 @@
   }
 
   // ==========================================
-  // INTERACTIVE CLOCK DRAGGING & SNAPPING
+  // INTERACTIVE CLOCK DRAGGING & 5-MINUTE STEPPING
   // ==========================================
   function getSVGPoint(svg, clientX, clientY) {
     const rect = svg.getBoundingClientRect();
@@ -325,21 +324,10 @@
     return deg;
   }
 
-  function snapMinute(rawMinute, level) {
-    if (level === 1) {
-      return 0;
-    } else if (level === 2) {
-      return rawMinute >= 15 && rawMinute < 45 ? 30 : 0;
-    } else if (level === 3) {
-      const intervals = [0, 15, 30, 45, 60];
-      const closest = intervals.reduce((prev, curr) =>
-        Math.abs(curr - rawMinute) < Math.abs(prev - rawMinute) ? curr : prev
-      );
-      return closest === 60 ? 0 : closest;
-    } else {
-      let stepped = Math.round(rawMinute / 5) * 5;
-      return stepped === 60 ? 0 : stepped;
-    }
+  // Allow smooth 5-minute step dragging for all levels!
+  function snapMinute(rawMinute) {
+    let stepped = Math.round(rawMinute / 5) * 5;
+    return stepped === 60 ? 0 : stepped;
   }
 
   function startDrag(e) {
@@ -390,7 +378,7 @@
       activeQuestion.prevMinuteDeg = currentDeg;
 
       const rawMin = (currentDeg / 6) % 60;
-      activeQuestion.currentMinute = snapMinute(rawMin, state.currentLevel);
+      activeQuestion.currentMinute = snapMinute(rawMin);
 
     } else if (isDraggingHour) {
       const rawHour = Math.floor(currentDeg / 30);

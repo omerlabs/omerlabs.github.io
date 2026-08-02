@@ -1,4 +1,4 @@
-const CACHE_NAME = 'saatleri-ogreniyorum-v3';
+const CACHE_NAME = 'saatleri-ogreniyorum-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -8,7 +8,6 @@ const ASSETS_TO_CACHE = [
   './icon.svg'
 ];
 
-// Service Worker Install - Immediate Activation
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
@@ -18,7 +17,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Service Worker Activate - Delete all old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -29,7 +27,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Network First strategy during fetch to ensure latest updates load
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
