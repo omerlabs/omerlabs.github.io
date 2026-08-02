@@ -13,7 +13,7 @@
     stars: 0,
     unlockedLevel: 1,
     currentLevel: 1,
-    currentMode: 1, // 1: Saati Kur, 2: Doğru Saati Bul
+    currentMode: 1,
     levelProgress1: 0,
     levelProgress2: 0,
     totalCorrect: 0,
@@ -23,6 +23,10 @@
 
   let lastQuestionKey1 = '';
   let lastQuestionKey2 = '';
+
+  // Track last ticked time to ensure sound ONLY plays when time actually steps
+  let lastSoundMinute = -1;
+  let lastSoundHour = -1;
 
   function loadState() {
     try {
@@ -55,7 +59,7 @@
   }
 
   // ==========================================
-  // WEB AUDIO SYNTHESIZER
+  // WEB AUDIO SYNTHESIZER (Clean Mechanical Ticks)
   // ==========================================
   let audioCtx = null;
 
@@ -76,48 +80,49 @@
 
     const now = audioCtx.currentTime;
 
-    if (type === 'click') {
+    if (type === 'tick') {
+      // Soft, ultra-clean mechanical woodblock tick (no buzz/crackle)
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, now);
-      gain.gain.setValueAtTime(0.1, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.frequency.setValueAtTime(650, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.02);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start(now);
-      osc.stop(now + 0.05);
+      osc.stop(now + 0.02);
     } else if (type === 'correct') {
       // Upbeat 3-note harmonic chime (C5 -> E5 -> G5)
       const notes = [523.25, 659.25, 783.99];
       notes.forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        const start = now + idx * 0.1;
+        const start = now + idx * 0.09;
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, start);
-        gain.gain.setValueAtTime(0.2, start);
-        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.25);
+        gain.gain.setValueAtTime(0.18, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(start);
-        osc.stop(start + 0.25);
+        osc.stop(start + 0.22);
       });
     } else if (type === 'level_up') {
-      // Fanfare sequence
       const notes = [523.25, 659.25, 783.99, 1046.50];
       notes.forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        const start = now + idx * 0.12;
+        const start = now + idx * 0.11;
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, start);
-        gain.gain.setValueAtTime(0.25, start);
-        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.35);
+        gain.gain.setValueAtTime(0.2, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.3);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(start);
-        osc.stop(start + 0.35);
+        osc.stop(start + 0.3);
       });
     } else if (type === 'wrong') {
       // Gentle soft low double-bloop
@@ -127,12 +132,12 @@
         const start = now + idx * 0.12;
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, start);
-        gain.gain.setValueAtTime(0.15, start);
-        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.15);
+        gain.gain.setValueAtTime(0.12, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.14);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start(start);
-        osc.stop(start + 0.15);
+        osc.stop(start + 0.14);
       });
     }
   }
@@ -164,7 +169,6 @@
   // Mode 1 Elements
   const mode1LevelPill = document.getElementById('mode1-level-pill');
   const mode1StreakEl = document.getElementById('mode1-streak');
-  const mode1TargetText = document.getElementById('mode1-target-text');
   const mode1TargetDigital = document.getElementById('mode1-target-digital');
   const mode1CurrentVal = document.getElementById('mode1-current-val');
   const mode1Feedback = document.getElementById('mode1-feedback');
@@ -358,6 +362,8 @@
     }
 
     activeQuestion.prevMinuteDeg = activeQuestion.currentMinute * 6;
+    lastSoundMinute = activeQuestion.currentMinute;
+    lastSoundHour = activeQuestion.currentHour;
     handleMove(e);
   }
 
@@ -377,10 +383,8 @@
       const prevDeg = activeQuestion.prevMinuteDeg;
       if (prevDeg > 300 && currentDeg < 60) {
         activeQuestion.currentHour = (activeQuestion.currentHour % 12) + 1;
-        playSound('click');
       } else if (prevDeg < 60 && currentDeg > 300) {
         activeQuestion.currentHour = activeQuestion.currentHour === 1 ? 12 : activeQuestion.currentHour - 1;
-        playSound('click');
       }
       activeQuestion.prevMinuteDeg = currentDeg;
 
@@ -391,16 +395,19 @@
       const rawHour = Math.floor(currentDeg / 30);
       let hourVal = rawHour === 0 ? 12 : rawHour;
       activeQuestion.currentHour = hourVal;
-      playSound('click');
+    }
+
+    // Play tick sound ONLY when the snapped minute or hour actually changes
+    if (activeQuestion.currentMinute !== lastSoundMinute || activeQuestion.currentHour !== lastSoundHour) {
+      playSound('tick');
+      lastSoundMinute = activeQuestion.currentMinute;
+      lastSoundHour = activeQuestion.currentHour;
     }
 
     updateHandPositions('interactive', activeQuestion.currentHour, activeQuestion.currentMinute);
   }
 
   function stopDrag() {
-    if (isDraggingMinute || isDraggingHour) {
-      playSound('click');
-    }
     isDraggingMinute = false;
     isDraggingHour = false;
   }
@@ -422,7 +429,6 @@
     let minute = 0;
     let key = '';
 
-    // Loop until we get a randomized time different from the last question
     for (let attempt = 0; attempt < 50; attempt++) {
       hour = Math.floor(Math.random() * 12) + 1;
 
@@ -499,8 +505,7 @@
     updateHandPositions('interactive', 12, 0);
 
     const targetFormatted = formatTime(q.hour, q.minute);
-    mode1TargetText.textContent = `Saati ${targetFormatted}'e ayarla`;
-    mode1TargetDigital.textContent = targetFormatted;
+    mode1TargetDigital.textContent = targetFormatted; // Clean time readout only
 
     mode1Feedback.textContent = '';
     mode1Feedback.className = 'feedback-msg';
@@ -508,7 +513,7 @@
     btnMode1Check.classList.remove('hidden');
     btnMode1Next.classList.add('hidden');
 
-    setMascotSpeech('Saati kurmak için ibreleri çevir! 🕒');
+    setMascotSpeech('İbreleri çevir ve saati ayarla! 🕒');
   }
 
   function checkMode1() {
@@ -527,7 +532,6 @@
 
       btnMode1Check.classList.add('hidden');
 
-      // Check for Level Completion & Auto Transition
       if (state.levelProgress1 >= maxTarget) {
         handleLevelCompletion(1);
       } else {
@@ -544,7 +548,7 @@
       playSound('wrong');
       mode1Feedback.textContent = 'Neredeyse! Tekrar dene 💪';
       mode1Feedback.className = 'feedback-msg wrong';
-      setMascotSpeech('Hadi bir daha dene, başarabilirsin! 💪');
+      setMascotSpeech('Hadi bir daha dene! 💪');
       saveState();
     }
   }
@@ -581,7 +585,7 @@
     mode2Feedback.className = 'feedback-msg';
     btnMode2Next.classList.add('hidden');
 
-    setMascotSpeech('Saat kaçı gösteriyor? Doğru seçeneğe tıkla! 🧐');
+    setMascotSpeech('Doğru cevaba tıkla! 🧐');
   }
 
   function handleChoiceSelect(selectedBtn, chosenStr) {
@@ -607,7 +611,7 @@
         playSound('correct');
         mode2Feedback.textContent = 'Tebrikler! Çok hızlısın! 🎉';
         mode2Feedback.className = 'feedback-msg correct';
-        triggerMascotCelebrate('Muhteşemsin! Bir yıldız daha kazandın! ⭐');
+        triggerMascotCelebrate('Muhteşemsin! ⭐');
         btnMode2Next.classList.remove('hidden');
       }
 
@@ -624,13 +628,12 @@
       playSound('wrong');
       mode2Feedback.textContent = `Doğru cevap ${targetStr} olmalıydı. 💛`;
       mode2Feedback.className = 'feedback-msg wrong';
-      setMascotSpeech('Üzülme! Bir sonraki soruda bulacaksın! 💪');
+      setMascotSpeech('Bir sonraki soruda bulacaksın! 💪');
       btnMode2Next.classList.remove('hidden');
       saveState();
     }
   }
 
-  // Handle Level Completion & Automatic Next Level Transition
   function handleLevelCompletion(mode) {
     playSound('level_up');
     const oldLevel = state.currentLevel;
@@ -646,7 +649,7 @@
       updateLevelCardsUI();
       saveState();
 
-      const msg = `🎉 TEBRİKLER! Seviye ${oldLevel} tamamlandı! Seviye ${nextLevel} otomatik olarak başlıyor! 🚀`;
+      const msg = `🎉 TEBRİKLER! Seviye ${oldLevel} tamamlandı! Seviye ${nextLevel} başladı! 🚀`;
       if (mode === 1) {
         mode1Feedback.textContent = msg;
         mode1Feedback.className = 'feedback-msg correct';
@@ -658,15 +661,14 @@
         btnMode2Next.textContent = `Seviye ${nextLevel}'e Geç 🚀`;
         btnMode2Next.classList.remove('hidden');
       }
-      triggerMascotCelebrate(`Harikasın! Seviye ${nextLevel}'e geçtik! ⭐`);
+      triggerMascotCelebrate(`Seviye ${nextLevel}'e geçtik! ⭐`);
 
     } else {
-      // Level 4 Complete! (Finished all 20 questions)
       if (mode === 1) state.levelProgress1 = 0;
       else state.levelProgress2 = 0;
 
       saveState();
-      const winMsg = '🏆 MUHTEŞEM! Tüm seviyeleri tamamladın! Sen gerçek bir Saat Ustasısın! ⭐';
+      const winMsg = '🏆 MUHTEŞEM! Tüm seviyeleri tamamladın! ⭐';
       if (mode === 1) {
         mode1Feedback.textContent = winMsg;
         mode1Feedback.className = 'feedback-msg correct';
@@ -701,7 +703,7 @@
 
     if (targetScreenId === 'menu') {
       btnNavBack.classList.add('hidden');
-      setMascotSpeech('Merhaba! Saatleri birlikte öğrenelim mi? 🌟');
+      setMascotSpeech('Merhaba! Saatleri öğrenelim mi? 🌟');
     } else {
       btnNavBack.classList.remove('hidden');
     }
@@ -741,19 +743,17 @@
   // EVENT LISTENERS
   // ==========================================
   document.getElementById('btn-start-mode-1').addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     state.currentMode = 1;
     updateLevelCardsUI();
     showScreen('levels');
-    document.getElementById('level-mode-desc').textContent = '"Saati Kur" oyunu için seviye seç:';
   });
 
   document.getElementById('btn-start-mode-2').addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     state.currentMode = 2;
     updateLevelCardsUI();
     showScreen('levels');
-    document.getElementById('level-mode-desc').textContent = '"Doğru Saati Bul" oyunu için seviye seç:';
   });
 
   document.querySelectorAll('.level-card').forEach(card => {
@@ -765,7 +765,7 @@
         return;
       }
 
-      playSound('click');
+      playSound('tick');
       state.currentLevel = lvl;
 
       if (state.currentMode === 1) {
@@ -783,19 +783,19 @@
   });
 
   btnNavBack.addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     showScreen('menu');
   });
 
   btnMode1Check.addEventListener('click', checkMode1);
   btnMode1Next.addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     btnMode1Next.textContent = 'Sonraki Soru ➡️';
     setupMode1();
   });
 
   btnMode2Next.addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     btnMode2Next.textContent = 'Sonraki Soru ➡️';
     setupMode2();
   });
@@ -804,18 +804,18 @@
     state.soundEnabled = !state.soundEnabled;
     soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
     saveState();
-    if (state.soundEnabled) playSound('click');
+    if (state.soundEnabled) playSound('tick');
   });
 
   document.getElementById('btn-open-help').addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     modalHelp.classList.remove('hidden');
   });
   document.getElementById('btn-close-help').addEventListener('click', () => modalHelp.classList.add('hidden'));
   document.getElementById('btn-ok-help').addEventListener('click', () => modalHelp.classList.add('hidden'));
 
   document.getElementById('btn-open-stats').addEventListener('click', () => {
-    playSound('click');
+    playSound('tick');
     document.getElementById('stat-total-stars').textContent = state.stars;
     document.getElementById('stat-unlocked-level').textContent = `${state.unlockedLevel}/4`;
     document.getElementById('stat-correct-count').textContent = state.totalCorrect;
@@ -856,7 +856,7 @@
   });
 
   btnInstall.addEventListener('click', async () => {
-    playSound('click');
+    playSound('tick');
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isIOS) {

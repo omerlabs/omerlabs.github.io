@@ -23,19 +23,16 @@
 </head>
 <body>
 
-  <!-- Top App Navigation Header -->
+  <!-- Top Compact Mobile Header -->
   <header class="app-header">
-    <button id="btn-nav-back" class="nav-back-btn hidden" aria-label="Geri Dön">
-      <span class="btn-icon">⬅️</span>
-      <span class="btn-text">Ana Menü</span>
+    <button id="btn-nav-back" class="nav-back-btn hidden" title="Ana Menü">
+      <span class="btn-icon">🏠</span>
     </button>
 
-    <div class="app-title-mini">Saati Öğreniyorum 🕐</div>
-
     <div class="header-actions">
-      <!-- PWA Install Button -->
+      <!-- PWA Install Button (Short text) -->
       <button id="btn-install" class="install-btn hidden" title="Uygulamayı İndir">
-        📱 Uygulamayı İndir
+        📥 İndir
       </button>
 
       <!-- Audio Sound Toggle -->
@@ -60,7 +57,7 @@
         <!-- Cute Mascot -->
         <div class="mascot-container">
           <div id="mascot-avatar" class="mascot-avatar">
-            <svg viewBox="0 0 160 160" width="140" height="140" class="mascot-svg">
+            <svg viewBox="0 0 160 160" width="130" height="130" class="mascot-svg">
               <ellipse cx="80" cy="90" rx="55" ry="50" fill="#FF9F43"/>
               <ellipse cx="80" cy="95" rx="42" ry="38" fill="#FFF9E6"/>
               <polygon points="35,50 50,20 65,45" fill="#EE5253"/>
@@ -78,11 +75,10 @@
               <path d="M 135 90 Q 145 110 128 115 Z" fill="#EE5253"/>
             </svg>
           </div>
-          <div id="mascot-speech" class="mascot-speech">Merhaba! Saatleri birlikte öğrenelim mi? 🌟</div>
+          <div id="mascot-speech" class="mascot-speech">Merhaba! Saatleri öğrenelim mi? 🌟</div>
         </div>
 
         <h1 class="main-title">Saati Öğreniyorum 🕐</h1>
-        <p class="main-subtitle">Eğlenceli Saat Oyunları</p>
 
         <!-- Big Child-Friendly Mode Buttons -->
         <div class="menu-buttons">
@@ -90,7 +86,7 @@
             <div class="btn-card-icon">🕒</div>
             <div class="btn-card-text">
               <h2>Saati Kur</h2>
-              <p>İbreleri parmağınla çevir!</p>
+              <p>İbreleri çevir!</p>
             </div>
           </button>
 
@@ -98,7 +94,7 @@
             <div class="btn-card-icon">❓</div>
             <div class="btn-card-text">
               <h2>Doğru Saati Bul</h2>
-              <p>Doğru seçeneği tıkla!</p>
+              <p>Doğru cevabı seç!</p>
             </div>
           </button>
         </div>
@@ -106,7 +102,7 @@
         <!-- Sub Actions -->
         <div class="menu-footer-actions">
           <button id="btn-open-help" class="btn-sub">📖 Nasıl Oynanır?</button>
-          <button id="btn-open-stats" class="btn-sub">📊 İlerleme Raporu</button>
+          <button id="btn-open-stats" class="btn-sub">📊 İlerleme</button>
         </div>
       </div>
     </section>
@@ -115,7 +111,6 @@
     <section id="screen-levels" class="screen">
       <div class="screen-header">
         <h2>Seviyeni Seç 🎯</h2>
-        <p id="level-mode-desc">Oynamak istediğin seviyeyi seç:</p>
       </div>
 
       <div class="levels-grid">
@@ -167,23 +162,18 @@
           <div class="level-status" id="lvl-status-4">🔒 Kilitli</div>
         </button>
       </div>
-      <p class="level-unlock-hint">💡 Seviyedeki tüm soruları tamamlayınca sonraki seviyeye otomatik geçersin!</p>
     </section>
 
     <!-- SCREEN 3: MOD 1 - SAATİ KUR -->
     <section id="screen-mode-1" class="screen">
       <div class="game-header">
         <span class="level-pill" id="mode1-level-pill">Seviye 1 ☀️</span>
-        <div class="streak-pill">İlerleme: 🎯 <span id="mode1-streak">0/5</span></div>
+        <div class="streak-pill">🎯 <span id="mode1-streak">0/5</span></div>
       </div>
 
-      <!-- Target Prompt -->
-      <div class="prompt-box">
-        <div class="prompt-label">Aşağıdaki saati ayarla:</div>
-        <div class="prompt-target">
-          <span id="mode1-target-text">Saati 03:00'e ayarla</span>
-          <div id="mode1-target-digital" class="digital-pill">03:00</div>
-        </div>
+      <!-- Clean Minimal Target Time Badge -->
+      <div class="target-card">
+        <div id="mode1-target-digital" class="digital-pill-big">03:00</div>
       </div>
 
       <!-- Clock Container -->
@@ -226,11 +216,11 @@
     <section id="screen-mode-2" class="screen">
       <div class="game-header">
         <span class="level-pill" id="mode2-level-pill">Seviye 1 ☀️</span>
-        <div class="streak-pill">İlerleme: 🎯 <span id="mode2-streak">0/5</span></div>
+        <div class="streak-pill">🎯 <span id="mode2-streak">0/5</span></div>
       </div>
 
-      <div class="prompt-box">
-        <div class="prompt-label">Bu saat kaçı gösteriyor? 🧐</div>
+      <div class="prompt-box-simple">
+        <span>Saat Kaç? 🧐</span>
       </div>
 
       <div class="clock-stage">
@@ -272,7 +262,7 @@
           <span class="help-icon">🕒</span>
           <div>
             <h4>Saati Kur Modu</h4>
-            <p>İstenen saati ayarlamak için mavi <b>yelkovan</b> veya kırmızı <b>akrep</b> ibresini çevir, sonra "Kontrol Et" butonuna bas!</p>
+            <p>Ekranda gösterilen dijital saate göre mavi <b>yelkovan</b> veya kırmızı <b>akrep</b> ibresini çevir ve "Kontrol Et" butonuna bas!</p>
           </div>
         </div>
 
@@ -280,15 +270,7 @@
           <span class="help-icon">❓</span>
           <div>
             <h4>Doğru Saati Bul Modu</h4>
-            <p>Ekranda görünen saati incele ve altındaki doğru saat butonuna dokun!</p>
-          </div>
-        </div>
-
-        <div class="help-item">
-          <span class="help-icon">🎯</span>
-          <div>
-            <h4>Otomatik Seviye Geçişi</h4>
-            <p>Seviye 1 (5 soru), Seviye 2 (10 soru), Seviye 3 (15 soru), Seviye 4 (20 soru). Seviyeyi tamamlayınca sonraki seviyeye otomatik geçersin!</p>
+            <p>Ekranda görünen analog saati incele ve altındaki doğru seçeneğe dokun!</p>
           </div>
         </div>
       </div>
@@ -330,7 +312,7 @@
     </div>
   </div>
 
-  <!-- MODAL: iOS SAFARI REHBERİ -->
+  <!-- MODAL: iOS REHBERİ -->
   <div id="modal-ios-guide" class="modal-overlay hidden">
     <div class="modal-card">
       <div class="modal-header">
