@@ -5,7 +5,6 @@
 (function () {
   'use strict';
 
-  // Level Question Targets: Level 1: 5, Level 2: 10, Level 3: 15, Level 4: 20
   const LEVEL_TARGETS = { 0: Infinity, 1: 5, 2: 10, 3: 15, 4: 20 };
   const STORAGE_KEY = 'saatleri_ogreniyorum_data_v1';
 
@@ -411,7 +410,7 @@
   }
 
   // ==========================================
-  // RANDOM NON-REPEATING QUESTION GENERATOR (STRICT LEVEL RULES)
+  // RANDOM NON-REPEATING QUESTION GENERATOR
   // ==========================================
   function generateQuestion(level, mode) {
     const lastKey = mode === 1 ? lastQuestionKey1 : lastQuestionKey2;
@@ -422,24 +421,19 @@
     for (let attempt = 0; attempt < 50; attempt++) {
       hour = Math.floor(Math.random() * 12) + 1;
 
-      // If level is 0 (Karışık / Shuffle Mod): randomly choose level 1..4 rules
       let effectiveLevel = level;
       if (effectiveLevel === 0) {
         effectiveLevel = Math.floor(Math.random() * 4) + 1;
       }
 
       if (effectiveLevel === 1) {
-        // STRICTLY full hours: minute is ALWAYS 0
         minute = 0;
       } else if (effectiveLevel === 2) {
-        // STRICTLY half hours: minute is ALWAYS 30
         minute = 30;
       } else if (effectiveLevel === 3) {
-        // STRICTLY quarter hours: 15, 30, or 45
         const mins = [15, 30, 45];
         minute = mins[Math.floor(Math.random() * mins.length)];
       } else {
-        // 5-minute intervals: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
         const mins = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
         minute = mins[Math.floor(Math.random() * mins.length)];
       }
@@ -475,7 +469,8 @@
       options.add(formatTime(targetHour, mirrorMin));
     }
 
-    const requiredCount = (level <= 2 && level !== 0) ? 2 : 4;
+    // In Shuffle / Karışık Mod (level 0), or Level 1-2: strictly 2 choices!
+    const requiredCount = (level <= 2 || level === 0) ? 2 : 4;
     while (options.size < requiredCount) {
       const randQ = generateQuestion(level, 2);
       const randStr = formatTime(randQ.hour, randQ.minute);
@@ -801,7 +796,6 @@
   // ==========================================
   // EVENT LISTENERS
   // ==========================================
-  // Main Mode 1 Click (Level Select Flow)
   const btnStartMode1 = document.getElementById('btn-start-mode-1');
   if (btnStartMode1) {
     btnStartMode1.addEventListener('click', () => {
@@ -812,21 +806,19 @@
     });
   }
 
-  // Shuffle Mode 1 Click (Direct Endless Play)
   const btnShuffleMode1 = document.getElementById('btn-shuffle-mode-1');
   if (btnShuffleMode1) {
     btnShuffleMode1.addEventListener('click', (e) => {
       e.stopPropagation();
       playSound('tick');
       state.currentMode = 1;
-      state.currentLevel = 0; // Karışık Mod
+      state.currentLevel = 0;
       state.levelProgress1 = 0;
       setupMode1();
       showScreen('mode1');
     });
   }
 
-  // Main Mode 2 Click (Level Select Flow)
   const btnStartMode2 = document.getElementById('btn-start-mode-2');
   if (btnStartMode2) {
     btnStartMode2.addEventListener('click', () => {
@@ -837,14 +829,13 @@
     });
   }
 
-  // Shuffle Mode 2 Click (Direct Endless Play)
   const btnShuffleMode2 = document.getElementById('btn-shuffle-mode-2');
   if (btnShuffleMode2) {
     btnShuffleMode2.addEventListener('click', (e) => {
       e.stopPropagation();
       playSound('tick');
       state.currentMode = 2;
-      state.currentLevel = 0; // Karışık Mod
+      state.currentLevel = 0;
       state.levelProgress2 = 0;
       setupMode2();
       showScreen('mode2');

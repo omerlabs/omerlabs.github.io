@@ -1,4 +1,4 @@
-const CACHE_NAME = 'saatleri-ogreniyorum-v5';
+const CACHE_NAME = 'saatleri-ogreniyorum-v6';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
