@@ -71,7 +71,6 @@ body {
   z-index: 100;
 }
 
-/* Home Icon Back Button */
 .nav-back-btn {
   display: flex;
   align-items: center;
@@ -180,7 +179,7 @@ body {
 }
 
 /* ==========================================================================
-   Screen 1: Main Menu
+   Screen 1: Main Menu & Split Buttons
    ========================================================================== */
 .menu-content {
   width: 100%;
@@ -255,43 +254,51 @@ body {
   gap: 14px;
 }
 
-.btn-card {
+/* Split Button Container */
+.btn-card-split {
   width: 100%;
   min-height: 76px;
-  padding: 14px 18px;
   border-radius: var(--radius-lg);
+  display: flex;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
   border: 4px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.btn-card-split.btn-mode-1 {
+  background: linear-gradient(135deg, #FF6B8B, #FF8E53);
+  border-color: #FF5252;
+}
+
+.btn-card-split.btn-mode-2 {
+  background: linear-gradient(135deg, #48DBFB, #0ABDE3);
+  border-color: #00A8FF;
+}
+
+.btn-card-main {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
   gap: 14px;
   cursor: pointer;
   font-family: var(--font-family);
   text-align: left;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease;
 }
 
-.btn-card:active {
-  transform: scale(0.96);
-}
-
-.btn-mode-1 {
-  background: linear-gradient(135deg, #FF6B8B, #FF8E53);
-  color: white;
-  border-color: #FF5252;
-}
-
-.btn-mode-2 {
-  background: linear-gradient(135deg, #48DBFB, #0ABDE3);
-  color: white;
-  border-color: #00A8FF;
+.btn-card-main:active {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .btn-card-icon {
   font-size: 2.2rem;
   background: rgba(255, 255, 255, 0.25);
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -305,8 +312,32 @@ body {
 }
 
 .btn-card-text p {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   opacity: 0.9;
+}
+
+/* Shuffle Button (15% Split) */
+.btn-card-shuffle {
+  width: 62px;
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-card-shuffle:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.btn-card-shuffle:active {
+  background: rgba(0, 0, 0, 0.35);
+  transform: scale(0.94);
 }
 
 .menu-footer-actions {
@@ -475,7 +506,7 @@ body {
   font-size: 0.85rem;
 }
 
-/* Minimal Target Card - Just Digital Time */
+/* Minimal Target Card */
 .target-card {
   display: flex;
   justify-content: center;
@@ -602,11 +633,6 @@ body {
 
 .btn-check {
   background: linear-gradient(135deg, #1DD1A1, #10AC84);
-  color: white;
-}
-
-.btn-next {
-  background: linear-gradient(135deg, #FF9F43, #EE5253);
   color: white;
 }
 

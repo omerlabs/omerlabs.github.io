@@ -5,14 +5,15 @@
 (function () {
   'use strict';
 
-  const LEVEL_TARGETS = { 1: 5, 2: 10, 3: 15, 4: 20 };
+  // Level Question Targets: Level 1: 5, Level 2: 10, Level 3: 15, Level 4: 20
+  const LEVEL_TARGETS = { 0: Infinity, 1: 5, 2: 10, 3: 15, 4: 20 };
   const STORAGE_KEY = 'saatleri_ogreniyorum_data_v1';
 
   let state = {
     stars: 0,
     unlockedLevel: 1,
-    currentLevel: 1,
-    currentMode: 1,
+    currentLevel: 1, // 0: Karışık, 1-4: Seviyeler
+    currentMode: 1,  // 1: Saati Kur, 2: Doğru Saati Bul
     levelProgress1: 0,
     levelProgress2: 0,
     totalCorrect: 0,
@@ -306,7 +307,7 @@
   }
 
   // ==========================================
-  // INTERACTIVE CLOCK DRAGGING & 5-MINUTE STEPPING
+  // INTERACTIVE CLOCK DRAGGING
   // ==========================================
   function getSVGPoint(svg, clientX, clientY) {
     const rect = svg.getBoundingClientRect();
@@ -324,7 +325,6 @@
     return deg;
   }
 
-  // Allow smooth 5-minute step dragging for all levels!
   function snapMinute(rawMinute) {
     let stepped = Math.round(rawMinute / 5) * 5;
     return stepped === 60 ? 0 : stepped;
@@ -411,7 +411,7 @@
   }
 
   // ==========================================
-  // RANDOM NON-REPEATING QUESTION GENERATOR
+  // RANDOM NON-REPEATING QUESTION GENERATOR (STRICT LEVEL RULES)
   // ==========================================
   function generateQuestion(level, mode) {
     const lastKey = mode === 1 ? lastQuestionKey1 : lastQuestionKey2;
@@ -422,15 +422,25 @@
     for (let attempt = 0; attempt < 50; attempt++) {
       hour = Math.floor(Math.random() * 12) + 1;
 
-      if (level === 1) {
+      // If level is 0 (Karışık / Shuffle Mod): randomly choose level 1..4 rules
+      let effectiveLevel = level;
+      if (effectiveLevel === 0) {
+        effectiveLevel = Math.floor(Math.random() * 4) + 1;
+      }
+
+      if (effectiveLevel === 1) {
+        // STRICTLY full hours: minute is ALWAYS 0
         minute = 0;
-      } else if (level === 2) {
-        minute = Math.random() < 0.5 ? 0 : 30;
-      } else if (level === 3) {
-        const mins = [0, 15, 30, 45];
+      } else if (effectiveLevel === 2) {
+        // STRICTLY half hours: minute is ALWAYS 30
+        minute = 30;
+      } else if (effectiveLevel === 3) {
+        // STRICTLY quarter hours: 15, 30, or 45
+        const mins = [15, 30, 45];
         minute = mins[Math.floor(Math.random() * mins.length)];
       } else {
-        const mins = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+        // 5-minute intervals: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
+        const mins = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
         minute = mins[Math.floor(Math.random() * mins.length)];
       }
 
@@ -465,7 +475,7 @@
       options.add(formatTime(targetHour, mirrorMin));
     }
 
-    const requiredCount = (level <= 2) ? 2 : 4;
+    const requiredCount = (level <= 2 && level !== 0) ? 2 : 4;
     while (options.size < requiredCount) {
       const randQ = generateQuestion(level, 2);
       const randStr = formatTime(randQ.hour, randQ.minute);
@@ -492,7 +502,14 @@
     const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
 
     if (mode1LevelPill) mode1LevelPill.textContent = getLevelLabel(state.currentLevel);
-    if (mode1StreakEl) mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
+
+    if (mode1StreakEl) {
+      if (state.currentLevel === 0) {
+        mode1StreakEl.textContent = `Sonsuz 🔀`;
+      } else {
+        mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
+      }
+    }
 
     const q = generateQuestion(state.currentLevel, 1);
     activeQuestion.targetHour = q.hour;
@@ -531,9 +548,16 @@
       state.totalCorrect++;
       state.levelProgress1++;
       if (starCountEl) starCountEl.textContent = state.stars;
-      if (mode1StreakEl) mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
 
-      if (state.levelProgress1 >= maxTarget) {
+      if (mode1StreakEl) {
+        if (state.currentLevel === 0) {
+          mode1StreakEl.textContent = `Sonsuz 🔀`;
+        } else {
+          mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
+        }
+      }
+
+      if (state.currentLevel !== 0 && state.levelProgress1 >= maxTarget) {
         handleLevelCompletion(1);
         autoNextTimer = setTimeout(() => { setupMode1(); }, 1800);
       } else {
@@ -568,7 +592,14 @@
     const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
 
     if (mode2LevelPill) mode2LevelPill.textContent = getLevelLabel(state.currentLevel);
-    if (mode2StreakEl) mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
+
+    if (mode2StreakEl) {
+      if (state.currentLevel === 0) {
+        mode2StreakEl.textContent = `Sonsuz 🔀`;
+      } else {
+        mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
+      }
+    }
 
     const q = generateQuestion(state.currentLevel, 2);
     activeQuestion.targetHour = q.hour;
@@ -615,9 +646,16 @@
       state.totalCorrect++;
       state.levelProgress2++;
       if (starCountEl) starCountEl.textContent = state.stars;
-      if (mode2StreakEl) mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
 
-      if (state.levelProgress2 >= maxTarget) {
+      if (mode2StreakEl) {
+        if (state.currentLevel === 0) {
+          mode2StreakEl.textContent = `Sonsuz 🔀`;
+        } else {
+          mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
+        }
+      }
+
+      if (state.currentLevel !== 0 && state.levelProgress2 >= maxTarget) {
         handleLevelCompletion(2);
         autoNextTimer = setTimeout(() => { setupMode2(); }, 1800);
       } else {
@@ -699,6 +737,7 @@
 
   function getLevelLabel(lvl) {
     const labels = {
+      0: 'Karışık 🔀',
       1: 'Seviye 1 (5 Soru) ☀️',
       2: 'Seviye 2 (10 Soru) 🌈',
       3: 'Seviye 3 (15 Soru) 🌙',
@@ -762,6 +801,7 @@
   // ==========================================
   // EVENT LISTENERS
   // ==========================================
+  // Main Mode 1 Click (Level Select Flow)
   const btnStartMode1 = document.getElementById('btn-start-mode-1');
   if (btnStartMode1) {
     btnStartMode1.addEventListener('click', () => {
@@ -772,6 +812,21 @@
     });
   }
 
+  // Shuffle Mode 1 Click (Direct Endless Play)
+  const btnShuffleMode1 = document.getElementById('btn-shuffle-mode-1');
+  if (btnShuffleMode1) {
+    btnShuffleMode1.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playSound('tick');
+      state.currentMode = 1;
+      state.currentLevel = 0; // Karışık Mod
+      state.levelProgress1 = 0;
+      setupMode1();
+      showScreen('mode1');
+    });
+  }
+
+  // Main Mode 2 Click (Level Select Flow)
   const btnStartMode2 = document.getElementById('btn-start-mode-2');
   if (btnStartMode2) {
     btnStartMode2.addEventListener('click', () => {
@@ -779,6 +834,20 @@
       state.currentMode = 2;
       updateLevelCardsUI();
       showScreen('levels');
+    });
+  }
+
+  // Shuffle Mode 2 Click (Direct Endless Play)
+  const btnShuffleMode2 = document.getElementById('btn-shuffle-mode-2');
+  if (btnShuffleMode2) {
+    btnShuffleMode2.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playSound('tick');
+      state.currentMode = 2;
+      state.currentLevel = 0; // Karışık Mod
+      state.levelProgress2 = 0;
+      setupMode2();
+      showScreen('mode2');
     });
   }
 

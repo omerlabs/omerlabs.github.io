@@ -80,23 +80,47 @@
 
         <h1 class="main-title">Saati Öğreniyorum 🕐</h1>
 
-        <!-- Big Child-Friendly Mode Buttons -->
+        <!-- Big Child-Friendly Mode Buttons with Split Shuffle -->
         <div class="menu-buttons">
-          <button id="btn-start-mode-1" class="btn-card btn-mode-1">
-            <div class="btn-card-icon">🕒</div>
-            <div class="btn-card-text">
-              <h2>Saati Kur</h2>
-              <p>İbreleri çevir!</p>
-            </div>
-          </button>
+          <!-- Mode 1 Split Card -->
+          <div class="btn-card-split btn-mode-1">
+            <button id="btn-start-mode-1" class="btn-card-main">
+              <div class="btn-card-icon">🕒</div>
+              <div class="btn-card-text">
+                <h2>Saati Kur</h2>
+                <p>İbreleri çevir!</p>
+              </div>
+            </button>
+            <button id="btn-shuffle-mode-1" class="btn-card-shuffle" title="Karışık / Sonsuz Mod">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="15" y1="15" x2="21" y2="21"></line>
+                <line x1="4" y1="4" x2="9" y2="9"></line>
+              </svg>
+            </button>
+          </div>
 
-          <button id="btn-start-mode-2" class="btn-card btn-mode-2">
-            <div class="btn-card-icon">❓</div>
-            <div class="btn-card-text">
-              <h2>Doğru Saati Bul</h2>
-              <p>Doğru cevabı seç!</p>
-            </div>
-          </button>
+          <!-- Mode 2 Split Card -->
+          <div class="btn-card-split btn-mode-2">
+            <button id="btn-start-mode-2" class="btn-card-main">
+              <div class="btn-card-icon">❓</div>
+              <div class="btn-card-text">
+                <h2>Doğru Saati Bul</h2>
+                <p>Doğru cevabı seç!</p>
+              </div>
+            </button>
+            <button id="btn-shuffle-mode-2" class="btn-card-shuffle" title="Karışık / Sonsuz Mod">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="15" y1="15" x2="21" y2="21"></line>
+                <line x1="4" y1="4" x2="9" y2="9"></line>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Sub Actions -->
@@ -114,31 +138,31 @@
       </div>
 
       <div class="levels-grid">
-        <!-- Level 1 (5 Soru) -->
+        <!-- Level 1 (5 Soru - Sadece Tam Saatler) -->
         <button class="level-card unlocked" data-level="1">
           <div class="level-badge">1</div>
           <div class="level-icon">☀️</div>
           <div class="level-info">
             <h3>Seviye 1</h3>
-            <p>Tam Saatler</p>
+            <p>Sadece Tam Saatler</p>
             <span class="level-count-pill">5 Soru</span>
           </div>
           <div class="level-status" id="lvl-status-1">Açık</div>
         </button>
 
-        <!-- Level 2 (10 Soru) -->
+        <!-- Level 2 (10 Soru - Sadece Yarım Saatler) -->
         <button class="level-card locked" data-level="2">
           <div class="level-badge">2</div>
           <div class="level-icon">🌈</div>
           <div class="level-info">
             <h3>Seviye 2</h3>
-            <p>Yarım Saatler</p>
+            <p>Sadece Yarım Saatler</p>
             <span class="level-count-pill">10 Soru</span>
           </div>
           <div class="level-status" id="lvl-status-2">🔒 Kilitli</div>
         </button>
 
-        <!-- Level 3 (15 Soru) -->
+        <!-- Level 3 (15 Soru - Çeyrek Saatler) -->
         <button class="level-card locked" data-level="3">
           <div class="level-badge">3</div>
           <div class="level-icon">🌙</div>
@@ -150,7 +174,7 @@
           <div class="level-status" id="lvl-status-3">🔒 Kilitli</div>
         </button>
 
-        <!-- Level 4 (20 Soru) -->
+        <!-- Level 4 (20 Soru - 5 Dk Aralıklar) -->
         <button class="level-card locked" data-level="4">
           <div class="level-badge">4</div>
           <div class="level-icon">⭐</div>
@@ -266,6 +290,14 @@
           <div>
             <h4>Doğru Saati Bul Modu</h4>
             <p>Ekranda görünen analog saati incele ve altındaki doğru seçeneğe dokun!</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <span class="help-icon">🔀</span>
+          <div>
+            <h4>Karışık (Sonsuz) Mod</h4>
+            <p>Butonun sağındaki 🔀 simgesine dokunarak seviye sınırı olmadan tüm konulardan karışık sorular çözebilirsin!</p>
           </div>
         </div>
       </div>
