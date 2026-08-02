@@ -192,6 +192,7 @@
   // CLOCK SVG GENERATION HELPERS
   // ==========================================
   function renderClockFace(ticksGroup, numbersGroup) {
+    if (!ticksGroup || !numbersGroup) return;
     ticksGroup.innerHTML = '';
     numbersGroup.innerHTML = '';
 
@@ -258,8 +259,10 @@
       const hRad = (hourDeg - 90) * (Math.PI / 180);
       const hx = 200 + 95 * Math.cos(hRad);
       const hy = 200 + 95 * Math.sin(hRad);
-      hourHandLine.setAttribute('x2', hx);
-      hourHandLine.setAttribute('y2', hy);
+      if (hourHandLine) {
+        hourHandLine.setAttribute('x2', hx);
+        hourHandLine.setAttribute('y2', hy);
+      }
       if (hourHandleCircle) {
         hourHandleCircle.setAttribute('cx', hx);
         hourHandleCircle.setAttribute('cy', hy);
@@ -268,25 +271,31 @@
       const mRad = (minDeg - 90) * (Math.PI / 180);
       const mx = 200 + 145 * Math.cos(mRad);
       const my = 200 + 145 * Math.sin(mRad);
-      minHandLine.setAttribute('x2', mx);
-      minHandLine.setAttribute('y2', my);
+      if (minHandLine) {
+        minHandLine.setAttribute('x2', mx);
+        minHandLine.setAttribute('y2', my);
+      }
       if (minHandleCircle) {
         minHandleCircle.setAttribute('cx', mx);
         minHandleCircle.setAttribute('cy', my);
       }
 
-      mode1CurrentVal.textContent = formatTime(hour, minute);
+      if (mode1CurrentVal) mode1CurrentVal.textContent = formatTime(hour, minute);
     } else if (clockType === 'display') {
       const hourHandLine = document.getElementById('display-hand-hour');
       const minHandLine = document.getElementById('display-hand-minute');
 
       const hRad = (hourDeg - 90) * (Math.PI / 180);
-      hourHandLine.setAttribute('x2', 200 + 95 * Math.cos(hRad));
-      hourHandLine.setAttribute('y2', 200 + 95 * Math.sin(hRad));
+      if (hourHandLine) {
+        hourHandLine.setAttribute('x2', 200 + 95 * Math.cos(hRad));
+        hourHandLine.setAttribute('y2', 200 + 95 * Math.sin(hRad));
+      }
 
       const mRad = (minDeg - 90) * (Math.PI / 180);
-      minHandLine.setAttribute('x2', 200 + 145 * Math.cos(mRad));
-      minHandLine.setAttribute('y2', 200 + 145 * Math.sin(mRad));
+      if (minHandLine) {
+        minHandLine.setAttribute('x2', 200 + 145 * Math.cos(mRad));
+        minHandLine.setAttribute('y2', 200 + 145 * Math.sin(mRad));
+      }
     }
   }
 
@@ -334,6 +343,7 @@
   }
 
   function startDrag(e) {
+    if (!svgClockInteractive) return;
     const pt = getSVGPoint(
       svgClockInteractive,
       e.touches ? e.touches[0].clientX : e.clientX,
@@ -359,6 +369,7 @@
 
   function handleMove(e) {
     if (!isDraggingMinute && !isDraggingHour) return;
+    if (!svgClockInteractive) return;
     e.preventDefault();
 
     const pt = getSVGPoint(
@@ -401,13 +412,15 @@
     isDraggingHour = false;
   }
 
-  svgClockInteractive.addEventListener('mousedown', startDrag);
-  window.addEventListener('mousemove', handleMove);
-  window.addEventListener('mouseup', stopDrag);
+  if (svgClockInteractive) {
+    svgClockInteractive.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', stopDrag);
 
-  svgClockInteractive.addEventListener('touchstart', startDrag, { passive: false });
-  window.addEventListener('touchmove', handleMove, { passive: false });
-  window.addEventListener('touchend', stopDrag);
+    svgClockInteractive.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('touchmove', handleMove, { passive: false });
+    window.addEventListener('touchend', stopDrag);
+  }
 
   // ==========================================
   // RANDOM NON-REPEATING QUESTION GENERATOR
@@ -488,10 +501,10 @@
   function setupMode1() {
     clearAutoTimer();
     state.currentMode = 1;
-    const maxTarget = LEVEL_TARGETS[state.currentLevel];
+    const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
 
-    mode1LevelPill.textContent = getLevelLabel(state.currentLevel);
-    mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
+    if (mode1LevelPill) mode1LevelPill.textContent = getLevelLabel(state.currentLevel);
+    if (mode1StreakEl) mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
 
     const q = generateQuestion(state.currentLevel, 1);
     activeQuestion.targetHour = q.hour;
@@ -502,39 +515,45 @@
     updateHandPositions('interactive', 12, 0);
 
     const targetFormatted = formatTime(q.hour, q.minute);
-    mode1TargetDigital.textContent = targetFormatted;
+    if (mode1TargetDigital) mode1TargetDigital.textContent = targetFormatted;
 
-    mode1Feedback.textContent = '';
-    mode1Feedback.className = 'feedback-msg';
+    if (mode1Feedback) {
+      mode1Feedback.textContent = '';
+      mode1Feedback.className = 'feedback-msg';
+    }
 
-    btnMode1Check.disabled = false;
-    btnMode1Check.classList.remove('hidden');
+    if (btnMode1Check) {
+      btnMode1Check.disabled = false;
+      btnMode1Check.classList.remove('hidden');
+    }
 
     setMascotSpeech('İbreleri çevir ve saati ayarla! 🕒');
   }
 
   function checkMode1() {
     state.totalAttempts++;
-    const maxTarget = LEVEL_TARGETS[state.currentLevel];
+    const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
 
     const isCorrect = (activeQuestion.currentHour % 12 === activeQuestion.targetHour % 12) &&
                       (activeQuestion.currentMinute === activeQuestion.targetMinute);
 
     if (isCorrect) {
-      btnMode1Check.disabled = true; // Prevent extra clicks during auto advance
+      if (btnMode1Check) btnMode1Check.disabled = true;
       state.stars++;
       state.totalCorrect++;
       state.levelProgress1++;
-      starCountEl.textContent = state.stars;
-      mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
+      if (starCountEl) starCountEl.textContent = state.stars;
+      if (mode1StreakEl) mode1StreakEl.textContent = `${state.levelProgress1}/${maxTarget}`;
 
       if (state.levelProgress1 >= maxTarget) {
         handleLevelCompletion(1);
         autoNextTimer = setTimeout(() => { setupMode1(); }, 1800);
       } else {
         playSound('correct');
-        mode1Feedback.textContent = 'Harika! Doğru buldun! 🎉';
-        mode1Feedback.className = 'feedback-msg correct';
+        if (mode1Feedback) {
+          mode1Feedback.textContent = 'Harika! Doğru buldun! 🎉';
+          mode1Feedback.className = 'feedback-msg correct';
+        }
         triggerMascotCelebrate('Aferin sana! Çok zekisin! 🌟');
         autoNextTimer = setTimeout(() => { setupMode1(); }, 1200);
       }
@@ -543,8 +562,10 @@
 
     } else {
       playSound('wrong');
-      mode1Feedback.textContent = 'Neredeyse! Tekrar dene 💪';
-      mode1Feedback.className = 'feedback-msg wrong';
+      if (mode1Feedback) {
+        mode1Feedback.textContent = 'Neredeyse! Tekrar dene 💪';
+        mode1Feedback.className = 'feedback-msg wrong';
+      }
       setMascotSpeech('Hadi bir daha dene! 💪');
       saveState();
     }
@@ -556,10 +577,10 @@
   function setupMode2() {
     clearAutoTimer();
     state.currentMode = 2;
-    const maxTarget = LEVEL_TARGETS[state.currentLevel];
+    const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
 
-    mode2LevelPill.textContent = getLevelLabel(state.currentLevel);
-    mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
+    if (mode2LevelPill) mode2LevelPill.textContent = getLevelLabel(state.currentLevel);
+    if (mode2StreakEl) mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
 
     const q = generateQuestion(state.currentLevel, 2);
     activeQuestion.targetHour = q.hour;
@@ -570,27 +591,33 @@
     const choices = generateDistractors(q.hour, q.minute, state.currentLevel);
     activeQuestion.options = choices;
 
-    choiceButtonsGrid.innerHTML = '';
-    choices.forEach(optStr => {
-      const btn = document.createElement('button');
-      btn.className = 'btn-choice';
-      btn.textContent = optStr;
-      btn.addEventListener('click', () => handleChoiceSelect(btn, optStr));
-      choiceButtonsGrid.appendChild(btn);
-    });
+    if (choiceButtonsGrid) {
+      choiceButtonsGrid.innerHTML = '';
+      choices.forEach(optStr => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice';
+        btn.textContent = optStr;
+        btn.addEventListener('click', () => handleChoiceSelect(btn, optStr));
+        choiceButtonsGrid.appendChild(btn);
+      });
+    }
 
-    mode2Feedback.textContent = '';
-    mode2Feedback.className = 'feedback-msg';
+    if (mode2Feedback) {
+      mode2Feedback.textContent = '';
+      mode2Feedback.className = 'feedback-msg';
+    }
 
     setMascotSpeech('Doğru cevaba tıkla! 🧐');
   }
 
   function handleChoiceSelect(selectedBtn, chosenStr) {
-    const allBtns = choiceButtonsGrid.querySelectorAll('.btn-choice');
-    allBtns.forEach(b => b.disabled = true);
+    if (choiceButtonsGrid) {
+      const allBtns = choiceButtonsGrid.querySelectorAll('.btn-choice');
+      allBtns.forEach(b => b.disabled = true);
+    }
 
     state.totalAttempts++;
-    const maxTarget = LEVEL_TARGETS[state.currentLevel];
+    const maxTarget = LEVEL_TARGETS[state.currentLevel] || 5;
     const targetStr = formatTime(activeQuestion.targetHour, activeQuestion.targetMinute);
     const isCorrect = chosenStr === targetStr;
 
@@ -599,16 +626,18 @@
       state.stars++;
       state.totalCorrect++;
       state.levelProgress2++;
-      starCountEl.textContent = state.stars;
-      mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
+      if (starCountEl) starCountEl.textContent = state.stars;
+      if (mode2StreakEl) mode2StreakEl.textContent = `${state.levelProgress2}/${maxTarget}`;
 
       if (state.levelProgress2 >= maxTarget) {
         handleLevelCompletion(2);
         autoNextTimer = setTimeout(() => { setupMode2(); }, 1800);
       } else {
         playSound('correct');
-        mode2Feedback.textContent = 'Tebrikler! Çok hızlısın! 🎉';
-        mode2Feedback.className = 'feedback-msg correct';
+        if (mode2Feedback) {
+          mode2Feedback.textContent = 'Tebrikler! Çok hızlısın! 🎉';
+          mode2Feedback.className = 'feedback-msg correct';
+        }
         triggerMascotCelebrate('Muhteşemsin! ⭐');
         autoNextTimer = setTimeout(() => { setupMode2(); }, 1200);
       }
@@ -617,18 +646,22 @@
 
     } else {
       selectedBtn.classList.add('selected-wrong');
-      allBtns.forEach(b => {
-        if (b.textContent === targetStr) {
-          b.classList.add('selected-correct');
-        }
-      });
+      if (choiceButtonsGrid) {
+        const allBtns = choiceButtonsGrid.querySelectorAll('.btn-choice');
+        allBtns.forEach(b => {
+          if (b.textContent === targetStr) {
+            b.classList.add('selected-correct');
+          }
+        });
+      }
 
       playSound('wrong');
-      mode2Feedback.textContent = `Doğru cevap ${targetStr} olmalıydı. 💛`;
-      mode2Feedback.className = 'feedback-msg wrong';
+      if (mode2Feedback) {
+        mode2Feedback.textContent = `Doğru cevap ${targetStr} olmalıydı. 💛`;
+        mode2Feedback.className = 'feedback-msg wrong';
+      }
       setMascotSpeech('Bir sonraki soruda bulacaksın! 💪');
 
-      // Auto advance after brief delay so child sees correct answer
       autoNextTimer = setTimeout(() => { setupMode2(); }, 1800);
       saveState();
     }
@@ -650,10 +683,10 @@
       saveState();
 
       const msg = `🎉 TEBRİKLER! Seviye ${oldLevel} tamamlandı! Seviye ${nextLevel} başladı! 🚀`;
-      if (mode === 1) {
+      if (mode === 1 && mode1Feedback) {
         mode1Feedback.textContent = msg;
         mode1Feedback.className = 'feedback-msg correct';
-      } else {
+      } else if (mode === 2 && mode2Feedback) {
         mode2Feedback.textContent = msg;
         mode2Feedback.className = 'feedback-msg correct';
       }
@@ -665,10 +698,10 @@
 
       saveState();
       const winMsg = '🏆 MUHTEŞEM! Tüm seviyeleri tamamladın! ⭐';
-      if (mode === 1) {
+      if (mode === 1 && mode1Feedback) {
         mode1Feedback.textContent = winMsg;
         mode1Feedback.className = 'feedback-msg correct';
-      } else {
+      } else if (mode === 2 && mode2Feedback) {
         mode2Feedback.textContent = winMsg;
         mode2Feedback.className = 'feedback-msg correct';
       }
@@ -691,14 +724,20 @@
   // ==========================================
   function showScreen(targetScreenId) {
     clearAutoTimer();
-    Object.values(screens).forEach(s => s.classList.remove('active'));
-    screens[targetScreenId].classList.add('active');
+    Object.keys(screens).forEach(key => {
+      if (screens[key]) {
+        screens[key].classList.remove('active');
+      }
+    });
+    if (screens[targetScreenId]) {
+      screens[targetScreenId].classList.add('active');
+    }
 
     if (targetScreenId === 'menu') {
-      btnNavBack.classList.add('hidden');
+      if (btnNavBack) btnNavBack.classList.add('hidden');
       setMascotSpeech('Merhaba! Saatleri öğrenelim mi? 🌟');
     } else {
-      btnNavBack.classList.remove('hidden');
+      if (btnNavBack) btnNavBack.classList.remove('hidden');
     }
   }
 
@@ -735,19 +774,25 @@
   // ==========================================
   // EVENT LISTENERS
   // ==========================================
-  document.getElementById('btn-start-mode-1').addEventListener('click', () => {
-    playSound('tick');
-    state.currentMode = 1;
-    updateLevelCardsUI();
-    showScreen('levels');
-  });
+  const btnStartMode1 = document.getElementById('btn-start-mode-1');
+  if (btnStartMode1) {
+    btnStartMode1.addEventListener('click', () => {
+      playSound('tick');
+      state.currentMode = 1;
+      updateLevelCardsUI();
+      showScreen('levels');
+    });
+  }
 
-  document.getElementById('btn-start-mode-2').addEventListener('click', () => {
-    playSound('tick');
-    state.currentMode = 2;
-    updateLevelCardsUI();
-    showScreen('levels');
-  });
+  const btnStartMode2 = document.getElementById('btn-start-mode-2');
+  if (btnStartMode2) {
+    btnStartMode2.addEventListener('click', () => {
+      playSound('tick');
+      state.currentMode = 2;
+      updateLevelCardsUI();
+      showScreen('levels');
+    });
+  }
 
   document.querySelectorAll('.level-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -773,88 +818,113 @@
     });
   });
 
-  btnNavBack.addEventListener('click', () => {
-    playSound('tick');
-    showScreen('menu');
-  });
+  if (btnNavBack) {
+    btnNavBack.addEventListener('click', () => {
+      playSound('tick');
+      showScreen('menu');
+    });
+  }
 
-  btnMode1Check.addEventListener('click', checkMode1);
+  if (btnMode1Check) {
+    btnMode1Check.addEventListener('click', checkMode1);
+  }
 
-  btnSoundToggle.addEventListener('click', () => {
-    state.soundEnabled = !state.soundEnabled;
-    soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
-    saveState();
-    if (state.soundEnabled) playSound('tick');
-  });
-
-  document.getElementById('btn-open-help').addEventListener('click', () => {
-    playSound('tick');
-    modalHelp.classList.remove('hidden');
-  });
-  document.getElementById('btn-close-help').addEventListener('click', () => modalHelp.classList.add('hidden'));
-  document.getElementById('btn-ok-help').addEventListener('click', () => modalHelp.classList.add('hidden'));
-
-  document.getElementById('btn-open-stats').addEventListener('click', () => {
-    playSound('tick');
-    document.getElementById('stat-total-stars').textContent = state.stars;
-    document.getElementById('stat-unlocked-level').textContent = `${state.unlockedLevel}/4`;
-    document.getElementById('stat-correct-count').textContent = state.totalCorrect;
-    document.getElementById('stat-attempt-count').textContent = state.totalAttempts;
-
-    const acc = state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 100;
-    document.getElementById('stat-accuracy').textContent = `%${acc}`;
-
-    modalStats.classList.remove('hidden');
-  });
-  document.getElementById('btn-close-stats').addEventListener('click', () => modalStats.classList.add('hidden'));
-
-  document.getElementById('btn-reset-progress').addEventListener('click', () => {
-    if (confirm('Tüm ilerlemeni ve yıldızlarını sıfırlamak istediğine emin misin?')) {
-      state.stars = 0;
-      state.unlockedLevel = 1;
-      state.totalCorrect = 0;
-      state.totalAttempts = 0;
-      state.levelProgress1 = 0;
-      state.levelProgress2 = 0;
-      starCountEl.textContent = 0;
+  if (btnSoundToggle) {
+    btnSoundToggle.addEventListener('click', () => {
+      state.soundEnabled = !state.soundEnabled;
+      if (soundIcon) soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
       saveState();
-      updateLevelCardsUI();
-      modalStats.classList.add('hidden');
-      alert('İlerleme sıfırlandı.');
-    }
-  });
+      if (state.soundEnabled) playSound('tick');
+    });
+  }
 
-  // ==========================================
-  // PWA INSTALLATION & SERVICE WORKER LOGIC
-  // ==========================================
+  const btnOpenHelp = document.getElementById('btn-open-help');
+  if (btnOpenHelp) {
+    btnOpenHelp.addEventListener('click', () => {
+      playSound('tick');
+      if (modalHelp) modalHelp.classList.remove('hidden');
+    });
+  }
+  const btnCloseHelp = document.getElementById('btn-close-help');
+  if (btnCloseHelp) btnCloseHelp.addEventListener('click', () => modalHelp && modalHelp.classList.add('hidden'));
+  const btnOkHelp = document.getElementById('btn-ok-help');
+  if (btnOkHelp) btnOkHelp.addEventListener('click', () => modalHelp && modalHelp.classList.add('hidden'));
+
+  const btnOpenStats = document.getElementById('btn-open-stats');
+  if (btnOpenStats) {
+    btnOpenStats.addEventListener('click', () => {
+      playSound('tick');
+      const totalStars = document.getElementById('stat-total-stars');
+      const unlockedLvl = document.getElementById('stat-unlocked-level');
+      const correctCount = document.getElementById('stat-correct-count');
+      const attemptCount = document.getElementById('stat-attempt-count');
+      const accuracyEl = document.getElementById('stat-accuracy');
+
+      if (totalStars) totalStars.textContent = state.stars;
+      if (unlockedLvl) unlockedLvl.textContent = `${state.unlockedLevel}/4`;
+      if (correctCount) correctCount.textContent = state.totalCorrect;
+      if (attemptCount) attemptCount.textContent = state.totalAttempts;
+
+      const acc = state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 100;
+      if (accuracyEl) accuracyEl.textContent = `%${acc}`;
+
+      if (modalStats) modalStats.classList.remove('hidden');
+    });
+  }
+  const btnCloseStats = document.getElementById('btn-close-stats');
+  if (btnCloseStats) btnCloseStats.addEventListener('click', () => modalStats && modalStats.classList.add('hidden'));
+
+  const btnResetProgress = document.getElementById('btn-reset-progress');
+  if (btnResetProgress) {
+    btnResetProgress.addEventListener('click', () => {
+      if (confirm('Tüm ilerlemeni ve yıldızlarını sıfırlamak istediğine emin misin?')) {
+        state.stars = 0;
+        state.unlockedLevel = 1;
+        state.totalCorrect = 0;
+        state.totalAttempts = 0;
+        state.levelProgress1 = 0;
+        state.levelProgress2 = 0;
+        if (starCountEl) starCountEl.textContent = 0;
+        saveState();
+        updateLevelCardsUI();
+        if (modalStats) modalStats.classList.add('hidden');
+        alert('İlerleme sıfırlandı.');
+      }
+    });
+  }
+
   let deferredPrompt = null;
 
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    btnInstall.classList.remove('hidden');
+    if (btnInstall) btnInstall.classList.remove('hidden');
   });
 
-  btnInstall.addEventListener('click', async () => {
-    playSound('tick');
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (btnInstall) {
+    btnInstall.addEventListener('click', async () => {
+      playSound('tick');
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-    if (isIOS) {
-      modalIosGuide.classList.remove('hidden');
-    } else if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        btnInstall.classList.add('hidden');
+      if (isIOS) {
+        if (modalIosGuide) modalIosGuide.classList.remove('hidden');
+      } else if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          btnInstall.classList.add('hidden');
+        }
+        deferredPrompt = null;
+      } else {
+        alert('Uygulama zaten yüklü veya tarayıcınız PWA yüklemeyi şu an desteklemiyor.');
       }
-      deferredPrompt = null;
-    } else {
-      alert('Uygulama zaten yüklü veya tarayıcınız PWA yüklemeyi şu an desteklemiyor.');
-    }
-  });
+    });
+  }
 
-  document.getElementById('btn-close-ios').addEventListener('click', () => modalIosGuide.classList.add('hidden'));
-  document.getElementById('btn-ok-ios').addEventListener('click', () => modalIosGuide.classList.add('hidden'));
+  const btnCloseIos = document.getElementById('btn-close-ios');
+  if (btnCloseIos) btnCloseIos.addEventListener('click', () => modalIosGuide && modalIosGuide.classList.add('hidden'));
+  const btnOkIos = document.getElementById('btn-ok-ios');
+  if (btnOkIos) btnOkIos.addEventListener('click', () => modalIosGuide && modalIosGuide.classList.add('hidden'));
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -866,8 +936,8 @@
 
   function init() {
     loadState();
-    starCountEl.textContent = state.stars;
-    soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
+    if (starCountEl) starCountEl.textContent = state.stars;
+    if (soundIcon) soundIcon.textContent = state.soundEnabled ? '🔊' : '🔇';
     updateLevelCardsUI();
     showScreen('menu');
   }
