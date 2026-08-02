@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Saati Öğreniyorum 🕐</title>
+  
+  <!-- PWA & Mobile Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FF9800">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Saati Öğren">
+  <link rel="apple-touch-icon" href="icon.svg">
+  
+  <!-- Google Fonts: Fredoka -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Navigation Header -->
+  <header class="app-header">
+    <button id="btn-nav-back" class="nav-back-btn hidden" aria-label="Geri Dön">
+      <span class="btn-icon">⬅️</span>
+      <span class="btn-text">Ana Menü</span>
+    </button>
+
+    <div class="app-title-mini">Saati Öğreniyorum 🕐</div>
+
+    <div class="header-actions">
+      <!-- PWA Install Button -->
+      <button id="btn-install" class="install-btn hidden" title="Uygulamayı İndir">
+        📱 Uygulamayı İndir
+      </button>
+
+      <!-- Audio Sound Toggle -->
+      <button id="btn-sound-toggle" class="sound-btn" title="Ses Aç/Kapat">
+        <span id="sound-icon">🔊</span>
+      </button>
+
+      <!-- Star Score Badge -->
+      <div class="star-badge" title="Kazanılan Yıldızlar">
+        <span class="star-icon">⭐</span>
+        <span id="star-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-viewport">
+
+    <!-- SCREEN 1: ANA MENÜ -->
+    <section id="screen-menu" class="screen active">
+      <div class="menu-content">
+        <!-- Cute Mascot -->
+        <div class="mascot-container">
+          <div id="mascot-avatar" class="mascot-avatar">
+            <svg viewBox="0 0 160 160" width="140" height="140" class="mascot-svg">
+              <ellipse cx="80" cy="90" rx="55" ry="50" fill="#FF9F43"/>
+              <ellipse cx="80" cy="95" rx="42" ry="38" fill="#FFF9E6"/>
+              <polygon points="35,50 50,20 65,45" fill="#EE5253"/>
+              <polygon points="95,45 110,20 125,50" fill="#EE5253"/>
+              <circle cx="58" cy="75" r="18" fill="#FFFFFF"/>
+              <circle cx="102" cy="75" r="18" fill="#FFFFFF"/>
+              <circle cx="60" cy="75" r="9" fill="#2D3436"/>
+              <circle cx="100" cy="75" r="9" fill="#2D3436"/>
+              <circle cx="63" cy="72" r="3" fill="#FFFFFF"/>
+              <circle cx="103" cy="72" r="3" fill="#FFFFFF"/>
+              <polygon points="80,82 72,94 88,94" fill="#FF9F43" stroke="#EE5253" stroke-width="2"/>
+              <ellipse cx="44" cy="90" rx="8" ry="5" fill="#FF8A80" opacity="0.7"/>
+              <ellipse cx="116" cy="90" rx="8" ry="5" fill="#FF8A80" opacity="0.7"/>
+              <path d="M 25 90 Q 15 110 32 115 Z" fill="#EE5253"/>
+              <path d="M 135 90 Q 145 110 128 115 Z" fill="#EE5253"/>
+            </svg>
+          </div>
+          <div id="mascot-speech" class="mascot-speech">Merhaba! Saatleri birlikte öğrenelim mi? 🌟</div>
+        </div>
+
+        <h1 class="main-title">Saati Öğreniyorum 🕐</h1>
+        <p class="main-subtitle">Eğlenceli Saat Oyunları</p>
+
+        <!-- Big Child-Friendly Mode Buttons -->
+        <div class="menu-buttons">
+          <button id="btn-start-mode-1" class="btn-card btn-mode-1">
+            <div class="btn-card-icon">🕒</div>
+            <div class="btn-card-text">
+              <h2>Saati Kur</h2>
+              <p>İbreleri parmağınla çevir!</p>
+            </div>
+          </button>
+
+          <button id="btn-start-mode-2" class="btn-card btn-mode-2">
+            <div class="btn-card-icon">❓</div>
+            <div class="btn-card-text">
+              <h2>Doğru Saati Bul</h2>
+              <p>Doğru seçeneği tıkla!</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Sub Actions -->
+        <div class="menu-footer-actions">
+          <button id="btn-open-help" class="btn-sub">📖 Nasıl Oynanır?</button>
+          <button id="btn-open-stats" class="btn-sub">📊 İlerleme Raporu</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: SEVİYE SEÇİMİ -->
+    <section id="screen-levels" class="screen">
+      <div class="screen-header">
+        <h2>Seviyeni Seç 🎯</h2>
+        <p id="level-mode-desc">Oynamak istediğin seviyeyi seç:</p>
+      </div>
+
+      <div class="levels-grid">
+        <!-- Level 1 (5 Soru) -->
+        <button class="level-card unlocked" data-level="1">
+          <div class="level-badge">1</div>
+          <div class="level-icon">☀️</div>
+          <div class="level-info">
+            <h3>Seviye 1</h3>
+            <p>Tam Saatler</p>
+            <span class="level-count-pill">5 Soru</span>
+          </div>
+          <div class="level-status" id="lvl-status-1">Açık</div>
+        </button>
+
+        <!-- Level 2 (10 Soru) -->
+        <button class="level-card locked" data-level="2">
+          <div class="level-badge">2</div>
+          <div class="level-icon">🌈</div>
+          <div class="level-info">
+            <h3>Seviye 2</h3>
+            <p>Yarım Saatler</p>
+            <span class="level-count-pill">10 Soru</span>
+          </div>
+          <div class="level-status" id="lvl-status-2">🔒 Kilitli</div>
+        </button>
+
+        <!-- Level 3 (15 Soru) -->
+        <button class="level-card locked" data-level="3">
+          <div class="level-badge">3</div>
+          <div class="level-icon">🌙</div>
+          <div class="level-info">
+            <h3>Seviye 3</h3>
+            <p>Çeyrek Saatler</p>
+            <span class="level-count-pill">15 Soru</span>
+          </div>
+          <div class="level-status" id="lvl-status-3">🔒 Kilitli</div>
+        </button>
+
+        <!-- Level 4 (20 Soru) -->
+        <button class="level-card locked" data-level="4">
+          <div class="level-badge">4</div>
+          <div class="level-icon">⭐</div>
+          <div class="level-info">
+            <h3>Seviye 4</h3>
+            <p>5 Dk Aralıklar</p>
+            <span class="level-count-pill">20 Soru</span>
+          </div>
+          <div class="level-status" id="lvl-status-4">🔒 Kilitli</div>
+        </button>
+      </div>
+      <p class="level-unlock-hint">💡 Seviyedeki tüm soruları tamamlayınca sonraki seviyeye otomatik geçersin!</p>
+    </section>
+
+    <!-- SCREEN 3: MOD 1 - SAATİ KUR -->
+    <section id="screen-mode-1" class="screen">
+      <div class="game-header">
+        <span class="level-pill" id="mode1-level-pill">Seviye 1 ☀️</span>
+        <div class="streak-pill">İlerleme: 🎯 <span id="mode1-streak">0/5</span></div>
+      </div>
+
+      <!-- Target Prompt -->
+      <div class="prompt-box">
+        <div class="prompt-label">Aşağıdaki saati ayarla:</div>
+        <div class="prompt-target">
+          <span id="mode1-target-text">Saati 03:00'e ayarla</span>
+          <div id="mode1-target-digital" class="digital-pill">03:00</div>
+        </div>
+      </div>
+
+      <!-- Clock Container -->
+      <div class="clock-stage">
+        <svg id="interactive-clock" class="analog-clock" viewBox="0 0 400 400" width="340" height="340">
+          <circle cx="200" cy="200" r="185" fill="#FFEAA7" stroke="#FFB92B" stroke-width="10"/>
+          <circle cx="200" cy="200" r="172" fill="#FFFFFF"/>
+          
+          <g id="clock-ticks"></g>
+          <g id="clock-numbers"></g>
+
+          <g id="group-hour-hand" class="clock-hand-group">
+            <line id="hand-hour" x1="200" y1="200" x2="200" y2="105" stroke="#FF4757" stroke-width="16" stroke-linecap="round"/>
+            <circle cx="200" cy="105" r="18" fill="#FF4757" opacity="0.3"/>
+          </g>
+
+          <g id="group-minute-hand" class="clock-hand-group">
+            <line id="hand-minute" x1="200" y1="200" x2="200" y2="55" stroke="#1E90FF" stroke-width="11" stroke-linecap="round"/>
+            <circle cx="200" cy="55" r="18" fill="#1E90FF" opacity="0.3"/>
+          </g>
+
+          <circle cx="200" cy="200" r="14" fill="#FFA502"/>
+          <circle cx="200" cy="200" r="6" fill="#2F3542"/>
+        </svg>
+      </div>
+
+      <div class="current-set-readout">
+        Şu anki saat: <strong id="mode1-current-val">12:00</strong>
+      </div>
+
+      <div id="mode1-feedback" class="feedback-msg"></div>
+
+      <div class="game-actions">
+        <button id="btn-mode1-check" class="btn-action btn-check">Kontrol Et ✅</button>
+        <button id="btn-mode1-next" class="btn-action btn-next hidden">Sonraki Soru ➡️</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: MOD 2 - DOĞRU SAATİ BUL -->
+    <section id="screen-mode-2" class="screen">
+      <div class="game-header">
+        <span class="level-pill" id="mode2-level-pill">Seviye 1 ☀️</span>
+        <div class="streak-pill">İlerleme: 🎯 <span id="mode2-streak">0/5</span></div>
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-label">Bu saat kaçı gösteriyor? 🧐</div>
+      </div>
+
+      <div class="clock-stage">
+        <svg id="display-clock" class="analog-clock" viewBox="0 0 400 400" width="320" height="320">
+          <circle cx="200" cy="200" r="185" fill="#FFEAA7" stroke="#FFB92B" stroke-width="10"/>
+          <circle cx="200" cy="200" r="172" fill="#FFFFFF"/>
+          
+          <g id="display-clock-ticks"></g>
+          <g id="display-clock-numbers"></g>
+
+          <line id="display-hand-hour" x1="200" y1="200" x2="200" y2="105" stroke="#FF4757" stroke-width="16" stroke-linecap="round"/>
+          <line id="display-hand-minute" x1="200" y1="200" x2="200" y2="55" stroke="#1E90FF" stroke-width="11" stroke-linecap="round"/>
+
+          <circle cx="200" cy="200" r="14" fill="#FFA502"/>
+          <circle cx="200" cy="200" r="6" fill="#2F3542"/>
+        </svg>
+      </div>
+
+      <div id="mode2-feedback" class="feedback-msg"></div>
+
+      <div id="choice-buttons-grid" class="choices-grid"></div>
+
+      <div class="game-actions">
+        <button id="btn-mode2-next" class="btn-action btn-next hidden">Sonraki Soru ➡️</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: NASIL OYNANIR -->
+  <div id="modal-help" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>📖 Nasıl Oynanır?</h2>
+        <button class="modal-close" id="btn-close-help">✖</button>
+      </div>
+      <div class="modal-body">
+        <div class="help-item">
+          <span class="help-icon">🕒</span>
+          <div>
+            <h4>Saati Kur Modu</h4>
+            <p>İstenen saati ayarlamak için mavi <b>yelkovan</b> veya kırmızı <b>akrep</b> ibresini çevir, sonra "Kontrol Et" butonuna bas!</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <span class="help-icon">❓</span>
+          <div>
+            <h4>Doğru Saati Bul Modu</h4>
+            <p>Ekranda görünen saati incele ve altındaki doğru saat butonuna dokun!</p>
+          </div>
+        </div>
+
+        <div class="help-item">
+          <span class="help-icon">🎯</span>
+          <div>
+            <h4>Otomatik Seviye Geçişi</h4>
+            <p>Seviye 1 (5 soru), Seviye 2 (10 soru), Seviye 3 (15 soru), Seviye 4 (20 soru). Seviyeyi tamamlayınca sonraki seviyeye otomatik geçersin!</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary modal-ok-btn" id="btn-ok-help">Anladım, Oyuna Başla! 🚀</button>
+    </div>
+  </div>
+
+  <!-- MODAL: İLERLEME RAPORU -->
+  <div id="modal-stats" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>📊 İlerleme Raporu</h2>
+        <button class="modal-close" id="btn-close-stats">✖</button>
+      </div>
+      <div class="modal-body">
+        <div class="stats-summary">
+          <div class="stat-box">
+            <span class="stat-num" id="stat-total-stars">0</span>
+            <span class="stat-label">⭐ Yıldız</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="stat-unlocked-level">1/4</span>
+            <span class="stat-label">🔓 Açılan Seviye</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="stat-accuracy">%100</span>
+            <span class="stat-label">🎯 Başarı</span>
+          </div>
+        </div>
+
+        <div class="stats-detail">
+          <p>Toplam Doğru Cevap: <strong id="stat-correct-count">0</strong></p>
+          <p>Toplam Deneme: <strong id="stat-attempt-count">0</strong></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-reset-progress" class="btn-danger">İlerlemeyi Sıfırla 🔄</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: iOS SAFARI REHBERİ -->
+  <div id="modal-ios-guide" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>📱 Uygulamayı İndir</h2>
+        <button class="modal-close" id="btn-close-ios">✖</button>
+      </div>
+      <div class="modal-body ios-instructions">
+        <p>Saati Öğreniyorum uygulamasını telefonuna indirmek için:</p>
+        <ol>
+          <li>Safari alt menüsündeki <b>Paylaş</b> butonuna dokun 📤</li>
+          <li>Açılan listeden <b>"Ana Ekrana Ekle"</b> seçeneğini bul ➕</li>
+          <li>Sağ üstteki <b>Ekle</b> butonuna bas 🚀</li>
+        </ol>
+      </div>
+      <button class="btn-primary modal-ok-btn" id="btn-ok-ios">Tamam</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
