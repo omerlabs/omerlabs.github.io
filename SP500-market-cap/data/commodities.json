@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-03 19:12:20 UTC",
-  "totalMarketCap": 1031432,
+  "lastUpdated": "2026-08-03 20:20:27 UTC",
+  "totalMarketCap": 1050988,
   "companiesCount": 13,
   "data": [
     {
@@ -8,13 +8,13 @@
       "name": "Ham Petrol (WTI Crude)",
       "sector": "Emtia",
       "subSector": "Enerji",
-      "price": 80.26,
-      "change24h": -5.21,
-      "change7d": -10.13,
-      "marketCap": 255323,
+      "price": 80.15,
+      "change24h": -5.34,
+      "change7d": -10.26,
+      "marketCap": 262969,
       "pe": null,
       "peg": null,
-      "weight": 24.754,
+      "weight": 25.021,
       "rank": 1
     },
     {
@@ -25,10 +25,10 @@
       "price": 473.0,
       "change24h": 7.32,
       "change7d": 1.88,
-      "marketCap": 186563,
+      "marketCap": 186559,
       "pe": null,
       "peg": null,
-      "weight": 18.088,
+      "weight": 17.751,
       "rank": 2
     },
     {
@@ -42,8 +42,22 @@
       "marketCap": 108537,
       "pe": null,
       "peg": null,
-      "weight": 10.523,
+      "weight": 10.327,
       "rank": 3
+    },
+    {
+      "ticker": "Doğal Gaz",
+      "name": "Doğal Gaz (Natural Gas)",
+      "sector": "Emtia",
+      "subSector": "Enerji",
+      "price": 2.77,
+      "change24h": 0.84,
+      "change7d": -3.52,
+      "marketCap": 93905,
+      "pe": null,
+      "peg": null,
+      "weight": 8.935,
+      "rank": 4
     },
     {
       "ticker": "Şeker",
@@ -56,21 +70,7 @@
       "marketCap": 91314,
       "pe": null,
       "peg": null,
-      "weight": 8.853,
-      "rank": 4
-    },
-    {
-      "ticker": "Doğal Gaz",
-      "name": "Doğal Gaz (Natural Gas)",
-      "sector": "Emtia",
-      "subSector": "Enerji",
-      "price": 2.78,
-      "change24h": 1.2,
-      "change7d": -3.17,
-      "marketCap": 90097,
-      "pe": null,
-      "peg": null,
-      "weight": 8.735,
+      "weight": 8.688,
       "rank": 5
     },
     {
@@ -78,13 +78,13 @@
       "name": "Altın (Gold Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 4102.7,
-      "change24h": 1.32,
-      "change7d": 0.86,
-      "marketCap": 85091,
+      "price": 4107.8,
+      "change24h": 1.45,
+      "change7d": 0.99,
+      "marketCap": 89475,
       "pe": null,
       "peg": null,
-      "weight": 8.25,
+      "weight": 8.513,
       "rank": 6
     },
     {
@@ -98,7 +98,7 @@
       "marketCap": 64720,
       "pe": null,
       "peg": null,
-      "weight": 6.275,
+      "weight": 6.158,
       "rank": 7
     },
     {
@@ -109,10 +109,10 @@
       "price": 6.55,
       "change24h": 1.77,
       "change7d": 3.64,
-      "marketCap": 39800,
+      "marketCap": 41108,
       "pe": null,
       "peg": null,
-      "weight": 3.859,
+      "weight": 3.911,
       "rank": 8
     },
     {
@@ -120,13 +120,13 @@
       "name": "Brent Petrol (Brent Crude)",
       "sector": "Emtia",
       "subSector": "Enerji",
-      "price": 83.87,
-      "change24h": -6.94,
-      "change7d": -13.34,
-      "marketCap": 36042,
+      "price": 83.76,
+      "change24h": -7.06,
+      "change7d": -13.45,
+      "marketCap": 36845,
       "pe": null,
       "peg": null,
-      "weight": 3.494,
+      "weight": 3.506,
       "rank": 9
     },
     {
@@ -134,13 +134,13 @@
       "name": "Gümüş (Silver Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 58.19,
-      "change24h": 1.04,
-      "change7d": -0.79,
-      "marketCap": 29042,
+      "price": 58.22,
+      "change24h": 1.09,
+      "change7d": -0.74,
+      "marketCap": 30314,
       "pe": null,
       "peg": null,
-      "weight": 2.816,
+      "weight": 2.884,
       "rank": 10
     },
     {
@@ -154,7 +154,7 @@
       "marketCap": 17659,
       "pe": null,
       "peg": null,
-      "weight": 1.712,
+      "weight": 1.68,
       "rank": 11
     },
     {
@@ -168,7 +168,7 @@
       "marketCap": 15887,
       "pe": null,
       "peg": null,
-      "weight": 1.54,
+      "weight": 1.512,
       "rank": 12
     },
     {
@@ -176,13 +176,13 @@
       "name": "Platin (Platinum Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 1631.8,
-      "change24h": -1.12,
-      "change7d": 2.41,
-      "marketCap": 11357,
+      "price": 1635.8,
+      "change24h": -0.88,
+      "change7d": 2.66,
+      "marketCap": 11696,
       "pe": null,
       "peg": null,
-      "weight": 1.101,
+      "weight": 1.113,
       "rank": 13
     }
   ]
