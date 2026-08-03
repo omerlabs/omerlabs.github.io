@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-03 20:48:00 UTC",
-  "totalMarketCap": 170544746,
+  "lastUpdated": "2026-08-03 21:51:45 UTC",
+  "totalMarketCap": 171202070,
   "companiesCount": 19,
   "data": [
     {
@@ -14,7 +14,7 @@
       "marketCap": 42678061,
       "pe": null,
       "peg": null,
-      "weight": 25.025,
+      "weight": 24.928,
       "rank": 1
     },
     {
@@ -28,7 +28,7 @@
       "marketCap": 25487808,
       "pe": null,
       "peg": null,
-      "weight": 14.945,
+      "weight": 14.888,
       "rank": 2
     },
     {
@@ -42,7 +42,7 @@
       "marketCap": 21669773,
       "pe": null,
       "peg": null,
-      "weight": 12.706,
+      "weight": 12.657,
       "rank": 3
     },
     {
@@ -53,10 +53,10 @@
       "price": 160.24,
       "change24h": 2.0,
       "change7d": -1.67,
-      "marketCap": 21087050,
+      "marketCap": 21240198,
       "pe": null,
       "peg": null,
-      "weight": 12.365,
+      "weight": 12.407,
       "rank": 4
     },
     {
@@ -67,10 +67,10 @@
       "price": 36.42,
       "change24h": -0.63,
       "change7d": 1.93,
-      "marketCap": 13503967,
+      "marketCap": 13832861,
       "pe": null,
       "peg": null,
-      "weight": 7.918,
+      "weight": 8.08,
       "rank": 5
     },
     {
@@ -84,7 +84,7 @@
       "marketCap": 13079763,
       "pe": null,
       "peg": null,
-      "weight": 7.669,
+      "weight": 7.64,
       "rank": 6
     },
     {
@@ -98,7 +98,7 @@
       "marketCap": 6732336,
       "pe": null,
       "peg": null,
-      "weight": 3.948,
+      "weight": 3.932,
       "rank": 7
     },
     {
@@ -112,7 +112,7 @@
       "marketCap": 5348213,
       "pe": null,
       "peg": null,
-      "weight": 3.136,
+      "weight": 3.124,
       "rank": 8
     },
     {
@@ -126,7 +126,7 @@
       "marketCap": 5070148,
       "pe": null,
       "peg": null,
-      "weight": 2.973,
+      "weight": 2.961,
       "rank": 9
     },
     {
@@ -140,7 +140,7 @@
       "marketCap": 4764756,
       "pe": null,
       "peg": null,
-      "weight": 2.794,
+      "weight": 2.783,
       "rank": 10
     },
     {
@@ -151,10 +151,10 @@
       "price": 92.91,
       "change24h": 0.56,
       "change7d": 1.86,
-      "marketCap": 3853585,
+      "marketCap": 4019912,
       "pe": null,
       "peg": null,
-      "weight": 2.26,
+      "weight": 2.348,
       "rank": 11
     },
     {
@@ -168,7 +168,7 @@
       "marketCap": 2026294,
       "pe": null,
       "peg": null,
-      "weight": 1.188,
+      "weight": 1.184,
       "rank": 12
     },
     {
@@ -182,7 +182,7 @@
       "marketCap": 1830634,
       "pe": null,
       "peg": null,
-      "weight": 1.073,
+      "weight": 1.069,
       "rank": 13
     },
     {
@@ -196,7 +196,7 @@
       "marketCap": 1276047,
       "pe": null,
       "peg": null,
-      "weight": 0.748,
+      "weight": 0.745,
       "rank": 14
     },
     {
@@ -210,7 +210,7 @@
       "marketCap": 1028761,
       "pe": null,
       "peg": null,
-      "weight": 0.603,
+      "weight": 0.601,
       "rank": 15
     },
     {
@@ -224,7 +224,7 @@
       "marketCap": 486297,
       "pe": null,
       "peg": null,
-      "weight": 0.285,
+      "weight": 0.284,
       "rank": 16
     },
     {
@@ -235,10 +235,10 @@
       "price": 303.7,
       "change24h": 1.74,
       "change7d": 2.88,
-      "marketCap": 230153,
+      "marketCap": 239108,
       "pe": null,
       "peg": null,
-      "weight": 0.135,
+      "weight": 0.14,
       "rank": 17
     },
     {
@@ -252,7 +252,7 @@
       "marketCap": 200938,
       "pe": null,
       "peg": null,
-      "weight": 0.118,
+      "weight": 0.117,
       "rank": 18
     },
     {
@@ -266,7 +266,7 @@
       "marketCap": 190162,
       "pe": null,
       "peg": null,
-      "weight": 0.112,
+      "weight": 0.111,
       "rank": 19
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-03 20:47:58 UTC",
-  "totalMarketCap": 1054079,
+  "lastUpdated": "2026-08-03 21:51:44 UTC",
+  "totalMarketCap": 1057243,
   "companiesCount": 13,
   "data": [
     {
@@ -8,13 +8,13 @@
       "name": "Ham Petrol (WTI Crude)",
       "sector": "Emtia",
       "subSector": "Enerji",
-      "price": 79.95,
-      "change24h": -5.57,
-      "change7d": -10.48,
-      "marketCap": 264307,
+      "price": 80.06,
+      "change24h": -5.44,
+      "change7d": -10.36,
+      "marketCap": 265199,
       "pe": null,
       "peg": null,
-      "weight": 25.075,
+      "weight": 25.084,
       "rank": 1
     },
     {
@@ -28,7 +28,7 @@
       "marketCap": 186559,
       "pe": null,
       "peg": null,
-      "weight": 17.699,
+      "weight": 17.646,
       "rank": 2
     },
     {
@@ -42,7 +42,7 @@
       "marketCap": 108537,
       "pe": null,
       "peg": null,
-      "weight": 10.297,
+      "weight": 10.266,
       "rank": 3
     },
     {
@@ -53,10 +53,10 @@
       "price": 2.77,
       "change24h": 0.84,
       "change7d": -3.52,
-      "marketCap": 94447,
+      "marketCap": 95341,
       "pe": null,
       "peg": null,
-      "weight": 8.96,
+      "weight": 9.018,
       "rank": 4
     },
     {
@@ -70,7 +70,7 @@
       "marketCap": 91314,
       "pe": null,
       "peg": null,
-      "weight": 8.663,
+      "weight": 8.637,
       "rank": 5
     },
     {
@@ -78,13 +78,13 @@
       "name": "Altın (Gold Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 4113.9,
-      "change24h": 1.6,
-      "change7d": 1.14,
-      "marketCap": 90152,
+      "price": 4110.9,
+      "change24h": 1.53,
+      "change7d": 1.06,
+      "marketCap": 90894,
       "pe": null,
       "peg": null,
-      "weight": 8.553,
+      "weight": 8.597,
       "rank": 6
     },
     {
@@ -98,7 +98,7 @@
       "marketCap": 64720,
       "pe": null,
       "peg": null,
-      "weight": 6.14,
+      "weight": 6.122,
       "rank": 7
     },
     {
@@ -106,13 +106,13 @@
       "name": "Bakır (Copper Futures)",
       "sector": "Emtia",
       "subSector": "Endüstriyel Metaller",
-      "price": 6.55,
-      "change24h": 1.77,
-      "change7d": 3.64,
-      "marketCap": 41249,
+      "price": 6.54,
+      "change24h": 1.62,
+      "change7d": 3.48,
+      "marketCap": 41472,
       "pe": null,
       "peg": null,
-      "weight": 3.913,
+      "weight": 3.923,
       "rank": 8
     },
     {
@@ -120,13 +120,13 @@
       "name": "Brent Petrol (Brent Crude)",
       "sector": "Emtia",
       "subSector": "Enerji",
-      "price": 83.48,
-      "change24h": -7.37,
-      "change7d": -13.74,
-      "marketCap": 36960,
+      "price": 83.51,
+      "change24h": -7.33,
+      "change7d": -13.71,
+      "marketCap": 37134,
       "pe": null,
       "peg": null,
-      "weight": 3.506,
+      "weight": 3.512,
       "rank": 9
     },
     {
@@ -134,13 +134,13 @@
       "name": "Gümüş (Silver Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 58.39,
-      "change24h": 1.39,
-      "change7d": -0.45,
-      "marketCap": 30517,
+      "price": 58.4,
+      "change24h": 1.4,
+      "change7d": -0.44,
+      "marketCap": 30655,
       "pe": null,
       "peg": null,
-      "weight": 2.895,
+      "weight": 2.9,
       "rank": 10
     },
     {
@@ -154,7 +154,7 @@
       "marketCap": 17659,
       "pe": null,
       "peg": null,
-      "weight": 1.675,
+      "weight": 1.67,
       "rank": 11
     },
     {
@@ -168,7 +168,7 @@
       "marketCap": 15887,
       "pe": null,
       "peg": null,
-      "weight": 1.507,
+      "weight": 1.503,
       "rank": 12
     },
     {
@@ -176,13 +176,13 @@
       "name": "Platin (Platinum Futures)",
       "sector": "Emtia",
       "subSector": "Değerli Metaller",
-      "price": 1640.2,
-      "change24h": -0.61,
-      "change7d": 2.94,
-      "marketCap": 11771,
+      "price": 1639.7,
+      "change24h": -0.64,
+      "change7d": 2.91,
+      "marketCap": 11872,
       "pe": null,
       "peg": null,
-      "weight": 1.117,
+      "weight": 1.123,
       "rank": 13
     }
   ]

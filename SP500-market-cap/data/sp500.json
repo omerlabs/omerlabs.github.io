@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-03 20:47:54 UTC",
+  "lastUpdated": "2026-08-03 21:51:40 UTC",
   "totalMarketCap": 63238878214656,
   "companiesCount": 503,
   "data": [
@@ -5842,20 +5842,6 @@
       "rank": 417
     },
     {
-      "ticker": "AFL",
-      "name": "Aflac",
-      "sector": "Financials",
-      "subSector": "Life & Health Insurance",
-      "price": 126.71,
-      "change24h": -0.6,
-      "change7d": 0.88,
-      "marketCap": null,
-      "pe": 14.48,
-      "peg": 1.18,
-      "weight": 0.0,
-      "rank": 418
-    },
-    {
       "ticker": "AMD",
       "name": "Advanced Micro Devices",
       "sector": "Information Technology",
@@ -5866,6 +5852,20 @@
       "marketCap": null,
       "pe": 161.55,
       "peg": 1.12,
+      "weight": 0.0,
+      "rank": 418
+    },
+    {
+      "ticker": "AFL",
+      "name": "Aflac",
+      "sector": "Financials",
+      "subSector": "Life & Health Insurance",
+      "price": 126.71,
+      "change24h": -0.6,
+      "change7d": 0.88,
+      "marketCap": null,
+      "pe": 14.48,
+      "peg": 1.18,
       "weight": 0.0,
       "rank": 419
     },
@@ -5884,20 +5884,6 @@
       "rank": 420
     },
     {
-      "ticker": "AIG",
-      "name": "American International Group",
-      "sector": "Financials",
-      "subSector": "Multi-line Insurance",
-      "price": 78.79,
-      "change24h": 0.27,
-      "change7d": -0.34,
-      "marketCap": null,
-      "pe": 13.87,
-      "peg": 0.64,
-      "weight": 0.0,
-      "rank": 421
-    },
-    {
       "ticker": "AEE",
       "name": "Ameren",
       "sector": "Utilities",
@@ -5909,21 +5895,21 @@
       "pe": 19.28,
       "peg": 2.45,
       "weight": 0.0,
-      "rank": 422
+      "rank": 421
     },
     {
-      "ticker": "APH",
-      "name": "Amphenol",
-      "sector": "Information Technology",
-      "subSector": "Electronic Components",
-      "price": 163.34,
-      "change24h": 1.64,
-      "change7d": 6.99,
+      "ticker": "AIG",
+      "name": "American International Group",
+      "sector": "Financials",
+      "subSector": "Multi-line Insurance",
+      "price": 78.79,
+      "change24h": 0.27,
+      "change7d": -0.34,
       "marketCap": null,
-      "pe": 40.84,
-      "peg": 1.07,
+      "pe": 13.87,
+      "peg": 0.64,
       "weight": 0.0,
-      "rank": 423
+      "rank": 422
     },
     {
       "ticker": "ADI",
@@ -5937,7 +5923,7 @@
       "pe": 53.85,
       "peg": 0.67,
       "weight": 0.0,
-      "rank": 424
+      "rank": 423
     },
     {
       "ticker": "APA",
@@ -5950,6 +5936,20 @@
       "marketCap": null,
       "pe": 8.59,
       "peg": 0.71,
+      "weight": 0.0,
+      "rank": 424
+    },
+    {
+      "ticker": "APH",
+      "name": "Amphenol",
+      "sector": "Information Technology",
+      "subSector": "Electronic Components",
+      "price": 163.34,
+      "change24h": 1.64,
+      "change7d": 6.99,
+      "marketCap": null,
+      "pe": 40.84,
+      "peg": 1.07,
       "weight": 0.0,
       "rank": 425
     },
@@ -5968,20 +5968,6 @@
       "rank": 426
     },
     {
-      "ticker": "AJG",
-      "name": "Arthur J. Gallagher & Co.",
-      "sector": "Financials",
-      "subSector": "Insurance Brokers",
-      "price": 247.79,
-      "change24h": -0.65,
-      "change7d": 0.01,
-      "marketCap": null,
-      "pe": 41.02,
-      "peg": 0.82,
-      "weight": 0.0,
-      "rank": 427
-    },
-    {
       "ticker": "AIZ",
       "name": "Assurant",
       "sector": "Financials",
@@ -5992,6 +5978,20 @@
       "marketCap": null,
       "pe": 14.47,
       "peg": 2.16,
+      "weight": 0.0,
+      "rank": 427
+    },
+    {
+      "ticker": "AJG",
+      "name": "Arthur J. Gallagher & Co.",
+      "sector": "Financials",
+      "subSector": "Insurance Brokers",
+      "price": 247.79,
+      "change24h": -0.65,
+      "change7d": 0.01,
+      "marketCap": null,
+      "pe": 41.02,
+      "peg": 0.82,
       "weight": 0.0,
       "rank": 428
     },
@@ -6276,20 +6276,6 @@
       "rank": 448
     },
     {
-      "ticker": "EL",
-      "name": "Estée Lauder Companies (The)",
-      "sector": "Consumer Staples",
-      "subSector": "Personal Care Products",
-      "price": 84.68,
-      "change24h": 0.93,
-      "change7d": 5.47,
-      "marketCap": null,
-      "pe": 26.62,
-      "peg": 2.05,
-      "weight": 0.0,
-      "rank": 449
-    },
-    {
       "ticker": "EQR",
       "name": "Equity Residential",
       "sector": "Real Estate",
@@ -6300,6 +6286,20 @@
       "marketCap": null,
       "pe": 29.38,
       "peg": 16.1,
+      "weight": 0.0,
+      "rank": 449
+    },
+    {
+      "ticker": "EL",
+      "name": "Estée Lauder Companies (The)",
+      "sector": "Consumer Staples",
+      "subSector": "Personal Care Products",
+      "price": 84.68,
+      "change24h": 0.93,
+      "change7d": 5.47,
+      "marketCap": null,
+      "pe": 26.62,
+      "peg": 2.05,
       "weight": 0.0,
       "rank": 450
     },
@@ -6346,20 +6346,6 @@
       "rank": 453
     },
     {
-      "ticker": "GPN",
-      "name": "Global Payments",
-      "sector": "Financials",
-      "subSector": "Transaction & Payment Processing Services",
-      "price": 86.19,
-      "change24h": 2.51,
-      "change7d": 6.51,
-      "marketCap": null,
-      "pe": 31.69,
-      "peg": 0.24,
-      "weight": 0.0,
-      "rank": 454
-    },
-    {
       "ticker": "GS",
       "name": "Goldman Sachs",
       "sector": "Financials",
@@ -6370,6 +6356,20 @@
       "marketCap": null,
       "pe": 15.86,
       "peg": 1.45,
+      "weight": 0.0,
+      "rank": 454
+    },
+    {
+      "ticker": "GPN",
+      "name": "Global Payments",
+      "sector": "Financials",
+      "subSector": "Transaction & Payment Processing Services",
+      "price": 86.19,
+      "change24h": 2.51,
+      "change7d": 6.51,
+      "marketCap": null,
+      "pe": 31.69,
+      "peg": 0.24,
       "weight": 0.0,
       "rank": 455
     },
@@ -6402,20 +6402,6 @@
       "rank": 457
     },
     {
-      "ticker": "HPQ",
-      "name": "HP Inc.",
-      "sector": "Information Technology",
-      "subSector": "Technology Hardware, Storage & Peripherals",
-      "price": 27.12,
-      "change24h": -0.55,
-      "change7d": 5.32,
-      "marketCap": null,
-      "pe": 10.04,
-      "peg": 22.43,
-      "weight": 0.0,
-      "rank": 458
-    },
-    {
       "ticker": "HRL",
       "name": "Hormel Foods",
       "sector": "Consumer Staples",
@@ -6427,7 +6413,7 @@
       "pe": 29.68,
       "peg": 1.76,
       "weight": 0.0,
-      "rank": 459
+      "rank": 458
     },
     {
       "ticker": "HST",
@@ -6440,6 +6426,20 @@
       "marketCap": null,
       "pe": 17.07,
       "peg": 4.14,
+      "weight": 0.0,
+      "rank": 459
+    },
+    {
+      "ticker": "HPQ",
+      "name": "HP Inc.",
+      "sector": "Information Technology",
+      "subSector": "Technology Hardware, Storage & Peripherals",
+      "price": 27.12,
+      "change24h": -0.55,
+      "change7d": 5.32,
+      "marketCap": null,
+      "pe": 10.04,
+      "peg": 22.43,
       "weight": 0.0,
       "rank": 460
     },
@@ -6598,16 +6598,16 @@
       "rank": 471
     },
     {
-      "ticker": "MCK",
-      "name": "McKesson Corporation",
+      "ticker": "MDT",
+      "name": "Medtronic",
       "sector": "Health Care",
-      "subSector": "Health Care Distributors",
-      "price": 827.14,
-      "change24h": -3.39,
-      "change7d": -1.64,
+      "subSector": "Health Care Equipment",
+      "price": 86.68,
+      "change24h": 1.51,
+      "change7d": 4.17,
       "marketCap": null,
-      "pe": 21.56,
-      "peg": 1.67,
+      "pe": 23.24,
+      "peg": 1.69,
       "weight": 0.0,
       "rank": 472
     },
@@ -6626,32 +6626,18 @@
       "rank": 473
     },
     {
-      "ticker": "MDT",
-      "name": "Medtronic",
+      "ticker": "MCK",
+      "name": "McKesson Corporation",
       "sector": "Health Care",
-      "subSector": "Health Care Equipment",
-      "price": 86.68,
-      "change24h": 1.51,
-      "change7d": 4.17,
+      "subSector": "Health Care Distributors",
+      "price": 827.14,
+      "change24h": -3.39,
+      "change7d": -1.64,
       "marketCap": null,
-      "pe": 23.24,
-      "peg": 1.69,
+      "pe": 21.56,
+      "peg": 1.67,
       "weight": 0.0,
       "rank": 474
-    },
-    {
-      "ticker": "MGM",
-      "name": "MGM Resorts",
-      "sector": "Consumer Discretionary",
-      "subSector": "Casinos & Gaming",
-      "price": 44.5,
-      "change24h": -0.16,
-      "change7d": -2.28,
-      "marketCap": null,
-      "pe": 26.97,
-      "peg": 1.19,
-      "weight": 0.0,
-      "rank": 475
     },
     {
       "ticker": "MTD",
@@ -6664,6 +6650,20 @@
       "marketCap": null,
       "pe": 32.6,
       "peg": 2.97,
+      "weight": 0.0,
+      "rank": 475
+    },
+    {
+      "ticker": "MGM",
+      "name": "MGM Resorts",
+      "sector": "Consumer Discretionary",
+      "subSector": "Casinos & Gaming",
+      "price": 44.5,
+      "change24h": -0.16,
+      "change7d": -2.28,
+      "marketCap": null,
+      "pe": 26.97,
+      "peg": 1.19,
       "weight": 0.0,
       "rank": 476
     },
@@ -6822,20 +6822,6 @@
       "rank": 487
     },
     {
-      "ticker": "RF",
-      "name": "Regions Financial Corporation",
-      "sector": "Financials",
-      "subSector": "Regional Banks",
-      "price": 31.48,
-      "change24h": 1.71,
-      "change7d": 2.01,
-      "marketCap": null,
-      "pe": 12.8,
-      "peg": 1.8,
-      "weight": 0.0,
-      "rank": 488
-    },
-    {
       "ticker": "RSG",
       "name": "Republic Services",
       "sector": "Industrials",
@@ -6846,6 +6832,20 @@
       "marketCap": null,
       "pe": 30.07,
       "peg": 3.03,
+      "weight": 0.0,
+      "rank": 488
+    },
+    {
+      "ticker": "RF",
+      "name": "Regions Financial Corporation",
+      "sector": "Financials",
+      "subSector": "Regional Banks",
+      "price": 31.48,
+      "change24h": 1.71,
+      "change7d": 2.01,
+      "marketCap": null,
+      "pe": 12.8,
+      "peg": 1.8,
       "weight": 0.0,
       "rank": 489
     },
@@ -6906,20 +6906,6 @@
       "rank": 493
     },
     {
-      "ticker": "TER",
-      "name": "Teradyne",
-      "sector": "Information Technology",
-      "subSector": "Semiconductor Materials & Equipment",
-      "price": 365.8,
-      "change24h": -0.51,
-      "change7d": 4.54,
-      "marketCap": null,
-      "pe": 50.25,
-      "peg": 0.94,
-      "weight": 0.0,
-      "rank": 494
-    },
-    {
       "ticker": "TDY",
       "name": "Teledyne Technologies",
       "sector": "Information Technology",
@@ -6930,6 +6916,20 @@
       "marketCap": null,
       "pe": 32.47,
       "peg": 1.4,
+      "weight": 0.0,
+      "rank": 494
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "sector": "Information Technology",
+      "subSector": "Semiconductor Materials & Equipment",
+      "price": 365.8,
+      "change24h": -0.51,
+      "change7d": 4.54,
+      "marketCap": null,
+      "pe": 50.25,
+      "peg": 0.94,
       "weight": 0.0,
       "rank": 495
     },
@@ -6990,20 +6990,6 @@
       "rank": 499
     },
     {
-      "ticker": "DIS",
-      "name": "Walt Disney Company (The)",
-      "sector": "Communication Services",
-      "subSector": "Movies & Entertainment",
-      "price": 98.14,
-      "change24h": 2.03,
-      "change7d": 3.47,
-      "marketCap": null,
-      "pe": 15.7,
-      "peg": 2.24,
-      "weight": 0.0,
-      "rank": 500
-    },
-    {
       "ticker": "GWW",
       "name": "W. W. Grainger",
       "sector": "Industrials",
@@ -7014,6 +7000,20 @@
       "marketCap": null,
       "pe": 36.88,
       "peg": 2.16,
+      "weight": 0.0,
+      "rank": 500
+    },
+    {
+      "ticker": "DIS",
+      "name": "Walt Disney Company (The)",
+      "sector": "Communication Services",
+      "subSector": "Movies & Entertainment",
+      "price": 98.14,
+      "change24h": 2.03,
+      "change7d": 3.47,
+      "marketCap": null,
+      "pe": 15.7,
+      "peg": 2.24,
       "weight": 0.0,
       "rank": 501
     },
