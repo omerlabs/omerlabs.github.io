@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-03 20:20:25 UTC",
+  "lastUpdated": "2026-08-03 20:47:56 UTC",
   "totalMarketCap": 31351868993536,
   "companiesCount": 48,
   "data": [
@@ -606,20 +606,6 @@
       "rank": 43
     },
     {
-      "price": 484.64,
-      "change24h": 1.78,
-      "change7d": -7.15,
-      "marketCap": null,
-      "pe": 161.55,
-      "peg": 1.12,
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
-      "sector": "Technology",
-      "subSector": "Semiconductors",
-      "weight": 0.0,
-      "rank": 44
-    },
-    {
       "price": 361.88,
       "change24h": -1.51,
       "change7d": -2.68,
@@ -628,6 +614,20 @@
       "peg": 0.67,
       "ticker": "ADI",
       "name": "Analog Devices",
+      "sector": "Technology",
+      "subSector": "Semiconductors",
+      "weight": 0.0,
+      "rank": 44
+    },
+    {
+      "price": 484.64,
+      "change24h": 1.78,
+      "change7d": -7.15,
+      "marketCap": null,
+      "pe": 161.55,
+      "peg": 1.12,
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Technology",
       "subSector": "Semiconductors",
       "weight": 0.0,

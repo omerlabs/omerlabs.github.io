@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-03 20:20:29 UTC",
+  "lastUpdated": "2026-08-03 20:48:00 UTC",
   "totalMarketCap": 170544746,
   "companiesCount": 19,
   "data": [
@@ -22,9 +22,9 @@
       "name": "Energy Select Sector SPDR",
       "sector": "ETF",
       "subSector": "Hisse Senedi (Sektör)",
-      "price": 58.77,
-      "change24h": -1.31,
-      "change7d": -1.43,
+      "price": 58.79,
+      "change24h": -1.28,
+      "change7d": -1.39,
       "marketCap": 25487808,
       "pe": null,
       "peg": null,
