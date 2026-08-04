@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-08-03 21:51:42 UTC",
+  "lastUpdated": "2026-08-04 06:19:28 UTC",
   "totalMarketCap": 43075409324032,
   "companiesCount": 103,
   "data": [
     {
-      "price": 206.64,
+      "price": 200.75,
       "change24h": 2.93,
-      "change7d": -0.1,
+      "change7d": -3.84,
       "marketCap": 5005027311616,
       "pe": 31.69,
       "peg": 0.55,
@@ -18,9 +18,9 @@
       "rank": 1
     },
     {
-      "price": 373.51,
-      "change24h": 4.88,
-      "change7d": 16.82,
+      "price": 356.13,
+      "change24h": 6.73,
+      "change7d": 12.1,
       "marketCap": 4568003379200,
       "pe": 18.73,
       "peg": 0.97,
@@ -32,9 +32,9 @@
       "rank": 2
     },
     {
-      "price": 372.47,
-      "change24h": 4.44,
-      "change7d": 16.73,
+      "price": 356.65,
+      "change24h": 6.88,
+      "change7d": 12.03,
       "marketCap": 4555284152320,
       "pe": 18.68,
       "peg": 0.97,
@@ -46,9 +46,9 @@
       "rank": 3
     },
     {
-      "price": 303.42,
-      "change24h": -1.78,
-      "change7d": -8.89,
+      "price": 308.91,
+      "change24h": -7.35,
+      "change7d": -3.96,
       "marketCap": 4456437514240,
       "pe": 34.84,
       "peg": 2.46,
@@ -60,9 +60,9 @@
       "rank": 4
     },
     {
-      "price": 487.65,
-      "change24h": 4.93,
-      "change7d": 27.76,
+      "price": 464.72,
+      "change24h": 3.02,
+      "change7d": 21.79,
       "marketCap": 3621067423744,
       "pe": 27.18,
       "peg": 1.52,
@@ -74,9 +74,9 @@
       "rank": 5
     },
     {
-      "price": 284.02,
-      "change24h": 4.58,
-      "change7d": 22.36,
+      "price": 271.58,
+      "change24h": 15.32,
+      "change7d": 16.23,
       "marketCap": 3055234318336,
       "pe": 22.83,
       "peg": 1.46,
@@ -88,9 +88,9 @@
       "rank": 6
     },
     {
-      "price": 392.23,
-      "change24h": 0.76,
-      "change7d": 2.7,
+      "price": 389.28,
+      "change24h": 0.37,
+      "change7d": -0.81,
       "marketCap": 1866065772544,
       "pe": 65.48,
       "peg": 0.44,
@@ -106,9 +106,9 @@
       "name": "SpaceX",
       "sector": "Telecommunications",
       "subSector": "Telecommunications Services",
-      "price": 114.53,
-      "change24h": 5.68,
-      "change7d": -0.47,
+      "price": 108.37,
+      "change24h": -3.41,
+      "change7d": -8.35,
       "marketCap": 1508839653376,
       "pe": 126.83,
       "peg": null,
@@ -116,9 +116,9 @@
       "rank": 8
     },
     {
-      "price": 590.24,
-      "change24h": 6.02,
-      "change7d": -0.83,
+      "price": 556.71,
+      "change24h": 3.28,
+      "change7d": -8.15,
       "marketCap": 1503640027136,
       "pe": 22.22,
       "peg": 0.83,
@@ -130,9 +130,9 @@
       "rank": 9
     },
     {
-      "price": 322.08,
-      "change24h": 3.49,
-      "change7d": 2.89,
+      "price": 311.21,
+      "change24h": 0.76,
+      "change7d": -2.65,
       "marketCap": 1272070275072,
       "pe": 295.49,
       "peg": 4.56,
@@ -144,9 +144,9 @@
       "rank": 10
     },
     {
-      "price": 110.71,
-      "change24h": -0.44,
-      "change7d": 1.13,
+      "price": 111.2,
+      "change24h": 0.09,
+      "change7d": 2.58,
       "marketCap": 881038917632,
       "pe": 38.98,
       "peg": 4.24,
@@ -162,9 +162,9 @@
       "name": "ASML Holding",
       "sector": "Technology",
       "subSector": "Industrial Machinery",
-      "price": 1642.52,
-      "change24h": 0.83,
-      "change7d": -6.4,
+      "price": 1629.0,
+      "change24h": -1.36,
+      "change7d": -9.53,
       "marketCap": 630891937792,
       "pe": 56.33,
       "peg": 1.98,
@@ -172,9 +172,9 @@
       "rank": 12
     },
     {
-      "price": 91.0,
-      "change24h": 0.89,
-      "change7d": -1.43,
+      "price": 90.2,
+      "change24h": -1.02,
+      "change7d": -10.01,
       "marketCap": 459003985920,
       "pe": 44.67,
       "peg": 1.36,
@@ -186,9 +186,9 @@
       "rank": 13
     },
     {
-      "price": 115.86,
-      "change24h": -0.11,
-      "change7d": 1.48,
+      "price": 115.99,
+      "change24h": 2.14,
+      "change7d": 2.86,
       "marketCap": 456654618624,
       "pe": 38.62,
       "peg": 1.61,
@@ -200,9 +200,9 @@
       "rank": 14
     },
     {
-      "price": 954.08,
-      "change24h": 0.23,
-      "change7d": 2.04,
+      "price": 951.89,
+      "change24h": -0.24,
+      "change7d": 2.95,
       "marketCap": 423114276864,
       "pe": 47.97,
       "peg": 4.62,
@@ -214,9 +214,9 @@
       "rank": 15
     },
     {
-      "price": 518.21,
-      "change24h": 2.08,
-      "change7d": -3.36,
+      "price": 507.67,
+      "change24h": 1.18,
+      "change7d": -9.8,
       "marketCap": 411437727744,
       "pe": 48.84,
       "peg": 1.28,
@@ -228,9 +228,9 @@
       "rank": 16
     },
     {
-      "price": 294.61,
-      "change24h": 0.54,
-      "change7d": -3.47,
+      "price": 293.02,
+      "change24h": -1.58,
+      "change7d": -8.37,
       "marketCap": 368638984192,
       "pe": 51.06,
       "peg": 1.38,
@@ -242,9 +242,9 @@
       "rank": 17
     },
     {
-      "price": 73.33,
-      "change24h": 2.26,
-      "change7d": 4.62,
+      "price": 71.71,
+      "change24h": -2.0,
+      "change7d": 4.09,
       "marketCap": 305341693952,
       "pe": 23.06,
       "peg": 1.61,
@@ -256,9 +256,9 @@
       "rank": 18
     },
     {
-      "price": 125.65,
-      "change24h": 2.1,
-      "change7d": 2.22,
+      "price": 123.06,
+      "change24h": 0.65,
+      "change7d": -0.25,
       "marketCap": 301222264832,
       "pe": 141.18,
       "peg": 1.76,
@@ -270,9 +270,9 @@
       "rank": 19
     },
     {
-      "price": 347.13,
-      "change24h": 4.61,
-      "change7d": 7.21,
+      "price": 331.83,
+      "change24h": 1.89,
+      "change7d": 1.9,
       "marketCap": 282910949376,
       "pe": 299.25,
       "peg": 3.68,
@@ -288,9 +288,9 @@
       "name": "Arm Holdings",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "price": 239.06,
-      "change24h": -0.26,
-      "change7d": -8.06,
+      "price": 239.69,
+      "change24h": -0.77,
+      "change7d": -15.32,
       "marketCap": 255315738624,
       "pe": 243.94,
       "peg": 1.97,
@@ -298,9 +298,9 @@
       "rank": 21
     },
     {
-      "price": 269.04,
-      "change24h": -2.43,
-      "change7d": -3.28,
+      "price": 275.74,
+      "change24h": -0.58,
+      "change7d": -2.75,
       "marketCap": 245700165632,
       "pe": 40.83,
       "peg": 1.22,
@@ -312,9 +312,9 @@
       "rank": 22
     },
     {
-      "price": 182.75,
-      "change24h": -0.04,
-      "change7d": -13.19,
+      "price": 182.82,
+      "change24h": 1.38,
+      "change7d": -16.42,
       "marketCap": 238721794048,
       "pe": 49.93,
       "peg": 1.75,
@@ -326,9 +326,9 @@
       "rank": 23
     },
     {
-      "price": 480.46,
-      "change24h": 0.43,
-      "change7d": -6.21,
+      "price": 478.38,
+      "change24h": -5.95,
+      "change7d": -5.52,
       "marketCap": 222139383808,
       "pe": 31.0,
       "peg": 2.02,
@@ -340,9 +340,9 @@
       "rank": 24
     },
     {
-      "price": 202.54,
-      "change24h": 6.12,
-      "change7d": 10.51,
+      "price": 190.86,
+      "change24h": 3.05,
+      "change7d": 4.06,
       "marketCap": 206238220288,
       "pe": 129.61,
       "peg": 6.21,
@@ -354,9 +354,9 @@
       "rank": 25
     },
     {
-      "price": 378.87,
-      "change24h": -1.63,
-      "change7d": 0.75,
+      "price": 385.16,
+      "change24h": -0.64,
+      "change7d": 3.68,
       "marketCap": 204479283200,
       "pe": 26.37,
       "peg": 2.11,
@@ -368,9 +368,9 @@
       "rank": 26
     },
     {
-      "price": 1288.03,
-      "change24h": 6.03,
-      "change7d": -10.34,
+      "price": 1214.83,
+      "change24h": -5.09,
+      "change7d": -24.56,
       "marketCap": 190744051712,
       "pe": 43.99,
       "peg": null,
@@ -382,9 +382,9 @@
       "rank": 27
     },
     {
-      "price": 139.63,
-      "change24h": 0.05,
-      "change7d": 2.19,
+      "price": 139.56,
+      "change24h": -0.46,
+      "change7d": 3.42,
       "marketCap": 190734581760,
       "pe": 18.3,
       "peg": 1.51,
@@ -396,9 +396,9 @@
       "rank": 28
     },
     {
-      "price": 177.09,
-      "change24h": 2.54,
-      "change7d": -1.67,
+      "price": 172.71,
+      "change24h": -0.36,
+      "change7d": 1.34,
       "marketCap": 189959405568,
       "pe": 18.5,
       "peg": 0.8,
@@ -410,9 +410,9 @@
       "rank": 29
     },
     {
-      "price": 831.06,
-      "change24h": -2.93,
-      "change7d": -2.42,
+      "price": 856.13,
+      "change24h": 0.52,
+      "change7d": -6.27,
       "marketCap": 188650618880,
       "pe": 59.92,
       "peg": 0.49,
@@ -424,9 +424,9 @@
       "rank": 30
     },
     {
-      "price": 193.77,
-      "change24h": 3.31,
-      "change7d": -0.24,
+      "price": 187.56,
+      "change24h": 2.32,
+      "change7d": -10.4,
       "marketCap": 173921665024,
       "pe": 66.59,
       "peg": 1.06,
@@ -438,9 +438,9 @@
       "rank": 31
     },
     {
-      "price": 131.15,
-      "change24h": 0.72,
-      "change7d": 1.42,
+      "price": 130.21,
+      "change24h": -0.82,
+      "change7d": -0.5,
       "marketCap": 162831892480,
       "pe": 17.87,
       "peg": 2.14,
@@ -452,9 +452,9 @@
       "rank": 32
     },
     {
-      "price": 151.57,
-      "change24h": 2.68,
-      "change7d": -9.22,
+      "price": 147.61,
+      "change24h": -2.63,
+      "change7d": -13.73,
       "marketCap": 159148507136,
       "pe": 17.32,
       "peg": 0.63,
@@ -470,9 +470,9 @@
       "name": "Shopify",
       "sector": "Technology",
       "subSector": "Software",
-      "price": 117.01,
-      "change24h": -0.12,
-      "change7d": 2.87,
+      "price": 117.15,
+      "change24h": -4.29,
+      "change7d": 4.6,
       "marketCap": 151838572544,
       "pe": 114.72,
       "peg": 2.57,
@@ -480,9 +480,9 @@
       "rank": 34
     },
     {
-      "price": 192.71,
-      "change24h": -0.1,
-      "change7d": 8.59,
+      "price": 192.9,
+      "change24h": -0.18,
+      "change7d": 11.61,
       "marketCap": 149326839808,
       "pe": 25.42,
       "peg": 0.83,
@@ -494,9 +494,9 @@
       "rank": 35
     },
     {
-      "price": 406.16,
-      "change24h": 2.59,
-      "change7d": 3.62,
+      "price": 395.9,
+      "change24h": -1.97,
+      "change7d": -0.74,
       "marketCap": 136445198336,
       "pe": 35.38,
       "peg": 1.09,
@@ -508,9 +508,9 @@
       "rank": 36
     },
     {
-      "price": 375.41,
-      "change24h": 6.25,
-      "change7d": 11.23,
+      "price": 353.33,
+      "change24h": 0.1,
+      "change7d": 6.42,
       "marketCap": 134501163008,
       "pe": 43.0,
       "peg": 1.73,
@@ -526,9 +526,9 @@
       "name": "PDD Holdings",
       "sector": "Technology",
       "subSector": "EDP Services",
-      "price": 90.15,
-      "change24h": 1.8,
-      "change7d": 9.06,
+      "price": 88.56,
+      "change24h": 1.28,
+      "change7d": 6.31,
       "marketCap": 128319193088,
       "pe": 9.45,
       "peg": 0.82,
@@ -536,9 +536,9 @@
       "rank": 38
     },
     {
-      "price": 163.21,
-      "change24h": 0.78,
-      "change7d": 7.11,
+      "price": 161.95,
+      "change24h": 4.99,
+      "change7d": 6.87,
       "marketCap": 119749410816,
       "pe": 57.67,
       "peg": 2.24,
@@ -550,9 +550,9 @@
       "rank": 39
     },
     {
-      "price": 470.72,
-      "change24h": -1.34,
-      "change7d": -1.39,
+      "price": 477.1,
+      "change24h": -0.95,
+      "change7d": 0.85,
       "marketCap": 119471292416,
       "pe": 27.95,
       "peg": 1.62,
@@ -564,9 +564,9 @@
       "rank": 40
     },
     {
-      "price": 103.37,
-      "change24h": -1.79,
-      "change7d": 0.12,
+      "price": 105.25,
+      "change24h": -0.57,
+      "change7d": 1.98,
       "marketCap": 117841805312,
       "pe": 59.75,
       "peg": 1.28,
@@ -578,9 +578,9 @@
       "rank": 41
     },
     {
-      "price": 269.78,
-      "change24h": 1.25,
-      "change7d": 7.87,
+      "price": 266.46,
+      "change24h": 0.98,
+      "change7d": 9.71,
       "marketCap": 107318484992,
       "pe": 24.64,
       "peg": 2.49,
@@ -592,9 +592,9 @@
       "rank": 42
     },
     {
-      "price": 251.34,
-      "change24h": 0.37,
-      "change7d": 11.65,
+      "price": 250.41,
+      "change24h": 1.01,
+      "change7d": 18.02,
       "marketCap": 99907649536,
       "pe": 14.38,
       "peg": 0.68,
@@ -606,9 +606,9 @@
       "rank": 43
     },
     {
-      "price": 273.71,
-      "change24h": 4.17,
-      "change7d": -0.23,
+      "price": 262.75,
+      "change24h": -0.31,
+      "change7d": -4.66,
       "marketCap": 97742389248,
       "pe": 23.78,
       "peg": 3.74,
@@ -620,9 +620,9 @@
       "rank": 44
     },
     {
-      "price": 273.6,
-      "change24h": 2.1,
-      "change7d": 10.83,
+      "price": 267.97,
+      "change24h": -0.22,
+      "change7d": 9.65,
       "marketCap": 97390706688,
       "pe": 684.0,
       "peg": 1.67,
@@ -638,9 +638,9 @@
       "name": "Mercado Libre",
       "sector": "Consumer Discretionary",
       "subSector": "Catalog/Specialty Distribution",
-      "price": 1898.79,
-      "change24h": 1.11,
-      "change7d": 5.4,
+      "price": 1877.95,
+      "change24h": -0.41,
+      "change7d": 4.41,
       "marketCap": 96263307264,
       "pe": 50.06,
       "peg": 1.16,
@@ -648,9 +648,9 @@
       "rank": 46
     },
     {
-      "price": 336.15,
-      "change24h": -1.14,
-      "change7d": 3.04,
+      "price": 340.02,
+      "change24h": 2.16,
+      "change7d": 2.89,
       "marketCap": 92573351936,
       "pe": 66.83,
       "peg": 3.11,
@@ -662,9 +662,9 @@
       "rank": 47
     },
     {
-      "price": 49.83,
-      "change24h": -1.13,
-      "change7d": -6.39,
+      "price": 50.4,
+      "change24h": 0.42,
+      "change7d": -4.56,
       "marketCap": 92308824064,
       "pe": 28.97,
       "peg": 2.07,
@@ -676,9 +676,9 @@
       "rank": 48
     },
     {
-      "price": 93.55,
-      "change24h": -2.94,
-      "change7d": 0.06,
+      "price": 96.38,
+      "change24h": -1.3,
+      "change7d": 3.01,
       "marketCap": 91492663296,
       "pe": 45.19,
       "peg": 2.84,
@@ -690,9 +690,9 @@
       "rank": 49
     },
     {
-      "price": 150.64,
-      "change24h": -0.58,
-      "change7d": 6.76,
+      "price": 151.52,
+      "change24h": -0.37,
+      "change7d": 10.14,
       "marketCap": 89405579264,
       "pe": 37.2,
       "peg": 1.4,
@@ -704,9 +704,9 @@
       "rank": 50
     },
     {
-      "price": 200.5,
-      "change24h": 2.21,
-      "change7d": 15.96,
+      "price": 196.16,
+      "change24h": -0.69,
+      "change7d": 15.54,
       "marketCap": 87361601536,
       "pe": 94.58,
       "peg": 4.49,
@@ -718,9 +718,9 @@
       "rank": 51
     },
     {
-      "price": 24.56,
-      "change24h": 2.5,
-      "change7d": 10.13,
+      "price": 23.96,
+      "change24h": 1.23,
+      "change7d": 9.31,
       "marketCap": 87154515968,
       "pe": 7.87,
       "peg": 142.98,
@@ -732,9 +732,9 @@
       "rank": 52
     },
     {
-      "price": 318.39,
-      "change24h": 0.73,
-      "change7d": 7.44,
+      "price": 316.07,
+      "change24h": 0.18,
+      "change7d": 12.27,
       "marketCap": 87091445760,
       "pe": 19.41,
       "peg": 0.82,
@@ -746,9 +746,9 @@
       "rank": 53
     },
     {
-      "price": 204.01,
-      "change24h": -0.3,
-      "change7d": -0.92,
+      "price": 204.63,
+      "change24h": -1.04,
+      "change7d": 0.68,
       "marketCap": 81638588416,
       "pe": 41.55,
       "peg": 3.25,
@@ -760,9 +760,9 @@
       "rank": 54
     },
     {
-      "price": 252.91,
-      "change24h": 0.73,
-      "change7d": 5.87,
+      "price": 251.07,
+      "change24h": -0.59,
+      "change7d": 8.04,
       "marketCap": 81128742912,
       "pe": 35.32,
       "peg": 2.97,
@@ -774,9 +774,9 @@
       "rank": 55
     },
     {
-      "price": 61.73,
-      "change24h": -0.93,
-      "change7d": 2.0,
+      "price": 62.31,
+      "change24h": -1.22,
+      "change7d": 3.76,
       "marketCap": 78786494464,
       "pe": 37.64,
       "peg": 1.03,
@@ -788,9 +788,9 @@
       "rank": 56
     },
     {
-      "price": 246.77,
-      "change24h": 1.53,
-      "change7d": 1.49,
+      "price": 243.05,
+      "change24h": 0.47,
+      "change7d": -1.31,
       "marketCap": 78211284992,
       "pe": 9.49,
       "peg": 3.84,
@@ -802,9 +802,9 @@
       "rank": 57
     },
     {
-      "price": 759.24,
-      "change24h": -0.44,
-      "change7d": 15.74,
+      "price": 762.63,
+      "change24h": 3.29,
+      "change7d": 16.98,
       "marketCap": 78167547904,
       "pe": 18.78,
       "peg": 1.34,
@@ -816,9 +816,9 @@
       "rank": 58
     },
     {
-      "price": 392.07,
-      "change24h": 0.85,
-      "change7d": 4.98,
+      "price": 388.76,
+      "change24h": 4.41,
+      "change7d": 4.08,
       "marketCap": 75073298432,
       "pe": 90.13,
       "peg": 2.09,
@@ -830,9 +830,9 @@
       "rank": 59
     },
     {
-      "price": 89.76,
-      "change24h": 0.46,
-      "change7d": 2.7,
+      "price": 89.35,
+      "change24h": 2.28,
+      "change7d": 3.76,
       "marketCap": 73259048960,
       "pe": 28.5,
       "peg": 1.91,
@@ -844,9 +844,9 @@
       "rank": 60
     },
     {
-      "price": 128.32,
-      "change24h": 0.37,
-      "change7d": -5.33,
+      "price": 127.85,
+      "change24h": 0.05,
+      "change7d": -5.24,
       "marketCap": 69857075200,
       "pe": 22.24,
       "peg": 2.18,
@@ -858,9 +858,9 @@
       "rank": 61
     },
     {
-      "price": 132.06,
-      "change24h": -0.47,
-      "change7d": -0.14,
+      "price": 132.68,
+      "change24h": -0.81,
+      "change7d": 1.48,
       "marketCap": 69511757824,
       "pe": 27.8,
       "peg": 1.32,
@@ -872,9 +872,9 @@
       "rank": 62
     },
     {
-      "price": 1344.37,
-      "change24h": -5.73,
-      "change7d": 0.79,
+      "price": 1426.03,
+      "change24h": 8.35,
+      "change7d": 2.07,
       "marketCap": 66048897024,
       "pe": 81.97,
       "peg": 1.87,
@@ -886,9 +886,9 @@
       "rank": 63
     },
     {
-      "price": 208.27,
-      "change24h": 0.74,
-      "change7d": 2.06,
+      "price": 206.74,
+      "change24h": 1.18,
+      "change7d": 5.55,
       "marketCap": 66009042944,
       "pe": 43.75,
       "peg": 0.93,
@@ -900,9 +900,9 @@
       "rank": 64
     },
     {
-      "price": 26.09,
-      "change24h": -0.8,
-      "change7d": 1.24,
+      "price": 26.3,
+      "change24h": 3.26,
+      "change7d": 1.35,
       "marketCap": 65411198976,
       "pe": 1185.91,
       "peg": 216.92,
@@ -914,9 +914,9 @@
       "rank": 65
     },
     {
-      "price": 779.89,
-      "change24h": 9.24,
-      "change7d": 2.21,
+      "price": 713.94,
+      "change24h": 2.99,
+      "change7d": -14.36,
       "marketCap": 60675444736,
       "pe": 136.58,
       "peg": 0.63,
@@ -928,9 +928,9 @@
       "rank": 66
     },
     {
-      "price": 60.81,
-      "change24h": 0.53,
-      "change7d": 6.22,
+      "price": 60.49,
+      "change24h": 0.98,
+      "change7d": 7.84,
       "marketCap": 60364509184,
       "pe": 19.55,
       "peg": 2.08,
@@ -942,9 +942,9 @@
       "rank": 67
     },
     {
-      "price": 224.17,
-      "change24h": -2.18,
-      "change7d": -16.74,
+      "price": 229.16,
+      "change24h": -6.53,
+      "change7d": -17.36,
       "marketCap": 56527642624,
       "pe": 44.66,
       "peg": 0.55,
@@ -956,9 +956,9 @@
       "rank": 68
     },
     {
-      "price": 198.75,
-      "change24h": -2.07,
-      "change7d": -2.9,
+      "price": 202.95,
+      "change24h": 1.59,
+      "change7d": -1.24,
       "marketCap": 55911022592,
       "pe": 204.9,
       "peg": 56.78,
@@ -970,9 +970,9 @@
       "rank": 69
     },
     {
-      "price": 48.11,
-      "change24h": 0.84,
-      "change7d": 2.88,
+      "price": 47.71,
+      "change24h": 2.25,
+      "change7d": 3.95,
       "marketCap": 55206109184,
       "pe": 41.12,
       "peg": 3.45,
@@ -988,9 +988,9 @@
       "name": "Astera Labs",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "price": 321.05,
-      "change24h": 3.16,
-      "change7d": 10.11,
+      "price": 311.23,
+      "change24h": 3.85,
+      "change7d": -4.81,
       "marketCap": 55030517760,
       "pe": 215.47,
       "peg": null,
@@ -1002,9 +1002,9 @@
       "name": "Nebius Group",
       "sector": "Technology",
       "subSector": "Computer Services",
-      "price": 212.58,
-      "change24h": 11.64,
-      "change7d": 13.21,
+      "price": 190.41,
+      "change24h": 1.05,
+      "change7d": -13.83,
       "marketCap": 53973680128,
       "pe": 82.08,
       "peg": 0.63,
@@ -1012,8 +1012,8 @@
       "rank": 72
     },
     {
-      "price": 209.91,
-      "change24h": 0.02,
+      "price": 209.86,
+      "change24h": 0.13,
       "change7d": 0.41,
       "marketCap": 52977893376,
       "pe": 59.97,
@@ -1026,9 +1026,9 @@
       "rank": 73
     },
     {
-      "price": 234.71,
-      "change24h": 0.22,
-      "change7d": 11.9,
+      "price": 234.2,
+      "change24h": -0.33,
+      "change7d": 14.1,
       "marketCap": 49557901312,
       "pe": 34.31,
       "peg": 0.9,
@@ -1040,9 +1040,9 @@
       "rank": 74
     },
     {
-      "price": 57.87,
-      "change24h": 1.15,
-      "change7d": 3.06,
+      "price": 57.21,
+      "change24h": -0.76,
+      "change7d": 2.16,
       "marketCap": 49505517568,
       "pe": 10.94,
       "peg": 1.05,
@@ -1054,9 +1054,9 @@
       "rank": 75
     },
     {
-      "price": 77.69,
-      "change24h": -0.65,
-      "change7d": -4.87,
+      "price": 78.2,
+      "change24h": -0.04,
+      "change7d": -3.18,
       "marketCap": 48527839232,
       "pe": 21.28,
       "peg": 2.12,
@@ -1072,9 +1072,9 @@
       "name": "Coca-Cola Europacific Partners",
       "sector": "Consumer Staples",
       "subSector": "Soft Drinks",
-      "price": 108.19,
-      "change24h": -1.16,
-      "change7d": 2.93,
+      "price": 109.46,
+      "change24h": -2.01,
+      "change7d": 5.64,
       "marketCap": 47772217344,
       "pe": 22.17,
       "peg": 3.21,
@@ -1086,9 +1086,9 @@
       "name": "Ferrovial",
       "sector": "Industrials",
       "subSector": "Military, Government, Technical",
-      "price": 66.08,
-      "change24h": 1.51,
-      "change7d": 4.47,
+      "price": 65.1,
+      "change24h": -0.03,
+      "change7d": 2.84,
       "marketCap": 47640518656,
       "pe": 69.56,
       "peg": 4.54,
@@ -1096,9 +1096,9 @@
       "rank": 78
     },
     {
-      "price": 45.63,
-      "change24h": -0.41,
-      "change7d": -4.0,
+      "price": 45.82,
+      "change24h": 0.53,
+      "change7d": -3.09,
       "marketCap": 47010488320,
       "pe": 16.78,
       "peg": 2.64,
@@ -1114,19 +1114,19 @@
       "name": "CoreWeave",
       "sector": "Technology",
       "subSector": "Computer Services",
-      "price": 85.76,
-      "change24h": 19.49,
-      "change7d": 19.31,
+      "price": 71.77,
+      "change24h": -2.88,
+      "change7d": -11.5,
       "marketCap": 46788116480,
-      "pe": -53.73,
+      "pe": -53.53,
       "peg": null,
       "weight": 0.109,
       "rank": 80
     },
     {
-      "price": 575.88,
-      "change24h": 9.12,
-      "change7d": 14.64,
+      "price": 527.76,
+      "change24h": 0.47,
+      "change7d": 7.29,
       "marketCap": 46417125376,
       "pe": 232.21,
       "peg": 4.17,
@@ -1138,9 +1138,9 @@
       "rank": 81
     },
     {
-      "price": 245.15,
-      "change24h": 0.92,
-      "change7d": 5.83,
+      "price": 242.92,
+      "change24h": -1.82,
+      "change7d": 5.5,
       "marketCap": 45838254080,
       "pe": 24.51,
       "peg": 3.39,
@@ -1152,9 +1152,9 @@
       "rank": 82
     },
     {
-      "price": 567.84,
-      "change24h": 1.57,
-      "change7d": 4.32,
+      "price": 559.07,
+      "change24h": 0.05,
+      "change7d": 3.65,
       "marketCap": 44792926208,
       "pe": 41.78,
       "peg": 3.58,
@@ -1170,9 +1170,9 @@
       "name": "Thomson Reuters",
       "sector": "Technology",
       "subSector": "Software",
-      "price": 101.61,
-      "change24h": 3.55,
-      "change7d": 12.71,
+      "price": 98.13,
+      "change24h": -0.71,
+      "change7d": 14.52,
       "marketCap": 44356714496,
       "pe": 29.28,
       "peg": 1.32,
@@ -1184,9 +1184,9 @@
       "name": "Rocket Lab",
       "sector": "Industrials",
       "subSector": "Aerospace",
-      "price": 70.43,
-      "change24h": 8.44,
-      "change7d": 10.2,
+      "price": 64.95,
+      "change24h": 0.42,
+      "change7d": -7.2,
       "marketCap": 44005986304,
       "pe": 8454.98,
       "peg": null,
@@ -1194,9 +1194,9 @@
       "rank": 85
     },
     {
-      "price": 211.52,
-      "change24h": -0.29,
-      "change7d": -9.21,
+      "price": 212.14,
+      "change24h": -0.16,
+      "change7d": -8.05,
       "marketCap": 43989454848,
       "pe": 40.68,
       "peg": 3.0,
@@ -1208,9 +1208,9 @@
       "rank": 86
     },
     {
-      "price": 30.91,
-      "change24h": -0.67,
-      "change7d": 4.14,
+      "price": 31.12,
+      "change24h": -1.43,
+      "change7d": 4.89,
       "marketCap": 42054893568,
       "pe": 22.9,
       "peg": 1.04,
@@ -1222,9 +1222,9 @@
       "rank": 87
     },
     {
-      "price": 117.67,
-      "change24h": 0.71,
-      "change7d": 4.71,
+      "price": 116.84,
+      "change24h": 0.44,
+      "change7d": 6.68,
       "marketCap": 41853198336,
       "pe": 24.01,
       "peg": 2.06,
@@ -1236,9 +1236,9 @@
       "rank": 88
     },
     {
-      "price": 75.22,
-      "change24h": 1.25,
-      "change7d": -4.62,
+      "price": 74.29,
+      "change24h": -0.96,
+      "change7d": -8.68,
       "marketCap": 40845090816,
       "pe": 341.91,
       "peg": 0.27,
@@ -1250,9 +1250,9 @@
       "rank": 89
     },
     {
-      "price": 165.05,
-      "change24h": 2.94,
-      "change7d": 21.95,
+      "price": 160.34,
+      "change24h": 1.41,
+      "change7d": 25.39,
       "marketCap": 40762974208,
       "pe": 51.42,
       "peg": 0.63,
@@ -1264,9 +1264,9 @@
       "rank": 90
     },
     {
-      "price": 392.57,
-      "change24h": 0.15,
-      "change7d": 6.87,
+      "price": 391.97,
+      "change24h": 0.7,
+      "change7d": 10.38,
       "marketCap": 38825172992,
       "pe": 16.36,
       "peg": 1.71,
@@ -1282,9 +1282,9 @@
       "name": "MicroStrategy",
       "sector": "Technology",
       "subSector": "Software",
-      "price": 94.86,
-      "change24h": 1.69,
-      "change7d": 3.48,
+      "price": 93.28,
+      "change24h": -4.56,
+      "change7d": -0.37,
       "marketCap": 34654220288,
       "pe": 21.26,
       "peg": 2.85,
@@ -1292,9 +1292,9 @@
       "rank": 92
     },
     {
-      "price": 87.31,
-      "change24h": 4.63,
-      "change7d": 22.04,
+      "price": 83.45,
+      "change24h": 11.95,
+      "change7d": 18.4,
       "marketCap": 32947367936,
       "pe": 34.51,
       "peg": 1.56,
@@ -1306,9 +1306,9 @@
       "rank": 93
     },
     {
-      "price": 69.73,
-      "change24h": 2.51,
-      "change7d": 15.1,
+      "price": 68.02,
+      "change24h": -2.75,
+      "change7d": 9.79,
       "marketCap": 31496083456,
       "pe": 16.07,
       "peg": 1.88,
@@ -1320,9 +1320,9 @@
       "rank": 94
     },
     {
-      "price": 26.42,
-      "change24h": 2.21,
-      "change7d": 2.92,
+      "price": 25.85,
+      "change24h": -2.01,
+      "change7d": 1.93,
       "marketCap": 31328245760,
       "pe": 12.59,
       "peg": 0.99,
@@ -1338,9 +1338,9 @@
       "name": "Alnylam Pharmaceuticals",
       "sector": "Health Care",
       "subSector": "Biotechnology",
-      "price": 220.33,
-      "change24h": 7.21,
-      "change7d": -18.93,
+      "price": 205.52,
+      "change24h": 0.02,
+      "change7d": -23.52,
       "marketCap": 29482164224,
       "pe": 38.45,
       "peg": 0.37,
@@ -1348,9 +1348,9 @@
       "rank": 96
     },
     {
-      "price": 29.35,
-      "change24h": 0.79,
-      "change7d": 5.05,
+      "price": 29.12,
+      "change24h": -1.52,
+      "change7d": 7.06,
       "marketCap": 27172567040,
       "pe": 18.23,
       "peg": 3.5,
@@ -1362,9 +1362,9 @@
       "rank": 97
     },
     {
-      "price": 484.64,
-      "change24h": 1.78,
-      "change7d": -7.15,
+      "price": 476.15,
+      "change24h": -1.9,
+      "change7d": -11.77,
       "marketCap": null,
       "pe": 161.55,
       "peg": 1.12,
@@ -1376,9 +1376,9 @@
       "rank": 98
     },
     {
-      "price": 361.88,
-      "change24h": -1.51,
-      "change7d": -2.68,
+      "price": 367.41,
+      "change24h": 0.2,
+      "change7d": -3.36,
       "marketCap": null,
       "pe": 53.85,
       "peg": 0.67,
@@ -1390,9 +1390,9 @@
       "rank": 99
     },
     {
-      "price": 346.83,
-      "change24h": -6.97,
-      "change7d": -7.37,
+      "price": 372.83,
+      "change24h": -0.71,
+      "change7d": 2.29,
       "marketCap": null,
       "pe": 36.36,
       "peg": 2.2,
@@ -1404,9 +1404,9 @@
       "rank": 100
     },
     {
-      "price": 829.5,
-      "change24h": 0.79,
-      "change7d": -9.93,
+      "price": 823.03,
+      "change24h": -5.9,
+      "change7d": -16.88,
       "marketCap": null,
       "pe": 18.73,
       "peg": 0.12,
@@ -1418,9 +1418,9 @@
       "rank": 101
     },
     {
-      "price": 365.8,
-      "change24h": -0.51,
-      "change7d": 4.54,
+      "price": 367.69,
+      "change24h": 0.6,
+      "change7d": -1.62,
       "marketCap": null,
       "pe": 50.25,
       "peg": 0.94,
@@ -1432,9 +1432,9 @@
       "rank": 102
     },
     {
-      "price": 527.22,
-      "change24h": -3.23,
-      "change7d": 1.43,
+      "price": 544.84,
+      "change24h": 2.21,
+      "change7d": -2.41,
       "marketCap": null,
       "pe": 31.51,
       "peg": 0.48,
