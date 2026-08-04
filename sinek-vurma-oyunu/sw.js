@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sinek-vurma-v8';
+const CACHE_NAME = 'sinek-vurma-v9';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -9,12 +9,13 @@ const ASSETS_TO_CACHE = [
   './icon-512.png'
 ];
 
-// Service Worker Kurulumu
+// Service Worker Kurulumu (Anında Devreye Alma)
 self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Beklemeden anında aktif et
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -25,36 +26,40 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
+            console.log('Eski önbellek temizleniyor:', cache);
             return caches.delete(cache);
           }
         })
       );
-    }).then(() => self.clients.claim())
+    }).then(() => self.clients.claim()) // Tüm açık sekmeleri anında kontrol et
   );
 });
 
-// Çevrimdışı (Offline) Yakalama Stratejisi
+// Network First (Önce İnternetten Güncel Yanıt, Yoksa Çevrimdışı Önbellek)
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
         return networkResponse;
-      }).catch(() => {
-        // Çevrimdışı fallback (Gerekirse)
-        if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
-        }
-      });
-    })
+      })
+      .catch(() => {
+        // Çevrimdışı (Offline) Durumda Önbellekten Sun
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          if (event.request.mode === 'navigate') {
+            return caches.match('./index.html');
+          }
+        });
+      })
   );
 });

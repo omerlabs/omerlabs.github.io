@@ -420,10 +420,52 @@ class GameEngine {
       if (this.pwaInstallBtn) this.pwaInstallBtn.classList.add('hidden');
     }
 
-    // Service Worker Kaydı
+    // Force Update / Önbellek Temizleme Butonu
+    const forceUpdateBtn = document.getElementById('force-update-btn');
+    if (forceUpdateBtn) {
+      forceUpdateBtn.addEventListener('click', async () => {
+        forceUpdateBtn.textContent = 'Güncelleniyor...';
+        if ('caches' in window) {
+          const names = await caches.keys();
+          await Promise.all(names.map(name => caches.delete(name)));
+        }
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          for (let reg of registrations) {
+            await reg.unregister();
+          }
+        }
+        window.location.reload(true);
+      });
+    }
+
+    // Service Worker Kaydı & Otomatik Güncelleme Kontrolü
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(err => {
+      navigator.serviceWorker.register('./sw.js').then((reg) => {
+        // Her açılışta sunucudan güncellemeyi kontrol et
+        reg.update();
+
+        reg.onupdatefound = () => {
+          const installingWorker = reg.installing;
+          if (installingWorker) {
+            installingWorker.onstatechange = () => {
+              if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                console.log('Yeni sürüm tespit edildi, sayfa yenileniyor...');
+                window.location.reload();
+              }
+            };
+          }
+        };
+      }).catch(err => {
         console.log('Service Worker kayıt hatası:', err);
+      });
+
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+          refreshing = true;
+          window.location.reload();
+        }
       });
     }
   }
