@@ -439,10 +439,26 @@ class GameEngine {
       });
     }
 
-    // Service Worker Kaydı & Otomatik Güncelleme Kontrolü
+    // Otomatik Sürüm Kontrolü (LocalStorage Silinmez, Sadece Dosya Önbelleği Sıfırlanır)
+    const CURRENT_VERSION = '1.0.10';
+    if (localStorage.getItem('sinek_game_version') !== CURRENT_VERSION) {
+      localStorage.setItem('sinek_game_version', CURRENT_VERSION);
+      if ('caches' in window) {
+        caches.keys().then(names => {
+          names.forEach(name => caches.delete(name));
+        });
+      }
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          regs.forEach(reg => reg.unregister());
+        });
+      }
+      setTimeout(() => window.location.reload(true), 150);
+    }
+
+    // Service Worker Kaydı & Güncelleme (Bypass HTTP Cache via ?v=10)
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').then((reg) => {
-        // Her açılışta sunucudan güncellemeyi kontrol et
+      navigator.serviceWorker.register('./sw.js?v=10').then((reg) => {
         reg.update();
 
         reg.onupdatefound = () => {
@@ -450,7 +466,6 @@ class GameEngine {
           if (installingWorker) {
             installingWorker.onstatechange = () => {
               if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                console.log('Yeni sürüm tespit edildi, sayfa yenileniyor...');
                 window.location.reload();
               }
             };

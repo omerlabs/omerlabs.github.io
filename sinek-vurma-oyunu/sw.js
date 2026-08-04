@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sinek-vurma-v9';
+const CACHE_NAME = 'sinek-vurma-v10';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -11,7 +11,7 @@ const ASSETS_TO_CACHE = [
 
 // Service Worker Kurulumu (Anında Devreye Alma)
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Beklemeden anında aktif et
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
@@ -19,28 +19,28 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Etkinleştirme & Eski Önbellek Temizliği
+// Etkinleştirme & Eski Dosya Önbelleklerinin Temizliği
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
-            console.log('Eski önbellek temizleniyor:', cache);
+            console.log('Eski dosya önbelleği siliniyor:', cache);
             return caches.delete(cache);
           }
         })
       );
-    }).then(() => self.clients.claim()) // Tüm açık sekmeleri anında kontrol et
+    }).then(() => self.clients.claim())
   );
 });
 
-// Network First (Önce İnternetten Güncel Yanıt, Yoksa Çevrimdışı Önbellek)
+// Network First (Önce Sunucu, HTTP Ön Bellek Baypas)
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: 'no-cache' })
       .then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
