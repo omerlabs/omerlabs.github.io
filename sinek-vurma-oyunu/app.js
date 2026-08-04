@@ -715,15 +715,9 @@ class GameEngine {
   }
 
   levelUp(newLevel) {
+    // Seviye arka planda otomatik artar (hız ve yoğunluk yükselir),
+    // ancak kullanıcı isteği doğrultusunda hiçbir ekran yazısı ve ses çıkartılmaz.
     this.level = newLevel;
-    this.sound.playLevelUp();
-    
-    // Seviye Bildirimi Banner
-    this.levelBanner.textContent = `SEVİYE ${this.level}!`;
-    this.levelBanner.classList.add('show');
-    setTimeout(() => {
-      this.levelBanner.classList.remove('show');
-    }, 1200);
   }
 
   gameOver() {
