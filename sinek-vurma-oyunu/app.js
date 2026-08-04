@@ -377,7 +377,7 @@ class GameEngine {
     // Dynamic State
     this.score = 0;
     this.highScore = parseInt(localStorage.getItem('sinek_oyunu_highscore') || '0', 10);
-    this.lives = 3;
+    this.lives = 5;
     this.level = 1;
     this.swatCount = 0;
     this.isPlaying = false;
@@ -454,7 +454,7 @@ class GameEngine {
   startGame() {
     this.sound.init();
     this.score = 0;
-    this.lives = 3;
+    this.lives = 5;
     this.level = 1;
     this.swatCount = 0;
     this.comboCount = 0;
@@ -504,15 +504,15 @@ class GameEngine {
     this.flies = this.flies.filter(f => f.alive);
 
     if (this.flies.length < maxFlies) {
-      // Sinek Dağılımı: %70 Kara Sinek, %15 Sivrisinek, %10 Altın Sinek, %5 Uğur Böceği
+      // Sinek Dağılımı: %55 Kara Sinek, %20 Uğur Böceği (%20 İhtimal), %15 Sivrisinek, %10 Altın Sinek
       const rand = Math.random();
       let type = 'normal';
-      if (rand < 0.10) {
-        type = 'golden';
-      } else if (rand < 0.15) {
-        type = 'ladybug';
+      if (rand < 0.20) {
+        type = 'ladybug'; // %20 Kırmızı Uğur Böceği (Can kazandırır)
       } else if (rand < 0.30) {
-        type = 'mosquito';
+        type = 'golden'; // %10 Altın Sinek
+      } else if (rand < 0.45) {
+        type = 'mosquito'; // %15 Sivrisinek
       }
       
       const fly = new Fly(this, type);
@@ -621,8 +621,8 @@ class GameEngine {
       popupClass = 'gold';
       this.sound.playBonus();
       
-      // Uğur böceği 1 Can kazandırır! (Maksimum 3 Can)
-      if (this.lives < 3) {
+      // Uğur böceği 1 Can kazandırır! (Maksimum 5 Can)
+      if (this.lives < 5) {
         this.lives++;
         this.updateHeartsUI();
         this.showPopup(x, y - 30, '+1 CAN!', 'heart');
