@@ -377,7 +377,7 @@ class GameEngine {
     // Dynamic State
     this.score = 0;
     this.highScore = parseInt(localStorage.getItem('sinek_oyunu_highscore') || '0', 10);
-    this.lives = 5;
+    this.lives = 3;
     this.level = 1;
     this.swatCount = 0;
     this.isPlaying = false;
@@ -452,7 +452,7 @@ class GameEngine {
   startGame() {
     this.sound.init();
     this.score = 0;
-    this.lives = 5;
+    this.lives = 3;
     this.level = 1;
     this.swatCount = 0;
     this.comboCount = 0;
@@ -619,8 +619,8 @@ class GameEngine {
       popupClass = 'gold';
       this.sound.playBonus();
       
-      // Uğur böceği 1 Can kazandırır! (Maksimum 5 Can)
-      if (this.lives < 5) {
+      // Uğur böceği 1 Can kazandırır! (Maksimum 3 Can)
+      if (this.lives < 3) {
         this.lives++;
         this.updateHeartsUI();
         this.showPopup(x, y - 30, '+1 CAN!', 'heart');
@@ -631,7 +631,7 @@ class GameEngine {
     const totalPoints = basePoints * multiplier;
 
     if (multiplier > 1) {
-      popupText = `+${totalPoints} (COMBO x${multiplier})`;
+      popupText = `+${totalPoints}`;
       popupClass = 'combo';
     }
 
