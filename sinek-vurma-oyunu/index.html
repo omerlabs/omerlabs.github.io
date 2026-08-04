@@ -62,7 +62,7 @@
 
   <div id="game-container">
     
-    <!-- Üst Skor & Kontrol Çubuğu -->
+    <!-- Üst Skor & Kalp Çubuğu -->
     <header id="top-bar">
       <div class="stats-group">
         <!-- Anlık Puan -->
@@ -88,20 +88,17 @@
           </div>
         </div>
       </div>
-
-      <!-- Sağ Üst Butonlar (Ses & PWA İndir) -->
-      <div class="controls-group">
-        <button id="sound-toggle-btn" class="icon-btn">
-          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-          Ses
-        </button>
-
-        <button id="pwa-install-btn" class="icon-btn hidden">
-          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          İndir
-        </button>
-      </div>
     </header>
+
+    <!-- Sağ Alt Yüzen İkon Butonları (Ses & İndir) -->
+    <div id="floating-controls">
+      <button id="pwa-install-btn" class="circle-btn hidden" title="Uygulamayı İndir" aria-label="İndir">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      </button>
+      <button id="sound-toggle-btn" class="circle-btn" title="Ses Aç / Kapat" aria-label="Ses">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      </button>
+    </div>
 
     <!-- Oyun Ekranı & Sineklerin Uçtuğu Alan -->
     <main id="game-board"></main>

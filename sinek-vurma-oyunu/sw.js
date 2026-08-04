@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sinek-vurma-v5';
+const CACHE_NAME = 'sinek-vurma-v6';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
