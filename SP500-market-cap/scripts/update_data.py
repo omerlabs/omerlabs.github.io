@@ -327,33 +327,6 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
                     if result["peg"] is not None:
                         result["peg"] = round(float(result["peg"]), 2)
                     
-                    # Absolute financials
-                    result["revenue"] = info.get("totalRevenue")
-                    result["netIncome"] = info.get("netIncomeToCommon")
-                    result["fcf"] = info.get("freeCashflow")
-                    
-                    # YoY Growth fields from info
-                    rev_growth = info.get("revenueGrowth")
-                    if rev_growth is not None:
-                        result["revenueGrowth"] = round(float(rev_growth) * 100, 2)
-                    
-                    ni_growth = info.get("earningsGrowth")
-                    if ni_growth is not None:
-                        result["netIncomeGrowth"] = round(float(ni_growth) * 100, 2)
-                    
-                    # FCF Growth: calculate from annual cashflow statement
-                    try:
-                        cf_stmt = t.cashflow
-                        if cf_stmt is not None and not cf_stmt.empty and "Free Cash Flow" in cf_stmt.index:
-                            fcf_series = cf_stmt.loc["Free Cash Flow"].dropna()
-                            if len(fcf_series) >= 2:
-                                curr_fcf = float(fcf_series.iloc[0])
-                                prev_fcf = float(fcf_series.iloc[1])
-                                if prev_fcf != 0:
-                                    result["fcfGrowth"] = round(((curr_fcf - prev_fcf) / abs(prev_fcf)) * 100, 2)
-                    except Exception:
-                        pass
-                    
                 break
         except Exception as e:
             err_str = str(e)
@@ -450,6 +423,26 @@ def collect_index_data(index_name, companies, output_path, session, global_hist_
         r["rank"] = rank
         rank += 1
         final_data.append(r)
+
+    # 3.5. Merge existing quarterly financial fields from output_path if available
+    financial_fields = ["revenue", "netIncome", "fcf", "revenueGrowth", "netIncomeGrowth", "fcfGrowth"]
+    existing_financials = {}
+    if os.path.exists(output_path):
+        try:
+            with open(output_path, "r", encoding="utf-8") as f:
+                existing_payload = json.load(f)
+            for item in existing_payload.get("data", []):
+                existing_financials[item["ticker"]] = {k: item.get(k) for k in financial_fields}
+        except Exception:
+            pass
+
+    for r in final_data:
+        ticker = r["ticker"]
+        if ticker in existing_financials:
+            for field in financial_fields:
+                if r.get(field) is None:
+                    r[field] = existing_financials[ticker].get(field)
+
         
     # 4. Data validation before writing — protect against overwriting with bad data
     valid_prices = [r for r in final_data if r.get("price") is not None]
