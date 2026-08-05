@@ -307,7 +307,7 @@ body {
 
 .terminal-table th, 
 .terminal-table td {
-    padding: 14px 16px;
+    padding: 9px 8px;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -316,11 +316,12 @@ body {
     color: var(--text-muted);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
     position: sticky;
     top: 0;
     user-select: none;
+    padding: 8px 6px;
 }
 
 .terminal-table th.sortable {
@@ -1253,15 +1254,16 @@ body {
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
-        max-width: 200px;
+        max-width: 140px;
         display: inline-block;
         vertical-align: middle;
+        font-size: 0.82rem;
     }
-    /* Compact company/asset column width on desktop for sticky layout */
+    /* Compact company/asset column width on desktop to fit all 15 columns on screen */
     .terminal-table th:nth-child(2),
     .terminal-table td:nth-child(2) {
-        min-width: 180px;
-        max-width: 240px;
+        min-width: 130px;
+        max-width: 160px;
     }
 }
 
