@@ -72,6 +72,109 @@ def fetch_financials_for_ticker(yf_ticker, session=None):
     return result
 
 
+from bs4 import BeautifulSoup
+
+
+def scrape_sp500_wikipedia(json_dir, session=None):
+    """Scrapes S&P 500 constituents from Wikipedia and updates sp500_constituents.json."""
+    print("Scraping fresh S&P 500 constituents from Wikipedia (Quarterly)...")
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    fetcher = session if session else requests
+    resp = fetcher.get(url, headers=headers)
+    if resp.status_code != 200:
+        print(f"Warning: Failed Wikipedia fetch HTTP {resp.status_code}")
+        return load_constituents_cache(json_dir, 'sp500_constituents.json')
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    table = soup.find("table", {"id": "constituents"})
+    if not table:
+        print("Warning: constituents table not found on Wikipedia page")
+        return load_constituents_cache(json_dir, 'sp500_constituents.json')
+
+    companies = []
+    for row in table.find_all("tr")[1:]:
+        cols = row.find_all("td")
+        if len(cols) < 5:
+            continue
+        ticker = cols[0].text.strip()
+        name = cols[1].text.strip()
+        sector = cols[2].text.strip()
+        sub_sector = cols[3].text.strip()
+        yf_ticker = ticker.replace(".", "-")
+        companies.append({
+            "ticker": ticker,
+            "yf_ticker": yf_ticker,
+            "name": name,
+            "sector": sector,
+            "subSector": sub_sector
+        })
+
+    if companies:
+        from datetime import datetime, timezone
+        cache_path = os.path.join(json_dir, "sp500_constituents.json")
+        cache_payload = {
+            "lastUpdated": datetime.now(timezone.utc).isoformat(),
+            "companies": companies
+        }
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump(cache_payload, f, indent=2, ensure_ascii=False)
+        print(f"Saved {len(companies)} S&P 500 constituents to cache.")
+    return companies
+
+
+def scrape_nasdaq100_wikipedia(json_dir, session=None):
+    """Scrapes Nasdaq 100 constituents from Wikipedia and updates nasdaq100_constituents.json."""
+    print("Scraping fresh Nasdaq 100 constituents from Wikipedia (Quarterly)...")
+    url = "https://en.wikipedia.org/wiki/List_of_NASDAQ-100_companies"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    fetcher = session if session else requests
+    resp = fetcher.get(url, headers=headers)
+    if resp.status_code != 200:
+        print(f"Warning: Failed Nasdaq 100 Wikipedia fetch HTTP {resp.status_code}")
+        return load_constituents_cache(json_dir, 'nasdaq100_constituents.json')
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    table = soup.find("table", {"class": "wikitable"})
+    if not table:
+        print("Warning: Nasdaq 100 table not found on Wikipedia page")
+        return load_constituents_cache(json_dir, 'nasdaq100_constituents.json')
+
+    companies = []
+    for row in table.find_all("tr")[1:]:
+        cols = row.find_all("td")
+        if len(cols) < 4:
+            continue
+        ticker = cols[0].text.strip()
+        name = cols[1].text.strip()
+        sector = cols[2].text.strip()
+        sub_sector = cols[3].text.strip()
+        yf_ticker = ticker.replace(".", "-")
+        companies.append({
+            "ticker": ticker,
+            "yf_ticker": yf_ticker,
+            "name": name,
+            "sector": sector,
+            "subSector": sub_sector
+        })
+
+    if companies:
+        from datetime import datetime, timezone
+        cache_path = os.path.join(json_dir, "nasdaq100_constituents.json")
+        cache_payload = {
+            "lastUpdated": datetime.now(timezone.utc).isoformat(),
+            "companies": companies
+        }
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump(cache_payload, f, indent=2, ensure_ascii=False)
+        print(f"Saved {len(companies)} Nasdaq 100 constituents to cache.")
+    return companies
+
+
 def load_constituents_cache(json_dir, filename):
     """Load a constituents cache file and return the list of companies."""
     cache_path = os.path.join(json_dir, filename)
@@ -152,9 +255,18 @@ def main():
     retries = Retry(total=5, backoff_factor=1.5, status_forcelist=[429, 500, 502, 503, 504])
     session.mount('https://', HTTPAdapter(max_retries=retries))
 
-    # Load constituent caches (no Wikipedia scraping needed)
-    sp500_companies = load_constituents_cache(json_dir, 'sp500_constituents.json')
-    nasdaq100_companies = load_constituents_cache(json_dir, 'nasdaq100_constituents.json')
+    # Scrape fresh Wikipedia constituents quarterly
+    try:
+        sp500_companies = scrape_sp500_wikipedia(json_dir, session)
+    except Exception as e:
+        print(f"Error scraping S&P 500 Wikipedia: {e}. Falling back to cache.")
+        sp500_companies = load_constituents_cache(json_dir, 'sp500_constituents.json')
+
+    try:
+        nasdaq100_companies = scrape_nasdaq100_wikipedia(json_dir, session)
+    except Exception as e:
+        print(f"Error scraping Nasdaq 100 Wikipedia: {e}. Falling back to cache.")
+        nasdaq100_companies = load_constituents_cache(json_dir, 'nasdaq100_constituents.json')
 
     if not sp500_companies and not nasdaq100_companies:
         print("ERROR: No constituent caches found. Run update_data.py first to populate caches.")

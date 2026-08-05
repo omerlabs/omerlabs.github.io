@@ -29,7 +29,7 @@ def fetch_Sp500_wikipedia(json_dir):
                 last_updated = datetime.fromisoformat(last_updated_str)
                 now = datetime.now(timezone.utc)
                 age_days = (now - last_updated).days
-                if age_days < 7:
+                if age_days < 120:
                     companies = cache_data.get("companies", [])
                     if companies:
                         use_cache = True
@@ -114,7 +114,7 @@ def fetch_nasdaq100_wikipedia(json_dir):
                 last_updated = datetime.fromisoformat(last_updated_str)
                 now = datetime.now(timezone.utc)
                 age_days = (now - last_updated).days
-                if age_days < 7:
+                if age_days < 120:
                     companies = cache_data.get("companies", [])
                     if companies:
                         use_cache = True

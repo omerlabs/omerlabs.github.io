@@ -2,8 +2,8 @@ name: Update Financial Data (Quarterly)
 
 on:
   schedule:
-    # 15 Şubat, 15 Mayıs, 15 Ağustos, 15 Kasım — 03:00 UTC (06:00 Türkiye)
-    - cron: '0 3 15 2,5,8,11 *'
+    # 15 Şubat, 15 Mayıs, 15 Ağustos, 15 Kasım — 00:00 UTC (03:00 Türkiye TSİ)
+    - cron: '0 0 15 2,5,8,11 *'
   workflow_dispatch:
 
 env:
