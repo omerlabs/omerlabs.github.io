@@ -385,27 +385,18 @@ body {
 
 .terminal-table th:nth-child(1),
 .terminal-table td:nth-child(1) {
-    width: 32px;
-    min-width: 32px;
-    max-width: 32px;
+    width: 28px;
+    min-width: 28px;
+    max-width: 28px;
     text-align: center;
     padding-left: 2px !important;
     padding-right: 2px !important;
-    position: sticky;
-    left: 0;
-    z-index: 6;
-    background-color: var(--bg-primary);
-}
-
-.terminal-table th:nth-child(1) {
-    z-index: 16;
-    background-color: var(--bg-secondary);
 }
 
 .terminal-table th:nth-child(2),
 .terminal-table td:nth-child(2) {
     position: sticky;
-    left: 32px;
+    left: 0;
     z-index: 5;
     background-color: var(--bg-primary);
     border-right: 1px solid var(--border-color);
@@ -421,14 +412,7 @@ body {
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
 }
 
-/* When Watchlist mode is active and Column 1 is hidden */
-.watchlist-active th:nth-child(2),
-.watchlist-active td:nth-child(2) {
-    left: 0 !important;
-}
-
-/* Synchronize row hover background across sticky columns */
-.terminal-table tbody tr:hover td:nth-child(1),
+/* Synchronize row hover background for sticky company column */
 .terminal-table tbody tr:hover td:nth-child(2) {
     background-color: var(--bg-tertiary);
 }
