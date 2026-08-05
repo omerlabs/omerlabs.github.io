@@ -13,8 +13,9 @@ FINANCIAL_FIELDS = ['revenue', 'netIncome', 'fcf', 'revenueGrowth', 'netIncomeGr
 
 def fetch_financials_for_ticker(yf_ticker, session=None):
     """
-    Fetches financial fields from official audited financial statement tables
-    (t.income_stmt & t.cashflow) to prevent yfinance info precalculation bugs:
+    Fetches TTM (Trailing Twelve Months - sum of last 4 quarters) financial fields
+    from quarterly statement tables (t.quarterly_income_stmt & t.quarterly_cashflow)
+    to reflect up-to-date trailing 12-month performance for:
     revenue, netIncome, fcf and their YoY growth rates.
     """
     time.sleep(random.uniform(0.15, 0.45))
@@ -25,47 +26,84 @@ def fetch_financials_for_ticker(yf_ticker, session=None):
     for attempt in range(max_retries):
         try:
             t = yf.Ticker(yf_ticker, session=session)
+            info = t.info or {}
 
-            # 1. Income Statement (Ciro & Net Gelir)
+            # 1. Quarterly Income Statement for TTM Revenue & Net Income
             try:
-                is_stmt = t.income_stmt
-                if is_stmt is not None and not is_stmt.empty:
+                qis = t.quarterly_income_stmt
+                if qis is not None and not qis.empty:
                     for k in ['Total Revenue', 'Operating Revenue']:
-                        if k in is_stmt.index:
-                            s = is_stmt.loc[k].dropna()
-                            if len(s) > 0:
-                                result['revenue'] = float(s.iloc[0])
-                                if len(s) >= 2 and float(s.iloc[1]) != 0:
-                                    result['revenueGrowth'] = round(((float(s.iloc[0]) - float(s.iloc[1])) / abs(float(s.iloc[1]))) * 100, 2)
+                        if k in qis.index:
+                            s = qis.loc[k].dropna()
+                            if len(s) >= 4:
+                                result['revenue'] = float(s.iloc[:4].sum())
+                                if len(s) >= 8 and float(s.iloc[4:8].sum()) != 0:
+                                    prev_ttm = float(s.iloc[4:8].sum())
+                                    result['revenueGrowth'] = round(((result['revenue'] - prev_ttm) / abs(prev_ttm)) * 100, 2)
                                 break
                     for k in ['Net Income Common Stockholders', 'Net Income']:
-                        if k in is_stmt.index:
-                            s = is_stmt.loc[k].dropna()
-                            if len(s) > 0:
-                                result['netIncome'] = float(s.iloc[0])
-                                if len(s) >= 2 and float(s.iloc[1]) != 0:
-                                    result['netIncomeGrowth'] = round(((float(s.iloc[0]) - float(s.iloc[1])) / abs(float(s.iloc[1]))) * 100, 2)
+                        if k in qis.index:
+                            s = qis.loc[k].dropna()
+                            if len(s) >= 4:
+                                result['netIncome'] = float(s.iloc[:4].sum())
+                                if len(s) >= 8 and float(s.iloc[4:8].sum()) != 0:
+                                    prev_ttm = float(s.iloc[4:8].sum())
+                                    result['netIncomeGrowth'] = round(((result['netIncome'] - prev_ttm) / abs(prev_ttm)) * 100, 2)
                                 break
             except Exception:
                 pass
 
-            # 2. Cash Flow Statement (Serbest Nakit / FCF & FCF YoY)
+            # 2. Quarterly Cash Flow Statement for TTM Free Cash Flow
+            try:
+                qcf = t.quarterly_cashflow
+                if qcf is not None and not qcf.empty and 'Free Cash Flow' in qcf.index:
+                    s = qcf.loc['Free Cash Flow'].dropna()
+                    if len(s) >= 4:
+                        result['fcf'] = float(s.iloc[:4].sum())
+                        if len(s) >= 8 and float(s.iloc[4:8].sum()) != 0:
+                            prev_ttm = float(s.iloc[4:8].sum())
+                            result['fcfGrowth'] = round(((result['fcf'] - prev_ttm) / abs(prev_ttm)) * 100, 2)
+            except Exception:
+                pass
+
+            # 3. Fallbacks for missing TTM values (Annual statements or info)
+            try:
+                is_stmt = t.income_stmt
+                if is_stmt is not None and not is_stmt.empty:
+                    if result['revenue'] is None:
+                        for k in ['Total Revenue', 'Operating Revenue']:
+                            if k in is_stmt.index:
+                                s = is_stmt.loc[k].dropna()
+                                if len(s) > 0:
+                                    result['revenue'] = float(s.iloc[0])
+                                    break
+                    if result['netIncome'] is None:
+                        for k in ['Net Income Common Stockholders', 'Net Income']:
+                            if k in is_stmt.index:
+                                s = is_stmt.loc[k].dropna()
+                                if len(s) > 0:
+                                    result['netIncome'] = float(s.iloc[0])
+                                    break
+            except Exception:
+                pass
+
             try:
                 cf_stmt = t.cashflow
                 if cf_stmt is not None and not cf_stmt.empty and 'Free Cash Flow' in cf_stmt.index:
-                    fcf_series = cf_stmt.loc['Free Cash Flow'].dropna()
-                    if len(fcf_series) > 0:
-                        result['fcf'] = float(fcf_series.iloc[0])
-                    if len(fcf_series) >= 2:
-                        curr_fcf = float(fcf_series.iloc[0])
-                        prev_fcf = float(fcf_series.iloc[1])
-                        if prev_fcf != 0:
+                    if result['fcf'] is None:
+                        s = cf_stmt.loc['Free Cash Flow'].dropna()
+                        if len(s) > 0:
+                            result['fcf'] = float(s.iloc[0])
+                    if result['fcfGrowth'] is None:
+                        s = cf_stmt.loc['Free Cash Flow'].dropna()
+                        if len(s) >= 2 and float(s.iloc[1]) != 0:
+                            curr_fcf = result['fcf'] or float(s.iloc[0])
+                            prev_fcf = float(s.iloc[1])
                             result['fcfGrowth'] = round(((curr_fcf - prev_fcf) / abs(prev_fcf)) * 100, 2)
             except Exception:
                 pass
 
-            # 3. Fallback to info dictionary if statement table items were missing
-            info = t.info or {}
+            # Final fallbacks to info dictionary
             if result['revenue'] is None:
                 result['revenue'] = info.get('totalRevenue')
             if result['netIncome'] is None:
