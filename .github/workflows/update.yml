@@ -2,12 +2,8 @@ name: Update SP 500 Data
 
 on:
   schedule:
-    # Runs 5 times daily (Monday to Friday) — TSI times in comments
-    - cron: '37 13 * * 1-5'  # 16:45 TSİ — Borsa açılışı
-    - cron: '22 14 * * 1-5'  # 17:30 TSİ — Açılış sonrası
-    - cron: '18 16 * * 1-5'  # 19:30 TSİ — Gün ortası
-    - cron: '7 18 * * 1-5'   # 21:00 TSİ — Kapanış öncesi
-    - cron: '52 20 * * 1-5'   # 00:00 TSİ — Kapanış sonrası
+    # Runs once daily (Monday to Friday) at 03:00 TSİ (00:00 UTC)
+    - cron: '0 0 * * 1-5'  # 03:00 TSİ — Günlük kapanış verileri
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 permissions:
