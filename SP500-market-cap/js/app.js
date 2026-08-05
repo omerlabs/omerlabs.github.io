@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=45')
+        navigator.serviceWorker.register('./service-worker.js?v=46')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -997,37 +997,37 @@ function renderTable() {
 
             // Revenue (Ciro)
             const tdRevenue = document.createElement('td');
-            tdRevenue.className = 'font-mono text-right';
+            tdRevenue.className = 'font-mono text-right' + (item.revenue !== null && item.revenue !== undefined && item.revenue < 0 ? ' text-negative' : '');
             tdRevenue.textContent = formatCompactCurrency(item.revenue);
             tr.appendChild(tdRevenue);
 
             // Net Income (Net Gelir)
             const tdNetIncome = document.createElement('td');
-            tdNetIncome.className = 'font-mono text-right';
+            tdNetIncome.className = 'font-mono text-right' + (item.netIncome !== null && item.netIncome !== undefined && item.netIncome < 0 ? ' text-negative' : '');
             tdNetIncome.textContent = formatCompactCurrency(item.netIncome);
             tr.appendChild(tdNetIncome);
 
             // Free Cash Flow (Serbest Nakit)
             const tdFCF = document.createElement('td');
-            tdFCF.className = 'font-mono text-right';
+            tdFCF.className = 'font-mono text-right' + (item.fcf !== null && item.fcf !== undefined && item.fcf < 0 ? ' text-negative' : '');
             tdFCF.textContent = formatCompactCurrency(item.fcf);
             tr.appendChild(tdFCF);
 
             // Revenue Growth YoY (Ciro YoY)
             const tdRevGrowth = document.createElement('td');
-            tdRevGrowth.className = 'font-mono text-right';
+            tdRevGrowth.className = 'font-mono text-right' + (item.revenueGrowth !== null && item.revenueGrowth !== undefined && item.revenueGrowth < 0 ? ' text-negative' : '');
             tdRevGrowth.textContent = item.revenueGrowth !== null && item.revenueGrowth !== undefined ? `%${item.revenueGrowth.toFixed(1)}` : '--';
             tr.appendChild(tdRevGrowth);
 
             // Net Income Growth YoY (Net Gelir YoY)
             const tdNIGrowth = document.createElement('td');
-            tdNIGrowth.className = 'font-mono text-right';
+            tdNIGrowth.className = 'font-mono text-right' + (item.netIncomeGrowth !== null && item.netIncomeGrowth !== undefined && item.netIncomeGrowth < 0 ? ' text-negative' : '');
             tdNIGrowth.textContent = item.netIncomeGrowth !== null && item.netIncomeGrowth !== undefined ? `%${item.netIncomeGrowth.toFixed(1)}` : '--';
             tr.appendChild(tdNIGrowth);
 
             // FCF Growth YoY (Serbest Nakit YoY)
             const tdFCFGrowth = document.createElement('td');
-            tdFCFGrowth.className = 'font-mono text-right';
+            tdFCFGrowth.className = 'font-mono text-right' + (item.fcfGrowth !== null && item.fcfGrowth !== undefined && item.fcfGrowth < 0 ? ' text-negative' : '');
             tdFCFGrowth.textContent = item.fcfGrowth !== null && item.fcfGrowth !== undefined ? `%${item.fcfGrowth.toFixed(1)}` : '--';
             tr.appendChild(tdFCFGrowth);
         }
@@ -1135,15 +1135,16 @@ function formatPrice(price) {
 
 function formatCompactCurrency(number) {
     if (number === null || number === undefined || isNaN(number)) return '--';
+    const sign = number < 0 ? '-$' : '$';
     const abs = Math.abs(number);
     if (abs >= 1e12) {
-        return '$' + (number / 1e12).toFixed(2) + 'T';
+        return sign + (abs / 1e12).toFixed(2) + 'T';
     } else if (abs >= 1e9) {
-        return '$' + (number / 1e9).toFixed(2) + 'B';
+        return sign + (abs / 1e9).toFixed(2) + 'B';
     } else if (abs >= 1e6) {
-        return '$' + (number / 1e6).toFixed(2) + 'M';
+        return sign + (abs / 1e6).toFixed(2) + 'M';
     } else {
-        return '$' + number.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        return sign + abs.toLocaleString('en-US', { maximumFractionDigits: 2 });
     }
 }
 
