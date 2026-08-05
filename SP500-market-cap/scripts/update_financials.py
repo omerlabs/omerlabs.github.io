@@ -13,9 +13,9 @@ FINANCIAL_FIELDS = ['revenue', 'netIncome', 'fcf', 'revenueGrowth', 'netIncomeGr
 
 def fetch_financials_for_ticker(yf_ticker, session=None):
     """
-    Fetches only the financial fields for a single ticker:
-    revenue, netIncome, fcf (absolute values) and their YoY growth rates.
-    Returns a dict with these 6 fields, or None if fetch fails entirely.
+    Fetches financial fields from official audited financial statement tables
+    (t.income_stmt & t.cashflow) to prevent yfinance info precalculation bugs:
+    revenue, netIncome, fcf and their YoY growth rates.
     """
     time.sleep(random.uniform(0.15, 0.45))
 
@@ -25,30 +25,37 @@ def fetch_financials_for_ticker(yf_ticker, session=None):
     for attempt in range(max_retries):
         try:
             t = yf.Ticker(yf_ticker, session=session)
-            info = t.info
 
-            if not info:
-                break
+            # 1. Income Statement (Ciro & Net Gelir)
+            try:
+                is_stmt = t.income_stmt
+                if is_stmt is not None and not is_stmt.empty:
+                    for k in ['Total Revenue', 'Operating Revenue']:
+                        if k in is_stmt.index:
+                            s = is_stmt.loc[k].dropna()
+                            if len(s) > 0:
+                                result['revenue'] = float(s.iloc[0])
+                                if len(s) >= 2 and float(s.iloc[1]) != 0:
+                                    result['revenueGrowth'] = round(((float(s.iloc[0]) - float(s.iloc[1])) / abs(float(s.iloc[1]))) * 100, 2)
+                                break
+                    for k in ['Net Income Common Stockholders', 'Net Income']:
+                        if k in is_stmt.index:
+                            s = is_stmt.loc[k].dropna()
+                            if len(s) > 0:
+                                result['netIncome'] = float(s.iloc[0])
+                                if len(s) >= 2 and float(s.iloc[1]) != 0:
+                                    result['netIncomeGrowth'] = round(((float(s.iloc[0]) - float(s.iloc[1])) / abs(float(s.iloc[1]))) * 100, 2)
+                                break
+            except Exception:
+                pass
 
-            # Absolute financials
-            result['revenue'] = info.get('totalRevenue')
-            result['netIncome'] = info.get('netIncomeToCommon')
-            result['fcf'] = info.get('freeCashflow')
-
-            # YoY growth from info
-            rev_growth = info.get('revenueGrowth')
-            if rev_growth is not None:
-                result['revenueGrowth'] = round(float(rev_growth) * 100, 2)
-
-            ni_growth = info.get('earningsGrowth')
-            if ni_growth is not None:
-                result['netIncomeGrowth'] = round(float(ni_growth) * 100, 2)
-
-            # FCF Growth: calculate from annual cashflow statement
+            # 2. Cash Flow Statement (Serbest Nakit / FCF & FCF YoY)
             try:
                 cf_stmt = t.cashflow
                 if cf_stmt is not None and not cf_stmt.empty and 'Free Cash Flow' in cf_stmt.index:
                     fcf_series = cf_stmt.loc['Free Cash Flow'].dropna()
+                    if len(fcf_series) > 0:
+                        result['fcf'] = float(fcf_series.iloc[0])
                     if len(fcf_series) >= 2:
                         curr_fcf = float(fcf_series.iloc[0])
                         prev_fcf = float(fcf_series.iloc[1])
@@ -56,6 +63,20 @@ def fetch_financials_for_ticker(yf_ticker, session=None):
                             result['fcfGrowth'] = round(((curr_fcf - prev_fcf) / abs(prev_fcf)) * 100, 2)
             except Exception:
                 pass
+
+            # 3. Fallback to info dictionary if statement table items were missing
+            info = t.info or {}
+            if result['revenue'] is None:
+                result['revenue'] = info.get('totalRevenue')
+            if result['netIncome'] is None:
+                result['netIncome'] = info.get('netIncomeToCommon') or info.get('netIncome')
+            if result['fcf'] is None:
+                result['fcf'] = info.get('freeCashflow')
+
+            if result['revenueGrowth'] is None and info.get('revenueGrowth') is not None:
+                result['revenueGrowth'] = round(float(info.get('revenueGrowth')) * 100, 2)
+            if result['netIncomeGrowth'] is None and info.get('earningsGrowth') is not None:
+                result['netIncomeGrowth'] = round(float(info.get('earningsGrowth')) * 100, 2)
 
             break  # success
 
@@ -281,7 +302,7 @@ def main():
             all_companies_map[c['yf_ticker']] = c
 
     unique_companies = list(all_companies_map.values())
-    print(f"\nFetching financial data for {len(unique_companies)} unique tickers (S&P 500 ∪ Nasdaq 100)...")
+    print(f"\nFetching financial data for {len(unique_companies)} unique tickers (S&P 500 & Nasdaq 100)...")
 
     # Parallel financial data fetch
     financials_map = {}  # ticker -> {revenue, netIncome, fcf, ...}
