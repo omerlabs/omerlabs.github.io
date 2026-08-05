@@ -385,21 +385,52 @@ body {
 
 .terminal-table th:nth-child(1),
 .terminal-table td:nth-child(1) {
-    width: 20px;
-    min-width: 20px;
-    max-width: 20px;
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
     text-align: center;
     padding-left: 2px !important;
     padding-right: 2px !important;
+    position: sticky;
+    left: 0;
+    z-index: 6;
+    background-color: var(--bg-primary);
+}
+
+.terminal-table th:nth-child(1) {
+    z-index: 16;
+    background-color: var(--bg-secondary);
 }
 
 .terminal-table th:nth-child(2),
 .terminal-table td:nth-child(2) {
-    max-width: 90px;
-    min-width: 90px;
-    width: 90px;
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+    position: sticky;
+    left: 36px;
+    z-index: 5;
+    background-color: var(--bg-primary);
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+.terminal-table th:nth-child(2) {
+    z-index: 15;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* When Watchlist mode is active and Column 1 is hidden */
+.watchlist-active th:nth-child(2),
+.watchlist-active td:nth-child(2) {
+    left: 0 !important;
+}
+
+/* Synchronize row hover background across sticky columns */
+.terminal-table tbody tr:hover td:nth-child(1),
+.terminal-table tbody tr:hover td:nth-child(2) {
+    background-color: var(--bg-tertiary);
 }
 
 .cell-rank {
@@ -855,35 +886,11 @@ body {
     border-color: var(--color-accent);
 }
 
-/* Sticky columns for horizontal scrolling on mobile */
+/* Sticky columns are active globally (desktop & mobile) */
 @media (max-width: 768px) {
     .table-container {
         overflow-x: auto;
         position: relative;
-    }
-    
-    .terminal-table td:nth-child(2) {
-        position: sticky;
-        left: 0;
-        background-color: var(--bg-primary);
-        z-index: 5;
-        border-right: 1px solid var(--border-color);
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    }
-    
-    .terminal-table th:nth-child(2) {
-        position: sticky;
-        left: 0;
-        top: 0;
-        z-index: 15;
-        background-color: var(--bg-secondary);
-        border-right: 1px solid var(--border-color);
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Synchronize row hover backgrounds for sticky cells */
-    .terminal-table tbody tr:hover td:nth-child(2) {
-        background-color: var(--bg-tertiary);
     }
     
     /* Compact tab buttons on mobile to fit 5 tabs in a single row */
@@ -1242,41 +1249,35 @@ body {
     user-select: none !important;
 }
 
-/* Responsive word wrapping and spaces for headers and company names */
+/* Responsive word wrapping and 2-line breaks for table headers */
+.mobile-br {
+    display: inline !important;
+}
+.desktop-space {
+    display: none !important;
+}
+
+.terminal-table th {
+    white-space: normal !important;
+    vertical-align: bottom;
+    line-height: 1.25;
+    padding: 10px 10px;
+}
+
 @media (min-width: 769px) {
-    .mobile-br {
-        display: none !important;
-    }
-    .desktop-space {
-        display: inline !important;
-    }
-    /* Enforce single line display on desktop for table headers and company name texts */
-    .terminal-table th,
-    .ticker-badge-watchlist {
-        white-space: nowrap !important;
-    }
     .company-name {
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
-        max-width: 210px;
+        max-width: 200px;
         display: inline-block;
         vertical-align: middle;
     }
-    /* Widen the company/asset column on desktop */
+    /* Compact company/asset column width on desktop for sticky layout */
     .terminal-table th:nth-child(2),
     .terminal-table td:nth-child(2) {
-        min-width: 250px;
-        max-width: 320px;
-    }
-}
-
-@media (max-width: 768px) {
-    .mobile-br {
-        display: inline !important;
-    }
-    .desktop-space {
-        display: none !important;
+        min-width: 180px;
+        max-width: 240px;
     }
 }
 

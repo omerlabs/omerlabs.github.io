@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=42')
+        navigator.serviceWorker.register('./service-worker.js?v=43')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -223,15 +223,14 @@ function updateTableHeaders() {
         headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
         headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
         headers[9].innerHTML = `CİRO <i class="fa-solid fa-sort"></i>`;
-        headers[10].innerHTML = `NET GELİR <i class="fa-solid fa-sort"></i>`;
-        headers[11].innerHTML = `SERBEST NAKİT <i class="fa-solid fa-sort"></i>`;
-        headers[12].innerHTML = `CİRO YoY <i class="fa-solid fa-sort"></i>`;
-        headers[13].innerHTML = `NET GELİR YoY <i class="fa-solid fa-sort"></i>`;
-        headers[14].innerHTML = `SERBEST NAKİT YoY <i class="fa-solid fa-sort"></i>`;
+        headers[10].innerHTML = `NET<span class="desktop-space"> </span><br class="mobile-br">GELİR <i class="fa-solid fa-sort"></i>`;
+        headers[11].innerHTML = `SERBEST<span class="desktop-space"> </span><br class="mobile-br">NAKİT <i class="fa-solid fa-sort"></i>`;
+        headers[12].innerHTML = `CİRO<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
+        headers[13].innerHTML = `NET GELİR<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
+        headers[14].innerHTML = `SERBEST NAKİT<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
         return;
     }
 
-    
     if (activeTab === 'commodities' || activeTab === 'etfs') {
         // Both commodity and ETF tabs: S | Ad | Fiyat | 24s% | 7G% | Günlük Hacim
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
@@ -258,6 +257,12 @@ function updateTableHeaders() {
         headers[6].innerHTML = `${weightLabels[activeTab] || 'Ağırlık'} <i class="fa-solid fa-sort"></i>`;
         headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
         headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+        headers[9].innerHTML = `CİRO <i class="fa-solid fa-sort"></i>`;
+        headers[10].innerHTML = `NET<span class="desktop-space"> </span><br class="mobile-br">GELİR <i class="fa-solid fa-sort"></i>`;
+        headers[11].innerHTML = `SERBEST<span class="desktop-space"> </span><br class="mobile-br">NAKİT <i class="fa-solid fa-sort"></i>`;
+        headers[12].innerHTML = `CİRO<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
+        headers[13].innerHTML = `NET GELİR<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
+        headers[14].innerHTML = `SERBEST NAKİT<span class="desktop-space"> </span><br class="mobile-br">YoY <i class="fa-solid fa-sort"></i>`;
     }
 }
 
