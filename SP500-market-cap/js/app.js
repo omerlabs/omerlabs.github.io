@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Register PWA Service Worker
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js?v=41')
+        navigator.serviceWorker.register('./service-worker.js?v=42')
             .then((reg) => {
                 console.log('Service Worker registered successfully with scope:', reg.scope);
                 reg.addEventListener('updatefound', () => {
@@ -208,32 +208,45 @@ function updateTableHeaders() {
     }
 
     const headers = document.querySelectorAll('#companies-table th.sortable');
-    if (!headers || headers.length < 9) return;
+    if (!headers || headers.length < 15) return;
     
     // First restore all headers to visible and reset Rank header
     Array.from(headers).forEach(h => { h.style.display = ''; });
     headers[0].innerHTML = `S <i class="fa-solid fa-sort"></i>`;
     
     if (showWatchlistOnly) {
-        // Global Watchlist displays all columns: S | Varlık | Fiyat | 24s % | 7G % | DEĞER / HACİM | AĞIRLIK | P/E | PEG
+        // Global Watchlist: S | Varlık | Fiyat | 24s % | 7G % | DEĞER / HACİM | AĞIRLIK | P/E | PEG | CİRO | NET GELİR | SERBEST NAKİT | CİRO YoY | NET GELİR YoY | SERBEST NAKİT YoY
         headers[0].innerHTML = `&nbsp;`;
         headers[1].innerHTML = `Varlık <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `DEĞER /<span class="desktop-space"> </span><br class="mobile-br">HACİM <i class="fa-solid fa-sort"></i>`;
         headers[6].innerHTML = `AĞIRLIK <i class="fa-solid fa-sort"></i>`;
         headers[7].innerHTML = `P/E <i class="fa-solid fa-sort"></i>`;
         headers[8].innerHTML = `PEG <i class="fa-solid fa-sort"></i>`;
+        headers[9].innerHTML = `CİRO <i class="fa-solid fa-sort"></i>`;
+        headers[10].innerHTML = `NET GELİR <i class="fa-solid fa-sort"></i>`;
+        headers[11].innerHTML = `SERBEST NAKİT <i class="fa-solid fa-sort"></i>`;
+        headers[12].innerHTML = `CİRO YoY <i class="fa-solid fa-sort"></i>`;
+        headers[13].innerHTML = `NET GELİR YoY <i class="fa-solid fa-sort"></i>`;
+        headers[14].innerHTML = `SERBEST NAKİT YoY <i class="fa-solid fa-sort"></i>`;
         return;
     }
+
     
     if (activeTab === 'commodities' || activeTab === 'etfs') {
         // Both commodity and ETF tabs: S | Ad | Fiyat | 24s% | 7G% | Günlük Hacim
         const label = activeTab === 'commodities' ? 'Emtia' : 'ETF';
         headers[1].innerHTML = `${label} <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `GÜNLÜK<span class="desktop-space"> </span><br class="mobile-br">HACİM <i class="fa-solid fa-sort"></i>`;
-        // Hide Weight, P/E, PEG columns — they don't exist for these assets
+        // Hide Weight, P/E, PEG, and financial columns — they don't exist for these assets
         headers[6].style.display = 'none';
         headers[7].style.display = 'none';
         headers[8].style.display = 'none';
+        headers[9].style.display = 'none';
+        headers[10].style.display = 'none';
+        headers[11].style.display = 'none';
+        headers[12].style.display = 'none';
+        headers[13].style.display = 'none';
+        headers[14].style.display = 'none';
     } else {
         headers[1].innerHTML = `Şirket <i class="fa-solid fa-sort"></i>`;
         headers[5].innerHTML = `PİYASA<span class="desktop-space"> </span><br class="mobile-br">DEĞERİ <i class="fa-solid fa-sort"></i>`;
@@ -957,9 +970,9 @@ function renderTable() {
         }
         tr.appendChild(tdMarketCap);
         
-        // Columns 6-8 (Weight / P/E / PEG) — only for stock tabs when not in global watchlist
+        // Columns 6-14 (Weight / P/E / PEG / Revenue / NetIncome / FCF / Growth cols) — only for stock tabs when not in global watchlist
         if ((activeTab === 'commodities' || activeTab === 'etfs') && !showWatchlistOnly) {
-            // Only show volume (already in marketCap). No weight, no P/E, no PEG cells
+            // Only show volume (already in marketCap). No weight, no P/E, no PEG, no financials
         } else {
             // Standard stock columns
             const tdWeight = document.createElement('td');
@@ -976,7 +989,44 @@ function renderTable() {
             tdPEG.className = 'font-mono text-right';
             tdPEG.textContent = item.peg !== null && item.peg !== undefined ? item.peg.toFixed(2) : '--';
             tr.appendChild(tdPEG);
+
+            // Revenue (Ciro)
+            const tdRevenue = document.createElement('td');
+            tdRevenue.className = 'font-mono text-right';
+            tdRevenue.textContent = formatCompactCurrency(item.revenue);
+            tr.appendChild(tdRevenue);
+
+            // Net Income (Net Gelir)
+            const tdNetIncome = document.createElement('td');
+            tdNetIncome.className = 'font-mono text-right';
+            tdNetIncome.textContent = formatCompactCurrency(item.netIncome);
+            tr.appendChild(tdNetIncome);
+
+            // Free Cash Flow (Serbest Nakit)
+            const tdFCF = document.createElement('td');
+            tdFCF.className = 'font-mono text-right';
+            tdFCF.textContent = formatCompactCurrency(item.fcf);
+            tr.appendChild(tdFCF);
+
+            // Revenue Growth YoY (Ciro YoY)
+            const tdRevGrowth = document.createElement('td');
+            tdRevGrowth.className = 'font-mono text-right';
+            tdRevGrowth.textContent = item.revenueGrowth !== null && item.revenueGrowth !== undefined ? `%${item.revenueGrowth.toFixed(1)}` : '--';
+            tr.appendChild(tdRevGrowth);
+
+            // Net Income Growth YoY (Net Gelir YoY)
+            const tdNIGrowth = document.createElement('td');
+            tdNIGrowth.className = 'font-mono text-right';
+            tdNIGrowth.textContent = item.netIncomeGrowth !== null && item.netIncomeGrowth !== undefined ? `%${item.netIncomeGrowth.toFixed(1)}` : '--';
+            tr.appendChild(tdNIGrowth);
+
+            // FCF Growth YoY (Serbest Nakit YoY)
+            const tdFCFGrowth = document.createElement('td');
+            tdFCFGrowth.className = 'font-mono text-right';
+            tdFCFGrowth.textContent = item.fcfGrowth !== null && item.fcfGrowth !== undefined ? `%${item.fcfGrowth.toFixed(1)}` : '--';
+            tr.appendChild(tdFCFGrowth);
         }
+
         
         if (showWatchlistOnly) {
             // HTML5 Drag & Drop reordering for desktop
@@ -1146,7 +1196,7 @@ function showChartModal(ticker) {
     
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js?v=42';
     script.async = true;
     
     const config = {

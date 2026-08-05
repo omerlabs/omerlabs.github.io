@@ -224,7 +224,13 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
         "change7d": None,
         "marketCap": None,
         "pe": None,
-        "peg": None
+        "peg": None,
+        "revenue": None,
+        "netIncome": None,
+        "fcf": None,
+        "revenueGrowth": None,
+        "netIncomeGrowth": None,
+        "fcfGrowth": None
     }
     
     # Calculate price and changes from history if available
@@ -321,6 +327,33 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
                     if result["peg"] is not None:
                         result["peg"] = round(float(result["peg"]), 2)
                     
+                    # Absolute financials
+                    result["revenue"] = info.get("totalRevenue")
+                    result["netIncome"] = info.get("netIncomeToCommon")
+                    result["fcf"] = info.get("freeCashflow")
+                    
+                    # YoY Growth fields from info
+                    rev_growth = info.get("revenueGrowth")
+                    if rev_growth is not None:
+                        result["revenueGrowth"] = round(float(rev_growth) * 100, 2)
+                    
+                    ni_growth = info.get("earningsGrowth")
+                    if ni_growth is not None:
+                        result["netIncomeGrowth"] = round(float(ni_growth) * 100, 2)
+                    
+                    # FCF Growth: calculate from annual cashflow statement
+                    try:
+                        cf_stmt = t.cashflow
+                        if cf_stmt is not None and not cf_stmt.empty and "Free Cash Flow" in cf_stmt.index:
+                            fcf_series = cf_stmt.loc["Free Cash Flow"].dropna()
+                            if len(fcf_series) >= 2:
+                                curr_fcf = float(fcf_series.iloc[0])
+                                prev_fcf = float(fcf_series.iloc[1])
+                                if prev_fcf != 0:
+                                    result["fcfGrowth"] = round(((curr_fcf - prev_fcf) / abs(prev_fcf)) * 100, 2)
+                    except Exception:
+                        pass
+                    
                 break
         except Exception as e:
             err_str = str(e)
@@ -342,7 +375,13 @@ def fetch_single_ticker_info(company, hist_df=None, session=None, metadata_cache
                 "change7d": result["change7d"],
                 "marketCap": result["marketCap"],
                 "pe": result["pe"],
-                "peg": result["peg"]
+                "peg": result["peg"],
+                "revenue": result["revenue"],
+                "netIncome": result["netIncome"],
+                "fcf": result["fcf"],
+                "revenueGrowth": result["revenueGrowth"],
+                "netIncomeGrowth": result["netIncomeGrowth"],
+                "fcfGrowth": result["fcfGrowth"]
             }
         
     return result
