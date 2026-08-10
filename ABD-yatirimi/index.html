@@ -585,7 +585,12 @@ function compute(){
     const nomCostThisMonth = netInvest*f;
     costBasisTRY_nominal += nomCostThisMonth;
     const infRatio = infIndex(months-1) / infIndex(m);
-    costBasisTRY_indexed += nomCostThisMonth * infRatio;
+    // GVK Mükerrer 81: %10 enflasyon barajı her taksit için (alış-satış arası) ayrı kontrol edilir
+    if (indexingEnabled && infRatio >= 1.10) {
+      costBasisTRY_indexed += nomCostThisMonth * infRatio;
+    } else {
+      costBasisTRY_indexed += nomCostThisMonth;
+    }
 
     const preTerFactor = Math.pow(1+priceReturnAnnual, 1/12)-1;
     const preTerBal = usdBalance*(1+preTerFactor);
@@ -621,9 +626,7 @@ function compute(){
   }
 
   const finalSaleValueTRY = usdBalance*FXfinal;
-  const finalInfRatioTotal = infIndex(months-1) / infIndex(0);
-  const useIndexing = indexingEnabled && (finalInfRatioTotal >= 1.10);
-  const finalCostBasisTRY = useIndexing ? costBasisTRY_indexed : costBasisTRY_nominal;
+  const finalCostBasisTRY = indexingEnabled ? costBasisTRY_indexed : costBasisTRY_nominal;
 
   const finalCapitalGainTRY = Math.max(0, finalSaleValueTRY - finalCostBasisTRY);
   const finalGrowthFactor = bracketGrowLinked ? infIndex(months) : 1;
@@ -712,7 +715,12 @@ function compute(){
       uBal+=ni; tInv+=ni;
       const nCost=ni*f;
       cNomTRY += nCost;
-      cIndTRY += nCost*(infIndexAlt(months-1)/infIndexAlt(m));
+      const infRatioAlt = infIndexAlt(months-1)/infIndexAlt(m);
+      if(indexingEnabled && infRatioAlt >= 1.10){
+        cIndTRY += nCost * infRatioAlt;
+      } else {
+        cIndTRY += nCost;
+      }
 
       uBal*=(1+priceM);
       const divUSD=uBal*divM;
@@ -737,9 +745,7 @@ function compute(){
       }
     }
     const saleAlt=uBal*FXfAlt;
-    const finalInfRatioAlt = infIndexAlt(months-1)/infIndexAlt(0);
-    const useIndAlt = indexingEnabled && (finalInfRatioAlt >= 1.10);
-    const cBasisAlt = useIndAlt ? cIndTRY : cNomTRY;
+    const cBasisAlt = indexingEnabled ? cIndTRY : cNomTRY;
     const gainAlt=Math.max(0, saleAlt-cBasisAlt);
     const gfAlt = bracketGrowLinked ? infIndexAlt(months) : 1;
     const capTaxAlt = progressiveTaxOneYear(gainAlt, gfAlt, brackets);
