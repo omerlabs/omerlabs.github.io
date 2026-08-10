@@ -4,143 +4,179 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BES · IVV — Getiri Karşılaştırma Cetveli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#12151A;
-    --bg-2:#181C23;
-    --panel:#1E232B;
-    --panel-2:#232935;
-    --ink:#E9E6DC;
-    --ink-soft:#8D94A0;
-    --line:#2B313B;
-    --bes:#D2705F;
-    --ivv:#4FA8CC;
-    --good:#6FBF97;
+    --bg:#0B0E14;
+    --bg-2:#121722;
+    --panel:#181E2A;
+    --panel-2:#1F2737;
+    --panel-border:rgba(255, 255, 255, 0.08);
+    --ink:#F3F4F6;
+    --ink-soft:#9CA3AF;
+    --line:#262E40;
+    --bes:#F87171;
+    --bes-glow:rgba(248, 113, 113, 0.2);
+    --ivv:#38BDF8;
+    --ivv-glow:rgba(56, 189, 248, 0.2);
+    --good:#10B981;
+    --good-glow:rgba(16, 185, 129, 0.25);
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .mono{font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
-  h1,h2,h3{font-family:ui-serif,Georgia,'Times New Roman',serif;font-weight:600;margin:0;color:var(--ink);}
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;font-variant-numeric:tabular-nums;}
+  h1,h2,h3{font-family:'Outfit', sans-serif;font-weight:700;margin:0;color:var(--ink);letter-spacing:-0.02em;}
 
   header{
-    padding:2rem 1.5rem 1.3rem;
+    padding:2.2rem 1.8rem 1.5rem;
     border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(18,23,34,0.6) 0%, transparent 100%);
   }
   header .eyebrow{
-    font-family:ui-monospace,monospace;
-    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-soft);margin-bottom:.5rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ivv);margin-bottom:.5rem;display:inline-block;
+    background:rgba(56,189,248,0.1);padding:0.25rem 0.6rem;border-radius:4px;border:1px solid rgba(56,189,248,0.2);
   }
-  header h1{font-size:1.7rem;line-height:1.15;max-width:40rem;}
-  header p{max-width:34rem;color:var(--ink-soft);font-size:.88rem;margin-top:.5rem;}
+  header h1{font-size:1.85rem;line-height:1.2;max-width:44rem;color:#FFFFFF;}
+  header p{max-width:38rem;color:var(--ink-soft);font-size:.9rem;margin-top:.6rem;line-height:1.5;}
 
   .global-bar{
     background:var(--bg-2);
-    padding:1rem 1.5rem;
-    display:flex;flex-wrap:wrap;gap:1.2rem;align-items:flex-end;
+    padding:1.1rem 1.8rem;
+    display:flex;flex-wrap:wrap;gap:1.4rem;align-items:flex-end;
     border-bottom:1px solid var(--line);
   }
-  .global-bar .field{display:flex;flex-direction:column;gap:.3rem;min-width:9rem;}
-  .global-bar label{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);}
+  .global-bar .field{display:flex;flex-direction:column;gap:.35rem;min-width:9.5rem;}
+  .global-bar label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);}
   .global-bar input{
-    background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:4px;
-    padding:.4rem .55rem;font-family:ui-monospace,monospace;font-size:.86rem;width:100%;
+    background:var(--panel);border:1px solid var(--panel-border);color:var(--ink);border-radius:6px;
+    padding:.45rem .65rem;font-family:'JetBrains Mono', monospace;font-size:.88rem;width:100%;
+    transition:all 0.2s ease;
   }
+  .global-bar input:focus{outline:none;border-color:var(--ivv);box-shadow:0 0 0 3px var(--ivv-glow);}
+
   #reset-btn{
-    background:transparent;border:1px solid var(--line);color:var(--ink-soft);
-    padding:.5rem .9rem;border-radius:4px;font-size:.78rem;cursor:pointer;
-    font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em;
+    background:var(--panel-2);border:1px solid var(--line);color:var(--ink);
+    padding:.52rem 1.1rem;border-radius:6px;font-size:.78rem;font-weight:600;cursor:pointer;
+    font-family:'JetBrains Mono', monospace;text-transform:uppercase;letter-spacing:.05em;
+    transition:all 0.2s ease;
   }
-  #reset-btn:hover{border-color:var(--ink-soft);color:var(--ink);}
+  #reset-btn:hover{border-color:var(--ink-soft);color:#FFF;background:rgba(255,255,255,0.1);transform:translateY(-1px);}
 
   main{display:grid;grid-template-columns:1fr 1fr;gap:0;}
   @media (max-width:860px){ main{grid-template-columns:1fr;} }
 
-  .lane{padding:1.5rem 1.5rem 2rem;border-right:1px solid var(--line);}
+  .lane{padding:1.8rem 1.8rem 2.2rem;border-right:1px solid var(--line);}
   .lane.ivv{border-right:none;}
   .lane-head{
-    display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.2rem;
-    border-bottom:2px solid currentColor;padding-bottom:.55rem;
+    display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.4rem;
+    border-bottom:2px solid currentColor;padding-bottom:.65rem;
   }
   .lane.bes .lane-head{color:var(--bes);}
   .lane.ivv .lane-head{color:var(--ivv);}
-  .lane-head h2{color:var(--ink);font-size:1.2rem;}
+  .lane-head h2{color:var(--ink);font-size:1.3rem;}
 
-  fieldset{border:none;padding:0;margin:0 0 1.2rem;}
+  fieldset{border:none;padding:0;margin:0 0 1.4rem;}
   fieldset legend{
-    font-family:ui-monospace,monospace;font-size:.66rem;text-transform:uppercase;
-    letter-spacing:.07em;color:var(--ink-soft);margin-bottom:.5rem;padding:0;
+    font-family:'JetBrains Mono', monospace;font-size:.68rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--ink-soft);margin-bottom:.6rem;padding:0;
   }
-  .row{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:.55rem;}
-  .field{display:flex;flex-direction:column;gap:.25rem;flex:1;min-width:8.5rem;}
-  .field label{font-size:.76rem;color:var(--ink-soft);}
+  .row{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.65rem;}
+  .field{display:flex;flex-direction:column;gap:.3rem;flex:1;min-width:8.5rem;}
+  .field label{font-size:.78rem;color:var(--ink-soft);font-weight:500;}
   .field input{
-    background:var(--panel);border:1px solid var(--line);border-radius:4px;
-    padding:.42rem .55rem;font-family:ui-monospace,monospace;font-size:.88rem;color:var(--ink);
+    background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;
+    padding:.48rem .65rem;font-family:'JetBrains Mono', monospace;font-size:.9rem;color:var(--ink);
+    transition:all 0.2s ease;
   }
-  .lane.bes .field input:focus{outline:2px solid var(--bes);outline-offset:1px;}
-  .lane.ivv .field input:focus{outline:2px solid var(--ivv);outline-offset:1px;}
-  .field small{color:var(--ink-soft);font-size:.68rem;}
+  .lane.bes .field input:focus{outline:none;border-color:var(--bes);box-shadow:0 0 0 3px var(--bes-glow);}
+  .lane.ivv .field input:focus{outline:none;border-color:var(--ivv);box-shadow:0 0 0 3px var(--ivv-glow);}
+  .field small{color:var(--ink-soft);font-size:.7rem;margin-top:.15rem;}
 
-  .bracket-table{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:.8rem;}
-  .bracket-table th{text-align:left;font-weight:500;color:var(--ink-soft);font-size:.66rem;text-transform:uppercase;padding-bottom:.3rem;}
-  .bracket-table td{padding:.2rem .3rem .2rem 0;}
-  .bracket-table input{width:100%;padding:.28rem .4rem;border:1px solid var(--line);border-radius:3px;background:var(--panel);color:var(--ink);font-family:ui-monospace,monospace;}
+  .bracket-table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono', monospace;font-size:.82rem;}
+  .bracket-table th{text-align:left;font-weight:500;color:var(--ink-soft);font-size:.68rem;text-transform:uppercase;padding-bottom:.4rem;}
+  .bracket-table td{padding:.25rem .35rem .25rem 0;}
+  .bracket-table input{width:100%;padding:.32rem .45rem;border:1px solid var(--panel-border);border-radius:4px;background:var(--panel);color:var(--ink);font-family:'JetBrains Mono', monospace;}
 
-  .checkbox-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;}
-  .checkbox-row input{width:auto;}
-  .checkbox-row label{font-size:.78rem;color:var(--ink-soft);}
+  .checkbox-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem;}
+  .checkbox-row input{width:auto;cursor:pointer;accent-color:var(--ivv);}
+  .lane.bes .checkbox-row input{accent-color:var(--bes);}
+  .checkbox-row label{font-size:.8rem;color:var(--ink-soft);cursor:pointer;user-select:none;}
 
   .info-box{
-    background:var(--panel-2);border:1px solid var(--line);border-radius:5px;
-    padding:.6rem .8rem;font-size:.78rem;color:var(--ink-soft);margin-bottom:.8rem;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:6px;
+    padding:.7rem .9rem;font-size:.8rem;color:var(--ink-soft);margin-bottom:.9rem;line-height:1.45;
   }
   .info-box b{color:var(--ink);}
 
-  section.results{padding:1.8rem 1.5rem 3rem;border-top:1px solid var(--line);background:var(--bg-2);}
-  .results h2{font-size:.95rem;text-transform:uppercase;letter-spacing:.07em;font-family:ui-monospace,monospace;font-weight:500;margin-bottom:1.1rem;color:var(--ink-soft);}
+  section.results{padding:2.2rem 1.8rem 3.5rem;border-top:1px solid var(--line);background:var(--bg-2);}
+  .results h2{font-size:1rem;text-transform:uppercase;letter-spacing:.08em;font-family:'JetBrains Mono', monospace;font-weight:600;margin-bottom:1.3rem;color:var(--ink-soft);}
 
-  .stamp-row{display:flex;gap:1.1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:stretch;}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.3rem;flex:1;min-width:15rem;}
-  .card .label{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:.4rem;}
-  .card .value{font-family:ui-monospace,monospace;font-size:1.6rem;font-weight:700;}
+  .stamp-row{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.8rem;align-items:stretch;}
+  .card{
+    background:var(--panel);border:1px solid var(--panel-border);border-radius:10px;
+    padding:1.3rem 1.5rem;flex:1;min-width:15rem;backdrop-filter:blur(10px);
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.15);}
+  .card .label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:.45rem;}
+  .card .value{font-family:'JetBrains Mono', monospace;font-size:1.75rem;font-weight:700;}
   .card.bes .value{color:var(--bes);}
   .card.ivv .value{color:var(--ivv);}
 
   .seal{
-    width:8.5rem;height:8.5rem;border-radius:50%;border:3px solid var(--good);
+    width:9rem;height:9rem;border-radius:50%;border:3px solid var(--good);
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;flex-shrink:0;
-    background:repeating-conic-gradient(from 0deg, var(--good) 0deg 2deg, transparent 2deg 12deg);
-    padding:.5rem;
+    background:repeating-conic-gradient(from 0deg, var(--good) 0deg 3deg, transparent 3deg 15deg);
+    padding:.5rem;box-shadow:0 0 24px var(--good-glow);
+    animation:sealPulse 3s infinite ease-in-out;
+  }
+  @keyframes sealPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px var(--good-glow); }
+    50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
   }
   .seal-inner{
-    width:6.9rem;height:6.9rem;border-radius:50%;background:var(--panel);
+    width:7.3rem;height:7.3rem;border-radius:50%;background:var(--panel);
     border:1px solid var(--good);display:flex;flex-direction:column;align-items:center;justify-content:center;
   }
-  .seal-inner .who{font-family:ui-serif,Georgia,serif;font-weight:700;font-size:1rem;color:var(--good);}
-  .seal-inner .amt{font-family:ui-monospace,monospace;font-size:.75rem;color:var(--ink);margin-top:.2rem;}
-  .seal-inner .lbl{font-size:.58rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-top:.15rem;}
+  .seal-inner .who{font-family:'Outfit', sans-serif;font-weight:800;font-size:1.05rem;color:var(--good);}
+  .seal-inner .amt{font-family:'JetBrains Mono', monospace;font-size:.8rem;font-weight:700;color:var(--ink);margin-top:.2rem;}
+  .seal-inner .lbl{font-size:.6rem;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-top:.15rem;}
 
-  .breakdown{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.6rem;}
-  .breakdown .col{flex:1;min-width:16rem;}
-  .breakdown h3{font-size:.88rem;margin-bottom:.5rem;}
-  .breakdown table{width:100%;border-collapse:collapse;font-size:.84rem;}
-  .breakdown td{padding:.3rem 0;border-bottom:1px dashed var(--line);color:var(--ink);}
+  .breakdown{display:flex;gap:1.6rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+  .breakdown .col{flex:1;min-width:17rem;background:var(--panel);border:1px solid var(--panel-border);padding:1.2rem;border-radius:8px;}
+  .breakdown h3{font-size:.92rem;margin-bottom:.7rem;font-family:'Outfit', sans-serif;}
+  .breakdown table{width:100%;border-collapse:collapse;font-size:.85rem;}
+  .breakdown td{padding:.35rem 0;border-bottom:1px dashed var(--line);color:var(--ink);}
   .breakdown td:first-child{color:var(--ink-soft);}
-  .breakdown td:last-child{text-align:right;font-family:ui-monospace,monospace;}
+  .breakdown td:last-child{text-align:right;font-family:'JetBrains Mono', monospace;font-weight:500;}
 
-  .chart-wrap{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1.1rem;margin-bottom:1rem;}
-  .chart-wrap h3{font-size:.88rem;margin-bottom:.7rem;color:var(--ink);}
-  canvas{max-height:320px;}
+  .chart-wrap{background:var(--panel);border:1px solid var(--panel-border);border-radius:8px;padding:1.3rem;margin-bottom:1.3rem;}
+  .chart-wrap h3{font-size:.92rem;margin-bottom:.8rem;color:var(--ink);font-family:'Outfit', sans-serif;}
+  canvas{max-height:330px;}
 
-  footer{padding:1.1rem 1.5rem 2rem;font-size:.7rem;color:var(--ink-soft);border-top:1px solid var(--line);}
+  .rules-guide{
+    background:var(--panel);border:1px solid var(--panel-border);border-radius:8px;padding:1.4rem;margin-bottom:1.8rem;
+  }
+  .rules-guide h3{font-size:1rem;color:var(--ink);margin-bottom:.9rem;font-family:'Outfit', sans-serif;}
+  .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media(max-width:768px){ .rules-grid{grid-template-columns:1fr;} }
+  .rule-card{background:var(--panel-2);border:1px solid var(--line);padding:1rem;border-radius:6px;font-size:.8rem;line-height:1.5;}
+  .rule-card h4{color:var(--ivv);margin:0 0 .4rem;font-size:.88rem;font-family:'Outfit', sans-serif;}
+  .rule-card.bes h4{color:var(--bes);}
+  .rule-card p{margin:0;color:var(--ink-soft);}
+
+  footer{padding:1.3rem 1.8rem 2.2rem;font-size:.75rem;color:var(--ink-soft);border-top:1px solid var(--line);line-height:1.5;}
 </style>
 </head>
 <body>
@@ -373,6 +409,28 @@
       </tr></thead>
       <tbody id="sens-body"></tbody>
     </table>
+  </div>
+
+  <div class="rules-guide">
+    <h3>Mevzuat & Vergi Kuralları Özet Rehberi</h3>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h4>GVK Mükerrer 81 — Yİ-ÜFE Maliyet Endekslemesi</h4>
+        <p>Yurt dışı hisse/ETF satışında alış ve satış tarihleri arasındaki Yİ-ÜFE artışı %10 veya üzerinde ise alış maliyeti enflasyon oranında yükseltilir. Bu sayede sadece kur artışından doğan sanal TL enflasyonu vergilendirilmez, gerçek Dolar kârı matrah alınır.</p>
+      </div>
+      <div class="rule-card">
+        <h4>GVK 86 — Yurt Dışı Temettü Gelir Vergisi</h4>
+        <p>Yurt dışı hisse temettüleri Menkul Sermaye İradı kabul edilir. Yıllık brüt temettü beyan sınırını (2026 yılı 22.000 TL) aşarsa Türkiye'de artan oranlı tarifeye tabidir. ABD'de ödenen %15 stopaj Türkiye vergisinden mahsup edilir.</p>
+      </div>
+      <div class="rule-card bes">
+        <h4>BES Yönetmeliği — FİGK Kesintisi İadesi</h4>
+        <p>Sözleşmenin 6. yılından itibaren katılımcıdan alınan Fon İşletim Gider Kesintileri (FİGK), 6. yılda %2.5'ten başlayıp her yıl 2.5 puan artarak 15. yılda %25 oranında nakden BES hesabına iade edilir.</p>
+      </div>
+      <div class="rule-card bes">
+        <h4>GVK 75/15 — BES Hak Ediş ve Stopaj</h4>
+        <p>BES'te 10 yıl ve 56 yaş tamamlandığında devlet katkısının %100'ü hak edilir. Çıkışta anapara vergiden muaftır; oluşan birikim getirisi (irat) üzerinden yalnızca %5 oranında flat stopaj kesilir.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -771,39 +829,43 @@ function compute(){
 
   // ---------- charts ----------
   const yearLabels = besPrincipalSeries.map((_,i)=>'Yıl '+(i+1));
-  const axisOpts = { ticks:{ callback:v=>fmtAxis(v), color:'#8D94A0' }, grid:{ color:'#2B313B' } };
-  const xOpts = { ticks:{ color:'#8D94A0', maxTicksLimit:10 }, grid:{ display:false } };
-  const legendOpts = { labels:{ color:'#E9E6DC' } };
+  const axisOpts = { ticks:{ callback:v=>fmtAxis(v), color:'#9CA3AF', font:{family:'JetBrains Mono'} }, grid:{ color:'#262E40' } };
+  const xOpts = { ticks:{ color:'#9CA3AF', maxTicksLimit:10, font:{family:'JetBrains Mono'} }, grid:{ display:false } };
+  const legendOpts = { labels:{ color:'#F3F4F6', font:{family:'Inter'} } };
+  const tooltipOpts = {
+    backgroundColor:'#181E2A', titleColor:'#F3F4F6', bodyColor:'#F3F4F6', borderColor:'#262E40', borderWidth:1, padding:10,
+    callbacks:{ label: (ctx) => (ctx.dataset.label || '') + ': $' + Math.round(ctx.raw).toLocaleString('en-US') }
+  };
 
   if(besChart) besChart.destroy();
   besChart = new Chart(document.getElementById('besChart'), {
     type:'line',
     data:{ labels:yearLabels, datasets:[
-      {label:'Toplam katkı (kümülatif)', data:besPrincipalSeries, borderColor:'#8D94A0', backgroundColor:'transparent', borderDash:[4,3], tension:.2},
-      {label:'Toplam birikim (bileşik büyüme)', data:besBalSeries, borderColor:'#D2705F', backgroundColor:'#D2705F22', tension:.25, fill:true},
-      {label:'Devlet katkısı hesabı (birikim)', data:besDevletBalSeries, borderColor:'#E8B84B', backgroundColor:'transparent', tension:.25}
+      {label:'Toplam katkı (kümülatif)', data:besPrincipalSeries, borderColor:'#9CA3AF', backgroundColor:'transparent', borderDash:[4,3], tension:.2},
+      {label:'Toplam birikim (bileşik büyüme)', data:besBalSeries, borderColor:'#F87171', backgroundColor:'rgba(248, 113, 113, 0.15)', tension:.25, fill:true},
+      {label:'Devlet katkısı hesabı (birikim)', data:besDevletBalSeries, borderColor:'#F59E0B', backgroundColor:'transparent', tension:.25}
     ]},
-    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}}, scales:{ y:axisOpts, x:xOpts } }
+    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}, tooltip:tooltipOpts}, scales:{ y:axisOpts, x:xOpts } }
   });
 
   if(ivvChart) ivvChart.destroy();
   ivvChart = new Chart(document.getElementById('ivvChart'), {
     type:'line',
     data:{ labels:yearLabels, datasets:[
-      {label:'Yatırılan tutar (kümülatif)', data:ivvPrincipalSeries, borderColor:'#8D94A0', backgroundColor:'transparent', borderDash:[4,3], tension:.2},
-      {label:'Birikim (bileşik büyüme)', data:ivvBalSeries, borderColor:'#4FA8CC', backgroundColor:'#4FA8CC22', tension:.25, fill:true}
+      {label:'Yatırılan tutar (kümülatif)', data:ivvPrincipalSeries, borderColor:'#9CA3AF', backgroundColor:'transparent', borderDash:[4,3], tension:.2},
+      {label:'Birikim (bileşik büyüme)', data:ivvBalSeries, borderColor:'#38BDF8', backgroundColor:'rgba(56, 189, 248, 0.15)', tension:.25, fill:true}
     ]},
-    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}}, scales:{ y:axisOpts, x:xOpts } }
+    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}, tooltip:tooltipOpts}, scales:{ y:axisOpts, x:xOpts } }
   });
 
   if(barChart) barChart.destroy();
   barChart = new Chart(document.getElementById('barChart'), {
     type:'bar',
     data:{ labels:['BES + ABE','Midas + IVV'], datasets:[
-      {label:'Vergi öncesi (USD)', data:[(personalBal+usableDevletBal)/FXfinal, usdBalance], backgroundColor:['#D2705F66','#4FA8CC66']},
-      {label:'Net (vergi sonrası, USD)', data:[netBesUSD, netIvvUSD], backgroundColor:['#D2705F','#4FA8CC']}
+      {label:'Vergi öncesi (USD)', data:[(personalBal+usableDevletBal)/FXfinal, usdBalance], backgroundColor:['rgba(248, 113, 113, 0.4)','rgba(56, 189, 248, 0.4)'], borderRadius:4},
+      {label:'Net (vergi sonrası, USD)', data:[netBesUSD, netIvvUSD], backgroundColor:['#F87171','#38BDF8'], borderRadius:4}
     ]},
-    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}}, scales:{ y:axisOpts, x:xOpts } }
+    options:{ responsive:true, plugins:{legend:{position:'bottom', ...legendOpts}, tooltip:tooltipOpts}, scales:{ y:axisOpts, x:xOpts } }
   });
 }
 
