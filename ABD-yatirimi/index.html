@@ -223,7 +223,7 @@
       <legend>Devlet katkısı</legend>
       <div class="row">
         <div class="field"><label>Devlet katkısı oranı (%)</label><input type="number" id="b_devlet_oran" value="20" step="1" data-default="20"></div>
-        <div class="field"><label>AET fonu yıllık TL getirisi (%)</label><input type="number" id="b_vei_getiri" value="30" step="0.5" data-default="30"><small>devlet katkısının biriktiği fon, S&amp;P500'den bağımsız</small></div>
+        <div class="field"><label>AET fonu yıllık TL getirisi (%)</label><input type="number" id="b_vei_getiri" value="13" step="0.5" data-default="13"><small>devlet katkısının biriktiği fon, S&amp;P500'den bağımsız</small></div>
       </div>
       <div class="checkbox-row">
         <input type="checkbox" id="b_cap_enabled" checked>
@@ -270,7 +270,7 @@
     <fieldset>
       <legend>Satış ve vergilendirme</legend>
       <div class="row">
-        <div class="field"><label>Satışı kaç yıla yay (1 = tek seferde)</label><input type="number" id="i_split_years" value="1" step="1" min="1" data-default="1"></div>
+        <div class="field"><label>Satışı kaç yıla yay (1 = yatırım sonunda tek seferde sat)</label><input type="number" id="i_split_years" value="1" step="1" min="1" data-default="1"></div>
       </div>
       <div class="checkbox-row">
         <input type="checkbox" id="i_bracket_grow" checked>
@@ -328,9 +328,9 @@
         <tr><td>Toplam net yatırılan (USD)</td><td id="i_out_invested">—</td></tr>
         <tr><td>Dönem sonu bakiye (USD)</td><td id="i_out_balance">—</td></tr>
         <tr><td>TER fon gideri — toplam kesinti (USD)</td><td id="i_out_ter">—</td></tr>
-        <tr><td>Vergiye tabi kazanç (USD)</td><td id="i_out_gain">—</td></tr>
-        <tr><td>Ödenecek vergi (USD)</td><td id="i_out_tax">—</td></tr>
-        <tr><td>Efektif vergi oranı</td><td id="i_out_effrate">—</td></tr>
+        <tr><td>Son dönem vergiye tabi kazanç (USD)</td><td id="i_out_gain">—</td></tr>
+        <tr><td>Toplam ödenen vergi — tüm dönemler (USD)</td><td id="i_out_tax">—</td></tr>
+        <tr><td>Efektif vergi oranı (son dönem)</td><td id="i_out_effrate">—</td></tr>
         <tr><td>Dönem sonu USD/TRY kuru</td><td id="i_out_fx">—</td></tr>
       </table>
     </div>
@@ -461,6 +461,7 @@ function compute(){
   const vest = vestingInfo(years, emeklilikHakki);
 
   let personalBal=0, devletBal=0, personalPrincipal=0, devletPrincipal=0, devletUsdSum=0;
+  let personalPrincipalUSD=0; // gerçek USD cinsinden toplam kişisel katkı (kur karışımından bağımsız)
   let abeFeeTotalTL=0;
   const besPrincipalSeries=[], besBalSeries=[], besDevletBalSeries=[];
   for(let m=0;m<months;m++){
@@ -470,6 +471,7 @@ function compute(){
     if(capEnabled){ matched = Math.min(katkiTL, capMonthlyUSD*f); }
     const devletKatkisiTL = devletOran*matched;
     personalPrincipal += katkiTL;
+    personalPrincipalUSD += bMonthlyUSD;
     devletPrincipal += devletKatkisiTL;
     devletUsdSum += devletKatkisiTL/f;
 
@@ -480,7 +482,11 @@ function compute(){
     devletBal = (devletBal+devletKatkisiTL)*(1+veiM);
 
     if(m%12===11 || m===months-1){
-      besPrincipalSeries.push((personalPrincipal+devletPrincipal)/f);
+      // Not: personalPrincipal ve devletPrincipal farklı aylardaki kurlarla oluşmuş TL
+      // toplamlarıdır; grafik serisi için USD'ye çevirirken tek bir o anki kur (f) kullanmak
+      // erken yıllardaki katkıları yapay şekilde küçültür/büyütür. Ana para eğrisi için daha
+      // tutarlı bir gösterim, biriken gerçek USD katkısını esas almaktır.
+      besPrincipalSeries.push(personalPrincipalUSD + devletPrincipal/f);
       besBalSeries.push((personalBal+devletBal*vest.hakEdis)/f);
       besDevletBalSeries.push((devletBal*vest.hakEdis)/f);
     }
@@ -512,26 +518,7 @@ function compute(){
   const priceM = Math.pow((1+priceReturnAnnual)*(1-terAnnual), 1/12)-1;
   const divM = Math.pow(1+divYieldAnnual,1/12)-1;
 
-  let usdBalance=0, totalInvested=0, terCostTotalUSD=0;
-  const ivvPrincipalSeries=[], ivvBalSeries=[];
-  for(let m=0;m<months;m++){
-    const netInvest = iMonthlyUSD-feePerTx;
-    usdBalance += netInvest;
-    totalInvested += netInvest;
-    const preTerFactor = Math.pow(1+priceReturnAnnual, 1/12)-1;
-    const preTerBal = usdBalance*(1+preTerFactor);
-    usdBalance *= (1+priceM);
-    terCostTotalUSD += (preTerBal-usdBalance);
-    const div = usdBalance*divM;
-    usdBalance += div*(1-usWHT);
-    if(m%12===11 || m===months-1){
-      ivvPrincipalSeries.push(totalInvested);
-      ivvBalSeries.push(usdBalance);
-    }
-  }
-  const saleValueTRY = usdBalance*FXfinal;
-  const taxableGainTRY = (usdBalance-totalInvested)*FXfinal;
-
+  // Dilim tablosu, yıllık satış vergisini hesaplayabilmek için döngüden önce okunuyor.
   const rows = document.querySelectorAll('#bracket-body tr');
   const brackets = [];
   rows.forEach(r=>{
@@ -541,35 +528,93 @@ function compute(){
     brackets.push([width, parseFloat(rt.value)/100]);
   });
 
-  const growthFactor = bracketGrowLinked ? Math.pow(1+fxM, months-1) : Math.pow(1+bracketGrowthManual, years);
-
-  function progressiveTax(totalGain, splitYears, growthFactor, brackets){
-    const perYear = totalGain/splitYears;
-    let totalTax=0;
-    for(let y=0;y<splitYears;y++){
-      let rem=perYear, tax=0;
-      for(const [w,r] of brackets){
-        const ww=w*growthFactor;
-        if(rem<=0) break;
-        const portion = Math.min(rem, ww);
-        tax += portion*r;
-        rem -= portion;
-      }
-      totalTax += tax;
+  function progressiveTaxOneYear(gainTRY, growthFactor, brackets){
+    let rem = Math.max(gainTRY,0), tax=0;
+    for(const [w,r] of brackets){
+      if(rem<=0) break;
+      const ww = w*growthFactor;
+      const portion = Math.min(rem, ww);
+      tax += portion*r;
+      rem -= portion;
     }
-    return totalTax;
+    return tax;
   }
 
-  const tax = progressiveTax(taxableGainTRY, splitYears, growthFactor, brackets);
+  // "Satışı kaç yıla yay" artık: dönem kaç eşit satış parçasına bölünsün anlamına gelir.
+  // splitYears=1 -> sadece yatırım süresi sonunda tek satış (sat ve çık).
+  // splitYears=N (N>1) -> dönem N eşit parçaya bölünür, her years/N yılda bir gerçek
+  // sat -> vergisini öde -> kalan net tutarla aynı gün tekrar IVV al döngüsü uygulanır.
+  // Satış anında maliyet esası sıfırlanır (yeni alışın maliyeti = o anki net tutar);
+  // aylık düzenli katkılar bu döngüden bağımsız, kesintisiz devam eder.
+  let usdBalance=0, totalInvested=0, terCostTotalUSD=0;
+  let costBasisTRY=0; // en son satıştan (veya baştan) beri biriken TL maliyet esası
+  let totalTaxPaidTRY=0;
+  let lastSaleWasFinalMonth=false; // son ay zaten döngü içinde satıldıysa dışarıda tekrar satmayalım
+  let lastRealizedGainTRY=0, lastRealizedTaxTRY=0; // en son gerçekleşen satışın bilgisi (gösterim için)
+  const ivvPrincipalSeries=[], ivvBalSeries=[];
+  for(let m=0;m<months;m++){
+    const netInvest = iMonthlyUSD-feePerTx;
+    usdBalance += netInvest;
+    totalInvested += netInvest;
+    costBasisTRY += netInvest*fx(m); // o ayki katkının o ayki kurdaki TL karşılığı
+    const preTerFactor = Math.pow(1+priceReturnAnnual, 1/12)-1;
+    const preTerBal = usdBalance*(1+preTerFactor);
+    usdBalance *= (1+priceM);
+    terCostTotalUSD += (preTerBal-usdBalance);
+    const div = usdBalance*divM;
+    usdBalance += div*(1-usWHT);
+
+    const isYearEnd = (m%12===11);
+    const yearIndex = Math.floor(m/12)+1; // 1'den başlayan yıl sırası
+    // "Satışı kaç yıla yay" artık: dönem kaç eşit parçaya bölünüp satılsın anlamına gelir.
+    // splitYears=1 -> sadece dönem sonunda tek satış. splitYears=N -> dönem N eşit parçaya
+    // bölünür, her parçanın sonunda (years/N yılda bir) satış yapılır. saleInterval yıl
+    // uzunluğundaki her aralığın son ayında satış tetiklenir.
+    const saleIntervalYears = years/splitYears;
+    const isSaleYear = isYearEnd && (Math.abs(yearIndex/saleIntervalYears - Math.round(yearIndex/saleIntervalYears)) < 1e-9);
+    if(isSaleYear){
+      const f = fx(m);
+      const saleTRY = usdBalance*f;
+      const gainTRY = saleTRY - costBasisTRY;
+      const growthFactorAtYear = bracketGrowLinked ? Math.pow(1+fxM, m+1) : Math.pow(1+bracketGrowthManual, yearIndex);
+      const taxTRY = progressiveTaxOneYear(gainTRY, growthFactorAtYear, brackets);
+      totalTaxPaidTRY += taxTRY;
+      lastRealizedGainTRY = gainTRY;
+      lastRealizedTaxTRY = taxTRY;
+      const netTRY = saleTRY - taxTRY;
+      usdBalance = netTRY/f;   // aynı gün tekrar IVV alımı
+      costBasisTRY = netTRY;  // maliyet esası sıfırlanıyor
+      if(m===months-1) lastSaleWasFinalMonth=true;
+    }
+
+    if(m%12===11 || m===months-1){
+      ivvPrincipalSeries.push(totalInvested);
+      ivvBalSeries.push(usdBalance);
+    }
+  }
+  // Dönem sonunda elde kalan (henüz satılmamış) bakiye için son bir kez satış varsayılır,
+  // böylece BES tarafıyla karşılaştırılabilir "elden çıkarılmış net USD" elde edilir.
+  // Not: eğer son ay zaten döngü içindeki periyodik satışla çakışıyorsa (örn. splitYears
+  // dönem uzunluğunu tam bölüyorsa), burada aynı bakiyeyi ikinci kez "satmayız" — o durumda
+  // gösterge alanları döngü içinde zaten gerçekleşen SON satışın kazanç/vergisini yansıtır.
+  const saleValueTRY = usdBalance*FXfinal;
+  const finalGainTRY = saleValueTRY - costBasisTRY;
+  const finalGrowthFactor = bracketGrowLinked ? Math.pow(1+fxM, months) : Math.pow(1+bracketGrowthManual, years);
+  const tax = lastSaleWasFinalMonth ? 0 : progressiveTaxOneYear(finalGainTRY, finalGrowthFactor, brackets);
+  const taxableGainTRY = lastSaleWasFinalMonth ? lastRealizedGainTRY : finalGainTRY; // gösterim: son gerçek satışın matrahı
+
   const netIvvTL = saleValueTRY - tax;
   const netIvvUSD = netIvvTL/FXfinal;
-  const effRate = taxableGainTRY>0 ? (tax/taxableGainTRY*100) : 0;
+  const displayedTaxTRY = lastSaleWasFinalMonth ? lastRealizedTaxTRY : tax; // gösterim: son gerçek satışın vergisi
+  const effRate = taxableGainTRY>0 ? (displayedTaxTRY/taxableGainTRY*100) : 0;
+  // Bilgi amaçlı: dönem boyunca ödenen TÜM vergiler (ara satışlar dahil), bugünkü USD'ye çevrilmiş
+  const totalTaxPaidAllPeriodsUSD = (totalTaxPaidTRY+tax)/FXfinal;
 
   // ---------- render text ----------
   document.getElementById('bes-net-usd').textContent = fmtUSD(netBesUSD);
   document.getElementById('ivv-net-usd').textContent = fmtUSD(netIvvUSD);
 
-  document.getElementById('b_out_principal').textContent = fmtUSD(personalPrincipal/FXfinal);
+  document.getElementById('b_out_principal').textContent = fmtUSD(personalPrincipalUSD);
   document.getElementById('b_out_personal_bal').textContent = fmtUSD(personalBal/FXfinal);
   document.getElementById('b_out_fee').textContent = fmtUSD(abeFeeTotalTL/FXfinal);
   document.getElementById('b_out_devlet_usd').textContent = fmtUSD(devletUsdSum);
@@ -582,7 +627,7 @@ function compute(){
   document.getElementById('i_out_balance').textContent = fmtUSD(usdBalance);
   document.getElementById('i_out_ter').textContent = fmtUSD(terCostTotalUSD);
   document.getElementById('i_out_gain').textContent = fmtUSD(taxableGainTRY/FXfinal);
-  document.getElementById('i_out_tax').textContent = fmtUSD(tax/FXfinal);
+  document.getElementById('i_out_tax').textContent = fmtUSD(totalTaxPaidAllPeriodsUSD);
   document.getElementById('i_out_effrate').textContent = '%'+effRate.toFixed(1);
   document.getElementById('i_out_fx').textContent = FXfinal.toLocaleString('tr-TR',{maximumFractionDigits:1})+' TL';
 
@@ -612,17 +657,34 @@ function compute(){
     const netBesTLalt=(pBal-vest.stopaj*pIrat)+(uDBal-vest.stopaj*dIrat);
     const netBesUSDalt=netBesTLalt/FXfAlt;
 
-    let uBal=0,tInv=0;
+    let uBal=0,tInv=0,costBasisTRYalt=0,lastSaleWasFinalAlt=false;
     for(let m=0;m<months;m++){
       const ni=iMonthlyUSD-feePerTx;
       uBal+=ni; tInv+=ni;
+      costBasisTRYalt += ni*fxAlt(m);
       uBal*=(1+priceM);
       uBal+=uBal*divM*(1-usWHT);
+
+      const isYearEnd = (m%12===11);
+      const yearIndex = Math.floor(m/12)+1;
+      const saleIntervalYears = years/splitYears;
+      const isSaleYear = isYearEnd && (Math.abs(yearIndex/saleIntervalYears - Math.round(yearIndex/saleIntervalYears)) < 1e-9);
+      if(isSaleYear){
+        const f = fxAlt(m);
+        const saleTRY = uBal*f;
+        const gainTRY = saleTRY - costBasisTRYalt;
+        const gfAtYear = bracketGrowLinked ? Math.pow(1+fxMalt, m+1) : Math.pow(1+bracketGrowthManual, yearIndex);
+        const taxTRY = progressiveTaxOneYear(gainTRY, gfAtYear, brackets);
+        const netTRY = saleTRY - taxTRY;
+        uBal = netTRY/f;
+        costBasisTRYalt = netTRY;
+        if(m===months-1) lastSaleWasFinalAlt=true;
+      }
     }
     const saleAlt=uBal*FXfAlt;
-    const gainAlt=(uBal-tInv)*FXfAlt;
-    const gfAlt = bracketGrowLinked ? Math.pow(1+fxMalt, months-1) : Math.pow(1+bracketGrowthManual, years);
-    const totalTaxAlt = progressiveTax(gainAlt, splitYears, gfAlt, brackets);
+    const gainAlt=saleAlt-costBasisTRYalt;
+    const gfAlt = bracketGrowLinked ? Math.pow(1+fxMalt, months) : Math.pow(1+bracketGrowthManual, years);
+    const totalTaxAlt = lastSaleWasFinalAlt ? 0 : progressiveTaxOneYear(gainAlt, gfAlt, brackets);
     const netIvvUSDalt=(saleAlt-totalTaxAlt)/FXfAlt;
     return {bes:netBesUSDalt, ivv:netIvvUSDalt};
   }
