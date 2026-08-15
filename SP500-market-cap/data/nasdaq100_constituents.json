@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-05T13:16:41.639730+00:00",
+  "lastUpdated": "2026-08-15T03:03:03.757113+00:00",
   "companies": [
     {
       "ticker": "ADBE",
@@ -259,13 +259,6 @@
       "name": "DoorDash",
       "sector": "Technology",
       "subSector": "Software"
-    },
-    {
-      "ticker": "EA",
-      "yf_ticker": "EA",
-      "name": "Electronic Arts",
-      "sector": "Consumer Discretionary",
-      "subSector": "Miscellaneous Amusement & Recreation Services"
     },
     {
       "ticker": "EXC",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-05T13:16:40.845048+00:00",
+  "lastUpdated": "2026-08-15T03:03:03.658359+00:00",
   "companies": [
     {
       "ticker": "MMM",
@@ -285,8 +285,8 @@
       "ticker": "APP",
       "yf_ticker": "APP",
       "name": "AppLovin",
-      "sector": "Information Technology",
-      "subSector": "Application Software"
+      "sector": "Communication Services",
+      "subSector": "Advertising"
     },
     {
       "ticker": "APTV",
@@ -1125,8 +1125,8 @@
       "ticker": "DD",
       "yf_ticker": "DD",
       "name": "DuPont",
-      "sector": "Materials",
-      "subSector": "Specialty Chemicals"
+      "sector": "Industrials",
+      "subSector": "Industrial Conglomerates"
     },
     {
       "ticker": "ETN",
@@ -1169,13 +1169,6 @@
       "name": "Edwards Lifesciences",
       "sector": "Health Care",
       "subSector": "Health Care Equipment"
-    },
-    {
-      "ticker": "EA",
-      "yf_ticker": "EA",
-      "name": "Electronic Arts",
-      "sector": "Communication Services",
-      "subSector": "Interactive Home Entertainment"
     },
     {
       "ticker": "ELV",
@@ -1372,6 +1365,13 @@
       "name": "FedEx Freight",
       "sector": "Industrials",
       "subSector": "Cargo Ground Transportation"
+    },
+    {
+      "ticker": "FERG",
+      "yf_ticker": "FERG",
+      "name": "Ferguson Enterprises",
+      "sector": "Industrials",
+      "subSector": "Building Products"
     },
     {
       "ticker": "FIS",
@@ -2293,7 +2293,7 @@
     {
       "ticker": "MSCI",
       "yf_ticker": "MSCI",
-      "name": "MSCI Inc.",
+      "name": "MSCI",
       "sector": "Financials",
       "subSector": "Financial Exchanges & Data"
     },
@@ -2433,7 +2433,7 @@
     {
       "ticker": "ORLY",
       "yf_ticker": "ORLY",
-      "name": "O’Reilly Automotive",
+      "name": "O'Reilly Automotive",
       "sector": "Consumer Discretionary",
       "subSector": "Automotive Retail"
     },
@@ -2762,7 +2762,7 @@
     {
       "ticker": "RMD",
       "yf_ticker": "RMD",
-      "name": "ResMed",
+      "name": "ResMed|",
       "sector": "Health Care",
       "subSector": "Health Care Equipment"
     },
