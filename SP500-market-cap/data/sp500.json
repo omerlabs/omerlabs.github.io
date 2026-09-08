@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-07 02:26:02 UTC",
-  "totalMarketCap": 74536013338624,
+  "lastUpdated": "2026-09-08 02:38:39 UTC",
+  "totalMarketCap": 74471500594176,
   "companiesCount": 503,
   "data": [
     {
@@ -20,7 +20,7 @@
       "revenueGrowth": 85.2,
       "netIncomeGrowth": 214.5,
       "fcfGrowth": 95.68,
-      "weight": 7.463,
+      "weight": 7.469,
       "rank": 1
     },
     {
@@ -40,7 +40,7 @@
       "revenueGrowth": 16.4,
       "netIncomeGrowth": 28.7,
       "fcfGrowth": 25.62,
-      "weight": 6.265,
+      "weight": 6.27,
       "rank": 2
     },
     {
@@ -60,7 +60,7 @@
       "revenueGrowth": 24.2,
       "netIncomeGrowth": 294.0,
       "fcfGrowth": -26.79,
-      "weight": 5.553,
+      "weight": 5.558,
       "rank": 3
     },
     {
@@ -80,7 +80,7 @@
       "revenueGrowth": 24.2,
       "netIncomeGrowth": 294.0,
       "fcfGrowth": -26.79,
-      "weight": 5.502,
+      "weight": 5.507,
       "rank": 4
     },
     {
@@ -100,7 +100,7 @@
       "revenueGrowth": 17.7,
       "netIncomeGrowth": 31.7,
       "fcfGrowth": -6.46,
-      "weight": 4.978,
+      "weight": 4.983,
       "rank": 5
     },
     {
@@ -120,7 +120,7 @@
       "revenueGrowth": 19.6,
       "netIncomeGrowth": 242.3,
       "fcfGrowth": -107.52,
-      "weight": 3.741,
+      "weight": 3.744,
       "rank": 6
     },
     {
@@ -140,7 +140,7 @@
       "revenueGrowth": 47.9,
       "netIncomeGrowth": 85.4,
       "fcfGrowth": 68.75,
-      "weight": 2.284,
+      "weight": 2.286,
       "rank": 7
     },
     {
@@ -160,7 +160,7 @@
       "revenueGrowth": 28.0,
       "netIncomeGrowth": -13.4,
       "fcfGrowth": -24.22,
-      "weight": 2.108,
+      "weight": 2.11,
       "rank": 8
     },
     {
@@ -180,7 +180,7 @@
       "revenueGrowth": 25.5,
       "netIncomeGrowth": -3.0,
       "fcfGrowth": 60.71,
-      "weight": 1.876,
+      "weight": 1.878,
       "rank": 9
     },
     {
@@ -200,7 +200,7 @@
       "revenueGrowth": 345.7,
       "netIncomeGrowth": 1368.5,
       "fcfGrowth": 21529.75,
-      "weight": 1.54,
+      "weight": 1.542,
       "rank": 10
     },
     {
@@ -220,7 +220,7 @@
       "revenueGrowth": 10.0,
       "netIncomeGrowth": 107.8,
       "fcfGrowth": 82.84,
-      "weight": 1.453,
+      "weight": 1.455,
       "rank": 11
     },
     {
@@ -231,7 +231,7 @@
       "price": 1149.36,
       "change24h": -0.88,
       "change7d": -2.27,
-      "marketCap": 1024490143744,
+      "marketCap": 1024931856384,
       "pe": 38.61,
       "peg": 1.11,
       "revenue": 79665800000.0,
@@ -240,7 +240,7 @@
       "revenueGrowth": 47.7,
       "netIncomeGrowth": 26.2,
       "fcfGrowth": 3175.36,
-      "weight": 1.374,
+      "weight": 1.376,
       "rank": 12
     },
     {
@@ -260,7 +260,7 @@
       "revenueGrowth": 30.4,
       "netIncomeGrowth": 46.9,
       "fcfGrowth": -286.88,
-      "weight": 1.279,
+      "weight": 1.28,
       "rank": 13
     },
     {
@@ -271,7 +271,7 @@
       "price": 107.14,
       "change24h": -1.18,
       "change7d": 4.39,
-      "marketCap": 850021580800,
+      "marketCap": 852628602880,
       "pe": 38.82,
       "peg": 4.09,
       "revenue": 725305000000.0,
@@ -280,7 +280,7 @@
       "revenueGrowth": 7.3,
       "netIncomeGrowth": 19.4,
       "fcfGrowth": -0.85,
-      "weight": 1.14,
+      "weight": 1.145,
       "rank": 14
     },
     {
@@ -300,7 +300,7 @@
       "revenueGrowth": 50.1,
       "netIncomeGrowth": 159.5,
       "fcfGrowth": 249.4,
-      "weight": 1.046,
+      "weight": 1.047,
       "rank": 15
     },
     {
@@ -340,7 +340,7 @@
       "revenueGrowth": 6.6,
       "netIncomeGrowth": -0.9,
       "fcfGrowth": 23.09,
-      "weight": 0.89,
+      "weight": 0.891,
       "rank": 17
     },
     {
@@ -360,7 +360,7 @@
       "revenueGrowth": 44.1,
       "netIncomeGrowth": 112.8,
       "fcfGrowth": -0.53,
-      "weight": 0.88,
+      "weight": 0.881,
       "rank": 18
     },
     {
@@ -400,7 +400,7 @@
       "revenueGrowth": 25.4,
       "netIncomeGrowth": null,
       "fcfGrowth": 118.08,
-      "weight": 0.679,
+      "weight": 0.68,
       "rank": 20
     },
     {
@@ -440,7 +440,7 @@
       "revenueGrowth": 10.2,
       "netIncomeGrowth": 290.4,
       "fcfGrowth": 2.12,
-      "weight": 0.608,
+      "weight": 0.609,
       "rank": 22
     },
     {
@@ -460,7 +460,7 @@
       "revenueGrowth": 16.8,
       "netIncomeGrowth": 34.1,
       "fcfGrowth": 742.44,
-      "weight": 0.588,
+      "weight": 0.589,
       "rank": 23
     },
     {
@@ -500,7 +500,7 @@
       "revenueGrowth": 92.8,
       "netIncomeGrowth": 215.4,
       "fcfGrowth": 194.27,
-      "weight": 0.562,
+      "weight": 0.563,
       "rank": 25
     },
     {
@@ -560,7 +560,7 @@
       "revenueGrowth": 30.0,
       "netIncomeGrowth": 34.8,
       "fcfGrowth": -9.66,
-      "weight": 0.516,
+      "weight": 0.517,
       "rank": 28
     },
     {
@@ -580,7 +580,7 @@
       "revenueGrowth": 6.7,
       "netIncomeGrowth": 16.9,
       "fcfGrowth": 201.56,
-      "weight": 0.508,
+      "weight": 0.509,
       "rank": 29
     },
     {
@@ -640,7 +640,7 @@
       "revenueGrowth": 11.4,
       "netIncomeGrowth": 33.5,
       "fcfGrowth": -28.64,
-      "weight": 0.484,
+      "weight": 0.485,
       "rank": 32
     },
     {
@@ -660,7 +660,7 @@
       "revenueGrowth": 0.4,
       "netIncomeGrowth": 61.5,
       "fcfGrowth": -5.02,
-      "weight": 0.478,
+      "weight": 0.479,
       "rank": 33
     },
     {
@@ -680,7 +680,7 @@
       "revenueGrowth": 21.1,
       "netIncomeGrowth": 19.4,
       "fcfGrowth": 128.28,
-      "weight": 0.469,
+      "weight": 0.47,
       "rank": 34
     },
     {
@@ -711,7 +711,7 @@
       "price": 146.44,
       "change24h": -0.33,
       "change7d": 2.31,
-      "marketCap": 340389986304,
+      "marketCap": 340132134912,
       "pe": 22.12,
       "peg": 3.75,
       "revenue": 87033000000.0,
@@ -740,7 +740,7 @@
       "revenueGrowth": 87.5,
       "netIncomeGrowth": 282.5,
       "fcfGrowth": 405.19,
-      "weight": 0.454,
+      "weight": 0.455,
       "rank": 37
     },
     {
@@ -760,7 +760,7 @@
       "revenueGrowth": 13.4,
       "netIncomeGrowth": 11.1,
       "fcfGrowth": 61.11,
-      "weight": 0.437,
+      "weight": 0.438,
       "rank": 38
     },
     {
@@ -860,7 +860,7 @@
       "revenueGrowth": 31.1,
       "netIncomeGrowth": null,
       "fcfGrowth": 22.34,
-      "weight": 0.364,
+      "weight": 0.365,
       "rank": 43
     },
     {
@@ -960,7 +960,7 @@
       "revenueGrowth": 15.2,
       "netIncomeGrowth": 13.8,
       "fcfGrowth": 0.55,
-      "weight": 0.325,
+      "weight": 0.326,
       "rank": 48
     },
     {
@@ -1040,7 +1040,7 @@
       "revenueGrowth": 10.5,
       "netIncomeGrowth": 9.4,
       "fcfGrowth": 0.7,
-      "weight": 0.304,
+      "weight": 0.305,
       "rank": 52
     },
     {
@@ -1100,7 +1100,7 @@
       "revenueGrowth": 9.3,
       "netIncomeGrowth": 11.3,
       "fcfGrowth": 0.99,
-      "weight": 0.295,
+      "weight": 0.296,
       "rank": 55
     },
     {
@@ -1160,7 +1160,7 @@
       "revenueGrowth": -0.7,
       "netIncomeGrowth": -22.0,
       "fcfGrowth": 6.54,
-      "weight": 0.279,
+      "weight": 0.28,
       "rank": 58
     },
     {
@@ -1231,7 +1231,7 @@
       "price": 849.28,
       "change24h": 6.34,
       "change7d": 0.25,
-      "marketCap": 192786563072,
+      "marketCap": 192484655104,
       "pe": 60.97,
       "peg": 0.49,
       "revenue": 12195000000.0,
@@ -1240,7 +1240,7 @@
       "revenueGrowth": 48.5,
       "netIncomeGrowth": 148.8,
       "fcfGrowth": 279.58,
-      "weight": 0.259,
+      "weight": 0.258,
       "rank": 62
     },
     {
@@ -1264,26 +1264,6 @@
       "rank": 63
     },
     {
-      "ticker": "ABT",
-      "name": "Abbott Laboratories",
-      "sector": "Health Care",
-      "subSector": "Health Care Equipment",
-      "price": 108.33,
-      "change24h": -0.42,
-      "change7d": -2.92,
-      "marketCap": 188690612224,
-      "pe": 35.06,
-      "peg": 1.99,
-      "revenue": 45134000000.0,
-      "netIncome": 6276000000.0,
-      "fcf": 7378000000.0,
-      "revenueGrowth": 13.0,
-      "netIncomeGrowth": -47.5,
-      "fcfGrowth": 16.17,
-      "weight": 0.253,
-      "rank": 64
-    },
-    {
       "ticker": "PEP",
       "name": "PepsiCo",
       "sector": "Consumer Staples",
@@ -1300,6 +1280,26 @@
       "revenueGrowth": 6.4,
       "netIncomeGrowth": 137.0,
       "fcfGrowth": 29.11,
+      "weight": 0.252,
+      "rank": 64
+    },
+    {
+      "ticker": "ABT",
+      "name": "Abbott Laboratories",
+      "sector": "Health Care",
+      "subSector": "Health Care Equipment",
+      "price": 108.33,
+      "change24h": -0.42,
+      "change7d": -2.92,
+      "marketCap": 187452440576,
+      "pe": 35.06,
+      "peg": 1.99,
+      "revenue": 45134000000.0,
+      "netIncome": 6276000000.0,
+      "fcf": 7378000000.0,
+      "revenueGrowth": 13.0,
+      "netIncomeGrowth": -47.5,
+      "fcfGrowth": 16.17,
       "weight": 0.252,
       "rank": 65
     },
@@ -1471,7 +1471,7 @@
       "price": 83.43,
       "change24h": -0.75,
       "change7d": 0.7,
-      "marketCap": 174002061312,
+      "marketCap": 174033158144,
       "pe": 18.75,
       "peg": 1.68,
       "revenue": 28701000000.0,
@@ -1480,7 +1480,7 @@
       "revenueGrowth": 12.4,
       "netIncomeGrowth": 53.1,
       "fcfGrowth": -35.78,
-      "weight": 0.233,
+      "weight": 0.234,
       "rank": 74
     },
     {
@@ -1520,7 +1520,7 @@
       "revenueGrowth": 39.1,
       "netIncomeGrowth": 35.6,
       "fcfGrowth": 32.92,
-      "weight": 0.228,
+      "weight": 0.229,
       "rank": 76
     },
     {
@@ -1551,7 +1551,7 @@
       "price": 212.25,
       "change24h": 0.83,
       "change7d": 1.12,
-      "marketCap": 167633453056,
+      "marketCap": 167756038144,
       "pe": 76.35,
       "peg": 1.53,
       "revenue": 92184000000.0,
@@ -1580,7 +1580,7 @@
       "revenueGrowth": 28.6,
       "netIncomeGrowth": 57.3,
       "fcfGrowth": 60.4,
-      "weight": 0.218,
+      "weight": 0.219,
       "rank": 79
     },
     {
@@ -1620,7 +1620,7 @@
       "revenueGrowth": 35.5,
       "netIncomeGrowth": 107.0,
       "fcfGrowth": 25.71,
-      "weight": 0.216,
+      "weight": 0.217,
       "rank": 81
     },
     {
@@ -1631,7 +1631,7 @@
       "price": 410.85,
       "change24h": 3.46,
       "change7d": -1.25,
-      "marketCap": 159533056000,
+      "marketCap": 159574147072,
       "pe": 41.84,
       "peg": 2.5,
       "revenue": 30025000000.0,
@@ -1653,7 +1653,7 @@
       "change7d": -3.98,
       "marketCap": 157807394816,
       "pe": 36.75,
-      "peg": 1.5,
+      "peg": 1.46,
       "revenue": 11085000000.0,
       "netIncome": 1126000000.0,
       "fcf": 15834000000.0,
@@ -1684,26 +1684,6 @@
       "rank": 84
     },
     {
-      "ticker": "BKNG",
-      "name": "Booking Holdings",
-      "sector": "Consumer Discretionary",
-      "subSector": "Hotels, Resorts & Cruise Lines",
-      "price": 193.29,
-      "change24h": -0.94,
-      "change7d": -4.58,
-      "marketCap": 149776252928,
-      "pe": 21.45,
-      "peg": 0.71,
-      "revenue": 28241000000.0,
-      "netIncome": 7209000000.0,
-      "fcf": 9539000000.0,
-      "revenueGrowth": 8.1,
-      "netIncomeGrowth": 130.0,
-      "fcfGrowth": 20.84,
-      "weight": 0.201,
-      "rank": 85
-    },
-    {
       "ticker": "NOW",
       "name": "ServiceNow",
       "sector": "Information Technology",
@@ -1721,7 +1701,7 @@
       "netIncomeGrowth": -21.9,
       "fcfGrowth": 35.44,
       "weight": 0.196,
-      "rank": 86
+      "rank": 85
     },
     {
       "ticker": "DHR",
@@ -1741,7 +1721,7 @@
       "netIncomeGrowth": 59.7,
       "fcfGrowth": 3.21,
       "weight": 0.196,
-      "rank": 87
+      "rank": 86
     },
     {
       "ticker": "TJX",
@@ -1751,7 +1731,7 @@
       "price": 132.08,
       "change24h": -0.08,
       "change7d": -1.59,
-      "marketCap": 145909350400,
+      "marketCap": 145284562944,
       "pe": 24.46,
       "peg": 2.58,
       "revenue": 61584000000.0,
@@ -1760,7 +1740,27 @@
       "revenueGrowth": 9.2,
       "netIncomeGrowth": 29.3,
       "fcfGrowth": 30.47,
-      "weight": 0.196,
+      "weight": 0.195,
+      "rank": 87
+    },
+    {
+      "ticker": "BKNG",
+      "name": "Booking Holdings",
+      "sector": "Consumer Discretionary",
+      "subSector": "Hotels, Resorts & Cruise Lines",
+      "price": 193.29,
+      "change24h": -0.94,
+      "change7d": -4.58,
+      "marketCap": 145234329600,
+      "pe": 21.45,
+      "peg": 0.71,
+      "revenue": 28241000000.0,
+      "netIncome": 7209000000.0,
+      "fcf": 9539000000.0,
+      "revenueGrowth": 8.1,
+      "netIncomeGrowth": 130.0,
+      "fcfGrowth": 20.84,
+      "weight": 0.195,
       "rank": 88
     },
     {
@@ -1771,7 +1771,7 @@
       "price": 546.12,
       "change24h": -2.12,
       "change7d": -0.26,
-      "marketCap": 138332192768,
+      "marketCap": 138420076544,
       "pe": 31.84,
       "peg": 1.67,
       "revenue": 12587200000.0,
@@ -1831,7 +1831,7 @@
       "price": 219.6,
       "change24h": -0.41,
       "change7d": 1.35,
-      "marketCap": 134724608000,
+      "marketCap": 134721282048,
       "pe": 12.09,
       "peg": 0.2,
       "revenue": 61938000000.0,
@@ -1871,7 +1871,7 @@
       "price": 154.3,
       "change24h": 5.68,
       "change7d": 1.17,
-      "marketCap": 132642119680,
+      "marketCap": 132912226304,
       "pe": 70.78,
       "peg": 0.92,
       "revenue": 16964000000.0,
@@ -1940,7 +1940,7 @@
       "revenueGrowth": 10.4,
       "netIncomeGrowth": 17.7,
       "fcfGrowth": 0.14,
-      "weight": 0.175,
+      "weight": 0.176,
       "rank": 97
     },
     {
@@ -2164,26 +2164,6 @@
       "rank": 108
     },
     {
-      "ticker": "MPC",
-      "name": "Marathon Petroleum",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Refining & Marketing",
-      "price": 388.9,
-      "change24h": 0.31,
-      "change7d": 6.98,
-      "marketCap": 113534156800,
-      "pe": 13.48,
-      "peg": 1.89,
-      "revenue": 153577000000.0,
-      "netIncome": 8551000000.0,
-      "fcf": 12899000000.0,
-      "revenueGrowth": 53.7,
-      "netIncomeGrowth": 348.0,
-      "fcfGrowth": 110.36,
-      "weight": 0.152,
-      "rank": 109
-    },
-    {
       "ticker": "BNY",
       "name": "BNY Mellon",
       "sector": "Financials",
@@ -2201,7 +2181,7 @@
       "netIncomeGrowth": 26.9,
       "fcfGrowth": 286.06,
       "weight": 0.15,
-      "rank": 110
+      "rank": 109
     },
     {
       "ticker": "ADP",
@@ -2221,7 +2201,7 @@
       "netIncomeGrowth": 9.8,
       "fcfGrowth": 8.73,
       "weight": 0.148,
-      "rank": 111
+      "rank": 110
     },
     {
       "ticker": "HOOD",
@@ -2240,6 +2220,26 @@
       "revenueGrowth": 32.3,
       "netIncomeGrowth": 47.6,
       "fcfGrowth": 185.99,
+      "weight": 0.147,
+      "rank": 111
+    },
+    {
+      "ticker": "MPC",
+      "name": "Marathon Petroleum",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Refining & Marketing",
+      "price": 388.9,
+      "change24h": 0.31,
+      "change7d": 6.98,
+      "marketCap": 109212753920,
+      "pe": 13.48,
+      "peg": 1.89,
+      "revenue": 153577000000.0,
+      "netIncome": 8551000000.0,
+      "fcf": 12899000000.0,
+      "revenueGrowth": 53.7,
+      "netIncomeGrowth": 348.0,
+      "fcfGrowth": 110.36,
       "weight": 0.147,
       "rank": 112
     },
@@ -2291,7 +2291,7 @@
       "price": 320.56,
       "change24h": 2.23,
       "change7d": 2.54,
-      "marketCap": 107275575296,
+      "marketCap": 107688771584,
       "pe": 24.64,
       "peg": 0.69,
       "revenue": 6829124000.0,
@@ -2300,7 +2300,7 @@
       "revenueGrowth": 52.8,
       "netIncomeGrowth": 57.0,
       "fcfGrowth": 116.99,
-      "weight": 0.144,
+      "weight": 0.145,
       "rank": 115
     },
     {
@@ -2424,6 +2424,26 @@
       "rank": 121
     },
     {
+      "ticker": "PSX",
+      "name": "Phillips 66",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Refining & Marketing",
+      "price": 255.09,
+      "change24h": 0.17,
+      "change7d": 6.37,
+      "marketCap": 102274506752,
+      "pe": 14.56,
+      "peg": 1.22,
+      "revenue": 152167000000.0,
+      "netIncome": 7083000000.0,
+      "fcf": 6394000000.0,
+      "revenueGrowth": 53.1,
+      "netIncomeGrowth": 344.9,
+      "fcfGrowth": 174.19,
+      "weight": 0.137,
+      "rank": 122
+    },
+    {
       "ticker": "EQIX",
       "name": "Equinix",
       "sector": "Real Estate",
@@ -2440,26 +2460,6 @@
       "revenueGrowth": 16.7,
       "netIncomeGrowth": 28.8,
       "fcfGrowth": -900.0,
-      "weight": 0.137,
-      "rank": 122
-    },
-    {
-      "ticker": "PSX",
-      "name": "Phillips 66",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Refining & Marketing",
-      "price": 255.09,
-      "change24h": 0.17,
-      "change7d": 6.37,
-      "marketCap": 101786247168,
-      "pe": 14.56,
-      "peg": 1.22,
-      "revenue": 152167000000.0,
-      "netIncome": 7083000000.0,
-      "fcf": 6394000000.0,
-      "revenueGrowth": 53.1,
-      "netIncomeGrowth": 344.9,
-      "fcfGrowth": 174.19,
       "weight": 0.137,
       "rank": 123
     },
@@ -2520,7 +2520,7 @@
       "revenueGrowth": 7.8,
       "netIncomeGrowth": 40.0,
       "fcfGrowth": -64.05,
-      "weight": 0.133,
+      "weight": 0.134,
       "rank": 126
     },
     {
@@ -2540,7 +2540,7 @@
       "revenueGrowth": 10.4,
       "netIncomeGrowth": 21.6,
       "fcfGrowth": 10.35,
-      "weight": 0.132,
+      "weight": 0.133,
       "rank": 127
     },
     {
@@ -2580,7 +2580,7 @@
       "revenueGrowth": 23.6,
       "netIncomeGrowth": 24.9,
       "fcfGrowth": -4.97,
-      "weight": 0.131,
+      "weight": 0.132,
       "rank": 129
     },
     {
@@ -2600,7 +2600,7 @@
       "revenueGrowth": 8.1,
       "netIncomeGrowth": 13.4,
       "fcfGrowth": 101.72,
-      "weight": 0.13,
+      "weight": 0.131,
       "rank": 130
     },
     {
@@ -2760,28 +2760,8 @@
       "revenueGrowth": 4.8,
       "netIncomeGrowth": 14.2,
       "fcfGrowth": 20.33,
-      "weight": 0.121,
+      "weight": 0.122,
       "rank": 138
-    },
-    {
-      "ticker": "HCA",
-      "name": "HCA Healthcare",
-      "sector": "Health Care",
-      "subSector": "Health Care Facilities",
-      "price": 405.0,
-      "change24h": -1.03,
-      "change7d": -3.42,
-      "marketCap": 89845121024,
-      "pe": 13.59,
-      "peg": 1.24,
-      "revenue": 78013000000.0,
-      "netIncome": 6840000000.0,
-      "fcf": 5997000000.0,
-      "revenueGrowth": 8.7,
-      "netIncomeGrowth": 11.6,
-      "fcfGrowth": 6.35,
-      "weight": 0.121,
-      "rank": 139
     },
     {
       "ticker": "MRSH",
@@ -2801,7 +2781,7 @@
       "netIncomeGrowth": 7.3,
       "fcfGrowth": 19.59,
       "weight": 0.119,
-      "rank": 140
+      "rank": 139
     },
     {
       "ticker": "ELV",
@@ -2821,7 +2801,7 @@
       "netIncomeGrowth": -13.1,
       "fcfGrowth": 38.16,
       "weight": 0.119,
-      "rank": 141
+      "rank": 140
     },
     {
       "ticker": "JCI",
@@ -2841,7 +2821,7 @@
       "netIncomeGrowth": 15.3,
       "fcfGrowth": 3.43,
       "weight": 0.118,
-      "rank": 142
+      "rank": 141
     },
     {
       "ticker": "MAR",
@@ -2860,6 +2840,26 @@
       "revenueGrowth": 11.1,
       "netIncomeGrowth": 4.3,
       "fcfGrowth": 56.68,
+      "weight": 0.118,
+      "rank": 142
+    },
+    {
+      "ticker": "HCA",
+      "name": "HCA Healthcare",
+      "sector": "Health Care",
+      "subSector": "Health Care Facilities",
+      "price": 405.0,
+      "change24h": -1.03,
+      "change7d": -3.42,
+      "marketCap": 87683112960,
+      "pe": 13.59,
+      "peg": 1.24,
+      "revenue": 78013000000.0,
+      "netIncome": 6840000000.0,
+      "fcf": 5997000000.0,
+      "revenueGrowth": 8.7,
+      "netIncomeGrowth": 11.6,
+      "fcfGrowth": 6.35,
       "weight": 0.118,
       "rank": 143
     },
@@ -2880,7 +2880,7 @@
       "revenueGrowth": 4.0,
       "netIncomeGrowth": 8.3,
       "fcfGrowth": 65.49,
-      "weight": 0.117,
+      "weight": 0.118,
       "rank": 144
     },
     {
@@ -2944,26 +2944,6 @@
       "rank": 147
     },
     {
-      "ticker": "EMR",
-      "name": "Emerson Electric",
-      "sector": "Industrials",
-      "subSector": "Electrical Components & Equipment",
-      "price": 152.82,
-      "change24h": 1.74,
-      "change7d": -3.1,
-      "marketCap": 85594480640,
-      "pe": 33.44,
-      "peg": 1.76,
-      "revenue": 18636000000.0,
-      "netIncome": 2577000000.0,
-      "fcf": 3460000000.0,
-      "revenueGrowth": 7.0,
-      "netIncomeGrowth": 23.0,
-      "fcfGrowth": 18.78,
-      "weight": 0.115,
-      "rank": 148
-    },
-    {
       "ticker": "MCO",
       "name": "Moody's Corporation",
       "sector": "Financials",
@@ -2981,7 +2961,7 @@
       "netIncomeGrowth": 56.7,
       "fcfGrowth": 17.69,
       "weight": 0.115,
-      "rank": 149
+      "rank": 148
     },
     {
       "ticker": "SLB",
@@ -3001,6 +2981,26 @@
       "netIncomeGrowth": -29.7,
       "fcfGrowth": 1.81,
       "weight": 0.115,
+      "rank": 149
+    },
+    {
+      "ticker": "EMR",
+      "name": "Emerson Electric",
+      "sector": "Industrials",
+      "subSector": "Electrical Components & Equipment",
+      "price": 152.82,
+      "change24h": 1.74,
+      "change7d": -3.1,
+      "marketCap": 85243002880,
+      "pe": 33.44,
+      "peg": 1.76,
+      "revenue": 18636000000.0,
+      "netIncome": 2577000000.0,
+      "fcf": 3460000000.0,
+      "revenueGrowth": 7.0,
+      "netIncomeGrowth": 23.0,
+      "fcfGrowth": 18.78,
+      "weight": 0.114,
       "rank": 150
     },
     {
@@ -3091,7 +3091,7 @@
       "price": 292.7,
       "change24h": -4.0,
       "change7d": -15.78,
-      "marketCap": 80731348992,
+      "marketCap": 80607535104,
       "pe": 58.19,
       "peg": 2.21,
       "revenue": 5837623000.0,
@@ -3160,7 +3160,7 @@
       "revenueGrowth": 1.9,
       "netIncomeGrowth": -26.2,
       "fcfGrowth": 110.12,
-      "weight": 0.106,
+      "weight": 0.107,
       "rank": 158
     },
     {
@@ -3204,26 +3204,6 @@
       "rank": 160
     },
     {
-      "ticker": "MDLZ",
-      "name": "Mondelez International",
-      "sector": "Consumer Staples",
-      "subSector": "Packaged Foods & Meats",
-      "price": 61.28,
-      "change24h": -0.28,
-      "change7d": -1.84,
-      "marketCap": 78662057984,
-      "pe": 22.45,
-      "peg": 0.91,
-      "revenue": 39304000000.0,
-      "netIncome": 2609000000.0,
-      "fcf": 2575000000.0,
-      "revenueGrowth": 4.1,
-      "netIncomeGrowth": 144.9,
-      "fcfGrowth": -26.91,
-      "weight": 0.106,
-      "rank": 161
-    },
-    {
       "ticker": "ECL",
       "name": "Ecolab",
       "sector": "Materials",
@@ -3240,6 +3220,26 @@
       "revenueGrowth": 9.7,
       "netIncomeGrowth": 3.3,
       "fcfGrowth": 3.03,
+      "weight": 0.105,
+      "rank": 161
+    },
+    {
+      "ticker": "MDLZ",
+      "name": "Mondelez International",
+      "sector": "Consumer Staples",
+      "subSector": "Packaged Foods & Meats",
+      "price": 61.28,
+      "change24h": -0.28,
+      "change7d": -1.84,
+      "marketCap": 78212161536,
+      "pe": 22.45,
+      "peg": 0.91,
+      "revenue": 39304000000.0,
+      "netIncome": 2609000000.0,
+      "fcf": 2575000000.0,
+      "revenueGrowth": 4.1,
+      "netIncomeGrowth": 144.9,
+      "fcfGrowth": -26.91,
       "weight": 0.105,
       "rank": 162
     },
@@ -3271,7 +3271,7 @@
       "price": 560.75,
       "change24h": 2.8,
       "change7d": -2.29,
-      "marketCap": 77377372160,
+      "marketCap": 77195354112,
       "pe": 28.65,
       "peg": 1.13,
       "revenue": 34708000000.0,
@@ -3282,26 +3282,6 @@
       "fcfGrowth": 1106.81,
       "weight": 0.104,
       "rank": 164
-    },
-    {
-      "ticker": "EOG",
-      "name": "EOG Resources",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Exploration & Production",
-      "price": 145.19,
-      "change24h": -0.53,
-      "change7d": 0.48,
-      "marketCap": 77332340736,
-      "pe": 11.3,
-      "peg": 1.36,
-      "revenue": 26637000000.0,
-      "netIncome": 6876000000.0,
-      "fcf": 6614000000.0,
-      "revenueGrowth": 58.7,
-      "netIncomeGrowth": 109.4,
-      "fcfGrowth": 14.61,
-      "weight": 0.104,
-      "rank": 165
     },
     {
       "ticker": "TRV",
@@ -3321,7 +3301,7 @@
       "netIncomeGrowth": 57.1,
       "fcfGrowth": 21.51,
       "weight": 0.103,
-      "rank": 166
+      "rank": 165
     },
     {
       "ticker": "ITW",
@@ -3341,7 +3321,7 @@
       "netIncomeGrowth": 10.1,
       "fcfGrowth": 2.71,
       "weight": 0.103,
-      "rank": 167
+      "rank": 166
     },
     {
       "ticker": "DDOG",
@@ -3361,7 +3341,7 @@
       "netIncomeGrowth": 1498.5,
       "fcfGrowth": 38.4,
       "weight": 0.103,
-      "rank": 168
+      "rank": 167
     },
     {
       "ticker": "FDX",
@@ -3380,6 +3360,26 @@
       "revenueGrowth": 12.5,
       "netIncomeGrowth": -4.3,
       "fcfGrowth": 71.62,
+      "weight": 0.102,
+      "rank": 168
+    },
+    {
+      "ticker": "EOG",
+      "name": "EOG Resources",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Exploration & Production",
+      "price": 145.19,
+      "change24h": -0.53,
+      "change7d": 0.48,
+      "marketCap": 76156395520,
+      "pe": 11.3,
+      "peg": 1.36,
+      "revenue": 26637000000.0,
+      "netIncome": 6876000000.0,
+      "fcf": 6614000000.0,
+      "revenueGrowth": 58.7,
+      "netIncomeGrowth": 109.4,
+      "fcfGrowth": 14.61,
       "weight": 0.102,
       "rank": 169
     },
@@ -3411,7 +3411,7 @@
       "price": 164.44,
       "change24h": 0.26,
       "change7d": -0.9,
-      "marketCap": 74703691776,
+      "marketCap": 74704560128,
       "pe": 17.06,
       "peg": 2.05,
       "revenue": 106377000000.0,
@@ -3444,6 +3444,26 @@
       "rank": 172
     },
     {
+      "ticker": "ROST",
+      "name": "Ross Stores",
+      "sector": "Consumer Discretionary",
+      "subSector": "Apparel Retail",
+      "price": 230.69,
+      "change24h": -0.42,
+      "change7d": 0.36,
+      "marketCap": 74000990208,
+      "pe": 27.93,
+      "peg": 2.47,
+      "revenue": 23776064000.0,
+      "netIncome": 2315759000.0,
+      "fcf": 2632326000.0,
+      "revenueGrowth": 20.6,
+      "netIncomeGrowth": 37.4,
+      "fcfGrowth": 60.81,
+      "weight": 0.099,
+      "rank": 173
+    },
+    {
       "ticker": "NSC",
       "name": "Norfolk Southern",
       "sector": "Industrials",
@@ -3460,26 +3480,6 @@
       "revenueGrowth": 11.4,
       "netIncomeGrowth": -4.4,
       "fcfGrowth": -2.39,
-      "weight": 0.099,
-      "rank": 173
-    },
-    {
-      "ticker": "ROST",
-      "name": "Ross Stores",
-      "sector": "Consumer Discretionary",
-      "subSector": "Apparel Retail",
-      "price": 230.69,
-      "change24h": -0.42,
-      "change7d": 0.36,
-      "marketCap": 73694642176,
-      "pe": 27.93,
-      "peg": 2.47,
-      "revenue": 23776064000.0,
-      "netIncome": 2315759000.0,
-      "fcf": 2632326000.0,
-      "revenueGrowth": 20.6,
-      "netIncomeGrowth": 37.4,
-      "fcfGrowth": 60.81,
       "weight": 0.099,
       "rank": 174
     },
@@ -3520,7 +3520,7 @@
       "revenueGrowth": 29.9,
       "netIncomeGrowth": -58.7,
       "fcfGrowth": 12.56,
-      "weight": 0.095,
+      "weight": 0.096,
       "rank": 176
     },
     {
@@ -3631,7 +3631,7 @@
       "price": 31.4,
       "change24h": -0.63,
       "change7d": -0.44,
-      "marketCap": 69859532800,
+      "marketCap": 69921587200,
       "pe": 20.26,
       "peg": 3.3,
       "revenue": 17959000000.0,
@@ -3720,7 +3720,7 @@
       "revenueGrowth": 4.6,
       "netIncomeGrowth": 5.1,
       "fcfGrowth": 27.49,
-      "weight": 0.091,
+      "weight": 0.092,
       "rank": 186
     },
     {
@@ -3851,7 +3851,7 @@
       "price": 1162.05,
       "change24h": 0.36,
       "change7d": -2.06,
-      "marketCap": 64997625856,
+      "marketCap": 64234086400,
       "pe": 35.21,
       "peg": 3.05,
       "revenue": 10007000000.0,
@@ -3860,7 +3860,7 @@
       "revenueGrowth": 22.5,
       "netIncomeGrowth": 10.9,
       "fcfGrowth": 2.5,
-      "weight": 0.087,
+      "weight": 0.086,
       "rank": 193
     },
     {
@@ -3971,7 +3971,7 @@
       "price": 1324.49,
       "change24h": 0.89,
       "change7d": 0.26,
-      "marketCap": 62533304320,
+      "marketCap": 62384730112,
       "pe": 33.79,
       "peg": 1.81,
       "revenue": 18845000000.0,
@@ -4000,7 +4000,7 @@
       "revenueGrowth": 4.2,
       "netIncomeGrowth": 23.3,
       "fcfGrowth": 8.33,
-      "weight": 0.083,
+      "weight": 0.084,
       "rank": 200
     },
     {
@@ -4031,7 +4031,7 @@
       "price": 208.65,
       "change24h": -0.36,
       "change7d": 2.78,
-      "marketCap": 60496117760,
+      "marketCap": 60406931456,
       "pe": 20.46,
       "peg": 0.9,
       "revenue": 19322000000.0,
@@ -4042,6 +4042,26 @@
       "fcfGrowth": 18.52,
       "weight": 0.081,
       "rank": 202
+    },
+    {
+      "ticker": "OKE",
+      "name": "Oneok",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Storage & Transportation",
+      "price": 95.43,
+      "change24h": -0.33,
+      "change7d": 0.75,
+      "marketCap": 60156178432,
+      "pe": 16.48,
+      "peg": 1.78,
+      "revenue": 39366000000.0,
+      "netIncome": 3656000000.0,
+      "fcf": 2906000000.0,
+      "revenueGrowth": 52.8,
+      "netIncomeGrowth": 14.2,
+      "fcfGrowth": 1.36,
+      "weight": 0.081,
+      "rank": 203
     },
     {
       "ticker": "MPWR",
@@ -4060,26 +4080,6 @@
       "revenueGrowth": 47.6,
       "netIncomeGrowth": 85.8,
       "fcfGrowth": -6.65,
-      "weight": 0.081,
-      "rank": 203
-    },
-    {
-      "ticker": "OKE",
-      "name": "Oneok",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Storage & Transportation",
-      "price": 95.43,
-      "change24h": -0.33,
-      "change7d": 0.75,
-      "marketCap": 60124033024,
-      "pe": 16.48,
-      "peg": 1.78,
-      "revenue": 39366000000.0,
-      "netIncome": 3656000000.0,
-      "fcf": 2906000000.0,
-      "revenueGrowth": 52.8,
-      "netIncomeGrowth": 14.2,
-      "fcfGrowth": 1.36,
       "weight": 0.081,
       "rank": 204
     },
@@ -4120,7 +4120,7 @@
       "revenueGrowth": 23.0,
       "netIncomeGrowth": 93.8,
       "fcfGrowth": -34.0,
-      "weight": 0.079,
+      "weight": 0.08,
       "rank": 206
     },
     {
@@ -4364,26 +4364,6 @@
       "rank": 218
     },
     {
-      "ticker": "FANG",
-      "name": "Diamondback Energy",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Exploration & Production",
-      "price": 199.22,
-      "change24h": -1.83,
-      "change7d": -0.65,
-      "marketCap": 56043237376,
-      "pe": 37.87,
-      "peg": 24.49,
-      "revenue": 16982000000.0,
-      "netIncome": 1464000000.0,
-      "fcf": 3682000000.0,
-      "revenueGrowth": 52.5,
-      "netIncomeGrowth": 179.5,
-      "fcfGrowth": 168.52,
-      "weight": 0.075,
-      "rank": 219
-    },
-    {
       "ticker": "TER",
       "name": "Teradyne",
       "sector": "Information Technology",
@@ -4400,6 +4380,26 @@
       "revenueGrowth": 103.9,
       "netIncomeGrowth": 385.8,
       "fcfGrowth": 68.73,
+      "weight": 0.075,
+      "rank": 219
+    },
+    {
+      "ticker": "FANG",
+      "name": "Diamondback Energy",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Exploration & Production",
+      "price": 199.22,
+      "change24h": -1.83,
+      "change7d": -0.65,
+      "marketCap": 55785541632,
+      "pe": 37.87,
+      "peg": 24.49,
+      "revenue": 16982000000.0,
+      "netIncome": 1464000000.0,
+      "fcf": 3682000000.0,
+      "revenueGrowth": 52.5,
+      "netIncomeGrowth": 179.5,
+      "fcfGrowth": 168.52,
       "weight": 0.075,
       "rank": 220
     },
@@ -4471,7 +4471,7 @@
       "price": 237.72,
       "change24h": 1.5,
       "change7d": -2.44,
-      "marketCap": 54486138880,
+      "marketCap": 54499983360,
       "pe": 34.7,
       "peg": 2.7,
       "revenue": 7863923000.0,
@@ -4511,7 +4511,7 @@
       "price": 277.03,
       "change24h": -0.05,
       "change7d": -4.43,
-      "marketCap": 53426954240,
+      "marketCap": 53425938432,
       "pe": 28.56,
       "peg": 2.95,
       "revenue": 7671437000.0,
@@ -4591,7 +4591,7 @@
       "price": 89.9,
       "change24h": 0.13,
       "change7d": -0.06,
-      "marketCap": 51764420608,
+      "marketCap": 51818360832,
       "pe": 53.51,
       "peg": 1.92,
       "revenue": 6512300000.0,
@@ -4600,7 +4600,7 @@
       "revenueGrowth": 13.6,
       "netIncomeGrowth": -25.4,
       "fcfGrowth": 451.6,
-      "weight": 0.069,
+      "weight": 0.07,
       "rank": 230
     },
     {
@@ -4640,7 +4640,7 @@
       "revenueGrowth": 5.4,
       "netIncomeGrowth": -70.9,
       "fcfGrowth": -57.22,
-      "weight": 0.068,
+      "weight": 0.069,
       "rank": 232
     },
     {
@@ -4691,7 +4691,7 @@
       "price": 54.87,
       "change24h": -0.18,
       "change7d": 0.04,
-      "marketCap": 49743659008,
+      "marketCap": 49761193984,
       "pe": 18.47,
       "peg": 1.74,
       "revenue": 10490000000.0,
@@ -4724,26 +4724,6 @@
       "rank": 236
     },
     {
-      "ticker": "CARR",
-      "name": "Carrier Global",
-      "sector": "Industrials",
-      "subSector": "Building Products",
-      "price": 59.71,
-      "change24h": 1.07,
-      "change7d": 1.48,
-      "marketCap": 49593954304,
-      "pe": 42.65,
-      "peg": 1.16,
-      "revenue": 22108000000.0,
-      "netIncome": 1220000000.0,
-      "fcf": 1928000000.0,
-      "revenueGrowth": 3.9,
-      "netIncomeGrowth": -11.8,
-      "fcfGrowth": 4281.82,
-      "weight": 0.067,
-      "rank": 237
-    },
-    {
       "ticker": "AMP",
       "name": "Ameriprise Financial",
       "sector": "Financials",
@@ -4751,7 +4731,7 @@
       "price": 560.56,
       "change24h": -0.8,
       "change7d": 0.86,
-      "marketCap": 49553502208,
+      "marketCap": 49516068864,
       "pe": 13.55,
       "peg": 1.58,
       "revenue": 19503000000.0,
@@ -4760,6 +4740,26 @@
       "revenueGrowth": 11.6,
       "netIncomeGrowth": 11.7,
       "fcfGrowth": 25.63,
+      "weight": 0.066,
+      "rank": 237
+    },
+    {
+      "ticker": "CARR",
+      "name": "Carrier Global",
+      "sector": "Industrials",
+      "subSector": "Building Products",
+      "price": 59.71,
+      "change24h": 1.07,
+      "change7d": 1.48,
+      "marketCap": 49220448256,
+      "pe": 42.65,
+      "peg": 1.16,
+      "revenue": 22108000000.0,
+      "netIncome": 1220000000.0,
+      "fcf": 1928000000.0,
+      "revenueGrowth": 3.9,
+      "netIncomeGrowth": -11.8,
+      "fcfGrowth": 4281.82,
       "weight": 0.066,
       "rank": 238
     },
@@ -4784,22 +4784,22 @@
       "rank": 239
     },
     {
-      "ticker": "AZO",
-      "name": "AutoZone",
-      "sector": "Consumer Discretionary",
-      "subSector": "Automotive Retail",
-      "price": 2983.29,
-      "change24h": 0.51,
-      "change7d": 1.74,
-      "marketCap": 48703270912,
-      "pe": 20.53,
-      "peg": 1.35,
-      "revenue": 19986404000.0,
-      "netIncome": 2478124000.0,
-      "fcf": 1633222000.0,
-      "revenueGrowth": 8.4,
-      "netIncomeGrowth": 7.7,
-      "fcfGrowth": -15.44,
+      "ticker": "ROK",
+      "name": "Rockwell Automation",
+      "sector": "Industrials",
+      "subSector": "Electrical Components & Equipment",
+      "price": 433.81,
+      "change24h": 1.29,
+      "change7d": 0.19,
+      "marketCap": 48271753216,
+      "pe": 40.66,
+      "peg": 1.91,
+      "revenue": 8973000000.0,
+      "netIncome": 1201000000.0,
+      "fcf": 1504000000.0,
+      "revenueGrowth": 7.9,
+      "netIncomeGrowth": 40.4,
+      "fcfGrowth": 135.37,
       "weight": 0.065,
       "rank": 240
     },
@@ -4824,26 +4824,6 @@
       "rank": 241
     },
     {
-      "ticker": "ROK",
-      "name": "Rockwell Automation",
-      "sector": "Industrials",
-      "subSector": "Electrical Components & Equipment",
-      "price": 433.81,
-      "change24h": 1.29,
-      "change7d": 0.19,
-      "marketCap": 48174022656,
-      "pe": 40.66,
-      "peg": 1.91,
-      "revenue": 8973000000.0,
-      "netIncome": 1201000000.0,
-      "fcf": 1504000000.0,
-      "revenueGrowth": 7.9,
-      "netIncomeGrowth": 40.4,
-      "fcfGrowth": 135.37,
-      "weight": 0.065,
-      "rank": 242
-    },
-    {
       "ticker": "WAB",
       "name": "Wabtec",
       "sector": "Industrials",
@@ -4861,7 +4841,7 @@
       "netIncomeGrowth": 18.9,
       "fcfGrowth": 5.35,
       "weight": 0.064,
-      "rank": 243
+      "rank": 242
     },
     {
       "ticker": "LHX",
@@ -4881,27 +4861,7 @@
       "netIncomeGrowth": -6.1,
       "fcfGrowth": 30.54,
       "weight": 0.064,
-      "rank": 244
-    },
-    {
-      "ticker": "PYPL",
-      "name": "PayPal",
-      "sector": "Financials",
-      "subSector": "Transaction & Payment Processing Services",
-      "price": 54.96,
-      "change24h": -3.03,
-      "change7d": -10.37,
-      "marketCap": 47375519744,
-      "pe": 10.39,
-      "peg": 0.91,
-      "revenue": 34128000000.0,
-      "netIncome": 4902000000.0,
-      "fcf": 6586000000.0,
-      "revenueGrowth": 4.8,
-      "netIncomeGrowth": -3.1,
-      "fcfGrowth": -2.67,
-      "weight": 0.064,
-      "rank": 245
+      "rank": 243
     },
     {
       "ticker": "XEL",
@@ -4920,8 +4880,8 @@
       "revenueGrowth": -5.1,
       "netIncomeGrowth": 24.0,
       "fcfGrowth": -182.48,
-      "weight": 0.063,
-      "rank": 246
+      "weight": 0.064,
+      "rank": 244
     },
     {
       "ticker": "WDAY",
@@ -4941,7 +4901,27 @@
       "netIncomeGrowth": 248.0,
       "fcfGrowth": 35.77,
       "weight": 0.063,
-      "rank": 247
+      "rank": 245
+    },
+    {
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "sector": "Financials",
+      "subSector": "Transaction & Payment Processing Services",
+      "price": 54.96,
+      "change24h": -3.03,
+      "change7d": -10.37,
+      "marketCap": 47016128512,
+      "pe": 10.39,
+      "peg": 0.91,
+      "revenue": 34128000000.0,
+      "netIncome": 4902000000.0,
+      "fcf": 6586000000.0,
+      "revenueGrowth": 4.8,
+      "netIncomeGrowth": -3.1,
+      "fcfGrowth": -2.67,
+      "weight": 0.063,
+      "rank": 246
     },
     {
       "ticker": "CMG",
@@ -4961,7 +4941,7 @@
       "netIncomeGrowth": -1.3,
       "fcfGrowth": 3.81,
       "weight": 0.063,
-      "rank": 248
+      "rank": 247
     },
     {
       "ticker": "VTR",
@@ -4981,7 +4961,7 @@
       "netIncomeGrowth": -6.7,
       "fcfGrowth": 50.44,
       "weight": 0.062,
-      "rank": 249
+      "rank": 248
     },
     {
       "ticker": "ARES",
@@ -5001,7 +4981,7 @@
       "netIncomeGrowth": 6.5,
       "fcfGrowth": -69.03,
       "weight": 0.062,
-      "rank": 250
+      "rank": 249
     },
     {
       "ticker": "EBAY",
@@ -5021,7 +5001,7 @@
       "netIncomeGrowth": 55.0,
       "fcfGrowth": 24.13,
       "weight": 0.062,
-      "rank": 251
+      "rank": 250
     },
     {
       "ticker": "ADSK",
@@ -5041,7 +5021,7 @@
       "netIncomeGrowth": 231.4,
       "fcfGrowth": 79.0,
       "weight": 0.061,
-      "rank": 252
+      "rank": 251
     },
     {
       "ticker": "CIEN",
@@ -5061,7 +5041,7 @@
       "netIncomeGrowth": 2383.3,
       "fcfGrowth": 120.34,
       "weight": 0.061,
-      "rank": 253
+      "rank": 252
     },
     {
       "ticker": "EXC",
@@ -5081,7 +5061,7 @@
       "netIncomeGrowth": -0.2,
       "fcfGrowth": -25.39,
       "weight": 0.06,
-      "rank": 254
+      "rank": 253
     },
     {
       "ticker": "VEEV",
@@ -5101,7 +5081,7 @@
       "netIncomeGrowth": 14.6,
       "fcfGrowth": 52.76,
       "weight": 0.06,
-      "rank": 255
+      "rank": 254
     },
     {
       "ticker": "KDP",
@@ -5121,7 +5101,7 @@
       "netIncomeGrowth": -90.0,
       "fcfGrowth": -1.31,
       "weight": 0.06,
-      "rank": 256
+      "rank": 255
     },
     {
       "ticker": "FERG",
@@ -5141,7 +5121,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": null,
       "weight": 0.059,
-      "rank": 257
+      "rank": 256
     },
     {
       "ticker": "IQV",
@@ -5161,7 +5141,7 @@
       "netIncomeGrowth": -0.6,
       "fcfGrowth": 3.31,
       "weight": 0.059,
-      "rank": 258
+      "rank": 257
     },
     {
       "ticker": "PAYX",
@@ -5181,7 +5161,7 @@
       "netIncomeGrowth": 43.4,
       "fcfGrowth": 35.85,
       "weight": 0.058,
-      "rank": 259
+      "rank": 258
     },
     {
       "ticker": "CBRE",
@@ -5201,7 +5181,7 @@
       "netIncomeGrowth": -4.2,
       "fcfGrowth": -33.05,
       "weight": 0.057,
-      "rank": 260
+      "rank": 259
     },
     {
       "ticker": "A",
@@ -5211,7 +5191,7 @@
       "price": 150.86,
       "change24h": 0.59,
       "change7d": -4.33,
-      "marketCap": 42531786752,
+      "marketCap": 42537365504,
       "pe": 29.76,
       "peg": 1.25,
       "revenue": 7232000000.0,
@@ -5221,7 +5201,7 @@
       "netIncomeGrowth": 60.0,
       "fcfGrowth": -20.83,
       "weight": 0.057,
-      "rank": 261
+      "rank": 260
     },
     {
       "ticker": "IDXX",
@@ -5231,7 +5211,7 @@
       "price": 535.38,
       "change24h": 1.15,
       "change7d": -1.78,
-      "marketCap": 42232381440,
+      "marketCap": 42177835008,
       "pe": 37.6,
       "peg": 2.93,
       "revenue": 4553223000.0,
@@ -5241,7 +5221,7 @@
       "netIncomeGrowth": 17.6,
       "fcfGrowth": 55.01,
       "weight": 0.057,
-      "rank": 262
+      "rank": 261
     },
     {
       "ticker": "PRU",
@@ -5260,8 +5240,8 @@
       "revenueGrowth": 14.1,
       "netIncomeGrowth": 89.2,
       "fcfGrowth": 29.02,
-      "weight": 0.056,
-      "rank": 263
+      "weight": 0.057,
+      "rank": 262
     },
     {
       "ticker": "AXON",
@@ -5281,7 +5261,7 @@
       "netIncomeGrowth": -18.2,
       "fcfGrowth": -59.58,
       "weight": 0.056,
-      "rank": 264
+      "rank": 263
     },
     {
       "ticker": "MSCI",
@@ -5301,7 +5281,7 @@
       "netIncomeGrowth": 19.6,
       "fcfGrowth": 7.64,
       "weight": 0.056,
-      "rank": 265
+      "rank": 264
     },
     {
       "ticker": "YUM",
@@ -5321,7 +5301,7 @@
       "netIncomeGrowth": 131.6,
       "fcfGrowth": 17.25,
       "weight": 0.055,
-      "rank": 266
+      "rank": 265
     },
     {
       "ticker": "ADM",
@@ -5331,7 +5311,7 @@
       "price": 84.61,
       "change24h": 0.27,
       "change7d": 6.97,
-      "marketCap": 40778342400,
+      "marketCap": 40778600448,
       "pe": 23.12,
       "peg": 1.05,
       "revenue": 82099000000.0,
@@ -5341,7 +5321,7 @@
       "netIncomeGrowth": 315.6,
       "fcfGrowth": 36.67,
       "weight": 0.055,
-      "rank": 267
+      "rank": 266
     },
     {
       "ticker": "FLEX",
@@ -5361,7 +5341,7 @@
       "netIncomeGrowth": 52.0,
       "fcfGrowth": -1.41,
       "weight": 0.054,
-      "rank": 268
+      "rank": 267
     },
     {
       "ticker": "LYV",
@@ -5381,7 +5361,7 @@
       "netIncomeGrowth": 156.2,
       "fcfGrowth": 30.94,
       "weight": 0.054,
-      "rank": 269
+      "rank": 268
     },
     {
       "ticker": "ROP",
@@ -5401,7 +5381,7 @@
       "netIncomeGrowth": 233.0,
       "fcfGrowth": 12.22,
       "weight": 0.054,
-      "rank": 270
+      "rank": 269
     },
     {
       "ticker": "MCHP",
@@ -5421,7 +5401,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 43.88,
       "weight": 0.054,
-      "rank": 271
+      "rank": 270
     },
     {
       "ticker": "WAT",
@@ -5441,7 +5421,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -57.43,
       "weight": 0.054,
-      "rank": 272
+      "rank": 271
     },
     {
       "ticker": "TTWO",
@@ -5461,7 +5441,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 257.27,
       "weight": 0.054,
-      "rank": 273
+      "rank": 272
     },
     {
       "ticker": "DHI",
@@ -5481,7 +5461,7 @@
       "netIncomeGrowth": -4.8,
       "fcfGrowth": 58.17,
       "weight": 0.054,
-      "rank": 274
+      "rank": 273
     },
     {
       "ticker": "AIG",
@@ -5500,8 +5480,8 @@
       "revenueGrowth": 0.5,
       "netIncomeGrowth": -10.1,
       "fcfGrowth": 17.63,
-      "weight": 0.053,
-      "rank": 275
+      "weight": 0.054,
+      "rank": 274
     },
     {
       "ticker": "ED",
@@ -5521,7 +5501,7 @@
       "netIncomeGrowth": 22.1,
       "fcfGrowth": 25.5,
       "weight": 0.053,
-      "rank": 276
+      "rank": 275
     },
     {
       "ticker": "ODFL",
@@ -5531,7 +5511,7 @@
       "price": 185.87,
       "change24h": 0.06,
       "change7d": -6.95,
-      "marketCap": 38541373440,
+      "marketCap": 38655066112,
       "pe": 35.74,
       "peg": 2.32,
       "revenue": 5602507000.0,
@@ -5541,7 +5521,7 @@
       "netIncomeGrowth": 32.3,
       "fcfGrowth": 25.54,
       "weight": 0.052,
-      "rank": 277
+      "rank": 276
     },
     {
       "ticker": "SYY",
@@ -5561,7 +5541,7 @@
       "netIncomeGrowth": 5.2,
       "fcfGrowth": -15.58,
       "weight": 0.051,
-      "rank": 278
+      "rank": 277
     },
     {
       "ticker": "EL",
@@ -5571,7 +5551,7 @@
       "price": 103.86,
       "change24h": 2.97,
       "change7d": -1.88,
-      "marketCap": 37576019968,
+      "marketCap": 37576396800,
       "pe": 207.72,
       "peg": 2.12,
       "revenue": 14833000000.0,
@@ -5581,7 +5561,7 @@
       "netIncomeGrowth": -45.5,
       "fcfGrowth": -10.83,
       "weight": 0.05,
-      "rank": 279
+      "rank": 278
     },
     {
       "ticker": "HIG",
@@ -5601,7 +5581,7 @@
       "netIncomeGrowth": 36.1,
       "fcfGrowth": 0.43,
       "weight": 0.05,
-      "rank": 280
+      "rank": 279
     },
     {
       "ticker": "PEG",
@@ -5611,7 +5591,7 @@
       "price": 73.7,
       "change24h": -0.15,
       "change7d": 0.5,
-      "marketCap": 36726284288,
+      "marketCap": 36733554688,
       "pe": 18.33,
       "peg": 3.45,
       "revenue": 12543000000.0,
@@ -5621,7 +5601,7 @@
       "netIncomeGrowth": -42.7,
       "fcfGrowth": 122.13,
       "weight": 0.049,
-      "rank": 281
+      "rank": 280
     },
     {
       "ticker": "MLM",
@@ -5641,7 +5621,7 @@
       "netIncomeGrowth": -23.2,
       "fcfGrowth": 34.11,
       "weight": 0.049,
-      "rank": 282
+      "rank": 281
     },
     {
       "ticker": "NTAP",
@@ -5661,7 +5641,7 @@
       "netIncomeGrowth": 23.4,
       "fcfGrowth": 39.69,
       "weight": 0.049,
-      "rank": 283
+      "rank": 282
     },
     {
       "ticker": "UAL",
@@ -5681,7 +5661,7 @@
       "netIncomeGrowth": -17.2,
       "fcfGrowth": -33.58,
       "weight": 0.049,
-      "rank": 284
+      "rank": 283
     },
     {
       "ticker": "KVUE",
@@ -5701,7 +5681,7 @@
       "netIncomeGrowth": 8.5,
       "fcfGrowth": 43.37,
       "weight": 0.048,
-      "rank": 285
+      "rank": 284
     },
     {
       "ticker": "KR",
@@ -5721,7 +5701,7 @@
       "netIncomeGrowth": 13.2,
       "fcfGrowth": 59.37,
       "weight": 0.048,
-      "rank": 286
+      "rank": 285
     },
     {
       "ticker": "EXPE",
@@ -5731,7 +5711,7 @@
       "price": 298.04,
       "change24h": -1.68,
       "change7d": -6.55,
-      "marketCap": 35770564608,
+      "marketCap": 35771379712,
       "pe": 18.73,
       "peg": 0.78,
       "revenue": 15700000000.0,
@@ -5741,7 +5721,7 @@
       "netIncomeGrowth": 188.7,
       "fcfGrowth": 91.46,
       "weight": 0.048,
-      "rank": 287
+      "rank": 286
     },
     {
       "ticker": "TKO",
@@ -5761,7 +5741,7 @@
       "netIncomeGrowth": 14.4,
       "fcfGrowth": 257.91,
       "weight": 0.047,
-      "rank": 288
+      "rank": 287
     },
     {
       "ticker": "KMB",
@@ -5771,7 +5751,7 @@
       "price": 104.96,
       "change24h": -1.6,
       "change7d": -3.42,
-      "marketCap": 34840457216,
+      "marketCap": 34907496448,
       "pe": 20.74,
       "peg": 2.11,
       "revenue": 16582000000.0,
@@ -5781,7 +5761,7 @@
       "netIncomeGrowth": -32.3,
       "fcfGrowth": -27.58,
       "weight": 0.047,
-      "rank": 289
+      "rank": 288
     },
     {
       "ticker": "HSY",
@@ -5801,7 +5781,7 @@
       "netIncomeGrowth": 631.0,
       "fcfGrowth": 15.71,
       "weight": 0.047,
-      "rank": 290
+      "rank": 289
     },
     {
       "ticker": "IRM",
@@ -5821,27 +5801,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 9.21,
       "weight": 0.047,
-      "rank": 291
-    },
-    {
-      "ticker": "MTB",
-      "name": "M&T Bank",
-      "sector": "Financials",
-      "subSector": "Regional Banks",
-      "price": 239.84,
-      "change24h": -0.09,
-      "change7d": 1.13,
-      "marketCap": 34760728576,
-      "pe": 12.69,
-      "peg": 1.46,
-      "revenue": 9823000000.0,
-      "netIncome": 2873000000.0,
-      "fcf": 3595000000.0,
-      "revenueGrowth": 6.2,
-      "netIncomeGrowth": 25.5,
-      "fcfGrowth": 5.92,
-      "weight": 0.047,
-      "rank": 292
+      "rank": 290
     },
     {
       "ticker": "STLD",
@@ -5861,7 +5821,27 @@
       "netIncomeGrowth": 83.6,
       "fcfGrowth": 4165.71,
       "weight": 0.047,
-      "rank": 293
+      "rank": 291
+    },
+    {
+      "ticker": "MTB",
+      "name": "M&T Bank",
+      "sector": "Financials",
+      "subSector": "Regional Banks",
+      "price": 239.84,
+      "change24h": -0.09,
+      "change7d": 1.13,
+      "marketCap": 34636795904,
+      "pe": 12.69,
+      "peg": 1.46,
+      "revenue": 9823000000.0,
+      "netIncome": 2873000000.0,
+      "fcf": 3595000000.0,
+      "revenueGrowth": 6.2,
+      "netIncomeGrowth": 25.5,
+      "fcfGrowth": 5.92,
+      "weight": 0.047,
+      "rank": 292
     },
     {
       "ticker": "WEC",
@@ -5881,7 +5861,7 @@
       "netIncomeGrowth": 19.7,
       "fcfGrowth": -418.85,
       "weight": 0.046,
-      "rank": 294
+      "rank": 293
     },
     {
       "ticker": "EQT",
@@ -5901,7 +5881,7 @@
       "netIncomeGrowth": -74.0,
       "fcfGrowth": 555.6,
       "weight": 0.046,
-      "rank": 295
+      "rank": 294
     },
     {
       "ticker": "HBAN",
@@ -5921,7 +5901,7 @@
       "netIncomeGrowth": -2.9,
       "fcfGrowth": 58.48,
       "weight": 0.046,
-      "rank": 296
+      "rank": 295
     },
     {
       "ticker": "RJF",
@@ -5931,7 +5911,7 @@
       "price": 178.29,
       "change24h": -1.55,
       "change7d": 1.24,
-      "marketCap": 34296168448,
+      "marketCap": 34249506816,
       "pe": 15.56,
       "peg": 0.88,
       "revenue": 15000000000.0,
@@ -5941,7 +5921,7 @@
       "netIncomeGrowth": 42.0,
       "fcfGrowth": -26.05,
       "weight": 0.046,
-      "rank": 297
+      "rank": 296
     },
     {
       "ticker": "NTRS",
@@ -5961,7 +5941,7 @@
       "netIncomeGrowth": 98.6,
       "fcfGrowth": 82.31,
       "weight": 0.046,
-      "rank": 298
+      "rank": 297
     },
     {
       "ticker": "VMC",
@@ -5981,7 +5961,7 @@
       "netIncomeGrowth": 2.7,
       "fcfGrowth": 27.43,
       "weight": 0.046,
-      "rank": 299
+      "rank": 298
     },
     {
       "ticker": "ACGL",
@@ -5991,7 +5971,7 @@
       "price": 98.1,
       "change24h": -1.73,
       "change7d": -0.67,
-      "marketCap": 33452099584,
+      "marketCap": 33474576384,
       "pe": 7.68,
       "peg": 1.05,
       "revenue": 18595000000.0,
@@ -6001,7 +5981,7 @@
       "netIncomeGrowth": -7.1,
       "fcfGrowth": -8.56,
       "weight": 0.045,
-      "rank": 300
+      "rank": 299
     },
     {
       "ticker": "EME",
@@ -6021,7 +6001,7 @@
       "netIncomeGrowth": 34.8,
       "fcfGrowth": -12.12,
       "weight": 0.045,
-      "rank": 301
+      "rank": 300
     },
     {
       "ticker": "DXCM",
@@ -6041,6 +6021,26 @@
       "netIncomeGrowth": 43.6,
       "fcfGrowth": 122.77,
       "weight": 0.045,
+      "rank": 301
+    },
+    {
+      "ticker": "CCI",
+      "name": "Crown Castle",
+      "sector": "Real Estate",
+      "subSector": "Telecom Tower REITs",
+      "price": 75.83,
+      "change24h": -1.85,
+      "change7d": 1.07,
+      "marketCap": 33137711104,
+      "pe": 30.95,
+      "peg": 0.6,
+      "revenue": 4161000000.0,
+      "netIncome": 862000000.0,
+      "fcf": 2406000000.0,
+      "revenueGrowth": -4.9,
+      "netIncomeGrowth": -67.5,
+      "fcfGrowth": -13.05,
+      "weight": 0.044,
       "rank": 302
     },
     {
@@ -6124,46 +6124,6 @@
       "rank": 306
     },
     {
-      "ticker": "CPRT",
-      "name": "Copart",
-      "sector": "Industrials",
-      "subSector": "Diversified Support Services",
-      "price": 33.72,
-      "change24h": 0.42,
-      "change7d": 2.93,
-      "marketCap": 32482760704,
-      "pe": 20.94,
-      "peg": 4.05,
-      "revenue": 4638867000.0,
-      "netIncome": 1553201000.0,
-      "fcf": 1339233000.0,
-      "revenueGrowth": 2.1,
-      "netIncomeGrowth": 2.3,
-      "fcfGrowth": 39.28,
-      "weight": 0.044,
-      "rank": 307
-    },
-    {
-      "ticker": "CCI",
-      "name": "Crown Castle",
-      "sector": "Real Estate",
-      "subSector": "Telecom Tower REITs",
-      "price": 75.83,
-      "change24h": -1.85,
-      "change7d": 1.07,
-      "marketCap": 32262285312,
-      "pe": 30.95,
-      "peg": 0.6,
-      "revenue": 4161000000.0,
-      "netIncome": 862000000.0,
-      "fcf": 2406000000.0,
-      "revenueGrowth": -4.9,
-      "netIncomeGrowth": -67.5,
-      "fcfGrowth": -13.05,
-      "weight": 0.043,
-      "rank": 308
-    },
-    {
       "ticker": "CCL",
       "name": "Carnival Corporation",
       "sector": "Consumer Discretionary",
@@ -6181,7 +6141,7 @@
       "netIncomeGrowth": -6.5,
       "fcfGrowth": 146.72,
       "weight": 0.043,
-      "rank": 309
+      "rank": 307
     },
     {
       "ticker": "PCG",
@@ -6201,7 +6161,7 @@
       "netIncomeGrowth": 39.8,
       "fcfGrowth": -82.65,
       "weight": 0.042,
-      "rank": 310
+      "rank": 308
     },
     {
       "ticker": "ZTS",
@@ -6221,27 +6181,27 @@
       "netIncomeGrowth": 1.2,
       "fcfGrowth": 0.78,
       "weight": 0.042,
-      "rank": 311
+      "rank": 309
     },
     {
-      "ticker": "GEHC",
-      "name": "GE HealthCare",
-      "sector": "Health Care",
-      "subSector": "Health Care Equipment",
-      "price": 68.86,
-      "change24h": -1.23,
-      "change7d": -4.99,
-      "marketCap": 31323848704,
-      "pe": 15.87,
-      "peg": 1.72,
-      "revenue": 21267000000.0,
-      "netIncome": 1985000000.0,
-      "fcf": 1579000000.0,
-      "revenueGrowth": 5.8,
-      "netIncomeGrowth": 16.8,
-      "fcfGrowth": 1.87,
+      "ticker": "CPRT",
+      "name": "Copart",
+      "sector": "Industrials",
+      "subSector": "Diversified Support Services",
+      "price": 33.72,
+      "change24h": 0.42,
+      "change7d": 2.93,
+      "marketCap": 31218364416,
+      "pe": 20.94,
+      "peg": 4.05,
+      "revenue": 4638867000.0,
+      "netIncome": 1553201000.0,
+      "fcf": 1339233000.0,
+      "revenueGrowth": 2.1,
+      "netIncomeGrowth": 2.3,
+      "fcfGrowth": 39.28,
       "weight": 0.042,
-      "rank": 312
+      "rank": 310
     },
     {
       "ticker": "CBOE",
@@ -6261,7 +6221,27 @@
       "netIncomeGrowth": 50.2,
       "fcfGrowth": 80.29,
       "weight": 0.042,
-      "rank": 313
+      "rank": 311
+    },
+    {
+      "ticker": "GEHC",
+      "name": "GE HealthCare",
+      "sector": "Health Care",
+      "subSector": "Health Care Equipment",
+      "price": 68.86,
+      "change24h": -1.23,
+      "change7d": -4.99,
+      "marketCap": 31103115264,
+      "pe": 15.87,
+      "peg": 1.72,
+      "revenue": 21267000000.0,
+      "netIncome": 1985000000.0,
+      "fcf": 1579000000.0,
+      "revenueGrowth": 5.8,
+      "netIncomeGrowth": 16.8,
+      "fcfGrowth": 1.87,
+      "weight": 0.042,
+      "rank": 312
     },
     {
       "ticker": "WTW",
@@ -6281,7 +6261,7 @@
       "netIncomeGrowth": -26.8,
       "fcfGrowth": 33.31,
       "weight": 0.042,
-      "rank": 314
+      "rank": 313
     },
     {
       "ticker": "HAL",
@@ -6291,7 +6271,7 @@
       "price": 37.07,
       "change24h": -0.59,
       "change7d": 4.94,
-      "marketCap": 30968195072,
+      "marketCap": 30884143104,
       "pe": 19.41,
       "peg": 0.77,
       "revenue": 22373000000.0,
@@ -6300,8 +6280,8 @@
       "revenueGrowth": 3.7,
       "netIncomeGrowth": 16.1,
       "fcfGrowth": -28.81,
-      "weight": 0.042,
-      "rank": 315
+      "weight": 0.041,
+      "rank": 314
     },
     {
       "ticker": "EXR",
@@ -6321,7 +6301,7 @@
       "netIncomeGrowth": 6.0,
       "fcfGrowth": -1.5,
       "weight": 0.041,
-      "rank": 316
+      "rank": 315
     },
     {
       "ticker": "CFG",
@@ -6341,7 +6321,7 @@
       "netIncomeGrowth": 41.3,
       "fcfGrowth": 25.23,
       "weight": 0.04,
-      "rank": 317
+      "rank": 316
     },
     {
       "ticker": "IR",
@@ -6361,7 +6341,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -2.27,
       "weight": 0.04,
-      "rank": 318
+      "rank": 317
     },
     {
       "ticker": "AEE",
@@ -6381,27 +6361,7 @@
       "netIncomeGrowth": 11.9,
       "fcfGrowth": 18.34,
       "weight": 0.04,
-      "rank": 319
-    },
-    {
-      "ticker": "CTSH",
-      "name": "Cognizant",
-      "sector": "Information Technology",
-      "subSector": "IT Consulting & Other Services",
-      "price": 62.31,
-      "change24h": -3.6,
-      "change7d": -2.27,
-      "marketCap": 29472630784,
-      "pe": 13.37,
-      "peg": 0.91,
-      "revenue": 21642000000.0,
-      "netIncome": 2220000000.0,
-      "fcf": 2598000000.0,
-      "revenueGrowth": 4.5,
-      "netIncomeGrowth": 3.8,
-      "fcfGrowth": 42.2,
-      "weight": 0.04,
-      "rank": 320
+      "rank": 318
     },
     {
       "ticker": "KHC",
@@ -6421,7 +6381,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 26.36,
       "weight": 0.04,
-      "rank": 321
+      "rank": 319
     },
     {
       "ticker": "HPQ",
@@ -6440,8 +6400,8 @@
       "revenueGrowth": 9.0,
       "netIncomeGrowth": 16.2,
       "fcfGrowth": 19.7,
-      "weight": 0.039,
-      "rank": 322
+      "weight": 0.04,
+      "rank": 320
     },
     {
       "ticker": "DG",
@@ -6461,7 +6421,7 @@
       "netIncomeGrowth": 12.4,
       "fcfGrowth": 30.57,
       "weight": 0.039,
-      "rank": 323
+      "rank": 321
     },
     {
       "ticker": "ON",
@@ -6481,7 +6441,7 @@
       "netIncomeGrowth": 36.6,
       "fcfGrowth": 23.75,
       "weight": 0.039,
-      "rank": 324
+      "rank": 322
     },
     {
       "ticker": "LVS",
@@ -6501,7 +6461,7 @@
       "netIncomeGrowth": -19.8,
       "fcfGrowth": 66.26,
       "weight": 0.039,
-      "rank": 325
+      "rank": 323
     },
     {
       "ticker": "DTE",
@@ -6521,7 +6481,7 @@
       "netIncomeGrowth": 22.4,
       "fcfGrowth": -80.83,
       "weight": 0.038,
-      "rank": 326
+      "rank": 324
     },
     {
       "ticker": "ATO",
@@ -6541,7 +6501,7 @@
       "netIncomeGrowth": 23.3,
       "fcfGrowth": -67.89,
       "weight": 0.038,
-      "rank": 327
+      "rank": 325
     },
     {
       "ticker": "TDY",
@@ -6551,7 +6511,7 @@
       "price": 610.65,
       "change24h": 0.46,
       "change7d": -2.53,
-      "marketCap": 28290887680,
+      "marketCap": 28307091456,
       "pe": 29.59,
       "peg": 1.4,
       "revenue": 6374400000.0,
@@ -6561,7 +6521,7 @@
       "netIncomeGrowth": 21.2,
       "fcfGrowth": 3.06,
       "weight": 0.038,
-      "rank": 328
+      "rank": 326
     },
     {
       "ticker": "FISV",
@@ -6581,7 +6541,27 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -22.44,
       "weight": 0.038,
-      "rank": 329
+      "rank": 327
+    },
+    {
+      "ticker": "CTSH",
+      "name": "Cognizant",
+      "sector": "Information Technology",
+      "subSector": "IT Consulting & Other Services",
+      "price": 62.31,
+      "change24h": -3.6,
+      "change7d": -2.27,
+      "marketCap": 28067180544,
+      "pe": 13.37,
+      "peg": 0.91,
+      "revenue": 21642000000.0,
+      "netIncome": 2220000000.0,
+      "fcf": 2598000000.0,
+      "revenueGrowth": 4.5,
+      "netIncomeGrowth": 3.8,
+      "fcfGrowth": 42.2,
+      "weight": 0.038,
+      "rank": 328
     },
     {
       "ticker": "VICI",
@@ -6601,7 +6581,7 @@
       "netIncomeGrowth": -41.4,
       "fcfGrowth": 11.08,
       "weight": 0.038,
-      "rank": 330
+      "rank": 329
     },
     {
       "ticker": "CASY",
@@ -6613,7 +6593,7 @@
       "change7d": -0.95,
       "marketCap": 27979044864,
       "pe": 39.52,
-      "peg": 3.3,
+      "peg": 3.28,
       "revenue": 17561101000.0,
       "netIncome": 714448000.0,
       "fcf": 721620000.0,
@@ -6621,7 +6601,7 @@
       "netIncomeGrowth": 66.0,
       "fcfGrowth": 23.43,
       "weight": 0.038,
-      "rank": 331
+      "rank": 330
     },
     {
       "ticker": "AWK",
@@ -6641,7 +6621,7 @@
       "netIncomeGrowth": 8.6,
       "fcfGrowth": -27.0,
       "weight": 0.038,
-      "rank": 332
+      "rank": 331
     },
     {
       "ticker": "FOXA",
@@ -6661,7 +6641,7 @@
       "netIncomeGrowth": 3.1,
       "fcfGrowth": -50.95,
       "weight": 0.037,
-      "rank": 333
+      "rank": 332
     },
     {
       "ticker": "CPAY",
@@ -6681,7 +6661,7 @@
       "netIncomeGrowth": -7.0,
       "fcfGrowth": -25.78,
       "weight": 0.037,
-      "rank": 334
+      "rank": 333
     },
     {
       "ticker": "OTIS",
@@ -6701,7 +6681,7 @@
       "netIncomeGrowth": 13.0,
       "fcfGrowth": 19.14,
       "weight": 0.036,
-      "rank": 335
+      "rank": 334
     },
     {
       "ticker": "FE",
@@ -6711,7 +6691,7 @@
       "price": 46.77,
       "change24h": -0.57,
       "change7d": 1.12,
-      "marketCap": 27053225984,
+      "marketCap": 27062990848,
       "pe": 25.01,
       "peg": 1.55,
       "revenue": 15825000000.0,
@@ -6721,7 +6701,7 @@
       "netIncomeGrowth": 8.3,
       "fcfGrowth": -72.43,
       "weight": 0.036,
-      "rank": 336
+      "rank": 335
     },
     {
       "ticker": "MTD",
@@ -6741,7 +6721,7 @@
       "netIncomeGrowth": 18.3,
       "fcfGrowth": -0.06,
       "weight": 0.036,
-      "rank": 337
+      "rank": 336
     },
     {
       "ticker": "WSM",
@@ -6751,7 +6731,7 @@
       "price": 227.42,
       "change24h": 2.09,
       "change7d": -4.61,
-      "marketCap": 26782797824,
+      "marketCap": 26785339392,
       "pe": 23.3,
       "peg": 2.58,
       "revenue": 7882159000.0,
@@ -6761,7 +6741,7 @@
       "netIncomeGrowth": 4.3,
       "fcfGrowth": -3.98,
       "weight": 0.036,
-      "rank": 338
+      "rank": 337
     },
     {
       "ticker": "ES",
@@ -6781,7 +6761,7 @@
       "netIncomeGrowth": -85.4,
       "fcfGrowth": 110.2,
       "weight": 0.036,
-      "rank": 339
+      "rank": 338
     },
     {
       "ticker": "LH",
@@ -6801,7 +6781,7 @@
       "netIncomeGrowth": 28.2,
       "fcfGrowth": 5.41,
       "weight": 0.036,
-      "rank": 340
+      "rank": 339
     },
     {
       "ticker": "PPL",
@@ -6821,7 +6801,7 @@
       "netIncomeGrowth": 21.2,
       "fcfGrowth": -248.82,
       "weight": 0.035,
-      "rank": 341
+      "rank": 340
     },
     {
       "ticker": "VRSN",
@@ -6841,7 +6821,7 @@
       "netIncomeGrowth": 7.7,
       "fcfGrowth": 21.91,
       "weight": 0.035,
-      "rank": 342
+      "rank": 341
     },
     {
       "ticker": "AVB",
@@ -6861,7 +6841,7 @@
       "netIncomeGrowth": -41.3,
       "fcfGrowth": -2.91,
       "weight": 0.035,
-      "rank": 343
+      "rank": 342
     },
     {
       "ticker": "CINF",
@@ -6881,7 +6861,7 @@
       "netIncomeGrowth": 85.5,
       "fcfGrowth": 30.91,
       "weight": 0.035,
-      "rank": 344
+      "rank": 343
     },
     {
       "ticker": "DGX",
@@ -6901,7 +6881,7 @@
       "netIncomeGrowth": 15.0,
       "fcfGrowth": 48.4,
       "weight": 0.035,
-      "rank": 345
+      "rank": 344
     },
     {
       "ticker": "CNP",
@@ -6921,7 +6901,7 @@
       "netIncomeGrowth": 23.3,
       "fcfGrowth": -13.52,
       "weight": 0.035,
-      "rank": 346
+      "rank": 345
     },
     {
       "ticker": "ECHO",
@@ -6940,6 +6920,26 @@
       "revenueGrowth": -4.0,
       "netIncomeGrowth": null,
       "fcfGrowth": 33.52,
+      "weight": 0.035,
+      "rank": 346
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "sector": "Information Technology",
+      "subSector": "Technology Hardware, Storage & Peripherals",
+      "price": 39.59,
+      "change24h": 4.54,
+      "change7d": 2.94,
+      "marketCap": 26009260032,
+      "pe": 12.14,
+      "peg": 0.91,
+      "revenue": 33700206000.0,
+      "netIncome": 1247390000.0,
+      "fcf": -6849681000.0,
+      "revenueGrowth": 93.2,
+      "netIncomeGrowth": 409.4,
+      "fcfGrowth": -162.41,
       "weight": 0.035,
       "rank": 347
     },
@@ -7011,7 +7011,7 @@
       "price": 273.77,
       "change24h": 2.81,
       "change7d": 3.94,
-      "marketCap": 25707001856,
+      "marketCap": 25711091712,
       "pe": 38.89,
       "peg": 1.97,
       "revenue": 12701310000.0,
@@ -7020,7 +7020,7 @@
       "revenueGrowth": 19.4,
       "netIncomeGrowth": 45.8,
       "fcfGrowth": 78.01,
-      "weight": 0.034,
+      "weight": 0.035,
       "rank": 351
     },
     {
@@ -7064,26 +7064,6 @@
       "rank": 353
     },
     {
-      "ticker": "SMCI",
-      "name": "Supermicro",
-      "sector": "Information Technology",
-      "subSector": "Technology Hardware, Storage & Peripherals",
-      "price": 39.59,
-      "change24h": 4.54,
-      "change7d": 2.94,
-      "marketCap": 25609703424,
-      "pe": 12.14,
-      "peg": 0.91,
-      "revenue": 33700206000.0,
-      "netIncome": 1247390000.0,
-      "fcf": -6849681000.0,
-      "revenueGrowth": 93.2,
-      "netIncomeGrowth": 409.4,
-      "fcfGrowth": -162.41,
-      "weight": 0.034,
-      "rank": 354
-    },
-    {
       "ticker": "Q",
       "name": "Qnity Electronics",
       "sector": "Information Technology",
@@ -7091,7 +7071,7 @@
       "price": 120.47,
       "change24h": 1.69,
       "change7d": -4.59,
-      "marketCap": 25219094528,
+      "marketCap": 25203353600,
       "pe": 43.18,
       "peg": 1.51,
       "revenue": 5210000000.0,
@@ -7101,7 +7081,7 @@
       "netIncomeGrowth": -34.3,
       "fcfGrowth": -4.18,
       "weight": 0.034,
-      "rank": 355
+      "rank": 354
     },
     {
       "ticker": "NRG",
@@ -7121,7 +7101,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -82.6,
       "weight": 0.034,
-      "rank": 356
+      "rank": 355
     },
     {
       "ticker": "PPG",
@@ -7141,7 +7121,7 @@
       "netIncomeGrowth": -1.5,
       "fcfGrowth": 101.29,
       "weight": 0.034,
-      "rank": 357
+      "rank": 356
     },
     {
       "ticker": "TPL",
@@ -7161,7 +7141,7 @@
       "netIncomeGrowth": 32.7,
       "fcfGrowth": 16.21,
       "weight": 0.034,
-      "rank": 358
+      "rank": 357
     },
     {
       "ticker": "PFG",
@@ -7181,7 +7161,7 @@
       "netIncomeGrowth": 2.8,
       "fcfGrowth": 7.02,
       "weight": 0.034,
-      "rank": 359
+      "rank": 358
     },
     {
       "ticker": "XYL",
@@ -7201,7 +7181,7 @@
       "netIncomeGrowth": 19.5,
       "fcfGrowth": 1.91,
       "weight": 0.033,
-      "rank": 360
+      "rank": 359
     },
     {
       "ticker": "DLTR",
@@ -7221,7 +7201,7 @@
       "netIncomeGrowth": 9.5,
       "fcfGrowth": -0.32,
       "weight": 0.033,
-      "rank": 361
+      "rank": 360
     },
     {
       "ticker": "DRI",
@@ -7241,7 +7221,7 @@
       "netIncomeGrowth": 36.0,
       "fcfGrowth": 5.97,
       "weight": 0.033,
-      "rank": 362
+      "rank": 361
     },
     {
       "ticker": "EQR",
@@ -7251,7 +7231,7 @@
       "price": 63.66,
       "change24h": 0.0,
       "change7d": 0.0,
-      "marketCap": 24609972224,
+      "marketCap": 24611481600,
       "pe": 28.68,
       "peg": 16.1,
       "revenue": 3129217000.0,
@@ -7261,7 +7241,7 @@
       "netIncomeGrowth": -39.9,
       "fcfGrowth": -5.0,
       "weight": 0.033,
-      "rank": 363
+      "rank": 362
     },
     {
       "ticker": "FOX",
@@ -7281,7 +7261,7 @@
       "netIncomeGrowth": 3.1,
       "fcfGrowth": -50.95,
       "weight": 0.033,
-      "rank": 364
+      "rank": 363
     },
     {
       "ticker": "EXPD",
@@ -7301,7 +7281,7 @@
       "netIncomeGrowth": 51.5,
       "fcfGrowth": 35.29,
       "weight": 0.033,
-      "rank": 365
+      "rank": 364
     },
     {
       "ticker": "GPN",
@@ -7321,7 +7301,7 @@
       "netIncomeGrowth": -95.2,
       "fcfGrowth": -65.47,
       "weight": 0.033,
-      "rank": 366
+      "rank": 365
     },
     {
       "ticker": "TPR",
@@ -7341,7 +7321,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 53.05,
       "weight": 0.033,
-      "rank": 367
+      "rank": 366
     },
     {
       "ticker": "HUBB",
@@ -7351,7 +7331,7 @@
       "price": 460.72,
       "change24h": 0.12,
       "change7d": -1.73,
-      "marketCap": 24345262080,
+      "marketCap": 24341022720,
       "pe": 27.25,
       "peg": 1.93,
       "revenue": 6223600000.0,
@@ -7361,7 +7341,7 @@
       "netIncomeGrowth": -0.9,
       "fcfGrowth": 11.17,
       "weight": 0.033,
-      "rank": 368
+      "rank": 367
     },
     {
       "ticker": "VRSK",
@@ -7371,7 +7351,7 @@
       "price": 185.79,
       "change24h": -2.52,
       "change7d": -2.74,
-      "marketCap": 24342546432,
+      "marketCap": 24181686272,
       "pe": 28.54,
       "peg": 1.58,
       "revenue": 3136000000.0,
@@ -7380,8 +7360,8 @@
       "revenueGrowth": 4.4,
       "netIncomeGrowth": -3.4,
       "fcfGrowth": 34.39,
-      "weight": 0.033,
-      "rank": 369
+      "weight": 0.032,
+      "rank": 368
     },
     {
       "ticker": "ULTA",
@@ -7401,7 +7381,7 @@
       "netIncomeGrowth": 15.5,
       "fcfGrowth": 17.26,
       "weight": 0.032,
-      "rank": 370
+      "rank": 369
     },
     {
       "ticker": "SW",
@@ -7421,7 +7401,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 5870.59,
       "weight": 0.032,
-      "rank": 371
+      "rank": 370
     },
     {
       "ticker": "WST",
@@ -7441,7 +7421,7 @@
       "netIncomeGrowth": 18.1,
       "fcfGrowth": 58.07,
       "weight": 0.032,
-      "rank": 372
+      "rank": 371
     },
     {
       "ticker": "BRO",
@@ -7461,7 +7441,7 @@
       "netIncomeGrowth": 7.1,
       "fcfGrowth": 32.42,
       "weight": 0.032,
-      "rank": 373
+      "rank": 372
     },
     {
       "ticker": "PHM",
@@ -7481,7 +7461,7 @@
       "netIncomeGrowth": -18.2,
       "fcfGrowth": -3.19,
       "weight": 0.032,
-      "rank": 374
+      "rank": 373
     },
     {
       "ticker": "KEY",
@@ -7501,27 +7481,7 @@
       "netIncomeGrowth": 25.3,
       "fcfGrowth": 263.44,
       "weight": 0.032,
-      "rank": 375
-    },
-    {
-      "ticker": "OMC",
-      "name": "Omnicom Group",
-      "sector": "Communication Services",
-      "subSector": "Advertising",
-      "price": 82.62,
-      "change24h": -2.49,
-      "change7d": -6.0,
-      "marketCap": 23547213824,
-      "pe": 223.3,
-      "peg": 15.97,
-      "revenue": 22371300000.0,
-      "netIncome": 390200000.0,
-      "fcf": 2389200000.0,
-      "revenueGrowth": 63.4,
-      "netIncomeGrowth": 58.8,
-      "fcfGrowth": 49.99,
-      "weight": 0.032,
-      "rank": 376
+      "rank": 374
     },
     {
       "ticker": "VLTO",
@@ -7541,27 +7501,7 @@
       "netIncomeGrowth": 10.1,
       "fcfGrowth": 27.68,
       "weight": 0.032,
-      "rank": 377
-    },
-    {
-      "ticker": "EXE",
-      "name": "Expand Energy",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Exploration & Production",
-      "price": 97.91,
-      "change24h": -1.15,
-      "change7d": -0.09,
-      "marketCap": 23422898176,
-      "pe": 8.44,
-      "peg": 0.93,
-      "revenue": 13665000000.0,
-      "netIncome": 2781000000.0,
-      "fcf": 2477000000.0,
-      "revenueGrowth": -10.6,
-      "netIncomeGrowth": -45.5,
-      "fcfGrowth": 30862.5,
-      "weight": 0.031,
-      "rank": 378
+      "rank": 375
     },
     {
       "ticker": "TROW",
@@ -7581,7 +7521,7 @@
       "netIncomeGrowth": 28.6,
       "fcfGrowth": 32.61,
       "weight": 0.031,
-      "rank": 379
+      "rank": 376
     },
     {
       "ticker": "CHD",
@@ -7601,7 +7541,7 @@
       "netIncomeGrowth": 9.0,
       "fcfGrowth": 9.25,
       "weight": 0.031,
-      "rank": 380
+      "rank": 377
     },
     {
       "ticker": "BG",
@@ -7621,7 +7561,47 @@
       "netIncomeGrowth": 33.0,
       "fcfGrowth": -235.69,
       "weight": 0.031,
-      "rank": 381
+      "rank": 378
+    },
+    {
+      "ticker": "EXE",
+      "name": "Expand Energy",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Exploration & Production",
+      "price": 97.91,
+      "change24h": -1.15,
+      "change7d": -0.09,
+      "marketCap": 22666536960,
+      "pe": 8.44,
+      "peg": 0.93,
+      "revenue": 13665000000.0,
+      "netIncome": 2781000000.0,
+      "fcf": 2477000000.0,
+      "revenueGrowth": -10.6,
+      "netIncomeGrowth": -45.5,
+      "fcfGrowth": 30862.5,
+      "weight": 0.03,
+      "rank": 379
+    },
+    {
+      "ticker": "OMC",
+      "name": "Omnicom Group",
+      "sector": "Communication Services",
+      "subSector": "Advertising",
+      "price": 82.62,
+      "change24h": -2.49,
+      "change7d": -6.0,
+      "marketCap": 22666463232,
+      "pe": 223.3,
+      "peg": 15.97,
+      "revenue": 22371300000.0,
+      "netIncome": 390200000.0,
+      "fcf": 2389200000.0,
+      "revenueGrowth": 63.4,
+      "netIncomeGrowth": 58.8,
+      "fcfGrowth": 49.99,
+      "weight": 0.03,
+      "rank": 380
     },
     {
       "ticker": "L",
@@ -7641,7 +7621,7 @@
       "netIncomeGrowth": 15.6,
       "fcfGrowth": -26.2,
       "weight": 0.03,
-      "rank": 382
+      "rank": 381
     },
     {
       "ticker": "FFIV",
@@ -7661,7 +7641,7 @@
       "netIncomeGrowth": 11.4,
       "fcfGrowth": 27.24,
       "weight": 0.03,
-      "rank": 383
+      "rank": 382
     },
     {
       "ticker": "IFF",
@@ -7671,9 +7651,9 @@
       "price": 86.35,
       "change24h": -0.13,
       "change7d": -0.58,
-      "marketCap": 22045454336,
+      "marketCap": 22032199680,
       "pe": 21.83,
-      "peg": 1.78,
+      "peg": 1.77,
       "revenue": 9978000000.0,
       "netIncome": 290000000.0,
       "fcf": 536000000.0,
@@ -7681,7 +7661,7 @@
       "netIncomeGrowth": -91.6,
       "fcfGrowth": -10.96,
       "weight": 0.03,
-      "rank": 384
+      "rank": 383
     },
     {
       "ticker": "FSLR",
@@ -7700,8 +7680,8 @@
       "revenueGrowth": -3.7,
       "netIncomeGrowth": 23.3,
       "fcfGrowth": 586.93,
-      "weight": 0.029,
-      "rank": 385
+      "weight": 0.03,
+      "rank": 384
     },
     {
       "ticker": "STE",
@@ -7721,7 +7701,7 @@
       "netIncomeGrowth": 14.0,
       "fcfGrowth": 18.97,
       "weight": 0.029,
-      "rank": 386
+      "rank": 385
     },
     {
       "ticker": "STZ",
@@ -7741,7 +7721,7 @@
       "netIncomeGrowth": 30.7,
       "fcfGrowth": -5.36,
       "weight": 0.029,
-      "rank": 387
+      "rank": 386
     },
     {
       "ticker": "EIX",
@@ -7761,7 +7741,7 @@
       "netIncomeGrowth": 55.1,
       "fcfGrowth": 43.87,
       "weight": 0.029,
-      "rank": 388
+      "rank": 387
     },
     {
       "ticker": "FIS",
@@ -7771,7 +7751,7 @@
       "price": 41.89,
       "change24h": -0.92,
       "change7d": 3.3,
-      "marketCap": 21652066304,
+      "marketCap": 21602920448,
       "pe": 6.43,
       "peg": 0.22,
       "revenue": 12201000000.0,
@@ -7780,6 +7760,26 @@
       "revenueGrowth": 29.1,
       "netIncomeGrowth": null,
       "fcfGrowth": 53.19,
+      "weight": 0.029,
+      "rank": 388
+    },
+    {
+      "ticker": "CMS",
+      "name": "CMS Energy",
+      "sector": "Utilities",
+      "subSector": "Multi-Utilities",
+      "price": 68.46,
+      "change24h": -0.19,
+      "change7d": 0.16,
+      "marketCap": 21467492352,
+      "pe": 20.56,
+      "peg": 2.47,
+      "revenue": 8813000000.0,
+      "netIncome": 1016000000.0,
+      "fcf": -2103000000.0,
+      "revenueGrowth": -0.5,
+      "netIncomeGrowth": -43.9,
+      "fcfGrowth": -160.27,
       "weight": 0.029,
       "rank": 389
     },
@@ -7804,26 +7804,6 @@
       "rank": 390
     },
     {
-      "ticker": "CMS",
-      "name": "CMS Energy",
-      "sector": "Utilities",
-      "subSector": "Multi-Utilities",
-      "price": 68.46,
-      "change24h": -0.19,
-      "change7d": 0.16,
-      "marketCap": 21148637184,
-      "pe": 20.56,
-      "peg": 2.47,
-      "revenue": 8813000000.0,
-      "netIncome": 1016000000.0,
-      "fcf": -2103000000.0,
-      "revenueGrowth": -0.5,
-      "netIncomeGrowth": -43.9,
-      "fcfGrowth": -160.27,
-      "weight": 0.028,
-      "rank": 391
-    },
-    {
       "ticker": "PKG",
       "name": "Packaging Corporation of America",
       "sector": "Materials",
@@ -7841,7 +7821,7 @@
       "netIncomeGrowth": -19.5,
       "fcfGrowth": 42.36,
       "weight": 0.028,
-      "rank": 392
+      "rank": 391
     },
     {
       "ticker": "RL",
@@ -7861,7 +7841,7 @@
       "netIncomeGrowth": 21.6,
       "fcfGrowth": -1.66,
       "weight": 0.028,
-      "rank": 393
+      "rank": 392
     },
     {
       "ticker": "AMCR",
@@ -7881,7 +7861,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -7.96,
       "weight": 0.028,
-      "rank": 394
+      "rank": 393
     },
     {
       "ticker": "EFX",
@@ -7901,7 +7881,7 @@
       "netIncomeGrowth": 0.7,
       "fcfGrowth": 35.92,
       "weight": 0.028,
-      "rank": 395
+      "rank": 394
     },
     {
       "ticker": "LYB",
@@ -7921,7 +7901,7 @@
       "netIncomeGrowth": 396.0,
       "fcfGrowth": -20.3,
       "weight": 0.028,
-      "rank": 396
+      "rank": 395
     },
     {
       "ticker": "CHTR",
@@ -7940,8 +7920,8 @@
       "revenueGrowth": -1.7,
       "netIncomeGrowth": 16.1,
       "fcfGrowth": 37.87,
-      "weight": 0.027,
-      "rank": 397
+      "weight": 0.028,
+      "rank": 396
     },
     {
       "ticker": "GIS",
@@ -7961,7 +7941,7 @@
       "netIncomeGrowth": -14.5,
       "fcfGrowth": -29.07,
       "weight": 0.027,
-      "rank": 398
+      "rank": 397
     },
     {
       "ticker": "CF",
@@ -7981,7 +7961,7 @@
       "netIncomeGrowth": 99.6,
       "fcfGrowth": 8.8,
       "weight": 0.027,
-      "rank": 399
+      "rank": 398
     },
     {
       "ticker": "FICO",
@@ -8001,7 +7981,7 @@
       "netIncomeGrowth": 41.2,
       "fcfGrowth": 58.19,
       "weight": 0.027,
-      "rank": 400
+      "rank": 399
     },
     {
       "ticker": "LEN",
@@ -8021,7 +8001,7 @@
       "netIncomeGrowth": -31.5,
       "fcfGrowth": -67.88,
       "weight": 0.027,
-      "rank": 401
+      "rank": 400
     },
     {
       "ticker": "SBAC",
@@ -8041,27 +8021,7 @@
       "netIncomeGrowth": -10.5,
       "fcfGrowth": -5.06,
       "weight": 0.027,
-      "rank": 402
-    },
-    {
-      "ticker": "BR",
-      "name": "Broadridge Financial Solutions",
-      "sector": "Industrials",
-      "subSector": "Data Processing & Outsourced Services",
-      "price": 172.88,
-      "change24h": -3.37,
-      "change7d": -4.99,
-      "marketCap": 19995006976,
-      "pe": 18.03,
-      "peg": 2.01,
-      "revenue": 7476800000.0,
-      "netIncome": 1124400000.0,
-      "fcf": 1233000000.0,
-      "revenueGrowth": 7.5,
-      "netIncomeGrowth": 8.4,
-      "fcfGrowth": 16.72,
-      "weight": 0.027,
-      "rank": 403
+      "rank": 401
     },
     {
       "ticker": "NI",
@@ -8081,7 +8041,7 @@
       "netIncomeGrowth": -58.4,
       "fcfGrowth": -69.47,
       "weight": 0.027,
-      "rank": 404
+      "rank": 402
     },
     {
       "ticker": "SNA",
@@ -8101,7 +8061,7 @@
       "netIncomeGrowth": 5.1,
       "fcfGrowth": -2.25,
       "weight": 0.027,
-      "rank": 405
+      "rank": 403
     },
     {
       "ticker": "IP",
@@ -8121,7 +8081,27 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -35.01,
       "weight": 0.026,
-      "rank": 406
+      "rank": 404
+    },
+    {
+      "ticker": "BR",
+      "name": "Broadridge Financial Solutions",
+      "sector": "Industrials",
+      "subSector": "Data Processing & Outsourced Services",
+      "price": 172.88,
+      "change24h": -3.37,
+      "change7d": -4.99,
+      "marketCap": 19712090112,
+      "pe": 18.03,
+      "peg": 2.01,
+      "revenue": 7476800000.0,
+      "netIncome": 1124400000.0,
+      "fcf": 1233000000.0,
+      "revenueGrowth": 7.5,
+      "netIncomeGrowth": 8.4,
+      "fcfGrowth": 16.72,
+      "weight": 0.026,
+      "rank": 405
     },
     {
       "ticker": "VTRS",
@@ -8141,7 +8121,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -6.77,
       "weight": 0.026,
-      "rank": 407
+      "rank": 406
     },
     {
       "ticker": "LUV",
@@ -8161,7 +8141,7 @@
       "netIncomeGrowth": 20.5,
       "fcfGrowth": 71.42,
       "weight": 0.026,
-      "rank": 408
+      "rank": 407
     },
     {
       "ticker": "FDXF",
@@ -8181,7 +8161,7 @@
       "netIncomeGrowth": -61.1,
       "fcfGrowth": -119.38,
       "weight": 0.026,
-      "rank": 409
+      "rank": 408
     },
     {
       "ticker": "ESS",
@@ -8191,7 +8171,7 @@
       "price": 278.61,
       "change24h": -0.01,
       "change7d": -0.77,
-      "marketCap": 19203524608,
+      "marketCap": 19205390336,
       "pe": 43.46,
       "peg": 7.02,
       "revenue": 1926734000.0,
@@ -8201,7 +8181,7 @@
       "netIncomeGrowth": -71.8,
       "fcfGrowth": 6.32,
       "weight": 0.026,
-      "rank": 410
+      "rank": 409
     },
     {
       "ticker": "CDW",
@@ -8221,7 +8201,7 @@
       "netIncomeGrowth": 4.9,
       "fcfGrowth": -25.5,
       "weight": 0.026,
-      "rank": 411
+      "rank": 410
     },
     {
       "ticker": "GPC",
@@ -8241,7 +8221,7 @@
       "netIncomeGrowth": -9.8,
       "fcfGrowth": 11.03,
       "weight": 0.026,
-      "rank": 412
+      "rank": 411
     },
     {
       "ticker": "BBY",
@@ -8251,7 +8231,7 @@
       "price": 90.27,
       "change24h": 3.18,
       "change7d": 8.03,
-      "marketCap": 19025946624,
+      "marketCap": 18932117504,
       "pe": 15.02,
       "peg": 1.72,
       "revenue": 41860000000.0,
@@ -8260,8 +8240,8 @@
       "revenueGrowth": 1.9,
       "netIncomeGrowth": 37.9,
       "fcfGrowth": 15.3,
-      "weight": 0.026,
-      "rank": 413
+      "weight": 0.025,
+      "rank": 412
     },
     {
       "ticker": "EVRG",
@@ -8281,7 +8261,7 @@
       "netIncomeGrowth": 23.0,
       "fcfGrowth": -298.36,
       "weight": 0.025,
-      "rank": 414
+      "rank": 413
     },
     {
       "ticker": "ZBH",
@@ -8301,7 +8281,7 @@
       "netIncomeGrowth": 33.8,
       "fcfGrowth": 22.69,
       "weight": 0.025,
-      "rank": 415
+      "rank": 414
     },
     {
       "ticker": "GEN",
@@ -8321,7 +8301,7 @@
       "netIncomeGrowth": 64.0,
       "fcfGrowth": 28.36,
       "weight": 0.025,
-      "rank": 416
+      "rank": 415
     },
     {
       "ticker": "TSCO",
@@ -8341,7 +8321,7 @@
       "netIncomeGrowth": -15.0,
       "fcfGrowth": -51.79,
       "weight": 0.024,
-      "rank": 417
+      "rank": 416
     },
     {
       "ticker": "NWS",
@@ -8361,7 +8341,7 @@
       "netIncomeGrowth": -74.9,
       "fcfGrowth": 42.03,
       "weight": 0.024,
-      "rank": 418
+      "rank": 417
     },
     {
       "ticker": "TSN",
@@ -8381,7 +8361,7 @@
       "netIncomeGrowth": 204.1,
       "fcfGrowth": -20.37,
       "weight": 0.024,
-      "rank": 419
+      "rank": 418
     },
     {
       "ticker": "DD",
@@ -8391,7 +8371,7 @@
       "price": 131.59,
       "change24h": 0.35,
       "change7d": -4.78,
-      "marketCap": 17767202816,
+      "marketCap": 17770305536,
       "pe": 56.48,
       "peg": 1.72,
       "revenue": 4701000000.0,
@@ -8401,7 +8381,7 @@
       "netIncomeGrowth": 149.6,
       "fcfGrowth": 304.38,
       "weight": 0.024,
-      "rank": 420
+      "rank": 419
     },
     {
       "ticker": "NDSN",
@@ -8411,7 +8391,7 @@
       "price": 318.36,
       "change24h": 0.27,
       "change7d": -3.77,
-      "marketCap": 17738364928,
+      "marketCap": 17732450304,
       "pe": 32.26,
       "peg": 1.81,
       "revenue": 2903637000.0,
@@ -8421,7 +8401,7 @@
       "netIncomeGrowth": 6.1,
       "fcfGrowth": 45.12,
       "weight": 0.024,
-      "rank": 421
+      "rank": 420
     },
     {
       "ticker": "BEN",
@@ -8441,7 +8421,7 @@
       "netIncomeGrowth": 106.7,
       "fcfGrowth": -70.84,
       "weight": 0.024,
-      "rank": 422
+      "rank": 421
     },
     {
       "ticker": "LNT",
@@ -8461,67 +8441,7 @@
       "netIncomeGrowth": -4.0,
       "fcfGrowth": 10.37,
       "weight": 0.024,
-      "rank": 423
-    },
-    {
-      "ticker": "FTV",
-      "name": "Fortive",
-      "sector": "Industrials",
-      "subSector": "Industrial Machinery & Supplies & Components",
-      "price": 56.94,
-      "change24h": -0.97,
-      "change7d": -4.86,
-      "marketCap": 17358786560,
-      "pe": 30.13,
-      "peg": 0.98,
-      "revenue": 4315800000.0,
-      "netIncome": 534400000.0,
-      "fcf": 1051300000.0,
-      "revenueGrowth": 7.9,
-      "netIncomeGrowth": 4.0,
-      "fcfGrowth": -31.14,
-      "weight": 0.023,
-      "rank": 424
-    },
-    {
-      "ticker": "ZBRA",
-      "name": "Zebra Technologies",
-      "sector": "Information Technology",
-      "subSector": "Electronic Equipment & Instruments",
-      "price": 362.74,
-      "change24h": 1.47,
-      "change7d": 0.45,
-      "marketCap": 17278535680,
-      "pe": 33.25,
-      "peg": 0.61,
-      "revenue": 5847000000.0,
-      "netIncome": 539000000.0,
-      "fcf": 904000000.0,
-      "revenueGrowth": 20.4,
-      "netIncomeGrowth": 121.5,
-      "fcfGrowth": -5.24,
-      "weight": 0.023,
-      "rank": 425
-    },
-    {
-      "ticker": "J",
-      "name": "Jacobs Solutions",
-      "sector": "Industrials",
-      "subSector": "Construction & Engineering",
-      "price": 146.23,
-      "change24h": -0.89,
-      "change7d": -2.91,
-      "marketCap": 17266966528,
-      "pe": 48.58,
-      "peg": 0.44,
-      "revenue": 14219216000.0,
-      "netIncome": 339491000.0,
-      "fcf": 644544000.0,
-      "revenueGrowth": 34.5,
-      "netIncomeGrowth": -25.4,
-      "fcfGrowth": -30.96,
-      "weight": 0.023,
-      "rank": 426
+      "rank": 422
     },
     {
       "ticker": "ROL",
@@ -8541,7 +8461,7 @@
       "netIncomeGrowth": 3.1,
       "fcfGrowth": 6.74,
       "weight": 0.023,
-      "rank": 427
+      "rank": 423
     },
     {
       "ticker": "CHRW",
@@ -8560,6 +8480,86 @@
       "revenueGrowth": 19.3,
       "netIncomeGrowth": 23.8,
       "fcfGrowth": 85.63,
+      "weight": 0.023,
+      "rank": 424
+    },
+    {
+      "ticker": "FTV",
+      "name": "Fortive",
+      "sector": "Industrials",
+      "subSector": "Industrial Machinery & Supplies & Components",
+      "price": 56.94,
+      "change24h": -0.97,
+      "change7d": -4.86,
+      "marketCap": 17196851200,
+      "pe": 30.13,
+      "peg": 0.98,
+      "revenue": 4315800000.0,
+      "netIncome": 534400000.0,
+      "fcf": 1051300000.0,
+      "revenueGrowth": 7.9,
+      "netIncomeGrowth": 4.0,
+      "fcfGrowth": -31.14,
+      "weight": 0.023,
+      "rank": 425
+    },
+    {
+      "ticker": "ZBRA",
+      "name": "Zebra Technologies",
+      "sector": "Information Technology",
+      "subSector": "Electronic Equipment & Instruments",
+      "price": 362.74,
+      "change24h": 1.47,
+      "change7d": 0.45,
+      "marketCap": 17161467904,
+      "pe": 33.25,
+      "peg": 0.61,
+      "revenue": 5847000000.0,
+      "netIncome": 539000000.0,
+      "fcf": 904000000.0,
+      "revenueGrowth": 20.4,
+      "netIncomeGrowth": 121.5,
+      "fcfGrowth": -5.24,
+      "weight": 0.023,
+      "rank": 426
+    },
+    {
+      "ticker": "J",
+      "name": "Jacobs Solutions",
+      "sector": "Industrials",
+      "subSector": "Construction & Engineering",
+      "price": 146.23,
+      "change24h": -0.89,
+      "change7d": -2.91,
+      "marketCap": 17114555392,
+      "pe": 48.58,
+      "peg": 0.44,
+      "revenue": 14219216000.0,
+      "netIncome": 339491000.0,
+      "fcf": 644544000.0,
+      "revenueGrowth": 34.5,
+      "netIncomeGrowth": -25.4,
+      "fcfGrowth": -30.96,
+      "weight": 0.023,
+      "rank": 427
+    },
+    {
+      "ticker": "NVR",
+      "name": "NVR, Inc.",
+      "sector": "Consumer Discretionary",
+      "subSector": "Homebuilding",
+      "price": 6298.85,
+      "change24h": -1.18,
+      "change7d": -1.05,
+      "marketCap": 16869283840,
+      "pe": 16.37,
+      "peg": 4.97,
+      "revenue": 9546731000.0,
+      "netIncome": 1141320000.0,
+      "fcf": 1046421000.0,
+      "revenueGrowth": -10.9,
+      "netIncomeGrowth": -22.6,
+      "fcfGrowth": -22.21,
       "weight": 0.023,
       "rank": 428
     },
@@ -8584,26 +8584,6 @@
       "rank": 429
     },
     {
-      "ticker": "NVR",
-      "name": "NVR, Inc.",
-      "sector": "Consumer Discretionary",
-      "subSector": "Homebuilding",
-      "price": 6298.85,
-      "change24h": -1.18,
-      "change7d": -1.05,
-      "marketCap": 16785553408,
-      "pe": 16.37,
-      "peg": 4.97,
-      "revenue": 9546731000.0,
-      "netIncome": 1141320000.0,
-      "fcf": 1046421000.0,
-      "revenueGrowth": -10.9,
-      "netIncomeGrowth": -22.6,
-      "fcfGrowth": -22.21,
-      "weight": 0.023,
-      "rank": 430
-    },
-    {
       "ticker": "LDOS",
       "name": "Leidos",
       "sector": "Industrials",
@@ -8611,7 +8591,7 @@
       "price": 133.05,
       "change24h": 0.52,
       "change7d": -4.87,
-      "marketCap": 16735756288,
+      "marketCap": 16696738816,
       "pe": 12.42,
       "peg": 2.46,
       "revenue": 17634000000.0,
@@ -8621,27 +8601,7 @@
       "netIncomeGrowth": -6.7,
       "fcfGrowth": 68.2,
       "weight": 0.022,
-      "rank": 431
-    },
-    {
-      "ticker": "BALL",
-      "name": "Ball Corporation",
-      "sector": "Materials",
-      "subSector": "Metal, Glass & Plastic Containers",
-      "price": 62.67,
-      "change24h": -0.41,
-      "change7d": -0.79,
-      "marketCap": 16685668352,
-      "pe": 17.96,
-      "peg": 1.06,
-      "revenue": 14326000000.0,
-      "netIncome": 947000000.0,
-      "fcf": 827000000.0,
-      "revenueGrowth": 19.7,
-      "netIncomeGrowth": 9.2,
-      "fcfGrowth": 324.12,
-      "weight": 0.022,
-      "rank": 432
+      "rank": 430
     },
     {
       "ticker": "WY",
@@ -8661,7 +8621,27 @@
       "netIncomeGrowth": 87.1,
       "fcfGrowth": -231.09,
       "weight": 0.022,
-      "rank": 433
+      "rank": 431
+    },
+    {
+      "ticker": "BALL",
+      "name": "Ball Corporation",
+      "sector": "Materials",
+      "subSector": "Metal, Glass & Plastic Containers",
+      "price": 62.67,
+      "change24h": -0.41,
+      "change7d": -0.79,
+      "marketCap": 16588958720,
+      "pe": 17.96,
+      "peg": 1.06,
+      "revenue": 14326000000.0,
+      "netIncome": 947000000.0,
+      "fcf": 827000000.0,
+      "revenueGrowth": 19.7,
+      "netIncomeGrowth": 9.2,
+      "fcfGrowth": 324.12,
+      "weight": 0.022,
+      "rank": 432
     },
     {
       "ticker": "IEX",
@@ -8681,7 +8661,7 @@
       "netIncomeGrowth": 10.9,
       "fcfGrowth": 6.38,
       "weight": 0.022,
-      "rank": 434
+      "rank": 433
     },
     {
       "ticker": "NWSA",
@@ -8701,7 +8681,7 @@
       "netIncomeGrowth": -74.9,
       "fcfGrowth": 42.03,
       "weight": 0.022,
-      "rank": 435
+      "rank": 434
     },
     {
       "ticker": "KIM",
@@ -8721,7 +8701,7 @@
       "netIncomeGrowth": -5.8,
       "fcfGrowth": 17.25,
       "weight": 0.021,
-      "rank": 436
+      "rank": 435
     },
     {
       "ticker": "SOLV",
@@ -8741,7 +8721,7 @@
       "netIncomeGrowth": 3.9,
       "fcfGrowth": -114.66,
       "weight": 0.021,
-      "rank": 437
+      "rank": 436
     },
     {
       "ticker": "HST",
@@ -8761,27 +8741,7 @@
       "netIncomeGrowth": 8.4,
       "fcfGrowth": 7.05,
       "weight": 0.021,
-      "rank": 438
-    },
-    {
-      "ticker": "MAA",
-      "name": "Mid-America Apartment Communities",
-      "sector": "Real Estate",
-      "subSector": "Multi-Family Residential REITs",
-      "price": 128.32,
-      "change24h": -0.19,
-      "change7d": -0.36,
-      "marketCap": 15311994880,
-      "pe": 37.41,
-      "peg": 7.03,
-      "revenue": 2218781000.0,
-      "netIncome": 399290000.0,
-      "fcf": 644606000.0,
-      "revenueGrowth": 1.0,
-      "netIncomeGrowth": 13.7,
-      "fcfGrowth": -16.92,
-      "weight": 0.021,
-      "rank": 439
+      "rank": 437
     },
     {
       "ticker": "PTC",
@@ -8801,7 +8761,27 @@
       "netIncomeGrowth": -12.0,
       "fcfGrowth": 27.17,
       "weight": 0.021,
-      "rank": 440
+      "rank": 438
+    },
+    {
+      "ticker": "MAA",
+      "name": "Mid-America Apartment Communities",
+      "sector": "Real Estate",
+      "subSector": "Multi-Family Residential REITs",
+      "price": 128.32,
+      "change24h": -0.19,
+      "change7d": -0.36,
+      "marketCap": 15265434624,
+      "pe": 37.41,
+      "peg": 7.03,
+      "revenue": 2218781000.0,
+      "netIncome": 399290000.0,
+      "fcf": 644606000.0,
+      "revenueGrowth": 1.0,
+      "netIncomeGrowth": 13.7,
+      "fcfGrowth": -16.92,
+      "weight": 0.02,
+      "rank": 439
     },
     {
       "ticker": "AKAM",
@@ -8821,7 +8801,7 @@
       "netIncomeGrowth": -26.8,
       "fcfGrowth": -24.47,
       "weight": 0.02,
-      "rank": 441
+      "rank": 440
     },
     {
       "ticker": "APA",
@@ -8841,7 +8821,7 @@
       "netIncomeGrowth": 26.3,
       "fcfGrowth": 196.47,
       "weight": 0.02,
-      "rank": 442
+      "rank": 441
     },
     {
       "ticker": "TYL",
@@ -8861,7 +8841,7 @@
       "netIncomeGrowth": 15.5,
       "fcfGrowth": 22.81,
       "weight": 0.02,
-      "rank": 443
+      "rank": 442
     },
     {
       "ticker": "ALB",
@@ -8881,7 +8861,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 235.23,
       "weight": 0.02,
-      "rank": 444
+      "rank": 443
     },
     {
       "ticker": "SWK",
@@ -8901,7 +8881,7 @@
       "netIncomeGrowth": 247.8,
       "fcfGrowth": 71.2,
       "weight": 0.02,
-      "rank": 445
+      "rank": 444
     },
     {
       "ticker": "DOC",
@@ -8921,7 +8901,7 @@
       "netIncomeGrowth": 68.2,
       "fcfGrowth": 15.0,
       "weight": 0.02,
-      "rank": 446
+      "rank": 445
     },
     {
       "ticker": "EG",
@@ -8941,7 +8921,7 @@
       "netIncomeGrowth": -11.5,
       "fcfGrowth": -59.65,
       "weight": 0.02,
-      "rank": 447
+      "rank": 446
     },
     {
       "ticker": "IVZ",
@@ -8961,7 +8941,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 71.35,
       "weight": 0.02,
-      "rank": 448
+      "rank": 447
     },
     {
       "ticker": "RVTY",
@@ -8980,8 +8960,8 @@
       "revenueGrowth": 1.3,
       "netIncomeGrowth": 1.2,
       "fcfGrowth": -9.04,
-      "weight": 0.019,
-      "rank": 449
+      "weight": 0.02,
+      "rank": 448
     },
     {
       "ticker": "MAS",
@@ -9001,7 +8981,7 @@
       "netIncomeGrowth": 24.5,
       "fcfGrowth": 24.15,
       "weight": 0.019,
-      "rank": 450
+      "rank": 449
     },
     {
       "ticker": "AIZ",
@@ -9021,7 +9001,7 @@
       "netIncomeGrowth": 30.5,
       "fcfGrowth": 48.97,
       "weight": 0.019,
-      "rank": 451
+      "rank": 450
     },
     {
       "ticker": "REG",
@@ -9041,7 +9021,7 @@
       "netIncomeGrowth": 8.9,
       "fcfGrowth": 4.74,
       "weight": 0.019,
-      "rank": 452
+      "rank": 451
     },
     {
       "ticker": "MKC",
@@ -9060,6 +9040,26 @@
       "revenueGrowth": 16.7,
       "netIncomeGrowth": -14.2,
       "fcfGrowth": 57.64,
+      "weight": 0.019,
+      "rank": 452
+    },
+    {
+      "ticker": "CRL",
+      "name": "Charles River Laboratories",
+      "sector": "Health Care",
+      "subSector": "Life Sciences Tools & Services",
+      "price": 288.5,
+      "change24h": -1.65,
+      "change7d": -2.67,
+      "marketCap": 13896389632,
+      "pe": 22.74,
+      "peg": 0.12,
+      "revenue": 3998987000.0,
+      "netIncome": -238458000.0,
+      "fcf": 370605000.0,
+      "revenueGrowth": -2.7,
+      "netIncomeGrowth": null,
+      "fcfGrowth": -26.12,
       "weight": 0.019,
       "rank": 453
     },
@@ -9084,26 +9084,6 @@
       "rank": 454
     },
     {
-      "ticker": "CRL",
-      "name": "Charles River Laboratories",
-      "sector": "Health Care",
-      "subSector": "Life Sciences Tools & Services",
-      "price": 288.5,
-      "change24h": -1.65,
-      "change7d": -2.67,
-      "marketCap": 13772664832,
-      "pe": 22.74,
-      "peg": 0.12,
-      "revenue": 3998987000.0,
-      "netIncome": -238458000.0,
-      "fcf": 370605000.0,
-      "revenueGrowth": -2.7,
-      "netIncomeGrowth": null,
-      "fcfGrowth": -26.12,
-      "weight": 0.018,
-      "rank": 455
-    },
-    {
       "ticker": "TXT",
       "name": "Textron",
       "sector": "Industrials",
@@ -9111,7 +9091,7 @@
       "price": 79.07,
       "change24h": -0.38,
       "change7d": -3.98,
-      "marketCap": 13749401600,
+      "marketCap": 13599004672,
       "pe": 14.89,
       "peg": 0.92,
       "revenue": 15299000000.0,
@@ -9121,7 +9101,7 @@
       "netIncomeGrowth": 5.2,
       "fcfGrowth": 16.77,
       "weight": 0.018,
-      "rank": 456
+      "rank": 455
     },
     {
       "ticker": "COO",
@@ -9141,7 +9121,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 97.67,
       "weight": 0.018,
-      "rank": 457
+      "rank": 456
     },
     {
       "ticker": "LII",
@@ -9161,27 +9141,7 @@
       "netIncomeGrowth": 0.1,
       "fcfGrowth": -5.55,
       "weight": 0.018,
-      "rank": 458
-    },
-    {
-      "ticker": "UDR",
-      "name": "UDR, Inc.",
-      "sector": "Real Estate",
-      "subSector": "Multi-Family Residential REITs",
-      "price": 36.38,
-      "change24h": 0.03,
-      "change7d": -1.89,
-      "marketCap": 13479359488,
-      "pe": 23.03,
-      "peg": 8.17,
-      "revenue": 1716218000.0,
-      "netIncome": 517310000.0,
-      "fcf": 629417000.0,
-      "revenueGrowth": -0.1,
-      "netIncomeGrowth": 90.9,
-      "fcfGrowth": 4.01,
-      "weight": 0.018,
-      "rank": 459
+      "rank": 457
     },
     {
       "ticker": "SJM",
@@ -9201,7 +9161,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 41.59,
       "weight": 0.018,
-      "rank": 460
+      "rank": 458
     },
     {
       "ticker": "GL",
@@ -9221,27 +9181,27 @@
       "netIncomeGrowth": 19.7,
       "fcfGrowth": -7.63,
       "weight": 0.018,
-      "rank": 461
+      "rank": 459
     },
     {
-      "ticker": "AVY",
-      "name": "Avery Dennison",
-      "sector": "Materials",
-      "subSector": "Paper & Plastic Packaging Products & Materials",
-      "price": 175.06,
-      "change24h": 1.17,
-      "change7d": -1.27,
-      "marketCap": 13390406656,
-      "pe": 19.15,
-      "peg": 1.92,
-      "revenue": 9248100000.0,
-      "netIncome": 704900000.0,
-      "fcf": 1033000000.0,
-      "revenueGrowth": 10.9,
-      "netIncomeGrowth": 10.8,
-      "fcfGrowth": 47.78,
+      "ticker": "UDR",
+      "name": "UDR, Inc.",
+      "sector": "Real Estate",
+      "subSector": "Multi-Family Residential REITs",
+      "price": 36.38,
+      "change24h": 0.03,
+      "change7d": -1.89,
+      "marketCap": 13364710400,
+      "pe": 23.03,
+      "peg": 8.17,
+      "revenue": 1716218000.0,
+      "netIncome": 517310000.0,
+      "fcf": 629417000.0,
+      "revenueGrowth": -0.1,
+      "netIncomeGrowth": 90.9,
+      "fcfGrowth": 4.01,
       "weight": 0.018,
-      "rank": 462
+      "rank": 460
     },
     {
       "ticker": "ALLE",
@@ -9261,7 +9221,7 @@
       "netIncomeGrowth": 16.2,
       "fcfGrowth": 15.13,
       "weight": 0.018,
-      "rank": 463
+      "rank": 461
     },
     {
       "ticker": "BAX",
@@ -9281,7 +9241,27 @@
       "netIncomeGrowth": 36.8,
       "fcfGrowth": 45.26,
       "weight": 0.018,
-      "rank": 464
+      "rank": 462
+    },
+    {
+      "ticker": "AVY",
+      "name": "Avery Dennison",
+      "sector": "Materials",
+      "subSector": "Paper & Plastic Packaging Products & Materials",
+      "price": 175.06,
+      "change24h": 1.17,
+      "change7d": -1.27,
+      "marketCap": 13267472384,
+      "pe": 19.15,
+      "peg": 1.92,
+      "revenue": 9248100000.0,
+      "netIncome": 704900000.0,
+      "fcf": 1033000000.0,
+      "revenueGrowth": 10.9,
+      "netIncomeGrowth": 10.8,
+      "fcfGrowth": 47.78,
+      "weight": 0.018,
+      "rank": 463
     },
     {
       "ticker": "ERIE",
@@ -9301,7 +9281,7 @@
       "netIncomeGrowth": 3.2,
       "fcfGrowth": 13.71,
       "weight": 0.018,
-      "rank": 465
+      "rank": 464
     },
     {
       "ticker": "HAS",
@@ -9321,7 +9301,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 67.16,
       "weight": 0.018,
-      "rank": 466
+      "rank": 465
     },
     {
       "ticker": "GDDY",
@@ -9341,7 +9321,7 @@
       "netIncomeGrowth": 29.8,
       "fcfGrowth": 35.03,
       "weight": 0.017,
-      "rank": 467
+      "rank": 466
     },
     {
       "ticker": "CSGP",
@@ -9361,7 +9341,7 @@
       "netIncomeGrowth": 1261.0,
       "fcfGrowth": 192.65,
       "weight": 0.017,
-      "rank": 468
+      "rank": 467
     },
     {
       "ticker": "BF.B",
@@ -9381,7 +9361,7 @@
       "netIncomeGrowth": -62.7,
       "fcfGrowth": 107.19,
       "weight": 0.016,
-      "rank": 469
+      "rank": 468
     },
     {
       "ticker": "BXP",
@@ -9401,6 +9381,26 @@
       "netIncomeGrowth": -23.2,
       "fcfGrowth": 4.05,
       "weight": 0.016,
+      "rank": 469
+    },
+    {
+      "ticker": "CPT",
+      "name": "Camden Property Trust",
+      "sector": "Real Estate",
+      "subSector": "Multi-Family Residential REITs",
+      "price": 105.69,
+      "change24h": 0.09,
+      "change7d": -0.09,
+      "marketCap": 12231776256,
+      "pe": 34.88,
+      "peg": 9.17,
+      "revenue": 1571752000.0,
+      "netIncome": 387247000.0,
+      "fcf": 370482000.0,
+      "revenueGrowth": -0.8,
+      "netIncomeGrowth": -75.7,
+      "fcfGrowth": -2.8,
+      "weight": 0.016,
       "rank": 470
     },
     {
@@ -9411,9 +9411,9 @@
       "price": 10.86,
       "change24h": -1.63,
       "change7d": 0.56,
-      "marketCap": 12154219520,
+      "marketCap": 12184330240,
       "pe": 362.0,
-      "peg": 0.79,
+      "peg": 0.78,
       "revenue": 28301000000.0,
       "netIncome": 418000000.0,
       "fcf": 591000000.0,
@@ -9464,26 +9464,6 @@
       "rank": 473
     },
     {
-      "ticker": "DVA",
-      "name": "DaVita",
-      "sector": "Health Care",
-      "subSector": "Health Care Services",
-      "price": 183.99,
-      "change24h": 1.28,
-      "change7d": 2.86,
-      "marketCap": 11809398784,
-      "pe": 15.61,
-      "peg": 0.45,
-      "revenue": 14009646000.0,
-      "netIncome": 847476000.0,
-      "fcf": 1609804000.0,
-      "revenueGrowth": 5.2,
-      "netIncomeGrowth": 55.8,
-      "fcfGrowth": 9.76,
-      "weight": 0.016,
-      "rank": 474
-    },
-    {
       "ticker": "IT",
       "name": "Gartner",
       "sector": "Information Technology",
@@ -9500,6 +9480,26 @@
       "revenueGrowth": -0.6,
       "netIncomeGrowth": 33.1,
       "fcfGrowth": -6.81,
+      "weight": 0.016,
+      "rank": 474
+    },
+    {
+      "ticker": "DVA",
+      "name": "DaVita",
+      "sector": "Health Care",
+      "subSector": "Health Care Services",
+      "price": 183.99,
+      "change24h": 1.28,
+      "change7d": 2.86,
+      "marketCap": 11738562560,
+      "pe": 15.61,
+      "peg": 0.45,
+      "revenue": 14009646000.0,
+      "netIncome": 847476000.0,
+      "fcf": 1609804000.0,
+      "revenueGrowth": 5.2,
+      "netIncomeGrowth": 55.8,
+      "fcfGrowth": 9.76,
       "weight": 0.016,
       "rank": 475
     },
@@ -9671,7 +9671,7 @@
       "price": 74.02,
       "change24h": 3.52,
       "change7d": 9.89,
-      "marketCap": 11133048832,
+      "marketCap": 11137994752,
       "pe": 38.35,
       "peg": 10.48,
       "revenue": 4014100000.0,
@@ -9691,7 +9691,7 @@
       "price": 187.35,
       "change24h": 2.37,
       "change7d": -5.04,
-      "marketCap": 11054706688,
+      "marketCap": 11054841856,
       "pe": 43.07,
       "peg": 0.57,
       "revenue": 4438732000.0,
@@ -9724,26 +9724,6 @@
       "rank": 486
     },
     {
-      "ticker": "CPT",
-      "name": "Camden Property Trust",
-      "sector": "Real Estate",
-      "subSector": "Multi-Family Residential REITs",
-      "price": 105.69,
-      "change24h": 0.09,
-      "change7d": -0.09,
-      "marketCap": 10626003968,
-      "pe": 34.88,
-      "peg": 9.17,
-      "revenue": 1571752000.0,
-      "netIncome": 387247000.0,
-      "fcf": 370482000.0,
-      "revenueGrowth": -0.8,
-      "netIncomeGrowth": -75.7,
-      "fcfGrowth": -2.8,
-      "weight": 0.014,
-      "rank": 487
-    },
-    {
       "ticker": "AES",
       "name": "AES Corporation",
       "sector": "Utilities",
@@ -9751,7 +9731,7 @@
       "price": 14.79,
       "change24h": 0.07,
       "change7d": 0.27,
-      "marketCap": 10547602432,
+      "marketCap": 10551757824,
       "pe": 5.54,
       "peg": 0.81,
       "revenue": 13054000000.0,
@@ -9761,7 +9741,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": 62.93,
       "weight": 0.014,
-      "rank": 488
+      "rank": 487
     },
     {
       "ticker": "MGM",
@@ -9771,7 +9751,7 @@
       "price": 41.22,
       "change24h": 0.22,
       "change7d": -4.07,
-      "marketCap": 10370653184,
+      "marketCap": 10546188288,
       "pe": 24.98,
       "peg": 0.51,
       "revenue": 17761442000.0,
@@ -9781,27 +9761,27 @@
       "netIncomeGrowth": 519.4,
       "fcfGrowth": 23.32,
       "weight": 0.014,
-      "rank": 489
+      "rank": 488
     },
     {
-      "ticker": "HSIC",
-      "name": "Henry Schein",
-      "sector": "Health Care",
-      "subSector": "Health Care Distributors",
-      "price": 89.81,
-      "change24h": -1.16,
-      "change7d": -0.52,
-      "marketCap": 10230863872,
-      "pe": 26.18,
-      "peg": 1.79,
-      "revenue": 13602000000.0,
-      "netIncome": 403000000.0,
-      "fcf": 513000000.0,
-      "revenueGrowth": 6.7,
-      "netIncomeGrowth": 17.1,
-      "fcfGrowth": -22.39,
+      "ticker": "FRT",
+      "name": "Federal Realty Investment Trust",
+      "sector": "Real Estate",
+      "subSector": "Retail REITs",
+      "price": 117.09,
+      "change24h": -0.06,
+      "change7d": 0.15,
+      "marketCap": 10235812864,
+      "pe": 23.65,
+      "peg": 3.59,
+      "revenue": 1335088000.0,
+      "netIncome": 426273000.0,
+      "fcf": 329221000.0,
+      "revenueGrowth": 7.2,
+      "netIncomeGrowth": -45.6,
+      "fcfGrowth": 0.43,
       "weight": 0.014,
-      "rank": 490
+      "rank": 489
     },
     {
       "ticker": "PODD",
@@ -9821,47 +9801,27 @@
       "netIncomeGrowth": 328.6,
       "fcfGrowth": -10.33,
       "weight": 0.014,
+      "rank": 490
+    },
+    {
+      "ticker": "HSIC",
+      "name": "Henry Schein",
+      "sector": "Health Care",
+      "subSector": "Health Care Distributors",
+      "price": 89.81,
+      "change24h": -1.16,
+      "change7d": -0.52,
+      "marketCap": 10009014272,
+      "pe": 26.18,
+      "peg": 1.79,
+      "revenue": 13602000000.0,
+      "netIncome": 403000000.0,
+      "fcf": 513000000.0,
+      "revenueGrowth": 6.7,
+      "netIncomeGrowth": 17.1,
+      "fcfGrowth": -22.39,
+      "weight": 0.013,
       "rank": 491
-    },
-    {
-      "ticker": "FRT",
-      "name": "Federal Realty Investment Trust",
-      "sector": "Real Estate",
-      "subSector": "Retail REITs",
-      "price": 117.09,
-      "change24h": -0.06,
-      "change7d": 0.15,
-      "marketCap": 10177274880,
-      "pe": 23.65,
-      "peg": 3.59,
-      "revenue": 1335088000.0,
-      "netIncome": 426273000.0,
-      "fcf": 329221000.0,
-      "revenueGrowth": 7.2,
-      "netIncomeGrowth": -45.6,
-      "fcfGrowth": 0.43,
-      "weight": 0.014,
-      "rank": 492
-    },
-    {
-      "ticker": "APTV",
-      "name": "Aptiv",
-      "sector": "Consumer Discretionary",
-      "subSector": "Automotive Parts & Equipment",
-      "price": 47.95,
-      "change24h": 3.05,
-      "change7d": 5.52,
-      "marketCap": 10147204096,
-      "pe": 21.7,
-      "peg": 0.95,
-      "revenue": 18725000000.0,
-      "netIncome": 220000000.0,
-      "fcf": 684000000.0,
-      "revenueGrowth": 2.3,
-      "netIncomeGrowth": -35.3,
-      "fcfGrowth": -57.67,
-      "weight": 0.014,
-      "rank": 493
     },
     {
       "ticker": "UHS",
@@ -9881,7 +9841,27 @@
       "netIncomeGrowth": 10.1,
       "fcfGrowth": -27.82,
       "weight": 0.013,
-      "rank": 494
+      "rank": 492
+    },
+    {
+      "ticker": "APTV",
+      "name": "Aptiv",
+      "sector": "Consumer Discretionary",
+      "subSector": "Automotive Parts & Equipment",
+      "price": 47.95,
+      "change24h": 3.05,
+      "change7d": 5.52,
+      "marketCap": 9956018176,
+      "pe": 21.7,
+      "peg": 0.95,
+      "revenue": 18725000000.0,
+      "netIncome": 220000000.0,
+      "fcf": 684000000.0,
+      "revenueGrowth": 2.3,
+      "netIncomeGrowth": -35.3,
+      "fcfGrowth": -57.67,
+      "weight": 0.013,
+      "rank": 493
     },
     {
       "ticker": "PNR",
@@ -9891,7 +9871,7 @@
       "price": 60.21,
       "change24h": 0.32,
       "change7d": -3.04,
-      "marketCap": 9730269184,
+      "marketCap": 9609516032,
       "pe": 15.52,
       "peg": 0.96,
       "revenue": 4011800000.0,
@@ -9901,7 +9881,7 @@
       "netIncomeGrowth": -11.1,
       "fcfGrowth": -2.79,
       "weight": 0.013,
-      "rank": 495
+      "rank": 494
     },
     {
       "ticker": "WYNN",
@@ -9921,7 +9901,7 @@
       "netIncomeGrowth": 106.1,
       "fcfGrowth": -21.1,
       "weight": 0.013,
-      "rank": 496
+      "rank": 495
     },
     {
       "ticker": "ARE",
@@ -9941,7 +9921,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -14.96,
       "weight": 0.012,
-      "rank": 497
+      "rank": 496
     },
     {
       "ticker": "AOS",
@@ -9961,7 +9941,7 @@
       "netIncomeGrowth": -15.0,
       "fcfGrowth": 34.95,
       "weight": 0.011,
-      "rank": 498
+      "rank": 497
     },
     {
       "ticker": "MOS",
@@ -9981,7 +9961,7 @@
       "netIncomeGrowth": null,
       "fcfGrowth": -2098.1,
       "weight": 0.011,
-      "rank": 499
+      "rank": 498
     },
     {
       "ticker": "TAP",
@@ -10001,7 +9981,7 @@
       "netIncomeGrowth": -42.3,
       "fcfGrowth": 7.26,
       "weight": 0.01,
-      "rank": 500
+      "rank": 499
     },
     {
       "ticker": "NCLH",
@@ -10021,7 +10001,7 @@
       "netIncomeGrowth": 616.3,
       "fcfGrowth": -241.31,
       "weight": 0.01,
-      "rank": 501
+      "rank": 500
     },
     {
       "ticker": "BLDR",
@@ -10040,8 +10020,8 @@
       "revenueGrowth": -8.8,
       "netIncomeGrowth": null,
       "fcfGrowth": -57.15,
-      "weight": 0.009,
-      "rank": 502
+      "weight": 0.01,
+      "rank": 501
     },
     {
       "ticker": "TTD",
@@ -10061,6 +10041,26 @@
       "netIncomeGrowth": -23.6,
       "fcfGrowth": 34.19,
       "weight": 0.009,
+      "rank": 502
+    },
+    {
+      "ticker": "AZO",
+      "name": "AutoZone",
+      "sector": "Consumer Discretionary",
+      "subSector": "Automotive Retail",
+      "price": 2983.29,
+      "change24h": 0.51,
+      "change7d": 1.74,
+      "marketCap": null,
+      "pe": 20.53,
+      "peg": 1.35,
+      "revenue": 19986404000.0,
+      "netIncome": 2478124000.0,
+      "fcf": 1633222000.0,
+      "revenueGrowth": 8.4,
+      "netIncomeGrowth": 7.7,
+      "fcfGrowth": -15.44,
+      "weight": 0.0,
       "rank": 503
     }
   ]

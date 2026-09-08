@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-07 02:26:03 UTC",
-  "totalMarketCap": 33860626808832,
+  "lastUpdated": "2026-09-08 02:38:40 UTC",
+  "totalMarketCap": 33866277113856,
   "companiesCount": 48,
   "data": [
     {
@@ -20,7 +20,7 @@
       "name": "Nvidia",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 16.428,
+      "weight": 16.425,
       "rank": 1
     },
     {
@@ -40,7 +40,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "subSector": "Computer Hardware",
-      "weight": 13.791,
+      "weight": 13.789,
       "rank": 2
     },
     {
@@ -60,7 +60,7 @@
       "name": "Alphabet Inc. (Class A)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 12.225,
+      "weight": 12.223,
       "rank": 3
     },
     {
@@ -80,7 +80,7 @@
       "name": "Alphabet Inc. (Class C)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 12.111,
+      "weight": 12.109,
       "rank": 4
     },
     {
@@ -100,7 +100,7 @@
       "name": "Microsoft",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 10.958,
+      "weight": 10.956,
       "rank": 5
     },
     {
@@ -120,7 +120,7 @@
       "name": "Broadcom",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 5.029,
+      "weight": 5.028,
       "rank": 6
     },
     {
@@ -140,7 +140,7 @@
       "name": "Meta Platforms",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 4.64,
+      "weight": 4.639,
       "rank": 7
     },
     {
@@ -160,7 +160,7 @@
       "name": "Micron Technology",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 3.391,
+      "weight": 3.39,
       "rank": 8
     },
     {
@@ -220,7 +220,7 @@
       "name": "Intel",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 1.496,
+      "weight": 1.495,
       "rank": 11
     },
     {
@@ -427,7 +427,7 @@
       "price": 849.28,
       "change24h": 6.34,
       "change7d": 0.25,
-      "marketCap": 192786563072,
+      "marketCap": 192484655104,
       "pe": 60.97,
       "peg": 0.49,
       "revenue": 12195000000.0,
@@ -440,14 +440,14 @@
       "name": "Seagate Technology",
       "sector": "Technology",
       "subSector": "Electronic Components",
-      "weight": 0.569,
+      "weight": 0.568,
       "rank": 22
     },
     {
       "price": 145.09,
       "change24h": -0.54,
       "change7d": -5.99,
-      "marketCap": 186679164928,
+      "marketCap": 188276703232,
       "pe": 98.03,
       "peg": 2.61,
       "revenue": 13269000000.0,
@@ -460,7 +460,7 @@
       "name": "Shopify",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.551,
+      "weight": 0.556,
       "rank": 23
     },
     {
@@ -567,7 +567,7 @@
       "price": 320.56,
       "change24h": 2.23,
       "change7d": 2.54,
-      "marketCap": 107275575296,
+      "marketCap": 107688771584,
       "pe": 24.64,
       "peg": 0.69,
       "revenue": 6829124000.0,
@@ -580,7 +580,7 @@
       "name": "AppLovin",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 0.317,
+      "weight": 0.318,
       "rank": 29
     },
     {
@@ -647,7 +647,7 @@
       "price": 292.7,
       "change24h": -4.0,
       "change7d": -15.78,
-      "marketCap": 80731348992,
+      "marketCap": 80607535104,
       "pe": 58.19,
       "peg": 2.21,
       "revenue": 5837623000.0,
@@ -724,6 +724,26 @@
       "rank": 36
     },
     {
+      "price": 226.39,
+      "change24h": 7.48,
+      "change7d": 3.62,
+      "marketCap": 61545304064,
+      "pe": -75.53,
+      "peg": 0.54,
+      "revenue": 873500000.0,
+      "netIncome": 817300000.0,
+      "fcf": -3154700000.0,
+      "revenueGrowth": 454.0,
+      "netIncomeGrowth": null,
+      "fcfGrowth": -461.43,
+      "ticker": "NBIS",
+      "name": "Nebius Group",
+      "sector": "Technology",
+      "subSector": "Computer Services",
+      "weight": 0.182,
+      "rank": 37
+    },
+    {
       "price": 1223.86,
       "change24h": 0.84,
       "change7d": -6.65,
@@ -741,26 +761,6 @@
       "sector": "Technology",
       "subSector": "Semiconductors",
       "weight": 0.178,
-      "rank": 37
-    },
-    {
-      "price": 226.39,
-      "change24h": 7.48,
-      "change7d": 3.62,
-      "marketCap": 57480011776,
-      "pe": -75.53,
-      "peg": 0.54,
-      "revenue": 873500000.0,
-      "netIncome": 817300000.0,
-      "fcf": -3154700000.0,
-      "revenueGrowth": 454.0,
-      "netIncomeGrowth": null,
-      "fcfGrowth": -461.43,
-      "ticker": "NBIS",
-      "name": "Nebius Group",
-      "sector": "Technology",
-      "subSector": "Computer Services",
-      "weight": 0.17,
       "rank": 38
     },
     {

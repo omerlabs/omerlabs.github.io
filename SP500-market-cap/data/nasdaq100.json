@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-07 02:26:03 UTC",
-  "totalMarketCap": 45927081801728,
+  "lastUpdated": "2026-09-08 02:38:40 UTC",
+  "totalMarketCap": 45929794060288,
   "companiesCount": 102,
   "data": [
     {
@@ -20,7 +20,7 @@
       "name": "Nvidia",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 12.112,
+      "weight": 12.111,
       "rank": 1
     },
     {
@@ -40,7 +40,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "subSector": "Computer Hardware",
-      "weight": 10.168,
+      "weight": 10.167,
       "rank": 2
     },
     {
@@ -60,7 +60,7 @@
       "name": "Alphabet Inc. (Class A)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 9.013,
+      "weight": 9.012,
       "rank": 3
     },
     {
@@ -80,7 +80,7 @@
       "name": "Alphabet Inc. (Class C)",
       "sector": "Technology",
       "subSector": "Software",
-      "weight": 8.929,
+      "weight": 8.928,
       "rank": 4
     },
     {
@@ -131,8 +131,8 @@
       "price": 147.95,
       "change24h": -1.2,
       "change7d": 5.03,
-      "marketCap": 1949120987136,
-      "pe": 92.19,
+      "marketCap": 1950244274176,
+      "pe": 97.49,
       "peg": null,
       "revenue": 20646000000.0,
       "netIncome": -6459000000.0,
@@ -140,7 +140,7 @@
       "revenueGrowth": 91.9,
       "netIncomeGrowth": null,
       "fcfGrowth": -503.71,
-      "weight": 4.244,
+      "weight": 4.246,
       "rank": 7
     },
     {
@@ -227,7 +227,7 @@
       "price": 107.14,
       "change24h": -1.18,
       "change7d": 4.39,
-      "marketCap": 850021580800,
+      "marketCap": 852628602880,
       "pe": 38.82,
       "peg": 4.09,
       "revenue": 725305000000.0,
@@ -240,7 +240,7 @@
       "name": "Walmart",
       "sector": "Consumer Discretionary",
       "subSector": "Department/Specialty Retail Stores",
-      "weight": 1.851,
+      "weight": 1.856,
       "rank": 12
     },
     {
@@ -260,7 +260,7 @@
       "name": "Advanced Micro Devices",
       "sector": "Technology",
       "subSector": "Semiconductors",
-      "weight": 1.698,
+      "weight": 1.697,
       "rank": 13
     },
     {
@@ -627,7 +627,7 @@
       "price": 849.28,
       "change24h": 6.34,
       "change7d": 0.25,
-      "marketCap": 192786563072,
+      "marketCap": 192484655104,
       "pe": 60.97,
       "peg": 0.49,
       "revenue": 12195000000.0,
@@ -640,8 +640,28 @@
       "name": "Seagate Technology",
       "sector": "Technology",
       "subSector": "Electronic Components",
-      "weight": 0.42,
+      "weight": 0.419,
       "rank": 32
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify",
+      "sector": "Technology",
+      "subSector": "Software",
+      "price": 145.09,
+      "change24h": -0.54,
+      "change7d": -5.99,
+      "marketCap": 188276703232,
+      "pe": 98.03,
+      "peg": 2.61,
+      "revenue": 13269000000.0,
+      "netIncome": 1928000000.0,
+      "fcf": 2352000000.0,
+      "revenueGrowth": 33.7,
+      "netIncomeGrowth": 68.1,
+      "fcfGrowth": 47.28,
+      "weight": 0.41,
+      "rank": 33
     },
     {
       "price": 137.63,
@@ -661,7 +681,7 @@
       "sector": "Consumer Staples",
       "subSector": "Soft Drinks",
       "weight": 0.409,
-      "rank": 33
+      "rank": 34
     },
     {
       "price": 151.0,
@@ -681,26 +701,6 @@
       "sector": "Health Care",
       "subSector": "Biotechnology",
       "weight": 0.408,
-      "rank": 34
-    },
-    {
-      "ticker": "SHOP",
-      "name": "Shopify",
-      "sector": "Technology",
-      "subSector": "Software",
-      "price": 145.09,
-      "change24h": -0.54,
-      "change7d": -5.99,
-      "marketCap": 186679164928,
-      "pe": 98.03,
-      "peg": 2.61,
-      "revenue": 13269000000.0,
-      "netIncome": 1928000000.0,
-      "fcf": 2352000000.0,
-      "revenueGrowth": 33.7,
-      "netIncomeGrowth": 68.1,
-      "fcfGrowth": 47.28,
-      "weight": 0.406,
       "rank": 35
     },
     {
@@ -767,7 +767,7 @@
       "price": 193.29,
       "change24h": -0.94,
       "change7d": -4.58,
-      "marketCap": 149776252928,
+      "marketCap": 145234329600,
       "pe": 21.45,
       "peg": 0.71,
       "revenue": 28241000000.0,
@@ -780,14 +780,14 @@
       "name": "Booking Holdings",
       "sector": "Consumer Discretionary",
       "subSector": "Transportation Services",
-      "weight": 0.326,
+      "weight": 0.316,
       "rank": 39
     },
     {
       "price": 546.12,
       "change24h": -2.12,
       "change7d": -0.26,
-      "marketCap": 138332192768,
+      "marketCap": 138420076544,
       "pe": 31.84,
       "peg": 1.67,
       "revenue": 12587200000.0,
@@ -927,7 +927,7 @@
       "price": 320.56,
       "change24h": 2.23,
       "change7d": 2.54,
-      "marketCap": 107275575296,
+      "marketCap": 107688771584,
       "pe": 24.64,
       "peg": 0.69,
       "revenue": 6829124000.0,
@@ -1147,7 +1147,7 @@
       "price": 292.7,
       "change24h": -4.0,
       "change7d": -15.78,
-      "marketCap": 80731348992,
+      "marketCap": 80607535104,
       "pe": 58.19,
       "peg": 2.21,
       "revenue": 5837623000.0,
@@ -1207,7 +1207,7 @@
       "price": 61.28,
       "change24h": -0.28,
       "change7d": -1.84,
-      "marketCap": 78662057984,
+      "marketCap": 78212161536,
       "pe": 22.45,
       "peg": 0.91,
       "revenue": 39304000000.0,
@@ -1220,7 +1220,7 @@
       "name": "Mondelez International",
       "sector": "Consumer Staples",
       "subSector": "Packaged Foods",
-      "weight": 0.171,
+      "weight": 0.17,
       "rank": 61
     },
     {
@@ -1267,7 +1267,7 @@
       "price": 230.69,
       "change24h": -0.42,
       "change7d": 0.36,
-      "marketCap": 73694642176,
+      "marketCap": 74000990208,
       "pe": 27.93,
       "peg": 2.47,
       "revenue": 23776064000.0,
@@ -1280,7 +1280,7 @@
       "name": "Ross Stores",
       "sector": "Consumer Discretionary",
       "subSector": "Clothing/Shoe/Accessory Stores",
-      "weight": 0.16,
+      "weight": 0.161,
       "rank": 64
     },
     {
@@ -1404,6 +1404,26 @@
       "rank": 70
     },
     {
+      "ticker": "NBIS",
+      "name": "Nebius Group",
+      "sector": "Technology",
+      "subSector": "Computer Services",
+      "price": 226.39,
+      "change24h": 7.48,
+      "change7d": 3.62,
+      "marketCap": 61545304064,
+      "pe": -75.53,
+      "peg": 0.54,
+      "revenue": 873500000.0,
+      "netIncome": 817300000.0,
+      "fcf": -3154700000.0,
+      "revenueGrowth": 454.0,
+      "netIncomeGrowth": null,
+      "fcfGrowth": -461.43,
+      "weight": 0.134,
+      "rank": 71
+    },
+    {
       "price": 1223.86,
       "change24h": 0.84,
       "change7d": -6.65,
@@ -1421,26 +1441,6 @@
       "sector": "Technology",
       "subSector": "Semiconductors",
       "weight": 0.131,
-      "rank": 71
-    },
-    {
-      "ticker": "NBIS",
-      "name": "Nebius Group",
-      "sector": "Technology",
-      "subSector": "Computer Services",
-      "price": 226.39,
-      "change24h": 7.48,
-      "change7d": 3.62,
-      "marketCap": 57480011776,
-      "pe": -75.53,
-      "peg": 0.54,
-      "revenue": 873500000.0,
-      "netIncome": 817300000.0,
-      "fcf": -3154700000.0,
-      "revenueGrowth": 454.0,
-      "netIncomeGrowth": null,
-      "fcfGrowth": -461.43,
-      "weight": 0.125,
       "rank": 72
     },
     {
@@ -1504,26 +1504,6 @@
       "rank": 75
     },
     {
-      "price": 199.22,
-      "change24h": -1.83,
-      "change7d": -0.65,
-      "marketCap": 56043237376,
-      "pe": 37.87,
-      "peg": 24.49,
-      "revenue": 16982000000.0,
-      "netIncome": 1464000000.0,
-      "fcf": 3682000000.0,
-      "revenueGrowth": 52.5,
-      "netIncomeGrowth": 179.5,
-      "fcfGrowth": 168.52,
-      "ticker": "FANG",
-      "name": "Diamondback Energy",
-      "sector": "Energy",
-      "subSector": "Oil & Gas Production",
-      "weight": 0.122,
-      "rank": 76
-    },
-    {
       "price": 357.03,
       "change24h": 5.49,
       "change7d": -4.0,
@@ -1541,6 +1521,26 @@
       "sector": "Technology",
       "subSector": "Semiconductors",
       "weight": 0.122,
+      "rank": 76
+    },
+    {
+      "price": 199.22,
+      "change24h": -1.83,
+      "change7d": -0.65,
+      "marketCap": 55785541632,
+      "pe": 37.87,
+      "peg": 24.49,
+      "revenue": 16982000000.0,
+      "netIncome": 1464000000.0,
+      "fcf": 3682000000.0,
+      "revenueGrowth": 52.5,
+      "netIncomeGrowth": 179.5,
+      "fcfGrowth": 168.52,
+      "ticker": "FANG",
+      "name": "Diamondback Energy",
+      "sector": "Energy",
+      "subSector": "Oil & Gas Production",
+      "weight": 0.121,
       "rank": 77
     },
     {
@@ -1604,26 +1604,6 @@
       "rank": 80
     },
     {
-      "price": 54.96,
-      "change24h": -3.03,
-      "change7d": -10.37,
-      "marketCap": 47375519744,
-      "pe": 10.39,
-      "peg": 0.91,
-      "revenue": 34128000000.0,
-      "netIncome": 4902000000.0,
-      "fcf": 6586000000.0,
-      "revenueGrowth": 4.8,
-      "netIncomeGrowth": -3.1,
-      "fcfGrowth": -2.67,
-      "ticker": "PYPL",
-      "name": "PayPal",
-      "sector": "Industrials",
-      "subSector": "Diversified Commercial Services",
-      "weight": 0.103,
-      "rank": 81
-    },
-    {
       "price": 75.72,
       "change24h": -0.81,
       "change7d": -1.87,
@@ -1641,7 +1621,7 @@
       "sector": "Utilities",
       "subSector": "Conventional Electricity",
       "weight": 0.103,
-      "rank": 82
+      "rank": 81
     },
     {
       "price": 195.79,
@@ -1661,6 +1641,26 @@
       "sector": "Technology",
       "subSector": "Software",
       "weight": 0.103,
+      "rank": 82
+    },
+    {
+      "price": 54.96,
+      "change24h": -3.03,
+      "change7d": -10.37,
+      "marketCap": 47016128512,
+      "pe": 10.39,
+      "peg": 0.91,
+      "revenue": 34128000000.0,
+      "netIncome": 4902000000.0,
+      "fcf": 6586000000.0,
+      "revenueGrowth": 4.8,
+      "netIncomeGrowth": -3.1,
+      "fcfGrowth": -2.67,
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "sector": "Industrials",
+      "subSector": "Diversified Commercial Services",
+      "weight": 0.102,
       "rank": 83
     },
     {
@@ -1671,7 +1671,7 @@
       "price": 105.76,
       "change24h": -3.11,
       "change7d": -1.45,
-      "marketCap": 46680199168,
+      "marketCap": 46655410176,
       "pe": 20.58,
       "peg": 2.8,
       "revenue": 20901000000.0,
@@ -1787,7 +1787,7 @@
       "price": 535.38,
       "change24h": 1.15,
       "change7d": -1.78,
-      "marketCap": 42232381440,
+      "marketCap": 42177835008,
       "pe": 37.6,
       "peg": 2.93,
       "revenue": 4553223000.0,
@@ -1831,7 +1831,7 @@
       "price": 58.05,
       "change24h": -0.09,
       "change7d": -1.23,
-      "marketCap": 41839665152,
+      "marketCap": 41836756992,
       "pe": 60.47,
       "peg": 8.67,
       "revenue": 9827000000.0,
@@ -1927,7 +1927,7 @@
       "price": 185.87,
       "change24h": 0.06,
       "change7d": -6.95,
-      "marketCap": 38541373440,
+      "marketCap": 38655066112,
       "pe": 35.74,
       "peg": 2.32,
       "revenue": 5602507000.0,
@@ -1987,7 +1987,7 @@
       "price": 33.72,
       "change24h": 0.42,
       "change7d": 2.93,
-      "marketCap": 32482760704,
+      "marketCap": 31218364416,
       "pe": 20.94,
       "peg": 4.05,
       "revenue": 4638867000.0,
@@ -2000,14 +2000,14 @@
       "name": "Copart",
       "sector": "Consumer Discretionary",
       "subSector": "Retail",
-      "weight": 0.071,
+      "weight": 0.068,
       "rank": 100
     },
     {
       "price": 68.86,
       "change24h": -1.23,
       "change7d": -4.99,
-      "marketCap": 31323848704,
+      "marketCap": 31103115264,
       "pe": 15.87,
       "peg": 1.72,
       "revenue": 21267000000.0,
