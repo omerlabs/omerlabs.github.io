@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIRA - Sosyal İlişki ve Refah Algoritması | Akıllı Oturma Planı</title>
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{
+  --bg-dark:#070a12;
+  --bg-card:rgba(15, 23, 42, 0.72);
+  --bg-card-hover:rgba(24, 35, 63, 0.85);
+  --border-cyan:rgba(56, 189, 248, 0.16);
+  --border-cyan-glow:rgba(56, 189, 248, 0.45);
+  --cyan-bright:#38bdf8;
+  --cyan-soft:#7dd3fc;
+  --indigo-glow:#6366f1;
+  --emerald-glow:#10b981;
+  --text-main:#f1f5f9;
+  --text-muted:#94a3b8;
+  --text-dim:#64748b;
+  --radius-lg:20px;
+  --radius-md:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background-color:var(--bg-dark);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.16) 0%, transparent 55%),
+    radial-gradient(circle at 90% 25%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+  background-attachment:fixed;
+  color:var(--text-main);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* NAVBAR */
+.nav-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(7, 10, 18, 0.8);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(186, 230, 253, 0.1);
+  padding:14px 24px;
+}
+.nav-container{
+  max-width:1140px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nav-left{display:flex;align-items:center;gap:16px}
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--cyan-soft);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(16, 24, 42, 0.7);
+  border:1px solid var(--border-cyan);
+  transition:all 0.25s;
+}
+.back-btn:hover{
+  background:rgba(56, 189, 248, 0.15);
+  border-color:var(--cyan-bright);
+  color:#fff;
+  transform:translateX(-2px);
+}
+.nav-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:0.04em;
+}
+.nav-brand img{width:32px;height:32px;border-radius:8px;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-link{
+  color:var(--text-muted);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  transition:color 0.2s;
+}
+.nav-link:hover{color:var(--cyan-bright)}
+.nav-cta{
+  background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid rgba(56, 189, 248, 0.4);
+  box-shadow:0 0 16px rgba(14, 165, 233, 0.35);
+  transition:all 0.25s;
+}
+.nav-cta:hover{
+  background:linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  box-shadow:0 0 24px rgba(56, 189, 248, 0.6);
+  transform:translateY(-1px);
+}
+
+/* CONTAINER */
+.container{
+  max-width:1140px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* HERO SECTION */
+.hero{
+  padding:70px 0 50px;
+  text-align:center;
+  position:relative;
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 18px;
+  border-radius:999px;
+  background:rgba(56, 189, 248, 0.1);
+  border:1px solid rgba(56, 189, 248, 0.3);
+  color:var(--cyan-bright);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+  box-shadow:0 0 20px rgba(56, 189, 248, 0.15);
+}
+.hero-badge-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--emerald-glow);
+  box-shadow:0 0 8px var(--emerald-glow);
+}
+.hero-logo-wrap{
+  margin-bottom:20px;
+}
+.hero-logo{
+  width:96px;
+  height:96px;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(56, 189, 248, 0.3), 0 0 20px rgba(99, 102, 241, 0.3);
+  border:2px solid rgba(186, 230, 253, 0.3);
+  background:#0f172a;
+}
+.hero h1{
+  font-size:52px;
+  font-weight:800;
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  margin-bottom:14px;
+  background:linear-gradient(135deg, #ffffff 0%, #bae6fd 40%, #38bdf8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 6px 30px rgba(56, 189, 248, 0.25);
+}
+.hero-sub{
+  font-size:22px;
+  color:var(--cyan-soft);
+  font-weight:500;
+  margin-bottom:16px;
+}
+.hero-desc{
+  max-width:760px;
+  margin:0 auto 36px;
+  font-size:17px;
+  color:var(--text-muted);
+  line-height:1.7;
+}
+
+/* HERO CTA GROUP */
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:48px;
+}
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color:#fff;
+  padding:16px 34px;
+  border-radius:16px;
+  font-size:17px;
+  font-weight:700;
+  text-decoration:none;
+  border:1px solid rgba(186, 230, 253, 0.35);
+  box-shadow:0 10px 30px -5px rgba(2, 132, 199, 0.5), 0 0 25px rgba(56, 189, 248, 0.4);
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px -5px rgba(2, 132, 199, 0.7), 0 0 35px rgba(56, 189, 248, 0.6);
+}
+.btn-primary .btn-meta{
+  font-size:12px;
+  font-weight:400;
+  opacity:0.85;
+  display:block;
+  margin-top:2px;
+}
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(16, 24, 42, 0.7);
+  color:#e2e8f0;
+  padding:16px 28px;
+  border-radius:16px;
+  font-size:16px;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid var(--border-cyan);
+  backdrop-filter:blur(12px);
+  transition:all 0.25s;
+}
+.btn-secondary:hover{
+  background:rgba(30, 41, 69, 0.85);
+  border-color:var(--cyan-bright);
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* STATS ROW */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:18px;
+  margin-bottom:60px;
+}
+.stat-card{
+  background:var(--bg-card);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border-cyan);
+  border-radius:var(--radius-md);
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(0, 0, 0, 0.3);
+  transition:transform 0.25s, border-color 0.25s;
+}
+.stat-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--cyan-bright);
+}
+.stat-value{
+  font-size:32px;
+  font-weight:800;
+  background:linear-gradient(135deg, #fff 0%, #38bdf8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+}
+.stat-label{
+  font-size:13px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-weight:600;
+}
+
+/* SECTION COMMON */
+.section{
+  padding:60px 0;
+  border-top:1px solid rgba(186, 230, 253, 0.08);
+}
+.section-tag{
+  text-align:center;
+  color:var(--cyan-bright);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.section-title{
+  text-align:center;
+  font-size:36px;
+  font-weight:800;
+  margin-bottom:14px;
+  color:#fff;
+}
+.section-subtitle{
+  text-align:center;
+  color:var(--text-muted);
+  max-width:680px;
+  margin:0 auto 45px;
+  font-size:16px;
+}
+
+/* CAROUSEL / SLIDER */
+.carousel-wrapper{
+  position:relative;
+  background:var(--bg-card);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--border-cyan);
+  border-radius:var(--radius-lg);
+  padding:36px;
+  box-shadow:0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  margin-bottom:30px;
+  overflow:hidden;
+}
+.carousel-track-container{
+  overflow:hidden;
+  position:relative;
+  width:100%;
+  border-radius:14px;
+  min-height:360px;
+}
+.carousel-track{
+  display:flex;
+  transition:transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  width:100%;
+}
+.carousel-slide{
+  min-width:100%;
+  display:flex;
+  gap:36px;
+  align-items:center;
+  padding:10px 6px;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.carousel-slide.active{
+  opacity:1;
+}
+.slide-visual{
+  flex:1.1;
+  background:rgba(7, 10, 18, 0.85);
+  border:1px solid rgba(56, 189, 248, 0.2);
+  border-radius:16px;
+  padding:24px;
+  min-height:320px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:inset 0 2px 10px rgba(0, 0, 0, 0.6);
+  position:relative;
+}
+.slide-content{
+  flex:1;
+}
+.slide-badge{
+  display:inline-block;
+  background:rgba(56, 189, 248, 0.15);
+  color:var(--cyan-bright);
+  font-size:12px;
+  font-weight:700;
+  padding:4px 12px;
+  border-radius:999px;
+  margin-bottom:12px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+}
+.slide-title{
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#fff;
+}
+.slide-desc{
+  font-size:15px;
+  color:var(--text-muted);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.slide-points{
+  list-style:none;
+}
+.slide-points li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  color:#e2e8f0;
+  margin-bottom:10px;
+}
+.slide-points li span.icon{
+  color:var(--emerald-glow);
+  font-weight:bold;
+  font-size:16px;
+}
+
+/* CAROUSEL CONTROLS */
+.carousel-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:24px;
+  padding-top:16px;
+  border-top:1px solid rgba(255, 255, 255, 0.06);
+}
+.carousel-btn{
+  background:rgba(16, 24, 42, 0.8);
+  border:1px solid var(--border-cyan);
+  color:var(--cyan-soft);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all 0.2s;
+  font-size:18px;
+}
+.carousel-btn:hover{
+  background:var(--cyan-bright);
+  color:#000;
+  box-shadow:0 0 16px rgba(56, 189, 248, 0.5);
+  transform:scale(1.05);
+}
+.carousel-dots{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.carousel-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(148, 163, 184, 0.35);
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.carousel-dot.active{
+  width:28px;
+  border-radius:999px;
+  background:var(--cyan-bright);
+  box-shadow:0 0 12px var(--cyan-bright);
+}
+
+/* MOCKUP VISUALS */
+.mockup-kiosk{
+  text-align:center;
+  padding:15px;
+}
+.mockup-header{
+  font-size:15px;
+  font-weight:700;
+  color:var(--cyan-bright);
+  margin-bottom:14px;
+  border-bottom:1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom:8px;
+}
+.mockup-students{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:8px;
+  margin-bottom:14px;
+}
+.mockup-chip{
+  background:rgba(30, 41, 59, 0.7);
+  border:1px solid rgba(56, 189, 248, 0.2);
+  border-radius:8px;
+  padding:6px;
+  font-size:12px;
+  color:#cbd5e1;
+}
+.mockup-chip.selected{
+  background:rgba(56, 189, 248, 0.25);
+  border-color:var(--cyan-bright);
+  color:#fff;
+  font-weight:600;
+}
+.mockup-status-box{
+  background:rgba(16, 185, 129, 0.15);
+  border:1px solid rgba(16, 185, 129, 0.3);
+  color:#34d399;
+  border-radius:8px;
+  padding:8px;
+  font-size:12px;
+  font-weight:600;
+}
+.mockup-plan-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:10px;
+  padding:6px;
+}
+.mockup-desk{
+  background:rgba(30, 41, 59, 0.8);
+  border:1px solid rgba(99, 102, 241, 0.3);
+  border-radius:10px;
+  padding:8px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+}
+.desk-score{
+  background:rgba(56, 189, 248, 0.2);
+  color:var(--cyan-bright);
+  border-radius:6px;
+  padding:2px 6px;
+  font-weight:700;
+  font-size:11px;
+}
+
+/* BENEFITS SECTION (DUAL COLUMN) */
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:28px;
+}
+.benefit-card{
+  background:var(--bg-card);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border-cyan);
+  border-radius:var(--radius-lg);
+  padding:36px;
+  box-shadow:0 12px 30px rgba(0, 0, 0, 0.35);
+  position:relative;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.benefit-card:hover{
+  border-color:var(--border-cyan-glow);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px -10px rgba(56, 189, 248, 0.2);
+}
+.benefit-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(255, 255, 255, 0.08);
+}
+.benefit-icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+}
+.benefit-student .benefit-icon{
+  background:rgba(56, 189, 248, 0.15);
+  border:1px solid rgba(56, 189, 248, 0.35);
+  color:var(--cyan-bright);
+}
+.benefit-teacher .benefit-icon{
+  background:rgba(99, 102, 241, 0.15);
+  border:1px solid rgba(99, 102, 241, 0.35);
+  color:#a5b4fc;
+}
+.benefit-title{
+  font-size:24px;
+  font-weight:700;
+  color:#fff;
+}
+.benefit-list{
+  list-style:none;
+}
+.benefit-item{
+  display:flex;
+  gap:14px;
+  margin-bottom:18px;
+  font-size:15px;
+  line-height:1.6;
+}
+.benefit-item-icon{
+  flex-shrink:0;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:rgba(56, 189, 248, 0.15);
+  color:var(--cyan-bright);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  margin-top:2px;
+}
+.benefit-item strong{color:#fff;font-weight:600}
+.benefit-item p{color:var(--text-muted);margin-top:2px;font-size:14px}
+
+/* HOW IT WORKS (3 STEPS) */
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.step-card{
+  background:var(--bg-card);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border-cyan);
+  border-radius:var(--radius-lg);
+  padding:32px 24px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 10px 25px rgba(0, 0, 0, 0.3);
+  transition:all 0.25s;
+}
+.step-card:hover{
+  border-color:var(--cyan-bright);
+  transform:translateY(-4px);
+}
+.step-number{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color:#fff;
+  font-weight:800;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  border:2px solid rgba(255, 255, 255, 0.25);
+  box-shadow:0 0 20px rgba(56, 189, 248, 0.4);
+}
+.step-title{
+  font-size:19px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:#fff;
+}
+.step-desc{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.6;
+}
+
+/* ALGORITHMS & MODELS (DEEP DIVE) */
+.models-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+}
+.model-card{
+  background:var(--bg-card);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border-cyan);
+  border-radius:var(--radius-lg);
+  padding:30px;
+  box-shadow:0 8px 25px rgba(0, 0, 0, 0.3);
+  transition:border-color 0.25s;
+}
+.model-card:hover{
+  border-color:var(--cyan-bright);
+}
+.model-badge{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--cyan-bright);
+  background:rgba(56, 189, 248, 0.12);
+  padding:4px 10px;
+  border-radius:6px;
+  display:inline-block;
+  margin-bottom:12px;
+}
+.model-title{
+  font-size:21px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:12px;
+}
+.model-formula{
+  background:rgba(7, 10, 18, 0.85);
+  border:1px solid rgba(56, 189, 248, 0.2);
+  border-radius:10px;
+  padding:12px 16px;
+  font-family:"Courier New", Courier, monospace;
+  font-size:14px;
+  color:var(--cyan-soft);
+  margin-bottom:14px;
+}
+.model-desc{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.65;
+}
+
+/* DOWNLOAD & INSTALL SECTION */
+.download-box{
+  background:linear-gradient(135deg, rgba(16, 24, 42, 0.9) 0%, rgba(30, 41, 69, 0.75) 100%);
+  border:1px solid var(--border-cyan-glow);
+  border-radius:var(--radius-lg);
+  padding:48px 36px;
+  text-align:center;
+  box-shadow:0 20px 50px -10px rgba(2, 132, 199, 0.25), 0 0 30px rgba(56, 189, 248, 0.15);
+  margin-bottom:50px;
+}
+.download-title{
+  font-size:32px;
+  font-weight:800;
+  color:#fff;
+  margin-bottom:12px;
+}
+.download-subtitle{
+  color:var(--text-muted);
+  font-size:16px;
+  max-width:620px;
+  margin:0 auto 30px;
+}
+.download-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  background:linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color:#fff;
+  padding:18px 42px;
+  border-radius:18px;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+  border:1px solid rgba(186, 230, 253, 0.4);
+  box-shadow:0 12px 35px -5px rgba(2, 132, 199, 0.6), 0 0 30px rgba(56, 189, 248, 0.4);
+  transition:all 0.3s;
+  cursor:pointer;
+}
+.download-cta:hover{
+  background:linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px -5px rgba(2, 132, 199, 0.8), 0 0 45px rgba(56, 189, 248, 0.65);
+}
+.download-icon{
+  font-size:26px;
+}
+.download-meta-tags{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--text-dim);
+  flex-wrap:wrap;
+}
+.download-meta-tags span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* INSTALL GUIDE ACCORDION/CARDS */
+.install-guide{
+  margin-top:36px;
+  text-align:left;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+  background:rgba(7, 10, 18, 0.65);
+  border:1px solid rgba(186, 230, 253, 0.12);
+  border-radius:16px;
+  padding:24px 28px;
+}
+.install-guide-title{
+  font-size:16px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.install-steps{
+  list-style:none;
+}
+.install-steps li{
+  display:flex;
+  gap:12px;
+  margin-bottom:12px;
+  font-size:14px;
+  color:var(--text-muted);
+}
+.install-steps li:last-child{margin-bottom:0}
+.install-num{
+  background:rgba(56, 189, 248, 0.2);
+  color:var(--cyan-bright);
+  font-weight:700;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:45px 24px;
+  border-top:1px solid rgba(186, 230, 253, 0.08);
+  color:var(--text-dim);
+  font-size:14px;
+}
+footer a{color:var(--cyan-soft);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .stats-grid{grid-template-columns:repeat(2, 1fr)}
+  .benefits-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .models-grid{grid-template-columns:1fr}
+  .carousel-slide{flex-direction:column;gap:20px}
+  .hero h1{font-size:38px}
+  .hero-sub{font-size:18px}
+}
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero h1{font-size:30px}
+  .carousel-wrapper{padding:20px 16px}
+  .download-box{padding:30px 18px}
+  .btn-primary, .download-cta{width:100%;justify-content:center;padding:14px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP STICKY NAVBAR -->
+<header class="nav-header">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        ÖMER LABS
+      </a>
+      <a href="#" class="nav-brand">
+        <img src="icons/app-logo.png" alt="SIRA Logo">
+        <span>SIRA</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="#vitrin" class="nav-link">Özellikler</a>
+      <a href="#faydalar" class="nav-link">Faydaları</a>
+      <a href="#nasil" class="nav-link">Nasıl Çalışır?</a>
+      <a href="#modeller" class="nav-link">Matematiksel Model</a>
+      <a href="#indir" class="nav-cta">📥 APK İndir</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      TÜBİTAK Destekli Matematik & Bilgisayar Bilimleri Projesi
+    </div>
+    <div class="hero-logo-wrap">
+      <img src="icons/app-logo.png" alt="SIRA Logo" class="hero-logo">
+    </div>
+    <h1>BİR SIRANIN İKİ YAKASI</h1>
+    <div class="hero-sub">SIRA - Sosyal İlişki ve Refah Algoritması</div>
+    <p class="hero-desc">
+      30 kişilik bir sınıfta 15 ikili sıraya oturabilecek tam <strong>619 septilyon (6.19 × 10²⁶)</strong> farklı kombinasyon bulunur. SIRA; <em>John Nash Çarpımsal Sosyal Refahı</em>, <em>Moreno Sosyogramı</em> ve 1532 skala arasından test edilen <em>Şampiyon Puanlar</em> mimarisiyle sınıfınız için matematiksel ve pedagojik olarak en adil oturma planını saniyeler içinde üretir.
+    </p>
+
+    <div class="hero-actions">
+      <a href="sira.apk" download="SIRA.apk" class="btn-primary">
+        <span style="font-size:24px">📥</span>
+        <div>
+          <span>Android APK İndir</span>
+          <span class="btn-meta">v1.0 • 62.2 MB • Android 8.0+</span>
+        </div>
+      </a>
+      <a href="#vitrin" class="btn-secondary">
+        <span>Sistemi Keşfet</span>
+        <span>↓</span>
+      </a>
+    </div>
+
+    <!-- METRICS GRID -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">%77.4+</div>
+        <div class="stat-label">Genel Tercih Mutluluğu</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">%58.6</div>
+        <div class="stat-label">İlk İki Tercihe Yerleşim</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">619 Septilyon</div>
+        <div class="stat-label">Taranan Kombinasyon</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1532 Skala</div>
+        <div class="stat-label">Şampiyon Puanlar Mimarisi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE CAROUSEL / VITRIN -->
+  <section id="vitrin" class="section">
+    <div class="section-tag">İnteraktif Sistem Vitrini</div>
+    <h2 class="section-title">Tek Ekranda Akıllı ve Pedagojik Çözüm</h2>
+    <p class="section-subtitle">
+      Öğrencinin gizli oyundan başlayıp öğretmenin elindeki renkli Moreno sosyogram raporuna uzanan 4 ana dönüm noktası:
+    </p>
+
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <div class="carousel-track-container">
+        <div class="carousel-track" id="carouselTrack">
+          
+          <!-- Slide 1: Kiosk Oylama Modu -->
+          <div class="carousel-slide active">
+            <div class="slide-visual">
+              <div class="mockup-kiosk">
+                <div class="mockup-header">🗳️ SIRA Kiosk Oylama Modu • 7-C Sınıfı</div>
+                <div style="font-size:13px;color:#94a3b8;margin-bottom:12px">Öğrenci Kendi Sırasında 5 Arkadaşını Seçiyor</div>
+                <div class="mockup-students">
+                  <div class="mockup-chip selected">✓ Ahmet Y. (1)</div>
+                  <div class="mockup-chip selected">✓ Mehmet K. (2)</div>
+                  <div class="mockup-chip">Ali T.</div>
+                  <div class="mockup-chip selected">✓ Zeynep B. (3)</div>
+                  <div class="mockup-chip">Elif S.</div>
+                  <div class="mockup-chip selected">✓ Can D. (4)</div>
+                  <div class="mockup-chip">Burak M.</div>
+                  <div class="mockup-chip selected">✓ Ayşe G. (5)</div>
+                  <div class="mockup-chip">Cem E.</div>
+                </div>
+                <div class="mockup-status-box">
+                  🔒 Oylar Uçtan Uca Şifrelenmiştir • Akran Baskısı Sıfır
+                </div>
+              </div>
+            </div>
+            <div class="slide-content">
+              <span class="slide-badge">01. Güvenli Tercih Ortamı</span>
+              <h3 class="slide-title">Demokratik ve Gizli Kiosk Oylaması</h3>
+              <p class="slide-desc">
+                Öğrenciler akıllı tahtaya veya tablete sırayla gelerek kendi isimlerini seçer ve birlikte oturmak istedikleri 5 arkadaşını gizlilikle işaretler.
+              </p>
+              <ul class="slide-points">
+                <li><span class="icon">✓</span> <span><strong>Sıfır Akran Baskısı:</strong> Hiçbir çocuk diğerinin kime oy verdiğini göremez.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Tarafsız Arayüz:</strong> Alfabetik sıralama ve anlık seçim doğrulama.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Kolay Sınıf Yönetimi:</strong> 30 kişilik sınıf 10 dakika içinde oylamasını tamamlar.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 2: Akıllı Oturma Planı -->
+          <div class="carousel-slide">
+            <div class="slide-visual">
+              <div class="mockup-kiosk">
+                <div class="mockup-header">🪑 Optimize Edilmiş Sınıf Yerleşim Şeması</div>
+                <div class="mockup-plan-grid">
+                  <div class="mockup-desk">
+                    <span>Masa 1: Ahmet & Mehmet</span>
+                    <span class="desk-score">Karşılıklı 40p</span>
+                  </div>
+                  <div class="mockup-desk">
+                    <span>Masa 2: Zeynep & Elif</span>
+                    <span class="desk-score">Karşılıklı 36p</span>
+                  </div>
+                  <div class="mockup-desk">
+                    <span>Masa 3: Can & Burak</span>
+                    <span class="desk-score">Yüksek Refah</span>
+                  </div>
+                  <div class="mockup-desk">
+                    <span>Masa 4: Ayşe & Fatma</span>
+                    <span class="desk-score">Karşılıklı 32p</span>
+                  </div>
+                </div>
+                <div style="margin-top:12px;font-size:12px;color:#38bdf8">
+                  🎯 Fiziksel Kısıtlar: Ön sıra boy ve görme ihtiyaçlarına göre rezerve edildi.
+                </div>
+              </div>
+            </div>
+            <div class="slide-content">
+              <span class="slide-badge">02. Yöneylem ve Optimizasyon</span>
+              <h3 class="slide-title">Kusursuz Oturma Planı Çıktısı</h3>
+              <p class="slide-desc">
+                Google OR-Tools CP-SAT çözücüsü yardımıyla saniyeler içinde üretilen matematiksel optimum yerleşim.
+              </p>
+              <ul class="slide-points">
+                <li><span class="icon">✓</span> <span><strong>Karşılıklı Rıza Önceliği:</strong> Birbirini seçen öğrenciler doğrudan aynı masaya yerleşir.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Pedagojik Kısıtlar:</strong> Boy, tahtayı görememe veya yan yana oturmaması gereken öğrenciler sisteme tanıtılabilir.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Yazdırılabilir Çıktı:</strong> Sınıf panosu ve idare için tek tıkla PDF/A4 yazdırma formatı.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 3: Moreno Sosyogramı -->
+          <div class="carousel-slide">
+            <div class="slide-visual">
+              <div class="mockup-kiosk" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+                <div class="mockup-header">🕸️ Moreno Sosyometri İlişki Haritası</div>
+                <svg width="220" height="150" viewBox="0 0 220 150">
+                  <circle cx="110" cy="75" r="24" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="110" y="80" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Yıldız (Lider)</text>
+                  
+                  <circle cx="40" cy="40" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+                  <text x="40" y="44" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. A</text>
+                  
+                  <circle cx="180" cy="40" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+                  <text x="180" y="44" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. B</text>
+
+                  <circle cx="50" cy="120" r="16" fill="#7f1d1d" stroke="#f87171" stroke-width="1.5"/>
+                  <text x="50" y="124" fill="#fca5a5" font-size="8" text-anchor="middle">İzole</text>
+
+                  <circle cx="170" cy="120" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+                  <text x="170" y="124" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. C</text>
+
+                  <!-- Lines -->
+                  <line x1="56" y1="40" x2="88" y2="65" stroke="#38bdf8" stroke-width="1.5"/>
+                  <line x1="164" y1="40" x2="132" y2="65" stroke="#38bdf8" stroke-width="1.5"/>
+                  <line x1="154" y1="120" x2="128" y2="92" stroke="#38bdf8" stroke-width="1.5"/>
+                </svg>
+                <div style="font-size:12px;color:#a5b4fc;margin-top:8px">
+                  Sosyal Statü & İzole Öğrenci Erken Uyarı Sistemi
+                </div>
+              </div>
+            </div>
+            <div class="slide-content">
+              <span class="slide-badge">03. Sosyolojik Röntgen</span>
+              <h3 class="slide-title">Moreno Sosyogram Analizi</h3>
+              <p class="slide-desc">
+                Sınıftaki arkadaşlık bağlarını, klikleşmeleri ve yalnız kalan öğrencileri görselleştiren derin pedagojik rehber.
+              </p>
+              <ul class="slide-points">
+                <li><span class="icon">✓</span> <span><strong>Lider Öğrenci Tespiti:</strong> Sınıf dinamiklerini sürükleyen popüler merkezler (yıldızlar).</span></li>
+                <li><span class="icon">✓</span> <span><strong>Yalnızlığı Erken Yakalama:</strong> Kimse tarafından seçilmemiş izole öğrencileri anında tespit ederek rehberlik desteği sağlama.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Kapalı Klikler:</strong> Sınıftan kopuk küçük gruplaşmaların haritalandırılması.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 4: Şampiyon Puanlar -->
+          <div class="carousel-slide">
+            <div class="slide-visual">
+              <div class="mockup-kiosk">
+                <div class="mockup-header">🏆 Şampiyon Skala vs. Doğal Fibonacci</div>
+                <div style="background:rgba(15,23,42,0.8);border-radius:10px;padding:12px;margin-bottom:10px;text-align:left;font-size:13px">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span style="color:#38bdf8;font-weight:700">Şampiyon Puanlar:</span>
+                    <span style="font-family:monospace;color:#fff">(20, 16, 8, 6, 4, 1)</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;color:#94a3b8">
+                    <span>Saf Fibonacci:</span>
+                    <span style="font-family:monospace">(21, 13, 8, 5, 3, 1)</span>
+                  </div>
+                </div>
+                <div class="mockup-status-box" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.3);color:#7dd3fc">
+                  ⚡ 4 Puanlık Güçlü Taban Sayesinde 5. Tercihteki Masum Öğrenciler Kurtarıldı!
+                </div>
+              </div>
+            </div>
+            <div class="slide-content">
+              <span class="slide-badge">04. Bilimsel Üstünlük</span>
+              <h3 class="slide-title">1532 Skala Arasından Doğan Formül</h3>
+              <p class="slide-desc">
+                Keyfi puanlama yerine Grid Search algoritmasıyla 1532 farklı skala bilgisayarda yarıştırıldı.
+              </p>
+              <ul class="slide-points">
+                <li><span class="icon">✓</span> <span><strong>Fibonacci'yi Geride Bırakan Denge:</strong> Birinci tercihe aşırı bencil puan vermeyerek tabanı korur.</span></li>
+                <li><span class="icon">✓</span> <span><strong>300 Sınıflık Monte Carlo Dayanıklılığı:</strong> Kutuplaşmış ve klikli en zor sınıf tiplerinde dahi %77.4 başarı.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Adil Marjinal Fayda:</strong> 1 puandaki ezilen öğrenciyi 4 puana çekmek genel refahı patlatır.</span></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevSlide" aria-label="Önceki Slayt">‹</button>
+        <div class="carousel-dots" id="carouselDots">
+          <div class="carousel-dot active" data-index="0"></div>
+          <div class="carousel-dot" data-index="1"></div>
+          <div class="carousel-dot" data-index="2"></div>
+          <div class="carousel-dot" data-index="3"></div>
+        </div>
+        <button class="carousel-btn" id="nextSlide" aria-label="Sonraki Slayt">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS: STUDENT & TEACHER -->
+  <section id="faydalar" class="section">
+    <div class="section-tag">Kimin İçin Ne Kazandırır?</div>
+    <h2 class="section-title">Öğrenciye ve Öğretmene Sağlanan Faydalar</h2>
+    <p class="section-subtitle">
+      Oturma planı sadece mobilya koordinatı değildir; bir çocuğun okula severek gelmesini sağlayan mikro-evrendir.
+    </p>
+
+    <div class="benefits-grid">
+      
+      <!-- ÖĞRENCİYE FAYDASI -->
+      <div class="benefit-card benefit-student">
+        <div class="benefit-header">
+          <div class="benefit-icon">🎓</div>
+          <div>
+            <h3 class="benefit-title">Öğrenciye Faydaları</h3>
+            <span style="font-size:13px;color:var(--cyan-soft)">Sosyal Refah ve Duygusal Güvenlik</span>
+          </div>
+        </div>
+        <ul class="benefit-list">
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🌟</div>
+            <div>
+              <strong>Sosyal Yalnızlığı ve İzolasyonu Bitirme</strong>
+              <p>John Nash modelinin sıfırı cezalandıran yapısı sayesinde hiçbir çocuk "kimsenin istemediği çocuk" durumuna düşürülmez. Taban mutluluğu korunur.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🤝</div>
+            <div>
+              <strong>Can Dostlarıyla Masayı Paylaşma Sevinci</strong>
+              <p>Sınıfın %58.6'sı ilk iki tercihine, %77.4'ü ise listesindeki arkadaşlarına kavuşur. Sıra arkadaşlığı ömür boyu dostluklara dönüşür.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🤫</div>
+            <div>
+              <strong>Akran Baskısından Uzak, Özgürce Tercih</strong>
+              <p>Kiosk modu sayesinde oylar tamamen gizlidir. "Beni neden seçmedin?" çekincesi veya popüler çocuklara zorunlu oy verme baskısı yaşanmaz.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🕊️</div>
+            <div>
+              <strong>Akran Zorbalığı ve Çatışmaları Önleme</strong>
+              <p>Geçimsizlik yaşayan ya da pedagojik olarak yan yana oturması sakıncalı öğrenciler akıllı kısıtlarla otomatik olarak birbirinden ayrılır.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ÖĞRETMENE FAYDASI -->
+      <div class="benefit-card benefit-teacher">
+        <div class="benefit-header">
+          <div class="benefit-icon">👩‍🏫</div>
+          <div>
+            <h3 class="benefit-title">Öğretmene Faydaları</h3>
+            <span style="font-size:13px;color:#a5b4fc">Pedagojik Pusula ve Zaman Tasarrufu</span>
+          </div>
+        </div>
+        <ul class="benefit-list">
+          <li class="benefit-item">
+            <div class="benefit-item-icon">⚡</div>
+            <div>
+              <strong>619 Septilyon Kombinasyonu Saniyeler İçinde Çözme</strong>
+              <p>Saatlerce kafa patlatıp kimseyi mutsuz etmeme stresine, veli itirazlarına ve kura çekme adaletsizliklerine son verir. Kararlar matematiksel kanıtlara dayanır.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🔬</div>
+            <div>
+              <strong>Moreno Sosyogramı ile Sınıfın Röntgeni</strong>
+              <p>Rehberlik servislerinin haftalarca uğraştığı sosyometriyi tek tıkla üretir. Liderleri, çeteleşmeleri ve sessizce köşede kalan öğrencileri anında gösterir.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🎛️</div>
+            <div>
+              <strong>Öğretmenin Pedagojik İradesine Tam Uyum</strong>
+              <p>Algoritma öğretmenin yerini almaz, ona güç verir. Boy sırası, görme/işitme engeli veya odaklanma sorunu olan öğrenciler ön sıralara kilitlenebilir.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🖨️</div>
+            <div>
+              <strong>Tek Tıkla Yazdırılabilir & Paylaşılabilir Çıktı</strong>
+              <p>Okul idaresine, velilere veya sınıf panosuna asılmak üzere yüksek çözünürlüklü, renkli ve modern oturma planı çıktısı sunar.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (NASIL ÇALIŞIR?) -->
+  <section id="nasil" class="section">
+    <div class="section-tag">Uygulama Süreci</div>
+    <h2 class="section-title">Nasıl Çalışır? (3 Basit Adım)</h2>
+    <p class="section-subtitle">
+      Karmaşık algoritmalar arka planda çalışırken öğretmen ve öğrenci için süreç son derece akıcı ve zahmetsizdir:
+    </p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Kiosk Oylamasını Başlat</h3>
+        <p class="step-desc">
+          Öğretmen sınıf listesini yükler ve akıllı tahtada Kiosk modunu açar. Öğrenciler sırayla tahtaya gelerek en çok oturmak istediği 5 arkadaşını gizlice seçer.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Nash & CP-SAT Optimizasyonu</h3>
+        <p class="step-desc">
+          Tüm oylar tamamlandığında Google OR-Tools CP-SAT motoru çalışır. John Nash Çarpımsal Refahı ve Şampiyon Puanlar skalasıyla sınıf refahı maksimize edilir.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Planı ve Sosyogramı Uygula</h3>
+        <p class="step-desc">
+          Milisaniyeler içinde oluşturulan oturma şeması ekrana yansıtılır. Moreno Sosyogram grafiğiyle sınıfın sosyal haritası analiz edilir ve çıktı alınır.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALGORITHMS & MATHEMATICAL MODELS -->
+  <section id="modeller" class="section">
+    <div class="section-tag">Bilimsel Temeller</div>
+    <h2 class="section-title">Yararlanılan Algoritmalar ve Modeller</h2>
+    <p class="section-subtitle">
+      SIRA, basit bir kura veya rastgele dağıtıcı değildir; yöneylem araştırması ve sosyal tercih kuramının en prestijli teoremlerini kullanır.
+    </p>
+
+    <div class="models-grid">
+
+      <!-- MODEL 1: JOHN NASH -->
+      <div class="model-card">
+        <span class="model-badge">Oyun Teorisi & Refah İktisadı</span>
+        <h3 class="model-title">John Nash Çarpımsal Sosyal Refahı</h3>
+        <div class="model-formula">W = ∏ (u_i) = u_1 × u_2 × ... × u_n</div>
+        <p class="model-desc">
+          Klasik Jeremy Bentham modeli mutlulukları toplar (\(\sum u_i\)) ve popüler öğrencileri memnun ederken yalnızları feda eder. John Nash modeli ise mutlulukları çarpar. Çarpımda <strong>tek bir 0 puan bile bütün sistemi sıfıra indirdiği için</strong> algoritma, bir çocuğu mutsuzluk kuyusuna atmaktan veba gibi kaçınır. İçbükey logaritmik yapı, dezavantajlı öğrencilerin refahını önceler.
+        </p>
+      </div>
+
+      <!-- MODEL 2: ŞAMPİYON PUANLAR -->
+      <div class="model-card">
+        <span class="model-badge">1532 Skala Arasından Seçilen</span>
+        <h3 class="model-title">Şampiyon Puanlar Mimarisi</h3>
+        <div class="model-formula">Skala = (20, 16, 8, 6, 4, 1) Puan</div>
+        <p class="model-desc">
+          Geliştirilen Grid Search algoritmasıyla 1532 farklı puan dizilimi test edilmiştir. Saf Fibonacci dizilimi (21, 13, 8, 5, 3, 1) birinci ve beşinci tercih arasındaki 7 katlık uçurum yüzünden bencil davranırken; Şampiyon Puanlar 4 puanlık güçlü tabanıyla 5. tercihteki öğrencileri kurtarmış ve Monte Carlo stres testlerinde %77.4 başarıyla şampiyon olmuştur.
+        </p>
+      </div>
+
+      <!-- MODEL 3: GRAF TEORİSİ & GÜVERCİN YUVASI -->
+      <div class="model-card">
+        <span class="model-badge">Ayrık Matematik & Graf Teorisi</span>
+        <h3 class="model-title">Güvercin Yuvası İlkesi & Graf Röntgeni</h3>
+        <div class="model-formula">Max Cardinality Matching & Dirichlet</div>
+        <p class="model-desc">
+          Sınıf, 30 düğüm ve 150 yönlü oktan oluşan Yönlü Sosyometri Grafı olarak modellenmiştir. Sınıfın popüler öğrencilerine 35 ok saplandığı için Dirichlet Güvercin Yuvası ilkesi gereği matematiksel olarak en az 7 öğrencinin seçmediği biriyle oturmasının kaçınılmaz olduğu ispatlanmıştır. Algoritmamız doğanın çizdiği bu teorik sınırda kalarak maksimum saadeti yakalar.
+        </p>
+      </div>
+
+      <!-- MODEL 4: RAWLS vs GALE-SHAPLEY -->
+      <div class="model-card">
+        <span class="model-badge">Sosyal Adalet Felsefesi</span>
+        <h3 class="model-title">Rawls vs. Gale-Shapley vs. Hibrit Nash</h3>
+        <div class="model-formula">Lexicographic Max-Min & Stable Marriage</div>
+        <p class="model-desc">
+          John Rawls'ın radikal eşitlikçi modeli tabandaki mutsuzları kurtarmak uğruna can dostlarını ayırıp herkesi 3-4. tercihte vasatta eşitlemiştir. Katı Gale-Shapley modeli ise birbirini seçenleri birleştirirken sınıfın %46.7'sini kapı dışarı bırakmıştır. SIRA'nın Karşılıklı Öncelikli Hibrit Nash modeli, karşılıklı rızayı 2 kat puanla ödüllendirirken platonik eşleşmeleri de yaşatan adil dengedir.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOWNLOAD & INSTALLATION SECTION -->
+  <section id="indir" class="section">
+    <div class="download-box">
+      <div class="hero-badge" style="margin-bottom:16px">
+        <span class="hero-badge-dot"></span> Hemen Yükleyin & Sınıfınızda Uygulayın
+      </div>
+      <h2 class="download-title">SIRA Android Uygulamasını İndirin</h2>
+      <p class="download-subtitle">
+        Akıllı telefonunuza, tabletinize veya Android destekli akıllı tahtanıza yükleyerek TÜBİTAK ödüllü bu algoritmayı hemen kullanmaya başlayabilirsiniz.
+      </p>
+
+      <a href="sira.apk" download="SIRA.apk" class="download-cta">
+        <span class="download-icon">📥</span>
+        <div style="text-align:left">
+          <div style="font-size:19px;font-weight:800">SIRA.apk İndir</div>
+          <div style="font-size:12px;opacity:0.85;font-weight:400">Android Paket Dosyası • Sürüm 1.0 (62.2 MB)</div>
+        </div>
+      </a>
+
+      <div class="download-meta-tags">
+        <span>✓ Ücretsiz ve Reklamsız</span>
+        <span>✓ İnternetsiz (Çevrimdışı) Çalışabilme</span>
+        <span>✓ Android 8.0 ve Üzeri</span>
+        <span>✓ Akıllı Tahta & Tablet Uyumlu</span>
+      </div>
+
+      <!-- INSTALLATION GUIDE -->
+      <div class="install-guide">
+        <div class="install-guide-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Android APK Kurulum Kılavuzu (3 Adım)
+        </div>
+        <ol class="install-steps">
+          <li>
+            <div class="install-num">1</div>
+            <div>Yukarıdaki <strong>"SIRA.apk İndir"</strong> butonuna dokunarak APK dosyasını cihazınıza indirin.</div>
+          </li>
+          <li>
+            <div class="install-num">2</div>
+            <div>İndirilenler bildirimine veya dosya yöneticisinden <code>sira.apk</code> dosyasına dokunun. Ekranda uyarı çıkarsa <em>"Bu kaynaktan uygulamalara izin ver"</em> (Bilinmeyen kaynaklar) seçeneğini aktifleştirin.</div>
+          </li>
+          <li>
+            <div class="install-num">3</div>
+            <div><strong>"Yükle"</strong> butonuna basın. Kurulum tamamlandıktan sonra SIRA'yı açıp sınıfınızı oluşturun ve oylamayı başlatın!</div>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px">
+      © 2026 <strong>ÖMER LABS</strong> &bull; TÜBİTAK Proje Çalışma Grubu (Matematiksel Modelleme & Yapay Zeka Laboratuvarı)
+    </p>
+    <p style="font-size:13px">
+      Geliştirici İletişim: <a href="mailto:omergeziciler@gmail.com">omergeziciler@gmail.com</a> &bull; <a href="../">omerlabs.github.io</a>
+    </p>
+  </div>
+</footer>
+
+<!-- CAROUSEL SCRIPT -->
+<script>
+(function(){
+  const track = document.getElementById("carouselTrack");
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dots = document.querySelectorAll(".carousel-dot");
+  const prevBtn = document.getElementById("prevSlide");
+  const nextBtn = document.getElementById("nextSlide");
+  const wrapper = document.getElementById("carouselWrapper");
+  let currentIndex = 0;
+  let autoplayTimer = null;
+
+  function updateCarousel(index){
+    if(index < 0) index = slides.length - 1;
+    if(index >= slides.length) index = 0;
+    currentIndex = index;
+
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    slides.forEach((s, i) => {
+      s.classList.toggle("active", i === currentIndex);
+    });
+
+    dots.forEach((d, i) => {
+      d.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  function nextSlide(){
+    updateCarousel(currentIndex + 1);
+  }
+
+  function prevSlide(){
+    updateCarousel(currentIndex - 1);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoplay();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoplay();
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const target = parseInt(dot.getAttribute("data-index"), 10);
+      updateCarousel(target);
+      resetAutoplay();
+    });
+  });
+
+  // Touch Swipe Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener("touchstart", e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, {passive:true});
+
+  track.addEventListener("touchend", e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) {
+      nextSlide();
+      resetAutoplay();
+    } else if (touchEndX - touchStartX > 50) {
+      prevSlide();
+      resetAutoplay();
+    }
+  }, {passive:true});
+
+  // Autoplay
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(nextSlide, 5500);
+  }
+
+  function stopAutoplay(){
+    if(autoplayTimer) clearInterval(autoplayTimer);
+  }
+
+  function resetAutoplay(){
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  wrapper.addEventListener("mouseenter", stopAutoplay);
+  wrapper.addEventListener("mouseleave", startAutoplay);
+
+  startAutoplay();
+})();
+</script>
+</body>
+</html>
