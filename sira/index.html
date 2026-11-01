@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIRA - Sosyal İlişki ve Refah Algoritması | Akıllı Oturma Planı & Disiplin Motoru</title>
+<title>SIRA - Sosyal İlişki ve Refah Algoritması | Akıllı Oturma Planı & Yaptırım Motoru</title>
 <link rel="icon" type="image/png" href="icons/favicon.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
@@ -46,7 +46,7 @@ body{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(7, 10, 18, 0.82);
+  background:rgba(7, 10, 18, 0.85);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(186, 230, 253, 0.1);
@@ -166,11 +166,11 @@ body{
   background:#0f172a;
 }
 .hero h1{
-  font-size:52px;
+  font-size:56px;
   font-weight:800;
-  line-height:1.15;
+  line-height:1.1;
   letter-spacing:-0.02em;
-  margin-bottom:14px;
+  margin-bottom:12px;
   background:linear-gradient(135deg, #ffffff 0%, #bae6fd 40%, #38bdf8 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -180,10 +180,10 @@ body{
   font-size:22px;
   color:var(--cyan-soft);
   font-weight:500;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 .hero-desc{
-  max-width:760px;
+  max-width:780px;
   margin:0 auto 36px;
   font-size:17px;
   color:var(--text-muted);
@@ -310,12 +310,12 @@ body{
 .section-subtitle{
   text-align:center;
   color:var(--text-muted);
-  max-width:700px;
+  max-width:720px;
   margin:0 auto 45px;
   font-size:16px;
 }
 
-/* CAROUSEL / SLIDER */
+/* CAROUSEL / SLIDER (MANUAL ONLY - NO AUTOPLAY) */
 .carousel-wrapper{
   position:relative;
   background:var(--bg-card);
@@ -422,15 +422,15 @@ body{
   background:rgba(16, 24, 42, 0.8);
   border:1px solid var(--border-cyan);
   color:var(--cyan-soft);
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   transition:all 0.2s;
-  font-size:18px;
+  font-size:20px;
 }
 .carousel-btn:hover{
   background:var(--cyan-bright);
@@ -663,6 +663,33 @@ body{
   line-height:1.6;
 }
 
+/* OCR SHOWCASE CARD */
+.ocr-banner{
+  background:linear-gradient(135deg, rgba(16, 24, 42, 0.8) 0%, rgba(30, 41, 69, 0.6) 100%);
+  border:1px solid rgba(56, 189, 248, 0.25);
+  border-radius:var(--radius-lg);
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  margin-bottom:40px;
+}
+.ocr-icon{
+  font-size:44px;
+  flex-shrink:0;
+}
+.ocr-info h3{
+  font-size:20px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:6px;
+}
+.ocr-info p{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.6;
+}
+
 /* BENEFITS SECTION (DUAL COLUMN) */
 .benefits-grid{
   display:grid;
@@ -792,7 +819,7 @@ body{
   line-height:1.6;
 }
 
-/* ALGORITHMS & MODELS (DEEP DIVE) */
+/* ALGORITHMS & MODELS (COMPREHENSIVE 6-CARD GRID) */
 .models-grid{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
@@ -972,14 +999,14 @@ footer a:hover{text-decoration:underline}
   .steps-grid{grid-template-columns:1fr}
   .models-grid{grid-template-columns:1fr}
   .carousel-slide{flex-direction:column;gap:20px}
-  .hero h1{font-size:38px}
+  .hero h1{font-size:42px}
   .hero-sub{font-size:18px}
-  .af-banner{flex-direction:column;text-align:center}
+  .af-banner, .ocr-banner{flex-direction:column;text-align:center}
 }
 @media(max-width:600px){
   .stats-grid{grid-template-columns:1fr}
   .nav-links{display:none}
-  .hero h1{font-size:30px}
+  .hero h1{font-size:32px}
   .carousel-wrapper{padding:20px 16px}
   .download-box{padding:30px 18px}
   .btn-primary, .download-cta{width:100%;justify-content:center;padding:14px 20px}
@@ -1002,11 +1029,11 @@ footer a:hover{text-decoration:underline}
       </a>
     </div>
     <div class="nav-links">
-      <a href="#vitrin" class="nav-link">Özellikler</a>
-      <a href="#disiplin" class="nav-link">Ceza & Deprem Motoru</a>
+      <a href="#vitrin" class="nav-link">Sistem Vitrini</a>
+      <a href="#disiplin" class="nav-link">Yaptırım & Deprem</a>
       <a href="#faydalar" class="nav-link">Faydaları</a>
       <a href="#nasil" class="nav-link">Nasıl Çalışır?</a>
-      <a href="#modeller" class="nav-link">Matematiksel Model</a>
+      <a href="#modeller" class="nav-link">Algoritmalar & Modeller</a>
       <a href="#indir" class="nav-cta">📥 APK İndir</a>
     </div>
   </div>
@@ -1018,15 +1045,15 @@ footer a:hover{text-decoration:underline}
   <section class="hero">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      TÜBİTAK Destekli Matematik & Bilgisayar Bilimleri Projesi
+      Matematiksel Modelleme & Oyun Teorisi Destekli Sınıf Asistanı
     </div>
     <div class="hero-logo-wrap">
       <img src="icons/app-logo.png" alt="SIRA Logo" class="hero-logo">
     </div>
-    <h1>BİR SIRANIN İKİ YAKASI</h1>
-    <div class="hero-sub">SIRA - Sosyal İlişki ve Refah Algoritması</div>
+    <h1>SIRA</h1>
+    <div class="hero-sub">Sosyal İlişki ve Refah Algoritması</div>
     <p class="hero-desc">
-      30 kişilik bir sınıfta 15 ikili sıraya oturabilecek tam <strong>619 septilyon (6.19 × 10²⁶)</strong> farklı kombinasyon bulunur. SIRA; <em>John Nash Çarpımsal Sosyal Refahı</em>, <em>Moreno Sosyogramı</em>, <em>3 Kademeli Disiplin Deprem Motoru</em> ve 1532 skala arasından test edilen <em>Şampiyon Puanlar</em> mimarisiyle sınıfınız için matematiksel ve pedagojik olarak en adil oturma planını saniyeler içinde üretir.
+      30 kişilik bir sınıfta 15 ikili sıraya oturabilecek tam <strong>619 septilyon (6.19 × 10²⁶)</strong> farklı kombinasyon bulunur. SIRA; <em>John Nash Çarpımsal Sosyal Refahı</em>, <em>Macar Algoritması</em>, <em>Moreno 5 Katmanlı Sosyogramı</em> ve <em>3 Kademeli Yaptırım Deprem Motoru</em> ile hem öğrencinin arkadaş ve yer tercihlerini hem de öğretmenin sınıf içi huzurunu optimize eden bilimsel sınıf oturma planı sistemidir.
     </p>
 
     <div class="hero-actions">
@@ -1034,11 +1061,11 @@ footer a:hover{text-decoration:underline}
         <span style="font-size:24px">📥</span>
         <div>
           <span>Android APK İndir</span>
-          <span class="btn-meta">v1.0 • 62.2 MB • Android 8.0+</span>
+          <span class="btn-meta">v1.0 • 62.2 MB • Android Telefon & Tablet</span>
         </div>
       </a>
       <a href="#vitrin" class="btn-secondary">
-        <span>Sistemi Keşfet</span>
+        <span>Sistemi İncele</span>
         <span>↓</span>
       </a>
     </div>
@@ -1050,12 +1077,12 @@ footer a:hover{text-decoration:underline}
         <div class="stat-label">Altın Plan Memnuniyeti</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">%58.6</div>
+        <div class="stat-value">%80+</div>
         <div class="stat-label">İlk İki Tercihe Yerleşim</div>
       </div>
       <div class="stat-card">
         <div class="stat-value">3 Kademeli</div>
-        <div class="stat-label">Disiplin Deprem Motoru</div>
+        <div class="stat-label">Yaptırım Deprem Motoru</div>
       </div>
       <div class="stat-card">
         <div class="stat-value">1532 Skala</div>
@@ -1064,24 +1091,77 @@ footer a:hover{text-decoration:underline}
     </div>
   </section>
 
-  <!-- INTERACTIVE CAROUSEL / VITRIN -->
+  <!-- OCR PHOTO SCANNING HIGHLIGHT -->
+  <div class="ocr-banner">
+    <div class="ocr-icon">📸</div>
+    <div class="ocr-info">
+      <h3>Fotoğraf Çekerek Sınıf Listesini Otomatik Aktarma (Akıllı OCR)</h3>
+      <p>
+        Öğretmen sınıf listesini tek tek elle girmek zorunda kalmaz. e-Okul'dan alınan sınıf listesinin veya basılı belgenin telefon kamerasıyla fotoğrafını çeker veya PDF yükler. Tablo duyarlı akıllı OCR motoru öğrenci adı, soyadı ve numaralarını saniyeler içinde okuyup dijitalleştirir; liste üzerinde anında düzenleme imkanı sunar.
+      </p>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SYSTEM SHOWCASE / VITRIN (MANUAL SLIDER) -->
   <section id="vitrin" class="section">
     <div class="section-tag">İnteraktif Sistem Vitrini</div>
     <h2 class="section-title">Tek Ekranda Akıllı ve Pedagojik Çözüm</h2>
     <p class="section-subtitle">
-      Öğrencinin gizli oyundan başlayıp öğretmenin elindeki disiplin deprem motoruna ve Moreno sosyogram raporuna uzanan 5 ana dönüm noktası:
+      Listeyi kamerayla taramaktan öğrencinin arkadaş ve yer seçimine, yaptırım deprem motorundan Moreno sosyogram raporuna kadar tüm süreci slaytlarla inceleyin (oklarla veya noktalarla kaydırabilirsiniz):
     </p>
 
     <div class="carousel-wrapper" id="carouselWrapper">
       <div class="carousel-track-container">
         <div class="carousel-track" id="carouselTrack">
-          
-          <!-- Slide 1: Kiosk Oylama Modu -->
+
+          <!-- Slide 1: Fotoğrafla Sınıfı Tara (OCR) -->
           <div class="carousel-slide active">
             <div class="slide-visual">
               <div class="mockup-kiosk">
-                <div class="mockup-header">🗳️ SIRA Kiosk Oylama Modu • 7-C Sınıfı</div>
-                <div style="font-size:13px;color:#94a3b8;margin-bottom:12px">Öğrenci Kendi Sırasında 5 Arkadaşını Seçiyor</div>
+                <div class="mockup-header">📸 Fotoğrafla Sınıf Taraması (Tablo Duyarlı OCR)</div>
+                <div style="background:rgba(30,41,59,0.7);border-radius:10px;padding:12px;margin-bottom:12px;text-align:left;font-size:12px;color:#cbd5e1">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                    <span>1. 142 - Ahmet Y.</span>
+                    <span style="color:#34d399">✓ Tanındı</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                    <span>2. 215 - Zeynep B.</span>
+                    <span style="color:#34d399">✓ Tanındı</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                    <span>3. 308 - Mehmet K.</span>
+                    <span style="color:#34d399">✓ Tanındı</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between">
+                    <span>4. 412 - Elif S.</span>
+                    <span style="color:#34d399">✓ Tanındı</span>
+                  </div>
+                </div>
+                <div class="mockup-status-box">
+                  ✨ e-Okul Listesi Saniyeler İçinde Dijital Sınıfa Dönüştü
+                </div>
+              </div>
+            </div>
+            <div class="slide-content">
+              <span class="slide-badge">01. Pratik Sınıf Kurulumu</span>
+              <h3 class="slide-title">Fotoğrafla Sınıf Listesi Aktarımı</h3>
+              <p class="slide-desc">
+                Öğretmen sınıf listesini klavyeden yazmakla vakit kaybetmez. Listenin fotoğrafını çekerek veya PDF belgesini yükleyerek sınıfını hazır hale getirir.
+              </p>
+              <ul class="slide-points">
+                <li><span class="icon">✓</span> <span><strong>Gelişmiş OCR Motoru:</strong> Başlıkları ve dipnotları filtreleyip yalnızca öğrenci adlarını ve numaralarını süzer.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Hızlı Düzenleme:</strong> Tanınan liste üzerinde tek dokunuşla isim ekleme, silme ve düzeltme olanağı.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Çoklu Şube Desteği:</strong> 7-A, 7-B, 7-C gibi farklı sınıfları ayrı ayrı kaydedebilme.</span></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Slide 2: Kiosk Oylama Modu (Kişi ve Yer Tercihi) -->
+          <div class="carousel-slide">
+            <div class="slide-visual">
+              <div class="mockup-kiosk">
+                <div class="mockup-header">🗳️ SIRA Kiosk Oylama Modu • Öğrenci Ekranı</div>
+                <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">1. Adım: 5 Arkadaş Seçimi • 2. Adım: Sıra / Yer Seçimi</div>
                 <div class="mockup-students">
                   <div class="mockup-chip selected">✓ Ahmet Y. (1)</div>
                   <div class="mockup-chip selected">✓ Mehmet K. (2)</div>
@@ -1089,34 +1169,35 @@ footer a:hover{text-decoration:underline}
                   <div class="mockup-chip selected">✓ Zeynep B. (3)</div>
                   <div class="mockup-chip">Elif S.</div>
                   <div class="mockup-chip selected">✓ Can D. (4)</div>
-                  <div class="mockup-chip">Burak M.</div>
-                  <div class="mockup-chip selected">✓ Ayşe G. (5)</div>
-                  <div class="mockup-chip">Cem E.</div>
+                </div>
+                <div style="display:flex;justify-content:center;gap:8px;margin-bottom:10px;font-size:11px">
+                  <span style="background:rgba(56,189,248,0.2);color:#38bdf8;padding:4px 8px;border-radius:6px">Seçilen Yer: Sıra 3 (Ön Sıra)</span>
+                  <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;padding:4px 8px;border-radius:6px">Öncelik: Dengeli</span>
                 </div>
                 <div class="mockup-status-box">
-                  🔒 Oylar Uçtan Uca Şifrelenmiştir • Akran Baskısı Sıfır
+                  🔒 Cihazda Öğrenciden Öğrenciye Güvenli ve Gizli Devir
                 </div>
               </div>
             </div>
             <div class="slide-content">
-              <span class="slide-badge">01. Güvenli Tercih Ortamı</span>
-              <h3 class="slide-title">Demokratik ve Gizli Kiosk Oylaması</h3>
+              <span class="slide-badge">02. Güvenli Tercih Ortamı</span>
+              <h3 class="slide-title">Kişi ve Yer Tercihli Kiosk Oylaması</h3>
               <p class="slide-desc">
-                Öğrenciler akıllı tahtaya veya tablete sırayla gelerek kendi isimlerini seçer ve birlikte oturmak istedikleri 5 arkadaşını gizlilikle işaretler.
+                Öğretmenin telefonunda veya tabletinde açılan Kiosk modunda öğrenciler sırayla gelerek kendi isimlerini seçer. Hem kiminle hem de nerede oturmak istediklerini gizlilikle belirlerler.
               </p>
               <ul class="slide-points">
-                <li><span class="icon">✓</span> <span><strong>Sıfır Akran Baskısı:</strong> Hiçbir çocuk diğerinin kime oy verdiğini göremez.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Tarafsız Arayüz:</strong> Alfabetik sıralama ve anlık seçim doğrulama.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Kolay Sınıf Yönetimi:</strong> 34 kişilik sınıf 10 dakika içinde oylamasını tamamlar.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Çift Yönlü Tercih:</strong> Birlikte oturmak istenen 5 arkadaş (Kişi) ve oturulmak istenen sıralar (Yer).</span></li>
+                <li><span class="icon">✓</span> <span><strong>"Yer mi Önemli Kişi mi?":</strong> Öğrencinin kendi öncelik dengesini algoritmanın hesaba katması.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Sıfır Akran Baskısı:</strong> Hiçbir öğrenci diğerinin tercihlerini göremez; oylar tamamen gizlidir.</span></li>
               </ul>
             </div>
           </div>
 
-          <!-- Slide 2: Akıllı Oturma Planı -->
+          <!-- Slide 3: İki Aşamalı Akıllı Oturma Planı -->
           <div class="carousel-slide">
             <div class="slide-visual">
               <div class="mockup-kiosk">
-                <div class="mockup-header">🪑 Optimize Edilmiş Sınıf Yerleşim Şeması</div>
+                <div class="mockup-header">🪑 İki Aşamalı Optimize Edilmiş Oturma Planı</div>
                 <div class="mockup-plan-grid">
                   <div class="mockup-desk">
                     <span>Sıra 1: Ahmet & Mehmet</span>
@@ -1136,30 +1217,30 @@ footer a:hover{text-decoration:underline}
                   </div>
                 </div>
                 <div style="margin-top:12px;font-size:12px;color:#38bdf8">
-                  🎯 Manuel Koltuk Takası: İki koltuğa dokunarak yerlerini anında değiştirebilirsiniz.
+                  🎯 Aşama 1 (Nash): Can dostlar eşleşti • Aşama 2 (Macar): İstenen sıralara atandı.
                 </div>
               </div>
             </div>
             <div class="slide-content">
-              <span class="slide-badge">02. Yöneylem ve Optimizasyon</span>
+              <span class="slide-badge">03. Matematiksel Çözüm</span>
               <h3 class="slide-title">Kusursuz Oturma Planı Çıktısı</h3>
               <p class="slide-desc">
-                Google OR-Tools CP-SAT çözücüsü yardımıyla saniyeler içinde üretilen matematiksel optimum yerleşim.
+                John Nash Çarpımsal Refahı ve Macar Algoritması (Hungarian) birlikte çalışarak sınıf için matematiksel en yüksek mutluluk dengesini kurar.
               </p>
               <ul class="slide-points">
-                <li><span class="icon">✓</span> <span><strong>Karşılıklı Rıza Önceliği:</strong> Birbirini seçen can dostlar doğrudan aynı sıraya yerleşir.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Manuel Koltuk Takası:</strong> Öğretmen iki öğrencinin yerine dokunarak anında hızlı takas yapabilir.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Resmi A4 Çıktı:</strong> Tahta, kürsü, cam kenarı ve kapı referanslarıyla imzaya hazır sınıf planı.</span></li>
+                <li><span class="icon">✓</span> <span><strong>%80+ Başarı:</strong> Sınıfın ezici çoğunluğu ilk iki tercihinden birine yerleşir.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Macar Algoritması ile Yer Ataması:</strong> Çiftler en çok istedikleri sıralara polinomyal zamanda yerleştirilir.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Resmi A4 Çıktı:</strong> Tahta, kürsü, cam kenarı ve kapı konumuyla imzaya hazır oturma planı.</span></li>
               </ul>
             </div>
           </div>
 
-          <!-- Slide 3: Disiplin ve 3 Kademeli Deprem Motoru -->
+          <!-- Slide 4: Yaptırım ve 3 Kademeli Deprem Motoru -->
           <div class="carousel-slide">
             <div class="slide-visual">
               <div class="mockup-discipline-box">
                 <div class="mockup-header" style="color:#ef4444;border-color:rgba(239,68,68,0.2)">
-                  ⚡ SIRA Disiplin Müdahalesi • Sıra 4
+                  ⚡ SIRA Yaptırım Müdahalesi • Sıra 4
                 </div>
                 <div class="discipline-desk-row">
                   <span style="font-size:12px;color:#fff">Sıra 4: Ali & Can</span>
@@ -1171,7 +1252,7 @@ footer a:hover{text-decoration:underline}
                 <div class="earthquake-levels-list">
                   <div class="eq-level-item eq-level-1">
                     <span>🟢 1. Seviye: Klik Depremi</span>
-                    <span>Grup Dağıtılır</span>
+                    <span>Arkadaş Grubu Dağıtılır</span>
                   </div>
                   <div class="eq-level-item eq-level-2">
                     <span>🟡 2. Seviye: Tsunami Depremi</span>
@@ -1179,7 +1260,7 @@ footer a:hover{text-decoration:underline}
                   </div>
                   <div class="eq-level-item eq-level-3">
                     <span>🔴 3. Seviye: Nükleer Deprem</span>
-                    <span>Herkes Seçmediğiyle (%0 Memnuniyet)</span>
+                    <span>Seçilmeyenlerle Eşleşme (%0 Memnuniyet)</span>
                   </div>
                 </div>
                 <div style="margin-top:10px;text-align:center;font-size:11px;color:#38bdf8">
@@ -1188,65 +1269,56 @@ footer a:hover{text-decoration:underline}
               </div>
             </div>
             <div class="slide-content">
-              <span class="slide-badge" style="background:rgba(239,68,68,0.15);color:#f87171">03. Sınıf Disiplin Motoru</span>
-              <h3 class="slide-title">Kurallara Uyulmadığında Ceza Sistemi</h3>
+              <span class="slide-badge" style="background:rgba(239,68,68,0.15);color:#f87171">04. Sınıf Yönetim Motoru</span>
+              <h3 class="slide-title">Kurallara Uyulmadığında Yaptırım Sistemi</h3>
               <p class="slide-desc">
-                Dersi kaynatan veya uyumsuzluk çıkaran sıralara karşı öğretmenin elindeki en güçlü pedagojik yaptırım sistemi:
+                Dersi kaynatan, gürültü yapan veya uyumsuzluk çıkaran sıralara karşı öğretmenin elindeki en güçlü pedagojik yaptırım mekanizması:
               </p>
               <ul class="slide-points">
-                <li><span class="icon" style="color:#f59e0b">🟨</span> <span><strong>Sarı Kart (Görsel Uyarı):</strong> Masaya uyarı kartı asılır, sessizleşirlerse tek tıkla kaldırılır.</span></li>
-                <li><span class="icon" style="color:#ef4444">🟥</span> <span><strong>3 Kademeli Deprem:</strong> Klik Dağıtımı, Tsunami ve Nükleer ile sınıfın kurallara saygısı pekiştirilir.</span></li>
-                <li><span class="icon" style="color:#38bdf8">🌟</span> <span><strong>Genel Af Sistemi:</strong> Sınıf söz verdiğinde öğretmen tek tıkla ilk altın plana dönebilir.</span></li>
+                <li><span class="icon" style="color:#f59e0b">🟨</span> <span><strong>Sarı Kart (Görsel Uyarı):</strong> Masaya uyarı kartı verilir, sessizleşirlerse tek dokunuşla geri alınabilir.</span></li>
+                <li><span class="icon" style="color:#ef4444">🟥</span> <span><strong>3 Kademeli Deprem:</strong> Klik Dağıtımı, Tsunami ve Nükleer seviyeleriyle sınıf düzeni sağlanır.</span></li>
+                <li><span class="icon" style="color:#38bdf8">🌟</span> <span><strong>Genel Af Gücü:</strong> Sınıf pişman olup söz verdiğinde öğretmen tek tıkla orijinal Altın Plana dönebilir.</span></li>
               </ul>
             </div>
           </div>
 
-          <!-- Slide 4: Moreno Sosyogramı -->
+          <!-- Slide 5: Moreno 5 Katmanlı Sosyogramı -->
           <div class="carousel-slide">
             <div class="slide-visual">
               <div class="mockup-kiosk" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-                <div class="mockup-header">🕸️ Moreno Sosyometri İlişki Haritası</div>
+                <div class="mockup-header">🕸️ Moreno 5 Katmanlı Hedef Sosyogramı</div>
                 <svg width="220" height="150" viewBox="0 0 220 150">
-                  <circle cx="110" cy="75" r="24" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
-                  <text x="110" y="80" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">Yıldız (Lider)</text>
-                  
-                  <circle cx="40" cy="40" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-                  <text x="40" y="44" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. A</text>
-                  
-                  <circle cx="180" cy="40" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-                  <text x="180" y="44" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. B</text>
+                  <circle cx="110" cy="75" r="60" fill="none" stroke="rgba(239,68,68,0.3)" stroke-width="1" stroke-dasharray="2,2"/>
+                  <circle cx="110" cy="75" r="44" fill="none" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+                  <circle cx="110" cy="75" r="28" fill="none" stroke="rgba(56,189,248,0.4)" stroke-width="1"/>
+                  <circle cx="110" cy="75" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="110" y="78" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">★ Yıldız</text>
 
-                  <circle cx="50" cy="120" r="16" fill="#7f1d1d" stroke="#f87171" stroke-width="1.5"/>
-                  <text x="50" y="124" fill="#fca5a5" font-size="8" text-anchor="middle">İzole</text>
-
-                  <circle cx="170" cy="120" r="16" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-                  <text x="170" y="124" fill="#cbd5e1" font-size="9" text-anchor="middle">Öğr. C</text>
-
-                  <!-- Lines -->
-                  <line x1="56" y1="40" x2="88" y2="65" stroke="#38bdf8" stroke-width="1.5"/>
-                  <line x1="164" y1="40" x2="132" y2="65" stroke="#38bdf8" stroke-width="1.5"/>
-                  <line x1="154" y1="120" x2="128" y2="92" stroke="#38bdf8" stroke-width="1.5"/>
+                  <circle cx="50" cy="75" r="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+                  <circle cx="170" cy="75" r="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+                  <circle cx="110" cy="135" r="8" fill="#7f1d1d" stroke="#f87171" stroke-width="1"/>
+                  <text x="110" y="146" fill="#fca5a5" font-size="8" text-anchor="middle">İzole (Dış Çeper)</text>
                 </svg>
                 <div style="font-size:12px;color:#a5b4fc;margin-top:8px">
-                  Depremlerden Etkilenmeyen Saf Sosyal Tercih Analizi
+                  Merkezden Dış Çepere 5 Halkalı Bilimsel Sosyal Röntgen
                 </div>
               </div>
             </div>
             <div class="slide-content">
-              <span class="slide-badge">04. Sosyolojik Röntgen</span>
-              <h3 class="slide-title">Moreno Sosyogram Analizi</h3>
+              <span class="slide-badge">05. Sosyolojik Analitik</span>
+              <h3 class="slide-title">Moreno Hedef Sosyogram Analizi</h3>
               <p class="slide-desc">
-                Sınıftaki arkadaşlık bağlarını, klikleşmeleri ve yalnız kalan öğrencileri görselleştiren derin pedagojik rehber.
+                Depremlerden ve yaptırımlardan bağımsız olarak, sınıfın saf sosyal dokusunu ve arkadaşlık bağlarını gösteren pedagojik rehber.
               </p>
               <ul class="slide-points">
-                <li><span class="icon">✓</span> <span><strong>Lider Öğrenci Tespiti:</strong> Sınıf dinamiklerini sürükleyen popüler merkezler (yıldızlar).</span></li>
-                <li><span class="icon">✓</span> <span><strong>Yalnızlığı Erken Yakalama:</strong> Kimse tarafından seçilmemiş izole öğrencileri anında tespit ederek rehberlik desteği sağlama.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Kapalı Klikler:</strong> Bron-Kerbosch algoritmasıyla sınıftan kopuk arkadaş gruplarının haritalandırılması.</span></li>
+                <li><span class="icon">✓</span> <span><strong>5 Eşmerkezli Halka:</strong> Yıldızlar (merkez), popülerler, ortalama, düşük bağlantılılar ve izole öğrenciler (dış çeper).</span></li>
+                <li><span class="icon">✓</span> <span><strong>Yalnızlığı Erken Yakalama:</strong> Kimse tarafından yazılmamış izole öğrencileri anında tespit ederek rehberlik desteği sağlama.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Klik Analizi:</strong> Bron-Kerbosch ile sınıftan kopuk kapalı arkadaş gruplarını keşfetme.</span></li>
               </ul>
             </div>
           </div>
 
-          <!-- Slide 5: Şampiyon Puanlar -->
+          <!-- Slide 6: Şampiyon Puanlar -->
           <div class="carousel-slide">
             <div class="slide-visual">
               <div class="mockup-kiosk">
@@ -1267,15 +1339,15 @@ footer a:hover{text-decoration:underline}
               </div>
             </div>
             <div class="slide-content">
-              <span class="slide-badge">05. Bilimsel Üstünlük</span>
+              <span class="slide-badge">06. Bilimsel Üstünlük</span>
               <h3 class="slide-title">1532 Skala Arasından Doğan Formül</h3>
               <p class="slide-desc">
-                Keyfi puanlama yerine Grid Search algoritmasıyla 1532 farklı skala bilgisayarda yarıştırıldı.
+                Keyfi puanlama yerine Grid Search algoritmasıyla 1532 farklı skala bilgisayarda simüle edildi.
               </p>
               <ul class="slide-points">
                 <li><span class="icon">✓</span> <span><strong>Fibonacci'yi Geride Bırakan Denge:</strong> Birinci tercihe aşırı bencil puan vermeyerek tabanı korur.</span></li>
-                <li><span class="icon">✓</span> <span><strong>300 Sınıflık Monte Carlo Dayanıklılığı:</strong> Kutuplaşmış ve klikli en zor sınıf tiplerinde dahi %77.4+ başarı.</span></li>
-                <li><span class="icon">✓</span> <span><strong>Adil Marjinal Fayda:</strong> 1 puandaki ezilen öğrenciyi 4 puana çekmek genel refahı patlatır.</span></li>
+                <li><span class="icon">✓</span> <span><strong>300 Sınıflık Monte Carlo Dayanıklılığı:</strong> En zor sınıf modellerinde dahi %80+ yerleşim başarısı.</span></li>
+                <li><span class="icon">✓</span> <span><strong>Adil Marjinal Fayda:</strong> Ezilen öğrenciyi tabandan kurtarmak genel refahı patlatır.</span></li>
               </ul>
             </div>
           </div>
@@ -1292,18 +1364,19 @@ footer a:hover{text-decoration:underline}
           <div class="carousel-dot" data-index="2"></div>
           <div class="carousel-dot" data-index="3"></div>
           <div class="carousel-dot" data-index="4"></div>
+          <div class="carousel-dot" data-index="5"></div>
         </div>
         <button class="carousel-btn" id="nextSlide" aria-label="Sonraki Slayt">›</button>
       </div>
     </div>
   </section>
 
-  <!-- DEDICATED DISCIPLINE & EARTHQUAKE SECTION -->
+  <!-- DEDICATED DISCIPLINE SECTION -->
   <section id="disiplin" class="section">
     <div class="section-tag">Kurallara Uyulmadığında</div>
-    <h2 class="section-title">Disiplin ve 3 Kademeli Deprem Motoru</h2>
+    <h2 class="section-title">Yaptırım ve 3 Kademeli Deprem Motoru</h2>
     <p class="section-subtitle">
-      Öğretmen sınıf oturma planında gürültü yapan, dersi kaynatan veya uyumsuzluk çıkaran bir sıraya dokunduğunda anında devreye giren kademeli disiplin yaptırımları:
+      Öğretmen sınıf oturma planında gürültü yapan, dersi kaynatan veya uyumsuzluk çıkaran bir sıraya dokunduğunda anında devreye giren kademeli yaptırımlar:
     </p>
 
     <!-- 3 DEPREM KARTI -->
@@ -1311,7 +1384,7 @@ footer a:hover{text-decoration:underline}
       
       <!-- 1. KLiK DEPREMI -->
       <div class="discipline-card card-klik">
-        <span class="discipline-badge badge-klik">1. Seviye Ceza</span>
+        <span class="discipline-badge badge-klik">1. Seviye Yaptırım</span>
         <h3 class="discipline-title">🟢 Klik Depremi</h3>
         <p class="discipline-desc">
           Konuşan öğrencilerin dahil olduğu <strong>Bron-Kerbosch kapalı arkadaş grubu (klik)</strong> tespit edilir. Klik üyelerinin birbiriyle oturması yasaklanır ve grup sınıfın farklı sıralarına dağıtılır.
@@ -1324,26 +1397,26 @@ footer a:hover{text-decoration:underline}
 
       <!-- 2. TSUNAMI -->
       <div class="discipline-card card-tsunami">
-        <span class="discipline-badge badge-tsunami">2. Seviye Ceza</span>
+        <span class="discipline-badge badge-tsunami">2. Seviye Yaptırım</span>
         <h3 class="discipline-title">🟡 Tsunami Depremi</h3>
         <p class="discipline-desc">
-          Tüm sınıfın <strong>1. ve 2. tercihleri tamamen yasaklanır</strong>. Algoritma öğrencileri en erken 3. tercihlerine yerleştirmeye zorlar. Tüm 17 masa (%100) yer değiştirir; sınıfa kolektif uyarı verilir.
+          Tüm sınıfın <strong>1. ve 2. tercihleri tamamen yasaklanır</strong>. Algoritma öğrencileri en erken 3. tercihlerine yerleştirmeye zorlar. Tüm sıralar sarsılır ve sınıfa kolektif uyarı verilir.
         </p>
         <div class="discipline-stat">
-          <span>Sarsılan Sıra: <strong>17 Masa (%100)</strong></span>
+          <span>Sarsılan Sıra: <strong>Tüm Sınıf (%100)</strong></span>
           <span>Sınıf Memnuniyeti: <strong>%38.2</strong></span>
         </div>
       </div>
 
       <!-- 3. NÜKLEER -->
       <div class="discipline-card card-nukleer">
-        <span class="discipline-badge badge-nukleer">3. Seviye Ceza</span>
+        <span class="discipline-badge badge-nukleer">3. Seviye Yaptırım</span>
         <h3 class="discipline-title">🔴 Nükleer Deprem</h3>
         <p class="discipline-desc">
           Öğrencilerin anketlerinde seçtikleri <strong>tüm pozitif tercihler (1, 2, 3, 4, 5) yasaklanır</strong>. Tüm sınıf anketinde hiç seçmediği sınıf arkadaşlarıyla eşleştirilir.
         </p>
         <div class="discipline-stat">
-          <span>Sarsılan Sıra: <strong>17 Masa (%100)</strong></span>
+          <span>Sarsılan Sıra: <strong>Tüm Sınıf (%100)</strong></span>
           <span>Sınıf Memnuniyeti: <strong>%0.0 (Taban)</strong></span>
         </div>
       </div>
@@ -1356,7 +1429,7 @@ footer a:hover{text-decoration:underline}
       <div class="af-content">
         <h4>Öğretmenin Pedagojik Gücü: "İlk Plana Dön (Genel Af)"</h4>
         <p>
-          Depremler uygulandıktan sonra sınıf pişman olup derse odaklanacağına söz verdiğinde; öğretmen tek dokunuşla tüm cezaları ve kısıtları kaldırarak sınıfı anında o ilk günkü <strong>%85 memnuniyetli orijinal Altın Plana</strong> geri döndürebilir. Ayrıca her deprem adımı tek tek <em>Geri Al</em> butonuyla geri alınabilir.
+          Yaptırımlar uygulandıktan sonra sınıf pişman olup derse odaklanacağına söz verdiğinde; öğretmen tek dokunuşla tüm yaptırımları ve kısıtları kaldırarak sınıfı anında o ilk günkü <strong>%85 memnuniyetli orijinal Altın Plana</strong> geri döndürebilir. Ayrıca uygulanan her yaptırım adımı tek tek <em>Geri Al</em> butonuyla geri alınabilir.
         </p>
       </div>
     </div>
@@ -1367,7 +1440,7 @@ footer a:hover{text-decoration:underline}
     <div class="section-tag">Kimin İçin Ne Kazandırır?</div>
     <h2 class="section-title">Öğrenciye ve Öğretmene Sağlanan Faydalar</h2>
     <p class="section-subtitle">
-      Oturma planı sadece mobilya koordinatı değildir; bir çocuğun okula severek gelmesini sağlayan mikro-evrendir.
+      Oturma planı sadece ahşap sıralar ve sandalyeler değildir; bir çocuğun okula severek gelmesini sağlayan mikro-evrendir.
     </p>
 
     <div class="benefits-grid">
@@ -1386,28 +1459,28 @@ footer a:hover{text-decoration:underline}
             <div class="benefit-item-icon">🌟</div>
             <div>
               <strong>Sosyal Yalnızlığı ve İzolasyonu Bitirme</strong>
-              <p>John Nash modelinin sıfırı cezalandıran yapısı sayesinde hiçbir çocuk "kimsenin istemediği çocuk" durumuna düşürülmez. Taban mutluluğu korunur.</p>
+              <p>John Nash modelinin sıfırı kesin olarak engelleyen içbükey yapısı sayesinde hiçbir çocuk "kimsenin istemediği çocuk" durumuna düşürülmez. Taban mutluluğu korunur.</p>
             </div>
           </li>
           <li class="benefit-item">
             <div class="benefit-item-icon">🤝</div>
             <div>
               <strong>Can Dostlarıyla Masayı Paylaşma Sevinci</strong>
-              <p>Sınıfın %58.6'sı ilk iki tercihine, %77.4'ü ise listesindeki arkadaşlarına kavuşur. Sıra arkadaşlığı ömür boyu dostluklara dönüşür.</p>
+              <p>Sınıfın %80'inden fazlası ilk iki tercihine kavuşur. Sıra arkadaşlığı ömür boyu dostluklara dönüşür.</p>
             </div>
           </li>
           <li class="benefit-item">
             <div class="benefit-item-icon">🤫</div>
             <div>
               <strong>Akran Baskısından Uzak, Özgürce Tercih</strong>
-              <p>Kiosk modu sayesinde oylar tamamen gizlidir. "Beni neden seçmedin?" çekincesi veya popüler çocuklara zorunlu oy verme baskısı yaşanmaz.</p>
+              <p>Kiosk modu sayesinde hem arkadaş hem de sıra seçimleri tamamen gizlidir. "Beni neden seçmedin?" çekincesi veya popüler çocuklara zorunlu oy verme baskısı yaşanmaz.</p>
             </div>
           </li>
           <li class="benefit-item">
             <div class="benefit-item-icon">🕊️</div>
             <div>
               <strong>Akran Zorbalığı ve Çatışmaları Önleme</strong>
-              <p>Uyuşmazlık yaşayan öğrenciler gerek oylamada gerekse disiplin depremlerinde otomatik olarak birbirinden uzak sıralara dağıtılır.</p>
+              <p>Geçimsizlik yaşayan öğrenciler gerek oylamada gerekse yaptırım depremlerinde otomatik olarak birbirinden uzak sıralara dağıtılır.</p>
             </div>
           </li>
         </ul>
@@ -1431,10 +1504,17 @@ footer a:hover{text-decoration:underline}
             </div>
           </li>
           <li class="benefit-item">
-            <div class="benefit-item-icon">⚡</div>
+            <div class="benefit-item-icon">📸</div>
+            <div>
+              <strong>Fotoğrafla Zahmetsiz Sınıf Girişi (OCR)</strong>
+              <p>e-Okul sınıf listesinin fotoğrafını çekerek saniyeler içinde öğrenci isimlerini ve numaralarını dijitalleştirip kullanabilme kolaylığı.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-item-icon">🛡️</div>
             <div>
               <strong>Kart ve Deprem Mekanizmasıyla Sınıf Hakimiyeti</strong>
-              <p>Kurallara uyulmadığında sıraya dokunup Sarı Kart veya 3 seviyeli Kırmızı Kart (Klik, Tsunami, Nükleer) uygulayarak ders düzenini koruyabilme.</p>
+              <p>Kurallara uyulmadığında sıraya dokunup Sarı Kart veya 3 seviyeli Kırmızı Kart (Klik, Tsunami, Nükleer) yaptırımları uygulayarak ders düzenini koruyabilme.</p>
             </div>
           </li>
           <li class="benefit-item">
@@ -1468,77 +1548,97 @@ footer a:hover{text-decoration:underline}
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-number">1</div>
-        <h3 class="step-title">Kiosk Oylamasını Başlat</h3>
+        <h3 class="step-title">Listeyi Tara & Kiosk'u Başlat</h3>
         <p class="step-desc">
-          Öğretmen sınıf listesini yükler ve akıllı tahtada Kiosk modunu açar. Öğrenciler sırayla tahtaya gelerek en çok oturmak istediği 5 arkadaşını gizlice seçer.
+          Öğretmen sınıf listesinin fotoğrafını çeker (OCR ile otomatik aktarılır) ve telefonunda/tabletinde Kiosk modunu açar. Öğrenciler sırayla gelerek en çok oturmak istediği 5 arkadaşını ve oturmak istediği sıraları gizlice seçer.
         </p>
       </div>
 
       <div class="step-card">
         <div class="step-number">2</div>
-        <h3 class="step-title">Nash & CP-SAT Optimizasyonu</h3>
+        <h3 class="step-title">İki Aşamalı Optimizasyon</h3>
         <p class="step-desc">
-          Tüm oylar tamamlandığında Google OR-Tools CP-SAT motoru çalışır. John Nash Çarpımsal Refahı ve Şampiyon Puanlar skalasıyla sınıf refahı maksimize edilir.
+          Oylar tamamlandığında Aşama 1'de John Nash Çarpımsal Refahı ile en uyumlu öğrenci çiftleri eşleşir. Aşama 2'de Macar Algoritması (Hungarian) ile çiftler tercih ettikleri sıralara yerleştirilir.
         </p>
       </div>
 
       <div class="step-card">
         <div class="step-number">3</div>
-        <h3 class="step-title">Planı Yönet, Disiplini Koru</h3>
+        <h3 class="step-title">Planı Yönet, Yaptırımla Koru</h3>
         <p class="step-desc">
-          Oturma planı anında ekrana gelir. Gerektiğinde manuel koltuk takası yapabilir, kurallara uymayan sıralara kart veya deprem uygulayabilir ve çıktısını alabilirsiniz.
+          Oturma planı ve Moreno Sosyogramı anında ekrana gelir. Kurallara uymayan sıralara Sarı/Kırmızı Kart veya Deprem yaptırımı uygulayabilir, söz verdiklerinde Genel Af ile ilk plana dönebilir ve A4 çıktısını alabilirsiniz.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ALGORITHMS & MATHEMATICAL MODELS -->
+  <!-- ALGORITHMS & MATHEMATICAL MODELS (COMPREHENSIVE DEEP DIVE) -->
   <section id="modeller" class="section">
     <div class="section-tag">Bilimsel Temeller</div>
     <h2 class="section-title">Yararlanılan Algoritmalar ve Modeller</h2>
     <p class="section-subtitle">
-      SIRA, basit bir kura veya rastgele dağıtıcı değildir; yöneylem araştırması ve sosyal tercih kuramının en prestijli modellerini kullanır.
+      SIRA, basit bir kura veya rastgele dağıtıcı değildir; yöneylem araştırması, oyun teorisi, çizge teorisi ve yapay zeka optimizasyonunun en güçlü modellerini harmanlar.
     </p>
 
     <div class="models-grid">
 
       <!-- MODEL 1: JOHN NASH -->
       <div class="model-card">
-        <span class="model-badge">Oyun Teorisi & Refah İktisadı</span>
+        <span class="model-badge">Aşama 1: Oyun Teorisi & Refah İktisadı</span>
         <h3 class="model-title">John Nash Çarpımsal Sosyal Refahı</h3>
         <div class="model-formula">W = ∏ (u_i) = u_1 × u_2 × ... × u_n</div>
         <p class="model-desc">
-          Klasik Jeremy Bentham modeli mutlulukları toplar (\(\sum u_i\)) ve popüler öğrencileri memnun ederken yalnızları feda eder. John Nash modeli ise mutlulukları çarpar. Çarpımda <strong>tek bir 0 puan bile bütün sistemi sıfıra indirdiği için</strong> algoritma, bir çocuğu mutsuzluk kuyusuna atmaktan veba gibi kaçınır. İçbükey logaritmik yapı, dezavantajlı öğrencilerin refahını önceler.
+          Klasik Jeremy Bentham modeli mutlulukları toplar (\(\sum u_i\)) ve popüler öğrencileri memnun ederken yalnızları feda eder. John Nash modeli ise mutlulukları çarpar. Çarpımda <strong>tek bir 0 puan bile bütün sistemi sıfıra indirdiği için</strong> algoritma, bir çocuğu mutsuzluk çukuruna atmaktan veba gibi kaçınır. Logaritmik içbükey yapı (\(\ln(u_1) + \ln(u_2)\)), tabandaki dezavantajlı öğrencileri koruyan bir kalkandır.
         </p>
       </div>
 
-      <!-- MODEL 2: ŞAMPİYON PUANLAR -->
+      <!-- MODEL 2: MACAR ALGORİTMASI -->
+      <div class="model-card">
+        <span class="model-badge">Aşama 2: Yöneylem & Bipartite Eşleme</span>
+        <h3 class="model-title">Macar Algoritması (Kuhn-Munkres)</h3>
+        <div class="model-formula">O(V³) Polinomyal Zaman • Max Log-Utility</div>
+        <p class="model-desc">
+          Nash algoritmasıyla eşleşen öğrenci çiftlerinin sınıf sıralarına yerleştirilmesinde <strong>Macar Algoritması (Hungarian Algorithm)</strong> kullanılır. İki parçalı graf (çiftler ve masalar) üzerinde öğrencilerin ortak yer tercihlerini (\(\ln(U_1(\text{masa})) + \ln(U_2(\text{masa}))\)) maksimize eden küresel optimum yerleşimi saniyeler içinde üretir.
+        </p>
+      </div>
+
+      <!-- MODEL 3: MORENO 5 KATMANLI HEDEF SOSYOGRAMI -->
+      <div class="model-card">
+        <span class="model-badge">Sosyometri & Sosyal Ağ Analizi</span>
+        <h3 class="model-title">Moreno 5 Katmanlı Eşmerkezli Hedef Modeli</h3>
+        <div class="model-formula">In-Degree Merkezilik & 5 Dilimli Hedef Tahtası</div>
+        <p class="model-desc">
+          Jacob L. Moreno'nun sosyometri kuramına dayanan görselleştirme motoru; gelen oy yoğunluğuna (In-Degree) göre öğrencileri 5 halkalı hedef dairesine dizer. Merkezde sınıfın Yıldızları (liderler) yer alırken; en dış çeperde hiç seçilmemiş <strong>İzole (Yalnız) Öğrenciler</strong> kırmızıyla işaretlenerek erken rehberlik müdahalesi sağlanır.
+        </p>
+      </div>
+
+      <!-- MODEL 4: BRON-KERBOSCH KLİK TESPİTİ -->
+      <div class="model-card">
+        <span class="model-badge">Graf Madenciliği & Yaptırım Motoru</span>
+        <h3 class="model-title">Bron-Kerbosch Kapalı Klik Algoritması</h3>
+        <div class="model-formula">Maximal Cliques Detection & Dynamic Ban</div>
+        <p class="model-desc">
+          Sınıf içi disiplin ve yaptırım motorunda <strong>Bron-Kerbosch algoritması</strong> çalışır. Dersi kaynatan öğrencilerin dahil olduğu tam alt graflar (kapalı klik arkadaş grupları) tespit edilir. 1. Seviye Klik Depremi uygulandığında bu klik üyelerinin birbiriyle oturması dinamik olarak yasaklanır ve grup sınıfın farklı noktalarına dağıtılır.
+        </p>
+      </div>
+
+      <!-- MODEL 5: ŞAMPİYON PUANLAR MİMARİSİ -->
       <div class="model-card">
         <span class="model-badge">1532 Skala Arasından Seçilen</span>
         <h3 class="model-title">Şampiyon Puanlar Mimarisi</h3>
         <div class="model-formula">Skala = (20, 16, 8, 6, 4, 1) Puan</div>
         <p class="model-desc">
-          Geliştirilen Grid Search algoritmasıyla 1532 farklı puan dizilimi test edilmiştir. Saf Fibonacci dizilimi (21, 13, 8, 5, 3, 1) birinci ve beşinci tercih arasındaki 7 katlık uçurum yüzünden bencil davranırken; Şampiyon Puanlar 4 puanlık güçlü tabanıyla 5. tercihteki öğrencileri kurtarmış ve Monte Carlo stres testlerinde %77.4+ başarıyla şampiyon olmuştur.
+          Grid Search algoritmasıyla 1532 farklı puan dizilimi test edilmiştir. Saf Fibonacci dizilimi (21, 13, 8, 5, 3, 1) 1. ve 5. tercih arasındaki 7 katlık uçurum yüzünden bencil davranıp 5. tercihteki öğrencileri feda ederken; Şampiyon Puanlar 4 puanlık güçlü tabanıyla o öğrencileri kurtarmış ve Monte Carlo stres testlerinde %80+ yerleşim oranıyla şampiyon olmuştur.
         </p>
       </div>
 
-      <!-- MODEL 3: GRAF TEORİSİ & GÜVERCİN YUVASI -->
+      <!-- MODEL 6: TABLO DUYARLI OCR & TEORİK SINIR ANALİZİ -->
       <div class="model-card">
-        <span class="model-badge">Ayrık Matematik & Graf Teorisi</span>
-        <h3 class="model-title">Güvercin Yuvası İlkesi & Graf Röntgeni</h3>
-        <div class="model-formula">Max Cardinality Matching & Dirichlet</div>
+        <span class="model-badge">Görüntü İşleme & Ayrık Matematik</span>
+        <h3 class="model-title">Tablo Duyarlı OCR & Güvercin Yuvası İlkesi</h3>
+        <div class="model-formula">Roster Document OCR & Dirichlet İlkesi</div>
         <p class="model-desc">
-          Sınıf, 30 düğüm ve 150 yönlü oktan oluşan Yönlü Sosyometri Grafı olarak modellenmiştir. Sınıfın popüler öğrencilerine 35 ok saplandığı için Dirichlet Güvercin Yuvası ilkesi gereği matematiksel olarak en az 7 öğrencinin seçmediği biriyle oturmasının kaçınılmaz olduğu ispatlanmıştır. Algoritmamız doğanın çizdiği bu teorik sınırda kalarak maksimum saadeti yakalar.
-        </p>
-      </div>
-
-      <!-- MODEL 4: BRON-KERBOSCH & CEZA HİYERARŞİSİ -->
-      <div class="model-card">
-        <span class="model-badge">Graf Madenciliği & Kısıt Programlama</span>
-        <h3 class="model-title">Bron-Kerbosch Kliki & Dinamik Kısıtlar</h3>
-        <div class="model-formula">Klik Dağıtımı • Tsunami • Nükleer Yasak</div>
-        <p class="model-desc">
-          Disiplin müdahalesinde <strong>Bron-Kerbosch algoritması</strong> çalıştırılarak konuşan öğrencilerin ait olduğu klik tespit edilir ve ayrılır. Tsunami seviyesinde 1. ve 2. tercihler <code>forbiddenPairs</code> kısıtına eklenerek en erken 3. tercihe zorlanır. Nükleer seviyede ise tüm pozitif tercihler yasaklanarak liste dışı zorunlu eşleşme üretilir.
+          e-Okul belgelerini fotoğraftan ayrıştıran tablo duyarlı OCR motoru, gürültüleri eleyerek isim listesini dijitalleştirir. Yönlü sosyometri grafında popüler öğrencilere gelen yoğun talepler Dirichlet Güvercin Yuvası ilkesiyle çözümlenir; matematiksel olarak kaçınılmaz olan teorik minimum sapma hesaplanarak en yüksek refah korunur.
         </p>
       </div>
 
@@ -1549,11 +1649,11 @@ footer a:hover{text-decoration:underline}
   <section id="indir" class="section">
     <div class="download-box">
       <div class="hero-badge" style="margin-bottom:16px">
-        <span class="hero-badge-dot"></span> Hemen Yükleyin & Sınıfınızda Uygulayın
+        <span class="hero-badge-dot"></span> Hemen Yükleyin & Sınıfınızda Kullanın
       </div>
       <h2 class="download-title">SIRA Android Uygulamasını İndirin</h2>
       <p class="download-subtitle">
-        Akıllı telefonunuza, tabletinize veya Android destekli akıllı tahtanıza yükleyerek TÜBİTAK ödüllü bu algoritmayı hemen kullanmaya başlayabilirsiniz.
+        Öğretmen akıllı telefonunuza veya tabletinize yükleyerek algoritmik oturma planı ve Moreno sosyogram sistemini sınıfınızda hemen kullanmaya başlayabilirsiniz.
       </p>
 
       <a href="sira.apk" download="SIRA.apk" class="download-cta">
@@ -1568,7 +1668,7 @@ footer a:hover{text-decoration:underline}
         <span>✓ Ücretsiz ve Reklamsız</span>
         <span>✓ İnternetsiz (Çevrimdışı) Çalışabilme</span>
         <span>✓ Android 8.0 ve Üzeri</span>
-        <span>✓ Akıllı Tahta & Tablet Uyumlu</span>
+        <span>✓ Android Telefon & Tablet Uyumlu</span>
       </div>
 
       <!-- INSTALLATION GUIDE -->
@@ -1580,7 +1680,7 @@ footer a:hover{text-decoration:underline}
         <ol class="install-steps">
           <li>
             <div class="install-num">1</div>
-            <div>Yukarıdaki <strong>"SIRA.apk İndir"</strong> butonuna dokunarak APK dosyasını cihazınıza indirin.</div>
+            <div>Yukarıdaki <strong>"SIRA.apk İndir"</strong> butonuna dokunarak APK dosyasını telefonunuza veya tabletinize indirin.</div>
           </li>
           <li>
             <div class="install-num">2</div>
@@ -1588,7 +1688,7 @@ footer a:hover{text-decoration:underline}
           </li>
           <li>
             <div class="install-num">3</div>
-            <div><strong>"Yükle"</strong> butonuna basın. Kurulum tamamlandıktan sonra SIRA'yı açıp sınıfınızı oluşturun ve oylamayı başlatın!</div>
+            <div><strong>"Yükle"</strong> butonuna basın. Kurulum tamamlandıktan sonra SIRA'yı açıp sınıf listenizin fotoğrafını çekin ve oylamayı başlatın!</div>
           </li>
         </ol>
       </div>
@@ -1602,7 +1702,7 @@ footer a:hover{text-decoration:underline}
 <footer>
   <div class="container">
     <p style="margin-bottom:8px">
-      © 2026 <strong>ÖMER LABS</strong> &bull; TÜBİTAK Proje Çalışma Grubu (Matematiksel Modelleme & Yapay Zeka Laboratuvarı)
+      © 2026 <strong>ÖMER LABS</strong> &bull; Matematiksel Modelleme & Yapay Zeka Laboratuvarı
     </p>
     <p style="font-size:13px">
       Geliştirici İletişim: <a href="mailto:omergeziciler@gmail.com">omergeziciler@gmail.com</a> &bull; <a href="../">omerlabs.github.io</a>
@@ -1610,7 +1710,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
-<!-- CAROUSEL SCRIPT -->
+<!-- CAROUSEL SCRIPT (MANUAL NAVIGATION ONLY - NO AUTOPLAY) -->
 <script>
 (function(){
   const track = document.getElementById("carouselTrack");
@@ -1618,9 +1718,7 @@ footer a:hover{text-decoration:underline}
   const dots = document.querySelectorAll(".carousel-dot");
   const prevBtn = document.getElementById("prevSlide");
   const nextBtn = document.getElementById("nextSlide");
-  const wrapper = document.getElementById("carouselWrapper");
   let currentIndex = 0;
-  let autoplayTimer = null;
 
   function updateCarousel(index){
     if(index < 0) index = slides.length - 1;
@@ -1646,25 +1744,17 @@ footer a:hover{text-decoration:underline}
     updateCarousel(currentIndex - 1);
   }
 
-  nextBtn.addEventListener("click", () => {
-    nextSlide();
-    resetAutoplay();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    prevSlide();
-    resetAutoplay();
-  });
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
 
   dots.forEach(dot => {
     dot.addEventListener("click", () => {
       const target = parseInt(dot.getAttribute("data-index"), 10);
       updateCarousel(target);
-      resetAutoplay();
     });
   });
 
-  // Touch Swipe Support
+  // Touch Swipe Support for Mobile/Tablet
   let touchStartX = 0;
   let touchEndX = 0;
   track.addEventListener("touchstart", e => {
@@ -1675,32 +1765,13 @@ footer a:hover{text-decoration:underline}
     touchEndX = e.changedTouches[0].screenX;
     if (touchStartX - touchEndX > 50) {
       nextSlide();
-      resetAutoplay();
     } else if (touchEndX - touchStartX > 50) {
       prevSlide();
-      resetAutoplay();
     }
   }, {passive:true});
 
-  // Autoplay
-  function startAutoplay(){
-    stopAutoplay();
-    autoplayTimer = setInterval(nextSlide, 6000);
-  }
-
-  function stopAutoplay(){
-    if(autoplayTimer) clearInterval(autoplayTimer);
-  }
-
-  function resetAutoplay(){
-    stopAutoplay();
-    startAutoplay();
-  }
-
-  wrapper.addEventListener("mouseenter", stopAutoplay);
-  wrapper.addEventListener("mouseleave", startAutoplay);
-
-  startAutoplay();
+  // Purely manual: NO autoplay timer. Slaytlar otomatik geçmez, kullanıcı rahatça okur.
+  updateCarousel(0);
 })();
 </script>
 </body>
