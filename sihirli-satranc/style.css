@@ -11,7 +11,7 @@
   --board-light: #fff8e7;
   --board-dark: #b88b4a;
   --board-border: #7a4f1d;
-  --font-family: 'Comic Sans MS', 'Chalkboard SE', 'Nunito', 'Segoe UI', cursive, sans-serif;
+  --font-family: 'Nunito', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
 }
 
 * {
