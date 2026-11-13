@@ -1,11 +1,6 @@
 /**
- * Sihirli Satranç - Tam Kural Satranç Motoru ve Yapay Zeka
- * 
- * Özellikler:
- * - Tam satranç kuralları (Rok, Geçerken Alma, Terfi, Şah, Mat, Pat)
- * - Hamle geri alma geçmişi (Undo)
- * - Çocuk dostu bot yapay zekaları (Minik Tavşan, Kurnaz Tilki, Bilge Baykuş, Kral Aslan)
- * - Maskot için akıllı Türkçe ipucu üretici
+ * Klasik Satranç Motoru ve 5 Seviyeli Yapay Zeka
+ * Tam kurallar: Rok, Geçerken Alma, Terfi, Şah, Mat, Pat.
  */
 
 class ChessEngine {
@@ -75,25 +70,11 @@ class ChessEngine {
     return this.isWhite(piece) ? 'w' : 'b';
   }
 
-  clone() {
-    const cloneEngine = new ChessEngine();
-    cloneEngine.board = [...this.board];
-    cloneEngine.turn = this.turn;
-    cloneEngine.castling = { ...this.castling };
-    cloneEngine.enPassant = this.enPassant;
-    cloneEngine.halfMoves = this.halfMoves;
-    cloneEngine.fullMoves = this.fullMoves;
-    cloneEngine.capturedWhite = [...this.capturedWhite];
-    cloneEngine.capturedBlack = [...this.capturedBlack];
-    return cloneEngine;
-  }
-
-  // Kare saldiri altinda mi?
   isSquareAttacked(sq, byColor) {
     const r = Math.floor(sq / 8);
     const c = sq % 8;
 
-    // 1. Piyon saldirilari
+    // 1. Piyon saldırısı
     if (byColor === 'w') {
       const pR = r + 1;
       if (pR < 8) {
@@ -108,7 +89,7 @@ class ChessEngine {
       }
     }
 
-    // 2. At saldirilari
+    // 2. At saldırısı
     const knightMoves = [
       [-2, -1], [-2, 1], [-1, -2], [-1, 2],
       [1, -2], [1, 2], [2, -1], [2, 1]
@@ -122,7 +103,7 @@ class ChessEngine {
       }
     }
 
-    // 3. Sah saldirisi
+    // 3. Şah saldırısı
     const kingChar = byColor === 'w' ? 'K' : 'k';
     for (let dr = -1; dr <= 1; dr++) {
       for (let dc = -1; dc <= 1; dc++) {
@@ -135,7 +116,7 @@ class ChessEngine {
       }
     }
 
-    // 4. Capraz saldirilar (Fil / Vezir)
+    // 4. Çapraz saldırılar (Fil / Vezir)
     const bishopChar = byColor === 'w' ? 'B' : 'b';
     const queenChar = byColor === 'w' ? 'Q' : 'q';
     const diagDirs = [[-1, -1], [-1, 1], [1, -1], [1, 1]];
@@ -154,7 +135,7 @@ class ChessEngine {
       }
     }
 
-    // 5. Duz saldirilar (Kale / Vezir)
+    // 5. Düz saldırılar (Kale / Vezir)
     const rookChar = byColor === 'w' ? 'R' : 'r';
     const straightDirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
     for (const [dr, dc] of straightDirs) {
@@ -183,14 +164,13 @@ class ChessEngine {
     return -1;
   }
 
-  isInCheck(color) {
+  isInCheck(color = this.turn) {
     const kingSq = this.findKing(color);
     if (kingSq === -1) return false;
-    const opponent = color === 'w' ? 'b' : 'w';
-    return this.isSquareAttacked(kingSq, opponent);
+    const opp = color === 'w' ? 'b' : 'w';
+    return this.isSquareAttacked(kingSq, opp);
   }
 
-  // Hamle uretici
   generatePseudoMoves(color) {
     const moves = [];
     const opp = color === 'w' ? 'b' : 'w';
@@ -208,7 +188,6 @@ class ChessEngine {
         const startRank = color === 'w' ? 6 : 1;
         const promoRank = color === 'w' ? 0 : 7;
 
-        // 1 kare ileri
         const nextR = r + forward;
         if (nextR >= 0 && nextR < 8) {
           const nextSq = nextR * 8 + c;
@@ -219,7 +198,6 @@ class ChessEngine {
               }
             } else {
               moves.push({ from: sq, to: nextSq, piece });
-              // 2 kare ileri (baslangic)
               if (r === startRank) {
                 const doubleR = r + forward * 2;
                 const doubleSq = doubleR * 8 + c;
@@ -230,7 +208,6 @@ class ChessEngine {
             }
           }
 
-          // Capraz yeme
           for (const dc of [-1, 1]) {
             const capC = c + dc;
             if (capC >= 0 && capC < 8) {
@@ -245,7 +222,6 @@ class ChessEngine {
                   moves.push({ from: sq, to: capSq, piece, captured: target });
                 }
               } else if (this.enPassant === capSq) {
-                // Gecerken alma
                 moves.push({ from: sq, to: capSq, piece, isEnPassant: true, captured: color === 'w' ? 'p' : 'P' });
               }
             }
@@ -271,12 +247,8 @@ class ChessEngine {
         }
       } else if (type === 'B' || type === 'R' || type === 'Q') {
         const dirs = [];
-        if (type === 'B' || type === 'Q') {
-          dirs.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
-        }
-        if (type === 'R' || type === 'Q') {
-          dirs.push([-1, 0], [1, 0], [0, -1], [0, 1]);
-        }
+        if (type === 'B' || type === 'Q') dirs.push([-1, -1], [-1, 1], [1, -1], [1, 1]);
+        if (type === 'R' || type === 'Q') dirs.push([-1, 0], [1, 0], [0, -1], [0, 1]);
 
         for (const [dr, dc] of dirs) {
           let step = 1;
@@ -315,28 +287,24 @@ class ChessEngine {
           }
         }
 
-        // Rok Hamleleri
+        // Rok kuralları
         if (color === 'w' && sq === 60 && !this.isInCheck('w')) {
-          // Sah kanadi (e1 -> g1)
           if (this.castling.K && !this.board[61] && !this.board[62] && this.board[63] === 'R') {
             if (!this.isSquareAttacked(61, 'b') && !this.isSquareAttacked(62, 'b')) {
               moves.push({ from: 60, to: 62, piece, isCastling: 'K' });
             }
           }
-          // Vezir kanadi (e1 -> c1)
           if (this.castling.Q && !this.board[59] && !this.board[58] && !this.board[57] && this.board[56] === 'R') {
             if (!this.isSquareAttacked(59, 'b') && !this.isSquareAttacked(58, 'b')) {
               moves.push({ from: 60, to: 58, piece, isCastling: 'Q' });
             }
           }
         } else if (color === 'b' && sq === 4 && !this.isInCheck('b')) {
-          // Sah kanadi (e8 -> g8)
           if (this.castling.k && !this.board[5] && !this.board[6] && this.board[7] === 'r') {
             if (!this.isSquareAttacked(5, 'w') && !this.isSquareAttacked(6, 'w')) {
               moves.push({ from: 4, to: 6, piece, isCastling: 'k' });
             }
           }
-          // Vezir kanadi (e8 -> c8)
           if (this.castling.q && !this.board[3] && !this.board[2] && !this.board[1] && this.board[0] === 'r') {
             if (!this.isSquareAttacked(3, 'w') && !this.isSquareAttacked(2, 'w')) {
               moves.push({ from: 4, to: 2, piece, isCastling: 'q' });
@@ -349,7 +317,6 @@ class ChessEngine {
     return moves;
   }
 
-  // Sadece sahini tehdit altinda birakmayan yasal hamleler
   getLegalMoves(color = this.turn) {
     const pseudos = this.generatePseudoMoves(color);
     const legal = [];
@@ -374,7 +341,6 @@ class ChessEngine {
   makeMove(move) {
     const { from, to, piece, captured, promotion, isCastling, isEnPassant, isDoublePawn } = move;
 
-    // Geri alma icin mevcut durumu kaydet
     const stateRecord = {
       move,
       prevCastling: { ...this.castling },
@@ -385,7 +351,6 @@ class ChessEngine {
     };
     this.history.push(stateRecord);
 
-    // Tahta degisimi
     this.board[from] = null;
 
     if (isEnPassant) {
@@ -406,31 +371,16 @@ class ChessEngine {
       this.board[to] = piece;
     }
 
-    // Rok hamlesi kulesi tasima
     if (isCastling) {
-      if (isCastling === 'K') {
-        this.board[63] = null;
-        this.board[61] = 'R';
-      } else if (isCastling === 'Q') {
-        this.board[56] = null;
-        this.board[59] = 'R';
-      } else if (isCastling === 'k') {
-        this.board[7] = null;
-        this.board[5] = 'r';
-      } else if (isCastling === 'q') {
-        this.board[0] = null;
-        this.board[3] = 'r';
-      }
+      if (isCastling === 'K') { this.board[63] = null; this.board[61] = 'R'; }
+      else if (isCastling === 'Q') { this.board[56] = null; this.board[59] = 'R'; }
+      else if (isCastling === 'k') { this.board[7] = null; this.board[5] = 'r'; }
+      else if (isCastling === 'q') { this.board[0] = null; this.board[3] = 'r'; }
     }
 
-    // Rok haklarinin guncellenmesi
-    if (piece === 'K') {
-      this.castling.K = false;
-      this.castling.Q = false;
-    } else if (piece === 'k') {
-      this.castling.k = false;
-      this.castling.q = false;
-    } else if (piece === 'R') {
+    if (piece === 'K') { this.castling.K = false; this.castling.Q = false; }
+    else if (piece === 'k') { this.castling.k = false; this.castling.q = false; }
+    else if (piece === 'R') {
       if (from === 63) this.castling.K = false;
       if (from === 56) this.castling.Q = false;
     } else if (piece === 'r') {
@@ -438,22 +388,14 @@ class ChessEngine {
       if (from === 0) this.castling.q = false;
     }
 
-    // Eger kale yenmisse de o tarafa rok hakki biter
     if (to === 63) this.castling.K = false;
     if (to === 56) this.castling.Q = false;
     if (to === 7) this.castling.k = false;
     if (to === 0) this.castling.q = false;
 
-    // En passant hedef karesi
-    if (isDoublePawn) {
-      this.enPassant = this.turn === 'w' ? from - 8 : from + 8;
-    } else {
-      this.enPassant = null;
-    }
+    this.enPassant = isDoublePawn ? (this.turn === 'w' ? from - 8 : from + 8) : null;
 
-    if (this.turn === 'b') {
-      this.fullMoves++;
-    }
+    if (this.turn === 'b') this.fullMoves++;
     this.turn = this.turn === 'w' ? 'b' : 'w';
 
     return true;
@@ -470,7 +412,6 @@ class ChessEngine {
     this.halfMoves = prevHalfMoves;
     this.fullMoves = prevFullMoves;
 
-    // Tasi geri tasi
     this.board[move.from] = move.piece;
     this.board[move.to] = null;
 
@@ -484,21 +425,11 @@ class ChessEngine {
       else this.capturedBlack.pop();
     }
 
-    // Rok hamlesi kuleyi geri al
     if (move.isCastling) {
-      if (move.isCastling === 'K') {
-        this.board[61] = null;
-        this.board[63] = 'R';
-      } else if (move.isCastling === 'Q') {
-        this.board[59] = null;
-        this.board[56] = 'R';
-      } else if (move.isCastling === 'k') {
-        this.board[5] = null;
-        this.board[7] = 'r';
-      } else if (move.isCastling === 'q') {
-        this.board[3] = null;
-        this.board[0] = 'r';
-      }
+      if (move.isCastling === 'K') { this.board[61] = null; this.board[63] = 'R'; }
+      else if (move.isCastling === 'Q') { this.board[59] = null; this.board[56] = 'R'; }
+      else if (move.isCastling === 'k') { this.board[5] = null; this.board[7] = 'r'; }
+      else if (move.isCastling === 'q') { this.board[3] = null; this.board[0] = 'r'; }
     }
 
     return move;
@@ -516,34 +447,33 @@ class ChessEngine {
     return this.isCheckmate() || this.isStalemate();
   }
 
-  // --- Degerlendirme ve Yapay Zeka ---
+  // --- Değerlendirme ve Yapay Zeka ---
   evaluate() {
     const pieceValues = {
       P: 100, N: 320, B: 330, R: 500, Q: 900, K: 20000,
       p: -100, n: -320, b: -330, r: -500, q: -900, k: -20000
     };
 
-    // Pozisyon tablolari (Merkez kontrolu ve ilerleme)
     const pawnTable = [
       0,  0,  0,  0,  0,  0,  0,  0,
       50, 50, 50, 50, 50, 50, 50, 50,
       10, 10, 20, 30, 30, 20, 10, 10,
-       5,  5, 10, 27, 27, 10,  5,  5,
-       0,  0,  0, 25, 25,  0,  0,  0,
+       5,  5, 10, 25, 25, 10,  5,  5,
+       0,  0,  0, 20, 20,  0,  0,  0,
        5, -5,-10,  0,  0,-10, -5,  5,
        5, 10, 10,-20,-20, 10, 10,  5,
        0,  0,  0,  0,  0,  0,  0,  0
     ];
 
     const knightTable = [
-      -50,-40,-30,-30,-30,-30,-40,-50,
-      -40,-20,  0,  0,  0,  0,-20,-40,
-      -30,  0, 10, 15, 15, 10,  0,-30,
-      -30,  5, 15, 20, 20, 15,  5,-30,
-      -30,  0, 15, 20, 20, 15,  0,-30,
-      -30,  5, 10, 15, 15, 10,  5,-30,
-      -40,-20,  0,  5,  5,  0,-20,-40,
-      -50,-40,-30,-30,-30,-30,-40,-50
+      -40,-30,-20,-20,-20,-20,-30,-40,
+      -30,-15,  0,  0,  0,  0,-15,-30,
+      -20,  0, 10, 15, 15, 10,  0,-20,
+      -20,  5, 15, 20, 20, 15,  5,-20,
+      -20,  0, 15, 20, 20, 15,  0,-20,
+      -20,  5, 10, 15, 15, 10,  5,-20,
+      -30,-15,  0,  5,  5,  0,-15,-30,
+      -40,-30,-20,-20,-20,-20,-30,-40
     ];
 
     let score = 0;
@@ -551,17 +481,14 @@ class ChessEngine {
       const p = this.board[sq];
       if (!p) continue;
       score += pieceValues[p] || 0;
-
       if (p === 'P') score += pawnTable[sq];
       else if (p === 'p') score -= pawnTable[63 - sq];
       else if (p === 'N') score += knightTable[sq];
       else if (p === 'n') score -= knightTable[63 - sq];
     }
-
     return score;
   }
 
-  // Minimax ile en iyi hamleyi bulma
   minimax(depth, alpha, beta, isMaximizing) {
     if (depth === 0 || this.isGameOver()) {
       return { score: this.evaluate() };
@@ -570,14 +497,13 @@ class ChessEngine {
     const moves = this.getLegalMoves();
     if (moves.length === 0) {
       if (this.isInCheck(this.turn)) {
-        return { score: isMaximizing ? -99999 + (4 - depth) : 99999 - (4 - depth) };
+        return { score: isMaximizing ? -99999 + (5 - depth) : 99999 - (5 - depth) };
       }
-      return { score: 0 }; // Pat
+      return { score: 0 };
     }
 
-    // Hamle siralama: Yemeler once
+    // Yemeleri öne alarak arama hızını artır
     moves.sort((a, b) => (b.captured ? 10 : 0) - (a.captured ? 10 : 0));
-
     let bestMove = moves[0];
 
     if (isMaximizing) {
@@ -611,100 +537,48 @@ class ChessEngine {
     }
   }
 
-  // Karakterli Bot Hamle Secici
-  getBotMove(botId = 'tavsan') {
+  // 5 Zorluk Seviyeli Bot
+  getComputerMove(level = 1) {
     const legalMoves = this.getLegalMoves();
     if (legalMoves.length === 0) return null;
 
-    if (botId === 'tavsan') {
-      // Minik Tavsan: %40 ihtimalle rastgele/acemi hamle yapar veya tasini kaptirir
-      if (Math.random() < 0.40) {
-        // Zararsiz veya rastgele bir hamle
+    // Seviye 1: Acemi (Çocuk için - %65 rastgele hamle / taş verme, %35 depth 1)
+    if (level === 1) {
+      if (Math.random() < 0.65) {
         return legalMoves[Math.floor(Math.random() * legalMoves.length)];
       }
-      // Geri kalaninda derinlik 1
       const res = this.minimax(1, -Infinity, Infinity, this.turn === 'w');
       return res.move || legalMoves[0];
-    } else if (botId === 'tilki') {
-      // Kurnaz Tilki: Hizli saldiri ve tas yeme oncelikli
-      const capturingMoves = legalMoves.filter(m => m.captured);
-      if (capturingMoves.length > 0 && Math.random() < 0.65) {
-        return capturingMoves[Math.floor(Math.random() * capturingMoves.length)];
+    }
+
+    // Seviye 2: Kolay (%30 rastgele, %70 depth 1)
+    if (level === 2) {
+      if (Math.random() < 0.30) {
+        return legalMoves[Math.floor(Math.random() * legalMoves.length)];
       }
+      const res = this.minimax(1, -Infinity, Infinity, this.turn === 'w');
+      return res.move || legalMoves[0];
+    }
+
+    // Seviye 3: Orta (Depth 2, taş koruma ve taktikler)
+    if (level === 3) {
       const res = this.minimax(2, -Infinity, Infinity, this.turn === 'w');
       return res.move || legalMoves[0];
-    } else if (botId === 'baykus') {
-      // Bilge Baykus: Derinlik 2-3 saglam hamleler
-      const res = this.minimax(2, -Infinity, Infinity, this.turn === 'w');
-      return res.move || legalMoves[0];
-    } else if (botId === 'aslan') {
-      // Kral Aslan: En iyi derinlik (3)
+    }
+
+    // Seviye 4: Zor (Depth 3, pozisyonel derinlik)
+    if (level === 4) {
       const res = this.minimax(3, -Infinity, Infinity, this.turn === 'w');
       return res.move || legalMoves[0];
     }
 
+    // Seviye 5: Usta (Depth 4 güçlü taktikler)
+    if (level === 5) {
+      const res = this.minimax(4, -Infinity, Infinity, this.turn === 'w');
+      return res.move || legalMoves[0];
+    }
+
     return legalMoves[0];
-  }
-
-  // Akilli Turkce Ipucu Uretici
-  getHintForPlayer() {
-    const legalMoves = this.getLegalMoves('w');
-    if (legalMoves.length === 0) return null;
-
-    // Oncelikle 1 hamlede mat var mi kontrol et
-    for (const m of legalMoves) {
-      this.makeMove(m);
-      if (this.isCheckmate()) {
-        this.undoMove();
-        return {
-          move: m,
-          text: `İşte büyük fırsat! ${this.getPieceNameTr(m.piece)} ile ${this.squareToAlgebraic(m.to).toUpperCase()} karesine giderek şah ve mat yapabilirsin! ✨👑`
-        };
-      }
-      this.undoMove();
-    }
-
-    // Bedava tas yeme firsati var mi?
-    for (const m of legalMoves) {
-      if (m.captured) {
-        this.makeMove(m);
-        // Eger yedigimiz kare karsilik saldirisi altinda degilse bedavadir
-        if (!this.isSquareAttacked(m.to, 'b')) {
-          this.undoMove();
-          return {
-            move: m,
-            text: `Harika bir av! ${this.squareToAlgebraic(m.to).toUpperCase()} karesindeki korumasız ${this.getPieceNameTr(m.captured)} taşını alabilirsin! 🎯`
-          };
-        }
-        this.undoMove();
-      }
-    }
-
-    // En iyi hamleyi bul (Minimax d=2)
-    const best = this.minimax(2, -Infinity, Infinity, true);
-    if (best && best.move) {
-      const m = best.move;
-      const pieceName = this.getPieceNameTr(m.piece);
-      const toName = this.squareToAlgebraic(m.to).toUpperCase();
-      return {
-        move: m,
-        text: `Maskotun fısıldıyor: ${pieceName} taşını ${toName} karesine getirmek tahtadaki gücünü çok artırır! 🌟`
-      };
-    }
-
-    return {
-      move: legalMoves[0],
-      text: "Taşlarını güvenli ve merkeze yakın karelere ilerletmeye ne dersin? 🦄"
-    };
-  }
-
-  getPieceNameTr(piece) {
-    if (!piece) return '';
-    const map = {
-      P: 'Piyon', N: 'At', B: 'Fil', R: 'Kale', Q: 'Vezir', K: 'Şah',
-      p: 'piyon', n: 'at', b: 'fil', r: 'kale', q: 'vezir', k: 'şah'
-    };
-    return map[piece] || 'Taş';
   }
 }
 
