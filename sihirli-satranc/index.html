@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sihirli Satranç</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Konfeti Efekt Tuvali -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- 1. EKRAN: Maskot Seçim Ekranı -->
+  <div id="screen-mascot-select" class="screen">
+    <div class="select-title">✨ Sihirli Satranç Rehberini Seç ✨</div>
+    <div class="mascots-grid">
+      <!-- 1. Unicorn Yıldız -->
+      <div class="mascot-card" data-id="unicorn">
+        <div class="mascot-svg-wrap" id="svg-unicorn"></div>
+        <div class="mascot-name">Yıldız</div>
+        <div class="mascot-sub">Sihirli Unicorn 🦄</div>
+      </div>
+      <!-- 2. Peri Kedi Pamuk -->
+      <div class="mascot-card" data-id="cat">
+        <div class="mascot-svg-wrap" id="svg-cat"></div>
+        <div class="mascot-name">Pamuk</div>
+        <div class="mascot-sub">Peri Kedi 🐱</div>
+      </div>
+      <!-- 3. Şövalye Tavşan Zıpzıp -->
+      <div class="mascot-card" data-id="rabbit">
+        <div class="mascot-svg-wrap" id="svg-rabbit"></div>
+        <div class="mascot-name">Zıpzıp</div>
+        <div class="mascot-sub">Şövalye Tavşan 🐰</div>
+      </div>
+      <!-- 4. Minik Ejderha Kıvılcım -->
+      <div class="mascot-card" data-id="dragon">
+        <div class="mascot-svg-wrap" id="svg-dragon"></div>
+        <div class="mascot-name">Kıvılcım</div>
+        <div class="mascot-sub">Minik Ejderha 🐲</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EKRAN: Ana Menü Ekranı -->
+  <div id="screen-menu" class="screen">
+    <div class="menu-container">
+      <!-- Sol Taraf: Maskot ve Konuşma Balonu -->
+      <div class="menu-mascot-side">
+        <div id="menu-mascot-avatar" class="menu-mascot-avatar"></div>
+        <div id="menu-mascot-speech" class="menu-speech-bubble">
+          Hoş geldin küçük prenses! Bugün hangi maceraya atılalım? ✨
+        </div>
+        <a href="SihirliSatranc.apk" download="SihirliSatranc.apk" style="text-decoration: none; margin-top: 14px;">
+          <button class="magic-btn green" style="font-size: 14px; padding: 8px 14px;">
+            📥 Android APK İndir
+          </button>
+        </a>
+      </div>
+
+      <!-- Sağ Taraf: Oyun Modları -->
+      <div class="menu-buttons-side">
+        <div class="menu-card-btn" id="btn-mode-adventure">
+          <div class="btn-icon">🗺️</div>
+          <div class="btn-text">Macera Haritası</div>
+          <div class="btn-sub">Bölüm bölüm ilerle & Yıldız topla</div>
+        </div>
+
+        <div class="menu-card-btn" id="btn-mode-bots">
+          <div class="btn-icon">🤖</div>
+          <div class="btn-text">Sevimli Botlar</div>
+          <div class="btn-sub">Tavşan, Tilki, Baykuş ve Aslan</div>
+        </div>
+
+        <div class="menu-card-btn" id="btn-mode-pvp">
+          <div class="btn-icon">👨‍👧</div>
+          <div class="btn-text">Baba & Kız Modu</div>
+          <div class="btn-sub">Tablette iki kişi karşılıklı oyna</div>
+        </div>
+
+        <div class="menu-card-btn" id="btn-mode-minigames">
+          <div class="btn-icon">🎯</div>
+          <div class="btn-text">Mini Oyunlar</div>
+          <div class="btn-sub">Atla yıldız toplama, mat avı & piyon yarışı</div>
+        </div>
+
+        <div class="menu-card-btn" id="btn-mode-chest" style="grid-column: span 2;">
+          <div class="btn-icon">🎁</div>
+          <div class="btn-text">Hazine Sandığı & Çıkartma Albümü</div>
+          <div class="btn-sub">Kazandığın rozetler ve ödüller</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. EKRAN: Macera Haritası Ekranı -->
+  <div id="screen-adventure" class="screen">
+    <div class="header-bar">
+      <div class="header-left">
+        <button class="magic-btn purple btn-home">🏠 Ana Menü</button>
+        <div class="header-title">🌟 Krallık Macera Haritası</div>
+      </div>
+      <div class="header-right">
+        <div class="star-counter">⭐ <span class="star-count-num">0</span></div>
+      </div>
+    </div>
+
+    <div class="map-scroll-area" id="adventure-map-container">
+      <!-- JavaScript ile dünyalar ve bölümler yerleştirilir -->
+    </div>
+  </div>
+
+  <!-- 4. EKRAN: Oyun Ekranı (Tablet Landscape Düzeni) -->
+  <div id="screen-game" class="screen">
+    <div class="header-bar">
+      <div class="header-left">
+        <button class="magic-btn purple btn-home">🏠 Menü</button>
+        <div class="header-title" id="header-game-title">Sihirli Satranç</div>
+      </div>
+      <div class="header-right">
+        <div class="star-counter">⭐ <span class="star-count-num">0</span></div>
+        <button class="magic-btn gold icon-only" id="btn-settings-toggle" title="Ayarlar">⚙️</button>
+      </div>
+    </div>
+
+    <div class="game-layout">
+      <!-- Satranç Tahtası -->
+      <div class="board-container">
+        <div id="chess-board" class="chess-board">
+          <!-- 64 Kare JavaScript tarafından oluşturulur -->
+        </div>
+      </div>
+
+      <!-- Yan Panel (Maskot & Kumandalar) -->
+      <div class="game-side-panel">
+        <!-- Maskot & Konuşma Balonu -->
+        <div class="side-mascot-box">
+          <div id="side-mascot-avatar" class="side-mascot-avatar"></div>
+          <div id="side-speech-text" class="side-speech-text">
+            Sıra sende şampiyon! En güzel hamleni göster bakalım! 🦄
+          </div>
+        </div>
+
+        <!-- Yenilen Taşlar Çekmecesi -->
+        <div class="captured-pieces-bar">
+          <div class="captured-row">
+            <span>Senin Aldıkların:</span>
+            <div id="captured-black-list" class="captured-icons"></div>
+          </div>
+          <div class="captured-row">
+            <span>Rakibin Aldıkları:</span>
+            <div id="captured-white-list" class="captured-icons"></div>
+          </div>
+        </div>
+
+        <!-- Kumanda Butonları -->
+        <div class="game-controls">
+          <button class="magic-btn gold" id="btn-hint">
+            💡 Bana İpucu Ver
+          </button>
+          <div class="controls-row">
+            <button class="magic-btn purple" id="btn-undo">
+              ↩️ Geri Al
+            </button>
+            <button class="magic-btn green" id="btn-restart">
+              🔄 Baştan Başla
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALLAR -->
+
+  <!-- A. Bot Seçim Modalı -->
+  <div id="modal-bot-select" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-title">Kimle Oynamak İstersin?</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin: 16px 0;">
+        <button class="magic-btn green" onclick="window.magicApp.startBotMatch('tavsan')">
+          🐰 Minik Tavşan (Sevimli & Kolay - Çırak)
+        </button>
+        <button class="magic-btn gold" onclick="window.magicApp.startBotMatch('tilki')">
+          🦊 Kurnaz Tilki (Hızlı Saldırgan - Orta)
+        </button>
+        <button class="magic-btn purple" onclick="window.magicApp.startBotMatch('baykus')">
+          🦉 Bilge Baykuş (Saray Eğitmeni - İyi)
+        </button>
+        <button class="magic-btn" style="background: linear-gradient(135deg, #f093fb, #f5576c);" onclick="window.magicApp.startBotMatch('aslan')">
+          🦁 Kral Aslan (Krallık Şampiyonu - Usta)
+        </button>
+      </div>
+      <button class="magic-btn purple" onclick="document.getElementById('modal-bot-select').classList.remove('active')">Kapat</button>
+    </div>
+  </div>
+
+  <!-- B. Mini Oyunlar Seçim Modalı -->
+  <div id="modal-minigames" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-title">Taktik Arenası & Mini Oyunlar</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin: 16px 0;">
+        <button class="magic-btn gold" onclick="window.magicApp.startSpecificMiniGame('knight_stars')">
+          🦄 At ile Yıldız Toplama Labirenti
+        </button>
+        <button class="magic-btn green" onclick="window.magicApp.startSpecificMiniGame('mate_in_one')">
+          👑 1 Hamlede Şah ve Mat Avı
+        </button>
+        <button class="magic-btn purple" onclick="window.magicApp.startSpecificMiniGame('pawn_race')">
+          🏃‍♀️ Piyon Fırtınası / Vezir Çıkarma Yarışı
+        </button>
+        <button class="magic-btn gold" onclick="window.magicApp.startSpecificMiniGame('free_piece')">
+          🎯 Bedava Korumasız Taş Avcısı
+        </button>
+        <button class="magic-btn" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee); color: #333;" onclick="window.magicApp.startSpecificMiniGame('save_king')">
+          🏰 Kralı Kurtar (Şah Savunması)
+        </button>
+      </div>
+      <button class="magic-btn purple" onclick="document.getElementById('modal-minigames').classList.remove('active')">Kapat</button>
+    </div>
+  </div>
+
+  <!-- C. Çıkartma Albümü Modalı -->
+  <div id="modal-stickers" class="modal-overlay">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-title">🏆 Prenses Çıkartma Albümü 🏆</div>
+      <div class="modal-body">Oyunları kazandıkça ve bulmacaları çözdükçe yeni rozetler açılır!</div>
+      <div class="stickers-grid" id="stickers-container"></div>
+      <button class="magic-btn purple" onclick="document.getElementById('modal-stickers').classList.remove('active')">Tamam</button>
+    </div>
+  </div>
+
+  <!-- D. Terfi (Promotion) Modalı -->
+  <div id="modal-promotion" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-title">Piyonun Terfi Etti! 🎉</div>
+      <div class="modal-body">Piyonun tahtanın sonuna ulaştı! Hangi sihirli taşa dönüşsün?</div>
+      <div class="promo-choices">
+        <button class="promo-btn" data-promo="Q" title="Vezir">👸 Vezir</button>
+        <button class="promo-btn" data-promo="R" title="Kale">🏰 Kale</button>
+        <button class="promo-btn" data-promo="B" title="Fil">🧙 Fil</button>
+        <button class="promo-btn" data-promo="N" title="At">🦄 At</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- E. Zafer / Tebrik Modalı -->
+  <div id="modal-victory" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-title" id="victory-title">Tebrikler Prenses! 👑</div>
+      <div class="modal-body" id="victory-desc">Harika bir zafer kazandın!</div>
+      <button class="magic-btn gold" onclick="document.getElementById('modal-victory').classList.remove('active')">
+        Harika! Devam Et ⭐
+      </button>
+    </div>
+  </div>
+
+  <!-- F. Ayarlar Modalı -->
+  <div id="modal-settings" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-title">⚙️ Oyun Ayarları</div>
+      <div style="display: flex; flex-direction: column; gap: 14px; text-align: left; margin: 20px 0;">
+        <label style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+          🔊 Ses Efektleri:
+          <input type="checkbox" id="setting-sfx" style="width: 22px; height: 22px;">
+        </label>
+        <label style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+          🎵 Masal Müziği:
+          <input type="checkbox" id="setting-music" style="width: 22px; height: 22px;">
+        </label>
+        <label style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+          🗣️ Türkçe Sesli Teşvik:
+          <input type="checkbox" id="setting-voice" style="width: 22px; height: 22px;">
+        </label>
+        <label style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+          🟢 Geçerli Hamle Noktaları:
+          <input type="checkbox" id="setting-legal" style="width: 22px; height: 22px;">
+        </label>
+        <label style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+          ⚠️ Şah / Tehlike Uyarısı:
+          <input type="checkbox" id="setting-danger" style="width: 22px; height: 22px;">
+        </label>
+      </div>
+      <button class="magic-btn purple" onclick="window.magicApp.saveSettings()">Kaydet ve Kapat</button>
+    </div>
+  </div>
+
+  <!-- Uygulama Scriptleri -->
+  <script src="chess_engine.js"></script>
+  <script src="audio.js"></script>
+  <script src="pieces.js"></script>
+  <script src="adventure_data.js"></script>
+  <script src="mini_games.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Maskot SVG'lerini ilk seçim ekranına ekleme scripti -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('svg-unicorn').innerHTML = PieceThemeManager.mascots.unicorn.svg;
+      document.getElementById('svg-cat').innerHTML = PieceThemeManager.mascots.cat.svg;
+      document.getElementById('svg-rabbit').innerHTML = PieceThemeManager.mascots.rabbit.svg;
+      document.getElementById('svg-dragon').innerHTML = PieceThemeManager.mascots.dragon.svg;
+    });
+  </script>
+</body>
+</html>
