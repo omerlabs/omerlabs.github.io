@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-15T03:03:03.658359+00:00",
+  "lastUpdated": "2026-11-15T04:27:43.506922+00:00",
   "companies": [
     {
       "ticker": "MMM",
@@ -373,13 +373,6 @@
       "subSector": "Automotive Retail"
     },
     {
-      "ticker": "AVB",
-      "yf_ticker": "AVB",
-      "name": "AvalonBay Communities",
-      "sector": "Real Estate",
-      "subSector": "Multi-Family Residential REITs"
-    },
-    {
       "ticker": "AVY",
       "yf_ticker": "AVY",
       "name": "Avery Dennison",
@@ -478,6 +471,13 @@
       "subSector": "Transaction & Payment Processing Services"
     },
     {
+      "ticker": "BE",
+      "yf_ticker": "BE",
+      "name": "Bloom Energy",
+      "sector": "Industrials",
+      "subSector": "Electrical Components & Equipment"
+    },
+    {
       "ticker": "BNY",
       "yf_ticker": "BNY",
       "name": "BNY Mellon",
@@ -539,13 +539,6 @@
       "name": "Brown–Forman",
       "sector": "Consumer Staples",
       "subSector": "Distillers & Vintners"
-    },
-    {
-      "ticker": "BLDR",
-      "yf_ticker": "BLDR",
-      "name": "Builders FirstSource",
-      "sector": "Industrials",
-      "subSector": "Building Products"
     },
     {
       "ticker": "BG",
@@ -905,13 +898,6 @@
       "subSector": "Transaction & Payment Processing Services"
     },
     {
-      "ticker": "CTVA",
-      "yf_ticker": "CTVA",
-      "name": "Corteva",
-      "sector": "Materials",
-      "subSector": "Fertilizers & Agricultural Chemicals"
-    },
-    {
       "ticker": "CSGP",
       "yf_ticker": "CSGP",
       "name": "CoStar Group",
@@ -1227,13 +1213,6 @@
       "subSector": "Data Center REITs"
     },
     {
-      "ticker": "EQR",
-      "yf_ticker": "EQR",
-      "name": "Equity Residential",
-      "sector": "Real Estate",
-      "subSector": "Multi-Family Residential REITs"
-    },
-    {
       "ticker": "ERIE",
       "yf_ticker": "ERIE",
       "name": "Erie Indemnity",
@@ -1267,6 +1246,13 @@
       "name": "Evergy",
       "sector": "Utilities",
       "subSector": "Electric Utilities"
+    },
+    {
+      "ticker": "P",
+      "yf_ticker": "P",
+      "name": "Everpure",
+      "sector": "Information Technology",
+      "subSector": "Technology Hardware, Storage & Peripherals"
     },
     {
       "ticker": "ES",
@@ -1371,7 +1357,7 @@
       "yf_ticker": "FERG",
       "name": "Ferguson Enterprises",
       "sector": "Industrials",
-      "subSector": "Building Products"
+      "subSector": "Trading Companies & Distributors"
     },
     {
       "ticker": "FIS",
@@ -1745,6 +1731,13 @@
       "subSector": "Industrial Machinery & Supplies & Components"
     },
     {
+      "ticker": "ILMN",
+      "yf_ticker": "ILMN",
+      "name": "Illumina, Inc.",
+      "sector": "Health Care",
+      "subSector": "Life Sciences Tools & Services"
+    },
+    {
       "ticker": "INCY",
       "yf_ticker": "INCY",
       "name": "Incyte",
@@ -1890,13 +1883,6 @@
       "name": "JPMorgan Chase",
       "sector": "Financials",
       "subSector": "Diversified Banks"
-    },
-    {
-      "ticker": "KVUE",
-      "yf_ticker": "KVUE",
-      "name": "Kenvue",
-      "sector": "Consumer Staples",
-      "subSector": "Personal Care Products"
     },
     {
       "ticker": "KDP",
@@ -2153,7 +2139,7 @@
     {
       "ticker": "MCK",
       "yf_ticker": "MCK",
-      "name": "McKesson Corporation",
+      "name": "McKesson",
       "sector": "Health Care",
       "subSector": "Health Care Distributors"
     },
@@ -2233,13 +2219,6 @@
       "name": "Moderna",
       "sector": "Health Care",
       "subSector": "Biotechnology"
-    },
-    {
-      "ticker": "TAP",
-      "yf_ticker": "TAP",
-      "name": "Molson Coors Beverage Company",
-      "sector": "Consumer Staples",
-      "subSector": "Brewers"
     },
     {
       "ticker": "MDLZ",
@@ -2445,6 +2424,13 @@
       "subSector": "Oil & Gas Exploration & Production"
     },
     {
+      "ticker": "OKTA",
+      "yf_ticker": "OKTA",
+      "name": "Okta, Inc.",
+      "sector": "Information Technology",
+      "subSector": "Application Software"
+    },
+    {
       "ticker": "ODFL",
       "yf_ticker": "ODFL",
       "name": "Old Dominion",
@@ -2513,13 +2499,6 @@
       "name": "Palo Alto Networks",
       "sector": "Information Technology",
       "subSector": "Systems Software"
-    },
-    {
-      "ticker": "PSKY",
-      "yf_ticker": "PSKY",
-      "name": "Paramount Skydance Corporation",
-      "sector": "Communication Services",
-      "subSector": "Movies & Entertainment"
     },
     {
       "ticker": "PH",
@@ -2648,18 +2627,18 @@
       "subSector": "Life & Health Insurance"
     },
     {
-      "ticker": "PEG",
-      "yf_ticker": "PEG",
-      "name": "Public Service Enterprise Group",
-      "sector": "Utilities",
-      "subSector": "Electric Utilities"
-    },
-    {
       "ticker": "PTC",
       "yf_ticker": "PTC",
       "name": "PTC Inc.",
       "sector": "Information Technology",
       "subSector": "Application Software"
+    },
+    {
+      "ticker": "PEG",
+      "yf_ticker": "PEG",
+      "name": "Public Service Enterprise Group",
+      "sector": "Utilities",
+      "subSector": "Electric Utilities"
     },
     {
       "ticker": "PSA",
@@ -2676,11 +2655,11 @@
       "subSector": "Homebuilding"
     },
     {
-      "ticker": "PWR",
-      "yf_ticker": "PWR",
-      "name": "Quanta Services",
-      "sector": "Industrials",
-      "subSector": "Construction & Engineering"
+      "ticker": "Q",
+      "yf_ticker": "Q",
+      "name": "Qnity Electronics",
+      "sector": "Information Technology",
+      "subSector": "Semiconductor Materials & Equipment"
     },
     {
       "ticker": "QCOM",
@@ -2690,18 +2669,18 @@
       "subSector": "Semiconductors"
     },
     {
+      "ticker": "PWR",
+      "yf_ticker": "PWR",
+      "name": "Quanta Services",
+      "sector": "Industrials",
+      "subSector": "Construction & Engineering"
+    },
+    {
       "ticker": "DGX",
       "yf_ticker": "DGX",
       "name": "Quest Diagnostics",
       "sector": "Health Care",
       "subSector": "Health Care Services"
-    },
-    {
-      "ticker": "Q",
-      "yf_ticker": "Q",
-      "name": "Qnity Electronics",
-      "sector": "Information Technology",
-      "subSector": "Semiconductor Materials & Equipment"
     },
     {
       "ticker": "RL",
@@ -2718,11 +2697,11 @@
       "subSector": "Investment Banking & Brokerage"
     },
     {
-      "ticker": "RTX",
-      "yf_ticker": "RTX",
-      "name": "RTX Corporation",
-      "sector": "Industrials",
-      "subSector": "Aerospace & Defense"
+      "ticker": "RDDT",
+      "yf_ticker": "RDDT",
+      "name": "Reddit",
+      "sector": "Communication Services",
+      "subSector": "Interactive Media & Services"
     },
     {
       "ticker": "O",
@@ -2762,7 +2741,7 @@
     {
       "ticker": "RMD",
       "yf_ticker": "RMD",
-      "name": "ResMed|",
+      "name": "ResMed",
       "sector": "Health Care",
       "subSector": "Health Care Equipment"
     },
@@ -2814,6 +2793,13 @@
       "name": "Royal Caribbean Group",
       "sector": "Consumer Discretionary",
       "subSector": "Hotels, Resorts & Cruise Lines"
+    },
+    {
+      "ticker": "RTX",
+      "yf_ticker": "RTX",
+      "name": "RTX Corporation",
+      "sector": "Industrials",
+      "subSector": "Aerospace & Defense"
     },
     {
       "ticker": "SPGI",
@@ -2884,6 +2870,13 @@
       "name": "Simon Property Group",
       "sector": "Real Estate",
       "subSector": "Retail REITs"
+    },
+    {
+      "ticker": "SKYD",
+      "yf_ticker": "SKYD",
+      "name": "Skydance",
+      "sector": "Communication Services",
+      "subSector": "Movies & Entertainment"
     },
     {
       "ticker": "SWKS",
@@ -3117,13 +3110,6 @@
       "subSector": "Movies & Entertainment"
     },
     {
-      "ticker": "TTD",
-      "yf_ticker": "TTD",
-      "name": "Trade Desk (The)",
-      "sector": "Communication Services",
-      "subSector": "Advertising"
-    },
-    {
       "ticker": "TSCO",
       "yf_ticker": "TSCO",
       "name": "Tractor Supply",
@@ -3164,6 +3150,13 @@
       "name": "Truist Financial",
       "sector": "Financials",
       "subSector": "Diversified Banks"
+    },
+    {
+      "ticker": "TWLO",
+      "yf_ticker": "TWLO",
+      "name": "Twilio",
+      "sector": "Information Technology",
+      "subSector": "Systems Software"
     },
     {
       "ticker": "TYL",
@@ -3341,11 +3334,25 @@
       "subSector": "Electric Utilities"
     },
     {
+      "ticker": "VMRK",
+      "yf_ticker": "VMRK",
+      "name": "Vivmark Residential",
+      "sector": "Real Estate",
+      "subSector": "Multi-Family Residential REITs"
+    },
+    {
       "ticker": "VMC",
       "yf_ticker": "VMC",
       "name": "Vulcan Materials Company",
       "sector": "Materials",
       "subSector": "Construction Materials"
+    },
+    {
+      "ticker": "VYLR",
+      "yf_ticker": "VYLR",
+      "name": "Vylor",
+      "sector": "Consumer Staples",
+      "subSector": "Agricultural Products & Services"
     },
     {
       "ticker": "WRB",
@@ -3381,13 +3388,6 @@
       "name": "Walt Disney Company (The)",
       "sector": "Communication Services",
       "subSector": "Movies & Entertainment"
-    },
-    {
-      "ticker": "WBD",
-      "yf_ticker": "WBD",
-      "name": "Warner Bros. Discovery",
-      "sector": "Communication Services",
-      "subSector": "Broadcasting"
     },
     {
       "ticker": "WM",
